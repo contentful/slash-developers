@@ -1,0 +1,65 @@
+:markdown
+  Update the Entry with an ID of "hello-world".
+
+= code_examples do
+  = language_block :javascript do
+    :plain
+      space.getEntry('hello-world').then(function(entry) {
+        entry.fields.title['en-US'] = 'Crispy bacon news';
+        return space.updateEntry(entry);
+      }).then(log.ok, log.fail);
+  = language_block :shell do
+    = curl method:       'PUT',
+           path:         '/spaces/{space_key}/entries/hello-world',
+           version:      1,
+           data:         {fields: {title: {'en-US' => 'Crispy bacon news'}, body: {'en-US' => 'Bacon is healthy!'}}}
+
+%h5 Response
+
+= language_block :json do
+  :plain
+    {
+      "fields": {
+        "title": {
+          "en-US": "Crispy bacon news"
+        },
+        "body": {
+          "en-US": "Bacon is healthy!"
+        }
+      },
+      "sys": {
+        "id": "hello-world",
+        "type": "Entry",
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "7daovfk1olns"
+          }
+        },
+        "createdAt": "2013-09-22T23:05:03.271Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "blog-post"
+          }
+        },
+        "version": 2,
+        "updatedAt": "2013-09-22T23:26:04.733Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+          }
+        }
+      }
+    }

@@ -1,0 +1,78 @@
+:markdown
+  Search Entries in a space.
+
+= code_examples do
+  = language_block :javascript do
+    :plain
+       space.getEntries().then(log.ok, log.fail);
+  = language_block :shell do
+    = curl method: 'GET',
+           path:   '/spaces/{space_key}/entries'
+
+%h5 Response
+
+= language_block :json do
+  :plain
+    {
+      "sys": {
+        "type": "Array"
+      },
+      "total": 1,
+      "skip": 0,
+      "limit": 100,
+      "items": [
+        {
+          "fields": {
+            "title": {
+              "en-US": "Hello, World!"
+            },
+            "body": {
+              "en-US": "Bacon is healthy!"
+            }
+          },
+          "sys": {
+            "id": "hello-world",
+            "type": "Entry",
+            "space": {
+              "sys": {
+                "type": "Link",
+                "linkType": "Space",
+                "id": "7daovfk1olns"
+              }
+            },
+            "createdAt": "2013-09-22T23:05:03.271Z",
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+              }
+            },
+            "contentType": {
+              "sys": {
+                "type": "Link",
+                "linkType": "ContentType",
+                "id": "blog-post"
+              }
+            },
+            "version": 1,
+            "updatedAt": "2013-09-22T23:05:03.275Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+              }
+            }
+          }
+        }
+      ]
+    }
+
+:markdown
+  When querying Entries by `fields` you need to specify a Content Type by
+  setting the [content_type parameter](#search-content-type) to the ID of the
+  Content Type you want to filter by.
+
+:markdown
+  See [Search Parameters](#search) to learn how to search for specific things.

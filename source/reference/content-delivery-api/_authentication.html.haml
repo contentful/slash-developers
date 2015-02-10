@@ -1,0 +1,102 @@
+= title_anchor 'h2', 'authentication', 'Authentication'
+
+:markdown
+  To get content from the Content Delivery API, clients need to provide an access token.
+  Access tokens are created per Space and are used by clients to access the Space's content.
+
+= language_specific 'javascript', 'objc' do
+  We've provided you with a pre-configured client:
+
+= language_specific 'javascript' do
+
+  = language_block :javascript do
+    :plain
+      client
+      // → Client {...}
+
+= language_specific 'objc' do
+
+  = language_block :objc do
+    :plain
+      CDAClient* client = [CDAClient new];
+
+= language_specific 'swift' do
+
+  = language_block :swift do
+    :plain
+      var client = CDAClient()
+
+= language_specific 'javascript', 'objc' do
+  :markdown
+    This is how you would set up your own, equivalent client:
+
+= language_specific 'java' do
+  = language_block :java do
+    :plain
+      CDAClient client = new CDAClient.Builder()
+          .setSpaceKey("cfexampleapi")
+          .setAccessToken("b4c0n73n7fu1")
+          .build();
+
+= language_specific 'javascript' do
+
+  = language_block :javascript do
+    :plain
+      var anotherClient = contentful.createClient({
+        accessToken: '#{access_token}',
+        space: '#{space}'
+      });
+
+= language_specific 'objc' do
+
+  = language_block :objc do
+    :plain
+      CDAClient* client = [[CDAClient alloc] initWithSpaceKey:@"cfexampleapi"
+                                                  accessToken:@"b4c0n73n7fu1"];
+
+= language_specific 'swift' do
+
+  = language_block :swift do
+    :plain
+      var client = CDAClient(spaceKey:"cfexampleapi", accessToken:"b4c0n73n7fu1")
+
+= language_specific 'ruby' do
+  = language_block :ruby do
+    :plain
+      require 'contentful'
+      client = Contentful::Client.new(
+        access_token: 'b4c0n73n7fu1',
+        space: 'cfexampleapi'
+        dynamic_entries: 'auto'
+      )
+  Setting dynamic_entries to auto will allow you to use the fields of a content type directly using the getters instead of having to access the hash.
+
+:markdown
+  You can create Access tokens for your own Spaces in the "API" tab of the web interface.
+
+  The Content Delivery API implements the standardized
+  [OAuth 2.0 Bearer Token Specification](http://tools.ietf.org/html/draft-ietf-oauth-v2-bearer).
+  This authorization scheme is very simple and already supported by many HTTP clients.
+
+= language_specific 'http', 'javascript' do
+
+  :markdown
+    The API supports two mechanisms for supplying the access token.
+
+    As an `Authorization` HTTP request-header field:
+
+  = language_block :shell do
+    = curl path: "/spaces/#{space}"
+
+  :markdown
+    As an URI query parameter named `access_token`:
+
+  = language_block :shell do
+    = curl path: "/spaces/#{space}", auth_method: :query
+
+  :markdown
+    For HTTP snippets in this documentation we're going to use the URI query parameter method.
+
+- # TODO: Add a note somewhere that you should use SSL to not expose the token
+- # TODO: Add a note somewhere that you will deliver the token with your apps
+- # TODO: Add a note somewhere that a token is only for one space, but that there can be multiple and you should use one for each app you build for security but also meaningful statistics

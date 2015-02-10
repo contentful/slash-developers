@@ -1,0 +1,23 @@
+= title_anchor 'h2', "http", "HTTP Details"
+
+= title_anchor 'h3', "http-security", "Security"
+
+:markdown
+  The Content Management API is only available via SSL,
+  all requests must be performed using the `https:` protocol.
+
+  Using SSL ensures that the entire content and access tokens of a Space remain secure
+  and can not be intercepted by potential eavesdroppers.
+
+= prefixed_partial '../shared/http_details_cors'
+
+= title_anchor 'h3', "http-encoding", "Encoding"
+
+:markdown
+  JSON is encoded in UTF-8.
+
+= title_anchor 'h3', "http-gzip-compression", "GZip Compression"
+
+:markdown
+  All API endpoints support GZip compression to save valuable bandwidth.
+  Please take into account that enabling compression will also put more load on your clients' processors.

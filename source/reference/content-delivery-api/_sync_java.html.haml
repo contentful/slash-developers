@@ -1,0 +1,82 @@
+= title_anchor 'h3', "sync-endpoint", "Endpoint"
+
+:markdown
+  A client syncs content by using the sync endpoint.
+
+  The first time a client synchronizes content it calls the `performInitialSynchronization()` method:
+
+= code_examples do
+  = language_block :java do
+    :plain
+      client.performInitialSynchronization(new CDACallback<CDASyncedSpace>() {
+        @Override 
+        protected void onSuccess(CDASyncedSpace syncedSpace, Response response) {
+          // ...
+        }
+      });
+
+:markdown
+  Syncing initially should only be done once when a client has no prior content.
+  This transfers all content from a Space since its creation. Contrary to the SDKs in other languages, all pages of content will always be fetched and available locally.
+
+
+= title_anchor 'h3', "sync-responses", "Sync responses"
+
+:markdown
+
+  Similar to a `CDAArray` instance, the content can be accessed using the `getItems()` method of the returned `CDASyncedSpace` object. You need to retain that object to perform subsequent delta updates:
+
+  The content can be accessed using the `getItems()` method of the returned `CDASyncedSpace` object. You need to retain that object to perform subsequent delta updates:
+
+= code_examples do
+  = language_block :java do
+    :plain
+      client.performSynchronization(syncedSpaced, new CDACallback<CDASyncedSpace>() {
+        @Override 
+        protected void onSuccess(CDASyncedSpace syncedSpace, Response response) {
+          // ...
+        }
+      });
+
+
+:markdown
+
+  The next sync should be performed depending on the client's use case, i.e., on next app launch, in a few hours or when the user requests a refresh.
+
+= title_anchor 'h3', "sync-localization", "Syncing & Localization"
+
+:markdown
+  When syncing Entries or Assets they come in all available
+  localizations instead of just a single one.
+  Usually Resources coming from the Delivery API only come with a single value
+  per field - the value of the locale you requested or the default one.
+  The Sync endpoint returns all locales per field.
+
+  When invoking the `getFields()` methods normally, values for the Spaces default locale will be returned. If you wish to access field values in other locales, you can set the `locale` property on an Entry or Asset. From then on, it will return all values in this locale, or from the default locale if there was no value set for that particular one.
+
+= title_anchor 'h4', "sync-content-types", "Note on syncing Content Types"
+
+:markdown
+  For syncing Content Types clients should use the usual [Content Type search endpoint](#searching-content-types).
+
+- # TODO: Add links to API docs
+
+= title_anchor 'h3', "sync-pickup", "Picking up a sync after an app relaunch"
+
+:markdown
+
+  If you are persisting information retrieved from the API into a local cache, it is a good idea to start from that after the user relaunches the app instead of doing a new initial synchronization from scratch. This is possible by storing the `CDASyncedSpace` property `syncToken` along with the data, then doing the following to reinstate your synchronization session:
+
+= code_examples do
+  = language_block :java do
+    :plain
+      client.performSynchronization(syncToken, new CDACallback<CDASyncedSpace>() {
+        @Override 
+        protected void onSuccess(CDASyncedSpace syncedSpace, Response response) {
+            // ...
+        }
+      });
+
+:markdown
+
+  What you will get in this process is a so called shallow synchronization space, because it will not return anything from previously fetched Assets or Entries. This means the use case of a shallow synchronization space is really limited to keeping a local cache up-to-date.

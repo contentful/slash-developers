@@ -1,0 +1,28 @@
+= title_anchor 'h2', "system-properties", "System Properties"
+
+:markdown
+  All resources have a root-level property called `sys`.
+  It contains system-related meta information:
+
+  Field          |Type          |Description
+  ---------------|--------------|--------------------------------------------
+  sys.type       |String        |Type of resource.
+  sys.id         |String        |Unique ID of resource.
+  sys.space      |Link          |Link to resource's Space (except Spaces) .
+  sys.contentType|Link          |Link to Entry's Content Type (Entries only).
+  sys.revision   |Integer       |Version of resource.
+  sys.createdAt  |Date          |Time entity was created.
+  sys.updatedAt  |Date          |Time entity was updated.
+
+  Note that resource IDs are unique within their respective Space and their type:
+
+  For example, you could have two Spaces which both have an Entry with ID = "foobar".
+  But you could not have two Entries with ID = "foobar" within the same Space.
+
+  Resource IDs are also unique per type.
+  For example, you could have a Space with an Entry with ID = "foobar" and a Content Type with ID = "foobar".
+
+= language_specific 'objc', 'swift' do
+
+  :markdown
+    All system properties are accessible via the `sys` dictionary property on all `CDAResource` subclasses, like entries, assets, etc. There is a convenience accessor `identifier` for the sys.id of each resource.

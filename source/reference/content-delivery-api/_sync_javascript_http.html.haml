@@ -1,0 +1,194 @@
+= title_anchor 'h3', "sync-endpoint", "Endpoint"
+
+:markdown
+  A client syncs content by using the sync endpoint.
+  A single sync consists of one or more [pages](#sync-responses), each a separate request and response.
+
+  The first time a client synchronizes content it sends a request to the sync endpoint with the URI query parameter `initial` set to `true`:
+
+= language_block :shell do
+  = curl path: "/spaces/#{space}/sync?initial=true"
+
+:markdown
+  Syncing with `initial=true` should only be done once for the initial sync when a client has no prior content.
+  This transfers all content from a Space since its creation. The inital sync contains neither deleted content nor deletions.
+
+= title_anchor 'h3', "sync-types", "Syncing specific content"
+
+:markdown
+  By default a sync includes all [types](#sync-item-types): Assets, Entries of all Content Types and deletions.
+
+  To sync only specific content a `type` parameter can be specified for the initial sync:
+
+  - all: (default) Include all new and changed content, i.e., Assets, Entries and deletions.
+  - Asset: Only include new and changed Assets.
+  - Entry: Only include new and changed Entries.
+  - Deletion: Only include deletions of Assets and Enties.
+  - DeletedAsset: Only include deletions of Assets.
+  - DeletedEntry: Only include deletions of Entries.
+
+  For Entries you can also specify a `content_type` parameter.
+  When specifying `content_type` you must specify `type` as Entry (meaning that there will be no deletions):
+
+= language_block :shell do
+  = curl path: "/spaces/#{space}/sync?initial=true&type=Entry&content_type=cat"
+
+:markdown
+  If you want to sync Entries by Content Type you should separately subscribe to a Deletion or DeletedEntry sync to get notified when Entries are deleted:
+
+= language_block :shell do
+  = curl path: "/spaces/#{space}/sync?initial=true&type=DeletedEntry"
+
+:markdown
+  The `type` and `content_type` parameter can only be specified at the initial sync along with the `initial` parameter.
+  Any subsequent syncs will only include the types you have specified.
+
+= title_anchor 'h3', "sync-responses", "Sync responses"
+
+:markdown
+  The sync endpoint responds with one or more sync pages, depending on the amount of content that has to be synced.
+  Each sync page includes a list of items along with either a `nextPageUrl` or a `nextSyncUrl`.
+
+  - If the page includes a `nextPageUrl` the current sync has one or more pages after the current one.
+    A client must continually request pages by following `nextPageUrl` and collect `items` until it encounters a page with a `nextSyncUrl`.
+
+= language_block :json do
+  :plain
+    {
+      "sys": {
+        "type": "Array"
+      },
+      "items": [...],
+      "nextPageUrl": "#{space_url("/sync?sync_token=nextpagetoken")}"
+    }
+
+:markdown
+  - If the page includes a `nextSyncUrl` the current sync is fully complete.
+    The client should store the `nextSyncUrl` for the next sync.
+    The next sync should be performed depending on the client's use case, i.e., on next app launch, in a few hours or when the user requests a refresh.
+    The final page also includes `items`.
+    It is important that the client remembers the URL of the next sync in order to effectively sync in the future content without transferring unnecessary data.
+
+= language_block :json do
+  :plain
+    {
+      "sys": {
+        "type": "Array"
+      },
+      "items": [...],
+      "nextSyncUrl": "#{space_url("/sync?sync_token=nextsynctoken")}"
+    }
+
+:markdown
+  Sync tokens should be regarded as opaque blobs and simply be passed to the endpoint for the next request.
+
+= title_anchor 'h3', "sync-localization", "Syncing & Localization"
+
+:markdown
+  When syncing Entries or Assets they come in all available
+  localizations instead of just a single one.
+  Usually Resources coming from the Delivery API only come with a single value
+  per field - the value of the locale you requested or the default  one.
+  The Sync endpoint returns all locales per field.
+
+  This means that Assets' and Entries' `fields` will contain an object with
+  values for all available locales instead of a single value like most other
+  Delivery API endpoints. Their fields look similar to the fields in the
+  [Content Management API](/developers/documentation/content-management-api).
+
+  For example, if you want to access the `name` field of a synced Entry:
+
+  Instead of accessing just `fields.name` use `fields.name['en-US']` instead.
+
+  [Let us know](#getting-help) if you need a way to sync only a single locale.
+
+= title_anchor 'h3', "sync-item-types", "Item types"
+
+:markdown
+  The `items` included in a sync response are a list of resources with different types:
+
+  - [Entry](#entries): An Entry that was created or changed.
+  - [Asset](#assets): An Asset that was created or changed.
+  - DeletedEntry: An Entry that was deleted.
+  - DeletedAsset: An Asset that was deleted.
+
+  Deletions have [`sys.id and sys.type`](#system-properties) just like other resources.
+  For example, if an Entry with `sys.id` = "foo" is deleted there will be a deletion with `sys.type` = "DeletedEntry" and `sys.id` = "foo".
+  Whenever a client encounters a deletion of a resource it should remove that resource locally.
+  Note that a deletion doesn't carry any of its prior resource's original information other than type, ID and deletion time.
+
+= title_anchor 'h4', "sync-content-types", "Note on syncing Content Types"
+
+:markdown
+  For syncing Content Types clients should use the usual [Content Type search endpoint](#searching-content-types).
+
+= title_anchor 'h3', "sync-example-flow", "Example sync flow"
+
+:markdown
+  To further illustrate synchronization let's perform the initial synchronization and a subsequent synchronization of a Space.
+
+= title_anchor 'h4', "sync-example-initial-request", "Initial sync request"
+
+:markdown
+  First let's make the initial sync request:
+
+= language_block :shell do
+  = curl path: "/spaces/#{space}/sync?initial=true"
+
+:markdown
+  This will result in the first batch of items:
+
+= language_block :json do
+  :plain
+    {
+      "sys": {
+        "type": "Array"
+      },
+      "items": [...],
+      "nextPageUrl": "#{space_url("/sync?sync_token=secondpage")}"
+    }
+
+:markdown
+  The initial page's response includes a `nextPageUrl`.
+  This means this sync is not over yet and we need to request the next page.
+
+= title_anchor 'h4', "sync-example-next-page", "Requesting the next page"
+
+:markdown
+  The next page's URL we got from the previous page so let's request that:
+
+= language_block :shell do
+  = curl path: "/spaces/#{space}/sync?sync_token=secondpage"
+
+:markdown
+  The response yields the second batch of items:
+
+= language_block :json do
+  :plain
+    {
+      "sys": {
+        "type": "Array"
+      },
+      "items": [...],
+      "nextSyncUrl": "#{space_url("/sync?sync_token=nextsync")}"
+    }
+
+:markdown
+  The second page's result includes a `nextSyncUrl`.
+  This means the sync is complete and we should store its URL for the next sync.
+
+= title_anchor 'h4', "sync-example-subsequent-sync", "Subsequent synchronizations"
+
+:markdown
+  In the [previous sync](#sync-example-next-page) we got a `nextSyncUrl`.
+  Let's request this URL to learn about changes that happened since the previous sync:
+
+= language_block :shell do
+  = curl path: "/spaces/#{space}/sync?sync_token=nextsync"
+
+:markdown
+  The result will look like one of the pages of the initial sync, and again depending on whether
+  a page has a `nextPageUrl` or a `nextSyncUrl` we must request either the next page or end syncing
+  and store the `nextSyncUrl` for later use.
+
+  If for some reason a client loses the `nextSyncUrl` the client should delete its local content and [perform the initial synchronization](#sync-example-initial-request) again.

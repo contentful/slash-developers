@@ -1,0 +1,45 @@
+- title :developers, :documentation, :content_management_api, :skip => [:documentation]
+
+- set_doc_type 'content-management-api'
+- @language = language if defined? language
+- @subdomain = 'api'
+- sidebar_name :content_management_api
+
+- @path_prefix = '/developers/documentation/content-management-api/'
+
+- wrap_layout :documentation do
+  = title_anchor 'h1', "api", "Content Management API"
+
+  %div(ng-app="cmaDocs")
+    = prefixed_partial 'introduction'
+    = prefixed_partial 'getting-started'
+    = prefixed_partial 'authentication'
+    = prefixed_partial '../shared/search'
+
+    = language_specific 'javascript', 'http' do
+      = prefixed_partial '../shared/json-format'
+
+    = prefixed_partial 'localization'
+    = prefixed_partial '../shared/links'
+
+    = language_specific 'javascript', 'http' do
+      = prefixed_partial 'api-versioning'
+      = prefixed_partial 'webhooks'
+
+    = prefixed_partial 'http-details'
+
+    = language_specific 'javascript', 'http' do
+      = prefixed_partial '../shared/libraries'
+    = prefixed_partial '../shared/getting-help'
+
+
+    = title_anchor 'h1', "resources", "Resources"
+    = prefixed_partial 'resources'
+
+    =# prefixed_partial 'errors'
+    =# prefixed_partial 'endpoints'
+
+    = prefixed_partial '../shared/tldr'
+
+  %script(src="/javascripts/lib/angular.min.js")
+  %script(src="/javascripts/cma_docs/bundle.js")

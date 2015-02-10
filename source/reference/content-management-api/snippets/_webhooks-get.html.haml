@@ -1,0 +1,9 @@
+= title_anchor 'h4', "resources-webhooks-get", "Getting a Webhook"
+
+:markdown
+  Getting Webhook with the ID foobar:
+
+= code_examples do
+  = language_block :shell do
+    = curl method:       'GET',
+           path:         '/spaces/{space_key}/webhook_definitions/foobar'

@@ -1,0 +1,64 @@
+:markdown
+  Unpublish the Asset with the ID "bacon-pancakes".
+
+= code_examples do
+  = language_block :javascript do
+    :plain
+      space.getAsset('bacon-pancakes').then(function(asset) {
+        return space.unpublishAsset(asset);
+      }).then(log.ok, log.fail);
+
+      // or unpublish Asset by ID:
+      space.unpublishAsset('bacon-pancakes').then(log.ok, log.fail);
+  = language_block :shell do
+    = curl method:  'DELETE',
+           path:    '/spaces/{space_key}/assets/bacon-pancakes/published'
+
+%h5 Response
+
+= language_block :json do
+  :plain
+    {
+      "fields": {
+        "title": {
+          "en-US": "Bacon Pancakes"
+        },
+        "file": {
+          "en-US": {
+            "contentType": "image/jpeg",
+            "fileName": "example.jpg",
+            "upload": "https://example.com/example.jpg"
+          }
+        }
+      },
+      "sys": {
+        "id": "bacon-pancakes",
+        "type": "Asset",
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "7daovfk1olns"
+          }
+        },
+        "createdAt": "2013-09-22T23:05:03.271Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+          }
+        },
+        "firstPublishedAt": "2013-09-22T23:28:11.503Z",
+        "publishedCounter": 1,
+        "version": 4,
+        "updatedAt": "2013-09-22T23:29:37.122Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+          }
+        }
+      }
+    }

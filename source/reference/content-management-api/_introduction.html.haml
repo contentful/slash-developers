@@ -1,0 +1,32 @@
+= title_anchor 'h2', "introduction", "Introduction"
+
+%p.ng-cloak(ng-show="auth.user") 
+  Hi {{auth.user.firstName}}!
+
+:markdown
+  The Content Management API is a [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) API for managing content.
+
+  The Content Management API is served at `api.contentful.com`.
+
+  In Contentful content is represented as [Entries](#resources-entries) and [Assets](#resources-assets) divided into [Spaces](#resources-spaces).
+  Apps and websites depend on the structure of Entries, so every Entry must comply to a specific
+  [Content Type](#resources-content-types).
+  Assets represent binary files like images, videos and other media.
+
+  Entries are represented as JSON data; Assets are represented as (binary) files.
+
+  The API can be [securely accessed via HTTPS](#security) and will only be available to
+  clients [authenticating with an access token](#authentication).
+
+  Managing content via an API has many benefits:
+
+  - Custom applications can use the API to manage content.
+  - Scripts can use the API to automate various tasks.
+  - Contentful's own content management web app is a user-friendly JavaScript application which is solely based on the API.
+
+  If you want to deliver content (e.g. to the web or to mobile apps) use the [Content Delivery API](/developers/documentation/content-delivery-api/).
+  The Content Management API is meant to be used only for managing content, not delivering it.
+  For example, you shouldn't use the Content Management API to display blog posts on a web site or pull information into a mobile web app unless that app is meant for editing content.
+
+
+  We've made this documentation very interactive. To [get started](#getting-started) just read further and we'll take you through a quick tour of the Content Management API.

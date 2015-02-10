@@ -1,0 +1,49 @@
+:markdown
+  List all Spaces by doing a GET request to the `/spaces` endpoint:
+
+= code_examples do
+  = language_block :javascript do
+    :plain
+      client.getSpaces().then(log.ok, log.fail);
+  = language_block :shell do
+    = curl method: 'GET',
+           path:   '/spaces'
+
+%h5 Response
+
+= language_block :json do
+  :plain
+    {
+      "sys": {
+        "type": "Array"
+      },
+      "items": [
+        {
+          "sys": {
+            "type": "Space",
+            "id": "1vlwe1hnkhmk",
+            "version": 0,
+            "createdBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+              }
+            },
+            "createdAt": "2013-09-22T17:34:53Z",
+            "updatedBy": {
+              "sys": {
+                "type": "Link",
+                "linkType": "User",
+                "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+              }
+            },
+            "updatedAt": "2013-09-22T17:34:53Z"
+          },
+          "name": "Example Space"
+        }
+      ],
+      "total": 1,
+      "limit": 25,
+      "skip": 0
+    }

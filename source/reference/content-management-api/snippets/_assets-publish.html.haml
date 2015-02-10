@@ -1,0 +1,77 @@
+:markdown
+  Publish the Asset with an ID of "bacon-pancakes".
+
+= code_examples do
+  = language_block :javascript do
+    :plain
+      space.getAsset('bacon-pancakes').then(function(asset) {
+        return space.publishAsset(Asset);
+      }).then(log.ok, log.fail);
+
+      // or publish Asset by ID & version:
+      space.publishAsset('bacon-pancakes', 2).then(log.ok, log.fail);
+  = language_block :shell do
+    = curl method:  'PUT',
+           path:    '/spaces/{space_key}/assets/bacon-pancakes/published',
+           version: 2
+
+%h5 Response
+
+= language_block :json do
+  :plain
+    {
+      "fields": {
+        "title": {
+          "en-US": "Bacon Pancakes"
+        },
+        "file": {
+          "en-US": {
+            "contentType": "image/jpeg",
+            "fileName": "example.jpg",
+            "upload": "https://example.com/example.jpg"
+          }
+        }
+      },
+      "sys": {
+        "id": "bacon-pancakes",
+        "type": "Asset",
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "7daovfk1olns"
+          }
+        },
+        "createdAt": "2013-09-22T23:05:03.271Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+          }
+        },
+        "version": 3,
+        "updatedAt": "2013-09-22T23:28:11.503Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+          }
+        },
+        "firstPublishedAt": "2013-09-22T23:28:11.503Z",
+        "publishedCounter": 1,
+        "publishedAt": "2013-09-22T23:28:11.503Z",
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "0lEP0wVJL8WSQSbRuVUdcJ"
+          }
+        },
+        "publishedVersion": 2
+      }
+    }
+  
+:markdown
+  After publishing the Asset it will be available via the [Content Delivery API](/developers/documentation/content-delivery-api/).

@@ -1,0 +1,96 @@
+= title_anchor 'h2', "webhooks", "Webhooks"
+
+= prefixed_partial '../shared/webhooks-explanation'
+
+:markdown
+  You can [create and manipulate Webhook Definitions using the Management API](/developers/documentation/content-management-api/#resources-webhooks).
+
+= title_anchor 'h3', "webhooks-request-format", "Request Format"
+
+:markdown
+  When content is published or unpublished all webhooks in a Space are fired.
+  Each webhook has a URL which will receive an HTTP `POST` request.
+  The HTTP request has the following headers & request body:
+
+= title_anchor 'h4', "webhooks-request-headers", "Headers of Webhook HTTP Request"
+
+:markdown
+  The `X-Contentful-Topic` header is one of the following values,
+  depending on which type of Resource has been published or unpublished:
+
+  - ContentManagement.ContentType.publish
+  - ContentManagement.ContentType.unpublish
+  - ContentManagement.Entry.publish
+  - ContentManagement.Entry.unpublish
+  - ContentManagement.Asset.publish
+  - ContentManagement.Asset.unpublish
+
+  For example, when an Entry has been published:
+
+= language_block :plain do
+  X-Contentful-Topic: ContentManagement.Entry.publish
+
+= title_anchor 'h4', "webhook-request-body", "Body of Webhook HTTP Request"
+
+:markdown
+  The request body is the published Resource's body or deletion thereof.
+
+  The request body's content depends on the specific action:
+
+  - On activate/publish: The Resource's body. In case of Entries and Assets
+    their fields  will contain all locales, e.g. instead of `fields.name` there
+    will be `fields['en-US'].name`.
+  - On deactivate/unpublish: The Deletion of the Resource.
+
+  For Example, when an Entry has been published:
+
+= language_block :json do
+  :plain
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "cat",
+        "space": {"sys": {"type": "Link", "linkType": "Space", "id": "example"}},
+        "contentType": {"sys": {"type": "Link", "linkType": "ContentType", "id": "cat"}},
+        "createdAt": "2013-03-26T00:13:37.123Z",
+        "updatedAt": "2013-03-26T00:13:37.123Z",
+        "revision": 1
+      },
+      "fields": {
+        "name": {"en-US": "Nyan cat"},
+        "color": {"en-US": "Rainbow"},
+        "nyan": {"en-US": true},
+        "birthday": {"en-US": "2011-04-02T00:00:00.000Z"},
+        "diary": {"en-US": "Nyan cat has an epic rainbow trail."},
+        "likes": {"en-US": ["rainbows", "fish"]},
+        "bestFriend": {"en-US": {"type": "Link", "linkType": "Entry", "id": "happycat"}}
+      }
+    }
+
+:markdown
+  Or a Deletion of an Entry when an Entry has been unpublished:
+
+= language_block :json do
+  :plain
+    {
+      "sys": {
+        "type": "DeletedEntry",
+        "id": "cat",
+        "space": {"sys": {"type": "Link", "linkType": "Space", "id": "example"}},
+        "createdAt": "2013-03-26T00:13:37.123Z",
+        "updatedAt": "2013-03-26T00:13:37.123Z",
+        "revision": 1
+      }
+    }
+
+= title_anchor 'h4', "webhooks-response-detection", "Response Detection"
+
+:markdown
+  When a webhook is triggered an HTTP POST request is made to its pre-configured HTTP URL.
+  Depending on the HTTP response's status code the webhook will either succeed or fail:
+
+  - Success: The HTTP endpoint responded with an HTTP status code < 300
+  - Error: The HTTP endpoint responded with an HTTP status code >= 300
+
+  In case of an error, the webhook will periodically retry its request with
+  increasing delays inbetween up to a maximum of 3 attempts.

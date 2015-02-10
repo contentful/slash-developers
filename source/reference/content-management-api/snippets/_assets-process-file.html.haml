@@ -1,0 +1,24 @@
+:markdown
+  Process the "bacon-pancakes" Asset's en-US file:
+
+= code_examples do
+  = language_block :javascript do
+    :plain
+      space.getAsset('bacon-pancakes').then(function(asset) {
+        space.processAssetFile(asset, 'en-US');
+      });
+
+      // or process Asset by ID & version:
+      space.processAssetFile('bacon-pancakes', 'en-US', 2).then(log.ok, log.fail);
+  = language_block :shell do
+    = curl method:  'PUT',
+           path:    '/spaces/{space_key}/assets/bacon-pancakes/files/en-US/process',
+           version: 2
+
+:markdown
+  Asset processing happens asynchronously, the call will not block until it has finished.
+
+%h5 Response
+
+:markdown
+  Empty response.

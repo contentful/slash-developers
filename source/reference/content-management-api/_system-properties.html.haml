@@ -1,0 +1,15 @@
+= title_anchor 'h3', "system-properties", "System Properties"
+
+:markdown
+  All resources have a root-level property called `sys`.
+  It contains system-related meta information:
+
+  Field          |Type          |Description
+  ---------------|--------------|--------------------------------------------
+  sys.type       |String        |Type of resource.
+  sys.id         |String        |Unique ID of resource.
+  sys.space      |Link          |Link to resource's Space (except Spaces) .
+  sys.contentType|Link          |Link to Entry's Content Type (Entries only).
+  sys.version    |Integer       |Version of resource.
+  sys.createdAt  |Date          |Time entity was created.
+  sys.updatedAt  |Date          |Time entity was updated.

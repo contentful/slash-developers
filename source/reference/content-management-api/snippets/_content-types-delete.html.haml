@@ -1,0 +1,22 @@
+:markdown
+  Before you can delete a Content Type you need to [deactivate it](#resources-content-types-deactivate).
+
+  Delete a Content Type with the ID "blog-post".
+
+= code_examples do
+  = language_block :javascript do
+    :plain
+      space.getContentType('blog-post').then(function(contentType) {
+        return space.deleteContentType(contentType);
+      }).then(log.ok, log.fail);
+
+      // or delete by ID:
+      space.deleteContentType('blog-post').then(log.ok, log.fail);
+  = language_block :shell do
+    = curl method: 'DELETE',
+           path:   '/spaces/{space_key}/content_types/blog-post'
+
+%h5 Response
+
+:markdown
+  Empty response.
