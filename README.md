@@ -12,11 +12,25 @@ All source content lives in the `source/` directory.
   - [ ] Management API
   - [ ] Preview API
  - source/overview/ - Summary articles providing an introduction to key concepts of Contentfuls API
+  - [ ] Data Model
+  - [ ] The three Content API's
+  - [ ] Content Localization - how is localized content stored and retrieved via the Delivery & Management API's
+  - [ ] Links and Querying - what are links, their strengths and limitations
+  - [ ] Includes - benefits of using `include`
+  - [ ] Synchronization - beneftis and concepts behind the Sync API
  - source/tutorials/ - Tutorial articles providing step-by-step instructions on acheiving certain outcomes via the Contentful API
+  - [ ] Delivery API Quickstart
+  - [ ] Management API Quickstart
+  - [ ] Management API in depth
+  - [ ] Working with Assets
  - source/libraries/ - Single page of content linking:
-   - official and unofficial SDKs by programming language
-   - other useful libraries such as contentful_rails
- - source/tools/ - Single page listing useful tools for working with API's, e.g. import/export tools, migration & sync, and so on
+  - [ ] official and unofficial SDKs by programming language
+  - [ ] the tools page below
+ - source/tools/ - Single page linking developer oriented tools for working with the Content API's
+  - [ ] import/export tools
+  - [ ] content migration & sync
+  - [ ] static site generator plugins
+  - [ ] other higher-level libraries like `contentful_rails`
 
 ## Tips on contributing
 
