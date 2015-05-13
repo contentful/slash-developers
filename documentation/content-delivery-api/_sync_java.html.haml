@@ -8,12 +8,12 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.performInitialSynchronization(new CDACallback<CDASyncedSpace>() {
-        @Override 
-        protected void onSuccess(CDASyncedSpace syncedSpace, Response response) {
-          // ...
-        }
-      });
+      client.synchronization().async().performInitial(
+          new CDACallback<CDASyncedSpace>() {
+            @Override protected void onSuccess(CDASyncedSpace result) {
+              // ...
+            }
+          });
 
 :markdown
   Syncing initially should only be done once when a client has no prior content.
@@ -31,12 +31,12 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.performSynchronization(syncedSpaced, new CDACallback<CDASyncedSpace>() {
-        @Override 
-        protected void onSuccess(CDASyncedSpace syncedSpace, Response response) {
-          // ...
-        }
-      });
+      client.synchronization().async().performWithSpace(syncedSpaced,
+          new CDACallback<CDASyncedSpace>() {
+            @Override protected void onSuccess(CDASyncedSpace result) {
+              // ...
+            }
+          });
 
 
 :markdown
@@ -70,12 +70,12 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.performSynchronization(syncToken, new CDACallback<CDASyncedSpace>() {
-        @Override 
-        protected void onSuccess(CDASyncedSpace syncedSpace, Response response) {
-            // ...
-        }
-      });
+      client.synchronization().async().performWithToken(syncToken,
+          new CDACallback<CDASyncedSpace>() {
+            @Override protected void onSuccess(CDASyncedSpace result) {
+              // ...
+            }
+          });
 
 :markdown
 

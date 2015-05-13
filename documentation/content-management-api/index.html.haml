@@ -1,0 +1,61 @@
+- page :cma, :resources
+
+- set_doc_type 'content-management-api'
+- @language = language if defined? language
+- @subdomain = 'api'
+
+- @path_prefix = cma_docs_url
+
+.hero.hero--dark
+  = partial('partials/header', :locals => {:color => 'light'})
+  = partial('partials/subnav-devcenter', :locals => {:color => 'light'})
+
+.docs-split.split
+  .split__container
+    .split__sidebar.sidebar
+      .sidebar__dropdown
+        .select__container
+          = image_tag "icons/chevron.svg", :class => 'select__icon', :width => '8', :height => '8'
+          %select.select.select--white
+            %option(value="http") HTTP (curl)
+            %option(value="javascript") JavaScript
+
+      .sidebar__nav
+
+    .split__content.unclassed(ng-app="cmaDocs")
+      = title_anchor 'h1', 'cma', 'Content Management API', 'sidebar__link--title'
+
+      = prefixed_partial 'introduction'
+      = prefixed_partial 'getting-started'
+      = prefixed_partial 'authentication'
+      = prefixed_partial '../shared/search'
+
+      = language_specific 'javascript', 'http' do
+        = prefixed_partial '../shared/json-format'
+
+      = prefixed_partial 'localization'
+      = prefixed_partial '../shared/links'
+
+      = language_specific 'javascript', 'http' do
+        = prefixed_partial 'api-versioning'
+        = prefixed_partial 'webhooks'
+
+      = prefixed_partial 'http-details'
+
+      = language_specific 'javascript', 'http' do
+        = prefixed_partial '../shared/libraries'
+      = prefixed_partial '../shared/getting-help'
+
+
+      = title_anchor 'h1', "resources", "Resources", 'sidebar__link--title'
+      = prefixed_partial 'resources'
+
+      =# prefixed_partial 'errors'
+      =# prefixed_partial 'endpoints'
+
+      = prefixed_partial '../shared/tldr'
+
+= partial('partials/footer')
+
+= javascript_include_tag 'lib/angular.min.js'
+= javascript_include_tag 'cma_docs/bundle.js'

@@ -29,14 +29,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("content_type", "cat");
-          }}, 
-          
+          }},
+
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -99,14 +98,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("sys.id", "nyancat");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -145,6 +143,8 @@
   A reason to query an Entry by ID like above instead of [retrieving the Entry itself](#getting-entry)
   might be because you want to [include resolved links](#search-link).
 
+  Note that equality & inequality operators are **not supported** for `Text` fields.
+
   The inequality operator can be used to look for fields that _don't_ match a specific value.
 
   For example, here's how to get all Entries except nyancat:
@@ -152,14 +152,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("sys.id[ne]", "nyancat");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -204,15 +203,14 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("content_type", "cat");
             put("fields.likes", "lasagna");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -239,7 +237,7 @@
                            }];
   = language_block :swift do
     :plain
-      client.fetchEntriesMatching([ "content_type": "cat", 
+      client.fetchEntriesMatching([ "content_type": "cat",
                                     "fields.likes": "lasagna" ],
         success: { (response: CDAResponse!, array: CDAArray!) -> Void in
           println((array.items[0] as CDAEntry).fields.allKeys)
@@ -263,14 +261,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("sys.id[in]", "finn,jake");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -314,15 +311,14 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("content_type", "cat");
             put("fields.likes[nin]", "rainbows,lasagna");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -381,15 +377,14 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("content_type", "cat");
             put("fields.lives[lte]", "3");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -440,14 +435,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("sys.updatedAt[gte]", "2013-01-02T00:00:00Z");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -498,21 +492,21 @@
 - # TODO: explain more what full text search does. e.g. word stemming. case sensitivity. etc.
 
 :markdown
-  Full-text search across all Text Fields via `query` querystring parameter.
+  Full-text search across all Text and Symbol Fields via `query` querystring parameter. Please take into account that full text search
+  is case insensitive and therefore you might get more results than expected.
 
   Let's find all Entries matching "bacon":
 
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("query", "bacon");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -547,6 +541,8 @@
     :plain
       client.entries('query' => 'bacon')
 
+
+
 :markdown
   Full-text Search on a specific field via `match` operator.
 
@@ -555,15 +551,14 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("content_type", "dog");
             put("fields.description[match]", "bacon pancakes");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -591,7 +586,7 @@
                            }];
   = language_block :swift do
     :plain
-      client.fetchEntriesMatching([ "content_type": "dog", 
+      client.fetchEntriesMatching([ "content_type": "dog",
                                     "fields.description[match]": "bacon pancakes" ],
         success: { (response: CDAResponse!, array: CDAArray!) -> Void in
           println((array.items[0] as CDAEntry).fields.allKeys)
@@ -629,15 +624,14 @@
 = language_specific 'java' do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("content_type", "restaurant");
             put("fields.location[near]", "23,42");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -664,7 +658,7 @@
 
   = language_block :swift do
     :plain
-      client.fetchEntriesMatching([ "fields.location[near]": [ 23, 42], 
+      client.fetchEntriesMatching([ "fields.location[near]": [ 23, 42],
                                     "content_type": "restaurant" ],
         success: { (response: CDAResponse!, array: CDAArray!) -> Void in
           println((array.items[0] as CDAEntry).fields.allKeys)
@@ -693,15 +687,14 @@
 = language_specific 'java' do
   = language_block :java do
     :plain
-        client.fetchEntriesMatching(
+        client.entries().async().fetchAll(
             new HashMap<String, String>() {{
               put("content_type", "restaurant");
               put("fields.location[within]", "1,2,3,4");
             }},
 
             new CDACallback<CDAArray>() {
-              @Override
-              protected void onSuccess(CDAArray array, Response response) {
+              @Override protected void onSuccess(CDAArray result) {
                 // ...
               }
             });
@@ -728,7 +721,7 @@
 
   = language_block :swift do
     :plain
-      client.fetchEntriesMatching([ "fields.location[within]": [ 1, 2, 3, 4 ], 
+      client.fetchEntriesMatching([ "fields.location[within]": [ 1, 2, 3, 4 ],
                                     "content_type": "restaurant" ],
         success: { (response: CDAResponse!, array: CDAArray!) -> Void in
           println((array.items[0] as CDAEntry).fields.allKeys)
@@ -779,7 +772,7 @@
 
   = language_block :swift do
     :plain
-      client.fetchEntriesMatching([ "fields.location[within]": [ 1, 2, 3 ], 
+      client.fetchEntriesMatching([ "fields.location[within]": [ 1, 2, 3 ],
                                     "content_type": "restaurant" ],
         success: { (response: CDAResponse!, array: CDAArray!) -> Void in
           println((array.items[0] as CDAEntry).fields.allKeys)
@@ -808,14 +801,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("order", "sys.createdAt");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -860,14 +852,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("order", "-sys.updatedAt");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -920,14 +911,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("limit", "3");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -964,6 +954,11 @@
 
 
 :markdown
+  Please note that the maximum number of entries returned by the API is 1000. Limits higher than 1000
+  will be ignored.
+
+
+:markdown
   Specify an offset as the `skip` search parameter:
 
   Example: Skip 3 Entries
@@ -971,14 +966,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("skip", "3");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -1052,15 +1046,14 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntriesMatching(
+      client.entries().async().fetchAll(
           new HashMap<String, String>() {{
             put("sys.id", "nyancat");
             put("include", "1");
           }},
 
           new CDACallback<CDAArray>() {
-            @Override
-            protected void onSuccess(CDAArray array, Response response) {
+            @Override protected void onSuccess(CDAArray result) {
               // ...
             }
           });
@@ -1116,7 +1109,7 @@
 
 = language_specific 'java' do
   :markdown
-    The Java SDK will resolve included links automatically. 
+    The Java SDK will resolve included links automatically.
 
 = language_specific 'objc', 'swift' do
 

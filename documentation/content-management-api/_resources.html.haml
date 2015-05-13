@@ -122,7 +122,7 @@
 
 = language_specific 'javascript', 'objc' do
   :markdown
-    If you are using one of the client libraries, the library should take care of this for you. Check the [HTTP docs](/developers/documentation/content-management-api?http#resources-updating-version-locking) for more details.
+    If you are using one of the client libraries, the library should take care of this for you. Check the [HTTP docs](/developers/documentation/content-management-api/http/#resources-updating-version-locking) for more details.
 
 = title_anchor 'h2', "resources-publishing", "Publishing"
 
@@ -244,6 +244,10 @@
 
 = prefixed_partial 'snippets/content-types-delete'
 
+= title_anchor 'h3', "resources-content-types-validations", "Content Type Validations"
+
+= prefixed_partial 'snippets/content-types-validations'
+
 = title_anchor 'h3', "resources-content-types-fields", "Content Type Fields"
 
 :markdown
@@ -266,6 +270,7 @@
   items      |Schema        |(Array type only) Schema for items.
   required   |Boolean       |Describes whether the Field is mandatory.
   localized  |Boolean       |Describes whether the Field is localized.
+  validations|Array         |Specifies which validations are applied to the value in the field.
 
   Field types:
 

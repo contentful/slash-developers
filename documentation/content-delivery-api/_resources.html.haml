@@ -29,16 +29,15 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchSpace(new CDACallback<CDASpace>() {
-        @Override
-        protected void onSuccess(CDASpace space, Response response) {
+      client.spaces().async().fetch(new CDACallback<CDASpace>() {
+        @Override protected void onSuccess(CDASpace result) {
           System.out.println(String.format(
               "name=%s\ndefaultLocale=%s\nlocales=%s",
-              space.getName(), 
-              space.getDefaultLocale(), 
-              space.getLocales().toString()));
+              result.getName(),
+              result.getDefaultLocale(),
+              result.getLocales().toString()));
         }
-      });      
+      });
   = language_block :javascript do
     :plain
       client.space().then(log.ok, log.fail);
@@ -167,16 +166,14 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchContentTypeWithIdentifier("cat", 
-        new CDACallback<CDAContentType>() {
-          @Override 
-          protected void onSuccess(CDAContentType ct, Response response) {
-            System.out.println(String.format(
-                "name=%s\nfields=%s",
-                ct.getName(),
-                ct.getFields().toString()));
-          }
-        });    
+      client.contentTypes().async().fetchOne("cat", new CDACallback<CDAContentType>() {
+        @Override protected void onSuccess(CDAContentType result) {
+          System.out.println(String.format(
+              "name=%s\nfields=%s",
+              result.getName(),
+              result.getFields().toString()));
+        }
+      });
   = language_block :javascript do
     :plain
       client.contentType('cat').then(log.ok, log.fail);
@@ -416,10 +413,9 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntryWithIdentifier("nyancat", new CDACallback<CDAEntry>() {
-        @Override
-        protected void onSuccess(CDAEntry entry, Response response) {
-          System.out.println(entry.getFields().entrySet().toString());
+      client.entries().async().fetchOne("nyancat", new CDACallback<CDAEntry>() {
+        @Override protected void onSuccess(CDAEntry result) {
+          System.out.println(result.getFields().entrySet().toString());
         }
       });
   = language_block :javascript do
@@ -527,13 +523,12 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntries(new CDACallback<CDAArray>() {
-        @Override
-        protected void onSuccess(CDAArray array, Response response) {
+      client.entries().async().fetchAll(new CDACallback<CDAArray>() {
+        @Override protected void onSuccess(CDAArray result) {
           System.out.println(String.format("total: %d\nskip: %d\nlimit: %d",
-              array.getTotal(),
-              array.getSkip(),
-              array.getLimit()));
+              result.getTotal(),
+              result.getSkip(),
+              result.getLimit()));
         }
       });
   = language_block :javascript do
@@ -689,14 +684,12 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchAssetWithIdentifier("nyancat", new CDACallback<CDAAsset>() {
-        @Override
-        protected void onSuccess(CDAAsset asset, Response response) {
+      client.assets().async().fetchOne("nyancat", new CDACallback<CDAAsset>() {
+        @Override protected void onSuccess(CDAAsset result) {
           System.out.println(String.format(
               "url=%s\nmimeType=%s",
-              asset.getUrl(),
-              asset.getMimeType()
-          ));
+              result.getUrl(),
+              result.getMimeType()));
         }
       });
   = language_block :javascript do
@@ -792,14 +785,13 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchAssets(new CDACallback<CDAArray>() {
-        @Override
-        protected void onSuccess(CDAArray array, Response response) {
-          for (CDAResource res : array.getItems()) {
+      client.assets().async().fetchAll(new CDACallback<CDAArray>() {
+        @Override protected void onSuccess(CDAArray result) {
+          for (CDAResource res : result.getItems()) {
             CDAAsset asset = (CDAAsset) res;
             System.out.println(String.format(
-                "url=%s, mimeType=%s",
-                asset.getUrl(),
+                "url=%s, mimeType=%s", 
+                asset.getUrl(), 
                 asset.getMimeType()));
           }
         }

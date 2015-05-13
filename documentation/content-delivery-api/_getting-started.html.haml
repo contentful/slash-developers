@@ -6,7 +6,7 @@
       Note: Please open your browser's JavaScript console now.
       You can try all JavaScript code snippets in there
       (How to open the JavaScript console in
-      [Google Chrome](https://developers.google.com/chrome-developer-tools/docs/console#opening_the_console) and
+      [Google Chrome](https://developer.chrome.com/devtools/docs/console#opening_the_console) and
       [other browsers](http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers))!
 
   :markdown
@@ -20,20 +20,20 @@
 
   :markdown
     Important: How to open the JavaScript console in
-    [Google Chrome](https://developers.google.com/chrome-developer-tools/docs/console#opening_the_console)  and
+    [Google Chrome](https://developer.chrome.com/devtools/docs/console#opening_the_console)  and
     [other browsers](http://webmasters.stackexchange.com/questions/8525/how-to-open-the-javascript-console-in-different-browsers).
 
 = language_specific 'http' do
   :markdown
     The examples make use of the `curl` command, so you can follow along by copy-pasting them into your terminal:
 
-  = language_block :shell do
+  = language_block 'shell' do
     curl -X #{space_req()}
 
 = language_specific 'ruby' do
   .note
     :markdown
-      Note: All of the following examples can be used within an Interactive Ruby session ([IRB](http://www.ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html)).
+      Note: All of the following examples can be used within an Interactive Ruby session ([IRB](http://ruby-doc.org/stdlib-2.0/libdoc/irb/rdoc/IRB.html)).
 
 
 = language_specific 'javascript', 'objc', 'java' do
@@ -54,12 +54,12 @@
   :markdown
     It's easy to install the JavaScript library in your project:
 
-    - Download latest [contentful.min.js](https://raw.github.com/contentful/contentful.js/master/dist/contentful.min.js)
+    - Download latest [contentful.min.js](https://raw.githubusercontent.com/contentful/contentful.js/master/dist/contentful.min.js)
 
     It is however strongly encouraged to use a package manager like npm or bower to stay up to date with the latest compatible version.
     Use one of these popular package managers to install:
 
-    - [contentful](http://npmjs.org/package/contentful) on [npm](http://npmjs.org):
+    - [contentful](https://www.npmjs.com/package/contentful) on [npm](https://www.npmjs.com):
 
           npm install contentful
 
@@ -83,7 +83,7 @@
 = language_specific 'objc', 'swift' do
 
   :markdown
-    [CocoaPods](http://www.cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like the Contentful Delivery API in your projects.
+    [CocoaPods](https://cocoapods.org) is a dependency manager for Objective-C, which automates and simplifies the process of using 3rd-party libraries like the Contentful Delivery API in your projects.
 
         platform :ios, '7.0'
         pod 'ContentfulDeliveryAPI'
@@ -165,10 +165,9 @@
 = code_examples do
   = language_block :java do
     :plain
-      client.fetchEntryWithIdentifier("nyancat", new CDACallback<CDAEntry>() {
-        @Override
-        protected void onSuccess(CDAEntry entry, Response response) {
-          System.out.println(entry.getFields().entrySet().toString());
+      client.entries().async().fetchOne("nyancat", new CDACallback<CDAEntry>() {
+        @Override protected void onSuccess(CDAEntry result) {
+          System.out.println(result.getFields().entrySet().toString());
         }
       });
 
@@ -197,8 +196,8 @@
           success: { (response: CDAResponse!, entry: CDAEntry!) -> Void in
             println(entry.fields.allKeys)
           },
-          failure: { (response: CDAResponse!, error: NSError!) -> Void in 
-            println(error) 
+          failure: { (response: CDAResponse!, error: NSError!) -> Void in
+            println(error)
           })
 
   = language_block :ruby do
@@ -211,11 +210,11 @@
 = language_specific 'java' do
   :markdown
         [
-          name=Nyan Cat, 
-          likes=[rainbows, fish], 
-          color=rainbow, 
-          birthday=2011-04-04T22:00:00+00:00, 
-          lives=1337.0, 
+          name=Nyan Cat,
+          likes=[rainbows, fish],
+          color=rainbow,
+          birthday=2011-04-04T22:00:00+00:00,
+          lives=1337.0,
         ]
 
 = language_specific 'javascript', 'http' do
@@ -286,8 +285,6 @@
   :markdown
     The Discovery application for Android which uses the Java SDK can be found in the [discovery-app-android repository](https://github.com/contentful/discovery-app-android).
 
-    Another (more straightforward) example is our Coffee Guide application for Android which can be found in the [guide-app-android repository](https://github.com/contentful/guide-app-android).
-
 = language_specific 'javascript' do
   :markdown
     There are a few
@@ -309,4 +306,4 @@
 = language_specific 'ruby' do
   :markdown
     A collection of examples is also available on [Github](https://github.com/contentful/contentful.rb/tree/master/examples).
-    A sample application using the Contentful RubyGem and Sinatra can also be found in the [Github repository](https://github.com/contentful/sinatra-blog)
+    A sample application using the Contentful RubyGem and Sinatra can also be found in the [Github repository](https://github.com/contentful-labs/sinatra-blog)
