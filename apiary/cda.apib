@@ -3,7 +3,7 @@ HOST: https://cdn.contentful.com
 
 # Contentful Delivery API
 
-The Contentful Delivery API is a _fast_ read-only API for retrieving your content from Contentful. It is powered by our global CDN so you get the benefits of our content-aware caching and  
+The Contentful Delivery API is a _fast_ read-only API for retrieving your content from Contentful. It is powered by our global CDN so you get the benefits of our content-aware caching and
 
 ## Common Resource Attributes
 
@@ -40,7 +40,7 @@ Keep in mind that you should define a field to order by when paging through resu
 
 # Group Spaces
 
-All content in Contentful belongs to a _Space_. You can think of spaces like databases, you will generally have at least one space for a project, but may opt to use a separate space for e.g. testing. 
+All content in Contentful belongs to a _Space_. You can think of spaces like databases, you will generally have at least one space for a project, but may opt to use a separate space for e.g. testing.
 
 ## Space [/spaces/{space_id}{?access_token}]
 
@@ -82,7 +82,7 @@ Each space has a name, a set of locales, and some system metadata.
             Authorization: Bearer {access_token}
 
 + Response 200
-    
+
     [Space][]
 
 # Group Entries
@@ -106,7 +106,7 @@ Entries are the documents contained within a space. They might represent blog po
           "total": 1234,
           "items": [ ]
         }
-        
+
 
 ### Query Entries [GET]
 
@@ -114,7 +114,27 @@ Entries are the documents contained within a space. They might represent blog po
 
     [Entries][]
 
-    
+## Search for exact matches by using the equality operator. [/spaces/{space_id}/entries{?access_token}&{attribute}={value}]
 
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + attribute (required, string, `sys.id`) ... The attribute to match.
+    + value (required, `nyancat`) ... The value to match.
 
+### Query Entries [GET]
 
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)
+
+## Data Structures
+
+### Empty Array
+
+- sys - System Attributes
+    - type: Array - Type of Resource
+- total: 0 (number) - Total number of resources matching
+- skip: 0 (number) - Number of resources skipped
+- limit: 100 (number) - Maximum number of resources in this response
+- items: [] (array) - Resources contained in the array
