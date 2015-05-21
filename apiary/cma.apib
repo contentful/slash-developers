@@ -1,0 +1,905 @@
+FORMAT: 1A
+HOST: https://api.contentful.com
+
+# Content Management API
+The Content Management API is a [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) API for managing content.
+
+In Contentful content is represented as Entries and Assets divided into Spaces. Apps and websites depend on the structure of Entries, so every Entry must comply to a specific Content Type. Assets represent binary files like images, videos and other media.
+
+Entries are represented as JSON data; Assets are represented as (binary) files.
+
+The API can be securely accessed via HTTPS and will only be available to clients authenticating with an access token.
+
+Managing content via an API has many benefits:
+
+- Custom applications can use the API to manage content.
+- Scripts can use the API to automate various tasks.
+- Contentful's own content management web app is a user-friendly JavaScript application which is solely based on the API.
+
+If you want to deliver content (e.g. to the web or to mobile apps) use the Content Delivery API. The Content Management API is meant to be used only for managing content, not delivering it. For example, you shouldn't use the Content Management API to display blog posts on a web site or pull information into a mobile web app unless that app is meant for editing content.
+
+## Resource IDs
+
+When creating a resource you may either chose an ID or let the server generate a random ID for you.
+
+When choosing an ID yourself it must adhere to the following rules:
+
+- Length must be between 1 and 64 characters
+- May consist of alphanumeric characters, minus `-`, underscore `_` and period `.`
+
+In terms of a regular expression: `/^[a-zA-Z0-9-_.]{1,64}$/`.
+
+## Updating Resources
+
+When updating an existing resource don't only pass the changes you made; Instead pass the entire resource including the changes you've made. In other words: Do not pass a subset of properties and expect some kind of merge to occur. If you update with only a subset of properties all existing properties which are not part of that update will be gone.
+
+To summarize, resources should always be updated like this:
+
+- Fetch current resource
+- Make changes to current resource
+- Update resource by passing changed resource along with current version number
+
+This way no unseen changes are ever overridden and unexpected conflicts are unlikely to occur.
+
+## Updating & Version Locking
+
+Contentful uses optimistic locking. When updating an existing resource its previous version needs to be specified. The version is compared with the resource's current version on the server to ensure that a client doesn't overwrite a resource that has since been updated. If the version changed in between the update will be rejected.
+
+# Group Spaces
+
+## Spaces Collection [/spaces]
+
+Spaces are containers for Content Types, Entries and Assets and other resources. API consumers, like mobile apps or websites, typically fetch data by getting Entries and Assets from one or more Spaces.
+
+In Contentful you can be a member of multiple Organizations.
+
+Depending on your role in the organization you can create Spaces in them or not: Only organization owners and admins have this permission.
+
+When you sign up the first time, you'll create a new organization. When you're invited to an existing organization, you'll become a member of it.
+
+If you only have a single organization, any Space you create will be automatically associated with that organization.
+
+However, if you're an admin or an owner in multiple organizations you need to pass the ID of the organization you want to create the Space in.
+
+### Create a Space [POST]
+
+The `X-Contentful-Organization` header is optional if an account only belongs to one organization.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Organization: 1PLOOEmTI2S1NYald2TemO
+
+    + Attributes
+        - name: Example Space - Name of the Space
+
++ Response 201 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Space)
+
+### Get all spaces an account has access to [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Empty Array)
+
+## Space [/spaces/{space_key}]
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
+### Create/Update a Space [PUT]
+
+The `X-Contentful-Organization` header is optional if an account only belongs to one organization.
+
++ Request Create with a predefined identifier
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Organization: 1PLOOEmTI2S1NYald2TemO
+
+    + Attributes
+        - name: Example Space - Name of the Space
+
++ Response 201 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Space)
+
++ Request Update existing
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Version: 1
+
+    + Attributes
+        - name: Hyper Space - Name of the Space
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Space)
+
+### Get a Space [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Space)
+
+### Delete a Space [DELETE]
+
+Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that deleting a Space will remove its entire content, including all Content Types, Entries and Assets. Be careful as this action can not be undone.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 204 (application/vnd.contentful.management.v1+json)
+
+# Group Content Types
+
+## Content Type Collection [/spaces/{space_key}/content_types]
+
+Content Types are schemas describing the shape of Entries. They mainly consist of a list of fields acting as a blueprint for Entries.
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
+### Get all content types of a Space [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Empty Array)
+
+### Create a Content Type [POST]
+
+Let's create a Content Type for blog posts. Blog posts will have a title and a body field.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes (Content Type Creation)
+
++ Response 201 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Content Type)
+
+## Content Type [/spaces/{space_key}/content_types/{content_type_id}]
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + content_type_id: 3ORKIAOaJqQWWg86MWkyOs (required, string) - ID of the Content Type in form of a string
+
+### Create/Update a Content Type [PUT]
+
+Whenever you are creating or updating a Content Type you can add or remove validations to the fields present in the Content Type schema. Validations, specified in the validations property a field, are included in the payload sent to the server when you create or update a Content Type.
+
+<!-- TODO: Insert table of possible validations -->
+
+Please notice that validations will only take effect after the Content Type has been activated and that previously exising entries will not be validated until they are published again.
+
+To remove a specific validation, update the Content Type leaving that validation out of the field's validations collection. To remove all the validations applied to a field update the Content Type schema removing the validations property.
+
+
+It is possible to change the ID of a Content Type's field. Please note, that the API will return different data afterwards and that this might break your currently existing code base.
+
+__Usecase__
+
+Imagine you created a Content Type and started developing your application. During the development process you find out, that the initially chosen name of a field was not perfect and you want to change it. Especially you want to change the response of the API.
+
++ Request Create with a predefined identifier
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes (Content Type Creation)
+
++ Response 201 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Content Type)
+
++ Request Update existing
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Version: 14
+
+    + Attributes (Content Type Creation)
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Content Type Update)
+
++ Request Update existing with validations
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Version: 15
+
+    + Attributes (Content Type Validations)
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Content Type Update)
+
++ Request Update an existing Field's identifier
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Version: 16
+
+    + Attributes (Content Type Update Field ID)
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Content Type Update)
+
+### Get a single Content Type [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Content Type)
+
+### Delete a Content Type [DELETE]
+
+Before you can delete a Content Type you need to deactivate it.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 204 (application/vnd.contentful.management.v1+json)
+
+## Content Type Activation [/spaces/{space_key}/content_types/{content_type_id}/published]
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + content_type_id: 3ORKIAOaJqQWWg86MWkyOs (required, string) - ID of the Content Type in form of a string
+
+### Activate a Content Type [PUT]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 11
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Content Type Published)
+
+### Deactivate a Content Type [DELETE]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Content Type Unpublished)
+
+# Group Entries
+
+## Entries Collection [/spaces/{space_key}/entries]
+
+Entries represent textual content in a Space. An Entry's data adheres to a certain Content Type.
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
+### Get all entries of a Space [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Empty Array)
+
+## Entry [/spaces/{space_key}/entries/{entry_id}]
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + entry_id: helloworld (required, string) - ID of the Entry in form of a string
+
+### Create/Update an Entry  [PUT]
+
+Before you can create an Entry you need to create and activate a Content Type.
+
+When creating a new Entry you need to pass the ID of the Entry's desired Content Type as the `X-Contentful-Content-Type` header.
+
++ Request Create with a predefined identifier
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Content-Type: hfM9RCJIk0wIm06WkEOQY
+
+    + Attributes (Entry Update)
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Entry)
+
++ Request Update existing
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Content-Type: hfM9RCJIk0wIm06WkEOQY
+            X-Contentful-Version: 4
+
+    + Attributes (Entry Update)
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Entry)
+
+### Get a single entry [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Entry)
+
+### Delete an entry [DELETE]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 4
+
++ Response 204 (application/vnd.contentful.management.v1+json)
+
+## Entry Publishing [/spaces/{space_key}/entries/{entry_id}/published]
+
+After publishing the Entry it will be available via the Content Delivery API.
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + entry_id: helloworld (required, string) - ID of the Entry in form of a string
+
+### Publish an Entry [PUT]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 6
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Entry Published)
+
+### Unpublish an Entry [DELETE]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 7
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Entry Update)
+
+## Entry Archiving [/spaces/{space_key}/entries/{entry_id}/archived]
+
+An Entry can only be archived when it's not published.
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + entry_id: helloworld (required, string) - ID of the Entry in form of a string
+
+### Archive an Entry [PUT]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 8
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Entry Update)
+
+### Unarchive an Entry [DELETE]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 9
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Entry Update)
+
+# Group Assets
+
+## Assets Collection [/spaces/{space_key}/assets]
+
+Assets represent files in a Space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to Entries through Links.
+
+Assets can optionally be localized by providing separate files for each locale. Those Assets which are not localized simply provide a single file under the default locale.
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
+### Get all Assets of a Space [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Empty Array)
+
+## Asset [/spaces/{space_key}/assets/{asset_id}]
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
+
+### Create/Update an Asset [PUT]
+
++ Request Create with a predefined identifier
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes (Asset Update)
+
++ Response 201 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Asset)
+
++ Request Update existing
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Version: 1
+
+    + Attributes (Asset Update)
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Asset)
+
+### Get a single Asset [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+    
+    + Attributes (Asset)
+
+### Delete an Asset [DELETE]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 1
+
++ Response 204 (application/vnd.contentful.management.v1+json)
+
+## Asset Processing [/spaces/{space_key}/assets/{asset_id}/files/{locale}/process]
+
+Asset processing happens asynchronously, the call will not block until it has finished.
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
+    + locale: `en-US` (required, string) - Locale for which files should be processed
+
+### Process an Asset [PUT]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 1
+
++ Response 204 (application/vnd.contentful.management.v1+json)
+
+## Asset Publishing [/spaces/{space_key}/assets/{asset_id}/published]
+
+After publishing the Asset it will be available via the Content Delivery API.
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
+
+### Publish an Asset [PUT]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 13
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Asset Published)
+
+### Unpublish an Asset [DELETE]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 14
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Asset)
+
+## Asset Archiving [/spaces/{space_key}/assets/{asset_id}/archived]
+
+An Asset can only be archived when it's not published.
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
+
+### Archive an Asset [PUT]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 15
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Asset)
+
+### Unarchive an Asset [DELETE]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            X-Contentful-Version: 16
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Asset Update)
+
+# Group Webhooks
+
+Webhooks in Contentful can notify you or someone else when content has changed. For example, when an Entry has been published Contentful sends the published Entry to a preconfigured HTTP endpoint. This can be used for notifications, static site generators or other forms of post-processing that is sourced from Contentful.
+
+Webhooks are called when Assets, Entries or Content Types are published or unpublished. Therefore the Webhook's receiver will always get the latest version (or deletion thereof) available through the Delivery API.
+
+You can create and manipulate Webhook Definitions using the Management API.
+
+## Webhooks Collection [/spaces/{space_key}/webhook_definitions]
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
+### Get all Webhooks of a Space [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Empty Array)
+
+### Create a Webhook [POST]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes
+        - url: https://www.example.com/test - URL the Webhook will call
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+    
+    + Attributes (Webhook Definition)
+
+## Webhook [/spaces/{space_key}/webhook_definitions/{webhook_id}]
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + webhook_id: foobar (required, string) - ID of the Webhook in form of a string
+
+### Create/Update a Webhook [PUT]
+
++ Request Create with a predefined identifier
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes
+        - url: https://www.example.com - URL the Webhook will call
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+    
+    + Attributes (Webhook Definition)
+
++ Request Update existing
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+            X-Contentful-Version: 1
+
+    + Attributes
+        - url: https://www.example.com - URL the Webhook will call
+        - httpBasicUsername: yolo - Username for HTTP Basic Authentication
+        - httpBasicPassword: yolo - Password for HTTP Basic Authentication
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+    
+    + Attributes (Webhook Definition)
+
+### Get a single Webhook [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+    
+    + Attributes (Webhook Definition)
+
+### Delete a Webhook [DELETE]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 204 (application/vnd.contentful.management.v1+json)
+
+## Data Structures
+
+### Asset
+
+- Include Asset Update
+- sys - System Attributes
+    - id: baconpancakes - Identifier
+    - type: Asset - Type of Resource
+    - version: 1 (number) - Version of Resource
+    - space (Space Link)
+    - Include Resource Metadata
+
+### Asset Published
+
+- Include Asset
+- Include Resource Published
+
+### Asset Update
+
+- fields - Field Values
+    - title
+        - `en-US`: Bacon Pancakes
+    - file
+        - `en-US`
+            - contentType: image/jpeg
+            - fileName: example.jpeg
+            - upload: https://example.com/example.jpg
+
+### Content Type
+
+- sys
+    - type: ContentType - Type of Resource
+    - id: 3ORKIAOaJqQWWg86MWkyOs - Identifier
+    - space (Space Link)
+    - version: 1 (number) - Version of Resource
+    - Include Resource Metadata
+
+### Content Type Creation
+
+- name: Blog Post - Name of the Content Type
+- fields (array[object]) - Defined Fields
+    - (object)
+        - id: title - Identifier of the Field
+        - name: Title - Display name of the Field
+        - type: Text - Type of the Field
+    - (object)
+        - id: body - Identifier of the Field
+        - name: Body - Display name of the Field
+        - type: Text - Type of the Field
+
+### Content Type Link
+- sys
+    - type: Link - Type of Resource
+    - linkType: ContentType - Type of linked Resources
+    - id: hfM9RCJIk0wIm06WkEOQY - Identifier of Resource
+
+### Content Type Published
+
+- Include Content Type Creation
+- Include Content Type
+- Include Resource Published
+
+### Content Type Unpublished
+
+- Include Content Type Creation
+- Include Content Type
+- sys - System Attributes
+    - firstPublishedAt: `2015-05-15T13:38:11.311Z` - Date/Time of first publishing
+    - publishedCounter: 2 (number) - Number of times the Resource has been published
+
+### Content Type Update
+
+- name: Blog Post - Name of the Content Type
+- fields (array[object]) - Defined Fields
+    - (object)
+        - id: tlkn
+- Include Content Type
+
+### Content Type Update Field ID
+
+- name: Blog Post - Name of the Content Type
+- description: Simple blog post with headline and body fields. - Description of the Content Type
+- fields (array[object]) - Defined Fields
+    - (object)
+        - id: title - Old identifier of the Field
+        - newId: headline - New identifier of the Field
+        - name: Headline - Display name of the Field
+        - type: Text - Type of the Field
+    - (object)
+        - id: body - Identifier of the Field
+        - name: Body - Display name of the Field
+        - type: Text - Type of the Field
+
+### Content Type Validations
+
+- name: Blog Post - Name of the Content Type
+- fields (array[object]) - Defined Fields
+    - (object)
+        - id: title - Identifier of the Field
+        - name: Title - Display name of the Field
+        - type: Text - Type of the Field
+        - validations (array[object]) - Validations to be applied before publishing
+            - (object)
+                - size
+                    min: 5
+                - regexp
+                    pattern: wow|very|such
+
+### Empty Array
+
+- sys - System Attributes
+    - type: Array - Type of Resource
+- total: 0 (number) - Total number of resources matching
+- skip: 0 (number) - Number of resources skipped
+- limit: 100 (number) - Maximum number of resources in this response
+- items: [] (array) - Resources contained in the array
+
+### Entry
+
+- Include Entry Update
+- sys - System Attributes
+    - id: helloworld - Identifier of Resource
+    - type: Entry - Type of Resource
+    - version: 1 (number) - Version of Resource
+    - space (Space Link)
+    - contentType (Content Type Link)
+    - Include Resource Metadata
+
+### Entry Published
+
+- Include Entry
+- Include Resource Published
+
+### Entry Update
+
+- fields - Localized field values
+    - title
+        - `en-US`: `Hello, World!`
+    - body
+        - `en-US`: Bacon is healthy!
+
+### Resource Metadata
+
+- createdAt: `2015-05-18T11:29:46.809Z` - Creation date
+- createdBy (User B)
+- updatedAt: `2015-05-18T11:29:46.809Z` - Date/time of last update
+- updatedBy (User B)
+
+### Resource Published
+
+- sys - System Attributes
+    - firstPublishedAt: `2015-05-15T13:38:11.311Z` - Date/time of first publishing
+    - publishedCounter: 2 (number) - Number of times published
+    - publishedAt: `2015-05-15T13:38:11.311Z` - Date/time of current publishing
+    - publishedBy (User B)
+    - publishedVersion: 9 (number) - Version of the resource that has been published
+
+### Space
+
+- sys - System Attributes
+    - type: Space - Type of Resource
+    - id: cfexampleapi - Identifier of Resource
+    - version: 3 (number) - Version of Resource
+    - Include Resource Metadata
+- name: Contentful Example API - Name of Resource
+
+### Space Link
+- sys - System Attributes
+    - type: Link - Type of Resource
+    - linkType: Space - Type of linked resources
+    - id: 5smsq22uwt4m - Identifier of Resource
+
+### User A
+- sys
+    - type: Link
+    - linkType: User
+    - id: 7BslKh9TdKGOK41VmLDjFZ
+
+### User B
+- sys
+    - type: Link
+    - linkType: User
+    - id: 4FLrUHftHW3v2BLi9fzfjU
+
+### Webhook Definition
+
+- sys
+    - type: WebhookDefinition
+    - id: foobar
+    - version: 0 (number)
+    - space (Space Link)
+    - Include Resource Metadata
+- url: https://www.example.com
+- httpBasicUsername
