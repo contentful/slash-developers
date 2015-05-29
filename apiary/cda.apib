@@ -128,7 +128,87 @@ Entries are the documents contained within a space. They might represent blog po
 
   + Attributes (Empty Array)
 
+# Group Assets
+
+## Assets Collection [/spaces/{space_key}/assets]
+
+Assets represent files in a Space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to Entries through Links.
+
+Assets can optionally be localized by providing separate files for each locale. Those Assets which are not localized simply provide a single file under the default locale.
+
+When querying the Content Delivery API for Entries which contain Links to Assets then all Assets will be included by default.
+
+Resize image assets on the fly by supplying the desired dimensions as query parameters.
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+
+### Get all Assets of a Space [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+    + Attributes (Empty Array)
+
+## Asset [/spaces/{space_key}/assets/{asset_id}]
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + asset_id: nyancat (required, string) - ID of the Asset in form of a string
+
+### Get a single Asset [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+    + Attributes (Asset)
+
+
 ## Data Structures
+
+### Space Link
+- sys - System Attributes
+    - type: Link - Type of Resource
+    - linkType: Space - Type of linked resources
+    - id: 5smsq22uwt4m - Identifier of Resource
+
+### Asset
+
+- Include Asset Update
+- sys - System Attributes
+    - id: nyancat - Identifier
+    - type: Asset - Type of Resource
+    - space (Space Link)
+    - Include Resource Metadata
+
+### Asset Update
+
+- fields - Field Values
+    - title: Nyan Cat
+    - file
+          - contentType: image/png
+          - fileName: Nyan_cat_250px_frame.png
+          - upload: //images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png
+          - details
+              - image
+                - width: 250 (number)
+                - height: 250 (number)
+              - size: 12273 (number)
+
+### Resource Metadata
+
+- createdAt: `2015-05-18T11:29:46.809Z` - Creation date
+- updatedAt: `2015-05-18T11:29:46.809Z` - Date/time of last update
+- locale: `en-US`
+- revision: 1 (number)
 
 ### Empty Array
 
