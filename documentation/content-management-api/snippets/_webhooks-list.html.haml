@@ -1,9 +1,0 @@
-= title_anchor 'h4', "resources-webhooks-list", "Listing Webhooks"
-
-:markdown
-  List all Webhooks:
-
-= code_examples do
-  = language_block :shell do
-    = curl method:       'GET',
-           path:         '/spaces/{space_key}/webhook_definitions'
