@@ -85,11 +85,63 @@ Each space has a name, a set of locales, and some system metadata.
 
     [Space][]
 
+
+# Group Content Types
+
+## Content Type Collection [/spaces/{space_key}/content_types]
+
+Content Types are schemas describing the shape of Entries. They mainly consist of a list of fields acting as a blueprint for Entries.
+
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+
+
++ Model (application/vnd.contentful.delivery.v1+json)
+
+        {
+          "sys": {
+          "type": "ContentType",
+          "id": "cat"
+          },
+          "name": "Cat",
+          "description": "Meow.",
+          "fields": [
+             {"id": "name", "name": "Name", "type": "Text"},
+             {"id": "diary", "name": "Diary", "type": "Text"},
+             {"id": "likes", "name": "Likes", "type": "Array", "items": {"type": "Symbol"}},
+             {"id": "bestFriend", "name": "Best Friend", "type": "Link"},
+             {"id": "lifes", "name": "Lifes left", "type": "Integer"}
+          ]
+        }
+
+### Get all content types of a Space [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+    + Attributes (Empty Array)
+
+
+## Search for exact matches by using the equality operator. [/spaces/{space_id}/content_types{?access_token}&{attribute}={value}]
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + attribute (required, string, `sys.id`) ... The attribute to match.
+    + value (required, `nyancat`) ... The value to match.
+
+
+
 # Group Entries
 
 Entries are the documents contained within a space. They might represent blog posts or events or anything else that you have defined a [Content Type](#content-types) for.
 
-## Entries [/spaces/{space_id}/entries{?access_token}]
+## Entries Collection [/spaces/{space_id}/entries{?access_token}]
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -107,12 +159,23 @@ Entries are the documents contained within a space. They might represent blog po
           "items": [ ]
         }
 
+## Entry [/spaces/{space_id}/entries/{entry_id}{?access_token}]
 
-### Query Entries [GET]
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + entry_id (required, string, `nyancat`) ... Alphanumeric `id` of the Entry to retrieve
 
-+ Response 200
+### Get a single entry [GET]
 
-    [Entries][]
+  + Request
+      + Headers
+
+              Authorization: Bearer b4c0n73n7fu1
+
+  + Response 200 (application/vnd.contentful.delivery.v1+json)
+
+      + Attributes (Entry)
 
 ## Search for exact matches by using the equality operator. [/spaces/{space_id}/entries{?access_token}&{attribute}={value}]
 
@@ -143,6 +206,47 @@ Resize image assets on the fly by supplying the desired dimensions as query para
 + Parameters
     + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
 
++ Model (application/vnd.contentful.delivery.v1+json)
+
+        {
+          "sys": {
+            "type": "Asset",
+            "id": "nyancat",
+            "space": {"sys": {"type": "Link", "linkType": "Space", "id": "example"}},
+            "createdAt": "2013-03-26T00:13:37.123Z",
+            "updatedAt": "2013-03-26T00:13:37.123Z",
+            "revision": 1
+          },
+          "fields": {
+             "title": "Nyan cat",
+             "description": "A typical picture of Nyancat including the famous rainbow trail.",
+             "file": {
+                "fileName": "nyancat.png",
+                "contentType": "image/png",
+                "details": {
+                   "image": {
+                      "width": 250,
+                      "height": 250
+                    },
+                    "size": 12273
+                 },
+                "url": "//images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png"
+               }
+            }
+        }
+
+
+<!-- ## Image Asset resizing
+
+Instead of chosing image dimensions in Content Management you can specify the dimensions of images during delivery.
+
+Images are hosted on images.contentful.com. For files on this host you can attach the URI query parameters w and/or h to specify the desired dimensions. The image will never be stretched, skewed or enlarged. Instead it will be fit into the bounding box given by the w and h parameters.
+
+Additionaly, a q can be passed to define the JPEG compression quality between 1 and 100 and the fm parameter can be used to change the format to either "png" or "jpg".
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string -->
+
 ### Get all Assets of a Space [GET]
 
 + Request
@@ -171,8 +275,41 @@ Resize image assets on the fly by supplying the desired dimensions as query para
 
     + Attributes (Asset)
 
+## Search for exact matches by using the equality operator. [/spaces/{space_id}/assets{?access_token}&{attribute}={value}]
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + attribute (required, string, `sys.id`) ... The attribute to match.
+    + value (required, `nyancat`) ... The value to match.
+
 
 ## Data Structures
+
+### Content Type Link
+- sys
+    - type: Link - Type of Resource
+    - linkType: ContentType - Type of linked Resources
+    - id: hfM9RCJIk0wIm06WkEOQY - Identifier of Resource
+
+### Entry
+
+- Include Entry Update
+- sys - System Attributes
+    - id: helloworld - Identifier of Resource
+    - type: Entry - Type of Resource
+    - version: 1 (number) - Version of Resource
+    - space (Space Link)
+    - contentType (Content Type Link)
+    - Include Resource Metadata
+
+### Entry Update
+
+- fields - Localized field values
+    - title
+        - `en-US`: `Hello, World!`
+    - body
+        - `en-US`: Bacon is healthy!
 
 ### Space Link
 - sys - System Attributes
