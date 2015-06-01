@@ -1,0 +1,143 @@
+- set_doc_type 'content-management-api'
+
+= title_anchor 'h1', "authentication", "Authentication"
+
+= title_anchor 'h2', "getting-started", "Getting Started"
+
+:markdown
+  In order to use the Content Management API you need an OAuth access token to authenticate with the API.
+  To easily get you an access token we've made this documentation an interactive OAuth application.
+
+%login-form
+  .ng-cloak
+    %div(ng-hide="auth")
+      :markdown
+        If you have a Contentful account you can authorize this app to access your data. After the login, URIs and code snippets within this document are customized to use your credentials.
+      %button(ng-click="login()") Login via Contentful
+    %div(ng-show="auth")
+      %div(ng-show="auth.message")
+        :markdown
+          Something went wrong during login. Here are the scary details:
+
+          {{auth.message}}
+
+          If you think something is wrong, please [get in touch](#getting-help) and include the details above!
+        %button(ng-click="login()") Try login again
+      %div(ng-show="auth.user")
+        :markdown
+          Logged in as {{auth.user.firstName}}. Here's your OAuth access token:
+
+          {{auth.accessToken}}
+
+          URIs and code snippets within this document have been updated to use your credentials.
+
+          Open up [Contentful's UI](https://#{Contentful.config.app_host}) and see the effects of your API requests!
+
+          This access token should only be used for learning and testing purposes. Please create a separate OAuth application for production usage.
+        %button(ng-click="logout()") Logout
+
+- if false
+  #_TODO_
+
+  #- Provide link to start OAuth app dance
+  #- When user comes back should display user's access_token and use it in all the examples
+  #- Also let the user click some button to create an initila Space or something and explain that this is where all the example code is going to run in, similar to the Tutorial space
+
+= title_anchor 'h2', "authentication-getting-access-token", "Getting an Access Token"
+
+:markdown
+  To get an access token you need a Contentful account.
+
+  - You need an access token for __learning or testing__: Get one from [Getting Started](#getting-started).
+  - You're building or deploying a __web site or an application for production__:
+    [Create an OAuth 2.0 application](#authentication-oauth-application) and
+    [request an OAuth 2.0 access token](#authentication-oauth-access-token).
+
+- if false
+  #- Explain or reference OAuth 2.0 flow for applications in general
+  #- Explain that apps need to be registered, etc
+  #- Again mention that the docs are an application themselves
+
+= title_anchor 'h2', "authentication-oauth-application", "Creating an OAuth 2.0 Application"
+
+:markdown
+  If you're building something that relies on the Content Management API
+  you should register an OAuth 2.0 application. Here are some examples where
+  it would make sense to register an OAuth 2.0 application:
+
+  - A JavaScript web app requesting permission to manage a Contentful user's content
+  - An API building on top of the Content Management API
+  - An automated import script creating Entries and/or uploading Assets
+  - Automated tests running against the API
+
+  Having your own OAuth 2.0 application has several benefits:
+
+  - OAuth 2.0 access tokens will be tied to your app
+  - You can request the right OAuth 2.0 scopes for your application
+    (`content_management_read` or `content_management_manage`)
+  - You can specify a custom Redirect URI that will receive the
+    access token as part of the URI's hash fragment
+  - You can specify a custom name and description
+
+  [Create a new OAuth 2.0 application here](https://app.contentful.com/account/profile/developers/applications/new)
+
+= title_anchor 'h2', "authentication-oauth-access-token", "Requesting an OAuth 2.0 Access Token"
+
+:markdown
+  After having [created an OAuth 2.0 application](#authentication-oauth-application)
+  you can use it to request OAuth 2.0 access tokens. Following are the steps required
+  to get the OAuth 2.0 access tokens.
+
+  - First, redirect to Contentful's OAuth 2.0 endpoint URI (see below).
+    This will present a web page where logged in Contentful users can allow or
+    deny your application access to their content.
+
+%pre.highlight
+  :plain
+    https://be.contentful.com/oauth/authorize?response_type=token&client_id=$YOUR_APPS_CLIENT_ID&redirect_uri=$YOUR_APPS_REDIRECT_URL&scope=content_management_manage"
+
+
+:markdown
+  - Second, handle the callback from Contentful to your app:
+    After users make a choice, Contentful will redirect back to your app's
+    redirect URI. The URI leading to your app will look similar to example below.
+    You have to extract that access token from the URI's hash fragment.
+
+%pre.highlight
+  :plain
+    http://localhost:8080/my-app/#access_token=$CONTENT_MANAGEMENT_API_ACCESS_TOKEN
+
+:markdown
+
+  - Third and last, store the access token: Store the extracted access token for future usage.
+    You are now be able to make Content Management API requests on behalf of
+    the user who gave authorization.
+
+= title_anchor 'h2', "authentication-using-access-token", "Using the Access Token"
+
+:markdown
+  To manage content with the Content Management API, clients need to provide an [access token](#authentication-oauth-access-token).
+  Access tokens are attached to a user and used by clients to access Spaces the user has access to.
+
+  The Content Management API implements the standardized
+  [OAuth 2.0 Bearer Token Specification](https://tools.ietf.org/html/draft-ietf-oauth-v2-bearer-23).
+  This authorization scheme is very simple and already supported by many HTTP clients.
+
+  The API supports two mechanisms for supplying the access token.
+
+  As an `Authorization` HTTP request-header field:
+
+%pre.highlight
+  = curl method: 'GET',
+         path: '/spaces'
+
+:markdown
+  As an URI query parameter named `access_token`:
+
+%pre.highlight
+  = curl method:      'GET',
+         path:        '/spaces',
+         auth_method: :query
+
+= javascript_include_tag 'lib/angular.min.js'
+= javascript_include_tag 'cma_docs/bundle.js'
