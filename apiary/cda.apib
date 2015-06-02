@@ -5,6 +5,369 @@ HOST: https://cdn.contentful.com
 
 The Contentful Delivery API is a _fast_ read-only API for retrieving your content from Contentful. It is powered by our global CDN so you get the benefits of our content-aware caching and
 
+## Authentication
+To get content from the Content Delivery API, clients need to provide an access token. Access tokens are created per Space and are used by clients to access the Space's content.
+
+You can create Access tokens for your own Spaces in the "API" tab of the web interface.
+
+The Content Delivery API implements the standardized OAuth 2.0 Bearer Token Specification. This authorization scheme is very simple and already supported by many HTTP clients.
+
+The API supports two mechanisms for supplying the access token.
+
+As an Authorization HTTP request-header field and as an URI query parameter named access_token.
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+#Search Parameters
+
+## Content Type
+
+Search for Entries with a specific Content Type by setting the content_type URI query parameter to the ID of the Content Type you want to search for'.
+
+Please note that only one value for content_type can be specified at a time. Requests like the one below (where content_type is set to cat and dog) are not supported:
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+When querying Entries and using search filters based on `fields` or ordering by `fields` you must specify this parameter. Let's find all Entries of Content Type "cat":
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+
+## Equality & Inequality
+Search for exact matches by using the equality operator.
+
+Let's find all Entries with ID nyancat (hint: IDs are unique and there can only be one):
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+A reason to query an Entry by ID like above instead of retrieving the Entry itself might be because you want to include resolved links.
+
+Note that equality & inequality operators are not supported for Text fields.
+
+The inequality operator can be used to look for fields that don't match a specific value.
+
+For example, here's how to get all Entries except nyancat:
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+The equality/inequality operators also works with Array fields: If one of the items in an Array field matches the value the field will match.
+
+Let's find all cats who like lasagna by matching fields.likes (Array) against a single value:
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+
+## Inclusion & Exclusion
+
+Filter a field by multiple values via the in operator.
+When applied to an array value there must be at least one matching item.
+Let's get Entries for finn and jake:
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+Let's get all cats that like neither rainbows nor lasagna:
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+
+
+## Number & Date Ranges
+Four range operators are available:
+
+lt: Less than
+lte: Less than or equal to
+gt: Greater than
+gte: Greater than or equal to
+Those operators can be applied to Date, Integer and Number Fields.
+
+Let's find all cats which have 3 or less lives left:
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+These cats should be more careful!
+We can also filter by date ranges.
+
+Let's look for Entries that've been updated since midnight of January 1st 2013:
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+## Full-text Search
+Full-text search across all Text and Symbol Fields via query querystring parameter. Please take into account that full text search is case insensitive and therefore you might get more results than expected.
+
+Let's find all Entries matching "bacon":
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+Full-text Search on a specific field via match operator.
+
+Let's find all things with "bacon pancakes" in their description:
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+
+## Order
+Order items by specifying the order search parameter.
+
+To get all Content Types ordered by their creation date:
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+Reverse the sort-order by prefixing the field with a minus-sign.
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+For example, order by time of last update starting with the newest Entries.
+
+Note that when ordering Entries by fields you must set the content_type URI query parameter to the ID of the Content Type you want to filter by.
+
+## Limit & Skip
+Specify the maximum number of results as limit search parameter:
+
+Example: Limit to 3 Entries
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+Please note that the maximum number of entries returned by the API is 1000. Limits higher than 1000 will be ignored.
+
+Specify an offset as the skip search parameter:
+
+Example: Skip 3 Entries
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+By combining skip and limit you can achieve pagination:
+
+    Page 1: skip=0, limit=15
+    Page 2: skip=15, limit=15
+    Page 3: skip=30, limit=15
+    etc.
+
+
+## Including linked Entries in search results
+
+Links are a very powerful way to model relationships between pieces of content. Contentful's search is built to make linked data retrieval as simple as adding an additional URI query parameter to retrieve an entire web of related content that you can display in your application.
+
+Basically Resources can have Link fields which point to other Entries or Assets.
+
+When you have related content (e.g. Entries with links to other Entries) it's possible include both search results and related data in a single request.
+
+Simply tell the search to include the targets of links in the response: Set the include parameter to the number of levels you want to resolve. The maximum number of inclusion is 10.
+
+To illustrate this, note that the cat Content Type has a Link field that links to the cat's best friend.
+
+Let's serach for the nyancat Entry and include 1 level of linked Entries:
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+The search result will include the requested Entry matching the query in items along with the linked Entries and Assets in includes.
+
+Link resolution works regardless of how many results are there in items. Some examples for this are:
+
+Get a list of blog posts in items with related authors, categories and other meta data in includes.
+Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
+Important note: If an item is already present in the response's items, it will not be included in the include.Entry again!
+
+The JS library resolves links automatically: If you query with include links will be replaced with references to the actual objects.
+
+
+# Localization
+
+Specify requested locale as locale URI query parameter.
+
++ Parameters
+    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
++ Model (application/vnd.contentful.delivery.v1+json)
+
+        {
+          "sys": {
+            "locale": "tlh"
+            ...
+          },
+          "fields": {
+            "name": "Nyan vIghro'"
+            ...
+          }
+        }
+
+fields.name is the only localized Field in the cat Content Type, so all other Fields are returned in the default locale.
+
+The locale has to be supported by the Space that's being queried.
+
+The default locale depends on the Space.
+
+# Synchronization
+
+Synchronizing content greatly improves the user experience of applications. Mobile data connections can still be slow and have a very high latency compared to broadband internet connections. When apps sync content to the device and access it from a local database (e.g. CoreData, LocalStorage, SQLite) data access is much faster and apps can provide a much better user experience.
+
+Applications sync periodically: Depending on the use case they may sync every few hours, when being opened or pending user interaction, e.g., on pull to refresh.
+
+To further illustrate this let's think of an example mobile app: A travel guide application which has information about places of interest for a certain area. Users of the travel guide will probably be abroad with a limited data package or no cellular data at all.
+
+Some applications download all available data on every sync, including content they already knew about. This wastes a lot of mobile data and valuable time. This is especially a problem when syncing while on cellular data.
+
+Most applications don't sync at all and require an ongoing internet connection. Many of these apps don't really require a constant connection to work but are still effectively useless when there is no internet. In the case of the travel guide having to hop from wifi to wifi simply to use it would be frustrating.
+
+Instead it makes sense to perform delta updates:
+
+Get content which has been added or changed since the last sync
+Delete local content which has been deleted since the last sync
+Compared to the other sync strategies delta updates have many benefits:
+
+Use as little data as possible: Most mobile data plans have limits on how much data can be transferred (at full speed) within a given time period. By transferring only actual changes and not transferring everything every time the data footprint of a synchronization is very small. Keeping the sync small also means greatly improved chances of success when a mobile connection is slow.
+
+Fast synchronization: Because individual syncs are small they will only take a few seconds at most.
+As little resource usage as possible: Less data to process also means less resources required for processing the data and less waiting time for users of mobile applications.
+To enable delta updates Contentful provides a special synchronization endpoint. This endpoint delivers only new and changed content and notifies about deleted content (deletions). It will never transfer duplicate content the client has already received before.
+
+Keep in mind that the synchronization endpoint will always give you all the content of a Space or a specific Content Type, so it may not make sense to use it for every use case. If users only want to see the newest content, it would be wasteful to download everything immediately. In that case, it might be better to only fetch selected content based on the date, using search.
+
+## Endpoint
+A client syncs content by using the sync endpoint. A single sync consists of one or more pages, each a separate request and response.
+
+The first time a client synchronizes content it sends a request to the sync endpoint with the URI query parameter initial set to true
+
+Syncing with initial=true should only be done once for the initial sync when a client has no prior content. This transfers all content from a Space since its creation. The inital sync contains neither deleted content nor deletions.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+
+## Syncing specific content
+
+By default a sync includes all types: Assets, Entries of all Content Types and deletions.
+
+To sync only specific content a type parameter can be specified for the initial sync:
+
+    all: (default) Include all new and changed content, i.e., Assets, Entries and deletions.
+    Asset: Only include new and changed Assets.
+    Entry: Only include new and changed Entries.
+    Deletion: Only include deletions of Assets and Enties.
+    DeletedAsset: Only include deletions of Assets.
+    DeletedEntry: Only include deletions of Entries.
+
+For Entries you can also specify a content_type parameter. When specifying content_type you must specify type as Entry (meaning that there will be no deletions):
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+If you want to sync Entries by Content Type you should separately subscribe to a Deletion or DeletedEntry sync to get notified when Entries are deleted.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+The type and content_type parameter can only be specified at the initial sync along with the initial parameter. Any subsequent syncs will only include the types you have specified.
+
+## Initial Sync Request
+
+The initial sync requests will result in the first batch of items
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
++ Model (application/vnd.contentful.delivery.v1+json)
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "items": [...],
+          "nextPageUrl": "https://cdn.contentful.com/spaces/cfexampleapi/sync?sync_token=secondpage&access_token=b4c0n73n7fu1"
+        }
+
+The initial page's response includes a nextPageUrl. This means this sync is not over yet and we need to request the next page.
+
+
+## Requesting the next page
+
+The URL is obtained from the previous page.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
++ Model (application/vnd.contentful.delivery.v1+json)
+        {
+          "sys": {
+            "type": "Array"
+          },
+          "items": [...],
+          "nextSyncUrl": "https://cdn.contentful.com/spaces/cfexampleapi/sync?sync_token=nextsync&access_token=b4c0n73n7fu1"
+        }
+
+The second page's result includes a nextSyncUrl. This means the sync is complete and we should store its URL for the next sync.
+
+
+## Subsequent synchronizations
+
+To learn about changes that happened since the previous sync:
+
+The result will look like one of the pages of the initial sync, and again depending on whether a page has a nextPageUrl or a nextSyncUrl we must request either the next page or end syncing and store the nextSyncUrl for later use.
+
+If for some reason a client loses the nextSyncUrl the client should delete its local content and perform the initial synchronization again.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+
+
+# Contentful Preview API
+
+In addition to the Delivery API for published content, there is also a Preview API for previewing unpublished content as though it were published. It maintains the same behaviour and parameters as the Content Delivery API, but delivers the latest draft for entries and assets.
+
+
+## Preview API Authentication
+
+You authenticate with the Preview API in the same way as the Delivery API, but using a Preview access token.
+
+Your production Delivery API access tokens will not work with the Preview API. The use of a separate token helps prevent accidentally leaking unpublished content. Every Delivery API key has an associated preview access token, which you can view in the "API" tab of the Contentful app.
+
+## Using the Preview API
+
+You use the Preview API as though it were the Delivery API, but replacing the hostname cdn.contentful.com with preview.contentful.com, and the production access token with a preview access token.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+
+## Preview API Limitations
+
+  The Preview API does not implement the Sync API, so applications that rely exclusively on the Sync API to load data will not be usable with the Preview API.
+
 ## Common Resource Attributes
 
 Every resource returned by the Content Delivery API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property should be defined. The `sys.id` property will be defined for every resource that is not a collection. For example, a `Space` resource will have a `sys.type` and `sys.id`:
