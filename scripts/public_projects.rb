@@ -79,4 +79,4 @@ not_documented_repos = ['contentful', 'contentful-labs'].map do |org_name|
 	gh = GitHub.new(org_name)
 	gh.repos.reject { |repo_name| gh.is_private?(repo_name) }
 end.flatten.reject { |repo_name| already_documented.include?(repo_name) }
-puts not_documented_repos
+puts not_documented_repos.sort
