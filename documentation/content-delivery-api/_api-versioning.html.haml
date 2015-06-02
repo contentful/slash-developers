@@ -1,8 +1,0 @@
-= title_anchor 'h2', "api-versioning", "API Versioning"
-
-:markdown
-  All API requests should specify a `Content-Type` header of `application/vnd.contentful.delivery.v1+json`.
-
-  Otherwise, we will automatically route your request to the latest version of the API.
-  This could break clients which expect the outdated API version.
-  To be on the safe side, always specify the `Content-Type` header.
