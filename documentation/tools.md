@@ -32,23 +32,5 @@ There's also an example for building a static site using [AWS Lambda](https://gi
 
 ## Unofficial
 
-These third-party libraries are not official Contentful tools and may be outdated.
-
-* Usemarkup - [PHP Symfony2 Bundle][28]
-* Dothiv - [PHP Symfony ContentfulBundle][31]
-* Mohamagdy - [Contentful-RSS][35]
-* Jcreixell - [RSS Proxy for Contentful's Sync API][36]
-* Zackiles - [Contentful Node Dashboard][37]
-* Johnproctor - [Contentful demo using Knockout][38]
-* Jurgen Van de Moere - [AngularJS integration][40]
-* IDEO - [Ember Integration][41]
-
-
-[28]: https://github.com/usemarkup/ContentfulBundle
-[31]: https://github.com/dothiv/ContentfulBundle
-[35]: https://github.com/mohamagdy/contentful-rss
-[36]: https://github.com/jcreixell/contentful-sync-rss
-[37]: https://github.com/zackiles/contentful-node-dashboard
-[38]: https://github.com/johnproctor/ContentOut
-[40]: https://github.com/jvandemo/angular-contentful
-[41]: https://github.com/ideo/ember-contentful/
+You can find a list of unofficial tools
+[here](https://github.com/contentful-labs/awesome-contentful#tools).

@@ -28,22 +28,5 @@ Official Contentful client libraries for various programming languages.
 
 ## Unofficial
 
-These third-party libraries and SDKs are not official Contentful tools and may be outdated.
-
-* Usemarkup - [PHP 5.4+ clients for Contentful Delivery and Management API's][27]
-* Mircobabini - [PHP Contentful Delivery API Library][29]
-* Mircobabini - [PHP Contentful Management API Library][30]
-* Doorhinge - [PHP Client for the Contentful Delivery API][32]
-* Incraigulous - [PHP SDK][39]
-
-* ryan-codingintrigue - [C# SDK for the Contentful Delivery API][33]
-* Mrappweareratio - [.NET PCL for Contentful][34]
-
-
-[27]: https://github.com/usemarkup/contentful
-[29]: https://github.com/mircobabini/contentful.php
-[30]: https://github.com/mircobabini/contentful-management.php
-[32]: https://github.com/doorhinge/contentful-client
-[33]: https://github.com/ryan-codingintrigue/Contentful.NET
-[34]: https://github.com/mrappweareratio/Contentful.SDK
-[39]: https://github.com/incraigulous/contentful-sdk
+You can find a list of unofficial client libraries
+[here](https://github.com/contentful-labs/awesome-contentful#sdks).
