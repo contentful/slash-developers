@@ -14,8 +14,8 @@ Official Contentful client libraries for various programming languages.
 
 ### Objective-C / Swift (for use on iOS and OS X)
 
-- [contentful.objc](https://github.com/contentful/contentful.objc)
-- [contentful-management.objc](https://github.com/contentful/contentful-management.objc)
+- [contentful.objc](https://github.com/contentful/contentful.objc) - [API reference](http://cocoadocs.org/docsets/ContentfulDeliveryAPI), [Quickstart]((/developers/documentation/tutorials/ios/cda-sdk/)
+- [contentful-management.objc](https://github.com/contentful/contentful-management.objc) - [API reference](http://cocoadocs.org/docsets/ContentfulManagementAPI), [Quickstart]((/developers/documentation/tutorials/ios/cma-sdk/)
 
 ### Python
 

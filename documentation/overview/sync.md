@@ -40,3 +40,9 @@ In addition to the regular `Entry` and `Asset` item types, there can also be `De
 ## Localization
 
 When syncing Entries or Assets they come in all available localizations instead of just a single one. Usually Resources coming from the Delivery API only come with a single value per field - the value of the locale you requested or the default one. The Sync endpoint returns all locales per field.
+
+## Further information
+
+- Using the Sync API for [offline persistence on iOS](/developers/documentation/tutorials/ios/offline-sync/)
+
+<!-- TODO Link back to CDA reference -->

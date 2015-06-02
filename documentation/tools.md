@@ -28,7 +28,7 @@ There's also an example for building a static site using [AWS Lambda](https://gi
 
 - [Concorde](https://github.com/contentful-labs/Concorde), a library for displaying progressive JPEG images on iOS.
 - [ContentfulPersistence](https://github.com/contentful/contentful-persistence.objc), a library for making it easy to persist data retrieved from Contentful in Core Data.
-- [Xcode plugin](https://github.com/contentful/ContentfulXcodePlugin), a plugin for automatically creating Core Data models from your Contentful content model.
+- [Xcode plugin](https://github.com/contentful/ContentfulXcodePlugin), a plugin for automatically creating Core Data models from your Contentful content model. [Read this](/developers/documentation/tutorials/ios/xcode-plugin/) to get up and running with it.
 
 ## Unofficial
 
