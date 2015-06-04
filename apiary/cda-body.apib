@@ -12,7 +12,15 @@ Every resource returned by the Content Delivery API will have a `sys` property, 
 }
 ```
 
-Further `sys` properties such as `sys.createdAt` and `sys.revision` can be seen in the examples for those resources that support them.
+Field          |Type          |Description
+---------------|--------------|--------------------------------------------
+sys.type       |String        |Type of resource.
+sys.id         |String        |Unique ID of resource.
+sys.space      |Link          |Link to resource's Space (except Spaces) .
+sys.contentType|Link          |Link to Entry's Content Type (Entries only).
+sys.revision   |Integer       |Version of resource.
+sys.createdAt  |Date          |Time entity was created.
+sys.updatedAt  |Date          |Time entity was updated.
 
 ## Collection Resources & Pagination
 
@@ -33,6 +41,14 @@ In the above example, a client would get the next 100 resources by repeating the
 ## HTTP Details
 
 Learn more [on our Developer Center](https://contentful.com/developers/documentation/ocontent-delivery-api/http-details/).
+
+## API Versioning
+
+All API requests should specify a `Content-Type` header of `application/vnd.contentful.delivery.v1+json`.
+
+Otherwise, we will automatically route your request to the latest version of the API.
+This could break clients which expect the outdated API version.
+To be on the safe side, always specify the `Content-Type` header.
 
 # Group Spaces
 
@@ -103,6 +119,39 @@ Content Types are schemas describing the shape of Entries. They mainly consist o
 
 ## Content Type [/spaces/{space_key}/content_types/{content_type_id}]
 
+Field       |Type        |Description
+------------|------------|----------------------------------------------------------
+sys         |Sys         |Common system properties.
+name        |String      |Name of the Content Type.
+description |String      |Description of the Content Type.
+fields      |\[Field\]   |List of Fields.
+displayField|String      |ID of main Field used for display.
+
+A Field describes a single property of an Entry:
+
+Field      |Type          |Description
+-----------|--------------|-------------------------------------------
+id         |String        |ID of the Field.
+name       |String        |Name of the Field.
+type       |String        |Type of the Field.
+items      |Schema        |(Array type only) Schema for items.
+required   |Boolean       |Describes whether the Field is mandatory.
+localized  |Boolean       |Describes whether the Field is localized.
+
+Field types:
+
+Name   |JSON Primitive|Description
+-------|--------------|------------------------------------------------------------------------------
+Symbol |String        |Basic list of characters. Maximum length is 256.
+Text   |String        |Same as Symbol, but can be filtered via Full-Text Search. Maximum length is 50,000.
+Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53.
+Number |Number        |Number type with decimals.
+Date   |String        |Date/Time in ISO-8601 format.
+Boolean|Boolean       |Flag, `true` or `false`.
+Link   |Object        |See [Links](https://www.contentful.com/developers/documentation/overview/links/)
+Array  |Array         |List of values. Value type depends on `field.items.type`.
+Object |Object        |Arbitrary Object.
+
 + Parameters
     + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
     + content_type_id: cat (required, string) - ID of the Content Type in form of a string
@@ -168,6 +217,18 @@ Assets can optionally be localized by providing separate files for each locale. 
 When querying the Content Delivery API for Entries which contain Links to Assets then all Assets will be included by default.
 
 Resize image assets on the fly by supplying the desired dimensions as query parameters.
+
+Field                           |Type          |Description
+--------------------------------|--------------|------------------------------------------------
+sys                             |Sys           |Common system properties.
+fields.title                    |Text          |Title of the Asset.
+fields.description              |Text          |Description of the Asset.
+fields.file                     |File          |File(s) of the Asset.
+fields.file.fileName            |Symbol        |Original filename of the file.
+fields.file.contentType         |Symbol        |Content type of the file.
+fields.file.url                 |Symbol        |URL of the file.
+fields.file.details             |Object        |Details of the file, depending on its mime type.
+fields.file.details.size        |Number        |Size (in bytes) of the file.
 
 + Parameters
     + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
