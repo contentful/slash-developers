@@ -10,6 +10,10 @@ CPA_APIARY_NAME=contentpreviewapi
 CPA_BLUEPRINT=cpa.apib
 CPA_HOST=https://preview.contentful.com
 
+IMAGES_APIARY_NAME=contentfulimagesapi
+IMAGES_BLUEPRINT=images.apib
+IMAGES_HOST=https://images.contentful.com
+
 .PHONY: all clean fetch preview test
 
 all: test
@@ -36,11 +40,13 @@ preview: test
 	apiary preview --path=$(CDA_BLUEPRINT)
 	apiary preview --path=$(CMA_BLUEPRINT)
 	apiary preview --path=$(CPA_BLUEPRINT)
+	apiary preview --path=$(IMAGES_BLUEPRINT)
 
 publish: test
 	apiary publish --api-name=$(CDA_APIARY_NAME) --path=$(CDA_BLUEPRINT)
 	apiary publish --api-name=$(CMA_APIARY_NAME) --path=$(CMA_BLUEPRINT)
 	apiary publish --api-name=$(CPA_APIARY_NAME) --path=$(CPA_BLUEPRINT)
+	apiary publish --api-name=$(IMAGES_APIARY_NAME) --path=$(IMAGES_BLUEPRINT)
 
 test: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT)
 	dredd $(CPA_BLUEPRINT) $(CPA_HOST)
@@ -48,3 +54,4 @@ test: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT)
 	dredd $(CMA_BLUEPRINT) $(CMA_HOST) \
 		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
 		-m GET #-m PUT -m POST #-m DELETE
+	#dredd $(IMAGES_BLUEPRINT) $(IMAGES_HOST)
