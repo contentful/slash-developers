@@ -55,6 +55,14 @@ Contentful uses optimistic locking. When updating an existing resource its previ
 
 Learn more [on our Developer Center](https://contentful.com/developers/documentation/ocontent-delivery-api/http-details/).
 
+## API Versioning
+
+All API requests should specify a `Content-Type` header of `application/vnd.contentful.management.v1+json`.
+
+Otherwise, we will automatically route your request to the latest version of the API.
+This could break clients which expect the outdated API version.
+To be on the safe side, always specify the `Content-Type` header.
+
 # Group Spaces
 
 ## Spaces Collection [/spaces]
