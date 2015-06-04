@@ -3,7 +3,7 @@ HOST: https://cdn.contentful.com
 
 # Contentful Delivery API
 
-The Contentful Delivery API is a _fast_ read-only API for retrieving your content from Contentful. It is powered by our global CDN so you get the benefits of our content-aware caching and
+The Contentful Delivery API is a _fast_ read-only API for retrieving your content from Contentful. It is powered by our global CDN so you get the benefits of our content-aware caching.
 
 ## Authentication
 
@@ -232,9 +232,11 @@ Resize image assets on the fly by supplying the desired dimensions as query para
 
 Instead of chosing image dimensions in Content Management you can specify the dimensions of images during delivery.
 
-Images are hosted on images.contentful.com. For files on this host you can attach the URI query parameters w and/or h to specify the desired dimensions. The image will never be stretched, skewed or enlarged. Instead it will be fit into the bounding box given by the w and h parameters.
+Images are hosted on `images.contentful.com`. For files on this host you can attach the URI query parameters `w` and/or `h` to specify the desired dimensions. The image will never be stretched, skewed or enlarged. Instead it will be fit into the bounding box given by the `w` and `h` parameters.
 
-Additionaly, a q can be passed to define the JPEG compression quality between 1 and 100 and the fm parameter can be used to change the format to either "png" or "jpg".
+Additionaly, a `q` can be passed to define the JPEG compression quality between 1 and 100 and the `fm` parameter can be used to change the format to either "png" or "jpg".
+
+Example URL: <http://images.contentful.com/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png?w=100&fm=jpg&q=50>
 
 + Parameters
     + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
