@@ -38,9 +38,9 @@ All source content lives in the `source/` directory.
 
  - source/index - Landing page that directs users to other parts of the documentation
  - source/reference/ - Reference docs for each API, to be written in [API Blueprint](https://apiblueprint.org) format.
-  - [ ] Delivery API
-  - [ ] Management API
-  - [ ] Preview API
+  - [X] Delivery API
+  - [X] Management API
+  - [X] Preview API
  - source/overview/ - Summary articles providing an introduction to key concepts of Contentfuls API
   - [X] Data Model
   - [X] The three Content API's
