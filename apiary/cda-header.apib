@@ -1,0 +1,18 @@
+FORMAT: 1A
+HOST: https://cdn.contentful.com
+
+# Contentful Delivery API
+
+The Contentful Delivery API is a _fast_ read-only API for retrieving your content from Contentful. It is powered by our global CDN so you get the benefits of our content-aware caching.
+
+## Authentication
+
+To get content from the Content Delivery API, clients need to provide an access token. Access tokens are created per Space and are used by clients to access the Space's content.
+
+You can create Access tokens for your own Spaces in the "API" tab of the web interface.
+
+The Content Delivery API implements the standardized OAuth 2.0 Bearer Token Specification. This authorization scheme is very simple and already supported by many HTTP clients.
+
+The API supports two mechanisms for supplying the access token.
+
+As an Authorization HTTP request-header field and as an URI query parameter named `access_token`.
