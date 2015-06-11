@@ -1,7 +1,5 @@
 # Libraries
 
-Official Contentful client libraries for various programming languages.
-
 ### Java (also for use on Android)
 
 - [contentful.java](https://github.com/contentful/contentful.java)
