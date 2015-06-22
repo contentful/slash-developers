@@ -1,9 +1,14 @@
 # Developer center
+
 ## *The* place to learn how to build with Contentful
+
+TODO: about contentful block
 
 As an API-first service, we understand that providing sensible and up-to-date docs is vitally important. Here you'll find everything necessary for setting up and going deeper.
 
-## Introduction
+GLOBAL TODO: write more elaborate descriptions for each section
+
+## Concepts
 
 These articles introduce the basics of Contentful and some best practices.
 
@@ -13,17 +18,31 @@ These articles introduce the basics of Contentful and some best practices.
 - [Locales](overview/locales/)
 - [Sync API](overview/sync/)
 
-### Tutorials
+## References
 
+TODO
+* content delivery api
+* content management api
+* preview api
+* images api
+
+## Tutorials
+
+TODO: FIX LINKS
 - [iOS development tutorials](tutorials/)
-	-[Using the Delivery API on iOS]()
-	-[Using the Management API on iOS]()
-	-[Offline Persistence in the iOS SDK]()
-	-[Using the Contentful Xcode Plugin]()
+	- [Using the Delivery API on iOS]()
+	- [Using the Management API on iOS]()
+	- [Offline Persistence in the iOS SDK]()
+	- [Using the Contentful Xcode Plugin]()
 
 ## Libraries
 
 We provide libraries for major programming languages and platforms so you don't have to write the code for interacting with API from scratch.
+
+TODO
+* js
+* android
+* ...
 
 - [See the libraries](libraries/)
 
@@ -39,8 +58,7 @@ It could be helpful to look at the existing Contentful-based apps for iOS, Andro
 
 - [Browse the codebase](examples/)
 
-## Getting help
+## Misc
 
-// TODO: do we need this section altogether? what else can we add? //
-
-- [See questions about Contentful on Stack Overflow](http://stackoverflow.com/questions/tagged/contentful)
+* Getting help
+* Status
