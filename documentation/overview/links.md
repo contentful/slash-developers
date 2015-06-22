@@ -22,7 +22,7 @@ Link resolution works regardless of how many results are there in `items`. Some 
 - Get a list of blog posts in items with related authors, categories and other meta data in includes.
 - Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
 
-Important note: If an item is already present in the response's items, it will not be included in 
+Important note: If an item is already present in the response's items, it will not be included in
 the `include.Entry` again!
 
 Links represent relationships between Resources, for example:
@@ -55,25 +55,23 @@ Linking an Entry to another Entry represents a relationship.
 For example, here's a restaurant pointing to its menu:
 
 ~~~ json
-
-    {
-      "sys": {
-        "type": "Entry",
-        "id": "il-doges"
-      },
-      "fields": {
-        "menu": {
-          "en-US": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Entry",
-              "id": "il-doges-nice-menu"
-            }
-          }
+{
+  "sys": {
+    "type": "Entry",
+    "id": "il-doges"
+  },
+  "fields": {
+    "menu": {
+      "en-US": {
+        "sys": {
+          "type": "Link",
+          "linkType": "Entry",
+          "id": "il-doges-nice-menu"
         }
       }
     }
-
+  }
+}
 ~~~
 
 _il-doges' `fields.menu` links to il-doges-nice-menu._
@@ -104,24 +102,22 @@ Entries linking to Assets represent attachments.
 For example, here's a restaurant pointing to some photos:
 
 ~~~ json
-
-    {
-      "sys": {
-        "type": "Entry",
-        "id": "il-doges"
-      },
-      "fields": {
-        "mainPhoto": {"en-US":
-          {"sys": {"type": "Link", "linkType": "Asset", "id": "such-doge"}
-        },
-        "photos": {"en-US": [
-          {"sys": {"type": "Link", "linkType": "Asset", "id": "nice-food"}},
-          {"sys": {"type": "Link", "linkType": "Asset", "id": "such-doge"}},
-          {"sys": {"type": "Link", "linkType": "Asset", "id": "wow"}}
-        ]}
-      }
-    }
-
+{
+  "sys": {
+    "type": "Entry",
+    "id": "il-doges"
+  },
+  "fields": {
+    "mainPhoto": {"en-US":
+      {"sys": {"type": "Link", "linkType": "Asset", "id": "such-doge"}
+    },
+    "photos": {"en-US": [
+      {"sys": {"type": "Link", "linkType": "Asset", "id": "nice-food"}},
+      {"sys": {"type": "Link", "linkType": "Asset", "id": "such-doge"}},
+      {"sys": {"type": "Link", "linkType": "Asset", "id": "wow"}}
+    ]}
+  }
+}
 ~~~
 
 
@@ -143,68 +139,58 @@ Let's look at some example Field values.
 Remember that these need to be used in context of a Content Type like this:
 
 ~~~ json
-
-    {
-      "sys": {"type": "ContentType", "id": "restaurant"},
-      "fields": [
-        ...
-      ]
-    }
-
+{
+  "sys": {"type": "ContentType", "id": "restaurant"},
+  "fields": [
+    ...
+  ]
+}
 ~~~
 
 ### Link Field for Entry
 
 ~~~ json
-
-    {
-      "id": "menu",
-      "type": "Link",
-      "linkType": "Entry"
-    }
-
+{
+  "id": "menu",
+  "type": "Link",
+  "linkType": "Entry"
+}
 ~~~
 
 ### Link Field for multiple Entries
 
 ~~~ json
-
-    {
-      "id": "menuItems",
-      "type": "Array",
-      "items": {
-        "type": "Link",
-        "linkType": "Entry"
-      }
-    }
-
+{
+  "id": "menuItems",
+  "type": "Array",
+  "items": {
+    "type": "Link",
+    "linkType": "Entry"
+  }
+}
 ~~~
 
 ### Link Field for Asset
 
 ~~~ json
-
-    {
-      "id": "mainPhoto",
-      "type": "Link",
-      "linkType": "Asset"
-    }
-
+{
+  "id": "mainPhoto",
+  "type": "Link",
+  "linkType": "Asset"
+}
 ~~~
 
 ### Link Field for multiple Assets
 
 ~~~ json
-
-    {
-      "id": "photos",
-      "type": "Array",
-      "items": {
-        "type": "Link",
-        "linkType": "Asset"
-      }
-    }
-
+{
+  "id": "photos",
+  "type": "Array",
+  "items": {
+    "type": "Link",
+    "linkType": "Asset"
+  }
+}
 ~~~
 
 ## Link values in Entries
@@ -216,6 +202,7 @@ added Link Fields to a Content Type.
 Link values are represented as objects containing a sys property with the
 type and ID of the resource they're linking to:
 
+{:.table}
 Field       |Type  |Description
 ------------|------|------------------------
 sys.type    |String|Always "Link".
@@ -226,66 +213,56 @@ Let's look at some example Link values.
 Remember that these need to be used in context of an Entry like this:
 
 ~~~ json
-
-    {
-      "sys": {"type": "Entry", "id": "restaurant"},
-      "fields": {
-        "someField": {
-          "en-US": ...
-        }
-      }
+{
+  "sys": {"type": "Entry", "id": "restaurant"},
+  "fields": {
+    "someField": {
+      "en-US": ...
     }
-
+  }
+}
 ~~~
 
 ### Link to an Entry
 
 ~~~ json
-
-    {
-      "sys": {
-        "type": "Link",
-        "linkType": "Entry",
-        "id": "il-doges-nice-menu"
-      }
-    }
-
+{
+  "sys": {
+    "type": "Link",
+    "linkType": "Entry",
+    "id": "il-doges-nice-menu"
+  }
+}
 ~~~
 
 ### Links to multiple Entries
 
 ~~~ json
-
-    [
-      {"sys": {"type": "Link", "linkType": "Entry", "id": "nice-burger"}},
-      {"sys": {"type": "Link", "linkType": "Entry", "id": "such-dessert"}},
-      {"sys": {"type": "Link", "linkType": "Entry", "id": "WOW"}}
-    ]
-
+[
+  {"sys": {"type": "Link", "linkType": "Entry", "id": "nice-burger"}},
+  {"sys": {"type": "Link", "linkType": "Entry", "id": "such-dessert"}},
+  {"sys": {"type": "Link", "linkType": "Entry", "id": "WOW"}}
+]
 ~~~
 
 ### Link to an Asset
 
 ~~~ json
-
-    {
-      "sys": {
-        "type": "Link",
-        "linkType": "Asset",
-        "id": "such-doge"
-      }
-    }
-
+{
+  "sys": {
+    "type": "Link",
+    "linkType": "Asset",
+    "id": "such-doge"
+  }
+}
 ~~~
 
 ### Links to multiple Assets
 
 ~~~ json
-
-    [
-      {"sys": {"type": "Link", "linkType": "Entry", "id": "nice-food"}},
-      {"sys": {"type": "Link", "linkType": "Entry", "id": "such-doge"}},
-      {"sys": {"type": "Link", "linkType": "Entry", "id": "wow"}}
-    ]
-
+[
+  {"sys": {"type": "Link", "linkType": "Entry", "id": "nice-food"}},
+  {"sys": {"type": "Link", "linkType": "Entry", "id": "such-doge"}},
+  {"sys": {"type": "Link", "linkType": "Entry", "id": "wow"}}
+]
 ~~~
