@@ -1,14 +1,12 @@
 # Examples
 
-Example applications using Contentful
-
 ## Android
 
 - [Cookies demo](https://github.com/contentful/cma-cookies-demo), an Android wear demo application.
 - [Discovery app](https://github.com/contentful/discovery-app-android), an app for 
 previewing the content of Contentful Spaces.
 
-### Space Template Apps
+### Space template apps
 
 - [Blog](https://github.com/contentful/blog-app-android)
 - [Gallery](https://github.com/contentful/gallery-app-android)
@@ -21,7 +19,7 @@ previewing the content of Contentful Spaces.
 previewing the content of Contentful Spaces.
 - [Swiftful](https://github.com/contentful-labs/Swiftful), a demo for how to use Contentful in Swift.
 
-### Space Template Apps
+### Space template apps
 
 - [Blog](https://github.com/contentful/blog-app-ios)
 - [Gallery](https://github.com/contentful/gallery-app-ios)

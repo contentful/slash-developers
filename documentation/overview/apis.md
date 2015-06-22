@@ -1,10 +1,10 @@
-# The three Content APIs
+# Three content APIs
 
 Contentful offers three [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) APIs for working with your content:
 
 - The Content Delivery API (CDA), available via <https://cdn.contentful.com> is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data; images, videos and other media is delivered as files.
 
-The API is a globally distributed CDN (Content Delivery Network) for content: All content, both JSON and binary, is served from the server closest to where a user is requesting content from. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple datacenters around the world also greatly improves the availability of content.
+The API is a globally distributed CDN (Content Delivery Network) for content: all content, both JSON and binary, is served from the server closest to where a user is requesting content from. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple datacenters around the world also greatly improves the availability of content.
 
 You can find the reference documentation for the CDA [on Apiary][1].
 

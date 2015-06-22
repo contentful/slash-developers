@@ -1,12 +1,11 @@
 # Links
 
 Links are a very powerful way to model relationships between
-pieces of content. Contentful's search is built to make linked data retrieval
+pieces of content. Contentful search is built to make linked data retrieval
 as simple as adding an additional URI query parameter to retrieve an entire
-web of related content that you can display in your application.
+chain of related content that you can display in your application.
 
-Basically Resources can have Link fields which point to other Entries or
-Assets.
+Basically, *Resources* can have *Link* fields which point to other *Entries* or *Assets*.
 
 When you have related content (e.g. Entries with links to other Entries)
 it's possible include both search results and related data in a single request.
@@ -22,8 +21,7 @@ Link resolution works regardless of how many results are there in `items`. Some 
 - Get a list of blog posts in items with related authors, categories and other meta data in includes.
 - Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
 
-Important note: If an item is already present in the response's items, it will not be included in
-the `include.Entry` again!
+Note: If an item is already present in the response's items, it will not be included in the `include.Entry` array again!
 
 Links represent relationships between Resources, for example:
 
