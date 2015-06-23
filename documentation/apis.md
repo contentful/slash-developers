@@ -1,4 +1,6 @@
-# Three content APIs
+---
+page: :apis
+---
 
 Contentful offers three [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) APIs for working with your content:
 

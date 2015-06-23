@@ -1,4 +1,6 @@
-# Tools
+---
+page: :tools
+---
 
 ## Import/export
 

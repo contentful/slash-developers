@@ -1,4 +1,6 @@
-# Synchronization
+---
+page: :synchronization
+---
 
 Synchronizing content greatly improves the user experience of applications. Mobile data connections can still be slow and have a very high latency compared to broadband internet connections. When apps sync content to the device and access it from a local database (e.g. CoreData, LocalStorage, SQLite) data access is much faster and apps can provide a much better user experience.
 
@@ -33,7 +35,7 @@ Keep in mind that the synchronization endpoint will always give you all the cont
 	     -H 'Authorization: Bearer b4c0n73n7fu1' \
 	     'https://cdn.contentful.com/spaces/cfexampleapi/sync?initial=true'
 
-2. In the response, you will receive a `nextPageUrl` in case your request returned more results than what fits into a single page. Eventually, when retrieving the last page, the response will contain a `nextSyncUrl` which contains an opaque sync token which can be used to receive delta updates of changes performed after your last request. 
+2. In the response, you will receive a `nextPageUrl` in case your request returned more results than what fits into a single page. Eventually, when retrieving the last page, the response will contain a `nextSyncUrl` which contains an opaque sync token which can be used to receive delta updates of changes performed after your last request.
 
 In addition to the regular `Entry` and `Asset` item types, there can also be `DeletedEntry` and `DeletedAsset` items in the synchronization response, these indicate that a specific resource has been deleted. The delta updates work at the resource level, if a resource has been changed, its whole content will be part of the synchronization response.
 

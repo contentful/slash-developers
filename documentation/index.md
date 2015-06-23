@@ -1,6 +1,6 @@
-# Developer center
-
-## *The* place to learn how to build with Contentful
+---
+page: :developercenter
+---
 
 TODO: about contentful block
 

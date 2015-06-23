@@ -1,4 +1,6 @@
-# Libraries
+---
+page: :libraries
+---
 
 ### Java (also for use on Android)
 

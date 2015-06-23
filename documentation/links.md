@@ -1,4 +1,6 @@
-# Links
+---
+page: :links
+---
 
 Links are a very powerful way to model relationships between
 pieces of content. Contentful search is built to make linked data retrieval
