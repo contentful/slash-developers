@@ -1,4 +1,6 @@
-# Errors
+---
+page: :docsErrors
+---
 
 Whenever something goes wrong with an API request, the server produces an error. The error message contains an appropriate HTTP status code in the header and a JSON response in the body. The `sys` part of the JSON describes the error details.
 
@@ -8,6 +10,7 @@ The `sys.type` will always be *Error*, and the `sys.id` identifies the precise e
 
 The API has a set of well-defined errors that it responds with if something didn't work out.
 
+{:.table}
 HTTP Status Code   |Error Code       |Description
 -------------------|-----------------|--------------------------------------
 `400 Bad Request`  |`BadRequestError`|The request was malformed or it is missing a required parameter.

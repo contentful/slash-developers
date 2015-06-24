@@ -1,11 +1,13 @@
-# HTTP Details of the Contentful APIs
+---
+page: :docsHttpDetails
+---
 
 ## Security
 
 The Content Delivery API and Content Preview API are fully available via SSL:
 Both JSON data and Assets should be requested through a secure transport.
 
-Our client libraries enable SSL by default. Unless there is a reason to 
+Our client libraries enable SSL by default. Unless there is a reason to
 disable SSL you should leave it enabled to ensure maximum privacy for clients.
 
 The Content Management API is only available via SSL,
