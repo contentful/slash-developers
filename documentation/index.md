@@ -2,8 +2,6 @@
 page: :developercenter
 ---
 
-TODO: about contentful block
-
 As an API-first service, we understand that providing sensible and up-to-date docs is vitally important. Here you'll find everything necessary for setting up and going deeper.
 
 GLOBAL TODO: write more elaborate descriptions for each section
