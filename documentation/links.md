@@ -74,7 +74,7 @@ For example, here's a restaurant pointing to its menu:
 }
 ~~~
 
-_il-doges' `fields.menu` links to il-doges-nice-menu._
+"il-doges" `fields.menu` links to "il-doges-nice-menu".
 
 It's possible to create circular links:
 You could model a circular chain of Entries to model a dialog in a video game
