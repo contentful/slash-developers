@@ -1,6 +1,6 @@
-## HTTP Details of the Contentful APIs
+# HTTP Details of the Contentful APIs
 
-### Security
+## Security
 
 The Content Delivery API and Content Preview API are fully available via SSL:
 Both JSON data and Assets should be requested through a secure transport.
@@ -14,7 +14,7 @@ all requests must be performed using the `https:` protocol.
 Using SSL ensures that the entire content and access tokens of a Space remain secure
 and can not be intercepted by potential eavesdroppers.
 
-### Cross-origin resource sharing
+## Cross-origin resource sharing
 
 [CORS (Cross-origin resource sharing)](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 allows JavaScript web apps to make HTTP requests to other domains.
@@ -45,11 +45,11 @@ header for every request. They will never be sent implicitly by a cookie.
 CORS is [supported by all modern browsers](http://caniuse.com/cors).
 Read how to use CORS in this [HTML5 rocks tutorial on CORS](http://www.html5rocks.com/en/tutorials/cors/).
 
-### Encoding
+## Encoding
 
 JSON is encoded in UTF-8.
 
-### ETag/If-None-Match
+## ETag/If-None-Match
 
 The API support conditional GET-requests via ETag & If-None-Match headers:
 
@@ -65,16 +65,16 @@ If the content hasn't changed in the meantime the API will respond with a
 short 304 Not Modified response. This makes quite a difference for large responses
 and especially binary files.
 
-### GZip Compression
+## GZip Compression
 
 All API endpoints support GZip compression to save valuable bandwidth.
 Please take into account that enabling compression will also put more load on your clients' processors.
 
-## JSON Format Details
+# JSON Format Details
 
 Resources are represented as [JSON](http://json.org).
 
-### Date & Time Format
+## Date & Time Format
 
 Dates and times are an important part of all content.
 Let's look at an Entry:
