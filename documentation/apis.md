@@ -2,6 +2,8 @@
 page: :apis
 ---
 
+<!-- TODO: s/three APIs/four APIs, add description for images API -->
+
 Contentful offers three [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) APIs for working with your content:
 
 - The Content Delivery API (CDA), available via <https://cdn.contentful.com> is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data; images, videos and other media is delivered as files.
