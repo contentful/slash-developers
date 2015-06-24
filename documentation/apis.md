@@ -2,7 +2,12 @@
 page: :apis
 ---
 
-<!-- TODO: s/three APIs/four APIs, add description for images API. Also nice to link to https://www.contentful.com/blog/2014/08/14/do-more-with-images-on-contentful-platform/ -->
+<!-- TODO: 
+* s/three APIs/four APIs, 
+* add description for images API. 
+* Also nice to link to https://www.contentful.com/blog/2014/08/14/do-more-with-images-on-contentful-platform/ 
+* add headlines, rework links 
+-->
 
 Contentful offers three [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) APIs for working with your content:
 

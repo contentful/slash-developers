@@ -25,15 +25,23 @@ There are four APIs available, and each serves one specific purpose:
 * [Content preview API]() for previewing the content before publishing it to production
 * [Images API]() for requesting images of specific sizes and formats
 
+Also, there are several documents which are relevant for all the APIs:
+
+<!-- TODO: Links & file structure -->
+
+* [Errors]()
+* [HTTP response details]()
+* [Authentication]()
+
 ## Tutorials
 
 <!-- TODO: Links -->
 
 - [iOS development tutorials](tutorials/)
-	- [Using the delivery API on iOS](using-delivery-api-on-ios/)
-	- [Using the management API on iOS](using-management-api-on-ios/)
-	- [Offline persistence in the iOS SDK](offline-persistence-in-ios-sdk)
-	- [Using the Contentful Xcode plugin](using-contentful-xcode-plugin)
+  - [Using the delivery API on iOS](using-delivery-api-on-ios/)
+  - [Using the management API on iOS](using-management-api-on-ios/)
+  - [Offline persistence in the iOS SDK](offline-persistence-in-ios-sdk)
+  - [Using the Contentful Xcode plugin](using-contentful-xcode-plugin)
 
 ## Libraries
 
