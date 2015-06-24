@@ -28,6 +28,7 @@ There are four APIs available, and each serves one specific purpose:
 ## Tutorials
 
 TODO: FIX LINKS
+
 - [iOS development tutorials](tutorials/)
 	- [Using the delivery API on iOS](using-delivery-api-on-ios/)
 	- [Using the management API on iOS](using-management-api-on-ios/)
@@ -39,6 +40,7 @@ TODO: FIX LINKS
 We provide libraries for major programming languages and platforms so you don't have to write the code for interacting with API from scratch.
 
 TODO: LINKS
+
 * [Java/Android]()
 * [JavaScript]()
 * [Objective-C / Swift]()
