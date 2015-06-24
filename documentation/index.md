@@ -8,6 +8,8 @@ As an API-first service, we understand that providing sensible and up-to-date do
 
 These articles introduce the basics of Contentful, explain our data model, and provide some best practices. Perhaps this is the best place to start if you haven't built anything with Contentful before.
 
+<!-- TODO: Links -->
+
 - [API basics](overview/apis/)
 - [Data model](overview/data-model/)
 - [Links](overview/links/)
@@ -19,6 +21,8 @@ These articles introduce the basics of Contentful, explain our data model, and p
 This is the go-to place if you have some specific question in mind. *How do I authorize my app? How do I fetch an entry? How do I request an image of a specific size?* The questions as such are answered in the sections listed below.
 
 There are four APIs available, and each serves one specific purpose:
+
+<!-- TODO: Links & file structure -->
 
 * [Content delivery API]() for getting the content
 * [Content management API]() for saving the content
