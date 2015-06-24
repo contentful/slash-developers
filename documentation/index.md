@@ -62,7 +62,7 @@ It could be helpful to look at the existing Contentful-based apps for iOS, Andro
 
 - [Browse the codebase](examples/)
 
-## Misc
+## Getting help
 
-* [Getting help]()
-* [Status]()
+* [Support](https://support.contentful.com/hc/en-us/requests/new)
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/contentful?sort=newest)
