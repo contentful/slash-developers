@@ -29,13 +29,15 @@ Keep in mind that the synchronization endpoint will always give you all the cont
 
 ## Usage
 
-1. The first time you are using the Sync API in your application, you need to specify the `intial` URL parameter:
+- The first time you are using the Sync API in your application, you need to specify the `intial` URL parameter:
 
-	curl -X GET \
-	     -H 'Authorization: Bearer b4c0n73n7fu1' \
-	     'https://cdn.contentful.com/spaces/cfexampleapi/sync?initial=true'
+~~~ bash
+curl -X GET \
+     -H 'Authorization: Bearer b4c0n73n7fu1' \
+     'https://cdn.contentful.com/spaces/cfexampleapi/sync?initial=true'
+~~~
 
-2. In the response, you will receive a `nextPageUrl` in case your request returned more results than what fits into a single page. Eventually, when retrieving the last page, the response will contain a `nextSyncUrl` which contains an opaque sync token which can be used to receive delta updates of changes performed after your last request.
+- In the response, you will receive a `nextPageUrl` in case your request returned more results than what fits into a single page. Eventually, when retrieving the last page, the response will contain a `nextSyncUrl` which contains an opaque sync token which can be used to receive delta updates of changes performed after your last request.
 
 In addition to the regular `Entry` and `Asset` item types, there can also be `DeletedEntry` and `DeletedAsset` items in the synchronization response, these indicate that a specific resource has been deleted. The delta updates work at the resource level, if a resource has been changed, its whole content will be part of the synchronization response.
 
