@@ -1,9 +1,11 @@
-# Offline Persistence in the iOS SDK
+---
+page: :docsOfflinePersistenceIos
+---
 
 There are basically two approaches for getting content for offline use (or for any use for that matter):
 
-- **Synchronization**, which you should use if most of your content is relevant for all users and if it is not timely. Good examples for that would be a travel or reference guide.
-- **Search Queries**, which you should use if your content is timely, like a news app. You would not want to synchronize all kinds of old content for new users or people who haven't used the app in a long time in this case.
+- Synchronization, which you should use if most of your content is relevant for all users and if it is not timely. Good examples for that would be a travel or reference guide.
+- Search Queries, which you should use if your content is timely, like a news app. You would not want to synchronize all kinds of old content for new users or people who haven't used the app in a long time in this case.
 
 ## Synchronization
 
@@ -142,8 +144,6 @@ The *CDAPersistenceManager* provides a convenience method for copying the databa
 ~~~
 
 The method will also ensure that the pre-seeded data is only used after the first launch of your application. After that, you can just update your local content like you normally would.
-
----
 
 With this, our overview of synchronizing and keeping your content available for offline use is done. You should be able to provide a great experience for your users regardless of their data connection.
 

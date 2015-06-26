@@ -1,8 +1,10 @@
-# Using the Delivery API on iOS
+---
+page: :docsCdaIos
+---
 
 Read on to find out what our iOS SDK does and how you can use it to build content-driven apps more easily. The [coffee guide app][1] from our [recent hackathon][19] will provide an example and walk you through building a simple app from start to finish.
 
-### Setup
+## Setup
 
 There are three different ways for integrating the SDK into your own apps, described in detail in the [README][2]. For the purpose of this article, we will use [CocoaPods][8], a dependency manager for Objective-C, which makes it easiest to keep the SDK up-to-date:
 
@@ -14,7 +16,7 @@ end
 
 However, you are free to use Git submodules or [download a static framework][18] if that suits your workflow better.
 
-### Configuring the API client
+## Configuring the API client
 
 The class [*CDAClient*][3] manages all requests to the API. For most apps, you will have a single Space which contains all your data. In this case, it is recommended to create a singleton category on top of *CDAClient* to make it simple to dispatch requests from any part of your app:
 
@@ -36,7 +38,7 @@ The class [*CDAClient*][3] manages all requests to the API. For most apps, you w
 
 For creating a client object, the Space key and a Content Delivery API access token are required.
 
-### Accessing data
+## Accessing data
 
 Now that the client is available everywhere, you can fetch entries:
 
@@ -67,7 +69,7 @@ so that you can deal with Entries like with any other value object.
 
 In the guide app, the class also implements the *MKAnnotation* protocol, which enables directly showing Entries in a map view.
 
-### Simple views for your data
+## Simple views for your data
 
 The initial view of the guide app is a list of all coffee places it knows about. For common tasks like this, the SDK brings some UI components which can be customized to your needs. In this case, we will create a subclass of [*CDAEntriesViewController*][4], a *UITableViewController* optimized for showing a list of Entries matching a certain query.
 
@@ -105,7 +107,7 @@ You need to specify a layout, just like in a normal *UICollectionViewController*
 <img alt="*CDAResourcesCollectionViewController* in action" style="width: initial; display: block;
   margin: 0 auto;" src="https://github.com/contentful/guide-app-ios/raw/master/Screenshots/pictures.png" />
 
-### Presenting data your own way
+## Presenting data your own way
 
 Of course, it is also possible and often needed to write normal *UIViewController* subclasses and just pull in some data from Contentful. The class [*BBULocationViewController*][11] from the guide app does just that, utilising the *BBUPlace* class mentioned earlier. That way, it does not have specific knowledge about the Contentful SDK.
 

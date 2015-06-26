@@ -1,4 +1,6 @@
-# Using the Management API on iOS
+---
+page: :docsCmaIos
+---
 
 This post will walk you through implementing a simple iOS app for uploading images from the device's Camera Roll to Contentful.
 
@@ -19,7 +21,7 @@ Next we need to fetch a Space to use. Contrary to the Delivery API, we can just 
 
     [client fetchAllSpacesWithSuccess:^(CDAResponse *response, CDAArray *array) {
     	self.spaces = array.items;
-    	
+
     	[self.tableView reloadData];
     } failure:^(CDAResponse *response, NSError *error) {
        NSLog(@"Error: %@", error);
@@ -29,17 +31,17 @@ Next we need to fetch a Space to use. Contrary to the Delivery API, we can just 
 
 Once we have selected a specific Space, we can create resources, in our case an asset. This can be done using the [`-createAssetWithTitle:description:fileToUpload:success:failure:`][5] method. For this, we need to specify an URL to a file, though and we just have a local image in the photo library at the moment. For a temporary upload, we use [this Pod][6], which just gives us a file URL back, as we need it:
 
-    [[BBUUploadsImUploader sharedUploader] uploadImage:someImage 
+    [[BBUUploadsImUploader sharedUploader] uploadImage:someImage
     	completionHandler:^(NSURL *uploadURL, NSError *error) {
     		if (!uploadURL) {
     			NSLog(@"Error: %@", error);
     			return;
     		}
-    		
+
     		NSLog(@"URL of uploaded image: %@", uploadURL);
     	}];
 
-We can obtain the latest photo from the Camera Roll using the `AssetsLibrary` framework quite easily: 
+We can obtain the latest photo from the Camera Roll using the `AssetsLibrary` framework quite easily:
 
     -(void)fetchLatestPhotoWithCompletionHandler:(void (^)(UIImage* latestPhoto, NSError* error))handler {
         NSParameterAssert(handler);

@@ -1,4 +1,6 @@
-# Using the Contentful Xcode Plugin
+---
+page: :docsOfflinePersistenceIos
+---
 
 If you are using Contentful with Core Data in your iOS app, a painful manual step is recreating your content model inside Xcode. This is often both time consuming and prone to errors because mismatches between the two models can lead to bugs that are hard to spot. Today we are releasing a plugin for Xcode, which generates a Core Data model directly from your content model, making it easier than ever to use the Content Delivery API in your iOS and OS X projects.
 
@@ -12,11 +14,11 @@ The plugin adds a new "Generate Model from Contentful..." item to the "Product" 
 
 ![Screen Shot 2014-11-26 at 13.51.52](//images.contentful.com/256tjdsmm689/1Qyzs5KFkkyiIiky0ccYmk/9deb635fae91511e8ceaf9a9cdee858b/Screen_Shot_2014-11-26_at_13.51.52.png)
 
-This will bring up a dialog where, after providing your CMA access token, you will be able to select a space and a target from your Xcode project. 
+This will bring up a dialog where, after providing your CMA access token, you will be able to select a space and a target from your Xcode project.
 
 ![Screen Shot 2014-11-26 at 13.52.04](//images.contentful.com/256tjdsmm689/6uNk5czVx6COwMy8oauyys/072bbb82082553dd8490262175473638/Screen_Shot_2014-11-26_at_13.52.04.png)
 
-Using this information, a Core Data model for use with our [CoreDataManager class][3] will be generated and added to the specified target. The file itself will reside in the *"Resources"* group or in the root if that doesn't exist. 
+Using this information, a Core Data model for use with our [CoreDataManager class][3] will be generated and added to the specified target. The file itself will reside in the *"Resources"* group or in the root if that doesn't exist.
 
 Keep in mind that your own `NSManagedObject` subclasses will still need to conform to the `CDAPersistedAsset`, `CDAPersistedEntry` and `CDAPersistedSpace` protocols as before. You will not need to provide a mapping between your content model and Core Data anymore, though, as this is [derived automatically][4] if field and property names match, which is always the case when using the plugin.
 
