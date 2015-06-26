@@ -1,5 +1,5 @@
 ---
-page: :synchronization
+page: :docsSync
 ---
 
 Synchronizing content greatly improves the user experience of applications. Mobile data connections can still be slow and have a very high latency compared to broadband internet connections. When apps sync content to the device and access it from a local database (e.g. CoreData, LocalStorage, SQLite) data access is much faster and apps can provide a much better user experience.

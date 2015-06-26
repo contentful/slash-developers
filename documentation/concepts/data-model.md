@@ -1,5 +1,5 @@
 ---
-page: :datamodel
+page: :docsDataModel
 ---
 
 Content in Contentful is organized into Spaces, so that related resources for one project can be grouped together into one repository.

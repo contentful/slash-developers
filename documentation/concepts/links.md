@@ -1,5 +1,5 @@
 ---
-page: :links
+page: :docsLinks
 ---
 
 Links are a very powerful way to model relationships between

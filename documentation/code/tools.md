@@ -1,5 +1,5 @@
 ---
-page: :tools
+page: :docsTools
 ---
 
 ## Import/export

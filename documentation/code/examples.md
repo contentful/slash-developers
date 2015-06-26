@@ -1,5 +1,5 @@
 ---
-page: :examples
+page: :docsExamples
 ---
 
 ## Android

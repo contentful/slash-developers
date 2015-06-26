@@ -1,5 +1,5 @@
 ---
-page: :docsIos
+page: :docsTutorialsIos
 ---
 
 - [Using the delivery API on iOS](/developers/documentation/tutorials/ios/using-delivery-api-on-ios/)

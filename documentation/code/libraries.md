@@ -1,5 +1,5 @@
 ---
-page: :libraries
+page: :docsLibraries
 ---
 
 ## Java (also for use on Android)

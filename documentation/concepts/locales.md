@@ -1,5 +1,5 @@
 ---
-page: :locales
+page: :docsLocales
 ---
 
 A Space in Contentful can have multiple locales, defined by ISO locale codes like `en-US` or `de-DE`. Each field is localized individually and you can also provide localized variants of an Asset's file.
