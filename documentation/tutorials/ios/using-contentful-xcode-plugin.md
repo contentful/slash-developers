@@ -26,7 +26,7 @@ It is also required that you add [content type validations][5] for any links in 
 
 You can also use the model generator from the commandline:
 
-~~~
+~~~ bash
 ContentfulModelGenerator generate \
 	--spaceKey=$CONTENTFUL_SPACE_KEY \
 	--accessToken=$CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN
@@ -46,7 +46,7 @@ The first part is converting from the content model to a `NSManagedObjectModel` 
 
 The second part is handled by the [ManagedObjectModelSerializer][8] framework we created, which generates the XML representation from an in-memory `NSManagedObjectModel` instance. This can be utilized to write other tools which need to generate Core Data models and it has a really simple API:
 
-~~~swift
+~~~ swift
 let bundleName = "MyModel"
 let model: NSManagedObjectModel
 let pathURL: NSURL
@@ -56,9 +56,9 @@ let error = ModelSerializer(model: model!).generateBundle(bundleName, atPath:pat
 
 [1]: https://github.com/contentful/ContentfulXcodePlugin
 [2]: http://alcatraz.io
-[3]: https://www.contentful.com/blog/2014/05/09/ios-content-synchronization/
+[3]: /blog/2014/05/09/ios-content-synchronization/
 [4]: https://github.com/contentful/contentful.objc/commit/b82c0f2a68095e28d0d127bd9d070b09daf9b9ed
-[5]: https://www.contentful.com/r/knowledgebase/validations/
+[5]: /r/knowledgebase/validations/
 [6]: https://github.com/contentful/ContentfulXcodePlugin/blob/master/Code/XcodeProjectManipulation.m
 [7]: https://github.com/contentful/ContentfulXcodePlugin/blob/master/Code/ContentfulModelGenerator.m
 [8]: https://github.com/contentful/ManagedObjectModelSerializer

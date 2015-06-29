@@ -113,7 +113,7 @@ Of course, it is also possible and often needed to write normal *UIViewControlle
 
 Two things to consider here:
 
-* [Links][12] might not be resolved, [depending on your query][13]. If that is the case, use the *resolveWithSuccess:failure:* method on any *CDAResource*. This should be done inside your custom class, look at the *fetchPictureAssetsWithCompletionBlock:* method from *BBUPlace* for an example.
+* [Links][12] might not be resolved, depending on your query. If that is the case, use the *resolveWithSuccess:failure:* method on any *CDAResource*. This should be done inside your custom class, look at the *fetchPictureAssetsWithCompletionBlock:* method from *BBUPlace* for an example.
 * Fields can include [Markdown][14]. There is [another example app][15] which shows how to use the [Bypass][16] library for converting Markdown into *NSAttributedString* which can be displayed in a *UITextView* since iOS 7. Depending on your use case and target platform, you might want to evaluate other options, for example converting to HTML.
 
 With this, our walk through the [coffee guide app][1] is done. You should have everything you need to start building your own iOS apps with Contentful. Check out [the SDK][17] and start building.
@@ -129,12 +129,10 @@ With this, our walk through the [coffee guide app][1] is done. You should have e
 [9]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAResourcesCollectionViewController.html
 [10]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAAsset.html
 [11]: https://github.com/contentful-labs/guide-app-ios/blob/master/Code/BBULocationViewController.m
-[12]: https://www.contentful.com/developers/documentation/content-delivery-api/#links
-[13]: https://www.contentful.com/developers/documentation/content-delivery-api/#search-link
-[14]: https://www.contentful.com/blog/2014/02/28/here-be-bold-headlines/
+[12]: /developers/documentation/concepts/links
+[14]: /blog/2014/02/28/here-be-bold-headlines/
 [15]: https://github.com/contentful-labs/contentful-qa-app
 [16]: http://uncodin.github.io/bypass/
 [17]: https://github.com/contentful/contentful.objc/
 [18]: http://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.7.4.zip
-[19]: https://www.contentful.com/blog/2014/03/26/contentful-hackathon/
-[20]: https://www.contentful.com/developers/documentation/content-delivery-api/objc/
+[19]: /blog/2014/03/26/contentful-hackathon/
