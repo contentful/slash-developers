@@ -94,7 +94,7 @@ Let's look at an Entry:
 
 ~~~
 
-Here we can see a few dates and times in both the content and the [system properties](#system-properties):
+Here we can see a few dates and times in both the content and the system properties
 
 - Nyan Cat's birthday is April 2nd 2011
 - Nyan Cat's meal time is 13:00
