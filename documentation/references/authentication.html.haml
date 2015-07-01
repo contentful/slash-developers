@@ -2,64 +2,98 @@
 
 = title_anchor 'h1', "authentication", "Authentication"
 
-# Authentication
-## How to authenticate apps in Contentful
+= title_anchor 'h2', "how-to-authenticate", "How to authenticate apps in Contentful"
 
-This is an essential read for getting started with Contentful and setting up your first *Hello, World* app.
+:markdown
+  This is an essential read for getting started with Contentful and setting up your first *Hello, World* app.
+  
+= title_anchor 'h2', "general", "General"
+  
+:markdown
+  To get content from Contentful or store data in it, an app should authenticate with an with an OAuth bearer token. Contentful offers four APIs (more about that on the [APIs](insert_link_here) page), and each of them require separate authentication – except for the Images API, which delivers images without authentication.
+  
+  There are two ways of sending the authentication token to an API: you can include it either as a query parameter `access_token=$token` or an HTTP header `Authorization: Bearer $token`.
+  
+      # As a query parameter:
+      $ curl -v https://cdn.contentful.com/spaces/cfexampleapi/entries?access_token=b4c0n73n7fu1curl
 
-## General
+      # As a header:
+      $ curl -v https://cdn.contentful.com/spaces/cfexampleapi/entries -H 'Authorization: Bearer b4c0n73n7fu1'
 
-To get content from Contentful or store data in it, an app should authenticate with an with an OAuth bearer token. Contentful offers four APIs (more about that on the [APIs](insert_link_here) page), and each of them require separate authentication – except for the Images API, which delivers images without authentication.
+  If you fail to include a valid access token, you will receive an error like so:
 
-There are two ways of sending the authentication token to an API: you can include it either as a query parameter `access_token=$token` or an HTTP header `Authorization: Bearer $token`.
+      $ curl https://cdn.contentful.com/spaces/cfexampleapi/entries?access_token=wrong
+      {
+        "sys": {
+          "type": "Error",
+          "id": "AccessTokenInvalid"
+        },
+        "message": "The access token you sent could not be found or is invalid.",
+        "requestId": "bcc-1808911724"
+      }
 
-EXAMPLE BEGINS
- curl cdn.contentful.com?something=something_else&something_else=something_completely_different
- HTTP 500 Internal Server Error
+  If you include a valid access token, but one that is not able to access a resource, you will get a 404:
 
- curl -X GET https://cdn.contentful.com/spaces/sxx7gi06ja5s?access_token=6786fff03647290009d63381f986295c9a187ab079bbe41b9503fe2859328bc3
-{
-  "sys": {
-    "type": "Space",
-    "id": "sxx7gi06ja5s"
-  },
-  "name": "Landing Pages",
-  "locales": [
-    {
-      "code": "en-US",
-      "default": true,
-      "name": "U.S. English"
-    }
-  ]
- }
-EXAMPLE ENDS
+      $ curl https://cdn.contentful.com/spaces/some_other_space/entries?access_token=b4c0n73n7fu1
+      {
+        "sys": {
+          "type": "Error",
+          "id": "NotFound"
+        },
+        "message": "The resource could not be found.",
+        "details": {
+          "sys": {
+            "type": "Space"
+          }
+        },
+        "requestId": "9f3-2148374087"
+      }
 
-The sections below explain how to obtain the token for different APIs.
+  The sections below explain how to obtain the token for different APIs.
+  
+  Most likely you wouldn't need to send the token manually. We provide SDKs for a lot of platforms and languages, and they know how to authenticate with Contentful, so you don't have to write extra code. Please [see the available SDKs](/developers/code/libraries/) – most likely there's one for you. Set it up with the token and you're done.
+ 
+= title_anchor "h2", "delivery-and-preview-api", "The Delivery API and Preview API"
+  
+  These two APIs use the access token which you manually create in the Contentful web interface. [Go to the app](insert_link_here), open the space that you want to access (top left corner lists all the spaces), and navigate to the *APIs* area. Open the *API Keys* section and create your first token. Done.
+  
+  <!-- TODO: screenshot(s) would be nice -->
+  
+  Two things to keep in mind: first, a token provides read-only access to a single space – that is, you need to obtain a new token for every new space that you want to access. Second, we recommend using different access tokens for different applications or delivery channels: for example, one for iOS app and another for Android app. One of the reasons is to be able to revoke them individually in the future: with several tokens you can manipulate your delivery channels independently.
+  
+a
+= title_anchor "h2", "management-api", "The Management API"
+  
+  To access the Management API – that is, to put content in Contentful from your apps – you need to get an OAuth 2.0 token that would represent your account. Naturally, this token will have the same rights as the owner of the account.
+  
+%login-form
+  .ng-cloak
+    %div(ng-hide="auth")
+      :markdown
+        This page contains a JavaScript app which helps you get an authentication token from your account. Please log in, and the token will appear below.
+  
+      %button(ng-click="login()") Login to get the token
+    %div(ng-show="auth")
+      %div(ng-show="auth.message")
+        :markdown
+          Something went wrong during login, please refresh the page to try again.
 
-Most likely you wouldn't need to send the token manually. We provide SDKs for a lot of platforms and languages, and they know how to authenticate with Contentful, so you don't have to write extra code. Please [see the available SDKs]() – most likely there's one for you. Set it up with the token and you're done.
+          If the problem persists, please [get in touch](#getting-help) and include the following error message:
 
-## The Delivery API and Preview API
+          {{auth.message}}
 
-These two APIs use the access token which you manually create in the Contentful web interface. [Go to the app](insert_link_here), open the space that you want to access (top left corner lists all the spaces), and navigate to the *APIs* area. Open the *API Keys* section and create your first token. Done.
+        %button(ng-click="login()") Try login again
+      %div(ng-show="auth.user")
+        :markdown
+          Logged in as {{auth.user.firstName}}. Here's your OAuth access token:
 
-<!-- TODO: screenshot(s) would be nice -->
+          {{auth.accessToken}}
 
-Two things to keep in mind: first, a token provides read-only access to a single space – that is, you need to obtain a new token for every new space that you want to access. Second, we recommend using different access tokens for different applications or delivery channels: for example, one for iOS app and another for Android app. One of the reasons is to be able to revoke them individually in the future: with several tokens you can manipulate your delivery channels independently.
+          This access token should only be used for learning and testing purposes. Please create a separate OAuth application for production usage.
+        %button(ng-click="logout()") Logout
 
-## The Management API
-
-To access the Management API – that is, to put content in Contentful from your apps – you need to get an OAuth 2.0 token that would represent your account. Naturally, this token will have the same rights as the owner of the account.
-
-This page contains a JavaScript app which would help you get an authentication token from your account. Please log in, and the token will appear below.
-
-<!-- CASE 1: not logged in -->
-[ Log in to get the token ]
-
-<!-- CASE 2: logged in -->
-Your auth token is `7e9a3f483166b3dfa747270ebee44d381ec102131ee6d1064f737522c36a208d`
-
-If you would want to create apps for changing content stored in Contentful, you would need to create a custom OAuth application. See more information on that in the section below.
-
+  If you would want to create apps for changing content stored in Contentful, you would need to create a custom OAuth application. See more information on that in the section below.
+ 
 = title_anchor 'h2', "authentication-oauth-application", "Creating an OAuth 2.0 application"
 
 :markdown
