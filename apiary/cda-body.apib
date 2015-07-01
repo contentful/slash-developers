@@ -46,14 +46,6 @@ Learn more [on our Developer Center](https://contentful.com/developers/documenta
 
 Learn more [on our Developer Center](https://contentful.com/developers/documentation/content-delivery-api/http-details/).
 
-## API Versioning
-
-All API requests should specify a `Content-Type` header of `application/vnd.contentful.delivery.v1+json`.
-
-Otherwise, we will automatically route your request to the latest version of the API.
-This could break clients which expect the outdated API version.
-To be on the safe side, always specify the `Content-Type` header.
-
 # Group Spaces
 
 All content in Contentful belongs to a _Space_. You can think of spaces like databases, you will generally have at least one space for a project, but may opt to use a separate space for e.g. testing.
