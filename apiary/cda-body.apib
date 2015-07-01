@@ -423,6 +423,24 @@ Let's get all cats that like neither rainbows nor lasagna.
 
   + Attributes (Empty Array)
 
+## Existence [/spaces/{space_id}/entries{?access_token}&{attribute}%5Bexists%5D={value}]
+
+You can check for the presence of a field using the `exists` operator.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + attribute (required, string, `sys.archivedVersion`) ... The attribute to match.
+    + value (required, boolean, `false`) ... The value to match.
+
+### Query Entries [GET]
+
+Let's find all non-archived entries.
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)
+
 ## Number Ranges [/spaces/{space_id}/entries{?access_token}&content_type={content_type}&{attribute}%5Blte%5D={value}]
 
 Four range operators are available:
