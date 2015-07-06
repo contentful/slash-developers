@@ -2,7 +2,7 @@
 page: :developercenter
 ---
 
-As an API-first service, we understand that providing sensible and up-to-date docs is vitally important. Here you'll find everything necessary for setting up and going deeper: introductory explanations, API reference, more specific tutorials, SDKs and libraries for major platforms, as well as other helpful tools and code samples.
+As an API-first service, we understand that providing sensible and up-to-date docs is vitally important. Here you'll find everything necessary for setting up and going deeper: introductory explanations, API references, more specific tutorials, SDKs and libraries for major platforms, as well as other helpful tools and code samples.
 
 ## Concepts
 
@@ -14,7 +14,7 @@ These articles introduce the basics of Contentful, explain our data model, and p
 - [Locales](/developers/documentation/concepts/locales/)
 - [Synchronization](/developers/documentation/concepts/sync/)
 
-## API Reference
+## API references
 
 This is the go-to place if you have some specific question in mind. *How do I authorize my app? How do I fetch an entry? How do I request an image of a specific size?* The questions as such are answered in the sections listed below.
 
