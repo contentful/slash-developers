@@ -47,6 +47,6 @@ When syncing Entries or Assets they come in all available localizations instead 
 
 ## Further information
 
-- Using the Sync API for [offline persistence on iOS](/developers/documentation/tutorials/ios/offline-persistence-in-ios-sdk/)
+- Using the Sync API for [offline persistence on iOS](/developers/docs/tutorials/ios/offline-persistence-in-ios-sdk/)
 
 <!-- TODO Link back to CDA reference -->

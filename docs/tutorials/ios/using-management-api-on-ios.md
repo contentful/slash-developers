@@ -105,7 +105,7 @@ When building the app, be aware that it will automatically upload the lastest im
 [1]: https://github.com/contentful/contentful.objc
 [2]: https://cocoapods.org/
 [3]: https://github.com/contentful/contentful-management.objc#installation
-[4]: /developers/documentation/references/authentication/
+[4]: /developers/docs/references/authentication/
 [5]: http://cocoadocs.org/docsets/ContentfulManagementAPI/0.5.1/Classes/CMASpace.html#//api/name/createAssetWithTitle:description:fileToUpload:success:failure:
 [6]: https://github.com/neonichu/IAmUpload
 [7]: http://cocoadocs.org/docsets/ContentfulManagementAPI/0.5.1/Classes/CMAAsset.html#//api/name/processWithSuccess:failure:

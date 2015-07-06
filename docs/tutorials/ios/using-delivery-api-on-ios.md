@@ -129,7 +129,7 @@ With this, our walk through the [coffee guide app][1] is done. You should have e
 [9]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAResourcesCollectionViewController.html
 [10]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAAsset.html
 [11]: https://github.com/contentful-labs/guide-app-ios/blob/master/Code/BBULocationViewController.m
-[12]: /developers/documentation/concepts/links
+[12]: /developers/docs/concepts/links
 [14]: /blog/2014/02/28/here-be-bold-headlines/
 [15]: https://github.com/contentful-labs/contentful-qa-app
 [16]: http://uncodin.github.io/bypass/
