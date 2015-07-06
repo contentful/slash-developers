@@ -50,7 +50,7 @@ Learn more [on our Developer Center](https://contentful.com/developers/documenta
 
 All content in Contentful belongs to a _Space_. You can think of spaces like databases, you will generally have at least one space for a project, but may opt to use a separate space for e.g. testing.
 
-## Space [/spaces/{space_id}{?access_token}]
+## Space [/spaces/{space_id}?access_token={access_token}]
 
 Each space has a name, a set of locales, and some system metadata.
 
@@ -167,7 +167,7 @@ Object |Object        |Arbitrary Object.
 
 Entries are the documents contained within a space. They might represent blog posts or events or anything else that you have defined a [Content Type](#content-types) for.
 
-## Entries Collection [/spaces/{space_id}/entries{?access_token}]
+## Entries Collection [/spaces/{space_id}/entries?access_token={access_token}]
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -184,7 +184,7 @@ Entries are the documents contained within a space. They might represent blog po
 
     + Attributes (Empty Array)
 
-## Entry [/spaces/{space_id}/entries/{entry_id}{?access_token}]
+## Entry [/spaces/{space_id}/entries/{entry_id}?access_token={access_token}]
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -300,7 +300,7 @@ Example URL: <http://images.contentful.com/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b
 
 While the API calls in this section are focused on entries, search parameters are also available for assets and content types where applicable.
 
-## Content Type [/spaces/{space_id}/entries{?access_token}&content_type={content_type}]
+## Content Type [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}]
 
 Search for Entries with a specific Content Type by setting the content_type URI query parameter to the ID of the Content Type you want to search for'. Please note that only one value for content_type can be specified at a time. 
 
@@ -319,7 +319,7 @@ Let's find all Entries of Content Type "cat".
 
   + Attributes (Empty Array)
 
-## Search for exact matches by using the equality operator. [/spaces/{space_id}/entries{?access_token}&{attribute}={value}]
+## Search for exact matches by using the equality operator. [/spaces/{space_id}/entries?access_token={access_token}&{attribute}={value}]
 
 A reason to query an Entry by ID instead of retrieving the Entry itself might be because you want to include resolved links.
 
@@ -339,7 +339,7 @@ Let's find all Entries with ID nyancat (hint: IDs are unique and there can only 
 
   + Attributes (Empty Array)
 
-## The inequality operator can be used to look for fields that don't match a specific value. [/spaces/{space_id}/entries{?access_token}&{attribute}%5Bne%5D={value}]
+## The inequality operator can be used to look for fields that don't match a specific value. [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bne%5D={value}]
 
 Note that equality & inequality operators are not supported for Text fields.
 
@@ -357,7 +357,7 @@ For example, here's how to get all Entries except nyancat.
 
   + Attributes (Empty Array)
 
-## Equality/Inequality for arrays [/spaces/{space_id}/entries{?access_token}&content_type={content_type}&fields.{field_id}={value}]
+## Equality/Inequality for arrays [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}={value}]
 
 The equality/inequality operators also works with Array fields: If one of the items in an Array field matches the value the field will match.
 
@@ -376,7 +376,7 @@ Let's find all cats who like lasagna by matching fields.likes (Array) against a 
 
   + Attributes (Empty Array)
 
-## Inclusion [/spaces/{space_id}/entries{?access_token}&{attribute}%5Bin%5D={value}]
+## Inclusion [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bin%5D={value}]
 
 Filter a field by multiple values via the in operator.
 When applied to an array value there must be at least one matching item.
@@ -395,7 +395,7 @@ Let's get Entries for finn and jake.
 
   + Attributes (Empty Array)
 
-## Exclusion [/spaces/{space_id}/entries{?access_token}&content_type={content_type}&{attribute}%5Bnin%5D={value}]
+## Exclusion [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Bnin%5D={value}]
 
 Filter a field by multiple values via the in operator.
 When applied to an array value there must be at least one matching item.
@@ -415,7 +415,7 @@ Let's get all cats that like neither rainbows nor lasagna.
 
   + Attributes (Empty Array)
 
-## Existence [/spaces/{space_id}/entries{?access_token}&{attribute}%5Bexists%5D={value}]
+## Existence [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bexists%5D={value}]
 
 You can check for the presence of a field using the `exists` operator.
 
@@ -433,7 +433,7 @@ Let's find all non-archived entries.
 
   + Attributes (Empty Array)
 
-## Number Ranges [/spaces/{space_id}/entries{?access_token}&content_type={content_type}&{attribute}%5Blte%5D={value}]
+## Number Ranges [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Blte%5D={value}]
 
 Four range operators are available:
 
@@ -459,7 +459,7 @@ Let's find all cats which have 3 or less lives left.
 
   + Attributes (Empty Array)
 
-## Date Ranges [/spaces/{space_id}/entries{?access_token}&content_type={content_type}&{attribute}%5Bgte%5D={value}]
+## Date Ranges [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Bgte%5D={value}]
 
 Four range operators are available:
 
@@ -485,7 +485,7 @@ Let's look for Entries that've been updated since midnight of January 1st 2013.
 
   + Attributes (Empty Array)
 
-## Full-text Search [/spaces/{space_id}/entries{?access_token}&query={value}]
+## Full-text Search [/spaces/{space_id}/entries?access_token={access_token}&query={value}]
 
 Full-text search across all Text and Symbol Fields via query querystring parameter. Please take into account that full text search is case insensitive and therefore you might get more results than expected.
 
@@ -502,7 +502,7 @@ Let's find all Entries matching "bacon".
 
   + Attributes (Empty Array)
 
-## Full-text Search on a specific field via match operator [/spaces/{space_id}/entries{?access_token}&content_type={content_type}&fields.{field_id}%5Bmatch%5D={value}]
+## Full-text Search on a specific field via match operator [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}%5Bmatch%5D={value}]
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -519,7 +519,7 @@ Let's find all things with "bacon pancakes" in their description.
 
   + Attributes (Empty Array)
 
-## Order [/spaces/{space_id}/entries{?access_token}&order={attribute}]
+## Order [/spaces/{space_id}/entries?access_token={access_token}&order={attribute}]
 
 Order items by specifying the `order` search parameter.
 
@@ -538,7 +538,7 @@ To get all Entries ordered by their creation date.
 
   + Attributes (Empty Array)
 
-## Reverse Order [/spaces/{space_id}/entries{?access_token}&order=-{attribute}]
+## Reverse Order [/spaces/{space_id}/entries?access_token={access_token}&order=-{attribute}]
 
 Reverse the sort-order by prefixing the field with a minus-sign.
 
@@ -555,7 +555,7 @@ For example, order by time of last update starting with the newest Entries.
 
   + Attributes (Empty Array)
 
-## Limit [/spaces/{space_id}/entries{?access_token}&limit={value}]
+## Limit [/spaces/{space_id}/entries?access_token={access_token}&limit={value}]
 
 Specify the maximum number of results as limit search parameter.
 
@@ -574,7 +574,7 @@ Example: Limit to 3 Entries.
 
   + Attributes (Empty Array)
 
-## Skip [/spaces/{space_id}/entries{?access_token}&skip={value}]
+## Skip [/spaces/{space_id}/entries?access_token={access_token}&skip={value}]
 
 Specify an offset as the skip search parameter.
 
@@ -598,7 +598,7 @@ Example: Skip 3 Entries.
 
   + Attributes (Empty Array)
 
-## Including linked Entries [/spaces/{space_id}/entries{?access_token}&include={value}]
+## Including linked Entries [/spaces/{space_id}/entries?access_token={access_token}&include={value}]
 
 Links are a very powerful way to model relationships between pieces of content. Contentful's search is built to make linked data retrieval as simple as adding an additional URI query parameter to retrieve an entire web of related content that you can display in your application.
 
@@ -621,7 +621,7 @@ Example: Include 2 levels of linked entries.
 
 # Group Localization
 
-## Retrieve localized entries [/spaces/{space_id}/entries/{entry_id}{?access_token}&locale={locale}]
+## Retrieve localized entries [/spaces/{space_id}/entries/{entry_id}?access_token={access_token}&locale={locale}]
 
 Specify requested locale as locale URI query parameter.
 
@@ -664,7 +664,7 @@ To sync only specific content a type parameter can be specified for the initial 
     `DeletedAsset`: Only include deletions of Assets.
     `DeletedEntry`: Only include deletions of Entries.
 
-## Initial synchronisation [/spaces/{space_id}/sync{?access_token}&initial=true&type={type}]
+## Initial synchronisation [/spaces/{space_id}/sync?access_token={access_token}&initial=true&type={type}]
 
 A client syncs content by using the sync endpoint. A single sync consists of one or more pages, each a separate request and response.
 
@@ -683,7 +683,7 @@ Syncing with `initial=true` should only be done once for the initial sync when a
 
   + Attributes (Empty Array)
 
-## Initial synchronisation of Entries of a specific Content Type [/spaces/{space_id}/sync{?access_token}&initial=true&type=Entry&content_type={content_type_id}]
+## Initial synchronisation of Entries of a specific Content Type [/spaces/{space_id}/sync?access_token={access_token}&initial=true&type=Entry&content_type={content_type_id}]
 
 For Entries, you can also specify a `content_type` parameter. When specifying `content_type` you must specify type as `Entry` (meaning that there will be no deletions). The `type` and `content_type` parameter can only be specified at the initial sync along with the `initial` parameter. Any subsequent syncs will only include the types you have specified. If you want to sync Entries by Content Type you should separately subscribe to a `Deletion` or `DeletedEntry` sync to get notified when Entries are deleted.
 
@@ -698,7 +698,7 @@ For Entries, you can also specify a `content_type` parameter. When specifying `c
 
   + Attributes (Empty Array)
 
-## Pagination and subsequent syncs [/spaces/{space_id}/sync{?access_token}&sync_token={sync_token}]
+## Pagination and subsequent syncs [/spaces/{space_id}/sync?access_token={access_token}&sync_token={sync_token}]
 
 Synchronization responses contain either a `nextPageUrl` or `nextSyncUrl` attribute. If there is more content for the current sync, `nextPageUrl` will contain an URL with a `sync_token` which will retrieve the next page. This continues until all current content has been retrieved. At this point, the response will contain a `nextSyncUrl` which can be used to make requests in the future and retrieve delta updates between the current content on Contentful and the one you retrieved with your last sync request. Upon completion, you will receive a new `nextSyncUrl` which can again be used for future updates.
 
