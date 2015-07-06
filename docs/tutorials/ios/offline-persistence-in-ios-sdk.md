@@ -47,7 +47,7 @@ space.lastSyncToken = lastSyncToken;
 }];
 ~~~
 
-Keep in mind that continuing a synchronization session like this will not reinstate the previous data, so you have to use the delegate to keep your own copy of the data current. You can also check the [Delivery API documentation][14] for some more information on the synchronization API.
+Keep in mind that continuing a synchronization session like this will not reinstate the previous data, so you have to use the delegate to keep your own copy of the data current. You can also check the [Synchronization documentation][14] for some more information on the synchronization API.
 
 ## Persistence
 
@@ -148,7 +148,7 @@ The method will also ensure that the pre-seeded data is only used after the firs
 With this, our overview of synchronizing and keeping your content available for offline use is done. You should be able to provide a great experience for your users regardless of their data connection.
 
 [1]: https://www.contentful.com/blog/2014/09/03/content-management-api-sdk-ios/
-[2]: https://www.contentful.com/developers/docs/content-delivery-api/objc/#introduction
+[2]: /developers/docs/concepts/sync/
 [3]: https://github.com/contentful/contentful.objc/tree/master/Examples
 [4]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Classes/CDASyncedSpace.html
 [5]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Classes/CDAPersistenceManager.html
