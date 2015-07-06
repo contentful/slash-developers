@@ -27,9 +27,9 @@ There are four APIs available, and each serves one specific purpose:
 
 Also, there are several documents which are relevant for all the APIs:
 
+- [Authentication](/developers/documentation/references/authentication/)
 - [Errors](/developers/documentation/references/errors/)
 - [HTTP response details](/developers/documentation/references/http-details/)
-- [Authentication](/developers/documentation/references/authentication/)
 
 ## Tutorials
 
