@@ -82,16 +82,14 @@ Dates and times are an important part of all content.
 Let's look at an Entry:
 
 ~~~json
-
-    {
-      "sys": {
-        "type": "Entry",
-        "id": "nyancat",
-        "createdAt": "2013-05-01T08:00:00Z",
-        "updatedAt": "2013-05-02T13:00:00Z"
-      }
-    }
-
+{
+  "sys": {
+    "type": "Entry",
+    "id": "nyancat",
+    "createdAt": "2013-05-01T08:00:00Z",
+    "updatedAt": "2013-05-02T13:00:00Z"
+  }
+}
 ~~~
 
 Here we can see a few dates and times in both the content and the system properties
