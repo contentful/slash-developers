@@ -14,8 +14,8 @@ page: :docsLibraries
 
 ## Objective-C / Swift (for use on iOS and OS X)
 
-- [contentful.objc](https://github.com/contentful/contentful.objc) - [API reference](http://cocoadocs.org/docsets/ContentfulDeliveryAPI), [Quickstart](/developers/docs/tutorials/ios/cda-sdk/)
-- [contentful-management.objc](https://github.com/contentful/contentful-management.objc) - [API reference](http://cocoadocs.org/docsets/ContentfulManagementAPI), [Quickstart](/developers/docs/tutorials/ios/cma-sdk/)
+- [contentful.objc](https://github.com/contentful/contentful.objc) - [API reference](http://cocoadocs.org/docsets/ContentfulDeliveryAPI), [Quickstart](/developers/docs/tutorials/ios/using-delivery-api-on-ios/)
+- [contentful-management.objc](https://github.com/contentful/contentful-management.objc) - [API reference](http://cocoadocs.org/docsets/ContentfulManagementAPI), [Quickstart](/developers/docs/tutorials/ios/using-management-api-on-ios/)
 
 ## Python
 
