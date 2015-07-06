@@ -1,5 +1,5 @@
 ---
-page: :developercenter
+page: :docsOverview
 ---
 
 As an API-first service, we understand that providing sensible and up-to-date docs is vitally important. Here you'll find everything necessary for setting up and going deeper: introductory explanations, API references, more specific tutorials, SDKs and libraries for major platforms, as well as other helpful tools and code samples.
