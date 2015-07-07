@@ -105,7 +105,7 @@ if (self) {
 You need to specify a layout, just like in a normal *UICollectionViewController* and there is also the cell mapping again. For convenience, there is a ready made collection view cell class which fetches images from the URL in its *imageURL* property, so that is what we are going to use in this example. The *resourceType* property defines which type of Resource is going to be fetched, in this case Assets. A [*CDAAsset*][10] has a direct accessor for the *URL* which is used in the cell mapping here. Finally, the client needs to be specified, like in the previous example.
 
 <img alt="*CDAResourcesCollectionViewController* in action" style="width: initial; display: block;
-  margin: 0 auto;" src="https://github.com/contentful/guide-app-ios/raw/master/Screenshots/pictures.png" />
+  margin: 0 auto;" src="https://raw.githubusercontent.com/contentful-labs/guide-app-ios/master/Screenshots/pictures.png" />
 
 ## Presenting data your own way
 
