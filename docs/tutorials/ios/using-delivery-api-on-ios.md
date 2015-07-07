@@ -90,7 +90,7 @@ The basic setup is done in your subclasse's *init* method:
 The cell mapping is a dictionary for specifying which property of the *UITableViewCell* corresponds to properties in the content model. In addition to that, the shared client is specified as the client to use and the entries are limited to a certain Content Type. Setting the *query* property is optional, in that case all Entries will be shown.
 
 <img alt="*CDAEntriesViewController* in action" style="width: initial; display: block;
-  margin: 0 auto;" src="https://github.com/contentful/guide-app-ios/raw/master/Screenshots/menu.png" />
+  margin: 0 auto;" src="https://raw.githubusercontent.com/contentful-labs/guide-app-ios/master/Screenshots/menu.png" />
 
 If you want to show Resources in a *UICollectionView*, there is [*CDAResourcesCollectionViewController*][9]. It works similar to the Entries view controller:
 

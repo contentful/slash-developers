@@ -47,7 +47,7 @@ space.lastSyncToken = lastSyncToken;
 }];
 ~~~
 
-Keep in mind that continuing a synchronization session like this will not reinstate the previous data, so you have to use the delegate to keep your own copy of the data current. You can also check the [Synchronization documentation][14] for some more information on the synchronization API.
+Keep in mind that continuing a synchronization session like this will not reinstate the previous data, so you have to use the delegate to keep your own copy of the data current. You can also check the [Synchronization documentation][2] for some more information on the synchronization API.
 
 ## Persistence
 
