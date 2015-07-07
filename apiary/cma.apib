@@ -2,7 +2,7 @@ FORMAT: 1A
 HOST: https://api.contentful.com
 
 # Content Management API
-The Content Management API is a [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) API for managing content.
+The Content Management API is a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API for managing content.
 
 In Contentful content is represented as Entries and Assets divided into Spaces. Apps and websites depend on the structure of Entries, so every Entry must comply to a specific Content Type. Assets represent binary files like images, videos and other media.
 
@@ -22,7 +22,7 @@ Conceptual documentation, as well as further resources like tutorials and librar
 
 ## Authentication
 
-Learn about authenticating to the CMA and obtain your access token on [our Developer Center](https://contentful.com/developers/documentation/content-management-api/authentication).
+Learn about authenticating to the CMA and obtain your access token on [our Developer Center](http://docs.contentfulcma.apiary.io/#introduction/authentication).
 
 ## Resource IDs
 
@@ -53,11 +53,11 @@ Contentful uses optimistic locking. When updating an existing resource its previ
 
 ## Errors
 
-Learn more [on our Developer Center](https://contentful.com/developers/documentation/content-delivery-api/errors/).
+Learn more [on our Developer Center](http://docs.contentfulcma.apiary.io/#introduction/errors).
 
 ## HTTP Details
 
-Learn more [on our Developer Center](https://contentful.com/developers/documentation/content-delivery-api/http-details/).
+Learn more [on our Developer Center](http://docs.contentfulcma.apiary.io/#introduction/http-details).
 
 ## API Versioning
 
@@ -539,7 +539,7 @@ Assets can optionally be localized by providing separate files for each locale. 
             Authorization: Bearer b4c0n73n7fu1
 
 + Response 200 (application/vnd.contentful.management.v1+json)
-    
+
     + Attributes (Asset)
 
 ### Delete an Asset [DELETE]
@@ -761,7 +761,7 @@ increasing delays in between up to a maximum of 3 attempts.
         - url: https://www.example.com/test - URL the Webhook will call
 
 + Response 200 (application/vnd.contentful.management.v1+json)
-    
+
     + Attributes (Webhook Definition)
 
 ## Webhook [/spaces/{space_key}/webhook_definitions/{webhook_id}]
@@ -782,7 +782,7 @@ increasing delays in between up to a maximum of 3 attempts.
         - url: https://www.example.com - URL the Webhook will call
 
 + Response 200 (application/vnd.contentful.management.v1+json)
-    
+
     + Attributes (Webhook Definition)
 
 + Request Update existing
@@ -798,7 +798,7 @@ increasing delays in between up to a maximum of 3 attempts.
         - httpBasicPassword: yolo - Password for HTTP Basic Authentication
 
 + Response 200 (application/vnd.contentful.management.v1+json)
-    
+
     + Attributes (Webhook Definition)
 
 ### Get a single Webhook [GET]
@@ -809,7 +809,7 @@ increasing delays in between up to a maximum of 3 attempts.
             Authorization: Bearer b4c0n73n7fu1
 
 + Response 200 (application/vnd.contentful.management.v1+json)
-    
+
     + Attributes (Webhook Definition)
 
 ### Delete a Webhook [DELETE]
