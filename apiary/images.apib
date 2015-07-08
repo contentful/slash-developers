@@ -3,11 +3,36 @@ HOST: https://images.contentful.com
 
 # Contentful Images API
 
+This documents the use of Contentful's images API, which allows the retrieval and manipulation of image files referenced from [Assets](http://docs.contentfulcda.apiary.io/#reference/assets).
+
+The JSON for an Asset on Contentful looks like this:
+
+
+```
+"fields": {
+    "title": "Nyan Cat",
+    "file": {
+      "fileName": "Nyan_cat_250px_frame.png",
+      "contentType": "image/png",
+      "details": {
+        "image": {
+          "width": 250,
+          "height": 250
+        },
+        "size": 12273
+      },
+      "url": "//images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png"
+    }
+  }
+```
+
+This documentation deals with what parameters can be added to the URL specified in the `file.URL` field to manipulate and convert images.
+
 # Group Retrieval
 
 ## Image [/{space_id}/{token1}/{token2}/{name}]
 
-Retrieve an image as is, this is the exact URL from an Assets `file.url` field.
+Retrieve an image as is, this is the exact URL from an [Asset's](http://docs.contentfulcda.apiary.io/#reference/assets) `file.url` field.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
