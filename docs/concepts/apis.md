@@ -2,7 +2,7 @@
 page: :docsApis
 ---
 
-Contentful offers four [REST](http://en.wikipedia.org/wiki/Representational_State_Transfer) APIs for manipulating the content.
+Contentful offers four [REST](https://en.wikipedia.org/wiki/Representational_State_Transfer) APIs for manipulating the content.
 
 ## Content Delivery API
 
