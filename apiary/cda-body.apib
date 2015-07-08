@@ -40,11 +40,11 @@ In the above example, a client would get the next 100 resources by repeating the
 
 ## Errors
 
-Learn more [on our Developer Center](https://contentful.com/developers/documentation/content-delivery-api/errors/).
+Learn more [on our Developer Center](https://www.contentful.com/developers/docs/references/errors/).
 
 ## HTTP Details
 
-Learn more [on our Developer Center](https://contentful.com/developers/documentation/content-delivery-api/http-details/).
+Learn more [on our Developer Center](https://www.contentful.com/developers/docs/references/http-details/).
 
 # Group Spaces
 
@@ -279,7 +279,7 @@ Images are hosted on `images.contentful.com`. For files on this host you can att
 
 Additionaly, a `q` can be passed to define the JPEG compression quality between 1 and 100 and the `fm` parameter can be used to change the format to either "png" or "jpg".
 
-Example URL: <http://images.contentful.com/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png?w=100&fm=jpg&q=50>
+Example URL: <https://images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png?w=100&fm=jpg&q=50>
 
 + Parameters
     + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
@@ -302,9 +302,9 @@ While the API calls in this section are focused on entries, search parameters ar
 
 ## Content Type [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}]
 
-Search for Entries with a specific Content Type by setting the content_type URI query parameter to the ID of the Content Type you want to search for'. Please note that only one value for content_type can be specified at a time. 
+Search for Entries with a specific Content Type by setting the content_type URI query parameter to the ID of the Content Type you want to search for'. Please note that only one value for content_type can be specified at a time.
 
-When querying Entries and using search filters based on `fields` or ordering by `fields` you must specify this parameter. 
+When querying Entries and using search filters based on `fields` or ordering by `fields` you must specify this parameter.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -602,7 +602,7 @@ Example: Skip 3 Entries.
 
 Links are a very powerful way to model relationships between pieces of content. Contentful's search is built to make linked data retrieval as simple as adding an additional URI query parameter to retrieve an entire web of related content that you can display in your application.
 
-Learn more [on our Developer Center](https://contentful.com/developers/documentation/overview/links).
+Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/links/).
 
 By default, `include` one level is implied, you may set it to zero to not include any links. Up to 10 levels can be included in a single response.
 
@@ -629,7 +629,7 @@ The locale has to be supported by the Space that's being queried.
 
 The default locale depends on the Space.
 
-Learn more [on our Developer Center](https://contentful.com/developers/documentation/overview/locales).
+Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/locales/).
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -649,7 +649,7 @@ Learn more [on our Developer Center](https://contentful.com/developers/documenta
 
 The Sync API allows you to keep a local copy of all content of a Space up-to-date via delta updates.
 
-Learn more [on our Developer Center](https://contentful.com/developers/documentation/overview/sync).
+Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/sync/).
 
 ## Syncing specific content
 
