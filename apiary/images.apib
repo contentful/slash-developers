@@ -1,0 +1,193 @@
+FORMAT: 1A
+HOST: https://images.contentful.com
+
+# Contentful Images API
+
+This documents the use of Contentful's images API, which allows the retrieval and manipulation of image files referenced from [Assets](http://docs.contentfulcda.apiary.io/#reference/assets).
+
+The JSON for an Asset on Contentful looks like this:
+
+
+```
+"fields": {
+    "title": "Nyan Cat",
+    "file": {
+      "fileName": "Nyan_cat_250px_frame.png",
+      "contentType": "image/png",
+      "details": {
+        "image": {
+          "width": 250,
+          "height": 250
+        },
+        "size": 12273
+      },
+      "url": "//images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png"
+    }
+  }
+```
+
+This documentation deals with what parameters can be added to the URL specified in the `file.URL` field to manipulate and convert images.
+
+# Group Retrieval
+
+## Image [/{space_id}/{token1}/{token2}/{name}]
+
+Retrieve an image as is, this is the exact URL from an [Asset's](http://docs.contentfulcda.apiary.io/#reference/assets) `file.url` field.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
+    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+
+### Retrieve an image [GET]
+
++ Response 200 (image/png)
+
+# Group Changing Formats
+
+## Image format [/{space_id}/{token1}/{token2}/{name}?fm={image_format}]
+
+Images can be automatically converted to a different format, either `jpg` or `png` are supported. If no parameter is specify, you will receive your image in its original format.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
+    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + image_format (required, string, `jpg`) ... The desired image output format.
+
+### Retrieve an image [GET]
+
++ Response 200 (image/jpg)
+
+## JPEG quality [/{space_id}/{token1}/{token2}/{name}?fm=jpg&q={quality}]
+
+JPEG images can be delivered in user-defined quality.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
+    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + quality (required, number, `50`) ... Quality in percent, between 0 and 100.
+
+### Retrieve an image [GET]
+
++ Response 200 (image/jpg)
+
+## Progressive JPEGs [/{space_id}/{token1}/{token2}/{name}?fm=jpg&fl=progressive]
+
+JPEG images can also be delivered as *progressive* JPEGs.
+
+Progressive JPEG is a format which stores multiple passes of an image of progressively higher detail. When such image is being loaded, the reader would first see a low-quality pixelated version which would gradually improve in detail, until the image is fully downloaded. The idea is to display the visuals as early as possible to entertain the visitor and make the layout look as designed.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
+    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+
+### Retrieve an image [GET]
+
++ Response 200 (image/jpg)
+
+# Group Resizing & Cropping
+
+## Specify width & height [/{space_id}/{token1}/{token2}/{name}?w={width}&h={height}]
+
+Choose a custom width and height for the image.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
+    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + width (required, number, `100`) ... The desired width of the image.
+    + height (required, number, `100`) ... The desired height of the image.
+
+### Retrieve an image [GET]
+
++ Response 200 (image/png)
+
+## Modify the resizing behaviour [/{space_id}/{token1}/{token2}/{name}?fit={type}]
+
+By default, images are resized to fit inside the bounding box given by `w` and `h` while retaining their aspect ratio. Using the `fit` parameter, you can change this behaviour.
+
+Possible values:
+
+- `pad`: Same as the default, but add padding so that the generated image has exactly the given dimensions.
+- `crop`: Crop a part of the original image.
+- `fill`: Fill the given dimensions by cropping the image.
+- `thumb`: Create a thumbnail of detected faces from image, used with `f` parameter.
+- `scale`: Scale the image regardless of the original aspect ratio.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
+    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + type (required, string, `pad`) ... One of the types described above.
+
+### Retrieve an image [GET]
+
++ Response 200 (image/png)
+
+## Specify focus area for resizing [/{space_id}/{token1}/{token2}/{name}?f={type}&fit=thumb]
+
+Changes the focus area when using the `fit` type `thumb`.
+
+Possible value:
+
+- `top`, `right`, `left`, `bottom`
+- A combination like `bottom_right`
+- `face` or `faces` to focus the resizing via face detection
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
+    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + type (required, string, `face`) ... One of the types described above.
+
+### Retrieve an image [GET]
+
++ Response 200 (image/png)
+
+## Crop rounded corners & circle/elipsis [/{space_id}/{token1}/{token2}/{name}?r={radius}]
+
+You can add rounded corners to your image or crop to a circle/elipsis by using the `r` parameter.
+
+Possible values:
+
+- A float value defining the corner radius.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
+    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + radius (required, `20`) ... A value as described above.
+
+### Retrieve an image [GET]
+
++ Response 200 (image/png)
+
+# Group Image Manipulation
+
+## Background color [/{space_id}/{token1}/{token2}/{name}?w={width}&h={height}&fit=pad&bg={colour}]
+
+Background color, relevant if the fit type `pad` is used. RGB values like `rgb:9090ff`. Default: transparency.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
+    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + colour (required, string `rgb:ffffff`) ... A color constant as described above.
+    + width (required, number, `500`) ... The desired width of the image.
+    + height (required, number, `250`) ... The desired height of the image.
+
+### Retrieve an image [GET]
+
++ Response 200 (image/png)
