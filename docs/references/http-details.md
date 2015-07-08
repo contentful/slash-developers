@@ -18,7 +18,7 @@ and can not be intercepted by potential eavesdroppers.
 
 ## Cross-origin resource sharing
 
-[CORS (Cross-origin resource sharing)](http://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
+[CORS (Cross-origin resource sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
 allows JavaScript web apps to make HTTP requests to other domains.
 This is very important for third party web apps using Contentful:
 Without CORS, a JS app on https://example.com couldn't access the
@@ -99,7 +99,7 @@ Here we can see a few dates and times in both the content and the system propert
 - The nyancat entry has been created May 1st 2013 at 08:00
 - The nyancat entry has been updated May 2nd 2013 at 13:00
 
-In JSON date and time are always represented as [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601)-encoded string.
+In JSON date and time are always represented as [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)-encoded string.
 
 System-generated dates are represented as UTC.
 
