@@ -47,7 +47,7 @@ To summarize, resources should always be updated like this:
 
 This way no unseen changes are ever overridden and unexpected conflicts are unlikely to occur.
 
-## Updating & Version Locking
+## Updating and Version Locking
 
 Contentful uses optimistic locking. When updating an existing resource its previous version needs to be specified. The version is compared with the resource's current version on the server to ensure that a client doesn't overwrite a resource that has since been updated. If the version changed in between the update will be rejected.
 
