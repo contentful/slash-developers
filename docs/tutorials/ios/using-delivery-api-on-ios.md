@@ -118,7 +118,7 @@ Two things to consider here:
 
 With this, our walk through the [coffee guide app][1] is done. You should have everything you need to start building your own iOS apps with Contentful. Check out [the SDK][17] and start building.
 
-[1]: https://github.com/contentful-labs/guide-app-ios/
+[1]: https://github.com/contentful-labs/guide-app-ios
 [2]: https://github.com/contentful/contentful.objc/blob/master/README.md
 [3]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAClient.html
 [4]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAEntriesViewController.html
@@ -133,6 +133,6 @@ With this, our walk through the [coffee guide app][1] is done. You should have e
 [14]: /blog/2014/02/28/here-be-bold-headlines/
 [15]: https://github.com/contentful-labs/contentful-qa-app
 [16]: http://uncodin.github.io/bypass/
-[17]: https://github.com/contentful/contentful.objc/
+[17]: https://github.com/contentful/contentful.objc
 [18]: http://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.7.4.zip
 [19]: /blog/2014/03/26/contentful-hackathon/
