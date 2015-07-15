@@ -23,7 +23,7 @@ Link resolution works regardless of how many results are there in `items`. Some 
 - Get a list of blog posts in items with related authors, categories and other meta data in includes.
 - Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
 
-Note: If an item is already present in the response's items, it will not be included in the `include.Entry` array again!
+Note: If an item is already present in the response's items, it will not be included in the `includes.Entry` array again!
 
 Links represent relationships between Resources, for example:
 
