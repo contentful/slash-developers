@@ -433,7 +433,7 @@ Let's find all non-archived entries.
 
   + Attributes (Empty Array)
 
-## Number Ranges [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Blte%5D={value}]
+## Ranges [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Blte%5D={value}]
 
 Four range operators are available:
 
@@ -442,7 +442,7 @@ Four range operators are available:
 - `gt`: Greater than
 - `gte`: Greater than or equal to
 
-Those operators can be applied to Date, Integer and Number Fields.
+Those operators can be applied to Date and Number Fields.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -458,24 +458,6 @@ Let's find all cats which have 3 or less lives left.
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
   + Attributes (Empty Array)
-
-## Date Ranges [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Bgte%5D={value}]
-
-Four range operators are available:
-
-- `lt`: Less than
-- `lte`: Less than or equal to
-- `gt`: Greater than
-- `gte`: Greater than or equal to
-
-Those operators can be applied to Date, Integer and Number Fields.
-
-+ Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
-    + attribute (required, string, `sys.updatedAt`) ... The attribute to match.
-    + value (required, `2013-01-01T00:00:00Z`) ... The value to match.
 
 ### Query Entries [GET]
 
