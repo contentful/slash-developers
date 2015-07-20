@@ -448,25 +448,10 @@ Those operators can be applied to Date and Number Fields.
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
     + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
-    + attribute (required, string, `fields.lives`) ... The attribute to match.
-    + value (required, `3`) ... The value to match.
+    + attribute (required, string, `sys.updatedAt`) ... The attribute to match.
+    + value (required, `2013-01-01T00:00:00Z`) ... The value to match.
 
-### Query Entries (Number range) [GET]
-
-Let's find all cats which have 3 or less lives left.
-
-+ Response 200 (application/vnd.contentful.delivery.v1+json)
-
-  + Attributes (Empty Array)
-
-+ Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
-    + attribute (required, string, `fields.lives`) ... The attribute to match.
-    + value (required, `3`) ... The value to match.
-
-### Query Entries (Date range) [GET]
+### Query Entries [GET]
 
 Let's look for Entries that've been updated since midnight of January 1st 2013.
 
