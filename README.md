@@ -8,12 +8,13 @@ This repo contains the raw content for `www.contentful.com/developers/`
 
 ```bash
 $ make clean    # remove generated files
+$ make install  # install the necessary tools
 $ make preview  # generates local HTML for blueprints, shows them in a browser
 $ make publish  # publishes local content to Apiary
 $ make test     # tests the blueprints
 ```
 
-Where appropriate, tests are run before the task is performed. The test use 
+Where appropriate, tests are run before the task is performed. The test use
 [dredd](https://github.com/apiaryio/dredd) to check the blueprint against the
 actual APIs.
 

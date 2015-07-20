@@ -14,12 +14,15 @@ IMAGES_APIARY_NAME=contentfulimagesapi
 IMAGES_BLUEPRINT=images.apib
 IMAGES_HOST=https://images.contentful.com
 
-.PHONY: all clean fetch preview test
+.PHONY: all clean fetch preview test install
 
 all: test
 
 clean:
 	rm -f $(CDA_BLUEPRINT) $(CPA_BLUEPRINT)
+
+install:
+	npm install -g dredd
 
 $(CDA_BLUEPRINT): cda-header.apib cda-body.apib
 	rm -rf $@
