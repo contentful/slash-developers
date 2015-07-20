@@ -14,6 +14,8 @@ IMAGES_APIARY_NAME=contentfulimagesapi
 IMAGES_BLUEPRINT=images.apib
 IMAGES_HOST=https://images.contentful.com
 
+DREDD=node_modules/.bin/dredd
+
 .PHONY: all clean fetch preview test install
 
 all: test
@@ -22,7 +24,9 @@ clean:
 	rm -f $(CDA_BLUEPRINT) $(CPA_BLUEPRINT)
 
 install:
-	npm install -g dredd
+	@if [ ! -d "node_modules/dredd" ]; then \
+		npm install dredd; \
+	fi
 
 $(CDA_BLUEPRINT): cda-header.apib cda-body.apib
 	rm -rf $@
@@ -32,7 +36,8 @@ $(CDA_BLUEPRINT): cda-header.apib cda-body.apib
 $(CPA_BLUEPRINT): cpa-header.apib cda-body.apib
 	rm -rf $@
 	cat $^ >>$@
-	sed -i '' 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@
+	sed 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@ >tmp
+	mv tmp $@
 
 # XXX: The Apiary editor should not be used, because we use partials for CDA/CPA
 #fetch:
@@ -52,9 +57,9 @@ publish: test
 	apiary publish --api-name=$(IMAGES_APIARY_NAME) --path=$(IMAGES_BLUEPRINT)
 
 test: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT)
-	dredd $(CPA_BLUEPRINT) $(CPA_HOST)
-	dredd $(CDA_BLUEPRINT) $(CDA_HOST)
-	dredd $(CMA_BLUEPRINT) $(CMA_HOST) \
+	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST)
+	$(DREDD) $(CDA_BLUEPRINT) $(CDA_HOST)
+	$(DREDD) $(CMA_BLUEPRINT) $(CMA_HOST) \
 		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
 		-m GET #-m PUT -m POST #-m DELETE
-	#dredd $(IMAGES_BLUEPRINT) $(IMAGES_HOST)
+	#$(DREDD) $(IMAGES_BLUEPRINT) $(IMAGES_HOST)
