@@ -36,7 +36,8 @@ $(CDA_BLUEPRINT): cda-header.apib cda-body.apib
 $(CPA_BLUEPRINT): cpa-header.apib cda-body.apib
 	rm -rf $@
 	cat $^ >>$@
-	sed -i '' 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@
+	sed 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@ >tmp
+	mv tmp $@
 
 # XXX: The Apiary editor should not be used, because we use partials for CDA/CPA
 #fetch:
