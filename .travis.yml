@@ -1,0 +1,15 @@
+language: node_js
+
+node_js:
+  - iojs-v2
+
+before_install:
+  - make -C apiary install
+
+script:
+  - make -C apiary test
+
+cache:
+  directories:
+    - apiary/node_modules
+    - node_modules
