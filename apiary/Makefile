@@ -24,7 +24,9 @@ clean:
 	rm -f $(CDA_BLUEPRINT) $(CPA_BLUEPRINT)
 
 install:
-	npm install dredd
+	@if [ ! -d "node_modules/dredd" ]; then \
+		npm install dredd; \
+	fi
 
 $(CDA_BLUEPRINT): cda-header.apib cda-body.apib
 	rm -rf $@
