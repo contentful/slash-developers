@@ -33,6 +33,11 @@ $ ./scripts/public_projects.rb
 This will list all Contentful public GitHub repositories, which aren't referenced
 from the documentation.
 
+## Setting up the environment
+
+- For running the tests, the environment variable `CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN` needs to be set to a valid CMA token which has access to the testing space "5smsq22uwt4m".
+- For publishing to Apiary, the environment variable `APIARY_API_KEY` needs to be set (see [this](https://github.com/apiaryio/apiary-client#install) for more information).
+
 ## Tips on contributing
 
  - use branches & pull requests
