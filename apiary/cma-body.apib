@@ -599,6 +599,96 @@ An Asset can only be archived when it's not published.
 
     + Attributes (Asset Update)
 
+# Group Locales
+
+Locales allow the definition of translated content for both Assets and Entries. A locale
+consists mainly of a name and a locale code.
+
+## Locale Collection [/spaces/{space_key}/locales]
+
+### Get all Locales of a Space [GET]
+
+The locale collection endpoint returns a list of all the created locales. One of those
+will have the flag `default` set to true and is the locale that is used if no other
+locale was specified for the request (e.g. when reading an entry).
+
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+  + Attributes (Empty Array)
+
+### Create a Locale [POST]
+
+Posting a payload to the locale's collection endpoint creates a new locale
+for the given space. Please note that you cannot create two locales with
+the same locale code.
+
++ Request
+  + Headers
+
+            Authorization: Bearer b4c0n73n7fu1111
+            Content-Type: application/vnd.contentful.management.v1+json
+  + Attributes (Locale)
++ Response 201 (application/vnd.contentful.management.v1+json)
+  + Attribute (Locale Complete)
+
+## Locale [/spaces/{space_key}/locales/{locale_id}]
+
++ Parameters
+  + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+  + locale_id: 4g2JHxgYZp2pD8bXYGj8Xi (required, string) - ID of the Locale in form of a string
+
+### Get a Locale [GET]
+
+This endpoint returns a single locale with all it's metadata.
+
++ Request
+  + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
++ Response 200 (application/vnd.contentful.management.v1+json)
+  + Attribute (Locale Complete)
+
+### Update a Locale [PUT]
+
+Putting a payload against a single entities endpoint allows an update of a locale.
+
+Please note that renaming a locale changes the responses for upcoming requests, which
+might break your existing code.
+
+Note additionally that you cannot change a code of a locale to an already existing locale
+code.
+
++ Request
+  + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+  + Attributes (Locale)
++ Response 201 (application/vnd.contentful.management.v1+json)
+  + Attribute (Locale Complete)
+
+### Deleting a Locale [DELETE]
+
+This endpoint deletes an existing locale. Please note that it is **not** possible to recover
+from this action! Every content that was stored for that specific locale gets deleted and
+cannot be recreated by creating the same locale again.
+
++ Request
+  + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
++ Response 204
+
 # Group Search Parameters
 
 [See CDA documentation](http://docs.contentfulcda.apiary.io/#reference/search-parameters) for a list of search parameters supported for querying resources. Please note that the CMA does not support the `include` functionality.
@@ -925,6 +1015,24 @@ increasing delays in between up to a maximum of 3 attempts.
         - `en-US`: `Hello, World!`
     - body
         - `en-US`: Bacon is healthy!
+
+### Locale
+
+- name: `English (United States)` (string, required)
+- code: `en-US` (string, required)
+
+### Locale Complete
+
+- Include Locale
+- contentDeliveryApi: `true` (boolean)
+- contentManagementApi: `true` (boolean)
+- `default`: `false` (boolean)
+- sys - System Attributes
+  - type: `Locale` (string)
+  - id: `4H1P65ntFSlWtsNN7dZLIS` (string)
+  - version: 0
+  - space (Space Link)
+  - Include Resource Metadata
 
 ### Resource Metadata
 
