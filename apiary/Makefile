@@ -27,6 +27,10 @@ install:
 	@if [ ! -f $(DREDD) ]; then \
 		npm install dredd; \
 	fi
+	@$$(bundle show apiaryio > /dev/null); \
+	if [ $$? != 0 ]; then \
+		bundle install; \
+	fi
 
 $(CDA_BLUEPRINT): cda-header.apib cda-body.apib
 	rm -rf $@
