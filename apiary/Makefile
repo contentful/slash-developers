@@ -15,6 +15,7 @@ IMAGES_BLUEPRINT=images.apib
 IMAGES_HOST=https://images.contentful.com
 
 DREDD=node_modules/.bin/dredd
+APIARY=bundle exec apiary
 
 .PHONY: all clean fetch preview test install
 
@@ -49,16 +50,16 @@ $(CPA_BLUEPRINT): cpa-header.apib cda-body.apib
 #	apiary fetch --api-name=$(CMA_APIARY_NAME) >$(CMA_BLUEPRINT)
 
 preview: test
-	apiary preview --path=$(CDA_BLUEPRINT)
-	apiary preview --path=$(CMA_BLUEPRINT)
-	apiary preview --path=$(CPA_BLUEPRINT)
-	apiary preview --path=$(IMAGES_BLUEPRINT)
+	$(APIARY) preview --path=$(CDA_BLUEPRINT)
+	$(APIARY) preview --path=$(CMA_BLUEPRINT)
+	$(APIARY) preview --path=$(CPA_BLUEPRINT)
+	$(APIARY) preview --path=$(IMAGES_BLUEPRINT)
 
 publish: test
-	apiary publish --api-name=$(CDA_APIARY_NAME) --path=$(CDA_BLUEPRINT)
-	apiary publish --api-name=$(CMA_APIARY_NAME) --path=$(CMA_BLUEPRINT)
-	apiary publish --api-name=$(CPA_APIARY_NAME) --path=$(CPA_BLUEPRINT)
-	apiary publish --api-name=$(IMAGES_APIARY_NAME) --path=$(IMAGES_BLUEPRINT)
+	$(APIARY) publish --api-name=$(CDA_APIARY_NAME) --path=$(CDA_BLUEPRINT)
+	$(APIARY) publish --api-name=$(CMA_APIARY_NAME) --path=$(CMA_BLUEPRINT)
+	$(APIARY) publish --api-name=$(CPA_APIARY_NAME) --path=$(CPA_BLUEPRINT)
+	$(APIARY) publish --api-name=$(IMAGES_APIARY_NAME) --path=$(IMAGES_BLUEPRINT)
 
 test: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT)
 	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST)
