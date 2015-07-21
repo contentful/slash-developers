@@ -24,7 +24,7 @@ clean:
 	rm -f $(CDA_BLUEPRINT) $(CPA_BLUEPRINT)
 
 install:
-	@if [ ! -d "node_modules/dredd" ]; then \
+	@if [ ! -f $(DREDD) ]; then \
 		npm install dredd; \
 	fi
 
