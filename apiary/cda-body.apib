@@ -94,13 +94,13 @@ Each space has a name, a set of locales, and some system metadata.
 
 # Group Content Types
 
-## Content Type Collection [/spaces/{space_key}/content_types]
+## Content Type Collection [/spaces/{space_id}/content_types]
 
 Content Types are schemas describing the shape of Entries. They mainly consist of a list of fields acting as a blueprint for Entries.
 
 
 + Parameters
-    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
 
 ### Get all content types of a Space [GET]
 
@@ -113,7 +113,7 @@ Content Types are schemas describing the shape of Entries. They mainly consist o
 
     + Attributes (Empty Array)
 
-## Content Type [/spaces/{space_key}/content_types/{content_type_id}]
+## Content Type [/spaces/{space_id}/content_types/{content_type_id}]
 
 Field       |Type        |Description
 ------------|------------|----------------------------------------------------------
@@ -149,7 +149,7 @@ Array  |Array         |List of values. Value type depends on `field.items.type`.
 Object |Object        |Arbitrary Object.
 
 + Parameters
-    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
     + content_type_id: cat (required, string) - ID of the Content Type in form of a string
 
 ### Get a single Content Type [GET]
@@ -204,7 +204,7 @@ Entries are the documents contained within a space. They might represent blog po
 
 # Group Assets
 
-## Assets Collection [/spaces/{space_key}/assets]
+## Assets Collection [/spaces/{space_id}/assets]
 
 Assets represent files in a Space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to Entries through Links.
 
@@ -227,7 +227,7 @@ fields.file.details             |Object        |Details of the file, depending o
 fields.file.details.size        |Number        |Size (in bytes) of the file.
 
 + Parameters
-    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
 
 + Model (application/vnd.contentful.delivery.v1+json)
 
@@ -269,7 +269,7 @@ fields.file.details.size        |Number        |Size (in bytes) of the file.
 
     + Attributes (Empty Array)
 
-## Asset [/spaces/{space_key}/assets/{asset_id}]
+## Asset [/spaces/{space_id}/assets/{asset_id}]
 
 ### Image Asset resizing
 
@@ -282,7 +282,7 @@ Additionaly, a `q` can be passed to define the JPEG compression quality between 
 Example URL: <https://images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png?w=100&fm=jpg&q=50>
 
 + Parameters
-    + space_key: cfexampleapi (required, string) - ID of the Space in form of a string
+    + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
     + asset_id: nyancat (required, string) - ID of the Asset in form of a string
 
 ### Get a single Asset [GET]

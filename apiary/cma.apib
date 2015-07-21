@@ -112,10 +112,10 @@ The `X-Contentful-Organization` header is optional if an account only belongs to
 
     + Attributes (Empty Array)
 
-## Space [/spaces/{space_key}]
+## Space [/spaces/{space_id}]
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
 
 ### Create/Update a Space [PUT]
 
@@ -173,12 +173,12 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 # Group Content Types
 
-## Content Type Collection [/spaces/{space_key}/content_types]
+## Content Type Collection [/spaces/{space_id}/content_types]
 
 Content Types are schemas describing the shape of Entries. They mainly consist of a list of fields acting as a blueprint for Entries.
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
 
 ### Get all content types of a Space [GET]
 
@@ -207,10 +207,10 @@ Let's create a Content Type for blog posts. Blog posts will have a title and a b
 
     + Attributes (Content Type)
 
-## Content Type [/spaces/{space_key}/content_types/{content_type_id}]
+## Content Type [/spaces/{space_id}/content_types/{content_type_id}]
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + content_type_id: 3ORKIAOaJqQWWg86MWkyOs (required, string) - ID of the Content Type in form of a string
 
 ### Create/Update a Content Type [PUT]
@@ -303,10 +303,10 @@ Before you can delete a Content Type you need to deactivate it.
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
-## Content Type Activation [/spaces/{space_key}/content_types/{content_type_id}/published]
+## Content Type Activation [/spaces/{space_id}/content_types/{content_type_id}/published]
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + content_type_id: 3ORKIAOaJqQWWg86MWkyOs (required, string) - ID of the Content Type in form of a string
 
 ### Activate a Content Type [PUT]
@@ -334,12 +334,12 @@ Before you can delete a Content Type you need to deactivate it.
 
 # Group Entries
 
-## Entries Collection [/spaces/{space_key}/entries]
+## Entries Collection [/spaces/{space_id}/entries]
 
 Entries represent textual content in a Space. An Entry's data adheres to a certain Content Type.
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
 
 ### Get all entries of a Space [GET]
 
@@ -352,10 +352,10 @@ Entries represent textual content in a Space. An Entry's data adheres to a certa
 
     + Attributes (Empty Array)
 
-## Entry [/spaces/{space_key}/entries/{entry_id}]
+## Entry [/spaces/{space_id}/entries/{entry_id}]
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + entry_id: helloworld (required, string) - ID of the Entry in form of a string
 
 ### Create/Update an Entry  [PUT]
@@ -412,12 +412,12 @@ When creating a new Entry you need to pass the ID of the Entry's desired Content
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
-## Entry Publishing [/spaces/{space_key}/entries/{entry_id}/published]
+## Entry Publishing [/spaces/{space_id}/entries/{entry_id}/published]
 
 After publishing the Entry it will be available via the Content Delivery API.
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + entry_id: helloworld (required, string) - ID of the Entry in form of a string
 
 ### Publish an Entry [PUT]
@@ -444,12 +444,12 @@ After publishing the Entry it will be available via the Content Delivery API.
 
     + Attributes (Entry Update)
 
-## Entry Archiving [/spaces/{space_key}/entries/{entry_id}/archived]
+## Entry Archiving [/spaces/{space_id}/entries/{entry_id}/archived]
 
 An Entry can only be archived when it's not published.
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + entry_id: helloworld (required, string) - ID of the Entry in form of a string
 
 ### Archive an Entry [PUT]
@@ -478,14 +478,14 @@ An Entry can only be archived when it's not published.
 
 # Group Assets
 
-## Assets Collection [/spaces/{space_key}/assets]
+## Assets Collection [/spaces/{space_id}/assets]
 
 Assets represent files in a Space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to Entries through Links.
 
 Assets can optionally be localized by providing separate files for each locale. Those Assets which are not localized simply provide a single file under the default locale.
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
 
 ### Get all Assets of a Space [GET]
 
@@ -498,10 +498,10 @@ Assets can optionally be localized by providing separate files for each locale. 
 
     + Attributes (Empty Array)
 
-## Asset [/spaces/{space_key}/assets/{asset_id}]
+## Asset [/spaces/{space_id}/assets/{asset_id}]
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
 
 ### Create/Update an Asset [PUT]
@@ -552,12 +552,12 @@ Assets can optionally be localized by providing separate files for each locale. 
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
-## Asset Processing [/spaces/{space_key}/assets/{asset_id}/files/{locale}/process]
+## Asset Processing [/spaces/{space_id}/assets/{asset_id}/files/{locale}/process]
 
 Asset processing happens asynchronously, the call will not block until it has finished.
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
     + locale: `en-US` (required, string) - Locale for which files should be processed
 
@@ -571,12 +571,12 @@ Asset processing happens asynchronously, the call will not block until it has fi
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
-## Asset Publishing [/spaces/{space_key}/assets/{asset_id}/published]
+## Asset Publishing [/spaces/{space_id}/assets/{asset_id}/published]
 
 After publishing the Asset it will be available via the Content Delivery API.
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
 
 ### Publish an Asset [PUT]
@@ -603,12 +603,12 @@ After publishing the Asset it will be available via the Content Delivery API.
 
     + Attributes (Asset)
 
-## Asset Archiving [/spaces/{space_key}/assets/{asset_id}/archived]
+## Asset Archiving [/spaces/{space_id}/assets/{asset_id}/archived]
 
 An Asset can only be archived when it's not published.
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
 
 ### Archive an Asset [PUT]
@@ -733,10 +733,10 @@ Depending on the HTTP response's status code the webhook will either succeed or 
 In case of an error, the webhook will periodically retry its request with
 increasing delays in between up to a maximum of 3 attempts.
 
-## Webhooks Collection [/spaces/{space_key}/webhook_definitions]
+## Webhooks Collection [/spaces/{space_id}/webhook_definitions]
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
 
 ### Get all Webhooks of a Space [GET]
 
@@ -764,10 +764,10 @@ increasing delays in between up to a maximum of 3 attempts.
 
     + Attributes (Webhook Definition)
 
-## Webhook [/spaces/{space_key}/webhook_definitions/{webhook_id}]
+## Webhook [/spaces/{space_id}/webhook_definitions/{webhook_id}]
 
 + Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
     + webhook_id: foobar (required, string) - ID of the Webhook in form of a string
 
 ### Create/Update a Webhook [PUT]
