@@ -117,23 +117,9 @@ The `X-Contentful-Organization` header is optional if an account only belongs to
 + Parameters
     + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
 
-### Create/Update a Space [PUT]
+### Update a Space [PUT]
 
 The `X-Contentful-Organization` header is optional if an account only belongs to one organization.
-
-+ Request Create with a predefined identifier
-    + Headers
-
-            Authorization: Bearer b4c0n73n7fu1
-            Content-Type: application/vnd.contentful.management.v1+json
-            X-Contentful-Organization: 1PLOOEmTI2S1NYald2TemO
-
-    + Attributes
-        - name: Example Space - Name of the Space
-
-+ Response 201 (application/vnd.contentful.management.v1+json)
-
-    + Attributes (Space)
 
 + Request Update existing
     + Headers
