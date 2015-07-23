@@ -82,38 +82,28 @@ Each space has a name, a set of locales, and some system metadata.
 
 ### Get a Space [GET]
 
-+ Request
-
-    + Headers
-
-            Authorization: Bearer {access_token}
-
 + Response 200
 
     [Space][]
 
 # Group Content Types
 
-## Content Type Collection [/spaces/{space_id}/content_types]
+## Content Type Collection [/spaces/{space_id}/content_types?access_token={access_token}]
 
 Content Types are schemas describing the shape of Entries. They mainly consist of a list of fields acting as a blueprint for Entries.
 
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
 
 ### Get all content types of a Space [GET]
-
-+ Request
-    + Headers
-
-            Authorization: Bearer b4c0n73n7fu1
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
     + Attributes (Empty Array)
 
-## Content Type [/spaces/{space_id}/content_types/{content_type_id}]
+## Content Type [/spaces/{space_id}/content_types/{content_type_id}?access_token={access_token}]
 
 Field       |Type        |Description
 ------------|------------|----------------------------------------------------------
@@ -150,14 +140,10 @@ Object |Object        |Arbitrary Object.
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
     + content_type_id: cat (required, string) - ID of the Content Type in form of a string
 
 ### Get a single Content Type [GET]
-
-+ Request
-    + Headers
-
-            Authorization: Bearer b4c0n73n7fu1
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -175,11 +161,6 @@ Entries are the documents contained within a space. They might represent blog po
 
 ### Get all entries of a Space [GET]
 
-+ Request
-    + Headers
-
-            Authorization: Bearer b4c0n73n7fu1
-
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
     + Attributes (Empty Array)
@@ -193,18 +174,13 @@ Entries are the documents contained within a space. They might represent blog po
 
 ### Get a single entry [GET]
 
-  + Request
-      + Headers
-
-              Authorization: Bearer b4c0n73n7fu1
-
   + Response 200 (application/vnd.contentful.delivery.v1+json)
 
       + Attributes (Entry)
 
 # Group Assets
 
-## Assets Collection [/spaces/{space_id}/assets]
+## Assets Collection [/spaces/{space_id}/assets?access_token={access_token}]
 
 Assets represent files in a Space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to Entries through Links.
 
@@ -228,6 +204,7 @@ fields.file.details.size        |Number        |Size (in bytes) of the file.
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
 
 + Model (application/vnd.contentful.delivery.v1+json)
 
@@ -260,16 +237,11 @@ fields.file.details.size        |Number        |Size (in bytes) of the file.
 
 ### Get all Assets of a Space [GET]
 
-+ Request
-    + Headers
-
-            Authorization: Bearer b4c0n73n7fu1
-
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
     + Attributes (Empty Array)
 
-## Asset [/spaces/{space_id}/assets/{asset_id}]
+## Asset [/spaces/{space_id}/assets/{asset_id}?access_token={access_token}]
 
 ### Image Asset resizing
 
@@ -284,13 +256,9 @@ Example URL: <https://images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
     + asset_id: nyancat (required, string) - ID of the Asset in form of a string
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
 
 ### Get a single Asset [GET]
-
-+ Request
-    + Headers
-
-            Authorization: Bearer b4c0n73n7fu1
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
