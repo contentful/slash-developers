@@ -37,6 +37,14 @@ $(CDA_BLUEPRINT): cda-header.apib cda-intro.apib cda-body.apib
 	rm -rf $@
 	cat $^ >>$@
 
+$(CMA_BLUEPRINT): cma-header.apib cma-body.apib
+	rm -rf $@
+	cat $^ >>$@
+
+$(IMAGES_BLUEPRINT): images-header.apib images-body.apib
+	rm -rf $@
+	cat $^ >>$@
+
 # This task replaces the CDA token with a Preview token via `sed`
 $(CPA_BLUEPRINT): cpa-header.apib cpa-intro.apib cda-body.apib
 	rm -rf $@
@@ -61,7 +69,7 @@ publish: test
 	$(APIARY) publish --api-name=$(CPA_APIARY_NAME) --path=$(CPA_BLUEPRINT)
 	$(APIARY) publish --api-name=$(IMAGES_APIARY_NAME) --path=$(IMAGES_BLUEPRINT)
 
-test: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT)
+test: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
 	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST)
 	$(DREDD) $(CDA_BLUEPRINT) $(CDA_HOST)
 	$(DREDD) $(CMA_BLUEPRINT) $(CMA_HOST) \
