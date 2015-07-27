@@ -63,7 +63,11 @@ preview: test
 	$(APIARY) preview --path=$(CPA_BLUEPRINT)
 	$(APIARY) preview --path=$(IMAGES_BLUEPRINT)
 
-publish: test
+publish:
+	@if [ "$(CI)" != "true" ]; then \
+		echo "Publishing should only happen via CI!"; \
+		exit 1; \
+	fi
 	$(APIARY) publish --api-name=$(CDA_APIARY_NAME) --path=$(CDA_BLUEPRINT)
 	$(APIARY) publish --api-name=$(CMA_APIARY_NAME) --path=$(CMA_BLUEPRINT)
 	$(APIARY) publish --api-name=$(CPA_APIARY_NAME) --path=$(CPA_BLUEPRINT)
