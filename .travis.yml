@@ -1,21 +1,19 @@
 language: node_js
-
 node_js:
-  - iojs-v2
-
+- iojs-v2
 before_install:
-  - make -C apiary install
-
+- make -C apiary install
 script:
-  - make -C apiary test
-
+- make -C apiary test
 cache:
   directories:
-    - apiary/node_modules
-    - node_modules
-
+  - apiary/node_modules
+  - node_modules
 deploy:
   provider: script
   script: make -C apiary publish
   on:
     branch: master
+notifications:
+  slack:
+    secure: ETFt72gUFY/CcMfba4IgtQXPikYnU+cHFVhuLqP47hHbIBoTKCFBr1ofp4HMpfNTxLFBOty1It1qpWvWAvYrijUVfhOTFo2tzDtAk40vnfSkXlMz9s131f0YjpFytW66VoOTDHwbQzBBHUGIXZDRHOusDyq9RwLEhB0T0TDVL1vf0jW3NGqT9EWHGArsVQ+UkszF6pJ0y94WdJ4nxVLOOKQhcNsd3hP6PY8VB+73DJZp+Ary6tOUpm59pWQasxkeCzx2CMX9iBFhmDzuA4LHms0qKZvljkFzYcmL99oIh8H87G37mt+ksnlrlltGqXnxvA1imyt0Xd2JjLr2PEN5f40ODP3wsyK23EQ60TIOdQShZS9ywEyKiU/T8x36tqKVXHIxkR6SDFjyIKsM4DuFwWWDLqyP+b5K7xCiRq4RnInpvEIOjn8J6n2pfwVxoXjFAP6re+imamQjjGmIskaQeJZyHKq7Baz6mwNk8uMVRQNjlxku3KEK9kh8bjHwhVUloxjIPMhNsCmJScOF3uZnXx3Z0v7OIVctEzhpP3CPxaI2PnJ0loPjf9fAG+aTcUQonnlhtMdT0jxCIPfa6yidv/02CfTSjnvD35N+ApapCZwDkj+eLa1yiSZENJpeHFLufCsB9UNJsBVWiq1ZZW+7KinYVxXTDv/PaAK/r67dVOI=
