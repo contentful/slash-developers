@@ -76,4 +76,4 @@ test: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
 		--hookfiles=./test-hooks.js \
 		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
 		-m GET #-m PUT -m POST #-m DELETE
-	#$(DREDD) $(IMAGES_BLUEPRINT) $(IMAGES_HOST)
+	#$(DREDD) $(IMAGES_BLUEPRINT) $(IMAGES_HOST) --hookfiles=./test-hooks.js
