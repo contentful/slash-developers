@@ -17,5 +17,6 @@ cache:
 deploy:
   provider: script
   script: make -C apiary publish
+  skip_cleanup: true
   on:
     branch: master
