@@ -17,7 +17,7 @@ IMAGES_HOST=https://images.contentful.com
 DREDD=node_modules/.bin/dredd
 APIARY=bundle exec apiary
 
-.PHONY: all clean fetch preview test install prepare
+.PHONY: all clean fetch preview test install prepare check_ci_var check_apiary_token check_cma_token
 
 all: test
 
@@ -57,17 +57,13 @@ $(CPA_BLUEPRINT): cpa-header.apib blueprint-header.apib cpa-intro.apib cda-body.
 #	apiary fetch --api-name=$(CDA_APIARY_NAME) >$(CDA_BLUEPRINT)
 #	apiary fetch --api-name=$(CMA_APIARY_NAME) >$(CMA_BLUEPRINT)
 
-preview: test
+preview: check_apiary_token test
 	$(APIARY) preview --path=$(CDA_BLUEPRINT)
 	$(APIARY) preview --path=$(CMA_BLUEPRINT)
 	$(APIARY) preview --path=$(CPA_BLUEPRINT)
 	$(APIARY) preview --path=$(IMAGES_BLUEPRINT)
 
-publish: prepare
-	@if [ "$(CI)" != "true" ]; then \
-		echo "Publishing should only happen via CI!"; \
-		exit 1; \
-	fi
+publish: check_apiary_token check_ci_var prepare
 	$(APIARY) publish --api-name=$(CDA_APIARY_NAME) --path=$(CDA_BLUEPRINT)
 	$(APIARY) publish --api-name=$(CMA_APIARY_NAME) --path=$(CMA_BLUEPRINT)
 	$(APIARY) publish --api-name=$(CPA_APIARY_NAME) --path=$(CPA_BLUEPRINT)
@@ -75,7 +71,7 @@ publish: prepare
 
 prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
 
-test: prepare
+test: check_cma_token prepare
 	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST) --hookfiles=./test-hooks.js
 	$(DREDD) $(CDA_BLUEPRINT) $(CDA_HOST) --hookfiles=./test-hooks.js
 	$(DREDD) $(CMA_BLUEPRINT) $(CMA_HOST) \
@@ -83,3 +79,22 @@ test: prepare
 		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
 		-m GET #-m PUT -m POST #-m DELETE
 	#$(DREDD) $(IMAGES_BLUEPRINT) $(IMAGES_HOST) --hookfiles=./test-hooks.js
+
+#################
+# Sanity checks #
+#################
+
+# Call: $(call check_env_variable,VAR_NAME)
+define check_env_variable
+	@if [ "$($1)" = "" ]; then \
+		echo "Environment variable not set: $1"; \
+		exit 1; \
+	fi
+endef
+
+check_ci_var:
+	$(call check_env_variable,CI)
+check_apiary_token:
+	$(call check_env_variable,APIARY_API_KEY)
+check_cma_token:
+	$(call check_env_variable,CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)
