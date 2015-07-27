@@ -17,7 +17,7 @@ IMAGES_HOST=https://images.contentful.com
 DREDD=node_modules/.bin/dredd
 APIARY=bundle exec apiary
 
-.PHONY: all clean fetch preview test install prepare check_ci_var check_apiary_token check_cma_token
+.PHONY: all clean fetch preview test install prepare check_ci_var check_apiary_token check_cma_token notify_slack publish publish_docs
 
 all: test
 
@@ -57,19 +57,21 @@ $(CPA_BLUEPRINT): cpa-header.apib blueprint-header.apib cpa-intro.apib cda-body.
 #	apiary fetch --api-name=$(CDA_APIARY_NAME) >$(CDA_BLUEPRINT)
 #	apiary fetch --api-name=$(CMA_APIARY_NAME) >$(CMA_BLUEPRINT)
 
+prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
+
 preview: check_apiary_token test
 	$(APIARY) preview --path=$(CDA_BLUEPRINT)
 	$(APIARY) preview --path=$(CMA_BLUEPRINT)
 	$(APIARY) preview --path=$(CPA_BLUEPRINT)
 	$(APIARY) preview --path=$(IMAGES_BLUEPRINT)
 
-publish: check_apiary_token check_ci_var prepare
+publish: check_apiary_token check_ci_var prepare publish_docs notify_slack
+
+publish_docs:
 	$(APIARY) publish --api-name=$(CDA_APIARY_NAME) --path=$(CDA_BLUEPRINT)
 	$(APIARY) publish --api-name=$(CMA_APIARY_NAME) --path=$(CMA_BLUEPRINT)
 	$(APIARY) publish --api-name=$(CPA_APIARY_NAME) --path=$(CPA_BLUEPRINT)
 	$(APIARY) publish --api-name=$(IMAGES_APIARY_NAME) --path=$(IMAGES_BLUEPRINT)
-
-prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
 
 test: check_cma_token prepare
 	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST) --hookfiles=./test-hooks.js
@@ -79,6 +81,11 @@ test: check_cma_token prepare
 		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
 		-m GET #-m PUT -m POST #-m DELETE
 	#$(DREDD) $(IMAGES_BLUEPRINT) $(IMAGES_HOST) --hookfiles=./test-hooks.js
+
+notify_slack:
+	@if [ "$(WEBHOOK_URL)" != "" -a "$(SLACK_CHANNEL)" != "" ]; then \
+		./notify-slack.sh "$(WEBHOOK_URL)" "#$(SLACK_CHANNEL)" "A new version of the developers documentation was deployed."; \
+	fi
 
 #################
 # Sanity checks #
