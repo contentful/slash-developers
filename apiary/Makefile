@@ -17,7 +17,7 @@ IMAGES_HOST=https://images.contentful.com
 DREDD=node_modules/.bin/dredd
 APIARY=bundle exec apiary
 
-.PHONY: all clean fetch preview test install
+.PHONY: all clean fetch preview test install prepare
 
 all: test
 
@@ -63,7 +63,7 @@ preview: test
 	$(APIARY) preview --path=$(CPA_BLUEPRINT)
 	$(APIARY) preview --path=$(IMAGES_BLUEPRINT)
 
-publish:
+publish: prepare
 	@if [ "$(CI)" != "true" ]; then \
 		echo "Publishing should only happen via CI!"; \
 		exit 1; \
@@ -73,7 +73,9 @@ publish:
 	$(APIARY) publish --api-name=$(CPA_APIARY_NAME) --path=$(CPA_BLUEPRINT)
 	$(APIARY) publish --api-name=$(IMAGES_APIARY_NAME) --path=$(IMAGES_BLUEPRINT)
 
-test: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
+prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
+
+test: prepare
 	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST) --hookfiles=./test-hooks.js
 	$(DREDD) $(CDA_BLUEPRINT) $(CDA_HOST) --hookfiles=./test-hooks.js
 	$(DREDD) $(CMA_BLUEPRINT) $(CMA_HOST) \
