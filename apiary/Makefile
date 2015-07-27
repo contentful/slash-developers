@@ -70,9 +70,10 @@ publish: test
 	$(APIARY) publish --api-name=$(IMAGES_APIARY_NAME) --path=$(IMAGES_BLUEPRINT)
 
 test: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
-	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST)
-	$(DREDD) $(CDA_BLUEPRINT) $(CDA_HOST)
+	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST) --hookfiles=./test-hooks.js
+	$(DREDD) $(CDA_BLUEPRINT) $(CDA_HOST) --hookfiles=./test-hooks.js
 	$(DREDD) $(CMA_BLUEPRINT) $(CMA_HOST) \
+		--hookfiles=./test-hooks.js \
 		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
 		-m GET #-m PUT -m POST #-m DELETE
 	#$(DREDD) $(IMAGES_BLUEPRINT) $(IMAGES_HOST)
