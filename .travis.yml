@@ -13,3 +13,9 @@ cache:
   directories:
     - apiary/node_modules
     - node_modules
+
+deploy:
+  provider: script
+  script: make -C apiary publish
+  on:
+    branch: master
