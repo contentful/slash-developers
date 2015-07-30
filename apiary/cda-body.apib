@@ -474,6 +474,8 @@ with a field called `center` indicating where the city is located.
 Once you've added location information to your content you can benefit from
 all of the above features simply by using the search in a specific way.
 
+When you are performing geographical searches please keep in mind that queries including exact coordinates are usually no able to take advantage of our caching layer. Depending on your use-case it might be enough to round the coords to 3 decimal places (accuracy ~100m) or 2 decimal places (accuracy ~1km) or even further to improve your cache-hit rate.
+
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
