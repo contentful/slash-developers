@@ -461,6 +461,62 @@ Let's find all things with "bacon pancakes" in their description.
 
   + Attributes (Empty Array)
 
+## Location proximity search [/spaces/{space_id}/entries?access_token={access_token}&fields.center%5Bnear%5D={coordinate}&content_type={content_type}]
+
+Contentful works great with location-enabled content:
+
+- Let users find places closest to where they currently are
+- Show places within a specific map area
+- Find places in the vicinity of another place
+
+Entries can have location fields. For example, imagine a City Entry
+with a field called `center` indicating where the city is located.
+Once you've added location information to your content you can benefit from
+all of the above features simply by using the search in a specific way.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + coordinate (required, string, `38,-122`) ... Latitude and longitude of a location.
+
+### Query Entries [GET]
+
+A common use case for location search is to search for places close to the user's current position.
+
+Use the `near` operator to show results closest to a specific map location and order the results by distance.
+
+This will return all entries sorted by distance from the point at latitude=38 and a longitude=-122.
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)
+
+## Locations in bounding rectangle [/spaces/{space_id}/entries?access_token={access_token}&fields.center%5Bwithin%5D={rectangle}&content_type={content_type}]
+
+When you're displaying content on a map it makes sense to retrieve only content that is visible on the currently visible map rectangle. For this case, use the `within` operator.
+
+Similar to the "near me" use case, this lets you search for locations that are within a specific circle on the map. This can be useful for finding related Entries that are in the vicinity of another Entry.
+
+Using `field.center[within]=1,2,3` will return Entries where `fields.center` is inside of the circle with latitude=1, longitude=2 and a radius of 3 kilometers.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + rectangle (required, string, `36,-124,40,-120`) ... Coordinate rectangle to search in.
+
+### Query Entries [GET]
+
+This will return entries where `fields.center` is within the rectangle with:
+
+- Bottom left corner: latitude 1, longitude 2
+- Top right corner: latitude 3, longitude 4
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)
+
 ## Order [/spaces/{space_id}/entries?access_token={access_token}&order={attribute}]
 
 Order items by specifying the `order` search parameter.
