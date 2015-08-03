@@ -63,7 +63,8 @@ It could be helpful to look at the existing Contentful-based apps for iOS, Andro
 
 - [Browse the codebase](/developers/docs/code/examples/)
 
-## Getting help
+## More
 
+- [Changelog](/developers/changelog/)
 - <a href="https://support.contentful.com/hc/en-us/requests/new" target="_blank">Support</a>
 - <a href="http://stackoverflow.com/questions/tagged/contentful?sort=newest" target="_blank">Stack Overflow</a>
