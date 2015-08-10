@@ -346,7 +346,7 @@ Let's find all cats who like lasagna by matching fields.likes (Array) against a 
 
 ## Inclusion [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bin%5D={value}]
 
-Filter a field by multiple values via the in operator.
+Filter a field by multiple values via the `in` operator.
 When applied to an array value there must be at least one matching item.
 
 + Parameters
@@ -365,8 +365,8 @@ Let's get Entries for finn and jake.
 
 ## Exclusion [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Bnin%5D={value}]
 
-Filter a field by multiple values via the in operator.
-When applied to an array value there must be at least one matching item.
+Filter a field by multiple values via the `nin` operator.
+When applied to an array value there must be at least one not matching item.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
