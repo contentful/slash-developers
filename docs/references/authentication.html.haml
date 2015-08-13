@@ -74,6 +74,12 @@ page: :docsAuthentication
 
   To access the Management API – that is, to put content in Contentful from your apps – you need to get an OAuth 2.0 token that would represent your account. Naturally, this token will have the same rights as the owner of the account.
 
+  ## Getting an OAuth token
+
+  There is no API for acquiring an OAuth token directly for your user account, instead tokens are acquired by OAuth applications. If you need a token for use in a local script or for experimenting with the API, you can use the OAuth application embedded below to get a token.
+
+  If you are creating an application intended for re-use by other Contentful users, you should instead follow the instructions in the next section to create your own OAuth application.
+
 %login-form
   .ng-cloak
     %div{'ng-hide' => 'auth'}
@@ -105,16 +111,15 @@ page: :docsAuthentication
             Logout
 
 :markdown
-  If you would want to create apps for changing content stored in Contentful, you would need to create a custom OAuth application. See more information on that in the section below.
 
   ## Creating an OAuth 2.0 application
+
+  If you would want to create apps for changing content stored in Contentful, you would need to create a custom OAuth application. See more information on that in the section below.
 
   Here are some examples where it would make sense to build an OAuth 2.0 application:
 
   - A JavaScript web app requesting permission to manage content in Contentful on behalf of a user
   - An API building on top of the Content Management API
-  - A script (say, an import script) which creates entries and uploading assets
-  - Automated tests of the API
 
   Having your own OAuth 2.0 application has a number of benefits:
 
