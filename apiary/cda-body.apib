@@ -619,6 +619,24 @@ Example: Include 2 levels of linked entries.
 
   + Attributes (Empty Array)
 
+## Filtering Assets by MIME-Type [/spaces/{space_id}/assets?access_token={access_token}&mimetype_group={mimetype_group}]
+
+Assets can be filtered by their MIME-Type group by using the `mimetype_group` query parameter. Valid groups are `attachment`, `plaintext`, `image`, `audio`, `video`, `richtext`, `presentation`,
+`spreadsheet`, `pdfdocument`, `archive`, `code` and `markup`. By default, all assets will be returned.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + mimetype_group (required, string, `image`) ... MIME-Type group to include.
+
+### Query Assets [GET]
+
+Example: Include only image assets.
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)
+
 # Group Localization
 
 ## Retrieve localized entries [/spaces/{space_id}/entries/{entry_id}?access_token={access_token}&locale={locale}]
