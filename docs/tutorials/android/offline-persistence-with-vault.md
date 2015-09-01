@@ -148,7 +148,7 @@ vault.observe(Story.class)
 
 # Using your own space
 
-In the DroidStory repository you'll also find [droidstory-space-creator][dsc], a small Node.js tool that creates a copy of the DroidStory space. You can use the tool as follows:
+In the DroidStory repository you'll also find [droidstory-spacecreator][dsc], a small Node.js tool that creates a copy of the DroidStory space. You can use the tool as follows:
 
 ~~~
   Usage: index <src_space_id> <src_cda_token> <cma_token>
@@ -163,7 +163,7 @@ In the DroidStory repository you'll also find [droidstory-space-creator][dsc], a
 Your management API token can be aquired through [the CMA documentation website][cma_token]. Once you've obtained the token, execute the following:
 
 ~~~ sh
-node droidstory-space-creator/index 7hqxd0h2npta 8534526702014a2680fffca1a35b1e0ce5d75a95c5e96464ac438c6c342ca37e YOUR-CMA-TOKEN
+node droidstory-spacecreator/index 7hqxd0h2npta 8534526702014a2680fffca1a35b1e0ce5d75a95c5e96464ac438c6c342ca37e YOUR-CMA-TOKEN
 ~~~
 
 The ID of the new space should be printed, like so:
@@ -207,5 +207,5 @@ If you have any questions or feedback, please feel free to drop us an email to s
 [config_xml]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/src/main/res/values/config.xml#L3
 [droidstoryspace_java]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/src/main/java/com/contentful/droidstory/data/vault/DroidStorySpace.java#L22
 [dsc]: https://github.com/contentful-labs/droidstory/tree/master/droidstory-spacecreator
-[cma_docs]: https://www.contentful.com/developers/docs/references/authentication/#the-management-api
+[cma_token]: https://www.contentful.com/developers/docs/references/authentication/#the-management-api
 
