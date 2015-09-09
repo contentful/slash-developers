@@ -2,29 +2,27 @@
 page: :docsOfflinePersistenceAndroid
 ---
 
-# Offline persistence with Vault on Android
-
 In this tutorial we will walkthrough the essential steps of settings up Vault with your Android project. For that, we've open-sourced [DroidStory][droidstory], which is a simple app showcasing several best practices for integrating Vault in an Android project.
 
-# Getting Started
+## Getting Started
 
 Vault is split into two artifacts - `compiler` and `runtime`. The compiler is only required at compile time, and should not be bundled with the final APK. To achieve that, we first need to setup the [android-apt][] Gradle plugin. The plugin not only lets us declare compile time only dependencies, but it also increases visibility for the generated classes inside IntelliJ/Android Studio.
 
 First, we added the following to the `dependencies` block of our main [build.gradle][bgradle-main] file:
 
-~~~groovy
+~~~ groovy
 classpath 'com.neenbedankt.gradle.plugins:android-apt:1.6'
 ~~~
 
 Next, we applied the plugin in the project's [build.gradle][bgradle-app] file (right after the android plugin):
 
-~~~groovy
+~~~ groovy
 apply plugin: 'com.neenbedankt.android-apt'
 ~~~
 
 And last, we declared Vault's dependencies:
 
-~~~groovy
+~~~ groovy
 apt 'com.contentful.vault:compiler:0.9.9'
 compile 'com.contentful.vault:core:0.9.9'
 ~~~
@@ -32,15 +30,16 @@ compile 'com.contentful.vault:core:0.9.9'
 Make sure you're using the latest version of Vault in your own projects, which is available on the official [GitHub repository][vault].
 Now that we have our dependencies ready to go, let's move over to the code.
 
-# Models, Fields and Space
+## Models, Fields and Space
 
 The DroidStory space has a single content type, `Story`, which contains the following fields:
 
+{: .img}
 ![Story Content Type](story-fields.png)
 
 In order to create a Vault model corresponding to this type, we need to create a class that extends the `Resource` class. We use the `@ContentType` and `@Field` annotations from Vault to give the library hints about the relevant pieces. Let's look at [Story.java][story_java] as an example:
 
-~~~java
+~~~ java
 @ContentType("5RFNQmUj5Y6aAggqAswiqK")
 public final class Story extends Resource {
   @Field String codeName;
@@ -56,20 +55,22 @@ public final class Story extends Resource {
 
 Notice that long value `5RFNQmUj5Y6aAggqAswiqK`? That's the ID of the `Story` content type. If you already know how to find it, move over to the next section. Otherwise, simply log-in to the Contentful web application, hit the `Content Types` button on the top bar, select the desired content type, and copy the last path segment of the URL.
 
+{: .img}
 ![Story Content Type ID](content-type-id.png)
 
 `@Field` elements are automatically mapped when the name of the variable matches the field ID, you can find the field ID with the web user-interface:
 
+{: .img}
 ![Codename field ID](field-codename.png)
 
 `@Field` elements can point to other resources, this is what we call links/references. Since the `images` field is a reference to many `Media` resources, we declare it as a `List`. Later when we use Vault to fetch these resources as objects, the links will be automatically resolved.
 
 Now that our model is defined, we need to bundle it into a space, which is the glue that ties multiple models together. Here's the code for [DroidStorySpace.java][droidstoryspace_java]:
 
-~~~java
+~~~ java
 @Space(
-    value = "7hqxd0h2npta", 
-    models = { Story.class }, 
+    value = "7hqxd0h2npta",
+    models = { Story.class },
     locales = { "en-US" }
 )
 public final class DroidStorySpace { }
@@ -80,11 +81,11 @@ A space is just an empty class, annotated with `@Space`. We provide it with:
 - `models` - Array of model classes.
 - `locales` - Array of locales.
 
-# Synchronization
+## Synchronization
 
 Vault uses the Sync API to get delta updates for your spaces. This means that only new or updated content will be transferred whenever you trigger synchronization. It is up to you to decide when is the best time to do so. Here's how to trigger it:
 
-~~~java
+~~~ java
 // Get instance of Vault
 Vault vault = Vault.with(context, DroidStorySpace.class);
 
@@ -102,7 +103,7 @@ In the DroidStory app, we use a [retained fragment][retained_fragment] named [St
 
 There are several ways to get notified once sync is finished, you can use broadcasts, callbacks or RxJava observables. But who wants to deal with broadcasts/callbacks anyway? With RxJava:
 
-~~~java
+~~~ java
 Vault.observeSyncResults()
     .observeOn(AndroidSchedulers.mainThread())
     .subscribe(syncResult -> {
@@ -110,17 +111,17 @@ Vault.observeSyncResults()
     });
 ~~~
 
-# Queries
+## Queries
 
 Making a query is as simple as:
 
-~~~java
+~~~ java
 List<Story> stories = vault.fetch(Story.class).all();
 ~~~
 
 For every model class, there's a `$Fields` generated class, which can be used to refer to fields when making queries:
 
-~~~java
+~~~ java
 Story story = vault.fetch(Story.class)
     .where(Story$Fields.CODE_NAME + " = ?", "Lollipop")
     .first();
@@ -136,7 +137,7 @@ List<Story> stories = vault.fetch(Story.class)
 
 Note that the `fetch()` method is synchronous, and will perform IO on the calling thread. In order to offload this work to a background thread, and collect the result back on the main thread, we can use the built-in support for RxJava:
 
-~~~java
+~~~ java
 vault.observe(Story.class)
     .all()
     .subscribeOn(Schedulers.io())
@@ -146,18 +147,18 @@ vault.observe(Story.class)
     });
 ~~~
 
-# Using your own space
+## Using your own space
 
 In the DroidStory repository you'll also find [droidstory-spacecreator][dsc], a small Node.js tool that creates a copy of the DroidStory space. You can use the tool as follows:
 
 ~~~
-  Usage: index <src_space_id> <src_cda_token> <cma_token>
+Usage: index <src_space_id> <src_cda_token> <cma_token>
 
-  Options:
+Options:
 
-    -h, --help         output usage information
-    -V, --version      output the version number
-    -o, --org-id <id>  Target organization ID
+  -h, --help         output usage information
+  -V, --version      output the version number
+  -o, --org-id <id>  Target organization ID
 ~~~
 
 Your management API token can be aquired through [the CMA documentation website][cma_token]. Once you've obtained the token, execute the following:
@@ -168,17 +169,19 @@ node droidstory-spacecreator/index 7hqxd0h2npta 8534526702014a2680fffca1a35b1e0c
 
 The ID of the new space should be printed, like so:
 
-    All done
-    Space ID: xxxxxxxxxx
-    Access Token: xxxxxxxxx
+~~~
+All done
+Space ID: xxxxxxxxxx
+Access Token: xxxxxxxxx
+~~~
 
 Update the space ID in [Config.java][config_java], and add your CDA access token to the [config.xml][config_xml] file.
 
-Next we need to invalidate the previous data, as it belongs to the old space. To do that we can either uninstall the app, or set the `dbVersion` number to `2` on the `@Space` annotation in [DroidStorySpace.java][droidstoryspace_java]. Doing so invalidates any pre-existing data and essentially re-creates the database the first time it is used. 
+Next we need to invalidate the previous data, as it belongs to the old space. To do that we can either uninstall the app, or set the `dbVersion` number to `2` on the `@Space` annotation in [DroidStorySpace.java][droidstoryspace_java]. Doing so invalidates any pre-existing data and essentially re-creates the database the first time it is used.
 
 Now that we're through with configuration, you can create new entries or update any existing ones in your copied DroidStory space. Use the pull to refresh gesture to re-sync, and watch as the content updates.
 
-# Conclusion
+## Conclusion
 
 Hopefully by now you know how to:
 
@@ -191,7 +194,7 @@ Hopefully by now you know how to:
 
 Make sure to check out the complete source-code for DroidStory, which is [available on GitHub][droidstory].
 
-If you have any questions or feedback, please feel free to drop us an email to support@contentful.com.
+If you have any questions or feedback, please feel free to drop us an email to [support@contentful.com](mailto:support@contentful.com).
 
 [droidstory]: https://github.com/contentful-labs/droidstory
 [android-apt]: https://bitbucket.org/hvisser/android-apt
