@@ -170,7 +170,7 @@ Now we have shown you how to:
 3. Expose that Lambda function to your client-side apps with API Gateway.
 4. Layer any functionality you want on our API.
 
-One can easily imagine going a bit further than this example and create an API gateway that renders full HTML pages using predefined templates. By combining this with [CloudFront integration][cloudfront] you can have an extremely scalable page-delivery mechanism without administering a single server. One could even combine data from multiple sources, [the only limit is yourself](http://zombo.com).
+One can easily imagine going a bit further than this example and create an API gateway that renders full HTML pages using predefined templates. By combining this with CloudFront integration you can have an extremely scalable page-delivery mechanism without administering a single server. One could even combine data from multiple sources, [the only limit is yourself](http://zombo.com).
 
 <!-- much links -->
 [Lambda]: https://aws.amazon.com/lambda/
@@ -178,7 +178,6 @@ One can easily imagine going a bit further than this example and create an API g
 [AWS Console]: https://console.aws.amazon.com/
 [aws-setup]: http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html
 [lambda-docs]: https://aws.amazon.com/documentation/lambda/
-[cloudfront]: https://lol
 
 [project-repo]: https://github.com/contentful-labs/md-to-html-lambda
 [demo-page]: https://contentful-labs.github.io/md-to-html-lambda
