@@ -1,4 +1,6 @@
-# Extending the Delivery API with AWS Lambda & API Gateway
+---
+page: :docsExtendingDeliveryApi
+---
 
 When using 3rd-party API's sometimes you want (or need) additional functionality on top of what the API provides. Previously your only options were to complicate your API client, or run your own API (often referred to as API orchestration) on your own servers. This tutorial will show you how you can use two new Amazon services, [Lambda][] and [API Gateway][], to provide additional functionality on top of Contentful's [Content Delivery API][cda-description] (CDA) without running any of your own infrastructure.
 
@@ -17,10 +19,10 @@ Because our API Gateway is a drop-in replacement for the [`/spaces/{id}/entries`
 ### Tutorial steps:
 
  1. Creating the lambda function
-   1. Get the code
-   2. Create a zip file
-   3. Upload the zip file in the AWS Console
-   4. Test our lambda function
+    1. Get the code
+    2. Create a zip file
+    3. Upload the zip file in the AWS Console
+    4. Test our lambda function
  2. Create an API Gateway endpoint
  3. Test the API endpoint.
 
@@ -33,11 +35,11 @@ The [official lambda documentation][lambda-docs] starts you off with pasting som
 
 The code for our lambda is [available on GitHub][project-repo]. You can clone the repository to your machine with the following command:
 
-```
+~~~
 git clone git@github.com:contentful-labs/markdown-to-html-lambda
 cd markdown-to-html-lambda
 ls
-```
+~~~
 
 You should see two directories and a `Makefile` here. The `lambda` directory contains the code we will package and deploy to AWS Lambda, while the `deploy` directory contains a script to automate deployment of the code and and API gateway.
 
@@ -71,19 +73,19 @@ Now that we've created a lambda function we can easily test it by clicking on th
 
 Recalling that our handler function uses `event.query` to pass  [filter query parameters][docs-query-params] to the Delivery API, replace the example payload with the one below:
 
-```
+~~~
 {
   "spaceId": "oqp9lwuwktba",
   "accessToken": "baba02224a4b6490faa4fff4785d5c9d655ffdfd75b91c617344ed24619b837f",
   "query": "{content_type=2jGJdAHwneiQ6SEkUu0cWu, order=sys.createdAt}"
 }
-```
+~~~
 
-> The strange format for query parameters matches what our Lambda will receive from API Gateway.
+<span class="alert" style="display:block;margin-bottom:2em">The strange format for query parameters matches what our Lambda will receive from API Gateway.</span>
 
 After clicking "Submit", you should see a response like the following:
 
-```js
+~~~ js
 {
   "sys": {
     "type": "Array"
@@ -108,7 +110,7 @@ After clicking "Submit", you should see a response like the following:
     }
   ]
 }
-```
+~~~
 
 As you can see, we have a normal Contentful response, but the markdown content of the `fields.body` property has been transformed to HTML.
 
@@ -118,7 +120,7 @@ While it's possible to call Lambda functions directly over HTTP by sending a sig
 
 The web UI for API gateway is a bit cumbersome, so at this point we're going to use the scripts in our `deploy` directory to take care of the rest.
 
-> **Warning:** these scripts assume that you have correctly configured your AWS credentials using the official `aws` command line interface. If you haven't yet done so, please follow [these directions][aws-setup] to install and configure the AWS CLI.
+<span class="alert" style="display:block;margin-bottom:2em">**Warning:** these scripts assume that you have correctly configured your AWS credentials using the official `aws` command line interface. If you haven't yet done so, please follow [these directions][aws-setup] to install and configure the AWS CLI.</span>
 
 ### 2.1. Deploying the API
 
@@ -131,7 +133,7 @@ In the project root, simply run `make AWS_ACCOUNT_ID=111111 deploy` (replacing "
     Granting invoke permission to arn:aws:execute-api:eu-west-1:718539334177:xfdge7afx6/*/GET/*/entries
     Deployed https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/{spaceId}/entries
 
-> If you see an error like `TimeoutError: Missing credentials in config` you need to [install and configure the AWS CLI][aws-setup].
+<span class="alert" style="display:block;margin-bottom:2em">If you see an error like `TimeoutError: Missing credentials in config` you need to [install and configure the AWS CLI][aws-setup].</span>
 
 Now you can go ahead and query your new API Gateway exactly as though it were the Content Delivery API. For example, let's query it for this tutorial:
 
@@ -141,7 +143,7 @@ The output will be the JSON entry for this tutorial, with `fields.body` formatte
 
 Now we can use the Contentful API even more easily in our client-side apps. For example [the demo page][demo-page] mentioned earlier is rendered using the following 15 lines of JavaScript:
 
-```js
+~~~ js
 var client = contentful.createClient({
   host: 'xfdge7afx6.execute-api.eu-west-1.amazonaws.com',
   space: 'oqp9lwuwktba',
@@ -159,7 +161,7 @@ client.entries({ content_type: ContentTypes.Tutorial }).then(function (tutorials
   pre.innerText = error.stack
   document.body.appendChild(pre)
 })
-```
+~~~
 
 ## 3. Review
 
