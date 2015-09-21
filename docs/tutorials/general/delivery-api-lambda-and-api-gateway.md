@@ -35,7 +35,7 @@ The [official lambda documentation][lambda-docs] starts you off with pasting som
 
 The code for our lambda is [available on GitHub][project-repo]. You can clone the repository to your machine with the following command:
 
-~~~
+~~~ bash
 git clone git@github.com:contentful-labs/markdown-to-html-lambda
 cd markdown-to-html-lambda
 ls
@@ -63,8 +63,7 @@ On the next screen:
 2. Make sure the "Node.js" runtime is selected
 3. Choose the option to upload a zip file, then upload the file created in step 1.2.
 4. Leave the "Handler" input set to it's default value of `index.handler`.
-5. In the "Role" dropdown, select "New Role > Basic execution role"
-  - This will pop up a new window where you must confirm the creation of the role.
+5. In the "Role" dropdown, select "New Role > Basic execution role". This will pop up a new window where you must confirm the creation of the role.
 6. Finally, click "Next" and "Create function" after reviewing the settings.
 
 ### 1.3. Test the lambda function
@@ -73,7 +72,7 @@ Now that we've created a lambda function we can easily test it by clicking on th
 
 Recalling that our handler function uses `event.query` to pass  [filter query parameters][docs-query-params] to the Delivery API, replace the example payload with the one below:
 
-~~~
+~~~ json
 {
   "spaceId": "oqp9lwuwktba",
   "accessToken": "baba02224a4b6490faa4fff4785d5c9d655ffdfd75b91c617344ed24619b837f",
@@ -85,7 +84,7 @@ Recalling that our handler function uses `event.query` to pass  [filter query pa
 
 After clicking "Submit", you should see a response like the following:
 
-~~~ js
+~~~ json
 {
   "sys": {
     "type": "Array"
@@ -126,24 +125,28 @@ The web UI for API gateway is a bit cumbersome, so at this point we're going to 
 
 In the project root, simply run `make AWS_ACCOUNT_ID=111111 deploy` (replacing "111111" with your actual AWS account ID). You should see output something like the following:
 
-    Created lambda function cf-md-to-html
-    Created API cf-md-to-html
-    Created Resource /{spaceId}/entries
-    Created Method GET /{spaceId}/entries
-    Granting invoke permission to arn:aws:execute-api:eu-west-1:718539334177:xfdge7afx6/*/GET/*/entries
-    Deployed https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/{spaceId}/entries
+~~~
+Created lambda function cf-md-to-html
+Created API cf-md-to-html
+Created Resource /{spaceId}/entries
+Created Method GET /{spaceId}/entries
+Granting invoke permission to arn:aws:execute-api:eu-west-1:718539334177:xfdge7afx6/*/GET/*/entries
+Deployed https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/{spaceId}/entries
+~~~
 
 <span class="alert" style="display:block;margin-bottom:2em">If you see an error like `TimeoutError: Missing credentials in config` you need to [install and configure the AWS CLI][aws-setup].</span>
 
 Now you can go ahead and query your new API Gateway exactly as though it were the Content Delivery API. For example, let's query it for this tutorial:
 
-    curl https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/oqp9lwuwktba/entries?sys.id=1XhtUhV2sc6kIMo6GMgACU&access_token=baba02224a4b6490faa4fff4785d5c9d655ffdfd75b91c617344ed24619b837f
- 
+~~~ bash
+curl https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/oqp9lwuwktba/entries?sys.id=1XhtUhV2sc6kIMo6GMgACU&access_token=baba02224a4b6490faa4fff4785d5c9d655ffdfd75b91c617344ed24619b837f
+~~~
+
 The output will be the JSON entry for this tutorial, with `fields.body` formatted as HTML.
 
 Now we can use the Contentful API even more easily in our client-side apps. For example [the demo page][demo-page] mentioned earlier is rendered using the following 15 lines of JavaScript:
 
-~~~ js
+~~~ javascript
 var client = contentful.createClient({
   host: 'xfdge7afx6.execute-api.eu-west-1.amazonaws.com',
   space: 'oqp9lwuwktba',
