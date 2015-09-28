@@ -7,7 +7,7 @@ page: :docsAuthentication
 
   ## General
 
-  To get content from Contentful or store data in it, an app should authenticate with an with an OAuth bearer token. Contentful offers four APIs (more about that on the [APIs](#{developer_docs_url}concepts/apis/) page), and each of them require separate authentication – except for the Images API, which delivers images without authentication.
+  To get content from Contentful or store data in it, an app should authenticate with an with an OAuth bearer token. Contentful offers four APIs (more about that on the [APIs](#{docs_url}concepts/apis/) page), and each of them require separate authentication – except for the Images API, which delivers images without authentication.
 
   There are two ways of sending the authentication token to an API: you can include it either as a query parameter `access_token=$token` or an HTTP header `Authorization: Bearer $token`.
 
@@ -60,7 +60,7 @@ page: :docsAuthentication
 
   The sections below explain how to obtain the token for different APIs.
 
-  Most likely you wouldn't need to send the token manually. We provide SDKs for a lot of platforms and languages, and they know how to authenticate with Contentful, so you don't have to write extra code. Please [see the available SDKs](#{developer_docs_url}code/libraries/) – most likely there's one for you. Set it up with the token and you're done.
+  Most likely you wouldn't need to send the token manually. We provide SDKs for a lot of platforms and languages, and they know how to authenticate with Contentful, so you don't have to write extra code. Please [see the available SDKs](#{docs_url}code/libraries/) – most likely there's one for you. Set it up with the token and you're done.
 
   ## The Delivery API and Preview API
 
