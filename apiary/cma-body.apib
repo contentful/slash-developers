@@ -727,6 +727,10 @@ For example, when an Entry has been published:
 X-Contentful-Topic: ContentManagement.Entry.publish
 ```
 
+You should also take into account the Content-Type header. While the content we send in the request body is still JSON, we use the Content-Type header as a versioning mechanism for our API with the value `application/vnd.contentful.management.v1+json`.
+
+This is something you should take into account if you use some sort of middleware or autoparser for the request body.
+
 ### Body of Webhook HTTP Request
 
 The request body is the published Resource's body or deletion thereof.
