@@ -318,6 +318,26 @@ Entries represent textual content in a Space. An Entry's data adheres to a certa
 
     + Attributes (Empty Array)
 
+### Create an Entry [POST]
+
+Before you can create an Entry you need to create and activate a Content Type.
+
+When creating a new Entry you need to pass the ID of the Entry's desired Content Type as the `X-Contentful-Content-Type` header.  
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes (Entry Update)
+
++ Response 201 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Entry)
+
+
+
 ## Entry [/spaces/{space_id}/entries/{entry_id}]
 
 + Parameters
@@ -326,9 +346,6 @@ Entries represent textual content in a Space. An Entry's data adheres to a certa
 
 ### Create/Update an Entry  [PUT]
 
-Before you can create an Entry you need to create and activate a Content Type.
-
-When creating a new Entry you need to pass the ID of the Entry's desired Content Type as the `X-Contentful-Content-Type` header.
 
 + Request Create with a predefined identifier
     + Headers
