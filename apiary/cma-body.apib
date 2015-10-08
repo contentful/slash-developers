@@ -727,6 +727,8 @@ For example, when an Entry has been published:
 X-Contentful-Topic: ContentManagement.Entry.publish
 ```
 
+Your webhook receiver should also take into account the `Content-Type` header, which will have the value `application/vnd.contentful.management.v1+json`. Many web frameworks (such as Express.js) and their middleware components only automatically parse a request body if the content-type header is `application/json`, and thus require additional configuration to parse request bodies with a different content-type header.
+
 ### Body of Webhook HTTP Request
 
 The request body is the published Resource's body or deletion thereof.
