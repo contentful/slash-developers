@@ -161,7 +161,7 @@ With this, our overview of synchronizing and keeping your content available for 
 [12]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Protocols/CDASyncedSpaceDelegate.html
 [13]: http://nshipster.com/key-value-observing/
 [14]: https://www.contentful.com/developers/docs/content-delivery-api/objc/#sync
-[15]: https://github.com/contentful/contentful.objc/blob/master/Code/CoreData/CoreDataManager.h
+[15]: https://github.com/contentful/contentful-persistence.objc/blob/master/Code/CoreDataManager.h
 [16]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Protocols/CDAPersistedAsset.html
 [17]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Protocols/CDAPersistedEntry.html
 [18]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Protocols/CDAPersistedSpace.html
