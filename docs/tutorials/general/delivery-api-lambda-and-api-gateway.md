@@ -185,7 +185,7 @@ One can easily imagine going a bit further than this example and create an API g
 [lambda-docs]: https://aws.amazon.com/documentation/lambda/
 
 [project-repo]: https://github.com/contentful-labs/md-to-html-lambda
-[demo-page]: https://contentful-labs.github.io/md-to-html-lambda
+[demo-page]: https://contentful-labs.github.io/md-to-html-lambda/
 
 [contentful.js]: https://github.com/contentful/contentful.js
 [sdks]: https://www.contentful.com/developers/docs/code/libraries/
