@@ -913,6 +913,29 @@ increasing delays in between up to a maximum of 3 attempts.
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
+# Group API Keys
+
+## API Keys Collection [/spaces/{space_id}/api_keys]
+
++ Parameters
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
+### Create an API Key [POST]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes
+        - name: Example API Key - Name of the API Key
+
++ Response 201 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (API Key)
+
+
 ## Data Structures
 
 ### Asset
@@ -1125,3 +1148,12 @@ increasing delays in between up to a maximum of 3 attempts.
     - Include Resource Metadata
 - url: https://www.example.com
 - httpBasicUsername
+
+### API Key
+
+- sys - System Attributes
+    - type: `API Key` (string)
+    - id: exampleapikey - Identifier of Resource
+    - version: 0 (number) - Version of Resource
+    - Include Resource Metadata
+- name: Example API Key - Name of Resource
