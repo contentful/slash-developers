@@ -555,6 +555,22 @@ For example, order by time of last update starting with the newest Entries.
 
   + Attributes (Empty Array)
 
+## Order with multiple parameters [/spaces/{space_id}/entries?access_token={access_token}&order={attribute},{attribute2}]
+
+Order items by specifying your `order` parameter along with your attributes(`attribute`, `attribute2`). Prefix the field with a minus-sign to reverse the sort-order of your attribute.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + attribute (required,string,`sys.revision`) ... First attribute to order by
+    + attribute2 (required, string, `sys.id`) ... Second attribute to order by.
+
+### Query Entries [GET]
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)  
+
 ## Limit [/spaces/{space_id}/entries?access_token={access_token}&limit={value}]
 
 Specify the maximum number of results as limit search parameter.
