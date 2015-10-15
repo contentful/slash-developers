@@ -64,11 +64,13 @@ page: :docsAuthentication
 
   ## The Delivery API and Preview API
 
-  These two APIs use the access token which you manually create in the Contentful web interface. [Go to the app](https://app.contentful.com), open the space that you want to access (top left corner lists all the spaces), and navigate to the *APIs* area. Open the *API Keys* section and create your first token. Done.
+  A token provides read-only access to a single space – that is, you need to obtain a new token for every new space that you want to access. 
 
-  <!-- TODO: screenshot(s) would be nice -->
+  We recommend using different access tokens for different applications or delivery channels: for example, one for iOS app and another for Android app. One of the reasons is to be able to revoke them individually in the future: with several tokens you can manipulate your delivery channels independently.
 
-  Two things to keep in mind: first, a token provides read-only access to a single space – that is, you need to obtain a new token for every new space that you want to access. Second, we recommend using different access tokens for different applications or delivery channels: for example, one for iOS app and another for Android app. One of the reasons is to be able to revoke them individually in the future: with several tokens you can manipulate your delivery channels independently.
+  These two APIs use the access token which you can create [using the Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key). 
+
+  Alternatively, you can also create API keys using Contentful's web interface. [Go to the app](https://app.contentful.com), open the space that you want to access (top left corner lists all the spaces), and navigate to the *APIs* area. Open the *API Keys* section and create your first token. Done. 
 
   ## The Management API
 
