@@ -16,7 +16,7 @@ Simply tell the search to include the targets of links in the response:
 Set the `include` parameter to the number of levels you want to resolve.
 The maximum number of inclusion is 10.
 
-The search result will include the requested Entry matching the query in items along with the linked Entries and Assets in includes.
+The search results will include the requested entries matching the query in items, along with the linked entries and assets they contain.
 
 Link resolution works regardless of how many results are there in `items`. Some examples for this are:
 
