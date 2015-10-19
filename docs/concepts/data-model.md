@@ -2,9 +2,9 @@
 page: :docsDataModel
 ---
 
-Content in Contentful is organized into Spaces, so that related resources for one project can be grouped together into one repository.
+Content in Contentful is organized into *Spaces*, so that related resources for one project can be grouped together into one repository.
 
-If you want to deliver the same content to several different platforms, then you should just use one Space and create multiple API Keys to deliver the content. However, if you are an agency and have multiple customer projects, then you should put the content into separate Spaces.
+If you want to deliver the same content to several different platforms, then you should just use one space and create multiple API keys to deliver the content. However, if you have multiple projects, you should put the content into separate spaces. For example, you can have three different apps running on Contentful — it would make sense to set up a separate space for each.
 
 Each Space has its own Content Model and its own permissions for users.
 
