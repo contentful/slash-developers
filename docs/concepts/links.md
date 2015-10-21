@@ -169,6 +169,90 @@ As you can see, although the restaurant `chinaking` is linked to its menu `china
 
 Because `chinakingmenu` is already present in the response's items, it will not be included in the `includes.Entry` array again.
 
+### Fetching resources linked to a specific Entry
+
+It might be useful to fetch results that are linked to a particular target Entry. To do that, a query URL should filter Entries based on their specific `content_type` and `linking_field` that is used to link these items. 
+
+For example, let's retrieve all resources linked to `chinakingmenu` by using the following query URL:
+
+`https://cdn.contentful.com/spaces/myrestaurant/entries?access_token={example_token}&content_type=menu_type&fields.selectedMenu.sys.id=chinakingmenu&include=1`
+
+As expected, the target Entry itself `chinakingmenu` and its Links to resources are retrieved in the `items` array:
+
+~~~ json
+"items": [
+    {
+      "fields": {
+        "name": "China King Menu",
+        "restaurantField": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "chinaking"
+          }
+        },
+        "imageField": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "oversizedeggroll"
+          }
+        },
+        ...
+      },
+      "sys": {
+        "type": "Entry",
+        "id": "chinakingmenu",
+        ...
+      }
+    }
+  ]      
+~~~
+
+Then, our linked resources `chinaking` and `oversizedeggroll` are retrieved in the `includes` array:
+
+~~~ json
+"includes": {
+    "Entry": [
+      {
+        "fields": {
+          "name": "China King",
+          "description": "Warm, cheap and fatty Chinese meals",
+          "health_index": "2",
+          ...
+        },
+        "sys": {
+          "type": "Entry",
+          "id": "chinaking",
+          ...
+        }
+      }
+    ],
+  "Asset": [
+      {
+        "fields": {
+          "title": "Oversized Egg Roll",
+          "file": {
+            "fileName": "OversizedEggRoll.png",
+            "contentType": "image/png",
+            "details": {
+              "image": {
+                "width": 250,
+                "height": 250
+              },
+              "size": 12273
+            },
+            "url": "//images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/OversizedEggRoll.png"
+          }
+        },
+        "sys": {
+          "type": "Asset",
+          "id": "oversizedeggroll",
+          ...
+        }
+      },  
+~~~ 
+
 ## Modeling Relationships
 
 Linking an Entry to another Entry represents a relationship.
