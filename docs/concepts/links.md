@@ -46,6 +46,80 @@ Link resolution works regardless of how many results are there in `items`. Some 
 - Get a list of blog posts in items with related authors, categories and other meta data in includes.
 - Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
 
+### Querying Linked Entries
+
+Querying linked items is as simple as adding a specific `include` parameter to retrieve a desired level of related content to be displayed in an application. 
+
+In the JSON response of a successful query, when not already fetched in the `items` array, linked items are placed in the `includes` array. 
+
+Let's take the example of restaurants pointing to their linked images.
+
+Before anything, we need a successful query URL:
+
+`https://cdn.contentful.com/spaces/myrestaurants/entries?access_token={example_token}&include=1`
+
+The first part of the JSON response gets information about restaurants and their Links(images in our example):
+
+~~~ json
+  "items": [
+    {
+      "sys": {
+        ...
+        "type": "Entry",
+        "id": "6KntaYXaHSyIw8M6eo26OK",
+        ...
+      },
+      "fields": {
+        "name": "China King",
+        "description": "Warm, cheap and fatty Chinese meals",
+        "image": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "smilingfamily"
+          }
+        }
+      },
+    }
+  ...
+  ],
+~~~
+
+In the above response, although `China King` is fetched, its linked image, `smilingfamily` is only retrieved as a Link to an Asset. 
+
+Instead, our `smilingfamily` image is placed in the `includes` array:
+
+~~~ json
+  "includes": {
+    "Asset": [
+      {
+        "fields": {
+          "title": "Smiling Family",
+          "file": {
+            "fileName": "smilingfamily.png",
+            "contentType": "image/png",
+            "details": {
+              "image": {
+                "width": 100,
+                "height": 161
+              },
+              "size": 20480
+            },
+            "url": "//images.contentful.com/myrestaurants/4gp6taAwW4CmaBumq2ekUm/9da0cd4309871b8d72343e895a00d611/smilingfamily.png"
+
+          }
+        },
+        "sys": {
+          ...
+          "type": "Asset",
+          "id": "restaurantimage",
+          ...
+          }
+      }, 
+    ]    
+  }
+~~~
+
 ## Modeling Relationships
 
 Linking an Entry to another Entry represents a relationship.
