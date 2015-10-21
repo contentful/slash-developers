@@ -7,25 +7,7 @@ pieces of content. Contentful search is built to make linked data retrieval
 as simple as adding an additional URI query parameter to retrieve an entire
 chain of related content that you can display in your application.
 
-Basically, *Resources* can have *Link* fields which point to other *Entries* or *Assets*.
-
-When you have related content (e.g. Entries with links to other Entries)
-it's possible include both search results and related data in a single request.
-
-Simply tell the search to include the targets of links in the response:
-Set the `include` parameter to the number of levels you want to resolve.
-The maximum number of inclusion is 10.
-
-The search results will include the requested entries matching the query in items, along with the linked entries and assets they contain.
-
-Link resolution works regardless of how many results are there in `items`. Some examples for this are:
-
-- Get a list of blog posts in items with related authors, categories and other meta data in includes.
-- Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
-
-Note: If an item is already present in the response's items, it will not be included in the `includes.Entry` array again!
-
-Links represent relationships between Resources, for example:
+Basically, *Resources* can have *Link* fields which point to other *Entries* or *Assets*, for example:
 
 - A restaurant linking to its menu (singular relationship)
 - A menu linking to its specific menu items (plural relationship)
@@ -47,6 +29,22 @@ something, if not everything, after a single request.
 This is very important for mobile apps where latency is a big issue:
 Instead of doing hundreds of requests, do a single request which can also
 be cached by Contentful's CDN to speed up future requests even more.
+
+## Linked Entries
+
+When you have related content (e.g. Entries with links to other Entries)
+it's possible include both search results and related data in a single request.
+
+Simply tell the search to include the targets of links in the response:
+Set the `include` parameter to the number of levels you want to resolve.
+The maximum number of inclusion is 10.
+
+The search results will include the requested entries matching the query in items, along with the linked entries and assets they contain.
+
+Link resolution works regardless of how many results are there in `items`. Some examples for this are:
+
+- Get a list of blog posts in items with related authors, categories and other meta data in includes.
+- Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
 
 ## Modeling Relationships
 
