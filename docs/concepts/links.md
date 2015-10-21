@@ -118,7 +118,56 @@ Instead, our `smilingfamily` image is placed in the `includes` array:
       }, 
     ]    
   }
+~~~ 
+
+However, the structure of a JSON response could have been different. Before resolving Links of items, Contentful matches the filter conditions of a query.
+
+As a consequence, had our Entry been linked to another related Entry, both could have matched the filter conditions of the query and put inside the `items` array. 
+
+Lets take a look at the response of a restaurant pointing to its menu:
+
+~~~ json 
+"items": [
+    {
+      "sys": {
+        ...
+        "type": "Entry",
+        "id": "chinaking",
+        ...
+      },
+      "fields": {
+        "menufield": [
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "chinakingmenu"
+            }
+          }
+        ],
+        ...
+      }
+    },
+
+    {
+      "sys": {
+        ...
+        "type": "Entry",
+        "id": "chinakingmenu",
+        ...
+      },
+      "fields": {
+        "name": "Menu of China King restaurant",
+        "description": "A greasy plastic menu that will make you even hungrier"
+        ...
+      }
+    }
+]    
 ~~~
+
+As you can see, although the restaurant `chinaking` is linked to its menu `chinakingmenu` , both are fetched in the same `items` array. That happens because both Entries match the conditions of our query.
+
+Because `chinakingmenu` is already present in the response's items, it will not be included in the `includes.Entry` array again.
 
 ## Modeling Relationships
 
