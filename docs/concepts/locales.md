@@ -2,7 +2,7 @@
 page: :docsLocales
 ---
 
-A Space in Contentful can have multiple locales, defined by ISO locale codes like `en-US` or `de-DE`. Each field is localized individually and you can also provide localized variants of an Asset's file.
+A space in Contentful can have multiple locales, defined by ISO locale codes like `en-US` or `de-DE`. Each field is localized individually and you can also provide localized variants of an asset's file.
 
 The CDA provides content in the default locale by default, but can request a different one using the `locale` query parameter. If there is no localized value for the specified locale, you will receive the corresponding value from the default locale:
 

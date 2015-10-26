@@ -21,7 +21,7 @@ With it, you can instantiate a client object:
 CMAClient* client = [[CMAClient alloc] initWithAccessToken:@"your-token"];
 ~~~
 
-Next we need to fetch a Space to use. Contrary to the Delivery API, we can just list all Spaces the given account has access to:
+Next we need to fetch a space to use. Contrary to the Delivery API, we can just list all spaces the given account has access to:
 
 ~~~ objc
 [client fetchAllSpacesWithSuccess:^(CDAResponse *response, CDAArray *array) {
@@ -35,7 +35,7 @@ Next we need to fetch a Space to use. Contrary to the Delivery API, we can just 
 
 <img alt="In our app, they are displayed as a list of names in a table view" style="width: initial; display: block; margin: 30px auto 30px auto;" src="https://images.contentful.com/m5kgizmngfqu/2qSSJ4l0IYQq2WeoaAoUOc/b88666a983860c36385f3d0cccc10244/table-view.png?w=250" />
 
-Once we have selected a specific Space, we can create resources, in our case an asset. This can be done using the [`-createAssetWithTitle:description:fileToUpload:success:failure:`][5] method. For this, we need to specify an URL to a file, though and we just have a local image in the photo library at the moment. For a temporary upload, we use [this Pod][6], which just gives us a file URL back, as we need it:
+Once we have selected a specific space, we can create resources, in our case an asset. This can be done using the [`-createAssetWithTitle:description:fileToUpload:success:failure:`][5] method. For this, we need to specify an URL to a file, though and we just have a local image in the photo library at the moment. For a temporary upload, we use [this Pod][6], which just gives us a file URL back, as we need it:
 
 ~~~ objc
 [[BBUUploadsImUploader sharedUploader] uploadImage:someImage
@@ -79,7 +79,7 @@ We can obtain the latest photo from the Camera Roll using the `AssetsLibrary` fr
 }
 ~~~
 
-Using the upload URL, we can create our Asset and start the processing of the image:
+Using the upload URL, we can create our asset and start the processing of the image:
 
 ~~~ objc
 [self.space createAssetWithTitle:@{ @"en-US": @"Some image caption" }
@@ -96,7 +96,7 @@ success:^(CDAResponse *response, CMAAsset *asset) {
 }];
 ~~~
 
-As you can see, the CMA allows us the specify values for different locales in just one API call. Keep in mind that [`-processWithSuccess:failure:`][7] is asynchronous and will not report errors of the actual image processing back. If it was successful, you can publish the resulting Asset from the [web application][8] as you normally would.
+As you can see, the CMA allows us the specify values for different locales in just one API call. Keep in mind that [`-processWithSuccess:failure:`][7] is asynchronous and will not report errors of the actual image processing back. If it was successful, you can publish the resulting asset from the [web application][8] as you normally would.
 
 <img alt="such content, very uploading, wow" style="width: initial; display: block; margin: 30px auto 30px auto;" src="https://images.contentful.com/m5kgizmngfqu/31PAoh4jVCqeEKYICEsSkA/0758f8b5bc927ac77a280fa52bf81060/uploading.png?w=250" />
 

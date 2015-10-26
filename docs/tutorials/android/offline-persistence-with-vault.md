@@ -30,18 +30,18 @@ compile 'com.contentful.vault:core:0.9.9'
 Make sure you're using the latest version of Vault in your own projects, which is available on the official [GitHub repository][vault].
 Now that we have our dependencies ready to go, let's move over to the code.
 
-## Models, Fields and Space
+## Models, fields and space
 
 The DroidStory space has a single content type, `Story`, which contains the following fields:
 
 {: .img}
-![Story Content Type](story-fields.png)
+![Story content type](story-fields.png)
 
 In order to create a Vault model corresponding to this type, we need to create a class that extends the `Resource` class. We use the `@ContentType` and `@Field` annotations from Vault to give the library hints about the relevant pieces. Let's look at [Story.java][story_java] as an example:
 
 ~~~ java
 @ContentType("5RFNQmUj5Y6aAggqAswiqK")
-public final class Story extends Resource {
+public final class Story extends resource {
   @Field String codeName;
   @Field Double version;
   @Field String releaseDate;
@@ -56,7 +56,7 @@ public final class Story extends Resource {
 Notice that long value `5RFNQmUj5Y6aAggqAswiqK`? That's the ID of the `Story` content type. If you already know how to find it, move over to the next section. Otherwise, simply log-in to the Contentful web application, hit the `Content Types` button on the top bar, select the desired content type, and copy the last path segment of the URL.
 
 {: .img}
-![Story Content Type ID](content-type-id.png)
+![Story content type ID](content-type-id.png)
 
 `@Field` elements are automatically mapped when the name of the variable matches the field ID, you can find the field ID with the web user-interface:
 
