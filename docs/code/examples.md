@@ -6,7 +6,7 @@ page: :docsExamples
 
 - [Cookies demo](https://github.com/contentful/cma-cookies-demo), an Android wear demo application.
 - [Discovery app](https://github.com/contentful/discovery-app-android), an app for
-previewing the content of Contentful Spaces.
+previewing the content of Contentful spaces.
 
 ### Space template apps
 
@@ -18,7 +18,7 @@ previewing the content of Contentful Spaces.
 
 - [Brew](https://github.com/contentful-labs/ContentfulWatchKitExample), a WatchKit app for finding bars near you, built on Contentful.
 - [Discovery app](https://github.com/contentful/discovery-app), an app for
-previewing the content of Contentful Spaces.
+previewing the content of Contentful spaces.
 - [Swiftful](https://github.com/contentful-labs/Swiftful), a demo for how to use Contentful in Swift.
 
 ### Space template apps

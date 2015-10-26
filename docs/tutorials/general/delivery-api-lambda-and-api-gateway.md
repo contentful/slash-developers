@@ -128,7 +128,7 @@ In the project root, simply run `make AWS_ACCOUNT_ID=111111 deploy` (replacing "
 ~~~
 Created lambda function cf-md-to-html
 Created API cf-md-to-html
-Created Resource /{spaceId}/entries
+Created resource /{spaceId}/entries
 Created Method GET /{spaceId}/entries
 Granting invoke permission to arn:aws:execute-api:eu-west-1:718539334177:xfdge7afx6/*/GET/*/entries
 Deployed https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/{spaceId}/entries

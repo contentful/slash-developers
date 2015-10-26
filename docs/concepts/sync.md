@@ -25,7 +25,7 @@ Compared to the other sync strategies delta updates have many benefits:
 
 To enable delta updates Contentful provides a special synchronization endpoint. This endpoint delivers only new and changed content and notifies about deleted content (deletions). It will never transfer duplicate content the client has already received before.
 
-Keep in mind that the synchronization endpoint will always give you all the content of a Space or a specific Content Type, so it may not make sense to use it for every use case. If users only want to see the newest content, it would be wasteful to download everything immediately. In that case, it might be better to only fetch selected content based on the date, using search.
+Keep in mind that the synchronization endpoint will always give you all the content of a space or a specific content type, so it may not make sense to use it for every use case. If users only want to see the newest content, it would be wasteful to download everything immediately. In that case, it might be better to only fetch selected content based on the date, using search.
 
 ## Usage
 
@@ -43,10 +43,10 @@ In addition to the regular `Entry` and `Asset` item types, there can also be `De
 
 ## Localization
 
-When syncing Entries or Assets they come in all available localizations instead of just a single one. Usually Resources coming from the Delivery API only come with a single value per field - the value of the locale you requested or the default one. The Sync endpoint returns all locales per field.
+When syncing entries or assets they come in all available localizations instead of just a single one. Usually resources coming from the Delivery API only come with a single value per field - the value of the locale you requested or the default one. The Sync endpoint returns all locales per field.
 
 ## Further information
 
 - Using the Sync API for [offline persistence on iOS](/developers/docs/tutorials/ios/offline-persistence-in-ios-sdk/)
 
-<!-- TODO Link back to CDA reference -->
+<!-- TODO link back to CDA reference -->

@@ -7,9 +7,9 @@ pieces of content. Contentful search is built to make linked data retrieval
 as simple as adding an additional URI query parameter to retrieve an entire
 chain of related content that you can display in your application.
 
-Basically, *Resources* can have *Link* fields which point to other *Entries* or *Assets*.
+Basically, *resources* can have *link* fields which point to other *entries* or *assets*.
 
-When you have related content (e.g. Entries with links to other Entries)
+When you have related content (e.g. Entries with links to other entries)
 it's possible include both search results and related data in a single request.
 
 Simply tell the search to include the targets of links in the response:
@@ -25,7 +25,7 @@ Link resolution works regardless of how many results are there in `items`. Some 
 
 Note: If an item is already present in the response's items, it will not be included in the `includes.Entry` array again!
 
-Links represent relationships between Resources, for example:
+Links represent relationships between resources, for example:
 
 - A restaurant linking to its menu (singular relationship)
 - A menu linking to its specific menu items (plural relationship)
@@ -34,13 +34,13 @@ Links represent relationships between Resources, for example:
 
 When using links you benefit from many great features:
 
-- Relationships are clearly defined and validated by special Content Type Fields
-- Entry Links can be validated by Content Type.
+- Relationships are clearly defined and validated by special content type fields
+- Entry links can be validated by content type.
 E.g.: Only allow Menu Items for `fields.menuItems`.
-- Asset Links can be validated by File Type.
+- Asset links can be validated by File Type.
 E.g.: Only allow Images for `fields.photo`.
-- The CDA is highly optimized for Links:
-A _single_ HTTP request let's you retrieve an entire web of linked Resources:
+- The CDA is highly optimized for links:
+A _single_ HTTP request let's you retrieve an entire web of linked resources:
 A restaurant with its menu, all menu items  and all of their attachments -
 everything in the example above. A mobile app could immediately display
 something, if not everything, after a single request.
@@ -50,7 +50,7 @@ be cached by Contentful's CDN to speed up future requests even more.
 
 ## Modeling Relationships
 
-Linking an Entry to another Entry represents a relationship.
+Linking an entry to another entry represents a relationship.
 
 For example, here's a restaurant pointing to its menu:
 
@@ -77,27 +77,27 @@ For example, here's a restaurant pointing to its menu:
 "il-doges" `fields.menu` links to "il-doges-nice-menu".
 
 It's possible to create circular links:
-You could model a circular chain of Entries to model a dialog in a video game
+You could model a circular chain of entries to model a dialog in a video game
 or more complex graphs. There are many possibilities, it's up to you to decide!
 
-Various fields in every Resource's `sys` are also Links: The Space they're in,
-their Content Type (in case of Entries) or Users who created or modified them.
+Various fields in every resource's `sys` are also links: The space they're in,
+their content type (in case of entries) or Users who created or modified them.
 
-Of course, an Entry can also link to more than one Entry or Asset:
+Of course, an entry can also link to more than one entry or asset:
 
-- Have multiple Link Fields, e.g. `fields.menu` and `fields.openingHours`
-in the restaurant. These represent semantically different Links because of the
-name & type of the Field they're stored in.
-You can even limit the Entries a Link Field may point to by specifying a
-Link Content Type Validation on the Field.
-- Have an Array of Links Field, e.g. `fields.menuItems` in the restaurant's
+- Have multiple link Fields, e.g. `fields.menu` and `fields.openingHours`
+in the restaurant. These represent semantically different links because of the
+name & type of the field they're stored in.
+You can even limit the entries a link Field may point to by specifying a
+Link content type Validation on the field.
+- Have an Array of links field, e.g. `fields.menuItems` in the restaurant's
 menu. This represents an (orderable) list of related items. Often you may want
 to model nothing but an ordered list: In this case, simply create a
-Content Type with a single Field that links to Entries.
+Content Type with a single field that links to entries.
 
 ## Modeling Attachments
 
-Entries linking to Assets represent attachments.
+Entries linking to assets represent attachments.
 
 For example, here's a restaurant pointing to some photos:
 
@@ -124,19 +124,19 @@ For example, here's a restaurant pointing to some photos:
 _il-doges' `fields.mainPhoto` links to such-doge, `fields.photos` link to more
 photos, including the mainPhoto._
 
-Just as with Entry links you can have multiple Fields linking to a
-single (`fields.mainPhoto`) or multiple (`fields.photos`) Assets.
+Just as with entry links you can have multiple fields linking to a
+single (`fields.mainPhoto`) or multiple (`fields.photos`) assets.
 
-You can limit the type of Asset a Link Field can link to by specifying an
-Asset File Type Validation on the Field.
+You can limit the type of asset a link Field can link to by specifying an
+Asset File Type Validation on the field.
 
-## Link Fields in Content Types
+## Link fields in content types
 
-Adding Links to an Entry requires the Entry's Content Type to have
-one or more Link Fields.
+Adding links to an entry requires the entry's content type to have
+one or more link Fields.
 
-Let's look at some example Field values.
-Remember that these need to be used in context of a Content Type like this:
+Let's look at some example field values.
+Remember that these need to be used in context of a content type like this:
 
 ~~~ json
 {
@@ -147,7 +147,7 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-### Link Field for Entry
+### Link field for entry
 
 ~~~ json
 {
@@ -157,7 +157,7 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-### Link Field for multiple Entries
+### Link field for multiple entries
 
 ~~~ json
 {
@@ -170,7 +170,7 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-### Link Field for Asset
+### Link field for asset
 
 ~~~ json
 {
@@ -180,7 +180,7 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-### Link Field for multiple Assets
+### Link field for multiple assets
 
 ~~~ json
 {
@@ -193,11 +193,11 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-## Link values in Entries
+## Link values in entries
 
-Link values are used in Entries to specify actual Links to other
-Entries or Assets. Before you can add those links you need to have
-added Link Fields to a Content Type.
+Link values are used in entries to specify actual links to other
+Entries or assets. Before you can add those links you need to have
+added link Fields to a content type.
 
 Link values are represented as objects containing a sys property with the
 type and ID of the resource they're linking to:
@@ -206,11 +206,11 @@ type and ID of the resource they're linking to:
 Field       |Type  |Description
 ------------|------|------------------------
 sys.type    |String|Always "Link".
-sys.linkType|String|Type of linked Resource.
-sys.id      |String|ID of linked Resource.
+sys.linkType|String|Type of linked resource.
+sys.id      |String|ID of linked resource.
 
-Let's look at some example Link values.
-Remember that these need to be used in context of an Entry like this:
+Let's look at some example link values.
+Remember that these need to be used in context of an entry like this:
 
 ~~~ json
 {
@@ -223,7 +223,7 @@ Remember that these need to be used in context of an Entry like this:
 }
 ~~~
 
-### Link to an Entry
+### Link to an entry
 
 ~~~ json
 {
@@ -235,7 +235,7 @@ Remember that these need to be used in context of an Entry like this:
 }
 ~~~
 
-### Links to multiple Entries
+### Links to multiple entries
 
 ~~~ json
 [
@@ -245,7 +245,7 @@ Remember that these need to be used in context of an Entry like this:
 ]
 ~~~
 
-### Link to an Asset
+### Link to an asset
 
 ~~~ json
 {
@@ -257,7 +257,7 @@ Remember that these need to be used in context of an Entry like this:
 }
 ~~~
 
-### Links to multiple Assets
+### Links to multiple assets
 
 ~~~ json
 [

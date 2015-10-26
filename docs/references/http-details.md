@@ -5,7 +5,7 @@ page: :docsHttpDetails
 ## Security
 
 The Content Delivery API and Content Preview API are fully available via SSL:
-Both JSON data and Assets should be requested through a secure transport.
+Both JSON data and assets should be requested through a secure transport.
 
 Our client libraries enable SSL by default. Unless there is a reason to
 disable SSL you should leave it enabled to ensure maximum privacy for clients.
@@ -13,7 +13,7 @@ disable SSL you should leave it enabled to ensure maximum privacy for clients.
 The Content Management API is only available via SSL,
 all requests must be performed using the `https:` protocol.
 
-Using SSL ensures that the entire content and access tokens of a Space remain secure
+Using SSL ensures that the entire content and access tokens of a space remain secure
 and can not be intercepted by potential eavesdroppers.
 
 ## Cross-origin resource sharing
@@ -79,7 +79,7 @@ Resources are represented as [JSON](http://json.org).
 ## Date & Time Format
 
 Dates and times are an important part of all content.
-Let's look at an Entry:
+Let's look at an entry:
 
 ~~~json
 {

@@ -18,7 +18,7 @@ However, you are free to use Git submodules or [download a static framework][18]
 
 ## Configuring the API client
 
-The class [*CDAClient*][3] manages all requests to the API. For most apps, you will have a single Space which contains all your data. In this case, it is recommended to create a singleton category on top of *CDAClient* to make it simple to dispatch requests from any part of your app:
+The class [*CDAClient*][3] manages all requests to the API. For most apps, you will have a single space which contains all your data. In this case, it is recommended to create a singleton category on top of *CDAClient* to make it simple to dispatch requests from any part of your app:
 
 ~~~ objc
 @implementation CDAClient (Guide)
@@ -36,7 +36,7 @@ The class [*CDAClient*][3] manages all requests to the API. For most apps, you w
 @end
 ~~~
 
-For creating a client object, the Space key and a Content Delivery API access token are required.
+For creating a client object, the space key and a Content Delivery API access token are required.
 
 ## Accessing data
 
@@ -51,7 +51,7 @@ Now that the client is available everywhere, you can fetch entries:
 
 A [*CDAArray*][5] contains a list of [*CDAResource*][6] objects whose concrete type depends on the query. In this case, the *items* property will contain a list of [*CDAEntry*][7] objects.
 
-Each *CDAEntry* has a *fields* property, containing the values for Fields defined in the content model. To decouple your app from Contentful, you can register custom subclasses for Content Types, like this:
+Each *CDAEntry* has a *fields* property, containing the values for fields defined in the content model. To decouple your app from Contentful, you can register custom subclasses for content types, like this:
 
 ~~~ objc
 [sharedClient registerClass:[BBUPlace class] forContentTypeWithIdentifier:@"3hEsRfcKgMGSaiocGQaqCo"];
@@ -65,13 +65,13 @@ The *BBUPlace* class defines properties like:
 }
 ~~~
 
-so that you can deal with Entries like with any other value object.
+so that you can deal with entries like with any other value object.
 
-In the guide app, the class also implements the *MKAnnotation* protocol, which enables directly showing Entries in a map view.
+In the guide app, the class also implements the *MKAnnotation* protocol, which enables directly showing entries in a map view.
 
 ## Simple views for your data
 
-The initial view of the guide app is a list of all coffee places it knows about. For common tasks like this, the SDK brings some UI components which can be customized to your needs. In this case, we will create a subclass of [*CDAEntriesViewController*][4], a *UITableViewController* optimized for showing a list of Entries matching a certain query.
+The initial view of the guide app is a list of all coffee places it knows about. For common tasks like this, the SDK brings some UI components which can be customized to your needs. In this case, we will create a subclass of [*CDAEntriesViewController*][4], a *UITableViewController* optimized for showing a list of entries matching a certain query.
 
 The basic setup is done in your subclasse's *init* method:
 
@@ -87,12 +87,12 @@ The basic setup is done in your subclasse's *init* method:
 }
 ~~~
 
-The cell mapping is a dictionary for specifying which property of the *UITableViewCell* corresponds to properties in the content model. In addition to that, the shared client is specified as the client to use and the entries are limited to a certain Content Type. Setting the *query* property is optional, in that case all Entries will be shown.
+The cell mapping is a dictionary for specifying which property of the *UITableViewCell* corresponds to properties in the content model. In addition to that, the shared client is specified as the client to use and the entries are limited to a certain content type. Setting the *query* property is optional, in that case all entries will be shown.
 
 <img alt="*CDAEntriesViewController* in action" style="width: initial; display: block;
   margin: 0 auto;" src="https://raw.githubusercontent.com/contentful-labs/guide-app-ios/master/Screenshots/menu.png" />
 
-If you want to show Resources in a *UICollectionView*, there is [*CDAResourcesCollectionViewController*][9]. It works similar to the Entries view controller:
+If you want to show resources in a *UICollectionView*, there is [*CDAResourcesCollectionViewController*][9]. It works similar to the entries view controller:
 
 ~~~ objc
 self = [super initWithCollectionViewLayout:layout cellMapping:@{ @"imageURL": @"URL" }];
@@ -102,7 +102,7 @@ if (self) {
 }
 ~~~
 
-You need to specify a layout, just like in a normal *UICollectionViewController* and there is also the cell mapping again. For convenience, there is a ready made collection view cell class which fetches images from the URL in its *imageURL* property, so that is what we are going to use in this example. The *resourceType* property defines which type of Resource is going to be fetched, in this case Assets. A [*CDAAsset*][10] has a direct accessor for the *URL* which is used in the cell mapping here. Finally, the client needs to be specified, like in the previous example.
+You need to specify a layout, just like in a normal *UICollectionViewController* and there is also the cell mapping again. For convenience, there is a ready made collection view cell class which fetches images from the URL in its *imageURL* property, so that is what we are going to use in this example. The *resourceType* property defines which type of resource is going to be fetched, in this case assets. A [*CDAAsset*][10] has a direct accessor for the *URL* which is used in the cell mapping here. Finally, the client needs to be specified, like in the previous example.
 
 <img alt="*CDAResourcesCollectionViewController* in action" style="width: initial; display: block;
   margin: 0 auto;" src="https://raw.githubusercontent.com/contentful-labs/guide-app-ios/master/Screenshots/pictures.png" />
@@ -114,7 +114,7 @@ Of course, it is also possible and often needed to write normal *UIViewControlle
 Two things to consider here:
 
 * [Links][12] might not be resolved, depending on your query. If that is the case, use the *resolveWithSuccess:failure:* method on any *CDAResource*. This should be done inside your custom class, look at the *fetchPictureAssetsWithCompletionBlock:* method from *BBUPlace* for an example.
-* Fields can include [Markdown][14]. There is [another example app][15] which shows how to use the [Bypass][16] library for converting Markdown into *NSAttributedString* which can be displayed in a *UITextView* since iOS 7. Depending on your use case and target platform, you might want to evaluate other options, for example converting to HTML.
+* fields can include [Markdown][14]. There is [another example app][15] which shows how to use the [Bypass][16] library for converting Markdown into *NSAttributedString* which can be displayed in a *UITextView* since iOS 7. Depending on your use case and target platform, you might want to evaluate other options, for example converting to HTML.
 
 With this, our walk through the [coffee guide app][1] is done. You should have everything you need to start building your own iOS apps with Contentful. Check out [the SDK][17] and start building.
 

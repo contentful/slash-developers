@@ -20,8 +20,8 @@ HTTP Status Code   |Error Code       |Description
 `404 Not Found`|`NotFoundError`|The requested resource or endpoint could not be found.
 `409 Version Mismatch`|`VersionMismatchError`|This error happens when you're trying to update an existing asset, entry or content type, and you either didn't specify the current version of the object or specify an outdated version.
 `422 Validation Error`|`ValidationFailedError`|The request payload was a valid JSON, but something was wrong with the data. Check the error details field – it should provide more specific information about the error.
-`422 Unknown Field`|`ValidationFailedError`|The triggered query references an invalid field.
-`422 Invalid Entry`| `InvalidEntryError`|The entered value is invalid.
+`422 Unknown field`|`ValidationFailedError`|The triggered query references an invalid field.
+`422 Invalid entry`| `InvalidEntryError`|The entered value is invalid.
 `429 Rate Limit Exceeded Error`|`RateLimitExceededError`|The user sends too many requests per second.
 `500 Server Error`|`ServerError`|Something went wrong on our end.
 `502 Hibernated`|`AccessDeniedError`|The space has not been used for a long time and hence it has been hibernated, but it will reappear if the user begins using it again.
