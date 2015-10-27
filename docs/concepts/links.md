@@ -54,204 +54,251 @@ In the JSON response of a successful query, when not already fetched in the `ite
 
 Let's take the example of restaurants pointing to their linked images.
 
-Before anything, we need a successful query URL:
+Before anything, we need a successful query URL using the `include=1` parameter:
 
-`https://cdn.contentful.com/spaces/myrestaurants/entries?access_token={example_token}&include=1`
+~~~ bash
+curl -v https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&include=1
+~~~
 
-The first part of the JSON response gets information about restaurants and their Links(images in our example):
+The first part of a JSON response gets information about Entries and their Links. 
+
+In the following example, the restaurant Entry `Spaceburger` is fetched alongside its Links to images by using the `restaurantImages` linking field:
 
 ~~~ json
   "items": [
     {
       "sys": {
-        ...
         "type": "Entry",
-        "id": "6KntaYXaHSyIw8M6eo26OK",
+        "id": "2UmoQ8Bo4g4S82WmGiQIQE",
         ...
       },
       "fields": {
-        "name": "China King",
-        "description": "Warm, cheap and fatty Chinese meals",
-        "image": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Asset",
-            "id": "smilingfamily"
+        "name": "Spaceburger",
+        "description": "The Jetson's love to come here!",
+        "restaurantImages": [
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "23qqdlTciMGm6IYy224euu"
+            }
           }
-        }
-      },
-    }
-  ...
+        ]
+      }
+    },
+    
+    ...
   ],
 ~~~
 
-In the above response, although `China King` is fetched, its linked image, `smilingfamily` is only retrieved as a Link to an Asset. 
+As seen in the above response, the linked image with `id=23qqdlTciMGm6IYy224euu` is only retrieved as a Link to an Asset. 
 
-Instead, our `smilingfamily` image is placed in the `includes` array:
+Instead, information about the `23qqdlTciMGm6IYy224euu` image is placed in the `includes` array:
 
 ~~~ json
   "includes": {
     "Asset": [
       {
+        "sys": {
+          "type": "Asset",
+          "id": "23qqdlTciMGm6IYy224euu",
+          ...
+        },
         "fields": {
-          "title": "Smiling Family",
+          "title": "The SpaceBurger Photo",
           "file": {
-            "fileName": "smilingfamily.png",
-            "contentType": "image/png",
+            "fileName": "spaceburger.jpg",
+            "contentType": "image/jpeg",
             "details": {
               "image": {
-                "width": 100,
-                "height": 161
+                "width": 550,
+                "height": 421
               },
-              "size": 20480
+              "size": 205683
             },
-            "url": "//images.contentful.com/myrestaurants/4gp6taAwW4CmaBumq2ekUm/9da0cd4309871b8d72343e895a00d611/smilingfamily.png"
-
+            "url": "//images.contentful.com/oc3u7dt7mty5/23qqdlTciMGm6IYy224euu/85514b430c28045a3b2930ebe15dfcce/spaceburger.jpg"
           }
-        },
-        "sys": {
-          ...
-          "type": "Asset",
-          "id": "restaurantimage",
-          ...
-          }
-      }, 
-    ]    
+        }
+      },
+      ...
+    ]
   }
 ~~~ 
 
-However, the structure of a JSON response could have been different. Before resolving Links of items, Contentful matches the filter conditions of a query.
+However, the structure of a JSON response could have been different. Before resolving Links to items, Contentful matches the filter conditions of a query.
 
-As a consequence, had our Entry been linked to another related Entry, both could have matched the filter conditions of the query and put inside the `items` array. 
+As a consequence, if our linked resource had matched the filter conditions of the query parameters, it would have been put inside the `items` array.
 
-Lets take a look at the response of a restaurant pointing to its menu:
+Lets take a look at the response of a menu pointing to its meals:
 
 ~~~ json 
 "items": [
     {
       "sys": {
-        ...
         "type": "Entry",
-        "id": "chinaking",
-        ...
+        "id": "4rJn9OJsBiAKmeoiiw40Ko",
       },
       "fields": {
-        "menufield": [
+        "name": "Menu for Humans",
+        ...
+        "stickiness": 999.3,
+        "menuMeal": [
           {
             "sys": {
               "type": "Link",
               "linkType": "Entry",
-              "id": "chinakingmenu"
+              "id": "3HkMtbj6hqcMYEqWIOm6SQ"
+            }
+          },
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "3SVh6Ei9pCkkIkoE0ME4Ms"
             }
           }
-        ],
-        ...
+        ]
       }
     },
-
+    ...
     {
       "sys": {
-        ...
         "type": "Entry",
-        "id": "chinakingmenu",
+        "id": "3HkMtbj6hqcMYEqWIOm6SQ",
         ...
       },
       "fields": {
-        "name": "Menu of China King restaurant",
-        "description": "A greasy plastic menu that will make you even hungrier"
-        ...
+        "weight": 203.1,
+        "name": "AstroChicken ",
+        "rating": 100,
+        "description": "An entire chicken with Andromeda's sauce"
       }
-    }
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "3SVh6Ei9pCkkIkoE0ME4Ms",
+        ...
+      },
+      "fields": {
+        "weight": 23049950.9,
+        "name": "AstroCattle",
+        "rating": 30,
+        "description": "Yummy Cows with fries and Ketchup"
+      }
+    },
+    ...
+
 ]    
 ~~~
 
-As you can see, although the restaurant `chinaking` is linked to its menu `chinakingmenu` , both are fetched in the same `items` array. That happens because both Entries match the conditions of our query.
+As you can see, although 'Menu for Humans' is linked to its meals, `AstroChicken` and `AstroCattle`, they are all fetched in the same `items` array. That happens because they all primarily match the conditions of our query parameters.
 
-Because `chinakingmenu` is already present in the response's items, it will not be included in the `includes.Entry` array again.
+In the end, since `AstroChicken` and `AstroCattle` are already present in the response's `items`, it should not be included in the `includes.Entry` array again.
+
+Note: When omitted, the `include` parameter takes the standard value of `1` 
 
 ### Fetching resources linked to a specific Entry
 
-It might be useful to fetch results that are linked to a particular target Entry. To do that, a query URL should filter Entries based on their specific `content_type` and `linking_field` that is used to link these items. 
+It might be useful to retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` used to link such items and `entry_id` from our target Entry. 
 
-For example, let's retrieve all resources linked to `chinakingmenu` by using the following query URL:
+For example, let's retrieve all resources of Content Type `Menu` linked to the restaurant `Space Burger` by using the following query URL:
 
-`https://cdn.contentful.com/spaces/myrestaurant/entries?access_token={example_token}&content_type=menu_type&fields.selectedMenu.sys.id=chinakingmenu&include=1`
+~~~ bash
+curl -v https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&content_type=3HjHXUYR3yyosUqAGmi8wu&fields.restaurantField.sys.id=2UmoQ8Bo4g4S82WmGiQIQE
+~~~
 
-As expected, the target Entry itself `chinakingmenu` and its Links to resources are retrieved in the `items` array:
+Because these are all Menus linked to the `Space Burger` restaurant , `Menu for Humans`, `Menu for Romulans` and `Menu for Klingons` are all retrieved alongside their own links and the target Entry:
 
 ~~~ json
-"items": [
+  "items": [
     {
       "fields": {
-        "name": "China King Menu",
+        "restaurantField": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "2UmoQ8Bo4g4S82WmGiQIQE"
+            }
+          },
+        "name": "Menu for Humans",        
+        "images": [
+          ...
+        ],
+        "menuMeal": [
+          ...
+        ]
+      },
+      "sys": {
+        "type": "Entry",
+        "id": "4rJn9OJsBiAKmeoiiw40Ko",
+      }      
+    },    
+    {
+      "fields": {
         "restaurantField": {
           "sys": {
             "type": "Link",
             "linkType": "Entry",
-            "id": "chinaking"
+            "id": "2UmoQ8Bo4g4S82WmGiQIQE"
           }
         },
-        "imageField": {
-          "sys": {
-            "type": "Link",
-            "linkType": "Asset",
-            "id": "oversizedeggroll"
-          }
-        },
-        ...
+        "name": "Menu for Romulans",
+        "menuMeal": [
+          ...
+        ]
       },
       "sys": {
         "type": "Entry",
-        "id": "chinakingmenu",
+        "id": "2Mt2YctJQ4am8u2oI4kcsS",
         ...
-      }
-    }
-  ]      
-~~~
-
-Then, our linked resources `chinaking` and `oversizedeggroll` are retrieved in the `includes` array:
-
-~~~ json
-"includes": {
-    "Entry": [
-      {
-        "fields": {
-          "name": "China King",
-          "description": "Warm, cheap and fatty Chinese meals",
-          "health_index": "2",
-          ...
-        },
-        "sys": {
-          "type": "Entry",
-          "id": "chinaking",
-          ...
-        }
-      }
-    ],
-  "Asset": [
-      {
-        "fields": {
-          "title": "Oversized Egg Roll",
-          "file": {
-            "fileName": "OversizedEggRoll.png",
-            "contentType": "image/png",
-            "details": {
-              "image": {
-                "width": 250,
-                "height": 250
-              },
-              "size": 12273
-            },
-            "url": "//images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/OversizedEggRoll.png"
+      }     
+    },
+    {
+      "fields": {    
+        "restaurantField": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Entry",
+            "id": "2UmoQ8Bo4g4S82WmGiQIQE"
           }
         },
-        "sys": {
-          "type": "Asset",
-          "id": "oversizedeggroll",
-          ...
-        }
-      },  
-~~~ 
+        "name": "Menu for Klingons",
+        "menuMeal": [
+          {
+            ...
+            }
+        ]
+      },
+      "sys": {
+        "type": "Entry",
+        "id": "2RnAOt0ssgQ6kIk0E4WAeq",
+        ...
+      }     
+    },
+    {
+      "sys": {
+        "type": "Entry",
+        "id": "2UmoQ8Bo4g4S82WmGiQIQE",
+        ...
+      },
+      "fields": {
+        "name": "Spaceburger",
+        "description": "The Jetson's love to come here!",
+        "restaurantImages": [
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "23qqdlTciMGm6IYy224euu"
+            }
+          }
+        ]
+      }
+    },
+    ...
+  ]    
+~~~
 
 ## Modeling Relationships
 
