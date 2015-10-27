@@ -194,7 +194,7 @@ Lets take a look at the response of a menu pointing to its meals:
 
 As you can see, although 'Menu for Humans' is linked to its meals, `AstroChicken` and `AstroCattle`, they are all fetched in the same `items` array. That happens because they all primarily match the conditions of our query parameters.
 
-In the end, since `AstroChicken` and `AstroCattle` are already present in the response's `items`, it should not be included in the `includes.Entry` array again.
+In the end, since `AstroChicken` and `AstroCattle` are already present in the response's `items`, they should not be included in the `includes.Entry` array again.
 
 Note: When omitted, the `include` parameter takes the standard value of `1` 
 
