@@ -75,6 +75,160 @@ In the response, the Entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two ar
 }
 ~~~
 
+## Retrieving all Entries of a Space
+
+Similar to our previous example, we need to provide a `space_id` and `access_token`. However, it is necessary to state whether our response should include items that are linked to our Entries. 
+
+In that way, we need to specify the number of levels we want to resolve using the `include` parameter. In this first example, we will only retrieve Entries, so we must set `include=0`: 
+
+~~~ bash
+# Request with access_token as a query parameter
+curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&include=0
+
+# Request with access_token as a header
+curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries?include=0 -H 'Authorization: Bearer b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb'
+~~~
+
+### Response
+~~~ json
+{
+  "sys": {
+    "type": "Array"
+  },
+  "total": 3,
+  "skip": 0,
+  "limit": 100,
+  "items": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "mo94git5zcq9"
+          }
+        },
+        "type": "Entry",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "6tw1zeDm5aMEIikMaCAgGk"
+          }
+        },
+        "id": "O1ZiKekjgiE0Uu84oKqaY",
+        "revision": 1,
+        "createdAt": "2015-10-26T14:36:22.226Z",
+        "updatedAt": "2015-10-26T14:36:22.226Z",
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "The Oldest Galaxies in the Universe",
+        "body": "The formation of this galaxy, and others like it, was a momentous event in cosmic evolution. This galaxy and its brethren helped to ...",
+        "image": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "1Idbf0HVsQeYIC0EmYgiuU"
+          }
+        },
+        "relatedPosts": [
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "6NX8Kkd9ZYS6igQQMyuC2O"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "fields": {
+        "title": "Explore the Universe!",
+        "body": "We live in an awesome universe and...",
+        "image": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "1ruXfeZDqckgOEUKMYsEqQ"
+          }
+        }
+      },
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "mo94git5zcq9"
+          }
+        },
+        "type": "Entry",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "6tw1zeDm5aMEIikMaCAgGk"
+          }
+        },
+        "id": "6NX8Kkd9ZYS6igQQMyuC2O",
+        "revision": 1,
+        "createdAt": "2015-10-26T14:34:57.606Z",
+        "updatedAt": "2015-10-26T14:34:57.606Z",
+        "locale": "en-US"
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "mo94git5zcq9"
+          }
+        },
+        "type": "Entry",
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "6tw1zeDm5aMEIikMaCAgGk"
+          }
+        },
+        "id": "5v10yZCONUS044UUgiqaO4",
+        "revision": 1,
+        "createdAt": "2015-10-26T15:43:21.233Z",
+        "updatedAt": "2015-10-26T15:43:21.233Z",
+        "locale": "en-US"
+      },
+      "fields": {
+        "title": "Comfortably alone in the Universe",
+        "body": "Given that the Universe is 13.7 billion years old this other life-form is unlikely to be a mere few hundred years ahead or behind. There is a good ...",
+        "image": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Asset",
+            "id": "5hzXG3eLtKqOM4CAisuCS6"
+          }
+        },
+        "relatedPosts": [
+          {
+            "sys": {
+              "type": "Link",
+              "linkType": "Entry",
+              "id": "O1ZiKekjgiE0Uu84oKqaY"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+~~~
+
+As you can see, the response is limited to the array `items` which include the Entries `O1ZiKekjgiE0Uu84oKqaY`, `5v10yZCONUS044UUgiqaO4` and `6NX8Kkd9ZYS6igQQMyuC2O`.
+
+Although these Entries have Links to other resources, these are merely referenced by their linking fields. It's not fetched any information about any linked resource itself.
 
 
 
