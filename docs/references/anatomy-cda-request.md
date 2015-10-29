@@ -6,7 +6,9 @@ page: :docsAnatomyCDARequest
 
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-In every request, clients need to provide an access token, which is created per Space and used to delimit audiences and content classes. In a request, `access_token` may be provided as a query parameter `access_token=$token` or a HTTP header `Authorization: Bearer $token`.
+This article goes into detail about the how requests and responses work using the CDA. Our official [SDKs](#{docs_url}code/libraries/) should free you from all of these details, but if you want to know exactly how the API works, this page is for you.
+
+To get started, for every request, clients need to provide an access token, which is created per Space and used to delimit audiences and content classes. In a request, `access_token` may be provided as a query parameter `access_token=$token` or a HTTP header `Authorization: Bearer $token`.
 
 In this article, we will focus on retrieving Entries, which are documents (e.g. Blog Posts, Events) contained within a Space (similar to a database) and based on a Content Type (describes fields of Entries). 
 
@@ -228,7 +230,7 @@ curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries?include=0 -H 'Aut
 
 As you can see, the response is limited to the array `items` which include the Entries `O1ZiKekjgiE0Uu84oKqaY`, `5v10yZCONUS044UUgiqaO4` and `6NX8Kkd9ZYS6igQQMyuC2O`.
 
-Although these Entries have Links to other resources, these are merely referenced by their linking fields. It's not fetched any information about any linked resource itself.
+Although these Entries contain Links to other resources, the content of the linked items is not included in the response, just an object that specifies the link target.
 
 ## Fetching Linked Resources
 
