@@ -6,7 +6,7 @@ page: :docsAnatomyCDARequest
 
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-This article goes into detail about the how requests and responses work using the CDA. Our official [SDKs](#{docs_url}code/libraries/) should free you from all of these details, but if you want to know exactly how the API works, this page is for you.
+This article goes into detail about the how requests and responses work using the CDA. Our official [SDKs](/developers/docs/code/libraries/) should free you from all of these details, but if you want to know exactly how the API works, this page is for you.
 
 To get started, for every request, clients need to provide an access token, which is created per Space and used to delimit audiences and content classes. In a request, `access_token` may be provided as a query parameter `access_token=$token` or a HTTP header `Authorization: Bearer $token`.
 
