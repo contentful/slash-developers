@@ -8,9 +8,7 @@ Contentful offers four [REST](https://en.wikipedia.org/wiki/Representational_Sta
 
 The Content Delivery API (CDA), available via `https://cdn.contentful.com` is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data; images, videos and other media is delivered as files.
 
-<!-- I feel that saying "API is a CDN" is fundamentally wrong, but this needs to be discussed. -->
-
-The API is a globally distributed CDN (Content Delivery Network) for content: all content, both JSON and binary, is served from the server closest to where a user is requesting content from. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple datacenters around the world also greatly improves the availability of content.
+The API is available via a globally distributed Content Delivery Network: all content, both JSON and binary, is served from the server closest to where a user is requesting content from. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple datacenters around the world also greatly improves the availability of content.
 
 [Read the reference documentation for the Content Delivery API][1]
 
@@ -32,8 +30,7 @@ With the Images API `https://images.contentful.com` you can resize and crop imag
 
 [Read the reference documentation for the Images API][4]
 
-[1]: http://docs.contentfulcda.apiary.io/
-[2]: http://docs.contentfulcma.apiary.io/
-[3]: http://docs.contentpreviewapi.apiary.io/#
-[4]: http://docs.contentfulimagesapi.apiary.io/
-[10]: https://www.contentful.com/blog/2014/08/14/do-more-with-images-on-contentful-platform/
+[1]: /developers/docs/references/content-delivery-api/
+[2]: /developers/docs/references/content-management-api/
+[3]: /developers/docs/references/content-preview-api/
+[4]: /developers/docs/references/images-api/
