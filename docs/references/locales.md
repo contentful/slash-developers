@@ -54,11 +54,11 @@ Locales are a great advantage of [Contentful Premium Plans](https://www.contentf
 
 To add a Locale to a Space you should the following:
 
-In Contentful's Web Interface, go to **Settings** > **Locales**.
+In Contentful's Web Interface, go to **Settings** > **Locales** and click in **Add Locale**:
 
 ![alt text](https://images.contentful.com/3ts464by117l/5E8X56DtxCY0is2ocuyeso/2a7c7f3c028343b2e2f6cbcea2bf399a/mainlocale.png)
 
-Click in **Add Locale** and choose an option:
+Choose a Locale and its options: 
 
 ![alt text](https://images.contentful.com/3ts464by117l/633NaPM11uo0qcsEWaW8IU/4cb24f447ddda520f5f24896de3f4e6d/newlocale.png)
 
