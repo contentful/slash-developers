@@ -643,10 +643,12 @@ We can retrieve all items linked to a particular target Entry. To do so, a query
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
     + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
-    + linking_field (required, string, `image`) ... Content Type field used to link items
+    + linking_field (required, string, `bestFriend`) ... Content Type field used to link items
     + target_entry_id (required, string, `nyancat`) ... Alphanumeric `id` of the Target Entry linked to retrieved items
 
 ### Query Entries [GET]
+
+Example: Retrieve items linked to `nyancat` through the `bestFriend` field:
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
