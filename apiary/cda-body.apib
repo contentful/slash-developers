@@ -635,6 +635,23 @@ Example: Include 2 levels of linked entries.
 
   + Attributes (Empty Array)
 
+## Filter by a linked Entry [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{linking_field}.sys.id={target_entry_id}]
+
+We can retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` (used to link these items) and `entry_id` from the target Entry.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + linking_field (required, string, `image`) ... Content Type field used to link items
+    + target_entry_id (required, string, `nyancat`) ... Alphanumeric `id` of the Target Entry linked to retrieved items
+
+### Query Entries [GET]
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)
+
 ## Filtering Assets by MIME-Type [/spaces/{space_id}/assets?access_token={access_token}&mimetype_group={mimetype_group}]
 
 Assets can be filtered by their MIME-Type group by using the `mimetype_group` query parameter. Valid groups are `attachment`, `plaintext`, `image`, `audio`, `video`, `richtext`, `presentation`,
