@@ -266,7 +266,7 @@ Example URL: <https://images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/
 
 # Group Search Parameters
 
-While the API calls in this section are focused on entries, search parameters are also available for assets and content types where applicable.
+Each collection endpoint supports a variety of query parameters to search & filter the items that will be included in the response. While the API calls in this section are focused on entries, the same query parameter syntax can be used to filter assets and content types as well.
 
 ## Content Type [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}]
 
@@ -521,9 +521,9 @@ This will return entries where `fields.center` is within the rectangle with:
 
 ## Order [/spaces/{space_id}/entries?access_token={access_token}&order={attribute}]
 
-Order items by specifying the `order` search parameter.
+When fetching a collection endpoint, you can & should order items in the response by specifying the `order` search parameter. You can order items both by their `sys` properties (such as `sys.createdAt`) or field values (such as `fields.myCustomDateField`).
 
-Note that when ordering Entries by fields you must set the content_type URI query parameter to the ID of the Content Type you want to filter by.
+Note that when ordering Entries by fields you must set the `content_type` URI query parameter to the ID of the Content Type you want to filter by.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
