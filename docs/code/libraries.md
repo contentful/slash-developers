@@ -28,5 +28,6 @@ page: :docsLibraries
 
 ## Unofficial
 
-You can find a list of unofficial client libraries
-[here](https://github.com/contentful-labs/awesome-contentful#sdks).
+Apart from the tools/libraries above, there are others developed by our community, which you can find at [awesome-contentful](https://github.com/contentful-labs/awesome-contentful).
+There you can find integrations for other languages and platforms such as PHP and .NET, or integrations with frameworks, static site generators and other tools.
+If you want to know how to use Contentful with a specific framework or tool not listed above, have a look at the [awesome-contentful](https://github.com/contentful-labs/awesome-contentful) list.
