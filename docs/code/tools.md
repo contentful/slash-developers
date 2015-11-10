@@ -15,7 +15,7 @@ You can import data from other systems into Contentful using [contentful-importe
 We love static sites. There are plugins for using Contentful with two major static site generators:
 
 - [Metalsmith](https://github.com/contentful-labs/contentful-metalsmith)
-- [Middleman](https://github.com/contentful-labs/contentful_middleman)
+- [Middleman](https://github.com/contentful/contentful_middleman)
 
 There's also an example for building a static site using [AWS Lambda](https://github.com/contentful-labs/contentful-aws-lambda-static).
 
