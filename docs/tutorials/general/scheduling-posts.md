@@ -107,7 +107,23 @@ f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc",'fields.endDateTime[gt]' =>
 </div>        
 ~~~
 
-Finally, our scheduled Entries are retrieved in chronological order:
+Use `middleman contentful` to import Entries and `middleman server` to start the application. Finally, our scheduled Entries are retrieved in chronological order:
 
 ![alt text](https://images.contentful.com/3ts464by117l/3bjFu5vA9a2miKSSu0aQa4/e1734ed22507357a575587b98c40d334/Screen_Shot_2015-11-10_at_1.56.39_PM.png)
+
+## Conclusion
+
+In this article we have:
+
++ Explored the usage of a simple Middleman app and its integrations with Contentful's APIs
+
++ Created time fields and variables whereby you can filter Entries
+
++ Crafted querying parameters used to manage scheduled posts
+
++ Built a Middleman View used to retrieve filtered Entries
+
+Note this is a simple application consistently using the `middleman contentful` command to import newly added Entries. 
+
+For a more detailed and comprehensive approach, visit our [documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference), [SDKs](https://www.contentful.com/developers/docs/code/libraries/) and various [tools](https://www.contentful.com/developers/docs/code/tools/).
 
