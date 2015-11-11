@@ -29,7 +29,7 @@ Keep in mind that the synchronization endpoint will always give you all the cont
 
 ## Usage
 
-- The first time you are using the Sync API in your application, you need to specify the `intial` URL parameter:
+- The first time you are using the Sync API in your application, you need to specify the `initial` URL parameter:
 
 ~~~ bash
 curl -X GET \
