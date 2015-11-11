@@ -35,7 +35,7 @@ The Content Preview API (CPA), available at `https://preview.contentful.com`, is
 
 ## Images API
 
-With the Images API `https://images.contentful.com` you can resize and crop images, change their background color and convert them to different formats – PNG→JPG, for instance. Letting our backend do this job for you means you can take advantage of our great CDN caching for images with the exact transformations each client needs.
+With the Images API `https://images.contentful.com` you can resize and crop images, change their background color and convert them to different formats – PNG→JPG, for instance. Using our backend for these transformations lets you upload high-quality assets, deliver exactly what your app needs, and still get all the benefits of our caching CDN.
 
 [Read the reference documentation for the Images API][4]
 
