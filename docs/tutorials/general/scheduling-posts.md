@@ -72,7 +72,7 @@ Then, in `config.rb`, [we must define](https://github.com/contentful-labs/schedu
 @timenow = @timenow.to_s
 ~~~
 
-Note that it is good practice to subtract ~900 seconds(15 minutes) from the current time . It ensures that cached hits are also included in the response.
+Note that it is good practice to round `timenow` to the nearest ~900 seconds (15 minutes). While using `endDateTime[gt]` or `startDateTime[lte]`, it ensures the query paramaters will remain stable over time.
 
 ## Querying parameters
 
