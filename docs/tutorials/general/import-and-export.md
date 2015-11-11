@@ -268,3 +268,64 @@ Finally, we extract the content from the database and generate the JSON files fo
 ~~~ bash
 drupal-exporter --config-file settings.yml --extract-to-json
 ~~~
+
+# Section 2: Importing Content
+
+After you've extracted data by using the above methods, you must install the `contentful-importer` executable:
+
+~~~ bash
+gem install contentful-importer
+~~~
+
+Before anything, we must create a content model using the [Contentful's Website Interface](http://www.contentful.com). Then, you download the content model and save it in a `content_model.json` file:
+
+~~~ bash
+ curl -X GET \
+      -H 'Authorization: Bearer ACCESS_TOKEN' \
+      'https://api.contentful.com/spaces/SPACE_ID/content_types' > content_model.json
+~~~
+
+
+Then, we must create a `settings.yml` file with your credentials:
+
+~~~ yml
+#PATH to all data
+data_dir: DEFINE_BEFORE_EXPORTING_DATA
+
+#JSON describing your content model
+content_model_json: PATH_TO_CONTENT_MODEL_JSON_FILE
+
+#Contentful credentials
+access_token: ACCESS_TOKEN
+organization_id: ORGANIZATION_ID
+space_id: DEFINE_AFTER_CREATING_SPACE
+default_locale: DEFINE_LOCALE_CODE
+~~~
+
+With that, we can use the `contentful-importer` command to manage how content models, entries and assets will be imported:
+~~~ bash
+# Import content model
+contentful-importer --configuration=settings.yml import-content-model
+
+# Import only Entries
+contentful-importer --configuration=settings.yml import-entries
+
+#Import only Assets
+contentful-importer --configuration=settings.yml import-assets
+~~~
+
+After the content is imported, it is necessary to publish them. We can also do that by using the `contentful-importer` command:
+
+~~~ bash
+# Publish everything that has been imported:
+contentful-importer --configuration=settings.yml publish
+
+# Publish all entries:
+contentful-importer --configuration=settings.yml publish-entries
+
+# Publish all assets:
+contentful-importer --configuration=settings.yml publish-assets
+~~~
+
+
+
