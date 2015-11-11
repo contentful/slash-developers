@@ -236,3 +236,172 @@ Then, we must choose what translations will be used in each Entry:
 With that, Entries will finally have different fields for each locale:
 
 ![alt text](https://images.contentful.com/3ts464by117l/3lsbrrYk6kgGsem4EseEGO/b1778d50c8e869fa4fcb150c99ac63d6/geenfields.png)
+
+# Locales and the Content Delivery API
+
+## Retrieving Entries without a specific locale
+
+ If there is no specific locale in your URL request, you will receive the corresponding value from the default locale (`en-US` in our example):
+
+### URL of Request
+`GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb`
+
+### JSON Response
+ ~~~ json
+{
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "mo94git5zcq9"
+      }
+    },
+    "type": "Entry",
+    "contentType": {
+      "sys": {
+        "type": "Link",
+        "linkType": "ContentType",
+        "id": "6tw1zeDm5aMEIikMaCAgGk"
+      }
+    },
+    "id": "tcptFqv6xwQy6QYOAgK0C",
+    "revision": 2,
+    "createdAt": "2015-11-03T12:05:26.752Z",
+    "updatedAt": "2015-11-11T13:06:13.855Z",
+    "locale": "en-US"
+  },
+  "fields": {
+    "title": "Welcome",
+    "body": "this is a test"
+  }
+}
+ ~~~
+
+## Retrieving Entries with a specific locale
+If we want to retrieve fields from a specific locale (e.g `de-AT`), we should use the `locale=de-AT` parameter:
+
+### URL of Request
+`GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&locale=de-AT`
+
+### JSON Response
+~~~json
+{
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "mo94git5zcq9"
+      }
+    },
+    "type": "Entry",
+    "contentType": {
+      "sys": {
+        "type": "Link",
+        "linkType": "ContentType",
+        "id": "6tw1zeDm5aMEIikMaCAgGk"
+      }
+    },
+    "id": "tcptFqv6xwQy6QYOAgK0C",
+    "revision": 2,
+    "createdAt": "2015-11-03T12:05:26.752Z",
+    "updatedAt": "2015-11-11T13:06:13.855Z",
+    "locale": "de-AT"
+  },
+  "fields": {
+    "title": "Willkommen",
+    "body": "das ist ein Test"
+  }
+}
+~~~
+
+## Retrieving Entries with a wildcard locale
+It is possible to retrieve all localized content of an Entry by using the wildcard parameter `locale=*`:
+
+### URL of Request
+`GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&locale=*`
+
+### JSON Response
+~~~ json
+{
+  "sys": {
+    "space": {
+      "sys": {
+        "type": "Link",
+        "linkType": "Space",
+        "id": "mo94git5zcq9"
+      }
+    },
+    "type": "Entry",
+    "contentType": {
+      "sys": {
+        "type": "Link",
+        "linkType": "ContentType",
+        "id": "6tw1zeDm5aMEIikMaCAgGk"
+      }
+    },
+    "id": "tcptFqv6xwQy6QYOAgK0C",
+    "revision": 2,
+    "createdAt": "2015-11-03T12:05:26.752Z",
+    "updatedAt": "2015-11-11T13:06:13.855Z"
+  },
+  "fields": {
+    "title": {
+      "en-US": "Welcome",
+      "de-AT": "Willkommen"
+    },
+    "body": {
+      "de-AT": "das ist ein Test",
+      "en-US": "this is a test"
+    }
+  }
+}
+~~~
+
+## Locales and the Sync API 
+
+While using the [Synchronization API](https://www.contentful.com/developers/docs/concepts/sync/), all localized content of an initial synchronization is retrieved in the same response :
+
+### URL of Request
+`GET https://cdn.contentful.com/spaces/mo94git5zcq9/sync?initial=true&access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&locale=de-AT` 
+
+### JSON Response
+~~~ json
+  items": [
+      {
+        "sys": {
+          "space": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Space",
+              "id": "mo94git5zcq9"
+            }
+          },
+          "type": "Entry",
+          "contentType": {
+            "sys": {
+              "type": "Link",
+              "linkType": "ContentType",
+              "id": "6tw1zeDm5aMEIikMaCAgGk"
+            }
+          },
+          "id": "tcptFqv6xwQy6QYOAgK0C",
+          "revision": 2,
+          "createdAt": "2015-11-03T12:05:26.752Z",
+          "updatedAt": "2015-11-11T13:06:13.855Z"
+        },
+        "fields": {
+          "title": {
+            "en-US": "Welcome",
+            "de-AT": "Willkommen"
+          },
+          "body": {
+            "de-AT": "das ist ein Test",
+            "en-US": "this is a test"
+          }
+        }
+      },
+      ...
+  ]    
+~~~
