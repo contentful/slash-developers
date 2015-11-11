@@ -8,7 +8,7 @@ In this article, we will expose how to manage the publishing time of content.
 
 We use the example of a fictitious online magazine named `Andromeda` with `Articles` Content Type.  
 
-The editors of this magazine must manage content by specifying a publishing and unpublishing date and time for Entries. 
+The editors of this magazine want to manage content by specifying a publishing and unpublishing date and time for their Entries. 
 
 Here is what we're going to do:
 
