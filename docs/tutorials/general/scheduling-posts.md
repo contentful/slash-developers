@@ -88,9 +88,8 @@ Then, we order these matched Entries [by creation date](https://github.com/conte
 f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc",'fields.endDateTime[gt]' => @timenow, 'fields.startDateTime[lte]' => @timenow, 'order' => 'sys.createdAt' }
 ~~~
 
-## Adding a View
-
- We [must add a view](https://github.com/contentful-labs/scheduling_app/commit/cc2243b34195808b7e5e5dedbd64ec9ea7adc284) in `sources/index.html.erb` to retrieve Entries:
+## Retrieving Entries in the application
+ We must [add some code to index.html.erb](https://github.com/contentful-labs/scheduling_app/commit/cc2243b34195808b7e5e5dedbd64ec9ea7adc284) to retrieve Entries:
 
 ~~~ erb
 <div class="container">
@@ -110,6 +109,18 @@ f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc",'fields.endDateTime[gt]' =>
 Use `middleman contentful` to import Entries and `middleman server` to start the application. Finally, our scheduled Entries are retrieved in chronological order:
 
 ![alt text](https://images.contentful.com/3ts464by117l/3bjFu5vA9a2miKSSu0aQa4/e1734ed22507357a575587b98c40d334/Screen_Shot_2015-11-10_at_1.56.39_PM.png)
+
+## Using Contentful Views
+
+Using views enables you to store a list of Entries filtered by a certain content type or query parameters. In this example, we will create a saved view that shows articles ordered by their `createdAt` date, so that the editor is able to see what's coming up next.
+
+Using the Contentful's Web Interface, in the search bar, we will select the content type `Article` and the query parameter `order=createdAt`. Then, click on `+` followed by `Save current view as..` :
+
+![alt text](https://images.contentful.com/3ts464by117l/71yu3so7CMakEECiGMq4kS/be3a736aa9720f7de45fe43ce088cf39/view1.png)
+
+Our view has been saved and we can now see Entries ordered by their creation date:
+
+![alt text](https://images.contentful.com/3ts464by117l/728f1yqv0AEaesAGYgsKGe/a7b96b7d16c909db137a31fbc3203141/view2.png)
 
 ## Conclusion
 
