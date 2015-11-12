@@ -12,16 +12,16 @@ Every resource returned by the Content Delivery API will have a `sys` property, 
 }
 ```
 
-Field          |Type          |Description
----------------|--------------|--------------------------------------------
-sys.type       |String        |Type of resource.
-sys.id         |String        |Unique ID of resource.
-sys.space      |Link          |Link to resource's Space (except Spaces) .
-sys.contentType|Link          |Link to Entry's Content Type (Entries only).
-sys.revision   |Integer       |Version of resource.
-sys.createdAt  |Date          |Time entity was created.
-sys.updatedAt  |Date          |Time entity was updated.
-sys.locale     |String        |Locale of the resource.
+Field          |Type          |Description                     |Applies to
+---------------|--------------|--------------------------------|-------------------
+sys.type       |String        |Type of resource.               |All
+sys.id         |String        |Unique ID of resource.          |All
+sys.space      |Link          |Link to resource's Space.       |All except Spaces
+sys.contentType|Link          |Link to Entry's Content Type.   |Entries
+sys.revision   |Integer       |Version of resource.            |All except Spaces
+sys.createdAt  |Date          |Time entity was created.        |All except Spaces
+sys.updatedAt  |Date          |Time entity was updated.        |All except Spaces
+sys.locale     |String        |Locale of the resource.         |Entries and Assets
 
 ## Collection Resources and Pagination
 
