@@ -56,40 +56,9 @@ activate :contentful do |f|
 end
 ~~~ 
 
-## Time Fields and Variables
+## Display Entries in the application
 
-With that, In Contentful's Web Interface, we must add the fields `startDateTime` and `endDateTime` to the Content Type `Articles`:
-
-![alt text](https://images.contentful.com/3ts464by117l/3UqDYxf6YUquiUEiESG0os/7551bdcc9f59a9804847e7039e521940/Screen_Shot_2015-11-06_at_1.49.31_PM.png)
-
-![alt text](https://images.contentful.com/3ts464by117l/2O6cTuFFlYCiICyUic0CyC/71805eeed16bbe01444fc85a37e996b8/Screen_Shot_2015-11-06_at_1.49.51_PM.png)
-
-Then, in `config.rb`, [we must define](https://github.com/contentful-labs/scheduling_app/commit/6bb6ad5a39149ed6cc9a772606072dabeee9f08c) a `timenow` ruby variable to filter scheduled Entries:
-
-~~~ ruby
-@timenow = Time.now - 900
-@timenow = @timenow.strftime("%FT%T")
-@timenow = @timenow.to_s
-~~~
-
-Note that it is good practice to round `timenow` to the nearest ~900 seconds (15 minutes). While using `endDateTime[gt]` or `startDateTime[lte]`, it ensures the query paramaters will remain stable over time.
-
-## Querying parameters
-
-With that in mind, [we filter](https://github.com/contentful-labs/scheduling_app/commit/ec1238823f893c81ba8724ec237560eecdbef538) Entries with `endDateTime` greater than `timenow` and `startDateTime` less than `timenow`:
-
-~~~ ruby
-f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc",'fields.endDateTime[gt]' => @timenow, 'fields.startDateTime[lte]' => @timenow}
-~~~
-
-Then, we order these matched Entries [by creation date](https://github.com/contentful-labs/scheduling_app/commit/d7fcab40cefcb1cc1f243dd3f50385c9b7e8c271):
-
-~~~ ruby
-f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc",'fields.endDateTime[gt]' => @timenow, 'fields.startDateTime[lte]' => @timenow, 'order' => 'sys.createdAt' }
-~~~
-
-## Retrieving Entries in the application
- We must [add some code to index.html.erb](https://github.com/contentful-labs/scheduling_app/commit/cc2243b34195808b7e5e5dedbd64ec9ea7adc284) to retrieve Entries:
+We next [add some code to index.html.erb](https://github.com/contentful-labs/scheduling_app/commit/cc2243b34195808b7e5e5dedbd64ec9ea7adc284) to display articles:
 
 ~~~ erb
 <div class="container">
@@ -106,21 +75,64 @@ f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc",'fields.endDateTime[gt]' =>
 </div>        
 ~~~
 
-Use `middleman contentful` to import Entries and `middleman server` to start the application. Finally, our scheduled Entries are retrieved in chronological order:
+Use `middleman contentful` to import Entries and `middleman server` to start the application.
+
+## Scheduling visibility with time fields and query parameters
+
+We now have a simple static site being with all the content managed in Contentful. However, our editors want to schedule articles to be published in the future. To solve this, we can simply add some date fields to our `Articles` content type and use them to filter the entries included in our site.
+
+### Add the date fields
+
+First, in Contentful's Web Interface, we must add the fields `startDateTime` and `endDateTime` to the Content Type `Articles`:
+
+![alt text](https://images.contentful.com/3ts464by117l/3UqDYxf6YUquiUEiESG0os/7551bdcc9f59a9804847e7039e521940/Screen_Shot_2015-11-06_at_1.49.31_PM.png)
+
+![alt text](https://images.contentful.com/3ts464by117l/2O6cTuFFlYCiICyUic0CyC/71805eeed16bbe01444fc85a37e996b8/Screen_Shot_2015-11-06_at_1.49.51_PM.png)
+
+Then, in `config.rb`, [we define](https://github.com/contentful-labs/scheduling_app/commit/6bb6ad5a39149ed6cc9a772606072dabeee9f08c) a `timenow` variable to filter scheduled Entries:
+
+~~~ ruby
+@timenow = Time.now
+@timenow = @timenow - (@timenow % 300)
+@timenow = @timenow.strftime("%FT%T")
+@timenow = @timenow.to_s
+~~~
+
+Note that second line, which causes `@timenow` to move in increments of 5 minutes like `"2015-12-24T10:00:00"`, `"2015-12-24T10:05:00"`, `"2015-12-25T10:10:00"` and so on. It is a good practice to always truncate timestamps based on the current time to an acceptable latency to keep your requests cache-friendly.
+
+### Add filter parameters to the entries query
+
+With that in mind, [we filter](https://github.com/contentful-labs/scheduling_app/commit/ec1238823f893c81ba8724ec237560eecdbef538) Entries with `endDateTime` greater than `timenow` and `startDateTime` less than `timenow`:
+
+~~~ ruby
+f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc",'fields.endDateTime[gt]' => @timenow, 'fields.startDateTime[lte]' => @timenow}
+~~~
+
+Then, we order these matched Entries [by creation date](https://github.com/contentful-labs/scheduling_app/commit/d7fcab40cefcb1cc1f243dd3f50385c9b7e8c271):
+
+~~~ ruby
+f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc",'fields.endDateTime[gt]' => @timenow, 'fields.startDateTime[lte]' => @timenow, 'order' => '-fields.startDateTime' }
+~~~
+
+### Refresh the content
+
+Now if you re-run `middleman contentful` and `middleman server` you will see your entries sorted by their startDateTime:
 
 ![alt text](https://images.contentful.com/3ts464by117l/3bjFu5vA9a2miKSSu0aQa4/e1734ed22507357a575587b98c40d334/Screen_Shot_2015-11-10_at_1.56.39_PM.png)
 
 ## Using Contentful Views
 
-Using views enables you to store a list of Entries filtered by a certain content type or query parameters. In this example, we will create a saved view that shows articles ordered by their `createdAt` date, so that the editor is able to see what's coming up next.
+Now that the site is only showing items that are supposed to be published, we can do one more thing to make lives easier for our editors. Saved views enable you to share a specific set of filter, columns, and ordering in the Contentful Web Interface with other members of the Space. In this example, we will create a view that shows articles ordered by their `createdAt` date, so that our editors can easily see what's coming up next.
 
-Using the Contentful's Web Interface, in the search bar, we will select the content type `Article` and the query parameter `order=createdAt`. Then, click on `+` followed by `Save current view as..` :
+Using the Contentful's Web Interface, in the search bar, we will select the content type `Article`, then add the "Start Date Time" column to the table:
 
 ![alt text](https://images.contentful.com/3ts464by117l/71yu3so7CMakEECiGMq4kS/be3a736aa9720f7de45fe43ce088cf39/view1.png)
 
-Our view has been saved and we can now see Entries ordered by their creation date:
+Finally click the `+` sign, select `Save current view as..` and name the view "Publishing Schedule":
 
 ![alt text](https://images.contentful.com/3ts464by117l/728f1yqv0AEaesAGYgsKGe/a7b96b7d16c909db137a31fbc3203141/view2.png)
+
+Now that our view has been saved any member of the space can use it to see the schedule for upcoming articles.
 
 ## Conclusion
 
@@ -134,7 +146,13 @@ In this article we have:
 
 + Built a Middleman View used to retrieve filtered Entries
 
-Note this is a simple application consistently using the `middleman contentful` command to import newly added Entries. 
+### Related resources
 
-For a more detailed and comprehensive approach, visit our [documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference), [SDKs](https://www.contentful.com/developers/docs/code/libraries/) and various [tools](https://www.contentful.com/developers/docs/code/tools/).
+ - For more advanced examples of using `contentful_middleman` check out [`contentful_middleman_examples`][cf-mm-examples] on GitHub.
+ - To learn more about the different kinds of filtering & querying supported by our API, check out [the reference documentation][filtering-reference].
+ - Finally, you can find more static site generator integrations on our [Tools][tools] page.
+
+[cf-mm-examples]: https://github.com/contentful-labs/contentful_middleman_examples
+[filtering-reference]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
+[tools]: https://www.contentful.com/developers/docs/code/tools/
 
