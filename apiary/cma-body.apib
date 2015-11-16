@@ -143,6 +143,41 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 Content Types are schemas describing the shape of Entries. They mainly consist of a list of fields acting as a blueprint for Entries.
 
+A Content Type has a structure similar to the following table:
+
+Field       |Type        |Description
+------------|------------|----------------------------------------------------------
+sys         |Sys         |Common system properties.
+name        |String      |Name of the Content Type.
+description |String      |Description of the Content Type.
+fields      |\[Field\]   |List of Fields.
+displayField|String      |ID of main Field used for display.
+
+Fields describe a single property of an Entry. They assume one of the following formats:
+
+Field      |Type          |Description
+-----------|--------------|-------------------------------------------
+id         |String        |ID of the Field.
+name       |String        |Name of the Field.
+type       |String        |Type of the Field.
+items      |Schema        |(Array type only) Schema for items.
+required   |Boolean       |Describes whether the Field is mandatory.
+localized  |Boolean       |Describes whether the Field is localized.
+
+Finally, every field has a field type with one of the structures below :
+
+Name   |JSON Primitive|Description
+-------|--------------|------------------------------------------------------------------------------
+Symbol |String        |Basic list of characters. Maximum length is 256.
+Text   |String        |Same as Symbol, but can be filtered via Full-Text Search. Maximum length is 50,000.
+Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53.
+Number |Number        |Number type with decimals.
+Date   |String        |Date/Time in ISO-8601 format.
+Boolean|Boolean       |Flag, `true` or `false`.
+Link   |Object        |See [Links](https://www.contentful.com/developers/docs/concepts/links/)
+Array  |Array         |List of values. Value type depends on `field.items.type`.
+Object |Object        |Arbitrary Object.
+
 + Parameters
     + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
 
