@@ -122,7 +122,7 @@ Now if you re-run `middleman contentful` and `middleman server` you will see you
 
 ## Using Contentful Views
 
-Now that the site is only showing items that are supposed to be published, we can do one more thing to make lives easier for our editors. Saved views enable you to share a specific set of filter, columns, and ordering in the Contentful Web Interface with other members of the Space. In this example, we will create a view that shows articles ordered by their `createdAt` date, so that our editors can easily see what's coming up next.
+Now that the site is only showing items that are supposed to be published, we can do one more thing to make lives easier for our editors. Saved views enable you to share a specific set of filter, columns, and ordering in the Contentful Web Interface with other members of the Space. In this example, we will create a view that shows articles ordered by their `fields.startDateTime` date, so that our editors can easily see what's coming up next.
 
 Using the Contentful's Web Interface, in the search bar, we will select the content type `Article`, then add the "Start Date Time" column to the table:
 
