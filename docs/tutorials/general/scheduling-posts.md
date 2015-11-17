@@ -126,11 +126,11 @@ Now that the site is only showing items that are supposed to be published, we ca
 
 Using the Contentful's Web Interface, in the search bar, we will select the content type `Article`, then add the "Start Date Time" column to the table:
 
-![alt text](https://images.contentful.com/3ts464by117l/71yu3so7CMakEECiGMq4kS/be3a736aa9720f7de45fe43ce088cf39/view1.png)
+![alt text](https://images.contentful.com/3ts464by117l/71yu3so7CMakEECiGMq4kS/5ff1b4f41c73c68e353152b9351ae749/Screen_Shot_2015-11-17_at_2.10.20_PM.png)
 
 Finally click the `+` sign, select `Save current view as..` and name the view "Publishing Schedule":
 
-![alt text](https://images.contentful.com/3ts464by117l/728f1yqv0AEaesAGYgsKGe/a7b96b7d16c909db137a31fbc3203141/view2.png)
+![alt text](https://images.contentful.com/3ts464by117l/728f1yqv0AEaesAGYgsKGe/a1f6453aca52a9e9d698a4c1e30d9b2f/Screen_Shot_2015-11-17_at_2.10.44_PM.png)
 
 Now that our view has been saved any member of the space can use it to see the schedule for upcoming articles.
 
