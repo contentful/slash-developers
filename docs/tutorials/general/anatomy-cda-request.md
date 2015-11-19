@@ -8,7 +8,11 @@ Contentful's Delivery API (CDA) is a read-only API for retrieving content from C
 
 This article goes into detail about the how requests and responses work using the CDA. Our official [SDKs](/developers/docs/code/libraries/) should free you from all of these details, but if you want to know exactly how the API works, this page is for you.
 
-To get started, for every request, clients need to provide an access token, which is created per Space and used to delimit audiences and content classes. In a request, `access_token` may be provided as a query parameter `access_token=$token` or a HTTP header `Authorization: Bearer $token`.
+To get started, for every request, clients [need to provide an access token](https://www.contentful.com/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
+
+You can create an access token using [Contentful's Web Interface](http://www.contentful.com) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
+
+In a request, `access_token` may be provided as a query parameter `access_token=$token` or a HTTP header `Authorization: Bearer $token`. Still, header-based authorization is preferred in most cases.
 
 In this article, we will focus on retrieving Entries, which are documents (e.g. Blog Posts, Events) contained within a Space (similar to a database) and based on a Content Type (describes fields of Entries). 
 
@@ -16,9 +20,15 @@ In each returned Entry, it will be fetched a `sys` property, which is an object 
 
 Finally, retrieved Entries also have a `field` array, which is used to assign values to Content Type fields.
 
+## Pre-requisites
+
+In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [Developer Center](https://www.contentful.com/developers/docs/concepts/data-model/).
+
+You should also be able to recognize the basic structure of JSON responses and requests of REST APIs.  
+
 ## Requesting a single Entry
 
-In order to retrieve a specific Entry, the request should include a `space_id`, `entry_id` and `access_token`. In the following request, we will retrieve a blog post Entry with `id=O1ZiKekjgiE0Uu84oKqaY` from the Space `mo94git5zcq9`:
+In order to retrieve a specific Entry, the request should include a `space_id`, `entry_id` and `access_token`. Note that you only need to provide `space_id` and the space itself does not have to be retrieved. In the following request, we will retrieve a blog post Entry with `id=O1ZiKekjgiE0Uu84oKqaY` from the Space `mo94git5zcq9`:
 
 ~~~ bash
 # Request with access_token as a query parameter
@@ -32,6 +42,8 @@ In the response, the Entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two ar
 
 ~~~ json
 {
+
+# The following array retrieves common system properties of the Entry
   "sys": {
     "space": {
       "sys": {
@@ -54,6 +66,8 @@ In the response, the Entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two ar
     "updatedAt": "2015-10-26T14:36:22.226Z",
     "locale": "en-US"
   },
+
+# The following array retrieves a list of fields that belongs to the retrieved Entry 
   "fields": {
     "title": "The Oldest Galaxies in the Universe",
     "body": "The formation of this galaxy, and others like it, was a momentous event in cosmic evolution. This galaxy and its brethren helped to ...",
@@ -100,6 +114,9 @@ curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries?include=0 -H 'Aut
   "total": 3,
   "skip": 0,
   "limit": 100,
+  
+# The following array retrieves the entire structure of each Entry of our Space
+# Each retrieved entry follows the same structure (sys and fields arrays)
   "items": [
     {
       "sys": {
@@ -253,6 +270,8 @@ Similar to our previous example, the array `items` will retrieve results matchin
   "total": 3,
   "skip": 0,
   "limit": 100,
+  
+  # The following array will retrieve entries that only match the query parameters
   "items": [
     {
       "sys": {
@@ -378,12 +397,8 @@ Similar to our previous example, the array `items` will retrieve results matchin
       }
     }
   ],
-~~~
 
-However, we have specified `include=1`, so linked resources that still haven't matched our query parameters will be put inside the `includes` array, as seen below:
-
-~~~ json
-
+# Because we have specified `include=1`, linked resources that haven't matched query parameters will be put inside the includes array, as seen below:
 "includes": {
     "Asset": [
       {
@@ -486,6 +501,8 @@ However, we have specified `include=1`, so linked resources that still haven't m
   }
 ~~~
 
+This a simple usage of Links, for more advanced uses visit the [Links Reference Page](https://www.contentful.com/developers/docs/concepts/links/).
+
 Note: When omitted, the `include` parameter takes the standard value of `1`
 
 ## Conclusion
@@ -501,9 +518,3 @@ In the first example, we've uncoved the general structure of requests and respon
 In the last two examples, we've seen the importance of the `include` parameter while retrieving Entries with linked resources. 
 
 In the next article, we will expose features and details of Contentful's Management API (CMA).
-
-
-
-
-
-
