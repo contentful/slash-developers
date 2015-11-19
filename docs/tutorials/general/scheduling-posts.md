@@ -124,15 +124,16 @@ Now if you re-run `middleman contentful` and `middleman server` you will see you
 
 Now that the site is only showing items that are supposed to be published, we can do one more thing to make lives easier for our editors. Saved views enable you to share a specific set of filter, columns, and ordering in the Contentful Web Interface with other members of the Space. In this example, we will create a view that shows articles ordered by their `fields.startDateTime` date, so that our editors can easily see what's coming up next.
 
-Using the Contentful's Web Interface, in the search bar, we will select the content type `Article`, then add the "Start Date Time" column to the table:
+Using the Contentful's Web Interface, in the search bar, we will select the content type `Article`, click in the three lines icon above *Status* and then add the "Start Date Time" column to the table:
 
-![alt text](https://images.contentful.com/3ts464by117l/71yu3so7CMakEECiGMq4kS/5ff1b4f41c73c68e353152b9351ae749/Screen_Shot_2015-11-17_at_2.10.20_PM.png)
+![alt text](https://images.contentful.com/3ts464by117l/3EJFlPxIaQEmmeKGQK4akG/fb351f69300f148e5fd77ab4a74823a0/view1.png)
 
-Finally click the `+` sign, select `Save current view as..` and name the view "Publishing Schedule":
+Finally click the `+` sign, select `Save current view as..` and name the view "Incoming Articles":
 
-![alt text](https://images.contentful.com/3ts464by117l/728f1yqv0AEaesAGYgsKGe/a1f6453aca52a9e9d698a4c1e30d9b2f/Screen_Shot_2015-11-17_at_2.10.44_PM.png)
+![alt text](https://images.contentful.com/3ts464by117l/2wP0e3DwOUo0YIE2EEAcO8/cdc0f1d83e8a58d28139dd7ee98e110c/view2.png)
 
-Now that our view has been saved any member of the space can use it to see the schedule for upcoming articles.
+Now that our view has been saved any member of the space can use it to see the schedule for upcoming articles:
+![alt text](https://images.contentful.com/3ts464by117l/45BI6XvSfe0IyIUq8qosGi/a0751ee0493a988e367c9664db3c3b69/view3.png)
 
 ## Conclusion
 
