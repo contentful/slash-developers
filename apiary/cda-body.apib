@@ -539,6 +539,27 @@ When fetching a collection endpoint, you can & should order items in the respons
 
 Note that when ordering Entries by fields you must set the `content_type` URI query parameter to the ID of the Content Type you want to filter by.
 
+Also note that only the following field types can be used alongside the order parameter:
+
+Name   |JSON Primitive|Description
+-------|--------------|----------------------------------------------------
+Symbol |String        |Basic list of characters. Maximum length is 256.
+Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53.
+Number |Number        |Number type with decimals.
+Date   |String        |Date/Time in ISO-8601 format.
+Boolean|Boolean       |Flag, `true` or `false`.
+
+The following field types ** are not** support alongside the order parameter:
+
+Name   |JSON Primitive|Description
+-------|--------------|-----------------------------------------------------
+Text   |String        |Same as Symbol, but can be filtered via Full-Text Search. Maximum length is 50,000.
+Link   |Object        |See [Links](https://www.contentful.com/developers/docs/concepts/links/)
+Array  |Array         |List of values. Value type depends on `field.items.type`.
+Object |Object        |Arbitrary Object.
+
+
+
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
