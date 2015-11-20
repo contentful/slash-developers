@@ -487,6 +487,7 @@ When you are performing geographical searches please keep in mind that queries i
 
 A common use case for location search is to search for places close to the user's current position.
 
+
 Use the `near` operator to show results closest to a specific map location and order the results by distance.
 
 This will return all entries sorted by distance from the point at latitude=38 and a longitude=-122.
@@ -495,13 +496,25 @@ This will return all entries sorted by distance from the point at latitude=38 an
 
   + Attributes (Empty Array)
 
-## Locations in bounding rectangle [/spaces/{space_id}/entries?access_token={access_token}&fields.center%5Bwithin%5D={rectangle}&content_type={content_type}]
+## Locations in bounding object [/spaces/{space_id}/entries?access_token={access_token}&fields.center%5Bwithin%5D={rectangle}&content_type={content_type}]
 
-When you're displaying content on a map it makes sense to retrieve only content that is visible on the currently visible map rectangle. For this case, use the `within` operator.
+When you're displaying content on a map it makes sense to retrieve only content that is visible on the currently visible map rectangle or circle. For these cases, use the `within` operator.
 
-Similar to the "near me" use case, this lets you search for locations that are within a specific circle on the map. This can be useful for finding related Entries that are in the vicinity of another Entry.
+Similar to the "near me" use case, this lets you search for locations that are within the specific object on the map. This can be useful for finding related Entries that are in the vicinity of another Entry.
 
-Using `field.center[within]=1,2,3` will return Entries where `fields.center` is inside of the circle with latitude=1, longitude=2 and a radius of 3 kilometers.
+There are two mechanisms to search for nearby locations:
+
+1) Using a bounding rectangle: 
+
+To search for locations within a rectangle object, use the structure `field.center[within]=latitude1,longitude1,latitude2,longitude2` where:
+
+ + `latitude1` and `longitude1` refer to the the coordinates of the bottom left corner of the rectangle;
+
+ + `latitude2` and `longitude2` refer to the coordinates of the top right corner of the rectangle;
+
+2) Using a bounding circle: 
+
+The structure `field.center[within]=latitute,longitude,radius` will return Entries included in the circle with `fields.center` of the given latitude, longitude and radius.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
