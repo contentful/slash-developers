@@ -38,12 +38,12 @@ curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries/O1ZiKekjgiE0Uu84o
 curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries/O1ZiKekjgiE0Uu84oKqaY -H 'Authorization: Bearer b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb'
 ~~~
 
-In the response, the Entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two arrays: `sys`, describing system properties of the Entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its Content Type (`Blog Post`):
+In the response, the Entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two objects: `sys`, describing system properties of the Entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its Content Type (`Blog Post`):
 
 ~~~ json
 {
 
-# The following array retrieves common system properties of the Entry
+# The following object retrieves common system properties of the Entry
   "sys": {
     "space": {
       "sys": {
@@ -67,7 +67,7 @@ In the response, the Entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two ar
     "locale": "en-US"
   },
 
-# The following array retrieves a list of fields that belongs to the retrieved Entry
+# The following object retrieves a list of fields that belongs to the retrieved Entry
   "fields": {
     "title": "The Oldest Galaxies in the Universe",
     "body": "The formation of this galaxy, and others like it, was a momentous event in cosmic evolution. This galaxy and its brethren helped to ...",
@@ -116,7 +116,7 @@ curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries?include=0 -H 'Aut
   "limit": 100,
 
 # The following array retrieves the entire structure of each Entry of our Space
-# Each retrieved entry follows the same structure (sys and fields arrays)
+# Each retrieved entry follows the same structure (sys and fields objects)
   "items": [
     {
       "sys": {
