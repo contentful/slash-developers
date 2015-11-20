@@ -18,7 +18,7 @@ In this article, we will focus on retrieving Entries, which are documents (e.g. 
 
 In each returned Entry, it will be fetched a `sys` property, which is an object containing system managed metadata. It retrieves essential information about a resource, such as `sys.type` and `sys.id`.
 
-Finally, retrieved Entries also have a `field` array, which is used to assign values to Content Type fields.
+Finally, retrieved Entries also have a `field` object, which is used to assign values to Content Type fields.
 
 ## Pre-requisites
 
