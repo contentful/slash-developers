@@ -9,15 +9,15 @@ We will provide simple steps to get your first entries and start using the conte
 
 First, you need to install our `contentful` gem. To do so, you can do it manually on the console by doing:
 
-```bash
+~~~ bash
 $ gem install contentful
-```
+~~~
 
 Or you can add it inside your `Gemfile`:
 
-```ruby
+~~~ ruby
 gem 'contentful'
-```
+~~~
 
 Once in your `Gemfile`, running `bundle install` will install the gem and all its dependencies.
 
@@ -27,7 +27,7 @@ Once you have your gem installed, you can start using it inside your application
 
 In this example, we'll use the Example Space:
 
-```ruby
+~~~ ruby
 require 'contentful'
 
 client = Contentful::Client.new(
@@ -35,13 +35,13 @@ client = Contentful::Client.new(
   access_token: 'b4c0n73n7fu1',
   dynamic_entries: :auto
 )
-```
+~~~
 
 You'll need to create a Contentful Client, for that, you'll need your **Space ID** and **Access Token**,
 both of which can be obtained through the Contentful UI.
 
-> **Note**: The `dynamic_entries`, will automatically map the fields in your Entries to methods,
-> so that you can use them directly as objects.
+{: .note}
+**Note**: The `dynamic_entries`, will automatically map the fields in your Entries to methods, so that you can use them directly as objects.
 
 ## Getting your content
 
@@ -55,42 +55,42 @@ With the client already created, all that's left to do, is to start consuming th
 
 To do so, you can request all your entries to the API:
 
-```ruby
+~~~ ruby
 entries = client.entries
-```
+~~~
 
 Or request a single entry:
 
-```ruby
+~~~ ruby
 entry_id = 'nyancat'
 cat = client.entry(entry_id)
-```
+~~~
 
 You can also specify the same [query parameters the API accepts][5]:
 
-```ruby
+~~~ ruby
 cat_entries_by_date = client.entries(content_type: 'cat', order: 'sys.createdAt')
-```
+~~~
 
 ### Using your Entry
 
 Once we've got our entry, we can just use it as any Ruby object
 
-```ruby
+~~~ ruby
 puts cat.name # => "Nyan Cat"
 puts "I like #{cat.likes.join(' and ')}" # => "I like rainbows and fish"
 puts "I have #{cat.lives} lives" # => "I have 1337 lives"
-```
+~~~
 
 You can even do more complicated querying and interacting with your entries
 
-```ruby
+~~~ ruby
 cats_with_many_likes = client.entries(content_type: 'cat', include: 2).select { |cat| cat.likes.size > 1 }
 cats_with_many_likes.each do |cat|
   puts "I like #{cat.likes.join(' and ')}"
   puts "My Best Friend is: #{cat.best_friend.name}"
 end
-```
+~~~
 
 In this case we've added the `include: 2` parameter, which allows the API to resolve [Links][4] into Entries.
 This allows us to get the properties from our cat's best friend.
@@ -102,17 +102,17 @@ You can see more [specific queries][7] and also can use the [Images API][8].
 
 To query a Single Asset:
 
-```ruby
+~~~ ruby
 client.asset('happycat').image_url
 # => "//images.contentful.com/cfexampleapi/3MZPnjZTIskAIIkuuosCss/
 #     382a48dfa2cb16c47aa2c72f7b23bf09/happycatw.jpg"
-```
+~~~
 
 To query all Assets in Space:
 
-```ruby
+~~~ ruby
 assets = client.assets
-```
+~~~
 
 ## Conclusion
 
