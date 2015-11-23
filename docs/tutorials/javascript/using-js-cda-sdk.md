@@ -6,25 +6,19 @@ page: :docsUsingJsCdaSdk
 
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-In a previously published article, we explained how requests and responses work by issuing HTTP requests directly to our API.
-
-However, in order to makes things easier for our users, we publish SDKs for various languages which make the task easier.
+In order to makes things easier for our users, we publish SDKs for various languages which make the task easier.
 
 This article goes into detail about how to get content using the [JavaScript CDA SDK](https://github.com/contentful/contentful.js).
-
-To get started, for every request, clients [need to provide an access token](https://www.contentful.com/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
-
-You can create an access token using [Contentful's Web Interface](http://app.contentful.com) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
-
-In this article, we will focus on retrieving Entries, which are documents (e.g. Blog Posts, Events) contained within a Space (similar to a database) and based on a Content Type (describes fields of Entries).
-
-In each returned Entry, it will be fetched a `sys` property, which is an object containing system managed metadata. It retrieves essential information about a resource, such as `sys.type` and `sys.id`.
-
-Finally, retrieved Entries also have a `field` object, which is used to assign values to Content Type fields.
 
 ## Pre-requisites
 
 In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [Developer Center](https://www.contentful.com/developers/docs/concepts/data-model/).
+
+## Authentication
+
+To get started, for every request, clients [need to provide an access token](https://www.contentful.com/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
+
+You can create an access token using [Contentful's Web Interface](http://app.contentful.com) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
 
 ## Setting up the client
 
@@ -110,81 +104,31 @@ In order to retrieve a specific Entry, you need the entry ID for that Entry. If 
 ~~~javascript
 client.entry('O1ZiKekjgiE0Uu84oKqaY')
 .then(function (entry) {
-  console.log(entry)
-})
-~~~
+  // logs the entry metadata
+  console.log(entry.sys)
 
-The object received by the Promise callback represents the Entry `O1ZiKekjgiE0Uu84oKqaY` and contains two objects: `sys`, describing system properties of the Entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its Content Type (`Blog Post`):
-
-~~~ json
-{
-
-# The following object retrieves common system properties of the Entry
-  "sys": {
-    "space": {
-      "sys": {
-        "type": "Link",
-        "linkType": "Space",
-        "id": "mo94git5zcq9"
-      }
-    },
-    "type": "Entry",
-    "contentType": {
-      "sys": {
-        "type": "Link",
-        "linkType": "ContentType",
-        "id": "6tw1zeDm5aMEIikMaCAgGk"
-      }
-    },
-    "id": "O1ZiKekjgiE0Uu84oKqaY",
-    "revision": 1,
-    "createdAt": "2015-10-26T14:36:22.226Z",
-    "updatedAt": "2015-10-26T14:36:22.226Z",
-    "locale": "en-US"
-  },
-
-# The following object retrieves a list of fields that belongs to the retrieved Entry
-  "fields": {
-    "title": "The Oldest Galaxies in the Universe",
-    "body": "The formation of this galaxy, and others like it, was a momentous event in cosmic evolution. This galaxy and its brethren helped to ...",
-    "image": {
-      "sys": {
-        "type": "Link",
-        "linkType": "Asset",
-        "id": "1Idbf0HVsQeYIC0EmYgiuU"
-      }
-    },
-    "relatedPosts": [
-      {
-        "sys": {
-          "type": "Link",
-          "linkType": "Entry",
-          "id": "6NX8Kkd9ZYS6igQQMyuC2O"
-        }
-      }
-    ]
-  }
-}
-~~~
-
-You could access the content of a specific field in the following way:
-~~~javascript
-client.entry('O1ZiKekjgiE0Uu84oKqaY')
-.then(function (entry) {
+  // logs the field with ID title
   console.log(entry.fields.title)
 })
 ~~~
 
+The object received by the Promise callback represents the Entry `O1ZiKekjgiE0Uu84oKqaY` and contains two objects: `sys`, describing system properties of the Entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its Content Type (`Blog Post`).
+
+For more details on the information contained on `sys` check out the [Common Resource Attributes](https://www.contentful.com/developers/docs/references/content-delivery-api/#/introduction/common-resource-attributes) on the CDA API reference.
 
 ## Retrieving all Entries of a Space
 
 Now we're going to retrieve all the entries in a space.
 
-
 ~~~javascript
 client.entries()
 .then(function (entries) {
-  console.log(entries)
+  // log the title for all the entries that might have it
+  entries.forEach(function (entry) {
+    if(entry.fields.title) {
+      console.log(entry.fields.title)
+    }
+  })
 })
 ~~~
 
@@ -192,214 +136,47 @@ Some entries might have links to each other, so when you retrieve a list of entr
 
 By default, one level of linked entries or assets are resolved.
 
+The following example demonstrates the usage of a linked asset on field `image`:
+
+~~~javascript
+client.entries()
+.then(function (entries) {
+  // log the file url of any linked assets on field `image`
+  entries.forEach(function (entry) {
+    if(entry.fields.image) {
+      console.log(entry.fields.image.fields.file.url)
+    }
+  })
+})
+~~~
+
 If you'd like to have additional levels of links resolved, or none at all, you can use the include parameter:
 
 ~~~javascript
 client.entries({include: 0})
 .then(function (entries) {
-  console.log(entries)
+  // Link wasn't resolved, so it only contains the asset metadata
+  console.log(entries[0].fields.image.sys.id)
 })
 ~~~
 
 Check the [Links Reference Page](https://www.contentful.com/developers/docs/concepts/links/) for more information on linked entries.
 
-In the example below, one level of entries and assets are resolved.
+The entries method can also take additional parameters for filtering and querying.
 
-The array will also contain the following special properties which are used for pagination purposes:
-
-* `total` - total amount of available entries
-* `skip` - entries that are skipped on the current response (offset)
-* `limit` - number of entries retrieved after the skipped ones
-
-### Response
-~~~ json
-[
-  {
-    "sys": {
-      "space": {
-        "sys": {
-          "type": "Link",
-          "linkType": "Space",
-          "id": "mo94git5zcq9"
-        }
-      },
-      "type": "Entry",
-      "contentType": {
-        "sys": {
-          "type": "Link",
-          "linkType": "ContentType",
-          "id": "6tw1zeDm5aMEIikMaCAgGk"
-        }
-      },
-      "id": "O1ZiKekjgiE0Uu84oKqaY",
-      "revision": 1,
-      "createdAt": "2015-10-26T14:36:22.226Z",
-      "updatedAt": "2015-10-26T14:36:22.226Z",
-      "locale": "en-US"
-    },
-    "fields": {
-      "title": "The Oldest Galaxies in the Universe",
-      "body": "The formation of this galaxy, and others like it, was a momentous event in cosmic evolution. This galaxy and its brethren helped to ...",
-      "image": {
-        "fields": {
-          "file": {
-            "fileName": "space.jpg",
-            "contentType": "image/jpeg",
-            "details": {
-              "image": {
-                "width": 640,
-                "height": 436
-              },
-              "size": 31934
-            },
-            "url": "//images.contentful.com/mo94git5zcq9/1Idbf0HVsQeYIC0EmYgiuU/9bc136bcb082d8c1d845c3ecd1684a75/space.jpg"
-          },
-          "title": "space9"
-        },
-        "sys": {
-          "space": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Space",
-              "id": "mo94git5zcq9"
-            }
-          },
-          "type": "Asset",
-          "id": "1Idbf0HVsQeYIC0EmYgiuU",
-          "revision": 2,
-          "createdAt": "2015-10-26T14:32:25.146Z",
-          "updatedAt": "2015-10-26T14:34:13.333Z",
-          "locale": "en-US"
-        }
-      },
-      "relatedPosts": []
-    }
-  },
-  {
-    "fields": {
-      "title": "Explore the Universe!",
-      "body": "We live in an awesome universe and...",
-      "image": {
-        "fields": {
-          "file": {
-            "fileName": "space.jpg",
-            "contentType": "image/jpeg",
-            "details": {
-              "image": {
-                "width": 640,
-                "height": 267
-              },
-              "size": 54850
-            },
-            "url": "//images.contentful.com/mo94git5zcq9/1ruXfeZDqckgOEUKMYsEqQ/5c570c823460809eec2b7fb643fe3cfa/space.jpg"
-          },
-          "title": "space10"
-        },
-        "sys": {
-          "space": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Space",
-              "id": "mo94git5zcq9"
-            }
-          },
-          "type": "Asset",
-          "id": "1ruXfeZDqckgOEUKMYsEqQ",
-          "revision": 2,
-          "createdAt": "2015-10-26T14:32:16.763Z",
-          "updatedAt": "2015-10-26T14:34:22.323Z",
-          "locale": "en-US"
-        }
-      }
-    },
-    "sys": {
-      "space": {
-        "sys": {
-          "type": "Link",
-          "linkType": "Space",
-          "id": "mo94git5zcq9"
-        }
-      },
-      "type": "Entry",
-      "contentType": {
-        "sys": {
-          "type": "Link",
-          "linkType": "ContentType",
-          "id": "6tw1zeDm5aMEIikMaCAgGk"
-        }
-      },
-      "id": "7NX8Kkd9ZYS6igQQMyuC2O",
-      "revision": 1,
-      "createdAt": "2015-10-26T14:34:57.606Z",
-      "updatedAt": "2015-10-26T14:34:57.606Z",
-      "locale": "en-US"
-    }
-  },
-  {
-    "sys": {
-      "space": {
-        "sys": {
-          "type": "Link",
-          "linkType": "Space",
-          "id": "mo94git5zcq9"
-        }
-      },
-      "type": "Entry",
-      "contentType": {
-        "sys": {
-          "type": "Link",
-          "linkType": "ContentType",
-          "id": "6tw1zeDm5aMEIikMaCAgGk"
-        }
-      },
-      "id": "5v10yZCONUS044UUgiqaO4",
-      "revision": 1,
-      "createdAt": "2015-10-26T15:43:21.233Z",
-      "updatedAt": "2015-10-26T15:43:21.233Z",
-      "locale": "en-US"
-    },
-    "fields": {
-      "title": "Comfortably alone in the Universe",
-      "body": "Given that the Universe is 13.7 billion years old this other life-form is unlikely to be a mere few hundred years ahead or behind. There is a good ...",
-      "image": {
-        "fields": {
-          "file": {
-            "fileName": "space.jpg",
-            "contentType": "image/jpeg",
-            "details": {
-              "image": {
-                "width": 1920,
-                "height": 1080
-              },
-              "size": 585159
-            },
-            "url": "//images.contentful.com/mo94git5zcq9/5hzXG3eLtKqOM4CAisuCS6/56963118d9d83d0dc0b44639d116561f/space.jpg"
-          },
-          "title": "space5"
-        },
-        "sys": {
-          "space": {
-            "sys": {
-              "type": "Link",
-              "linkType": "Space",
-              "id": "mo94git5zcq9"
-            }
-          },
-          "type": "Asset",
-          "id": "5hzXG3eLtKqOM4CAisuCS6",
-          "revision": 2,
-          "createdAt": "2015-10-26T14:32:44.137Z",
-          "updatedAt": "2015-10-26T14:33:40.925Z",
-          "locale": "en-US"
-        }
-      },
-      "relatedPosts": []
-    }
-  }
-]
+~~~javascript
+client.entries({
+  'fields.title[match]': 'stars'
+})
+.then(function (entries) {
+  // Logs only fields with a title field matching the string 'stars'
+  entries.forEach(function (entry) {
+    console.log(entry.fields.title)
+  })
+})
 ~~~
 
-The entries method can also take additional parameters for filtering and querying. Check out the [JavaScript CDA SDK](https://github.com/contentful/contentful.js) page for more examples and the [Search Parameters API page](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
+Check out the [JavaScript CDA SDK](https://github.com/contentful/contentful.js) page for more examples and the [Search Parameters API page](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
 
 ## Conclusion
 
@@ -408,3 +185,4 @@ In this article, we have shown you how to use the Contentful JavaScript SDK to p
 1. Retrieve a single Entry
 2. Retrieve all Entries of a Space
 3. Retrieve all Entries and their linked resources
+4. Retrieve all filtered Entries by a search parameter
