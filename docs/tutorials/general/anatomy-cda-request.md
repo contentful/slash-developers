@@ -513,7 +513,7 @@ In this article, we have exposed the structure of CDA requests and responses by 
 2. Retrieve all Entries of a Space
 3. Retrieve all Entries and their linked resources
 
-In the first example, we've uncoved the general structure of requests and responses and what parameters should be used.
+In the first example, we've uncovered the general structure of requests and responses and what parameters should be used.
 
 In the last two examples, we've seen the importance of the `include` parameter while retrieving Entries with linked resources.
 
