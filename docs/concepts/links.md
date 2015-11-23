@@ -30,6 +30,8 @@ This is very important for mobile apps where latency is a big issue:
 Instead of doing hundreds of requests, do a single request which can also
 be cached by Contentful's CDN to speed up future requests even more.
 
+Note that Links are only used between Entries, Spaces and Assets. The relationship between Space and Content Type is not expressed as a Link.
+
 ## Linked Entries
 
 When you have related content (e.g. Entries with links to other Entries)
