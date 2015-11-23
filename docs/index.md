@@ -50,6 +50,9 @@ Also, there are several documents which are relevant for all the APIs:
 ### Android
 - [Offline persistence with Vault on Android](/developers/docs/tutorials/android/offline-persistence-with-vault/)
 
+### JavaScript
+- [Using contentful.js, the Contentful Delivery API SDK](/developers/docs/tutorials/javascript/using-js-cda-sdk/)
+
 ## Libraries
 
 We provide libraries for major programming languages and platforms so you don't have to write the code for interacting with API from scratch.
