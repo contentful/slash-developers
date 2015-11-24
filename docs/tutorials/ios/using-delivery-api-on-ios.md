@@ -27,8 +27,7 @@ The class [*CDAClient*][3] manages all requests to the API. For most apps, you w
     static dispatch_once_t once;
     static CDAClient *sharedClient;
     dispatch_once(&once, ^ {
-      sharedClient = [[self alloc] initWithSpaceKey:@"YourSpaceKey"
-                                        accessToken:@"YourAccessToken"];
+      sharedClient = [[self alloc] initWithSpaceKey:@"nhkrrfkqkvcv" accessToken:@"4c1379f8fa28be7025968c1163b13e23ded85d5747c06f9634abd9724a70fd17"];
     });
     return sharedClient;
   }
@@ -120,19 +119,19 @@ With this, our walk through the [coffee guide app][1] is done. You should have e
 
 [1]: https://github.com/contentful-labs/guide-app-ios
 [2]: https://github.com/contentful/contentful.objc/blob/master/README.md
-[3]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAClient.html
-[4]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAEntriesViewController.html
-[5]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAArray.html
-[6]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAResource.html
-[7]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAEntry.html
+[3]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAClient.html
+[4]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAEntriesViewController.html
+[5]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAArray.html
+[6]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAResource.html
+[7]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAEntry.html
 [8]: https://cocoapods.org/
-[9]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAResourcesCollectionViewController.html
-[10]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAAsset.html
+[9]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAResourcesCollectionViewController.html
+[10]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAAsset.html
 [11]: https://github.com/contentful-labs/guide-app-ios/blob/master/Code/BBULocationViewController.m
 [12]: /developers/docs/concepts/links/
 [14]: /blog/2014/02/28/here-be-bold-headlines/
 [15]: https://github.com/contentful-labs/contentful-qa-app
 [16]: http://uncodin.github.io/bypass/
 [17]: https://github.com/contentful/contentful.objc
-[18]: http://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.7.4.zip
+[18]: http://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.9.2.zip
 [19]: /blog/2014/03/26/contentful-hackathon/
