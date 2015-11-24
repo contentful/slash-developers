@@ -37,11 +37,11 @@ client = Contentful::Client.new(
 )
 ~~~
 
-You'll need to create a Contentful Client, for that, you'll need your **Space ID** and **Access Token**,
+You'll need to create a Contentful client. For that you'll need your **Space ID** and **Access token**,
 both of which can be obtained through the Contentful UI.
 
 {: .note}
-**Note**: The `dynamic_entries`, will automatically map the fields in your Entries to methods, so that you can use them directly as objects.
+**Note**: The `dynamic_entries: :auto` attribute will automatically map the fields in your Entries to methods, so that you can use them directly as objects.
 
 ## Getting your content
 
@@ -49,11 +49,11 @@ In Contentful, we separate content between Entries, which contain your data and 
 content or images, and Assets, which represent static content, like images, and are served as files. You can read more
 about that in our [Data Model Concepts guide][6].
 
-In this section we'll address Entries, Assets will be addressed on a later section.
+In this section we'll address Entries. Assets will be addressed on a later section.
 
-With the client already created, all that's left to do, is to start consuming the data from the API.
+With the client already created, all that's left to do is to start consuming the data from the API.
 
-To do so, you can request all your entries to the API:
+To do so, you can request all your entries from the API:
 
 ~~~ ruby
 entries = client.entries
@@ -74,7 +74,7 @@ cat_entries_by_date = client.entries(content_type: 'cat', order: 'sys.createdAt'
 
 ### Using your Entry
 
-Once we've got our entry, we can just use it as any Ruby object
+Once we've got our entry, we can just use it as any Ruby object:
 
 ~~~ ruby
 puts cat.name # => "Nyan Cat"
@@ -82,7 +82,7 @@ puts "I like #{cat.likes.join(' and ')}" # => "I like rainbows and fish"
 puts "I have #{cat.lives} lives" # => "I have 1337 lives"
 ~~~
 
-You can even do more complicated querying and interacting with your entries
+You can even do more complicated querying and interacting with your entries:
 
 ~~~ ruby
 cats_with_many_likes = client.entries(content_type: 'cat', include: 2).select { |cat| cat.likes.size > 1 }
