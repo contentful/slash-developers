@@ -12,15 +12,16 @@ Every resource returned by the Content Delivery API will have a `sys` property, 
 }
 ```
 
-Field          |Type          |Description
----------------|--------------|--------------------------------------------
-sys.type       |String        |Type of resource.
-sys.id         |String        |Unique ID of resource.
-sys.space      |Link          |Link to resource's Space (except Spaces) .
-sys.contentType|Link          |Link to Entry's Content Type (Entries only).
-sys.revision   |Integer       |Version of resource.
-sys.createdAt  |Date          |Time entity was created.
-sys.updatedAt  |Date          |Time entity was updated.
+Field          |Type          |Description                     |Applies to
+---------------|--------------|--------------------------------|-----------------------------
+sys.type       |String        |Type of resource.               |All
+sys.id         |String        |Unique ID of resource.          |All except Arrays
+sys.space      |Link          |Link to resource's Space.       |Entries, Assets, Content Types
+sys.contentType|Link          |Link to Entry's Content Type.   |Entries
+sys.revision   |Integer       |Version of resource.            |Entries, Assets, Content Types
+sys.createdAt  |Date          |Time entity was created.        |Entries, Assets, Content Types
+sys.updatedAt  |Date          |Time entity was updated.        |Entries, Assets, Content Types
+sys.locale     |String        |Locale of the resource.         |Entries and Assets
 
 ## Collection Resources and Pagination
 
@@ -716,6 +717,8 @@ Specify requested locale as locale URI query parameter.
 The locale parameter must be the code of a locale in the Space that's being queried, or the special wildcard value `*`. If no locale is specified, the default locale of the Space will be used.
 
 When `locale=*` is specified, field values will be nested in an object with keys corresponding to each locale with a defined value. Instead of writing `fields.name`, you would write `fields.name[localeCode]`.
+
+If the result contains only a single locale, resources will include the property `sys.locale` indicating the locale of that object.
 
 Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/locales/).
 
