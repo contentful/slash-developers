@@ -2,11 +2,11 @@
 page: :docsCdaIos
 ---
 
-Read on to find out what our iOS SDK does and how you can use it to build content-driven apps more easily. The [coffee guide app][1] from our [recent hackathon][19] will provide an example and walk you through building a simple app from start to finish.
+Read on to find out what our iOS SDK does and how you can use it to build content-driven apps more easily. The [coffee guide app][1] will provide an example and walk you through building a simple app from start to finish.
 
 ## Setup
 
-There are three different ways for integrating the SDK into your own apps, described in detail in the [README][2]. For the purpose of this article, we will use [CocoaPods][8], a dependency manager for Objective-C, which makes it easiest to keep the SDK up-to-date:
+There are three different ways for integrating the SDK into your own apps, described in detail in the [README][2]. For the purpose of this article, we will use [CocoaPods][8], the dependency manager for Cocoa projects, which makes it easiest to keep the SDK up-to-date:
 
 ~~~ ruby
 target "Guide" do
@@ -27,8 +27,7 @@ The class [*CDAClient*][3] manages all requests to the API. For most apps, you w
     static dispatch_once_t once;
     static CDAClient *sharedClient;
     dispatch_once(&once, ^ {
-      sharedClient = [[self alloc] initWithSpaceKey:@"YourSpaceKey"
-                                        accessToken:@"YourAccessToken"];
+      sharedClient = [[self alloc] initWithSpaceKey:@"nhkrrfkqkvcv" accessToken:@"4c1379f8fa28be7025968c1163b13e23ded85d5747c06f9634abd9724a70fd17"];
     });
     return sharedClient;
   }
@@ -36,7 +35,7 @@ The class [*CDAClient*][3] manages all requests to the API. For most apps, you w
 @end
 ~~~
 
-For creating a client object, the Space key and a Content Delivery API access token are required.
+For creating a client object, the Space ID and a Content Delivery API access token are required. We provide an example Space for this tutorial, but you can learn more about authentication with our APIs [here][19].
 
 ## Accessing data
 
@@ -48,6 +47,8 @@ Now that the client is available everywhere, you can fetch entries:
                                            self.places = array.items;
                                        } failure:nil];
 ~~~
+
+Our API includes supports a variety of parameters to search, filter and sort your content. Those parameters are passed as a dictionary when using the SDK, in this case only entries of a certain Content Type will be retrieved. You can learn more about search parameters [here][20].
 
 A [*CDAArray*][5] contains a list of [*CDAResource*][6] objects whose concrete type depends on the query. In this case, the *items* property will contain a list of [*CDAEntry*][7] objects.
 
@@ -113,26 +114,28 @@ Of course, it is also possible and often needed to write normal *UIViewControlle
 
 Two things to consider here:
 
-* [Links][12] might not be resolved, depending on your query. If that is the case, use the *resolveWithSuccess:failure:* method on any *CDAResource*. This should be done inside your custom class, look at the *fetchPictureAssetsWithCompletionBlock:* method from *BBUPlace* for an example.
-* Fields can include [Markdown][14]. There is [another example app][15] which shows how to use the [Bypass][16] library for converting Markdown into *NSAttributedString* which can be displayed in a *UITextView* since iOS 7. Depending on your use case and target platform, you might want to evaluate other options, for example converting to HTML.
+* [Links][12] might not be resolved, depending on your query. If that is the case, use the *resolveWithSuccess:failure:* method on any *CDAResource*. This should be done inside your custom class, look at the *fetchPictureAssetsWithCompletionBlock:* method from *BBUPlace* for an example. You can also add the `include` parameter to your query to adjust how many levels of links are automatically included as part of the API response. This helps to keep the number of API requests your app has to make low and therefore improves performance. You learn more about includes [here][21].
+* Fields can include [Markdown][14]. There is [another example app][15] which shows how to use the [Bypass][16] library for converting Markdown into *NSAttributedString* which can be displayed in a *UITextView* since iOS 7. Depending on your use case and target platform, you might want to evaluate other options, for example converting to HTML. Also keep in mind that the library does not support the whole range of GitHub flavoured Markdown syntax available in Contentful's Entry editor.
 
 With this, our walk through the [coffee guide app][1] is done. You should have everything you need to start building your own iOS apps with Contentful. Check out [the SDK][17] and start building.
 
-[1]: https://github.com/contentful-labs/guide-app-ios
+[1]: https://github.com/contentful/guide-app-ios
 [2]: https://github.com/contentful/contentful.objc/blob/master/README.md
-[3]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAClient.html
-[4]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAEntriesViewController.html
-[5]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAArray.html
-[6]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAResource.html
-[7]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAEntry.html
+[3]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAClient.html
+[4]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAEntriesViewController.html
+[5]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAArray.html
+[6]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAResource.html
+[7]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAEntry.html
 [8]: https://cocoapods.org/
-[9]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAResourcesCollectionViewController.html
-[10]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.7.4/Classes/CDAAsset.html
-[11]: https://github.com/contentful-labs/guide-app-ios/blob/master/Code/BBULocationViewController.m
+[9]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAResourcesCollectionViewController.html
+[10]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAAsset.html
+[11]: https://github.com/contentful/guide-app-ios/blob/master/Code/BBULocationViewController.m
 [12]: /developers/docs/concepts/links/
 [14]: /blog/2014/02/28/here-be-bold-headlines/
-[15]: https://github.com/contentful-labs/contentful-qa-app
+[15]: https://github.com/contentful/blog-app-ios
 [16]: http://uncodin.github.io/bypass/
 [17]: https://github.com/contentful/contentful.objc
-[18]: http://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.7.4.zip
-[19]: /blog/2014/03/26/contentful-hackathon/
+[18]: http://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.9.2.zip
+[19]: /developers/docs/references/authentication/
+[20]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
+[21]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/including-linked-entries
