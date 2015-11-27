@@ -1,3 +1,27 @@
+FORMAT: 1A
+HOST: https://api.contentful.com
+
+# Content Management API
+The Content Management API is a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API for managing content.
+
+In Contentful content is represented as Entries and Assets divided into Spaces. Apps and websites depend on the structure of Entries, so every Entry must comply to a specific Content Type. Assets represent binary files like images, videos and other media.
+
+Entries are represented as JSON data; Assets are represented as (binary) files.
+
+The API can be securely accessed via HTTPS and will only be available to clients authenticating with an access token.
+
+Managing content via an API has many benefits:
+
+- Custom applications can use the API to manage content.
+- Scripts can use the API to automate various tasks.
+- Contentful's own content management web app is a user-friendly JavaScript application which is solely based on the API.
+
+If you want to deliver content (e.g. to the web or to mobile apps) use the Content Delivery API. The Content Management API is meant to be used only for managing content, not delivering it. For example, you shouldn't use the Content Management API to display blog posts on a web site or pull information into a mobile web app unless that app is meant for editing content.
+
+Conceptual documentation, as well as further resources like tutorials and libraries can be found on [our Developer Center](https://contentful.com/developers/documentation/).
+
+:[Shared Blueprint Header](_partials/common-header.md)
+
 ## Authentication
 
 Learn about authenticating to the CMA and obtain your access token at [our Developer Center](http://www.contentful.com/developers/docs/references/authentication/#the-management-api).
@@ -139,45 +163,7 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 # Group Content Types
 
-## Content Type Collection [/spaces/{space_id}/content_types]
-
-Content Types are schemas describing the shape of Entries. They mainly consist of a list of fields acting as a blueprint for Entries.
-
-A Content Type has a structure similar to the following table:
-
-Field       |Type        |Description
-------------|------------|----------------------------------------------------------
-sys         |Sys         |Common system properties.
-name        |String      |Name of the Content Type.
-description |String      |Description of the Content Type.
-fields      |\[Field\]   |List of Fields.
-displayField|String      |ID of main Field used for display.
-
-Fields describe a single property of an Entry. They assume one of the following formats:
-
-Field      |Type          |Description
------------|--------------|-------------------------------------------
-id         |String        |ID of the Field.
-name       |String        |Name of the Field.
-type       |String        |Type of the Field.
-items      |Schema        |(Array type only) Schema for items.
-required   |Boolean       |Describes whether the Field is mandatory.
-localized  |Boolean       |Describes whether the Field is localized.
-disabled   |Boolean       |Describes whether the Field is disabled. Disabled fields are hidden in the editing application.
-
-Finally, every field has a field type with one of the structures below :
-
-Name   |JSON Primitive|Description
--------|--------------|------------------------------------------------------------------------------
-Symbol |String        |Basic list of characters. Maximum length is 256.
-Text   |String        |Same as Symbol, but can be filtered via Full-Text Search. Maximum length is 50,000.
-Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53.
-Number |Number        |Number type with decimals.
-Date   |String        |Date/Time in ISO-8601 format.
-Boolean|Boolean       |Flag, `true` or `false`.
-Link   |Object        |See [Links](https://www.contentful.com/developers/docs/concepts/links/)
-Array  |Array         |List of values. Value type depends on `field.items.type`.
-Object |Object        |Arbitrary Object.
+:[What is a Content Type?](_partials/content-types-description.md)
 
 + Parameters
     + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string

@@ -1,4 +1,3 @@
-
 ## Common Resource Attributes
 
 Every resource returned by the Content Delivery API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property should be defined. The `sys.id` property will be defined for every resource that is not a collection. For example, a `Space` resource will have a `sys.type` and `sys.id`:
@@ -23,21 +22,7 @@ sys.createdAt  |Date          |Time entity was created.        |Entries, Assets,
 sys.updatedAt  |Date          |Time entity was updated.        |Entries, Assets, Content Types
 sys.locale     |String        |Locale of the resource.         |Entries and Assets
 
-## Collection Resources and Pagination
-
-Collections of resources are returned in a wrapper object that contains additional information useful for pagination over large result sets:
-
-```json
-{
-  "sys": { "type": "Array" },
-  "skip": 0,
-  "limit": 100,
-  "total": 1256,
-  "items": [ /* 100 individual resources */ ]
-}
-```
-
-In the above example, a client would get the next 100 resources by repeating their request with the `skip` query parameter set to `100`. Keep in mind that you should define a field to order by when paging through result sets. such as `order=sys.createdAt` when you plan to page through many results).
+:[Collection Resources and Pagination](collections-and-pagination.md)
 
 ## Errors
 
@@ -128,18 +113,17 @@ disabled   |Boolean       |Describes whether the Field is disabled. Disabled fie
 
 Field types:
 
-Name    |JSON Primitive|Description
---------|--------------|------------------------------------------------------------------------------
-Symbol  |String        |Basic list of characters. Maximum length is 256.
-Text    |String        |Same as Symbol, but can be filtered via Full-Text Search. Maximum length is 50,000.
-Integer |Number        |Number type without decimals. Values from  -2^53 to 2^53.
-Number  |Number        |Number type with decimals.
-Date    |String        |Date/Time in ISO-8601 format.
-Boolean |Boolean       |Flag, `true` or `false`.
-Location|Object        |A geographic location specified in latitude and longitude.
-Link    |Object        |See [Links](https://www.contentful.com/developers/docs/concepts/links/)
-Array   |Array         |List of values. Value type depends on `field.items.type`.
-Object  |Object        |Arbitrary Object.
+Name   |JSON Primitive|Description
+-------|--------------|------------------------------------------------------------------------------
+Symbol |String        |Basic list of characters. Maximum length is 256.
+Text   |String        |Same as Symbol, but can be filtered via Full-Text Search. Maximum length is 50,000.
+Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53.
+Number |Number        |Number type with decimals.
+Date   |String        |Date/Time in ISO-8601 format.
+Boolean|Boolean       |Flag, `true` or `false`.
+Link   |Object        |See [Links](https://www.contentful.com/developers/docs/concepts/links/)
+Array  |Array         |List of values. Value type depends on `field.items.type`.
+Object |Object        |Arbitrary Object.
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string

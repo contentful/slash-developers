@@ -1,0 +1,12 @@
+{
+  "name": "api-blueprints",
+  "version": "1.0.0",
+  "description": "API Blueprints for Contentful APIs",
+  "main": "test-hooks.js",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dredd": "^1.0.1",
+    "hercule": "^1.2.5"
+  }
+}
