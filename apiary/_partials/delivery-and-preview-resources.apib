@@ -76,8 +76,7 @@ Each space has a name, a set of locales, and some system metadata.
 
 ## Content Type Collection [/spaces/{space_id}/content_types?access_token={access_token}]
 
-Content Types are schemas describing the shape of Entries. They mainly consist of a list of fields acting as a blueprint for Entries.
-
+:[What is a Content Type?](content-types-description.md)
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
@@ -90,40 +89,6 @@ Content Types are schemas describing the shape of Entries. They mainly consist o
     + Attributes (Empty Array)
 
 ## Content Type [/spaces/{space_id}/content_types/{content_type_id}?access_token={access_token}]
-
-Field       |Type        |Description
-------------|------------|----------------------------------------------------------
-sys         |Sys         |Common system properties.
-name        |String      |Name of the Content Type.
-description |String      |Description of the Content Type.
-fields      |\[Field\]   |List of Fields.
-displayField|String      |ID of main Field used for display.
-
-A Field describes a single property of an Entry:
-
-Field      |Type          |Description
------------|--------------|-------------------------------------------
-id         |String        |ID of the Field.
-name       |String        |Name of the Field.
-type       |String        |Type of the Field.
-items      |Schema        |(Array type only) Schema for items.
-required   |Boolean       |Describes whether the Field is mandatory.
-localized  |Boolean       |Describes whether the Field is localized.
-disabled   |Boolean       |Describes whether the Field is disabled. Disabled fields are hidden in the editing application.
-
-Field types:
-
-Name   |JSON Primitive|Description
--------|--------------|------------------------------------------------------------------------------
-Symbol |String        |Basic list of characters. Maximum length is 256.
-Text   |String        |Same as Symbol, but can be filtered via Full-Text Search. Maximum length is 50,000.
-Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53.
-Number |Number        |Number type with decimals.
-Date   |String        |Date/Time in ISO-8601 format.
-Boolean|Boolean       |Flag, `true` or `false`.
-Link   |Object        |See [Links](https://www.contentful.com/developers/docs/concepts/links/)
-Array  |Array         |List of values. Value type depends on `field.items.type`.
-Object |Object        |Arbitrary Object.
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
