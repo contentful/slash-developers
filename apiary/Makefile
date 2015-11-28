@@ -1,54 +1,54 @@
 CDA_APIARY_NAME=contentfulcda
-CDA_BLUEPRINT=cda.apib
+CDA_BLUEPRINT=out/cda.apib
 CDA_HOST=https://cdn.contentful.com
 
 CMA_APIARY_NAME=contentfulcma
-CMA_BLUEPRINT=cma.apib
+CMA_BLUEPRINT=out/cma.apib
 CMA_HOST=https://api.contentful.com
 
 CPA_APIARY_NAME=contentpreviewapi
-CPA_BLUEPRINT=cpa.apib
+CPA_BLUEPRINT=out/cpa.apib
 CPA_HOST=https://preview.contentful.com
 
 IMAGES_APIARY_NAME=contentfulimagesapi
-IMAGES_BLUEPRINT=images.apib
+IMAGES_BLUEPRINT=out/images.apib
 IMAGES_HOST=https://images.contentful.com
 
 DREDD=node_modules/.bin/dredd
+HERCULE=node_modules/.bin/hercule
 APIARY=bundle exec apiary
 
-.PHONY: all clean fetch preview test install prepare check_ci_var check_apiary_token check_cma_token notify_slack publish publish_docs
+.PHONY: all outdir clean fetch preview test install prepare check_ci_var check_apiary_token check_cma_token notify_slack publish publish_docs
 
 all: test
+
+outdir:
+	mkdir -p out
 
 clean:
 	rm -f $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
 
 install:
-	@if [ ! -f $(DREDD) ]; then \
-		npm install dredd; \
+	@if [ ! -f $(DREDD) ] || [ ! -f $(HERCULE) ]; then \
+		npm install; \
 	fi
 	@$$(bundle show apiaryio > /dev/null); \
 	if [ $$? != 0 ]; then \
 		bundle install; \
 	fi
 
-$(CDA_BLUEPRINT): cda-header.apib blueprint-header.apib cda-intro.apib cda-body.apib
-	rm -rf $@
-	cat $^ >>$@
+$(CDA_BLUEPRINT): outdir cda.apib _partials/common-header.md _partials/content-types-description.md
+	$(HERCULE) cda.apib -o $@
 
-$(CMA_BLUEPRINT): cma-header.apib blueprint-header.apib cma-body.apib
-	rm -rf $@
-	cat $^ >>$@
+$(CMA_BLUEPRINT): outdir cma.apib _partials/common-header.md _partials/content-types-description.md
+	$(HERCULE) cma.apib -o $@
 
-$(IMAGES_BLUEPRINT): images-header.apib blueprint-header.apib images-body.apib
-	rm -rf $@
-	cat $^ >>$@
+$(IMAGES_BLUEPRINT): outdir images.apib _partials/common-header.md
+	$(HERCULE) images.apib -o $@
 
 # This task replaces the CDA token with a Preview token via `sed`
-$(CPA_BLUEPRINT): cpa-header.apib blueprint-header.apib cpa-intro.apib cda-body.apib
-	rm -rf $@
-	cat $^ >>$@
+$(CPA_BLUEPRINT): outdir cpa.apib _partials/common-header.md
+	$(HERCULE) cpa.apib -o $@
 	sed 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@ >tmp
 	mv tmp $@
 
@@ -59,7 +59,7 @@ $(CPA_BLUEPRINT): cpa-header.apib blueprint-header.apib cpa-intro.apib cda-body.
 
 prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
 
-preview: check_apiary_token test
+preview: check_apiary_token prepare
 	$(APIARY) preview --path=$(CDA_BLUEPRINT)
 	$(APIARY) preview --path=$(CMA_BLUEPRINT)
 	$(APIARY) preview --path=$(CPA_BLUEPRINT)

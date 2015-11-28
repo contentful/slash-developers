@@ -1,3 +1,12 @@
+FORMAT: 1A
+HOST: https://preview.contentful.com
+
+# Content Preview API
+
+In addition to the Delivery API for published content, there is also a Preview API for previewing unpublished content as though it were published. It maintains the same behaviour and parameters as the Content Delivery API, but delivers the latest draft for entries and assets.
+
+:[Shared Blueprint Header](_partials/common-header.md)
+
 ## Preview API Authentication
 
 You authenticate with the Preview API in the same way as the Delivery API, but using a Preview access token.
@@ -11,3 +20,5 @@ You use the Preview API as though it were the Delivery API, but replacing the ho
 ## Preview API Limitations
 
 The Preview API does not implement the Sync API, so applications that rely exclusively on the Sync API to load data will not be usable with the Preview API.
+
+:[Shared Preview/Delivery Docs](_partials/delivery-and-preview-resources.apib)
