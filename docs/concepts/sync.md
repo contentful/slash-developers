@@ -20,9 +20,9 @@ To enable delta updates, Contentful provides a special synchronization endpoint.
 Compared to the other strategies, syncing with delta updates has many advantages:
 
 - Use as little data as possible: Most mobile data plans have limits on how much data can be transferred (at full speed) within a given time period. By transferring only actual changes and not transferring everything every time, the amount of data of a synchronization is very small. Keeping the sync small also means improved chances of success when a mobile connection is slow.
-- Fast synchronization: Because individual syncs are small they will only take a few seconds at most.
+- Fast synchronization: Because individual syncs are small they will take much less time than repeatedly loading data that hasn't changed.
 - As little resource usage as possible: Less data to process also means less resources required for processing the data and less waiting time for users of mobile applications.
-- Entirety of content: the initial sync will transfer all items since the creation of the Space alongside all available localizations, what doesn't happen in the Delivery API. 
+- Entirety of content: the initial sync will transfer all items since the creation of the Space alongside all available localizations, which doesn't happen in the Delivery API.
 
 ## The Downside
 
@@ -30,7 +30,7 @@ Keep in mind that the synchronization endpoint will always give you all the cont
 
 - If users only want to see the newest content, it would be wasteful to download everything immediately. In that case, it might be better to only fetch selected content based on the date, using search.
 - Because the Sync API retrieves all localized content, it might be better to use the Delivery API to retrieve results of a single locale
-- Following the initial sync, modified items will be transfered in the form of Deletions, which may unnecessarily lengthen each response 
+- Following the initial sync, removed items will be transfered in the form of Deletions, which may unnecessarily lengthen each response 
 
 ## Usage
 
