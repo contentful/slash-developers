@@ -2,30 +2,35 @@
 page: :docsSync
 ---
 
-Synchronizing content greatly improves the user experience of applications. Mobile data connections can still be slow and have a very high latency compared to broadband internet connections. When apps sync content to the device and access it from a local database (e.g. CoreData, LocalStorage, SQLite) data access is much faster and apps can provide a much better user experience.
+The Sync API allows you to keep a local copy of all content of a Space up-to-date via delta updates.
 
-Applications sync periodically: Depending on the use case they may sync every few hours, when being opened or pending user interaction, e.g., on pull to refresh.
+Synchronizing content greatly improves the user experience of applications. Mobile data connections can be slow and have a very high latency compared to broadband internet connections. When apps sync content to the device and access it from a local database (e.g. CoreData, LocalStorage, SQLite) data access is much faster and apps can provide a much better user experience.
 
-To further illustrate this let's think of an example mobile app: A travel guide application which has information about places of interest for a certain area. Users of the travel guide will probably be abroad with a limited data package or no cellular data at all.
+Without a Sync API, applications require an ongoing internet connection and constantly download all data in each synchronization, including content they already knew about. This wastes a lot of mobile data and time, especially when syncing on cellular data.
 
-Some applications download all available data on every sync, including content they already knew about. This wastes a lot of mobile data and valuable time. This is especially a problem when syncing while on cellular data.
-
-Most applications don't sync at all and require an ongoing internet connection. Many of these apps don't really require a constant connection to work but are still effectively useless when there is no internet. In the case of the travel guide having to hop from wifi to wifi simply to use it would be frustrating.
-
-Instead it makes sense to perform delta updates:
+Instead, using the Sync API, applications sync periodically. Depending on the use case, they may sync every few hours when opened or pending user interaction. To do so, it performs delta updates:
 
 - Get content which has been added or changed since the last sync
 - Delete local content which has been deleted since the last sync
 
-Compared to the other sync strategies delta updates have many benefits:
+To enable delta updates, Contentful provides a special synchronization endpoint. This endpoint delivers only new and changed content and notifies about deleted content (deletions). It will never transfer duplicate content the client has already received before.
 
-- Use as little data as possible: Most mobile data plans have limits on how much data can be transferred (at full speed) within a given time period. By transferring only actual changes and not transferring everything every time the data footprint of a synchronization is very small. Keeping the sync small also means greatly improved chances of success when a mobile connection is slow.
-- Fast synchronization: Because individual syncs are small they will only take a few seconds at most.
+## The Upside
+
+Compared to the other strategies, syncing with delta updates has many advantages:
+
+- Use as little data as possible: Most mobile data plans have limits on how much data can be transferred (at full speed) within a given time period. By transferring only actual changes and not transferring everything every time, the amount of data of a synchronization is very small. Keeping the sync small also means improved chances of success when a mobile connection is slow.
+- Fast synchronization: Because individual syncs are small they will take much less time than repeatedly loading data that hasn't changed.
 - As little resource usage as possible: Less data to process also means less resources required for processing the data and less waiting time for users of mobile applications.
+- Entirety of content: the initial sync will transfer all items since the creation of the Space alongside all available localizations, which doesn't happen in the Delivery API.
 
-To enable delta updates Contentful provides a special synchronization endpoint. This endpoint delivers only new and changed content and notifies about deleted content (deletions). It will never transfer duplicate content the client has already received before.
+## The Downside
 
-Keep in mind that the synchronization endpoint will always give you all the content of a Space or a specific Content Type, so it may not make sense to use it for every use case. If users only want to see the newest content, it would be wasteful to download everything immediately. In that case, it might be better to only fetch selected content based on the date, using search.
+Keep in mind that the synchronization endpoint will always give you all the content of a Space or a specific Content Type, so it may not make sense to use it for every use case:
+
+- If users only want to see the newest content, it would be wasteful to download everything immediately. In that case, it might be better to only fetch selected content based on the date, using search.
+- Because the Sync API retrieves all localized content, it might be better to use the Delivery API to retrieve results of a single locale
+- Following the initial sync, removed items will be transfered in the form of Deletions, which may unnecessarily lengthen each response 
 
 ## Usage
 
@@ -49,4 +54,4 @@ When syncing Entries or Assets they come in all available localizations instead 
 
 - Using the Sync API for [offline persistence on iOS](/developers/docs/tutorials/ios/offline-persistence-in-ios-sdk/)
 
-<!-- TODO Link back to CDA reference -->
+- Using Synchronization with the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/synchronization)
