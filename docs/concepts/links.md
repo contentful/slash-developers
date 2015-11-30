@@ -46,6 +46,8 @@ Link resolution works regardless of how many results are there in `items`. Some 
 - Get a list of blog posts in items with related authors, categories and other meta data in includes.
 - Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
 
+Note that only Links between Entries, Spaces and Assets are resolved. Links between Spaces and Content Types are not included in the response when the `include` parameter is specified.
+
 ### Querying Linked Entries
 
 Querying linked items is as simple as adding a specific `include` parameter to retrieve a desired level of related content to be displayed in an application. 
