@@ -46,7 +46,7 @@ Each space has a name, a set of locales, and some system metadata.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
 + Model (application/vnd.contentful.delivery.v1+json)
 
@@ -84,7 +84,7 @@ Each space has a name, a set of locales, and some system metadata.
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
 ### Get all content types of a Space [GET]
 
@@ -96,7 +96,7 @@ Each space has a name, a set of locales, and some system metadata.
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type_id: cat (required, string) - ID of the Content Type in form of a string
 
 ### Get a single Content Type [GET]
@@ -113,7 +113,7 @@ Entries are the documents contained within a space. They might represent blog po
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
 ### Get all entries of a Space [GET]
 
@@ -125,7 +125,7 @@ Entries are the documents contained within a space. They might represent blog po
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + entry_id (required, string, `nyancat`) ... Alphanumeric `id` of the Entry to retrieve
 
 ### Get a single entry [GET]
@@ -160,7 +160,7 @@ fields.file.details.size        |Number        |Size (in bytes) of the file.
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
 + Model (application/vnd.contentful.delivery.v1+json)
 
@@ -212,7 +212,7 @@ Example URL: <https://images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
     + asset_id: nyancat (required, string) - ID of the Asset in form of a string
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
 ### Get a single Asset [GET]
 
@@ -232,7 +232,7 @@ When querying Entries and using search filters based on `fields` or ordering by 
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
 
 ### Query Entries [GET]
@@ -251,7 +251,7 @@ Note that equality & inequality operators are not supported for Text fields.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.id`) ... The attribute to match.
     + value (required, `nyancat`) ... The value to match.
 
@@ -269,7 +269,7 @@ Note that equality & inequality operators are not supported for Text fields.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.id`) ... The attribute to match.
     + value (required, `nyancat`) ... The value to match.
 
@@ -287,7 +287,7 @@ The equality/inequality operators also works with Array fields: If one of the it
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
     + field_id (required, string, `likes`) ... The attribute to match.
     + value (required, `lasagna`) ... The value to match.
@@ -307,7 +307,7 @@ When applied to an array value there must be at least one matching item.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.id`) ... The attribute to match.
     + value (required, `finn,jake`) ... The value to match.
 
@@ -326,7 +326,7 @@ When applied to an array value there must be at least one not matching item.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
     + attribute (required, string, `fields.likes`) ... The attribute to match.
     + value (required, `rainbows,lasagna`) ... The value to match.
@@ -345,7 +345,7 @@ You can check for the presence of a field using the `exists` operator.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.archivedVersion`) ... The attribute to match.
     + value (required, boolean, `false`) ... The value to match.
 
@@ -370,7 +370,7 @@ Those operators can be applied to Date and Number Fields.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
     + attribute (required, string, `sys.updatedAt`) ... The attribute to match.
     + value (required, `2013-01-01T00:00:00Z`) ... The value to match.
@@ -389,7 +389,7 @@ Full-text search across all Text and Symbol Fields via query querystring paramet
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, string, `bacon`) ... The value to match.
 
 ### Query Entries [GET]
@@ -404,7 +404,7 @@ Let's find all Entries matching "bacon".
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `dog`) ... Alphanumeric `id` of the Content Type to retrieve.
     + field_id (required, string, `description`) ... Alphanumeric `id` of Field to retrieve.
     + value (required, string, `bacon pancakes`) ... The value to match.
@@ -434,7 +434,7 @@ When you are performing geographical searches please keep in mind that queries i
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the Content Type to retrieve.
     + coordinate (required, string, `38,-122`) ... Latitude and longitude of a location.
 
@@ -473,7 +473,7 @@ The structure `field.center[within]=latitute,longitude,radius` will return Entri
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the Content Type to retrieve.
     + rectangle (required, string, `36,-124,40,-120`) ... Coordinate rectangle to search in.
 
@@ -517,7 +517,7 @@ Object |Object        |Arbitrary Object.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.createdAt`) ... Attribute to order by.
 
 ### Query Entries [GET]
@@ -534,7 +534,7 @@ Reverse the sort-order by prefixing the field with a minus-sign.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.updatedAt`) ... Attribute to order by.
 
 ### Query Entries [GET]
@@ -551,7 +551,7 @@ Order items by specifying your `order` parameter along with your attributes(`att
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required,string,`sys.revision`) ... First attribute to order by
     + attribute2 (required, string, `sys.id`) ... Second attribute to order by.
 
@@ -569,7 +569,7 @@ Please note that the maximum number of entries returned by the API is 1000. Limi
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, number, `3`) ... Limit for number of results.
 
 ### Query Entries [GET]
@@ -593,7 +593,7 @@ By combining `skip` and `limit` you can achieve pagination:
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, number, `3`) ... Offset for results.
 
 ### Query Entries [GET]
@@ -616,7 +616,7 @@ By default, `include` one level is implied, you may set it to zero to not includ
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, number, `2`) ... Number of levels to include.
 
 ### Query Entries [GET]
@@ -633,7 +633,7 @@ We can retrieve all items linked to a particular target Entry. To do so, a query
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
     + linking_field (required, string, `bestFriend`) ... Content Type field used to link items
     + target_entry_id (required, string, `nyancat`) ... Alphanumeric `id` of the Target Entry linked to retrieved items
@@ -653,7 +653,7 @@ Assets can be filtered by their MIME-Type group by using the `mimetype_group` qu
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + mimetype_group (required, string, `image`) ... MIME-Type group to include.
 
 ### Query Assets [GET]
@@ -680,7 +680,7 @@ Learn more [on our Developer Center](https://www.contentful.com/developers/docs/
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + entry_id (optional, string, `nyancat`) ... Alphanumeric `id` of the Entry to retrieve.
     + locale (required, string, `tlh`) ... The locale to use.
 
@@ -721,7 +721,7 @@ Syncing with `initial=true` should only be done once for the initial sync when a
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + type (optional, string, `Deletion`) ... The type of Resource to sync.
 
 ### Query Entries [GET]
@@ -736,7 +736,7 @@ For Entries, you can also specify a `content_type` parameter. When specifying `c
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type_id (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
 
 ### Query Entries [GET]
@@ -753,8 +753,8 @@ If for some reason a client loses the `nextSyncUrl`, the client should delete it
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... A *production* Content Delivery API Key.
-    + sync_token (required, string, `w5ZGw6JFwqZmVcKsE8Kow4grw45QdybCnV_Cg8OASMKpwo1UY8K8bsKFwqJrw7DDhcKnM2RDOVbDt1E-wo7CnDjChMKKGsK1wrzCrBzCqMOpZAwOOcOvCcOAwqHDv0XCiMKaOcOxZA8BJUzDr8K-wo1lNx7DnHE`) ... Alphanumeric token which is used to identify your previous sync.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + sync_token (required, string, `w5ZGw6JFwqZmVcKsE8Kow4grw45QdybCnV_Cg8OASMKpwo1UY8K8bsKFwqJrw7DDhcKnM2RDOVbDt1E-wo7CnDjChMKKGsK1wrzCrBzCqMOpZAwOOcOvCcOAwqHDv0XCiMKaOcOxZA8BJUzDr8K-wo1lNx7DnHE`) ... An opaque token which is used to identify your previous sync.
 
 ### Query Entries [GET]
 
