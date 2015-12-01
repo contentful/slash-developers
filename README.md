@@ -18,7 +18,7 @@ Where appropriate, tests are run before the task is performed. The test use
 [dredd](https://github.com/apiaryio/dredd) to check the blueprint against the
 actual APIs.
 
-Note: Since CDA and CPA are almost identical, they have been split up into `cda-header.apib`, `cpa-header.apib` and `cda-body.apib` - the `Makefile` tasks take care of generating a full blueprint from those, so make sure you are editing the actual sources, not the generated files.
+Note: to reduce manual duplication of content between the different blueprints, [hercule](https://github.com/jamesramsay/hercule) is used for including content from `_partials` into the blueprints - the `Makefile` tasks take care of generating a full blueprint into the `out` directory, so make sure you are editing the actual sources, not the generated files.
 
 2. The rest of the documentation consists of Markdown files which will end up on the
 Contentful website, via a Git submodule in the
