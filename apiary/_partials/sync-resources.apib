@@ -10,12 +10,17 @@ By default a sync includes all types: Assets, Entries of all Content Types and d
 
 To sync only specific content a type parameter can be specified for the initial sync:
 
-    all: (default) Include all new and changed content, i.e., Assets, Entries and deletions.
-    `Asset`: Only include new and changed Assets.
-    `Entry`: Only include new and changed Entries.
-    `Deletion`: Only include deletions of Assets and Enties.
-    `DeletedAsset`: Only include deletions of Assets.
-    `DeletedEntry`: Only include deletions of Entries.
+
+Parameter        |Description                    
+-----------------|--------------------------------|
+all (default)    |Include all new and changed content, i.e., Assets, Entries and deletions.               
+`Asset`          |Only include new and changed Assets.         
+`Entry`          |Only include new and changed Entries.       
+`Deletion`       |Only include deletions of Assets and Entries.  
+`DeletedAsset`   |Only include deletions of Assets.           
+`DeletedEntry`   |Only include deletions of Entries.      
+    
+
 
 ## Initial synchronisation [/spaces/{space_id}/sync?access_token={access_token}&initial=true&type={type}]
 
