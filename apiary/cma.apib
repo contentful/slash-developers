@@ -187,6 +187,8 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 Let's create a Content Type for blog posts. Blog posts will have a title and a body field.
 
+When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response.
+
 + Request
     + Headers
 
@@ -207,6 +209,10 @@ Let's create a Content Type for blog posts. Blog posts will have a title and a b
 
 ### Create/Update a Content Type [PUT]
 
+This endpoint can be used to create a new Content Type with an ID specified by the user, or to update a specific Content Type via its ID.
+
+Note that when updating an existing Content Type, you always need to specify the last version you got of the Content Type you are updating with `X-Contentful-Version`.
+
 Whenever you are creating or updating a Content Type you can add or remove validations to the fields present in the Content Type schema. Validations, specified in the validations property a field, are included in the payload sent to the server when you create or update a Content Type.
 
 <!-- TODO: Insert table of possible validations -->
@@ -215,14 +221,13 @@ Please notice that validations will only take effect after the Content Type has 
 
 To remove a specific validation, update the Content Type leaving that validation out of the field's validations collection. To remove all the validations applied to a field update the Content Type schema removing the validations property.
 
-
 It is possible to change the ID of a Content Type's field. Please note, that the API will return different data afterwards and that this might break your currently existing code base.
 
 __Usecase__
 
 Imagine you created a Content Type and started developing your application. During the development process you find out, that the initially chosen name of a field was not perfect and you want to change it. Especially you want to change the response of the API.
 
-+ Request Create with a predefined identifier
++ Request Create new Content Type with a predefined identifier
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -234,7 +239,7 @@ Imagine you created a Content Type and started developing your application. Duri
 
     + Attributes (Content Type)
 
-+ Request Update existing
++ Request Update existing Content Type
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -247,7 +252,7 @@ Imagine you created a Content Type and started developing your application. Duri
 
     + Attributes (Content Type Update)
 
-+ Request Update existing with validations
++ Request Update existing Content Type with validations
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -348,7 +353,9 @@ Entries represent textual content in a Space. An Entry's data adheres to a certa
 
 Before you can create an Entry you need to create and activate a Content Type.
 
-When creating a new Entry you need to pass the ID of the Entry's desired Content Type as the `X-Contentful-Content-Type` header.  
+When creating a new Entry you need to pass the ID of the Entry's desired Content Type as the `X-Contentful-Content-Type` header.
+
+When using this endpoint, an ID will be automatically generated for the created Entry and returned on the response.
 
 + Request
     + Headers
@@ -371,11 +378,17 @@ When creating a new Entry you need to pass the ID of the Entry's desired Content
 
 ### Create/Update an Entry  [PUT]
 
+This endpoint can be used to create a new Entry with an ID specified by the user, or to update a specific Entry via its ID.
+
+Note that when updating an existing Entry, you always need to specify the last version you got of the Entry you are updating with `X-Contentful-Version`.
+
 Before you can create an Entry you need to create and activate a Content Type.
 
-When creating a new Entry you need to pass the ID of the Entry's desired Content Type as the `X-Contentful-Content-Type` header. 
+When creating a new Entry you need to pass the ID of the Entry's desired Content Type as the `X-Contentful-Content-Type` header.
 
-+ Request Create with a predefined identifier
+For updating an Entry, passing the ID of the Entry's Content Type is not required.
+
++ Request Create new Entry with a predefined identifier
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -388,7 +401,7 @@ When creating a new Entry you need to pass the ID of the Entry's desired Content
 
     + Attributes (Entry)
 
-+ Request Update existing
++ Request Update existing Entry
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -511,6 +524,8 @@ Assets can optionally be localized by providing separate files for each locale. 
 
 ### Create an Asset [POST]
 
+When using this endpoint, an ID will be automatically generated for the created Asset and returned on the response.
+
 + Request
     + Headers
 
@@ -532,7 +547,11 @@ Assets can optionally be localized by providing separate files for each locale. 
 
 ### Create/Update an Asset [PUT]
 
-+ Request Create with a predefined identifier
+This endpoint can be used to create a new Asset with an ID specified by the user, or to update a specific Asset via its ID.
+
+Note that when updating an existing Asset, you always need to specify the last version you got of the Asset you are updating with `X-Contentful-Version`.
+
++ Request Create a new Asset with a predefined identifier
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -544,7 +563,7 @@ Assets can optionally be localized by providing separate files for each locale. 
 
     + Attributes (Asset)
 
-+ Request Update existing
++ Request Update existing Asset
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
