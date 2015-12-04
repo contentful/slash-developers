@@ -167,7 +167,7 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 :[What is a Content Type?](_partials/content-types-description.md)
 
-## Content Type Collection [/spaces/{space_id}/content_types?access_token={access_token}]
+## Content Type Collection [/spaces/{space_id}/content_types]
 
 + Parameters
     + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
@@ -687,14 +687,14 @@ consists mainly of a name and a locale code.
 
 ## Locale Collection [/spaces/{space_key}/locales]
 
++ Parameters
+    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
 ### Get all Locales of a Space [GET]
 
 The locale collection endpoint returns a list of all the created locales. One of those
 will have the flag `default` set to true and is the locale that is used if no other
 locale was specified for the request (e.g. when reading an entry).
-
-+ Parameters
-    + space_key: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
 
 + Request
     + Headers
