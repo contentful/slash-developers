@@ -39,10 +39,13 @@ Also, there are several documents which are relevant for all the APIs:
 - [Anatomy of a CMA request](/developers/docs/tutorials/general/anatomy-cma-request/)
 - [Extending the Delivery API with AWS Lambda & API Gateway](/developers/docs/tutorials/general/delivery-api-lambda-and-api-gateway/)
 
+### Ruby
+- [Getting Started with Contentful and Ruby](/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby)
+
 ### iOS
 
 - [iOS development tutorials](/developers/docs/tutorials/ios/)
-- [Using the delivery API on iOS](/developers/docs/tutorials/ios/using-delivery-api-on-ios/)
+- [Using the Delivery API on iOS](/developers/docs/tutorials/ios/using-delivery-api-on-ios/)
 - [Using the management API on iOS](/developers/docs/tutorials/ios/using-management-api-on-ios/)
 - [Offline persistence in the iOS SDK](/developers/docs/tutorials/ios/offline-persistence-in-ios-sdk/)
 - [Using the Contentful Xcode plugin](/developers/docs/tutorials/ios/using-contentful-xcode-plugin/)
@@ -51,7 +54,7 @@ Also, there are several documents which are relevant for all the APIs:
 - [Offline persistence with Vault on Android](/developers/docs/tutorials/android/offline-persistence-with-vault/)
 
 ### JavaScript
-- [Using contentful.js, the Contentful Delivery API SDK](/developers/docs/tutorials/javascript/using-js-cda-sdk/)
+- [Getting Started with Contentful and JavaScript](/developers/docs/tutorials/javascript/using-js-cda-sdk/)
 
 ## Libraries
 
