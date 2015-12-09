@@ -27,6 +27,6 @@ If you want to know how to use Contentful with a specific framework or tool not 
 
 ## Ruby
 
-- [contentful.rb](https://github.com/contentful/contentful.rb)
+- [contentful.rb](https://github.com/contentful/contentful.rb) - [Quickstart](/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby/)
 - [contentful-management.rb](https://github.com/contentful/contentful-management.rb)
 
