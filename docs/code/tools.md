@@ -15,7 +15,7 @@ You can import data from other systems into Contentful using [contentful-importe
 We love static sites. There are plugins for using Contentful with two major static site generators:
 
 - [Metalsmith](https://github.com/contentful-labs/contentful-metalsmith)
-- [Middleman](https://github.com/contentful/contentful_middleman)
+- [Middleman](https://github.com/contentful/contentful_middleman) - [Examples](https://github.com/contentful-labs/contentful_middleman_examples)
 
 There's also an example for building a static site using [AWS Lambda](https://github.com/contentful-labs/contentful-aws-lambda-static).
 
@@ -31,6 +31,11 @@ There's also an example for building a static site using [AWS Lambda](https://gi
 - [Concorde](https://github.com/contentful-labs/Concorde), a library for displaying progressive JPEG images on iOS.
 - [ContentfulPersistence](https://github.com/contentful/contentful-persistence.objc), a library for making it easy to persist data retrieved from Contentful in Core Data.
 - [Xcode plugin](https://github.com/contentful/ContentfulXcodePlugin), a plugin for automatically creating Core Data models from your Contentful content model. [Read this](/developers/docs/tutorials/ios/using-contentful-xcode-plugin/) to get up and running with it.
+
+### Ruby
+
+- [contentful-bootstrap.rb](https://github.com/contentful-labs/contentful-bootstrap.rb), a tool for quick command line setup of your Contentful projects.
+- [contentful-webhook-listener.rb](https://github.com/contentful/contentful-webhook-listener.rb), a simple HTTP webserver with pluggable behavior for listening to API Webhooks.
 
 ## Unofficial
 
