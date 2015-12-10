@@ -283,7 +283,7 @@ For example, here's how to get all Entries except nyancat.
 
 ## Equality/Inequality for arrays [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}={value}]
 
-The equality/inequality operators also works with Array fields: If one of the items in an Array field matches the value the field will match.
+The equality/inequality operators also works with Array fields: If one of the items in an Array field matches the value the field will match. Also, as it filters by a field, it becomes necessary to specify a Content Type.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -303,7 +303,7 @@ Let's find all cats who like lasagna by matching fields.likes (Array) against a 
 ## Inclusion [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bin%5D={value}]
 
 Filter a field by multiple values via the `in` operator.
-When applied to an array value there must be at least one matching item.
+When applied to an array value there must be at least one matching item. Similarly, when including a field value, it's necessary to specify a Content Type.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -322,7 +322,7 @@ Let's get Entries for finn and jake.
 ## Exclusion [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Bnin%5D={value}]
 
 Filter a field by multiple values via the `nin` operator.
-When applied to an array value there must be at least one not matching item.
+When applied to an array value there must be at least one not matching item. Similarly, when including a field value, it's necessary to specify a Content Type.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -366,7 +366,9 @@ Four range operators are available:
 - `gt`: Greater than
 - `gte`: Greater than or equal to
 
-Those operators can be applied to Date and Number Fields.
+Those operators can be applied to Date and Number Fields. 
+
+When applied to field values, there must be a specified Content Type in the query. 
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -401,6 +403,8 @@ Let's find all Entries matching "bacon".
   + Attributes (Empty Array)
 
 ## Full-text Search on a specific field via match operator [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}%5Bmatch%5D={value}]
+
+After specifying a Content Type, it is possible to filter results based on a given field.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
