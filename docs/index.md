@@ -30,6 +30,8 @@ Also, there are several documents which are relevant for all the APIs:
 - [Authentication](/developers/docs/references/authentication/)
 - [Errors](/developers/docs/references/errors/)
 - [HTTP response details](/developers/docs/references/http-details/)
+- [Locales](/developers/docs/references/locales/)
+- [Field Types](/developers/docs/references/field-type/)
 
 ## Tutorials
 
@@ -38,6 +40,7 @@ Also, there are several documents which are relevant for all the APIs:
 - [Anatomy of a CDA request](/developers/docs/tutorials/general/anatomy-cda-request/)
 - [Anatomy of a CMA request](/developers/docs/tutorials/general/anatomy-cma-request/)
 - [Extending the Delivery API with AWS Lambda & API Gateway](/developers/docs/tutorials/general/delivery-api-lambda-and-api-gateway/)
+- [Scheduling Posts](/developers/docs/tutorials/general/scheduling-posts)
 
 ### Ruby
 - [Getting Started with Contentful and Ruby](/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby)
@@ -63,7 +66,6 @@ We provide libraries for major programming languages and platforms so you don't 
 - [Java/Android](/developers/docs/code/libraries/#java-also-for-use-on-android)
 - [JavaScript](/developers/docs/code/libraries/#javascript)
 - [Objective-C / Swift](/developers/docs/code/libraries/#objective-c--swift-for-use-on-ios-and-os-x)
-- [Python](/developers/docs/code/libraries/#python)
 - [Ruby](/developers/docs/code/libraries/#ruby)
 - [Third-party libraries: PHP, C#, .NET and more](/developers/docs/code/libraries/#unofficial)
 - [See all libraries](/developers/docs/code/libraries/)
