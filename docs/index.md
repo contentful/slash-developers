@@ -4,6 +4,35 @@ page: :docsOverview
 
 Here you'll find everything necessary for setting up and going deeper: introductory explanations, API references, more specific tutorials, SDKs and libraries for major platforms, as well as other helpful tools and code samples.
 
+## Concepts
+
+These articles introduce the basics of Contentful, explain our data model, and provide some best practices. Perhaps this is the best place to start if you haven't built anything with Contentful before.
+
+- [API basics](/developers/docs/concepts/apis/)
+- [Data model](/developers/docs/concepts/data-model/)
+- [Links](/developers/docs/concepts/links/)
+- [Locales](/developers/docs/concepts/locales/)
+- [Synchronization](/developers/docs/concepts/sync/)
+
+## API references
+
+This is the go-to place if you have some specific question in mind. *How do I authorize my app? How do I fetch an entry? How do I request an image of a specific size?* the answers to these questions (and more) can be found below.
+
+There are four APIs available, and each serves one specific purpose:
+
+- <a href="http://docs.contentfulcda.apiary.io" target="_blank">Content Delivery API</a> for getting the content
+- <a href="http://docs.contentfulcma.apiary.io" target="_blank">Content Management API</a> for saving the content
+- <a href="http://docs.contentpreviewapi.apiary.io" target="_blank">Content Preview API</a> for previewing the content before publishing it to production
+- <a href="http://docs.contentfulimagesapi.apiary.io" target="_blank">Images API</a> for requesting images of specific sizes and formats
+
+Also, there are several documents which are relevant for all the APIs:
+
+- [Authentication](/developers/docs/references/authentication/)
+- [Errors](/developers/docs/references/errors/)
+- [HTTP response details](/developers/docs/references/http-details/)
+- [Locales](/developers/docs/references/locales/)
+- [Field Types](/developers/docs/references/field-type/)
+
 ## Tutorials
 
 ### General
@@ -52,35 +81,6 @@ There are more tools which help speed up development. Find content import/export
 It could be helpful to look at the existing Contentful-based apps for iOS, Android and other platforms.
 
 - [Browse the codebase](/developers/docs/code/examples/)
-
-## Concepts
-
-These articles introduce the basics of Contentful, explain our data model, and provide some best practices. Perhaps this is the best place to start if you haven't built anything with Contentful before.
-
-- [API basics](/developers/docs/concepts/apis/)
-- [Data model](/developers/docs/concepts/data-model/)
-- [Links](/developers/docs/concepts/links/)
-- [Locales](/developers/docs/concepts/locales/)
-- [Synchronization](/developers/docs/concepts/sync/)
-
-## API references
-
-This is the go-to place if you have some specific question in mind. *How do I authorize my app? How do I fetch an entry? How do I request an image of a specific size?* the answers to these questions (and more) can be found below.
-
-There are four APIs available, and each serves one specific purpose:
-
-- <a href="http://docs.contentfulcda.apiary.io" target="_blank">Content Delivery API</a> for getting the content
-- <a href="http://docs.contentfulcma.apiary.io" target="_blank">Content Management API</a> for saving the content
-- <a href="http://docs.contentpreviewapi.apiary.io" target="_blank">Content Preview API</a> for previewing the content before publishing it to production
-- <a href="http://docs.contentfulimagesapi.apiary.io" target="_blank">Images API</a> for requesting images of specific sizes and formats
-
-Also, there are several documents which are relevant for all the APIs:
-
-- [Authentication](/developers/docs/references/authentication/)
-- [Errors](/developers/docs/references/errors/)
-- [HTTP response details](/developers/docs/references/http-details/)
-- [Locales](/developers/docs/references/locales/)
-- [Field Types](/developers/docs/references/field-type/)
 
 ## More
 
