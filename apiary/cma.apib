@@ -59,7 +59,16 @@ Contentful uses optimistic locking. When updating an existing resource its curre
 
 ## Errors
 
-Learn more [on our Developer Center](https://www.contentful.com/developers/docs/references/errors/).
+:[Common errors](errors-common.md)
+
+### Management API Error types
+
+HTTP Status Code   |Error Code       |Description
+-------------------|-----------------|----------------------------------------------------------------------------------
+`409`|`VersionMismatchError`|This error happens when you're trying to update an existing asset, entry or content type, and you either didn't specify the current version of the object or specify an outdated version.
+`422`|`ValidationFailedError`|The request payload was a valid JSON, but something was wrong with the data. Check the error details field – it should provide more specific information about the error.
+`422`|`InvalidEntryError`|The entered value is invalid.
+`422`|`ValidationFailedError`|The triggered query references an invalid field.
 
 ## HTTP Details
 
