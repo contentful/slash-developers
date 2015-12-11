@@ -187,7 +187,7 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 **Creating content types with `POST` is strongly discouraged!**
 
-When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response. In contrast, using the `PUT` method below allows you to control the ID of the created Content Type. This especially important for Content Type ID's because they are often used as parameters in your own code. Would you rather query for `content_type=hs7Kj10al3b6x` or `content_type=newsArticle` 
+When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response. In contrast, using the `PUT` method below allows you to control the ID of the created Content Type. This is especially important for Content Type ID's because they are often used as parameters in your own code. It's much nicer to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
 
 + Request
     + Headers
