@@ -194,9 +194,9 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 ### Create a Content Type [POST]
 
-Let's create a Content Type for blog posts. Blog posts will have a title and a body field.
+**Creating content types with `POST` is strongly discouraged!**
 
-When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response.
+When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response. In contrast, using the `PUT` method below allows you to control the ID of the created Content Type. This is especially important for Content Type ID's because they are often used as parameters in your own code. It's much nicer to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
 
 + Request
     + Headers
@@ -210,23 +210,6 @@ When using this endpoint, an ID will be automatically generated for the created 
 
     + Attributes (Content Type)
 
-## Published Content Type Collection [/spaces/{space_id}/public/content_types]
-
-+ Parameters
-    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
-
-### Get all published content types of a Space [GET]
-
-Retrieves the published versions of Content Types.
-
-+ Request
-    + Headers
-
-            Authorization: Bearer b4c0n73n7fu1
-
-+ Response 200 (application/vnd.contentful.management.v1+json)
-
-    + Attributes (Empty Array)
 
 ## Content Type [/spaces/{space_id}/content_types/{content_type_id}]
 
@@ -355,6 +338,25 @@ Before you can delete a Content Type you need to deactivate it.
 + Response 200 (application/vnd.contentful.management.v1+json)
 
     + Attributes (Content Type Unpublished)
+
+## Activated Content Type Collection [/spaces/{space_id}/public/content_types]
+
++ Parameters
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
+### Get all activated content types of a Space [GET]
+
+Retrieves the activated versions of Content Types, ignoring any changes made since the last activation.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Empty Array)
+
 
 # Group Entries
 
