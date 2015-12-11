@@ -204,7 +204,8 @@ With that, Entries will finally have different fields for each locale:
 `GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb`
 
 ### JSON Response
- ~~~ json
+
+~~~ json
 {
   "sys": {
     "space": {
