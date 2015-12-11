@@ -2,13 +2,13 @@
 page: :docsFieldTypes
 ---
 
-#Overview
+## Overview
 
-All data in Contentful has a field type, which is defined in the [creation of a content type](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type). 
+All data in Contentful has a field type, which is defined in the [creation of a content type](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type).
 
 Each field type corresponds to a JSON type, though there are more field types than JSON types.
 
-
+{:.table}
 Name   |JSON Type|Description|Example
 -------|--------------|-----------|------------
 Symbol<sup>1</sup> |String        |Basic list of characters. Maximum length is 256.| "The title"
@@ -33,17 +33,17 @@ Contentful supports fields that contain multiple values with it's `Array` type. 
 
 A field that contains symbols is defined like this:
 
-```
+~~~json
 {
   "id": "tags",
   "type": "Array",
   "items": { "type": "Symbol" }
 }
-```
+~~~
 
 And a field containing an array of links to assets is defined like this:
 
-```
+~~~json
 {
   "id": "relatedImages",
   "type": "Array",
@@ -52,4 +52,4 @@ And a field containing an array of links to assets is defined like this:
     "linkType": "Asset"
   }
 }
-```
+~~~

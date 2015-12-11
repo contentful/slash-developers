@@ -38,7 +38,8 @@ interact with our APIs we're setting the following HTTP response headers:
 This should allow web apps to do whatever the user has given them
 permission for.
 
-Note: Allowing all origins is safe because of the way the APIs are designed:
+{: .note}
+**Note:** Allowing all origins is safe because of the way the APIs are designed:
 
 - All requests must include an access token in the query string or as
 header for every request. They will never be sent implicitly by a cookie.
@@ -72,11 +73,11 @@ and especially binary files.
 All API endpoints support GZip compression to save valuable bandwidth.
 Please take into account that enabling compression will also put more load on your clients' processors.
 
-# JSON Format Details
+## JSON Format Details
 
 Resources are represented as [JSON](http://json.org).
 
-## Date & Time Format
+### Date & Time Format
 
 Dates and times are an important part of all content.
 Let's look at an Entry:

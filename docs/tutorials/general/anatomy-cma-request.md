@@ -1,11 +1,11 @@
 ---
 page: :docsAnatomyCMARequest
 ---
-# Overview
+## Overview
 
-In Contentful, content is defined as Entries and Assets (e.g images, videos and other media) and divided into Spaces. Apps and websites depend on the structure of Entries, so every Entry must comply to a specific Content Type. 
+In Contentful, content is defined as Entries and Assets (e.g images, videos and other media) and divided into Spaces. Apps and websites depend on the structure of Entries, so every Entry must comply to a specific Content Type.
 
-This article is a comprehensive exposure to managing content via the Content Management API(CMA). In the end, you should be able to write custom applications and scripts using our API. 
+This article is a comprehensive exposure to managing content via the Content Management API(CMA). In the end, you should be able to write custom applications and scripts using our API.
 
 In this example, we will create an online magazine, publish a blog post and add an image to it.
 
@@ -16,22 +16,28 @@ To do so, we will do the following:
 + Create and publish a blog post Entry
 + Create, process and publish an Asset (image)
 + Add a field `image` to the Content Type `Blog Posts`
-+ Add this image to our blog post Entry 
++ Add this image to our blog post Entry
 
-# Part 1: Structuring Blog Posts
+## Part 1: Structuring Blog Posts
 
-## Creating a Space
+### Creating a Space
 
 Spaces are containers for Content Types, Entries and Assets and other resources. API consumers retrieve data by getting Entries and Assets from one or more Spaces. To create a Space, a request should have the following structure:
 
-### URL
-`POST https://api.contentful.com/spaces`
+#### URL
 
-### Header
-+ `Authorization: $token`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
+~~~
+POST https://api.contentful.com/spaces`
+~~~
 
-### Body
+#### Header
+
+~~~
+Authorization: $token
+Content-Type: application/vnd.contentful.management.v1+json
+~~~
+
+#### Body
 In the body of our request we should specify a `name` and `defaultLocale` (defines the standard language):
 
 ~~~ json
@@ -77,18 +83,25 @@ We get a JSON response with the array `sys`, containing managed system propertie
 }
 ~~~
 
-## Creating and Activating a Content Type
-Content Types are mainly list of fields acting as a blueprint for Entries. 
-In this example of an online magazine, we will create the Content Type `Blog Post`, which will yield the structure of our future Entries: 
+### Creating and Activating a Content Type
+Content Types are mainly list of fields acting as a blueprint for Entries.
+In this example of an online magazine, we will create the Content Type `Blog Post`, which will yield the structure of our future Entries:
 
-### URL
-`PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post`
+#### URL
 
-### Header
-+ `Authorization: Bearer $token`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
+~~~
+PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post
+~~~
 
-### Body
+#### Header
+
+~~~
+Authorization: Bearer $token`
+Content-Type: application/vnd.contentful.management.v1+json
+~~~
+
+#### Body
+
 ~~~ json
 {
   "name": "Blog Post",
@@ -161,14 +174,20 @@ As you can see in the following response, we've just created a Content Type name
 
 We will be using this schema to create our Entry in the next section. Before we do that, we must activate our Content Type by using the following request:
 
-### URL
-`PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post/published`
+#### URL
 
-### Header
-+ Authorization: Bearer $token
-+ Content-Type: application/vnd.contentful.management.v1+json 
+~~~
+PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post/published
+~~~
 
-Whereas the response yields the same `fields` array, `sys` is updated with new information about versioning: 
+#### Header
+
+~~~
+Authorization: Bearer $token
+Content-Type: application/vnd.contentful.management.v1+json
+~~~
+
+Whereas the response yields the same `fields` array, `sys` is updated with new information about versioning:
 
 ~~~ json
 {
@@ -179,7 +198,7 @@ Whereas the response yields the same `fields` array, `sys` is updated with new i
   "sys": {
     "id": "blog_post",
     "type": "ContentType",
-    
+
     ...
 
     "version": 2,
@@ -206,25 +225,31 @@ Whereas the response yields the same `fields` array, `sys` is updated with new i
 }
 ~~~
 
-## Creating and Publishing an Entry
+### Creating and Publishing an Entry
 To create an Entry, we must specify a `X-Contentful-Content-Type` in the header and specify [locales](https://www.contentful.com/developers/docs/concepts/locales/) for its fields. In the following example, we will create a blog post Entry :
 
-### URL
-`POST https://api.contentful.com/spaces/31odstfovq9h/entries/`
+#### URL
 
-### Header
-+ `Authorization: Bearer $token`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
-+ `X-Contentful-Content-Type: blog_post`
+~~~
+POST https://api.contentful.com/spaces/31odstfovq9h/entries/`
 
-### Body
+#### Header
+
+~~~
+Authorization: Bearer $token
+Content-Type: application/vnd.contentful.management.v1+json
+X-Contentful-Content-Type: blog_post
+~~~
+
+#### Body
+
 ~~~ json
-{  
-   "fields":{  
-      "title":{  
+{
+   "fields":{
+      "title":{
          "en":"Explore the Universe!"
       },
-      "body":{  
+      "body":{
          "en":"We live in an awesome universe and..."
       }
    }
@@ -285,14 +310,19 @@ Our Entry is still a draft, so it's not possible to to deliver its content.
 
 To deliver content, we must publish our Entry and indicate its version (`X-Contentful-Version`) in the header of a PUT request:
 
-### URL
-`PUT https://api.contentful.com/spaces/31odstfovq9h/entries/63uGDCuGTmMUQu4OWmoKyC/published/`
+#### URL
 
-### Headers
-+ `Content-Type: application/vnd.contentful.management.v1+json`
-+ `Authorization: $token`
-+ `X-Contentful-Version: 1`
+~~~
+PUT https://api.contentful.com/spaces/31odstfovq9h/entries/63uGDCuGTmMUQu4OWmoKyC/published/
+~~~
 
+#### Headers
+
+~~~
+Content-Type: application/vnd.contentful.management.v1+json
+Authorization: $token
+X-Contentful-Version: 1
+~~~
 
 Similar to activating a Content-Type, publishing an Entry retrieves a `sys` array with updated information about versioning:
 
@@ -355,31 +385,38 @@ Similar to activating a Content-Type, publishing an Entry retrieves a `sys` arra
 }
 ~~~
 
-# Part 2: Adding Assets to Blog Posts
+## Part 2: Adding Assets to Blog Posts
 
-## Creating an asset
-To create Assets using the CMA, we must provide a publicly available upload URL. 
+### Creating an asset
+To create Assets using the CMA, we must provide a publicly available upload URL.
 
-These can be hosted on your own domain, be tunneled from `localhost` (using a tool like [ngrok](https://ngrok.com/)) or stored in a third-party website.  
+These can be hosted on your own domain, be tunneled from `localhost` (using a tool like [ngrok](https://ngrok.com/)) or stored in a third-party website.
 
-In our case, we will create an Asset using the URL of a publicly available [image](https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-0.3.5&q=80&fm=jpg&w=720&fit=max&s=a9690b19fc22338ee55f570832213937): 
+In our case, we will create an Asset using the URL of a publicly available [image](https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-0.3.5&q=80&fm=jpg&w=720&fit=max&s=a9690b19fc22338ee55f570832213937):
 
-### URL
-`POST https://api.contentful.com/spaces/31odstfovq9h/assets`
+#### URL
 
-### Header
-+ `Authorization: Bearer $token`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
+~~~
+POST https://api.contentful.com/spaces/31odstfovq9h/assets
+~~~
 
-### Body
+#### Header
+
+~~~
+Authorization: Bearer $token
+Content-Type: application/vnd.contentful.management.v1+json
+~~~
+
+#### Body
+
 ~~~ json
-{  
-   "fields":{  
-      "title":{  
+{
+   "fields":{
+      "title":{
          "en-US":"Universe"
       },
-      "file":{  
-         "en-US":{  
+      "file":{
+         "en-US":{
             "contentType":"image/jpeg",
             "fileName":"spaceship.jpeg",
             "upload":"https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?ixlib=rb-0.3.5&q=80&fm=jpg&w=720&fit=max&s=a9690b19fc22338ee55f570832213937"
@@ -438,13 +475,19 @@ A JSON response is retrieved with `sys` and `fields`, which describes the title,
 
 Now, we must tell Contentful to download and store the file from the URL we've just specified. In other words, we must process this Asset:
 
-### URL
-`PUT https://api.contentful.com/spaces/31odstfovq9h/assets/11gmpOYKfa8KOO6sYwaaYI/files/en/process`
+#### URL
 
-### Header
-+ Authorization: Bearer $token
-+ Content-Type: application/vnd.contentful.management.v1+json
-+ X-Contentful-Version: 1
+~~~
+PUT https://api.contentful.com/spaces/31odstfovq9h/assets/11gmpOYKfa8KOO6sYwaaYI/files/en/process
+~~~
+
+#### Header
+
+~~~
+Authorization: Bearer $token
+Content-Type: application/vnd.contentful.management.v1+json
+X-Contentful-Version: 1
+~~~
 
 Note that while no response is given, processing is asynchronous, so we may have to wait a little longer until the Asset is publishable.
 
@@ -471,20 +514,27 @@ When finished, a GET request should reveal the updated image URL:
     ...
   }
 }
-~~~ 
+~~~
+
 As you can see, the image has been stored and given a new URL (placed under the `images.contentful.com` domain).
 
-Now, we are ready to publish our Asset. Note that we must specify the correct `X-Contentful-Version` on our header: 
+Now, we are ready to publish our Asset. Note that we must specify the correct `X-Contentful-Version` on our header:
 
-### URL
-`PUT https://api.contentful.com/spaces/31odstfovq9h/assets/11gmpOYKfa8KOO6sYwaaYI/published`
+#### URL
 
-### Header
-+ `Authorization: Bearer $token`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
-+ `X-Contentful-Version: 2`
+~~~
+PUT https://api.contentful.com/spaces/31odstfovq9h/assets/11gmpOYKfa8KOO6sYwaaYI/published`
+~~~
 
-The response has the same `field` array, but `sys` has been updated with new versioning information: 
+#### Header
+
+~~~
+Authorization: Bearer $token
+Content-Type: application/vnd.contentful.management.v1+json
+X-Contentful-Version: 2
+~~~
+
+The response has the same `field` array, but `sys` has been updated with new versioning information:
 
 ~~~ json
 {
@@ -535,15 +585,21 @@ The response has the same `field` array, but `sys` has been updated with new ver
 
 Now, to add our Asset to an Entry, we must update our Content Type `Blog Posts` to include an `image` field:
 
-### URL
-`PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post`
+#### URL
 
-### Header
-+ `Authorization: Bearer $token`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
-+ `X-Contentful-Version: 2`
+~~~
+PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post`
+~~~
 
-### Body
+#### Header
+
+~~~
+Authorization: Bearer $token
+Content-Type: application/vnd.contentful.management.v1+json
+X-Contentful-Version: 2
+~~~
+
+#### Body
 
 ~~~ json
 {
@@ -636,23 +692,29 @@ The response reveals the new `image` field:
 
 Finally, we update our Entry and include the Asset using the new `field.image`:
 
-### URL
-`PUT https://api.contentful.com/spaces/31odstfovq9h/entries/63uGDCuGTmMUQu4OWmoKyC `
+#### URL
+
+~~~
+PUT https://api.contentful.com/spaces/31odstfovq9h/entries/63uGDCuGTmMUQu4OWmoKyC
 ~~~
 
-### Headers
-+ `Authorization: Bearer $token`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
-+ `X-Contentful-Version: 2`
+#### Headers
 
-### Body
+~~~
+Authorization: Bearer $token
+Content-Type: application/vnd.contentful.management.v1+json
+X-Contentful-Version: 2
+~~~
+
+#### Body
+
 ~~~ json
-{  
-   "fields":{  
-      "title":{  
+{
+   "fields":{
+      "title":{
          "en":"Explore the Universe!"
       },
-      "body":{  
+      "body":{
          "en":"We live in an awesome universe and..."
       },
       "image":{
@@ -697,15 +759,21 @@ The response confirms the recently included Asset:
 
 Then, we must publish the Entry:
 
-### URL
-`PUT https://api.contentful.com/spaces/31odstfovq9h/entries/63uGDCuGTmMUQu4OWmoKyC/published/`
+#### URL
 
-### Headers
-+ `Authorization: Bearer $token`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
-+ `X-Contentful-Version: 2`
+~~~
+PUT https://api.contentful.com/spaces/31odstfovq9h/entries/63uGDCuGTmMUQu4OWmoKyC/published/
+~~~
 
-### Response 
+#### Headers
+
+~~~
+Authorization: Bearer $token
+Content-Type: application/vnd.contentful.management.v1+json
+X-Contentful-Version: 2
+~~~
+
+#### Response
 ~~~ json
 {
   "fields": {
