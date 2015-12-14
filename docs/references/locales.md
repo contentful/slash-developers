@@ -4,7 +4,7 @@ page: :docsReferenceLocales
 
 ## Overview
 
-Locales are a great advantage of Contentful's [Premium Plans](https://www.contentful.com/pricing/). They allow you to define multiple localizations of each piece of content and select a specific locale when querying the Content Delivery API. 
+Locales are a great advantage of Contentful's [Premium Plans](https://www.contentful.com/pricing/). They allow you to define multiple localizations of each piece of content and select a specific locale when querying the Content Delivery API.
 
 Every space has it's own set of locales, where each locale is uniquely identified by its ISO code (e.g., en-US or de-AT). There is always one default locale defined when a Space is created, which is shown by default in the Contentful Web Interface and used for Content Delivery API queries that do not request a specific locale.
 
@@ -14,24 +14,30 @@ You can add a new Locale to a Space in the Contentful Web Interface or using the
 
 To add a locale in the Web Interface, go to **Settings** > **Locales** and click in **Add Locale**:
 
-![alt text](https://images.contentful.com/3ts464by117l/5E8X56DtxCY0is2ocuyeso/2a7c7f3c028343b2e2f6cbcea2bf399a/mainlocale.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/5E8X56DtxCY0is2ocuyeso/2a7c7f3c028343b2e2f6cbcea2bf399a/mainlocale.png)
 
-Choose a Locale and its options: 
+Choose a Locale and its options:
 
-![alt text](https://images.contentful.com/3ts464by117l/633NaPM11uo0qcsEWaW8IU/4cb24f447ddda520f5f24896de3f4e6d/newlocale.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/633NaPM11uo0qcsEWaW8IU/4cb24f447ddda520f5f24896de3f4e6d/newlocale.png)
 
 Alternatively, if you are writing scripts or applications, you can also use the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/locales) to add a locale to a Space:
 
 ### URL request
-`POST https://api.contentful.com/spaces/31odstfovq9h/locales`
+~~~
+POST https://api.contentful.com/spaces/31odstfovq9h/locales
+~~~
 
 ### Header
-+ `Authorization: Bearer cecb9d540699226c5b62627ad4951d8c8292c35757bc703de45b255dfa46770e`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
+~~~
+Authorization: Bearer cecb9d540699226c5b62627ad4951d8c8292c35757bc703de45b255dfa46770e
+Content-Type: application/vnd.contentful.management.v1+json
+~~~
 
 ### Body of request
 ~~~ json
-{  
+{
    "name":"German (Austria)",
    "code":"de-AT"
 }
@@ -83,19 +89,26 @@ Fields are the main structure used by locales to separate content in different l
 
 To enable localization on a field in the Web Interface, check the corresponding option in the field settings:
 
-![alt text](https://images.contentful.com/3ts464by117l/2BmUtgSXxSs6qkmewiIgGQ/6b769bea8fd6195935d7e9378f1e79c3/enablelocalization.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/2BmUtgSXxSs6qkmewiIgGQ/6b769bea8fd6195935d7e9378f1e79c3/enablelocalization.png)
 
 It is also possible to use the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/content-type) to update Content Types and localize fields.
 
 In the following example, we will enable localization for the fields `title` and `body` of the Content Type `Essays` by setting their `localized` property to `true`:
 
 ### URL of Request
-`PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/219e7sHYGkOK6OgOgoC0mg`
+
+~~~
+PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/219e7sHYGkOK6OgOgoC0mg
+~~~
 
 ### Header of Request
-+ `Authorization: Bearer cecb9d540699226c5b62627ad4951d8c8292c35757bc703de45b255dfa46770e`
-+ `Content-Type: application/vnd.contentful.management.v1+json`
-+ `X-Contentful-Version: 2`
+
+~~~
+Authorization: Bearer cecb9d540699226c5b62627ad4951d8c8292c35757bc703de45b255dfa46770e
+Content-Type: application/vnd.contentful.management.v1+json
+X-Contentful-Version: 2
+~~~
 
 ### Body of Request
 
@@ -188,21 +201,29 @@ As you can see in the following response, `body` and `title` fields have been lo
 
 Then, we must choose what translations will be used in each Entry:
 
-![alt text](https://images.contentful.com/3ts464by117l/2OVtt4VWTYsiCCWmIIsCsE/808d49d8d84af41e5b642687c4d48d10/choosetranslations.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/2OVtt4VWTYsiCCWmIIsCsE/808d49d8d84af41e5b642687c4d48d10/choosetranslations.png)
 
 With that, Entries will finally have different fields for each locale:
 
-![alt text](https://images.contentful.com/3ts464by117l/3lsbrrYk6kgGsem4EseEGO/b1778d50c8e869fa4fcb150c99ac63d6/geenfields.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/3lsbrrYk6kgGsem4EseEGO/b1778d50c8e869fa4fcb150c99ac63d6/geenfields.png)
 
-# Locales and the Content Delivery API
+## Locales and the Content Delivery API
 
-## Retrieving Entries without a specific locale
+### Retrieving Entries without a specific locale
 
  If there is no specific locale in your URL request, you will receive the corresponding value from the default locale (`en-US` in our example):
 
-### URL of Request
-`GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb`
+#### URL of Request
 
+~~~
+GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb
+~~~
+
+#### JSON Response
+
+<<<<<<< 445d5a7ca3ce14ec4af11c83573ed6dd6bb3cf8e
 ### JSON Response
 
 ~~~ json
@@ -234,15 +255,19 @@ With that, Entries will finally have different fields for each locale:
     "body": "this is a test"
   }
 }
- ~~~
+~~~
 
-## Retrieving Entries with a specific locale
+### Retrieving Entries with a specific locale
 If we want to retrieve fields from a specific locale (e.g `de-AT`), we should use the `locale=de-AT` parameter:
 
-### URL of Request
-`GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&locale=de-AT`
+#### URL of Request
 
-### JSON Response
+~~~
+GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&locale=de-AT
+~~~
+
+#### JSON Response
+
 ~~~json
 {
   "sys": {
@@ -274,13 +299,17 @@ If we want to retrieve fields from a specific locale (e.g `de-AT`), we should us
 }
 ~~~
 
-## Retrieving Entries with a wildcard locale
+### Retrieving Entries with a wildcard locale
 It is possible to retrieve all localized content of an Entry by using the wildcard parameter `locale=*`:
 
-### URL of Request
-`GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&locale=*`
+#### URL of Request
 
-### JSON Response
+~~~
+GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C?access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&locale=*
+~~~
+
+#### JSON Response
+
 ~~~ json
 {
   "sys": {
@@ -317,16 +346,20 @@ It is possible to retrieve all localized content of an Entry by using the wildca
 }
 ~~~
 
-## Locales and the Sync API 
+## Locales and the Sync API
 
 The [Synchronization API](https://www.contentful.com/developers/docs/concepts/sync/) always includes all localized content, using the same structure as the wildcard locale option above:
 
 ### URL of Request
-`GET https://cdn.contentful.com/spaces/mo94git5zcq9/sync?initial=true&access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&locale=de-AT` 
+
+~~~
+GET https://cdn.contentful.com/spaces/mo94git5zcq9/sync?initial=true&access_token=b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb&locale=de-AT
+~~~
 
 ### JSON Response
+
 ~~~ json
-  items": [
+  "items": [
       {
         "sys": {
           "space": {
@@ -361,5 +394,5 @@ The [Synchronization API](https://www.contentful.com/developers/docs/concepts/sy
         }
       },
       ...
-  ]    
+  ]
 ~~~

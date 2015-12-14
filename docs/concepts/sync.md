@@ -30,7 +30,7 @@ Keep in mind that the synchronization endpoint will always give you all the cont
 
 - If users only want to see the newest content, it would be wasteful to download everything immediately. In that case, it might be better to only fetch selected content based on the date, using search.
 - Because the Sync API retrieves all localized content, it might be better to use the Delivery API to retrieve results of a single locale
-- Following the initial sync, removed items will be transfered in the form of Deletions, which may unnecessarily lengthen each response 
+- Following the initial sync, removed items will be transfered in the form of Deletions, which may unnecessarily lengthen each response
 
 ## Usage
 
@@ -53,5 +53,4 @@ When syncing Entries or Assets they come in all available localizations instead 
 ## Further information
 
 - Using the Sync API for [offline persistence on iOS](/developers/docs/tutorials/ios/offline-persistence-in-ios-sdk/)
-
 - Using Synchronization with the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/synchronization)

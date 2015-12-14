@@ -2,30 +2,25 @@
 page: :docsSchedulingPosts
 ---
 
-#Overview
+## Overview
 
-In this article, we will expose how to manage the publishing time of content. 
+In this article, we will expose how to manage the publishing time of content.
 
-We use the example of a fictitious online magazine named `Andromeda` with `Articles` Content Type.  
-
-The editors of this magazine want to manage content by specifying a publishing and unpublishing date and time for their Entries. 
+We use the example of a fictitious online magazine named `Andromeda` with `Articles` Content Type. The editors of this magazine want to manage content by specifying a publishing and unpublishing date and time for their Entries.
 
 Here is what we're going to do:
 
 1. Create a basic Middleman app that retrieves Entries from Contentful's API;
-
 2. Add scheduling fields to `Articles` Content Type
-
 3. Add time functionality to the application
-
 4. Filter Entries based on their scheduled Date and Time and order them by chronological order
 
 
 ## Structure of the App
 
-For this example, we will use a simple Middleman app to retrieve Entries in a single-page application. The [following structure](https://github.com/contentful-labs/scheduling_app/commit/88017afc8e27b4689ff0636fccb8ae5b786b5639) is primarily used as a template for the magazine: 
+For this example, we will use a simple Middleman app to retrieve Entries in a single-page application. The [following structure](https://github.com/contentful-labs/scheduling_app/commit/88017afc8e27b4689ff0636fccb8ae5b786b5639) is primarily used as a template for the magazine:
 
-~~~ bash
+~~~
 ├── Gemfile
 ├── Gemfile.lock
 ├── README.md
@@ -54,7 +49,7 @@ activate :contentful do |f|
   f.content_types = {article: "TE5C4G3m2AOwWcCoM6Cqc"}
   f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc" }
 end
-~~~ 
+~~~
 
 ## Display Entries in the application
 
@@ -72,7 +67,7 @@ We next [add some code to index.html.erb](https://github.com/contentful-labs/sch
       </div>
     </div>
   <% end %>
-</div>        
+</div>
 ~~~
 
 Use `middleman contentful` to import Entries and `middleman server` to start the application.
@@ -85,9 +80,11 @@ We now have a simple static site being with all the content managed in Contentfu
 
 First, in Contentful's Web Interface, we must add the fields `startDateTime` and `endDateTime` to the Content Type `Articles`:
 
-![alt text](https://images.contentful.com/3ts464by117l/3UqDYxf6YUquiUEiESG0os/7551bdcc9f59a9804847e7039e521940/Screen_Shot_2015-11-06_at_1.49.31_PM.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/3UqDYxf6YUquiUEiESG0os/7551bdcc9f59a9804847e7039e521940/Screen_Shot_2015-11-06_at_1.49.31_PM.png)
 
-![alt text](https://images.contentful.com/3ts464by117l/2O6cTuFFlYCiICyUic0CyC/71805eeed16bbe01444fc85a37e996b8/Screen_Shot_2015-11-06_at_1.49.51_PM.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/2O6cTuFFlYCiICyUic0CyC/71805eeed16bbe01444fc85a37e996b8/Screen_Shot_2015-11-06_at_1.49.51_PM.png)
 
 Then, in `config.rb`, [we define](https://github.com/contentful-labs/scheduling_app/commit/6bb6ad5a39149ed6cc9a772606072dabeee9f08c) a `timenow` variable to filter scheduled Entries:
 
@@ -118,7 +115,8 @@ f.cda_query = {content_type: "TE5C4G3m2AOwWcCoM6Cqc",'fields.endDateTime[gt]' =>
 
 Now if you re-run `middleman contentful` and `middleman server` you will see your entries sorted by their startDateTime:
 
-![alt text](https://images.contentful.com/3ts464by117l/3bjFu5vA9a2miKSSu0aQa4/e1734ed22507357a575587b98c40d334/Screen_Shot_2015-11-10_at_1.56.39_PM.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/3bjFu5vA9a2miKSSu0aQa4/e1734ed22507357a575587b98c40d334/Screen_Shot_2015-11-10_at_1.56.39_PM.png)
 
 ## Using Contentful Views
 
@@ -126,32 +124,33 @@ Now that the site is only showing items that are supposed to be published, we ca
 
 Using the Contentful's Web Interface, in the search bar, we will select the content type `Article`, click in the three lines icon above *Status* and then add the "Start Date Time" column to the table:
 
-![alt text](https://images.contentful.com/3ts464by117l/3EJFlPxIaQEmmeKGQK4akG/fb351f69300f148e5fd77ab4a74823a0/view1.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/3EJFlPxIaQEmmeKGQK4akG/fb351f69300f148e5fd77ab4a74823a0/view1.png)
 
 Finally click the `+` sign, select `Save current view as..` and name the view "Incoming Articles":
 
-![alt text](https://images.contentful.com/3ts464by117l/2wP0e3DwOUo0YIE2EEAcO8/cdc0f1d83e8a58d28139dd7ee98e110c/view2.png)
+{:.img}
+![](https://images.contentful.com/3ts464by117l/2wP0e3DwOUo0YIE2EEAcO8/cdc0f1d83e8a58d28139dd7ee98e110c/view2.png)
 
 Now that our view has been saved any member of the space can use it to see the schedule for upcoming articles:
-![alt text](https://images.contentful.com/3ts464by117l/45BI6XvSfe0IyIUq8qosGi/a0751ee0493a988e367c9664db3c3b69/view3.png)
+
+{:.img}
+![](https://images.contentful.com/3ts464by117l/45BI6XvSfe0IyIUq8qosGi/a0751ee0493a988e367c9664db3c3b69/view3.png)
 
 ## Conclusion
 
 In this article we have:
 
-+ Explored the usage of a simple Middleman app and its integrations with Contentful's APIs
-
-+ Created time fields and variables whereby you can filter Entries
-
-+ Crafted querying parameters used to manage scheduled posts
-
-+ Built a Middleman View used to retrieve filtered Entries
+- Explored the usage of a simple Middleman app and its integrations with Contentful's APIs
+- Created time fields and variables whereby you can filter Entries
+- Crafted querying parameters used to manage scheduled posts
+- Built a Middleman View used to retrieve filtered Entries
 
 ### Related resources
 
- - For more advanced examples of using `contentful_middleman` check out [`contentful_middleman_examples`][cf-mm-examples] on GitHub.
- - To learn more about the different kinds of filtering & querying supported by our API, check out [the reference documentation][filtering-reference].
- - Finally, you can find more static site generator integrations on our [Tools][tools] page.
+- For more advanced examples of using `contentful_middleman` check out [`contentful_middleman_examples`][cf-mm-examples] on GitHub.
+- To learn more about the different kinds of filtering & querying supported by our API, check out [the reference documentation][filtering-reference].
+- Finally, you can find more static site generator integrations on our [Tools][tools] page.
 
 [cf-mm-examples]: https://github.com/contentful-labs/contentful_middleman_examples
 [filtering-reference]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters

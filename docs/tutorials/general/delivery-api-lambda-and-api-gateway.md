@@ -43,7 +43,8 @@ ls
 
 You should see two directories and a `Makefile` here. The `lambda` directory contains the code we will package and deploy to AWS Lambda, while the `deploy` directory contains a script to automate deployment of the code and and API gateway.
 
-_Note: We'll use the automated deployment in section 2, but if you want to skip ahead you can just run `make deploy`._
+{:.note}
+**Note:** We'll use the automated deployment in section 2, but if you want to skip ahead you can just run `make deploy`.
 
 ### 1.2. Create a zip file
 
@@ -80,7 +81,8 @@ Recalling that our handler function uses `event.query` to pass  [filter query pa
 }
 ~~~
 
-<span class="alert" style="display:block;margin-bottom:2em">The strange format for query parameters matches what our Lambda will receive from API Gateway.</span>
+{:.note}
+**Note:** The strange format for query parameters matches what our Lambda will receive from API Gateway.
 
 After clicking "Submit", you should see a response like the following:
 
@@ -119,7 +121,8 @@ While it's possible to call Lambda functions directly over HTTP by sending a sig
 
 The web UI for API gateway is a bit cumbersome, so at this point we're going to use the scripts in our `deploy` directory to take care of the rest.
 
-<span class="alert" style="display:block;margin-bottom:2em">**Warning:** these scripts assume that you have correctly configured your AWS credentials using the official `aws` command line interface. If you haven't yet done so, please follow [these directions][aws-setup] to install and configure the AWS CLI.</span>
+{:.note}
+**Note:** These scripts assume that you have correctly configured your AWS credentials using the official `aws` command line interface. If you haven't yet done so, please follow [these directions][aws-setup] to install and configure the AWS CLI.
 
 ### 2.1. Deploying the API
 
@@ -134,7 +137,8 @@ Granting invoke permission to arn:aws:execute-api:eu-west-1:718539334177:xfdge7a
 Deployed https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/{spaceId}/entries
 ~~~
 
-<span class="alert" style="display:block;margin-bottom:2em">If you see an error like `TimeoutError: Missing credentials in config` you need to [install and configure the AWS CLI][aws-setup].</span>
+{:.note}
+**Note:** If you see an error like `TimeoutError: Missing credentials in config` you need to [install and configure the AWS CLI][aws-setup].
 
 Now you can go ahead and query your new API Gateway exactly as though it were the Content Delivery API. For example, let's query it for this tutorial:
 

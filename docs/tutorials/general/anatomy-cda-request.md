@@ -24,7 +24,7 @@ Finally, retrieved Entries also have a `field` object, which is used to assign v
 
 In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [Developer Center](https://www.contentful.com/developers/docs/concepts/data-model/).
 
-You should also be able to recognize the basic structure of JSON responses and requests of REST APIs.  
+You should also be able to recognize the basic structure of JSON responses and requests of REST APIs.
 
 ## Requesting a single Entry
 
@@ -503,7 +503,8 @@ Similar to our previous example, the array `items` will retrieve results matchin
 
 This a simple usage of Links, for more advanced uses visit the [Links Reference Page](https://www.contentful.com/developers/docs/concepts/links/).
 
-Note: When omitted, the `include` parameter takes the standard value of `1`
+{:.note}
+**Note:** When omitted, the `include` parameter takes the standard value of `1`
 
 ## Conclusion
 

@@ -28,11 +28,11 @@ First off, you need to get the SDK and use it in your project.
 
 If you are running your code in node.js, all you have to do is install the npm package and require it in your code:
 
-~~~bash
+~~~ bash
 npm install contentful
 ~~~
 
-~~~javascript
+~~~ javascript
 // main.js
 var contentful = require('contentful')
 ~~~

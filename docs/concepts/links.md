@@ -46,13 +46,14 @@ Link resolution works regardless of how many results are there in `items`. Some 
 - Get a list of blog posts in items with related authors, categories and other meta data in includes.
 - Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
 
-Note that only Links between Entries, Spaces and Assets are resolved. Links between Spaces and Content Types are not included in the response when the `include` parameter is specified.
+{: .note}
+**Note:** Only Links between Entries, Spaces and Assets are resolved. Links between Spaces and Content Types are not included in the response when the `include` parameter is specified.
 
 ### Querying Linked Entries
 
-Querying linked items is as simple as adding a specific `include` parameter to retrieve a desired level of related content to be displayed in an application. 
+Querying linked items is as simple as adding a specific `include` parameter to retrieve a desired level of related content to be displayed in an application.
 
-In the JSON response of a successful query, when not already fetched in the `items` array, linked items are placed in the `includes` array. 
+In the JSON response of a successful query, when not already fetched in the `items` array, linked items are placed in the `includes` array.
 
 Let's take the example of restaurants pointing to their linked images.
 
@@ -62,7 +63,7 @@ Before anything, we need a successful query URL using the `include=1` parameter:
 curl -v https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&include=1
 ~~~
 
-The first part of a JSON response gets information about Entries and their Links. 
+The first part of a JSON response gets information about Entries and their Links.
 
 In the following example, the restaurant Entry `Spaceburger` is fetched alongside its Links to images by using the `restaurantImages` linking field:
 
@@ -88,12 +89,12 @@ In the following example, the restaurant Entry `Spaceburger` is fetched alongsid
         ]
       }
     },
-    
+
     ...
   ],
 ~~~
 
-As seen in the above response, the linked image with `id=23qqdlTciMGm6IYy224euu` is only retrieved as a Link to an Asset. 
+As seen in the above response, the linked image with `id=23qqdlTciMGm6IYy224euu` is only retrieved as a Link to an Asset.
 
 Instead, information about the `23qqdlTciMGm6IYy224euu` image is placed in the `includes` array:
 
@@ -125,7 +126,7 @@ Instead, information about the `23qqdlTciMGm6IYy224euu` image is placed in the `
       ...
     ]
   }
-~~~ 
+~~~
 
 However, the structure of a JSON response could have been different. Before resolving Links to items, Contentful matches the filter conditions of a query.
 
@@ -133,7 +134,7 @@ As a consequence, if our linked resource had matched the filter conditions of th
 
 Lets take a look at the response of a menu pointing to its meals:
 
-~~~ json 
+~~~ json
 "items": [
     {
       "sys": {
@@ -191,18 +192,19 @@ Lets take a look at the response of a menu pointing to its meals:
     },
     ...
 
-]    
+]
 ~~~
 
 As you can see, although 'Menu for Humans' is linked to its meals, `AstroChicken` and `AstroCattle`, they are all fetched in the same `items` array. That happens because they all primarily match the conditions of our query parameters.
 
 In the end, since `AstroChicken` and `AstroCattle` are already present in the response's `items`, they should not be included in the `includes.Entry` array again.
 
-Note: When omitted, the `include` parameter takes the standard value of `1` 
+{: .note}
+**Note:** When omitted, the `include` parameter takes the standard value of `1`
 
 ### Fetching resources linked to a specific Entry
 
-It might be useful to retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` used to link such items and `entry_id` from our target Entry. 
+It might be useful to retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` used to link such items and `entry_id` from our target Entry.
 
 For example, let's retrieve all resources of Content Type `Menu` linked to the restaurant `Space Burger` by using the following query URL:
 
@@ -223,7 +225,7 @@ Because these are all Menus linked to the `Space Burger` restaurant , `Menu for 
               "id": "2UmoQ8Bo4g4S82WmGiQIQE"
             }
           },
-        "name": "Menu for Humans",        
+        "name": "Menu for Humans",
         "images": [
           ...
         ],
@@ -234,8 +236,8 @@ Because these are all Menus linked to the `Space Burger` restaurant , `Menu for 
       "sys": {
         "type": "Entry",
         "id": "4rJn9OJsBiAKmeoiiw40Ko",
-      }      
-    },    
+      }
+    },
     {
       "fields": {
         "restaurantField": {
@@ -254,10 +256,10 @@ Because these are all Menus linked to the `Space Burger` restaurant , `Menu for 
         "type": "Entry",
         "id": "2Mt2YctJQ4am8u2oI4kcsS",
         ...
-      }     
+      }
     },
     {
-      "fields": {    
+      "fields": {
         "restaurantField": {
           "sys": {
             "type": "Link",
@@ -276,7 +278,7 @@ Because these are all Menus linked to the `Space Burger` restaurant , `Menu for 
         "type": "Entry",
         "id": "2RnAOt0ssgQ6kIk0E4WAeq",
         ...
-      }     
+      }
     },
     {
       "sys": {
@@ -299,7 +301,7 @@ Because these are all Menus linked to the `Space Burger` restaurant , `Menu for 
       }
     },
     ...
-  ]    
+  ]
 ~~~
 
 ## Modeling Relationships
