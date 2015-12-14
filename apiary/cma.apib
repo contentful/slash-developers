@@ -16,7 +16,9 @@ Managing content via an API has many benefits:
 - Scripts can use the API to automate various tasks.
 - Contentful's own content management web app is a user-friendly JavaScript application which is solely based on the API.
 
-If you want to deliver content (e.g. to the web or to mobile apps) use the Content Delivery API. The Content Management API is meant to be used only for managing content, not delivering it. For example, you shouldn't use the Content Management API to display blog posts on a web site or pull information into a mobile web app unless that app is meant for editing content.
+If you want to deliver content (e.g. to the web or to mobile apps), you should often use the Content Delivery API. Whereas the Content Management API may be used to deliver and manage content within an application, it shouldn't be used to massively deliver content to end users. For example, you shouldn't use the Content Management API to display blog posts on a web site or pull information into a mobile web app unless that app is meant for editing content.
+
+Note that the structure of responses of the Management API differs from those of the Delivery API. GET responses from the Management API retrieve the entirety of items (i.e. includes all localized or even unpublished content). 
 
 Conceptual documentation, as well as further resources like tutorials and libraries can be found on [our Developer Center](https://contentful.com/developers/documentation/).
 
