@@ -26,7 +26,7 @@ Alternatively, if you are writing scripts or applications, you can also use the 
 
 ### URL request
 ~~~
-POST https://api.contentful.com/spaces/31odstfovq9h/locales`
+POST https://api.contentful.com/spaces/31odstfovq9h/locales
 ~~~
 
 ### Header
