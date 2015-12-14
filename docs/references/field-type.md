@@ -41,7 +41,7 @@ A field that contains symbols is defined like this:
 }
 ~~~
 
-And a field containing an array of links to assets is defined like this:
+A field containing an array of links to assets is defined like this:
 
 ~~~json
 {
@@ -53,3 +53,22 @@ And a field containing an array of links to assets is defined like this:
   }
 }
 ~~~
+
+A reference field takes linked items as the following:
+
+```
+"reference_field": {
+      "en-US": [
+        {"sys": {
+          "type": "Link",
+          "linkType": "Asset",
+          "id": "id1"
+        }},
+        {"sys": {
+          "type": "Link",
+          "linkType": "Asset",
+          "id": "id2"
+        }}...
+      ]
+    }
+```
