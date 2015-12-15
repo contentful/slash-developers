@@ -196,7 +196,11 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 **Creating content types with `POST` is strongly discouraged!**
 
-When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response. In contrast, using the `PUT` method below allows you to control the ID of the created Content Type. This is especially important for Content Type ID's because they are often used as parameters in your own code. It's much nicer to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
+When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response. 
+
+In contrast, using the `PUT` method below allows you to control the ID of the created Content Type. This is especially important for Content Type ID's because they are often used as parameters in your own code. It's much nicer to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
+
+Finally, in these responses, you can also specify validations and determine whether a field should be required or localized.
 
 + Request
     + Headers
@@ -1102,10 +1106,14 @@ increasing delays in between up to a maximum of 3 attempts.
     - (object)
         - id: title - Identifier of the Field
         - name: Title - Display name of the Field
+        - required: true
+        - localized: true
         - type: Text - Type of the Field
     - (object)
         - id: body - Identifier of the Field
         - name: Body - Display name of the Field
+        - required: true
+        - localized: true
         - type: Text - Type of the Field
 
 ### Content Type Link
