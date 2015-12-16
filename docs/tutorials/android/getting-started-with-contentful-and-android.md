@@ -75,7 +75,7 @@ client.fetch(CDAEntry.class).all(new CDACallback<CDAArray>() {
 ~~~
 
 which will call the `onSuccess` handler, once the data got loaded, you can process the results.
-Also on production applications you might like to overwrite
+Also on production applications you might like to override
 
 ~~~ java
 protected void onFailure(Throwable error) {   
@@ -103,7 +103,7 @@ client.fetch(CDAEntry.class).one("happycat", new CDACallback<CDAEntry>() {
 ## Conclusion
 
 With this short tutorial, you are able to start using your requests in your Android
-applications. For more information, please take a look at [contentful.java GitHub][1]
+applications. For more information, please take a look at [contentful.java GitHub][1].
 
 You can also check out how to [use persistent data storage with Vault][4].
 
