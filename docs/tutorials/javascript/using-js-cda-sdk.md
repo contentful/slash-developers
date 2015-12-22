@@ -41,7 +41,7 @@ var contentful = require('contentful')
 
 If you are running your code in a web page, there are multiple ways you can get it ready to use.
 
-The quickest and easiest way is to download the [pre built and minified](https://raw.github.com/contentful/contentful.js/master/dist/contentful.min.js) file from our repo.
+The quickest and easiest way is to download the [pre built and minified](https://raw.githubusercontent.com/contentful/contentful.js/master/dist/contentful.min.js) file from our repo.
 
 Don't link to that url directly in your page as it is not a recommended practice by github and the file can be updated in the future, which would break your code.
 

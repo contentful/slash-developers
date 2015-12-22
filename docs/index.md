@@ -40,10 +40,10 @@ Also, there are several documents which are relevant for all the APIs:
 - [Anatomy of a CDA request](/developers/docs/tutorials/general/anatomy-cda-request/)
 - [Anatomy of a CMA request](/developers/docs/tutorials/general/anatomy-cma-request/)
 - [Extending the Delivery API with AWS Lambda & API Gateway](/developers/docs/tutorials/general/delivery-api-lambda-and-api-gateway/)
-- [Scheduling Posts](/developers/docs/tutorials/general/scheduling-posts)
+- [Scheduling Posts](/developers/docs/tutorials/general/scheduling-posts/)
 
 ### Ruby
-- [Getting Started with Contentful and Ruby](/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby)
+- [Getting Started with Contentful and Ruby](/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby/)
 
 ### iOS
 
