@@ -3,25 +3,22 @@ page: :docsImportExport
 ---
 
 
-# Overview
+## Overview
 
 Before joining Contentful, most of our customers have struggled with other CMS systems like Wordpress or Drupal. In that way, we've built tools to assist in migrating existing content from a different CMS to Contentful. By the end of this tutorial, you will be able to seamlessly shift to Contentful and enjoy all its benefits, spending as little time as possible dealing with issues.
 
 This will be the structure of this post:
 
-* Section 1: Extracting content
+1. [Extracting content](#extracting-content)
+	1. [Extracting content from a relational database](#extracting-content-from-a-relational-database)
+	2. [Extracting content from WordPress](#extracting-content-from-wordpress)
+	3. [Extracting content from Drupal](#extracting-content-from-drupal)
+2. [Importing Content](#importing-content)
 
-	* Section 1-1: Extracting content from a relational database
 
-	* Section 1-2: Extracting content from WordPress
+## 1. Extracting content
 
-	* Section 1-3: Extracting content from Drupal
-
-* Section 2: Importing Content
-
-# Section 1: Extracting content
-
-## Section 1-2: Extracting content from a relational database
+### 1.1. Extracting content from a relational database
 
 It is possible to migrate content from a relational database to Contentful. To do that, we must install the `database-exporter` executable:
 
@@ -40,10 +37,10 @@ Then, we must create a content model using [Contentful's Web Interface](https://
 We can now create a `setting.yml` file specifying the required parameters:
 
 ~~~ yml
-#PATH to all data, this will create a folder in your current working directory
+# PATH to all data, this will create a folder in your current working directory
 data_dir: PATH_TO_ALL_DATA
 
-#Connecting to the database (available adapters: postgres, mysql2, sqlite)
+# Connecting to the database (available adapters: postgres, mysql2, sqlite)
 adapter: postgres
 host: localhost
 database: database_name
@@ -123,7 +120,7 @@ database-exporter --config-file settings.yml --extract-to-json
 
 The `data_dir` path will be used along with subdirectories to store data from each table. The sub-directories name depends on the `content_type` parameter used in the `mapping.json` file.
 
-## Section 1-3: Extracting content from WordPress
+### 1.2. Extracting content from WordPress
 
 It is also possible to extract the following content from a WordPress Blog:
 
@@ -139,7 +136,8 @@ First, we have to install the `wordpress-exporter` executable:
 
 Then, we must extract the blog content from the WordPress blog and save it as a XML file:
 
-![alt text](https://images.contentful.com/3ts464by117l/5EaEMxdtOokGO8O0ScaQqE/0c3c687fbaf36fb22eb33c7fd97ea913/wordpress_export.png)
+{: .img}
+![](https://images.contentful.com/3ts464by117l/5EaEMxdtOokGO8O0ScaQqE/0c3c687fbaf36fb22eb33c7fd97ea913/wordpress_export.png)
 
 With that, we create a `settings.yml` file which specifies `wordpress_xml_path`, which describes the path of the saved XML file, and `data_dir`, the path where the WordPress data will be stored:
 
@@ -179,20 +177,20 @@ wordpress-exporter --config-file settings.yml --create-contentful-model-from-jso
 
 Finally, we are able to import this model, as will be shown at Section 2.
 
-## Section 1-4: Extracting content from Drupal
+### 1.3. Extracting content from Drupal
 
 Contentful's team created a gem to extract Vocabularies, Tags, Users and Content types (Blog, Article, Page, Custom content types) from a Drupal database dump file.
 
-## Installation
+#### Installation
 Use the following command to install the `drupal-exporter` executable:
 ~~~ bash
 gem install drupal-exporter
 ~~~
 
-# Process
+#### Process
 Before we can configure and run our scripts, we must create and configure certain files:
 
-### Required Parameters
+#### Required Parameters
 
 We must create a YAML file specifying our required parameters(e.g. `settings.yml`):
 
@@ -219,24 +217,30 @@ converted_model_dir: PATH_WHERE_CONVERTED_CONTENT_MODEL_WILL_BE_SAVED/contentful
 contentful_structure_dir: PATH_TO_CONTENTFUL_STRUCTURE_JSON_FILE/contentful_structure.json
 ~~~
 
-### Content Type Files
+#### Content Type Files
 1. Create a Content Type using Contentful's web application
 2. Download the Content Type and store it in a `contentful_model.json`( it will be used to subsequently transform `settings.yml` into JSON):
+
 ~~~ bash
  curl -X GET \
          -H 'Authorization: Bearer ACCESS_TOKEN' \
          'https://api.contentful.com/spaces/SPACE_ID/content_types' > contentful_model.json
 ~~~
-3. Use `contentful_model.json` to transform it into `contentful_structure.json` using:
+
+
+Use `contentful_model.json` to transform it into `contentful_structure.json` using:
+
 ~~~ bash
 drupal-exporter --config-file settings.yml --convert-content-model-to-json
 ~~~
-4. Generate content type files:
+
+Generate content type files:
+
 ~~~ bash
    drupal-exporter --config-file settings.yml  --create-contentful-model-from-json
 ~~~
 
-### Mapping File
+#### Mapping File
 
 Create the mapping file `drupal_content_types.json`. This file maps structure of your database:
 
@@ -250,7 +254,7 @@ Create the mapping file `drupal_content_types.json`. This file maps structure of
 ~~~
 You can find a sample mapping file in the [drupal_settings/drupal_content_types.json](https://github.com/contentful/drupal-exporter.rb/blob/master/drupal_settings/drupal_content_types.json) directory.
 
-### Boolean values(optional)
+#### Boolean values (optional)
 
 To map the value of `0`,`1` to `false`, `true`, you have to specify the column names in the yaml file (eg. boolean_columns.yml) and specify the path to this file in the `settings.yml` file, parameter `drupal_boolean_columns`.
 
@@ -261,7 +265,7 @@ Example:
 - field_boolean
 ~~~
 
-### Running the script
+#### Running the script
 
 Finally, we extract the content from the database and generate the JSON files for the import:
 
@@ -269,7 +273,7 @@ Finally, we extract the content from the database and generate the JSON files fo
 drupal-exporter --config-file settings.yml --extract-to-json
 ~~~
 
-# Section 2: Importing Content
+## 2. Importing Content
 
 After you've extracted data by using the above methods, you must install the `contentful-importer` executable:
 
@@ -277,7 +281,7 @@ After you've extracted data by using the above methods, you must install the `co
 gem install contentful-importer
 ~~~
 
-Before anything, we must create a content model using the [Contentful's Website Interface](http://www.contentful.com). Then, you download the content model and save it in a `content_model.json` file:
+Before anything, we must create a content model using the [Contentful's Web Interface](http://www.contentful.com). Then, you download the content model and save it in a `content_model.json` file:
 
 ~~~ bash
  curl -X GET \
@@ -303,6 +307,7 @@ default_locale: DEFINE_LOCALE_CODE
 ~~~
 
 With that, we can use the `contentful-importer` command to manage how content models, entries and assets will be imported:
+
 ~~~ bash
 # Import content model
 contentful-importer --configuration=settings.yml import-content-model
@@ -310,7 +315,7 @@ contentful-importer --configuration=settings.yml import-content-model
 # Import only Entries
 contentful-importer --configuration=settings.yml import-entries
 
-#Import only Assets
+# Import only Assets
 contentful-importer --configuration=settings.yml import-assets
 ~~~
 
@@ -326,6 +331,3 @@ contentful-importer --configuration=settings.yml publish-entries
 # Publish all assets:
 contentful-importer --configuration=settings.yml publish-assets
 ~~~
-
-
-
