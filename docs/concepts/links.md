@@ -130,7 +130,7 @@ Instead, information about the `23qqdlTciMGm6IYy224euu` image is placed in the `
 
 However, the structure of a JSON response could have been different. Before resolving Links to items, Contentful matches the filter conditions of a query.
 
-As a consequence, if our linked resource had matched the filter conditions of the query parameters, it would have been put inside the `items` array.
+As a consequence, if our linked resource had matched the filter conditions of the query parameters, it would have been put inside the `items` array. In the end, when an Entry matches the search criteria of the querying URL, it will automatically be put inside the `items` array.
 
 Lets take a look at the response of a menu pointing to its meals:
 
