@@ -1,6 +1,6 @@
 ## Common Resource Attributes
 
-Every resource returned by the Content Delivery API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property should be defined. 
+Every resource returned by the Content Delivery API will have a `sys` property, which is an object containing system Managementd metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property should be defined. 
 
 Note that none of the `sys` fields are editable and only the `sys.id` field can be specified in the creation of an item (as long as it is not a Space).
 
@@ -341,7 +341,9 @@ Let's get all cats that like neither rainbows nor lasagna.
 
 ## Existence [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bexists%5D={value}]
 
-You can check for the presence of a field using the `exists` operator.
+You can check for the presence of a field using the `exists` operator. It checks if a certain fields is defined (i.e. there is a present JSON payload on it). 
+
+In that way, if the field is not assigned any value, it will not have a JSON payload and will be taken as "non-existent" by the operator.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
