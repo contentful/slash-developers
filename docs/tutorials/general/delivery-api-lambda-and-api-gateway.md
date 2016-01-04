@@ -76,7 +76,7 @@ Recalling that our handler function uses `event.query` to pass  [filter query pa
 ~~~ json
 {
   "spaceId": "oqp9lwuwktba",
-  "accessToken": "baba02224a4b6490faa4fff4785d5c9d655ffdfd75b91c617344ed24619b837f",
+  "authorization": "Bearer baba02224a4b6490faa4fff4785d5c9d655ffdfd75b91c617344ed24619b837f",
   "query": "{content_type=2jGJdAHwneiQ6SEkUu0cWu, order=sys.createdAt}"
 }
 ~~~
