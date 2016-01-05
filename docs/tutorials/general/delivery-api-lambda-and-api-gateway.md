@@ -134,7 +134,7 @@ Created API cf-md-to-html
 Created Resource /{spaceId}/entries
 Created Method GET /{spaceId}/entries
 Granting invoke permission to arn:aws:execute-api:eu-west-1:718539334177:xfdge7afx6/*/GET/*/entries
-Deployed https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/{spaceId}/entries
+Deployed https://jjs7c3mvxj.execute-api.eu-west-1.amazonaws.com/spaces/{spaceId}/entries
 ~~~
 
 {:.note}
@@ -143,7 +143,7 @@ Deployed https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/{spaceId}
 Now you can go ahead and query your new API Gateway exactly as though it were the Content Delivery API. For example, let's query it for this tutorial:
 
 ~~~ bash
-curl 'https://xfdge7afx6.execute-api.eu-west-1.amazonaws.com/spaces/oqp9lwuwktba/entries?sys.id=1XhtUhV2sc6kIMo6GMgACU&access_token=baba02224a4b6490faa4fff4785d5c9d655ffdfd75b91c617344ed24619b837f'
+curl 'https://jjs7c3mvxj.execute-api.eu-west-1.amazonaws.com/spaces/oqp9lwuwktba/entries?sys.id=1XhtUhV2sc6kIMo6GMgACU&access_token=baba02224a4b6490faa4fff4785d5c9d655ffdfd75b91c617344ed24619b837f'
 ~~~
 
 The output will be the JSON entry for this tutorial, with `fields.body` formatted as HTML.
@@ -152,7 +152,7 @@ Now we can use the Contentful API even more easily in our client-side apps. For 
 
 ~~~ javascript
 var client = contentful.createClient({
-  host: 'xfdge7afx6.execute-api.eu-west-1.amazonaws.com',
+  host: 'jjs7c3mvxj.execute-api.eu-west-1.amazonaws.com',
   space: 'oqp9lwuwktba',
   accessToken: 'baba02224a4b6490faa4fff4785d5c9d655ffdfd75b91c617344ed24619b837f'
 })
