@@ -306,7 +306,26 @@ Because these are all Menus linked to the `Space Burger` restaurant , `Menu for 
 
 ## Modeling Relationships
 
-Linking an Entry to another Entry represents a relationship.
+Linking an Entry to another Entry represents a relationship. In general, the structure of linked items should be as follows:
+
+~~~ json
+{
+    "fields": {
+        "reference_field": {
+            "en-US": {
+                "sys": {
+                    "type": "Link",
+                    "linkType": "Entry",
+                    "id": "<ID_of_Linked_Item>"
+                 }
+             }
+         },
+        "title": {...
+         }, 
+         ...
+     }
+}
+~~~
 
 For example, here's a restaurant pointing to its menu:
 
@@ -353,7 +372,31 @@ Content Type with a single Field that links to Entries.
 
 ## Modeling Attachments
 
-Entries linking to Assets represent attachments.
+Entries linking to Assets represent attachments. In general, the structure of linked attachments should be as follows:
+
+~~~ json
+{
+  "fields": {
+    "title": {
+      "en-US": "Hello, World!"
+    },
+    "reference_field": {
+      "en-US": [
+        {"sys": {
+          "type": "Link",
+          "linkType": "Asset",
+          "id": "id1"
+        }},
+        {"sys": {
+          "type": "Link",
+          "linkType": "Asset",
+          "id": "id2"
+        }}...
+      ]
+    }
+  }
+}
+~~~
 
 For example, here's a restaurant pointing to some photos:
 
