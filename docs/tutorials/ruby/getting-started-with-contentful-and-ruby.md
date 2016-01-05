@@ -118,16 +118,18 @@ assets = client.assets
 
 With this basic guide, you should be able to start using Contentful within your Ruby Applications.
 
-You can read about the library in more detail on our [contentful.rb GitHub][1]
+You can read about the library in more detail on our [contentful.rb GitHub][1].
 
-You can also check out how to [Create a Static Site using Contentful and Middleman][2], and how to
-get your Spaces started with a single command using [Contentful Bootstrap][3]
+Do you like building Static Sites? Maybe you can check how to build static sites using Contentful with [Middleman][2] or [Jekyll][9].
+
+You can also check out how to get your Spaces started with a single command using [Contentful Bootstrap][3].
 
 [1]: https://github.com/contentful/contentful.rb
-[2]: https://github.com/contentful-labs/contentful_middleman_examples
-[3]: https://github.com/contentful-labs/contentful-bootstrap.rb
+[2]: https://github.com/contentful/contentful_middleman_examples
+[3]: https://github.com/contentful/contentful-bootstrap.rb
 [4]: /developers/docs/concepts/links/
 [5]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [6]: /developers/docs/concepts/data-model/
 [7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type
 [8]: /developers/docs/references/images-api/
+[9]: https://github.com/contentful/contentful_jekyll_examples
