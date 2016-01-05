@@ -341,9 +341,9 @@ Let's get all cats that like neither rainbows nor lasagna.
 
 ## Existence [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bexists%5D={value}]
 
-You can check for the presence of a field using the `exists` operator. It checks if a certain fields is defined (i.e. there is a present JSON payload on it). 
+You can check for the presence of a field using the `exists` operator. It checks if a certain fields is defined (i.e. it has any value). 
 
-In that way, if the field is not assigned any value, it will not have a JSON payload and will be taken as "non-existent" by the operator.
+If the field is not assigned a value, it will not have a JSON payload and will be taken as "non-existent" by the operator.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
