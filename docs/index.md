@@ -41,6 +41,7 @@ Also, there are several documents which are relevant for all the APIs:
 - [Anatomy of a CMA request](/developers/docs/tutorials/general/anatomy-cma-request/)
 - [Extending the Delivery API with AWS Lambda & API Gateway](/developers/docs/tutorials/general/delivery-api-lambda-and-api-gateway/)
 - [Scheduling Posts](/developers/docs/tutorials/general/scheduling-posts/)
+- [Synchronizing Spaces with contentful-space-sync](/developers/docs/tutorials/general/using-contentful-space-sync/)
 
 ### Ruby
 - [Getting Started with Contentful and Ruby](/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby/)
