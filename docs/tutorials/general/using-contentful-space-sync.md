@@ -16,9 +16,9 @@ However, you don't need to write code or even know JavaScript, unless you want t
 
 If you have Node.js in your system, and if you've installed it in one of the most common ways, you should also have the `npm` package manager, and then you can just do the following:
 
-```
+~~~bash
 npm install -g contentful-space-sync
-```
+~~~
 
 If you run the command `contentful-space-sync` without any arguments, it will show you all the parameters that can be specified.
 
@@ -65,9 +65,9 @@ If you want to synchronize spaces across different organizations, you can specif
 
 With your configuration file in place, you can now run your space synchronization. Let's assume you called your configuration file `cf-sync-preview-to-production.json`. You would run this as:
 
-```
+~~~bash
 contentful-space-sync --config cf-sync-preview-to-production.json
-```
+~~~
 
 The tool will then run, providing output about the content that is being synchronized.
 
