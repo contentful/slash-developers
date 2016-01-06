@@ -185,6 +185,7 @@ PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post/publi
 ~~~
 Authorization: Bearer $token
 Content-Type: application/vnd.contentful.management.v1+json
+X-Contentful-Version: 1
 ~~~
 
 Whereas the response yields the same `fields` array, `sys` is updated with new information about versioning:
@@ -232,6 +233,7 @@ To create an Entry, we must specify a `X-Contentful-Content-Type` in the header 
 
 ~~~
 POST https://api.contentful.com/spaces/31odstfovq9h/entries/`
+~~~
 
 #### Header
 
@@ -853,6 +855,3 @@ In this article we have covered how to:
 5. Add Assets to Entries
 
 Although we have exposed many details of the Content Management API, there are still many uncovered features in the [Official Documentation](https://www.contentful.com/developers/docs/references/content-management-api/#/reference). You can also find many [SDKs](https://www.contentful.com/developers/docs/code/libraries/) and [tools](https://www.contentful.com/developers/docs/code/tools/) to build your application.
-
-
-
