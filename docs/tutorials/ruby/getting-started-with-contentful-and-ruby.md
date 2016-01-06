@@ -7,7 +7,7 @@ We will provide simple steps to get your first entries and start using the conte
 
 ## Installation
 
-First, you need to install our `contentful` gem. To do so, you can do it manually on the console by doing:
+First, you need to install our `contentful` gem. You can do it either manually on the console:
 
 ~~~ bash
 $ gem install contentful

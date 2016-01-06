@@ -17,7 +17,7 @@ We will provide simple steps for doing the following tasks:
 
 ## Installation
 
-First, you need to install our `contentful_bootstrap` gem. To do so, you can do it manually on the console by doing:
+First, you need to install our `contentful_bootstrap` gem. You can do it either manually on the console:
 
 ~~~ bash
 $ gem install contentful_bootstrap
