@@ -42,3 +42,4 @@ from the documentation.
 
  - use branches & pull requests
  - All pull requests should be reviewed by somebody else before merging to master. Preferably they are reviewed by @eugenekudashev.
+ - To actually make your changes appear on staging/production, follow [this guide](https://github.com/contentful/marketing-website/blob/master/README.md#contribute-to-the-docs)
