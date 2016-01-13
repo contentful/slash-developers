@@ -183,6 +183,7 @@ Contentful's team created a gem to extract Vocabularies, Tags, Users and Content
 
 #### Installation
 Use the following command to install the `drupal-exporter` executable:
+
 ~~~ bash
 gem install drupal-exporter
 ~~~
