@@ -60,6 +60,9 @@ Also, there are several documents which are relevant for all the APIs:
 ### JavaScript
 - [Getting Started with Contentful and JavaScript](/developers/docs/tutorials/javascript/using-js-cda-sdk/)
 
+### PHP
+- [Getting Started with Contentful and PHP](/developers/docs/tutorials/php/getting-started-with-contentful-and-php/)
+
 ## Libraries
 
 We provide libraries for major programming languages and platforms so you don't have to write the code for interacting with API from scratch.
