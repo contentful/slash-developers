@@ -247,7 +247,7 @@ Let's find all Entries of Content Type "cat".
 
 A reason to query an Entry by ID instead of retrieving the Entry itself might be because you want to include resolved links.
 
-Note that equality & inequality operators are not supported for Text fields.
+Note that equality & inequality operators are not supported for Text fields and that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -284,6 +284,8 @@ For example, here's how to get all Entries except nyancat.
 ## Equality/Inequality for arrays [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}={value}]
 
 The equality/inequality operators also works with Array fields: If one of the items in an Array field matches the value the field will match. Also, as it filters by a field, it becomes necessary to specify a Content Type.
+
+Note that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -323,6 +325,8 @@ Let's get Entries for finn and jake.
 
 Filter a field by multiple values via the `nin` operator.
 When applied to an array value there must be at least one not matching item. Similarly, when including a field value, it's necessary to specify a Content Type.
+
+Note that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -369,6 +373,8 @@ Four range operators are available:
 - `gte`: Greater than or equal to
 
 Those operators can be applied to Date and Number Fields. 
+
+Note that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
 When applied to field values, there must be a specified Content Type in the query. 
 
