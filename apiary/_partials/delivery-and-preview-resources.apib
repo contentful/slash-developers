@@ -363,7 +363,7 @@ Let's find all non-archived entries.
 
   + Attributes (Empty Array)
 
-## Ranges [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Blte%5D={value}]
+## Ranges [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Blte%5D={value}]
 
 Four range operators are available:
 
@@ -381,7 +381,6 @@ When applied to field values, there must be a specified Content Type in the quer
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
     + attribute (required, string, `sys.updatedAt`) ... The attribute to match.
     + value (required, `2013-01-01T00:00:00Z`) ... The value to match.
 
