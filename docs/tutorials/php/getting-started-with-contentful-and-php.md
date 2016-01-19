@@ -14,7 +14,7 @@ The easiest way to install the Contentful PHP SDK is to use [Composer][2]. If yo
 `composer.phar`, the SDK can be installed by executing:
 
 ~~~ bash
-php composer.phar install contentful/contentful
+php composer.phar install contentful/contentful:@beta
 ~~~
 
 If not already done, you'll also need to load the Composer autoloader:
