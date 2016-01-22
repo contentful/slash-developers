@@ -21,10 +21,12 @@ sys.type       |String        |Type of resource.               |All
 sys.id         |String        |Unique ID of resource.          |All except Arrays
 sys.space      |Link          |Link to resource's Space.       |Entries, Assets, Content Types
 sys.contentType|Link          |Link to Entry's Content Type.   |Entries
-sys.revision   |Integer       |Version of resource.            |Entries, Assets, Content Types
+sys.revision   |Integer       |Published version of resource.* |Entries, Assets, Content Types
 sys.createdAt  |Date          |Time entity was created.        |Entries, Assets, Content Types
 sys.updatedAt  |Date          |Time entity was updated.        |Entries, Assets, Content Types
 sys.locale     |String        |Locale of the resource.         |Entries and Assets
+
+* Observation: the `revision` field refers to the published version exposed by the Content Management API.
 
 :[Collection Resources and Pagination](collections-and-pagination.md)
 
