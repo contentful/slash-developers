@@ -19,6 +19,11 @@ We love static sites. There are plugins for using Contentful with two major stat
 
 There's also an example for building a static site using [AWS Lambda](https://github.com/contentful-labs/contentful-aws-lambda-static).
 
+## Space Management
+
+- [contentful-space-sync](https://github.com/contentful/contentful-space-sync), a tool to simply clone or keep spaces synchronized over time.
+- [contentful-link-cleaner](https://github.com/contentful/contentful-link-cleaner), a tool to clean unresolved Link references in your Entries.
+
 ## Platform-specific
 
 ### Android
