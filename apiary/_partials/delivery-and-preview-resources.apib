@@ -1,6 +1,6 @@
 ## Common Resource Attributes
 
-Every resource returned by the Content Delivery API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property should be defined. 
+Every resource returned by the Content Delivery API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property should be defined.
 
 Note that none of the `sys` fields are editable and only the `sys.id` field can be specified in the creation of an item (as long as it is not a Space).
 
@@ -243,7 +243,9 @@ Let's find all Entries of Content Type "cat".
 
   + Attributes (Empty Array)
 
-## Search for exact matches by using the equality operator. [/spaces/{space_id}/entries?access_token={access_token}&{attribute}={value}]
+## Equality Operator [/spaces/{space_id}/entries?access_token={access_token}&{attribute}={value}]
+
+Search for exact matches by using the equality operator.
 
 A reason to query an Entry by ID instead of retrieving the Entry itself might be because you want to include resolved links.
 
@@ -263,7 +265,9 @@ Let's find all Entries with ID nyancat (hint: IDs are unique and there can only 
 
   + Attributes (Empty Array)
 
-## The inequality operator can be used to look for fields that don't match a specific value. [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bne%5D={value}]
+## Inequality operator [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bne%5D={value}]
+
+Search for exact matches by using the equality operator.
 
 Note that equality & inequality operators are not supported for Text fields.
 
@@ -281,7 +285,7 @@ For example, here's how to get all Entries except nyancat.
 
   + Attributes (Empty Array)
 
-## Equality/Inequality for arrays [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}={value}]
+## Array Equality/Inequality [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}={value}]
 
 The equality/inequality operators also works with Array fields: If one of the items in an Array field matches the value the field will match. Also, as it filters by a field, it becomes necessary to specify a Content Type.
 
@@ -345,7 +349,7 @@ Let's get all cats that like neither rainbows nor lasagna.
 
 ## Existence [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bexists%5D={value}]
 
-You can check for the presence of a field using the `exists` operator. It checks if a certain fields is defined (i.e. it has any value). 
+You can check for the presence of a field using the `exists` operator. It checks if a certain fields is defined (i.e. it has any value).
 
 If the field is not assigned a value, it will not have a JSON payload and will be taken as "non-existent" by the operator.
 
@@ -372,11 +376,11 @@ Four range operators are available:
 - `gt`: Greater than
 - `gte`: Greater than or equal to
 
-Those operators can be applied to Date and Number Fields. 
+Those operators can be applied to Date and Number Fields.
 
 Note that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
-When applied to field values, there must be a specified Content Type in the query. 
+When applied to field values, there must be a specified Content Type in the query.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -409,7 +413,9 @@ Let's find all Entries matching "bacon".
 
   + Attributes (Empty Array)
 
-## Full-text Search on a specific field via match operator [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}%5Bmatch%5D={value}]
+## Full-text Search on Field [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}%5Bmatch%5D={value}]
+
+Full-text Search on a specific field via match operator
 
 After specifying a Content Type, it is possible to filter results based on a given field.
 
@@ -470,7 +476,7 @@ Similar to the "near me" use case, this lets you search for locations that are w
 
 There are two mechanisms to search for nearby locations:
 
-1) Using a bounding rectangle: 
+1) Using a bounding rectangle:
 
 To search for locations within a rectangle object, use the structure `field.center[within]=latitude1,longitude1,latitude2,longitude2` where:
 
@@ -478,7 +484,7 @@ To search for locations within a rectangle object, use the structure `field.cent
 
  + `latitude2` and `longitude2` refer to the coordinates of the top right corner of the rectangle;
 
-2) Using a bounding circle: 
+2) Using a bounding circle:
 
 The structure `field.center[within]=latitute,longitude,radius` will return Entries included in the circle with `fields.center` of the given latitude, longitude and radius.
 
@@ -570,7 +576,7 @@ Order items by specifying your `order` parameter along with your attributes(`att
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
-  + Attributes (Empty Array)  
+  + Attributes (Empty Array)
 
 ## Limit [/spaces/{space_id}/entries?access_token={access_token}&limit={value}]
 
@@ -702,4 +708,3 @@ Learn more [on our Developer Center](https://www.contentful.com/developers/docs/
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
   + Attributes (Empty Array)
-
