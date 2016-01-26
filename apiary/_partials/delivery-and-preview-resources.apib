@@ -400,7 +400,7 @@ Let's look for Entries that've been updated since midnight of January 1st 2013.
 
 ## Full-text Search [/spaces/{space_id}/entries?access_token={access_token}&query={value}]
 
-Full-text search across all Text and Symbol Fields via query querystring parameter. Please take into account that full text search is case insensitive and therefore you might get more results than expected.
+Full-text search across all Text and Symbol Fields via query querystring parameter. Please take into account that full text search is case insensitive and therefore you might get more results than expected. Also note that the query will only take values with more than 1 character.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -419,7 +419,7 @@ Let's find all Entries matching "bacon".
 
 Full-text Search on a specific field via match operator
 
-After specifying a Content Type, it is possible to filter results based on a given field.
+After specifying a Content Type, it is possible to filter results based on a given field. Note that the query will only take values with more than 1 character.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
