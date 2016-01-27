@@ -26,7 +26,7 @@ page: :docsLibraries
 
 ### PHP
 
-- [contentful.php](https://github.com/contentful/contentful.php)
+- [contentful.php](https://github.com/contentful/contentful.php) - [Quickstart](/developers/docs/tutorials/php/getting-started-with-contentful-and-php/)
 
 ## Unofficial
 
