@@ -832,7 +832,7 @@ Putting a payload against a single entities endpoint allows an update of a local
 Please note that renaming a locale changes the responses for upcoming requests, which
 might break your existing code.
 
-Finally, it is not possible to change what is the default locale of a Space, as these are 
+Finally, it is not possible to change what is the default locale of a Space, as these are
 permanent entities.
 
 + Request
@@ -1047,6 +1047,56 @@ increasing delays in between up to a maximum of 3 attempts.
 
 # Group Roles
 
+ Creating custom roles allows the admin to restrict access of users to certain resources. Roles are following a whitelisting approach, which means that everything that a user is allowed to do, needs to be explicitly defined. A role contains a name, a description, permissions and
+ policies.
+
+ Permissions on the one hand are basic rules which define whether or not a user can access content types, settings and entries. It can be specified if a user can read and/or manage those.
+
+ On the other hand there are policies which can be used to allow or deny access to resources in a very fine-grained fashion. With polices you can for example limit read access to only entries of a specific content type or write access to only certain parts of an entry (e.g. for a specific locale).
+
+ The following list explains the supported constraints:
+
+
+- `and` - The AndConstraint evaluates if all it's conditions are true. The value of the AndConstraint needs to be an array with an arbitrary amount of constraints.
+
+  The AndConstraint is necessary and useful for a broad variety of use cases. An example for the constraint is the limitation to a specific content type:
+
+  ```
+  {"and": [
+      { "equals": [{ "doc": "sys.type" }, "Entry"] },
+      { "equals": [{ "doc": "sys.contentType.sys.id" }, "content-type-id"] }
+  ]}
+  ```
+
+- `equals` - The EqualityConstraint can be used to compare an entity's field or meta data against a specific value.
+
+  EqualityConstraints are one of the very basic constraints and are typically used to ensure the type of a document or to match entries of a content type. See the other use cases for examples.
+
+- `not` - The NotConstraint inverts the result of it's value.
+
+  A typical use case for the NotConstraint is the inversion of whitelists to blacklist. If for example a user should not be able to see entries of a specific content type, it can either be achieved by denying access to those content types or by allowing access to all but the entries of the content type:
+
+  ```
+  {"and": [
+      { "equals": [{ "doc": "sys.type" }, "Entry"] },
+      { "not": { "equals": [{ "doc": "sys.contentType.sys.id" }, "content-type-id"] } }
+  ]}
+  ```
+
+- `or` - The OrConstaint evaluates if one if it's conditions returns true. The value of the OrConstraint needs to be an array with an arbitrary amount of constraints.
+
+  OrConstraints can be used to enable an effect for various different resources. E.g. a user should only be allowed to read entries of a specific content type or all assets:
+
+  ```
+  {"or": [
+      {"and": [
+          { "equals": [{ "doc": "sys.type" }, "Entry"] },
+          { "not": { "equals": [{ "doc": "sys.contentType.sys.id" }, "content-type-id"] } }
+      ]},
+      { "equals": [{ "doc": "sys.type" }, "Asset"] }
+  ]}
+  ```
+
 ## Roles Collection [/spaces/{space_id}/roles]
 
 + Parameters
@@ -1067,10 +1117,7 @@ This endpoint returns a paginated list of roles for a given space. Each role con
 
 ### Create a Role [POST]
 
- Creating custom roles allows the admin to restrict access of users to certain resources. Roles are following a whitelisting approach, which means that everything that a user is allowed to do, needs to be explicitly defined. A role contains a name, a description, permissions and
- policies. Permissions on the one hand are basic rules which define whether or not a user can access content types, settings and entries. It can be specified if a user can read and/or manage those.
-
- On the other hand there are policies which can be used to allow or deny access to resources in a very fine-grained fashion. With polices you can for example limit read access to only entries of a specific content type or write access to only certain parts of an entry (e.g. for a specific locale). Please note that a role name must be unique within the space.
+This endpoint can be used to create a custom role. Please note that a role name must be unique within the space.
 
 + Request
     + Headers
@@ -1510,6 +1557,11 @@ This endpoint allows the deletion of a Space Membership. It only affects the acc
     - unpublish
     - archive
     - unarchive
+- constraint
+    - equals (array)
+        - doc
+            - doc: sys.type (string)
+        - Entry (string)
 
 ### Space Membership
 
@@ -1530,4 +1582,4 @@ This endpoint allows the deletion of a Space Membership. It only affects the acc
 
 - type: Link (string)
 - linkType: Role (string)
-- id: roleid (string)
+- id: examplerole (string)
