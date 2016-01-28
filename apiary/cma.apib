@@ -1132,6 +1132,87 @@ This endpoint can be used to delete an existing role. The deletion of roles only
 
 + Response 204
 
+# Group Space Memberships
+
+## Space Memberships Collection [/spaces/{space_id}/space_memberships]
+
++ Parameters
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
+### Get all Space Memberships [GET]
+
+This endpoint returns a paginated list of all space memberships.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Empty Array)
+
+### Create a Space Membership [POST]
+
+This endpoint allows the creation of a space membership (or in other words the invitation of a user to a space). A user can and must either be flagged as "admin" or assigned to certain roles.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes (Space Membership)
+
++ Response 201 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Complete Space Membership)
+
+## Space Membership [/spaces/{space_id}/space_memberships/{space_membership_id}]
+
++ Parameters
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in a form of a string
+    + space_membership_id: 1K642Fo7Y33CtCtTHxv84Q (required, string) - ID of the Space Membership in a form of a string
+
+### Get a single Space Membership [GET]
+
+The endpoint returns details about an existing Space Membership.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Complete Space Membership)
+
+### Update a single Space Membership [PUT]
+
+The endpoints allows the modification of a Space Membership. This way additional roles can be assigned or a user can be flagged as an admin.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes (Space Membership)
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Complete Space Membership)
+
+### Delete a single Space Membership [DELETE]
+
+This endpoint allows the deletion of a Space Membership. It only affects the accessibility of space for user and not a user itself. Please note that it is possible to remove every administrator from a space. This means, there is no one left to manage the users. This can be fixed by inviting someone through the web application's organization settings.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 204
 
 # Group API Keys
 
@@ -1411,7 +1492,7 @@ This endpoint can be used to delete an existing role. The deletion of roles only
 ### Complete Role
 
 - sys - System Attributes
-    - type: Role
+    - type: Role (string)
     - id: examplerole - Identifier of Resource
     - version: 0 (number) - Version of Resource
     - Include Resource Metadata
@@ -1429,3 +1510,24 @@ This endpoint can be used to delete an existing role. The deletion of roles only
     - unpublish
     - archive
     - unarchive
+
+### Space Membership
+
+- email: test@contentful.com (string) - User's e-mail address
+- admin: false (boolean) - Flag indicating if user is an administrator
+- roles (array[RoleLink]) - Array of Role links
+
+### Complete Space Membership
+
+- sys - System Attributes
+    - type: SpaceMembership (string)
+    - id: examplerole - Identifier of Resource
+    - version: 0 (number) - Version of Resource
+    - Include Resource Metadata
+- Include Space Membership
+
+### RoleLink
+
+- type: Link (string)
+- linkType: Role (string)
+- id: roleid (string)
