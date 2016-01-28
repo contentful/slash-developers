@@ -18,7 +18,7 @@ Managing content via an API has many benefits:
 
 If you want to deliver content (e.g. to the web or to mobile apps), you should often use the Content Delivery API. Whereas the Content Management API may be used to deliver and manage content within an application, it shouldn't be used to massively deliver content to end users. For example, you shouldn't use the Content Management API to display blog posts on a web site or pull information into a mobile web app unless that app is meant for editing content.
 
-Note that the structure of responses of the Management API differs from those of the Delivery API. GET responses from the Management API retrieve the entirety of items (i.e. includes all localized or even unpublished content). 
+Note that the structure of responses of the Management API differs from those of the Delivery API. GET responses from the Management API retrieve the entirety of items (i.e. includes all localized or even unpublished content).
 
 Conceptual documentation, as well as further resources like tutorials and libraries can be found on [our Developer Center](https://contentful.com/developers/documentation/).
 
@@ -204,7 +204,7 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 **Creating content types with `POST` is strongly discouraged!**
 
-When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response. 
+When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response.
 
 In contrast, using the `PUT` method below allows you to control the ID of the created Content Type. This is especially important for Content Type ID's because they are often used as parameters in your own code. It's much nicer to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
 
@@ -1045,6 +1045,94 @@ increasing delays in between up to a maximum of 3 attempts.
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
+# Group Roles
+
+## Roles Collection [/spaces/{space_id}/roles]
+
++ Parameters
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+
+### Get all Roles [GET]
+
+This endpoint returns a paginated list of roles for a given space. Each role contains a name, a description, as well as permissions and policies, which describe what a user can and cannot do.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Empty Array)
+
+### Create a Role [POST]
+
+ Creating custom roles allows the admin to restrict access of users to certain resources. Roles are following a whitelisting approach, which means that everything that a user is allowed to do, needs to be explicitly defined. A role contains a name, a description, permissions and
+ policies. Permissions on the one hand are basic rules which define whether or not a user can access content types, settings and entries. It can be specified if a user can read and/or manage those.
+
+ On the other hand there are policies which can be used to allow or deny access to resources in a very fine-grained fashion. With polices you can for example limit read access to only entries of a specific content type or write access to only certain parts of an entry (e.g. for a specific locale). Please note that a role name must be unique within the space.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes (Role)
+
++ Response 201 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Complete Role)
+
+## Role [/spaces/{space_id}/roles/{role_id}]
+
++ Parameters
+    + space_id: 5smsq22uwt4m (required, string) - ID of the Space in form of a string
+    + role_id: 34SHqvY4zjISqXNawkyTwq (required, string) - ID of the Role in a form of a string
+
+### Get a single Role [GET]
+
+This endpoint can be used to read an existing single role.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
+    + Attributes (Complete Role)
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Complete Role)
+
+### Update a single Role [PUT]
+
+This endpoint can be used to update an existing role. Please note that this endpoint cannot be used to create a new role with a specific id.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes (Role)
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Complete Role)
+
+### Delete a single Role [DELETE]
+
+This endpoint can be used to delete an existing role. The deletion of roles only possible if there is no user in the space which only has the soon-to-be-deleted role assigned.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 204
+
+
 # Group API Keys
 
 ## API Keys Collection [/spaces/{space_id}/api_keys]
@@ -1306,3 +1394,38 @@ increasing delays in between up to a maximum of 3 attempts.
     - version: 0 (number) - Version of Resource
     - Include Resource Metadata
 - name: Example API Key - Name of Resource
+
+### Role
+
+- name: Some role (string, required) - Name of Resource
+- description: Test role (string) - Description of Resource
+- permissions - Permissions for accessing application sections
+    - ContentDelivery: all (string)
+    - ContentModel (array[string])
+        - read
+    - Settings (array[string])
+        - read
+        - manage
+- policies (array[Policy]) - Custom policies
+
+### Complete Role
+
+- sys - System Attributes
+    - type: Role
+    - id: examplerole - Identifier of Resource
+    - version: 0 (number) - Version of Resource
+    - Include Resource Metadata
+- Include Role
+
+### Policy
+
+- effect: allow (string) - Allow or deny an action
+- action (array[string]) - Array of strings or "all" string shortcut
+    - read
+    - create
+    - update
+    - delete
+    - publish
+    - unpublish
+    - archive
+    - unarchive
