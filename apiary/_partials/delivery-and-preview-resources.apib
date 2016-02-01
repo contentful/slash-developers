@@ -222,6 +222,65 @@ Example URL: <https://images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/
 
     + Attributes (Asset)
 
+# Group Links
+
+Links are a powerful way to model relationships between pieces of content.
+
+Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/links/).
+
+## Retrieval of linked items [/spaces/{space_id}/entries?access_token={access_token}&include={value}]
+
+When you have related content (e.g. Entries with links to image Assets) it's possible to include both search results and related data in a single request. To do so, the `include` parameter should be used, specifying the number of levels to be resolved. The maximum number of inclusions is `10`.
+
+If linked entries have not already been retrieved in the standard `items` array, they will be placed in the `includes.Entry` array. Similarly, linked assets are put inside the `includes.Asset` array.
+
+Note that only Links between Entries, Spaces and Assets are resolved. Links between Spaces and Content Types are not included in the response when the `include` parameter is specified.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + value (required, number, `2`) ... Number of levels to include.
+
+### Query Entries [GET]
+
+Example: Include 2 levels of linked entries.
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)    
+
+## Omission of linked items [/spaces/{space_id}/entries?access_token={access_token}&include=0]
+
+Even when not specified, the `include` parameter assumes the value of `1`. In that way, whenever it's desirable to omit linked items, `include` should be specified as `0`.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+
+### Query Entries [GET]
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)    
+
+## Links to a specific item [/spaces/{space_id}/entries?access_token={access_token}&include={value}&content_type={content_type}&fields.{linking_field}.sys.id={target_entry_id}]
+
+It might be useful to retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` (field used to link  items) and `entry_id` from the target Entry.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + value (required, number, `2`) ... Number of levels to include.
+    + linking_field (required, string, `bestFriend`) ... Field used to link items
+    + target_entry_id (required,string, `nyancat`) ... ID of the target Entry
+    + content_type (required,string, `cat`) ... ID of the Content Type
+
+### Query Entries [GET]
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)    
+
 # Group Search Parameters
 
 Each collection endpoint supports a variety of query parameters to search & filter the items that will be included in the response. While the API calls in this section are focused on entries, the same query parameter syntax can be used to filter assets and content types as well.
@@ -618,48 +677,6 @@ By combining `skip` and `limit` you can achieve pagination:
 ### Query Entries [GET]
 
 Example: Skip 3 Entries.
-
-+ Response 200 (application/vnd.contentful.delivery.v1+json)
-
-  + Attributes (Empty Array)
-
-## Including linked Entries [/spaces/{space_id}/entries?access_token={access_token}&include={value}]
-
-Links are a very powerful way to model relationships between pieces of content. Contentful's search is built to make linked data retrieval as simple as adding an additional URI query parameter to retrieve an entire web of related content that you can display in your application.
-
-Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/links/).
-
-Note that only Links between Entries, Spaces and Assets are resolved. Links between Spaces and Content Types are not included in the response when the `include` parameter is specified.
-
-By default, `include` one level is implied, you may set it to zero to not include any links. Up to 10 levels can be included in a single response.
-
-+ Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + value (required, number, `2`) ... Number of levels to include.
-
-### Query Entries [GET]
-
-Example: Include 2 levels of linked entries.
-
-+ Response 200 (application/vnd.contentful.delivery.v1+json)
-
-  + Attributes (Empty Array)
-
-## Filter by a linked Entry [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{linking_field}.sys.id={target_entry_id}]
-
-We can retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` (used to link these items) and `entry_id` from the target Entry.
-
-+ Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
-    + linking_field (required, string, `bestFriend`) ... Content Type field used to link items
-    + target_entry_id (required, string, `nyancat`) ... Alphanumeric `id` of the Target Entry linked to retrieved items
-
-### Query Entries [GET]
-
-Example: Retrieve items linked to `nyancat` through the `bestFriend` field:
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
