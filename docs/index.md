@@ -20,10 +20,10 @@ This is the go-to place if you have some specific question in mind. *How do I au
 
 There are four APIs available, and each serves one specific purpose:
 
-- <a href="/developers/docs/references/content-delivery-api/" target="_blank">Content Delivery API</a> for getting the content
-- <a href="/developers/docs/references/content-management-api/" target="_blank">Content Management API</a> for saving the content
-- <a href="/developers/docs/references/content-preview-api/" target="_blank">Content Preview API</a> for previewing the content before publishing it to production
-- <a href="/developers/docs/references/images-api/" target="_blank">Images API</a> for requesting images of specific sizes and formats
+- <a href="https://www.contentful.com/developers/docs/references/content-delivery-api/" target="_blank">Content Delivery API</a> for getting the content
+- <a href="https://www.contentful.com/developers/docs/references/content-management-api/" target="_blank">Content Management API</a> for saving the content
+- <a href="https://www.contentful.com/developers/docs/references/content-preview-api/" target="_blank">Content Preview API</a> for previewing the content before publishing it to production
+- <a href="https://www.contentful.com/developers/docs/references/images-api/" target="_blank">Images API</a> for requesting images of specific sizes and formats
 
 Also, there are several documents which are relevant for all the APIs:
 
