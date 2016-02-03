@@ -37,17 +37,17 @@ install:
 		bundle install; \
 	fi
 
-$(CDA_BLUEPRINT): outdir cda.apib _partials/common-header.md _partials/content-types-description.md
+$(CDA_BLUEPRINT): outdir cda.apib _partials/content-types-description.md
 	$(HERCULE) cda.apib -o $@
 
-$(CMA_BLUEPRINT): outdir cma.apib _partials/common-header.md _partials/content-types-description.md
+$(CMA_BLUEPRINT): outdir cma.apib _partials/content-types-description.md
 	$(HERCULE) cma.apib -o $@
 
-$(IMAGES_BLUEPRINT): outdir images.apib _partials/common-header.md
+$(IMAGES_BLUEPRINT): outdir images.apib
 	$(HERCULE) images.apib -o $@
 
 # This task replaces the CDA token with a Preview token via `sed`
-$(CPA_BLUEPRINT): outdir cpa.apib _partials/common-header.md
+$(CPA_BLUEPRINT): outdir cpa.apib
 	$(HERCULE) cpa.apib -o $@
 	sed 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@ >tmp
 	mv tmp $@
