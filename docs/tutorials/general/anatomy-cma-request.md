@@ -27,7 +27,7 @@ Spaces are containers for Content Types, Entries and Assets and other resources.
 #### URL
 
 ~~~
-POST https://api.contentful.com/spaces`
+POST https://api.contentful.com/spaces
 ~~~
 
 #### Header
@@ -96,7 +96,7 @@ PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post
 #### Header
 
 ~~~
-Authorization: Bearer $token`
+Authorization: Bearer $token
 Content-Type: application/vnd.contentful.management.v1+json
 ~~~
 
@@ -232,7 +232,7 @@ To create an Entry, we must specify a `X-Contentful-Content-Type` in the header 
 #### URL
 
 ~~~
-POST https://api.contentful.com/spaces/31odstfovq9h/entries/`
+POST https://api.contentful.com/spaces/31odstfovq9h/entries/
 ~~~
 
 #### Header
@@ -525,7 +525,7 @@ Now, we are ready to publish our Asset. Note that we must specify the correct `X
 #### URL
 
 ~~~
-PUT https://api.contentful.com/spaces/31odstfovq9h/assets/11gmpOYKfa8KOO6sYwaaYI/published`
+PUT https://api.contentful.com/spaces/31odstfovq9h/assets/11gmpOYKfa8KOO6sYwaaYI/published
 ~~~
 
 #### Header
@@ -590,7 +590,7 @@ Now, to add our Asset to an Entry, we must update our Content Type `Blog Posts` 
 #### URL
 
 ~~~
-PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post`
+PUT https://api.contentful.com/spaces/31odstfovq9h/content_types/blog_post
 ~~~
 
 #### Header
