@@ -328,9 +328,7 @@ Let's find all Entries with ID nyancat (hint: IDs are unique and there can only 
 
 ## Inequality operator [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bne%5D={value}]
 
-Search for exact matches by using the equality operator.
-
-Note that equality & inequality operators are not supported for Text fields.
+Uses the parameter `[ne]` to exclude items matching a certain pattern.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
@@ -369,7 +367,7 @@ Let's find all cats who like lasagna by matching fields.likes (Array) against a 
 
 ## Inclusion [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bin%5D={value}]
 
-Filter a field by multiple values via the `in` operator.
+Filter a field by multiple values via the `[in]` operator.
 When applied to an array value there must be at least one matching item. Similarly, when including a field value, it's necessary to specify a Content Type.
 
 + Parameters
@@ -388,7 +386,7 @@ Let's get Entries for finn and jake.
 
 ## Exclusion [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Bnin%5D={value}]
 
-Filter a field by multiple values via the `nin` operator.
+Filter a field by multiple values via the `[nin]` operator.
 When applied to an array value there must be at least one not matching item. Similarly, when including a field value, it's necessary to specify a Content Type.
 
 Note that search queries for fields have to be constrained by a `content_type` URI query parameter.
@@ -410,7 +408,7 @@ Let's get all cats that like neither rainbows nor lasagna.
 
 ## Existence [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bexists%5D={value}]
 
-You can check for the presence of a field using the `exists` operator. It checks if a certain fields is defined (i.e. it has any value).
+You can check for the presence of a field using the `[exists]` operator. It checks if a certain fields is defined (i.e. it has any value).
 
 If the field is not assigned a value, it will not have a JSON payload and will be taken as "non-existent" by the operator.
 
@@ -432,10 +430,10 @@ Let's find all non-archived entries.
 
 Four range operators are available:
 
-- `lt`: Less than
-- `lte`: Less than or equal to
-- `gt`: Greater than
-- `gte`: Greater than or equal to
+- `[lt]`: Less than
+- `[lte]`: Less than or equal to
+- `[gt]`: Greater than
+- `[gte]`: Greater than or equal to
 
 Those operators can be applied to Date and Number Fields.
 
@@ -476,7 +474,7 @@ Let's find all Entries matching "bacon".
 
 ## Full-text Search on Field [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}%5Bmatch%5D={value}]
 
-Full-text Search on a specific field via match operator
+Full-text Search on a specific field via the `[match]` operator
 
 After specifying a Content Type, it is possible to filter results based on a given field. Note that the query will only take values with more than 1 character.
 
@@ -521,7 +519,7 @@ When you are performing geographical searches please keep in mind that queries i
 A common use case for location search is to search for places close to the user's current position.
 
 
-Use the `near` operator to show results closest to a specific map location and order the results by distance.
+Use the `[near]` operator to show results closest to a specific map location and order the results by distance.
 
 This will return all entries sorted by distance from the point at latitude=38 and a longitude=-122.
 
