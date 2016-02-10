@@ -77,9 +77,39 @@ public final class DroidStorySpace { }
 ~~~
 
 A space is just an empty class, annotated with `@Space`. We provide it with:
+
 - `value` - ID of the space.
 - `models` - Array of model classes.
 - `locales` - Array of locales.
+
+## Generator.java
+
+Alternatively, if you don't want to create those classes by hand, you could use the `generator.java` project. This project downloads the `content-types` specified in a given spaces and generates matching java classes for you.
+
+To get the generator running, you have to retrieve its [current jar file](http://search.maven.org/remotecontent?filepath=com/contentful/generator/generator/0.9.3/generator-0.9.3-jar-with-dependencies.jar):
+
+~~~
+$ cd /tmp
+$ curl 'https://repo1.maven.org/maven2/com/contentful/generator/generator/0.9.3/generator-0.9.3-jar-with-dependencies.jar' > generator.jar
+~~~
+
+Now that you have the generator downloaded, you need to call it with the following arguments:
+
+* `--folder <arg>` arg is the target folder to put the generated java sources into
+* `--package <arg>` use arg to specify the package name of the generated classes
+* `--space <arg>` use the space id given as arg (see above for details on how to get it)
+* `--token <arg>` please supply a management access token here. ([Find out more about your token](https://www.contentful.com/developers/docs/references/authentication/#the-management-api))
+
+
+The complete command will look like this (please provide your own space id and token, since we do not want to give them to the public):
+
+~~~
+$ java -jar generator.jar --folder /tmp/generated/ --package com.contentful.sample.model --space SPACE --token TOKEN
+~~~
+
+This will result in the same classes as above, only with less manual labor.
+
+
 
 ## Synchronization
 
