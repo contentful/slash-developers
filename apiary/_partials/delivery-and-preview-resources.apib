@@ -344,9 +344,11 @@ For example, here's how to get all Entries except nyancat.
 
 ## Array Equality/Inequality [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}={value}]
 
-The equality/inequality operators also works with Array fields. In other words, the equality/inequality operator can refer to specific values inside an Array. 
+The equality/inequality operators also work with Array fields. In other words, the equality/inequality operators can refer to specific values inside an Array, filtering or omitting items. 
 
-For example, with an Array Field `likes`, it is possible to only retrieve entries that have the item `lasagna` by using a search parameter on the lines of `&fields.likes=lasagna`.
+For example, with an Array Field `likes`, it is possible to only retrieve entries that have the `lasagna` value by using a search parameter on the lines of `&fields.likes=lasagna`. 
+
+Similarly, if it was desirable to omit entries that match a specific item `lasagna`, the inequality parameter could've been used with `&fields.likes%5Bne%5D=lasagna`.
 
 Note that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
