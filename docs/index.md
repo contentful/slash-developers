@@ -13,6 +13,7 @@ These articles introduce the basics of Contentful, explain our data model, and p
 - [Links](/developers/docs/concepts/links/)
 - [Locales](/developers/docs/concepts/locales/)
 - [Synchronization](/developers/docs/concepts/sync/)
+- [UI Extensions](/developers/docs/concepts/uiextensions/)
 
 ## API references
 
@@ -33,58 +34,25 @@ Also, there are several documents which are relevant for all the APIs:
 - [Locales](/developers/docs/references/locales/)
 - [Field Types](/developers/docs/references/field-type/)
 
-## Tutorials
-
-### General
-
-- [Anatomy of a CDA request](/developers/docs/tutorials/general/anatomy-cda-request/)
-- [Anatomy of a CMA request](/developers/docs/tutorials/general/anatomy-cma-request/)
-- [Extending the Delivery API with AWS Lambda & API Gateway](/developers/docs/tutorials/general/delivery-api-lambda-and-api-gateway/)
-- [Scheduling Posts](/developers/docs/tutorials/general/scheduling-posts/)
-- [Synchronizing Spaces with contentful-space-sync](/developers/docs/tutorials/general/using-contentful-space-sync/)
-
-### Ruby
-- [Getting Started with Contentful and Ruby](/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby/)
-
-### iOS
-
-- [iOS development tutorials](/developers/docs/tutorials/ios/)
-- [Using the Delivery API on iOS](/developers/docs/tutorials/ios/using-delivery-api-on-ios/)
-- [Using the management API on iOS](/developers/docs/tutorials/ios/using-management-api-on-ios/)
-- [Offline persistence in the iOS SDK](/developers/docs/tutorials/ios/offline-persistence-in-ios-sdk/)
-- [Using the Contentful Xcode plugin](/developers/docs/tutorials/ios/using-contentful-xcode-plugin/)
-
-### Android
-- [Offline persistence with Vault on Android](/developers/docs/tutorials/android/offline-persistence-with-vault/)
-
-### JavaScript
-- [Getting Started with Contentful and JavaScript](/developers/docs/tutorials/javascript/using-js-cda-sdk/)
-
-### PHP
-- [Getting Started with Contentful and PHP](/developers/docs/tutorials/php/getting-started-with-contentful-and-php/)
-
 ## Libraries
 
 We provide libraries for major programming languages and platforms so you don't have to write the code for interacting with API from scratch.
 
-- [Java/Android](/developers/docs/code/libraries/#java-also-for-use-on-android)
-- [JavaScript](/developers/docs/code/libraries/#javascript)
-- [Objective-C / Swift](/developers/docs/code/libraries/#objective-c--swift-for-use-on-ios-and-os-x)
-- [Ruby](/developers/docs/code/libraries/#ruby)
-- [Third-party libraries: PHP, C#, .NET and more](/developers/docs/code/libraries/#unofficial)
-- [See all libraries](/developers/docs/code/libraries/)
+- [Android / Java](/developers/docs/android/)
+- [Objective-C / Swift](/developers/docs/ios/)
+- [JavaScript](/developers/docs/javascript)
+- [PHP](/developers/docs/php)
+- [Ruby](/developers/docs/ruby)
+- [Python](/developers/docs/python)
+- [.NET](/developers/docs/net)
 
 ## Tools
 
 There are more tools which help speed up development. Find content import/export tools, iOS and Android development plugins and more.
 
-- [Get the tools](/developers/docs/code/tools/)
-
-## Sample apps
-
-It could be helpful to look at the existing Contentful-based apps for iOS, Android and other platforms.
-
-- [Browse the codebase](/developers/docs/code/examples/)
+- [Static Site Generators](/developers/docs/tools/staticsitegenerators/)
+- [Space Management Tools](/developers/docs/tools/spacemanagement/)
+- [Others and 3rd part Tools](/developers/docs/tools/others/)
 
 ## More
 
