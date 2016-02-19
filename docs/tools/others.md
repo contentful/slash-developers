@@ -10,22 +10,22 @@ A Simple HTTP Webserver with pluggable behavior for listening to API Webhooks<br
 ## Extending the Delivery API with AWS Lambda & API Gateway
 
 This tutorial will show you how you can use two new Amazon services, Lambda and API Gateway, to provide additional functionality on top of Contentful's Content Delivery API (CDA) without running any of your own infrastructure.<br>
-[Read the Tutorial](https://www.contentful.com/developers/docs/tutorials/general/delivery-api-lambda-and-api-gateway/)
+[Read the Tutorial](/developers/docs/tutorials/general/delivery-api-lambda-and-api-gateway/)
 
 ## Scheduling Posts
 
 In this article, we will expose how to manage the publishing time of content.<br>
-[Read the Tutorial](https://www.contentful.com/developers/docs/tutorials/general/scheduling-posts/)
+[Read the Tutorial](/developers/docs/tutorials/general/scheduling-posts/)
 
 ## Anatomy of a CDA Request
 
 This article goes into detail about how the requests and responses work using the CDA<br>
-[Read the Tutorial](https://www.contentful.com/developers/docs/tutorials/general/anatomy-cda-request/)
+[Read the Tutorial](/developers/docs/tutorials/general/anatomy-cda-request/)
 
 ## Anatomy of a CMA Request
 
 This article is a comprehensive exposure to managing content via the Content Management API(CMA). In the end, you should be able to write custom applications and scripts using our API.<br>
-[Read the Tutorial](https://www.contentful.com/developers/docs/tutorials/general/anatomy-cma-request/)
+[Read the Tutorial](/developers/docs/tutorials/general/anatomy-cma-request/)
 
 ## Contentful Resolve Response
 

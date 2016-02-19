@@ -20,10 +20,10 @@ Step by step guides to help you accomplishing specific tasks.
 
 ### API Demo
 This guide shows how to make a call to the Contentful API, explains what the response looks like, and suggests some relevant next steps.<br>
-View in [PHP](https://www.contentful.com/developers/api-demo/php/) |
-[cURL](https://www.contentful.com/developers/api-demo/curl/)
+View in [PHP](/developers/api-demo/php/) |
+[cURL](/developers/api-demo/curl/)
 
-### [Getting Started with the CDA](https://www.contentful.com/developers/docs/tutorials/php/getting-started-with-contentful-and-php/)
+### [Getting Started with the CDA](/developers/docs/tutorials/php/getting-started-with-contentful-and-php/)
 This tutorial will walk you through your first steps in using Contentful within your PHP application.
 
 ## Tools

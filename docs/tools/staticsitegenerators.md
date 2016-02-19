@@ -32,7 +32,7 @@ If you want to check all of our non supported SDKs and Tools, check out our repo
 Use Roots, a static site generator, and manage content with Contentful
 
 - [Download on Github](https://github.com/carrot/roots-contentful)
-- [View Examples](https://www.contentful.com/blog/2015/04/28/webinar-contentful-roots-static-sites/)
+- [View Examples](/blog/2015/04/28/webinar-contentful-roots-static-sites/)
 
 ## Metalsmith
 

@@ -14,17 +14,17 @@ The importer is using a flexible input format for which you can write your own e
 
 ### Tutorials
 
-- [Import and Export](https://www.contentful.com/developers/docs/tutorials/general/import-and-export/)<br>
+- [Import and Export](/developers/docs/tutorials/general/import-and-export/)<br>
 By the end of this tutorial, you will be able to seamlessly shift to Contentful and enjoy all its benefits, spending as little time as possible dealing with issues.
 
-- [Exporting from Drupal](https://www.contentful.com/blog/2015/03/09/exporting-content-from-wordpress-drupal-or-elsewhere-and-importing-in-contentful/)
+- [Exporting from Drupal](/blog/2015/03/09/exporting-content-from-wordpress-drupal-or-elsewhere-and-importing-in-contentful/)
 
 ## Contentful Space Sync
 
 This tool allows you to perform a one way synchronization from one Contentful space to another. Use this tool to generate your Development and Staging Spaces.
 
 - [View on Github](https://github.com/contentful/contentful-space-sync)
-- [Read the tutorial](https://www.contentful.com/developers/docs/tutorials/general/using-contentful-space-sync/)
+- [Read the tutorial](/developers/docs/tutorials/general/using-contentful-space-sync/)
 
 ## Contentful Link Cleaner
 

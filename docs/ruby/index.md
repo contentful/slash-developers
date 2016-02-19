@@ -25,16 +25,16 @@ Step by step guides to help you accomplishing specific tasks.
 
 ### API Demo
 This guide shows how to make a call to the Contentful API, explains what the response looks like, and suggests some relevant next steps.<br>
-View in [Ruby](https://www.contentful.com/developers/api-demo/ruby/) |
-[cURL](https://www.contentful.com/developers/api-demo/curl/)
+View in [Ruby](/developers/api-demo/ruby/) |
+[cURL](/developers/api-demo/curl/)
 
-### [Getting Started with the CDA](https://www.contentful.com/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby/)
+### [Getting Started with the CDA](/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby/)
 This tutorial will walk you through your first steps in using Contentful within your Ruby application.
 
-### [Getting Started with the CMA](https://www.contentful.com/blog/2014/08/19/introducing-the-content-management-gem/)
+### [Getting Started with the CMA](/blog/2014/08/19/introducing-the-content-management-gem/)
 This tutorial will walk you through your first steps in using Contentful within your Ruby application.
 
-### [Using contentful_bootstrap for keeping up with your Spaces](https://www.contentful.com/developers/docs/tutorials/ruby/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
+### [Using contentful_bootstrap for keeping up with your Spaces](/developers/docs/tutorials/ruby/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
 To get you jump-started in Contentful using Contentful Bootstrap.
 
 ## Tools
@@ -42,7 +42,7 @@ Here are some tools developed by our team to help you completing some basic task
 
 ### Contentful Bootstrap
 To get you jump-started in Contentful using Contentful Bootstrap.<br>
-[Read the Tutorial](https://www.contentful.com/developers/docs/tutorials/ruby/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
+[Read the Tutorial](/developers/docs/tutorials/ruby/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
 [View on Github](https://github.com/contentful/contentful-bootstrap.rb)
 
 ### Contentful Webhook Listener
@@ -57,7 +57,7 @@ These third-party libraries are **not officially supported** by Contentful and m
 A collection of useful things to help make it easier to integrate Contentful into your Rails app.<br>
 [View on Github - Contentful Rails](https://github.com/errorstudio/contentful_rails)<br>
 [View on Github - Contentful Model](https://github.com/errorstudio/contentful_model)<br>
-[Tutorial](https://www.contentful.com/blog/2015/02/23/contentfulmodel-and-contentfulrails-ruby-gems-help-building-ruby-apps-faster/)
+[Tutorial](/blog/2015/02/23/contentfulmodel-and-contentfulrails-ruby-gems-help-building-ruby-apps-faster/)
 
 ## Apps
 

@@ -23,14 +23,14 @@ Step by step guides to help you accomplishing specific tasks.
 
 ### API Demo
 This guide shows how to make a call to the Contentful API, explains what the response looks like, and suggests some relevant next steps.<br>
-View in [Javascript](https://www.contentful.com/developers/api-demo/javascript/) |
-[Node.js](https://www.contentful.com/developers/api-demo/nodejs/) |
-[cURL](https://www.contentful.com/developers/api-demo/curl/)
+View in [Javascript](/developers/api-demo/javascript/) |
+[Node.js](/developers/api-demo/nodejs/) |
+[cURL](/developers/api-demo/curl/)
 
-### [Getting Started with the CDA](https://www.contentful.com/developers/docs/tutorials/javascript/using-js-cda-sdk/)
+### [Getting Started with the CDA](/developers/docs/tutorials/javascript/using-js-cda-sdk/)
 This tutorial will walk you through your first steps in using Contentful within JavaScript.
 
-### [CDA Webinar](https://www.contentful.com/blog/2014/07/22/contentful-webinar-content-delivery-api/)
+### [CDA Webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API.
 
 ## Apps
@@ -43,7 +43,7 @@ Allows you to preview your data structure and content. Developed using AngularJS
 
 ### Space template apps
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API. Check the webinar.<br>
-[Watch Webinar](https://www.contentful.com/blog/2014/07/22/contentful-webinar-content-delivery-api)<br>
+[Watch Webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api)<br>
 [View on Github](https://github.com/contentful/cdn-webinar-store-demo)
 
 ## Tools

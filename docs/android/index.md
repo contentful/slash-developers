@@ -25,19 +25,19 @@ Step by step guides to help you accomplishing specific tasks.
 
 ### API Demo
 This guide shows how to make a call to the Contentful API, explains what the response looks like, and suggests some relevant next steps.<br>
-View in [Android](https://www.contentful.com/developers/docs/tutorials/android/getting-started-with-contentful-and-android/) |
-[Java](https://www.contentful.com/developers/api-demo/java/) | 
-[cURL](https://www.contentful.com/developers/api-demo/curl/)
+View in [Android](/developers/docs/tutorials/android/getting-started-with-contentful-and-android/) |
+[Java](/developers/api-demo/java/) | 
+[cURL](/developers/api-demo/curl/)
 
-### [Getting Started with the CDA](https://www.contentful.com/developers/docs/tutorials/android/getting-started-with-contentful-and-android/)
+### [Getting Started with the CDA](/developers/docs/tutorials/android/getting-started-with-contentful-and-android/)
 This walkthrough will help you getting started with your first basic hello world style Android app of using Contentful with a demo space.
 Using the Content Delivery API on Android
 
-### [Documentation](https://www.contentful.com/developers/docs/tutorials/android/getting-started-with-contentful-and-android/)
+### [Documentation](/developers/docs/tutorials/android/getting-started-with-contentful-and-android/)
 This walkthrough will help you getting started with your first basic hello world style Android app of using Contentful with a demo space.
 Using the Content Delivery API on Android
 
-### [Offline persistence with Vault on Android](https://www.contentful.com/developers/docs/tutorials/android/offline-persistence-with-vault/)
+### [Offline persistence with Vault on Android](/developers/docs/tutorials/android/offline-persistence-with-vault/)
 Vault is an Android library that simplifies persistence of data from Contentful via SQLite. It lets you define Java representations for your Contentful models.
 
 ## Tools
