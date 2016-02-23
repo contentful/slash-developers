@@ -1,5 +1,5 @@
 ---
-page: :docsLibrariesRuby
+page: :docsPlatformsRuby
 ---
 
 [SDKs](#sdks)<br>
@@ -12,12 +12,12 @@ Our SDKs gives you immediate access to our APIs and its features.
 
 ###CDA - Content Delivery API<br>
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
-[View on Github](https://github.com/contentful/contentful.rb)<br>
+[View on GitHub](https://github.com/contentful/contentful.rb)<br>
 [API Reference](http://www.rubydoc.info/gems/contentful/)
 
 ###CMA - Content Management API<br>
 This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
-[View on Github](https://github.com/contentful/contentful-management.rb/)<br>
+[View on GitHub](https://github.com/contentful/contentful-management.rb/)<br>
 [API Reference](http://www.rubydoc.info/gems/contentful-management/)
 
 ## Tutorials
@@ -37,17 +37,12 @@ This tutorial will walk you through your first steps in using Contentful within 
 ### [Using contentful_bootstrap for keeping up with your Spaces](/developers/docs/tutorials/ruby/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
 To get you jump-started in Contentful using Contentful Bootstrap.
 
-## Tools
+## Tools and Framework Integrations
 Here are some tools developed by our team to help you completing some basic tasks.
-
-### Contentful Bootstrap
-To get you jump-started in Contentful using Contentful Bootstrap.<br>
-[Read the Tutorial](/developers/docs/tutorials/ruby/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
-[View on Github](https://github.com/contentful/contentful-bootstrap.rb)
 
 ### Contentful Webhook Listener
 A Simple HTTP Webserver with pluggable behavior for listening to API Webhooks.<br>
-[View on Github](https://github.com/contentful/contentful-webhook-listener.rb)
+[View on GitHub](https://github.com/contentful/contentful-webhook-listener.rb)
 
 ## Unofficial Tools
 
@@ -55,10 +50,17 @@ These third-party libraries are **not officially supported** by Contentful and m
 
 ### Rails Integration
 A collection of useful things to help make it easier to integrate Contentful into your Rails app.<br>
-[View on Github - Contentful Rails](https://github.com/errorstudio/contentful_rails)<br>
-[View on Github - Contentful Model](https://github.com/errorstudio/contentful_model)<br>
+[View on GitHub - Contentful Rails](https://github.com/errorstudio/contentful_rails)<br>
+[View on GitHub - Contentful Model](https://github.com/errorstudio/contentful_model)<br>
 [Tutorial](/blog/2015/02/23/contentfulmodel-and-contentfulrails-ruby-gems-help-building-ruby-apps-faster/)
 
 ## Apps
+Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
 
-Coming Soon
+### Rails Product Demo
+Simple Sinatra and Contentful Application.<br>
+[View on GitHub - Contentful Rails](https://github.com/contentful/contentful_rails_tutorial)<br>
+
+### Sinatra Product Demo
+Simple Rails and Contentful Application.<br>
+[View on GitHub - Contentful Rails](https://github.com/contentful/contentful_sinatra_tutorial)<br>

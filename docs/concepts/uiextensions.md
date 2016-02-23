@@ -2,7 +2,7 @@
 page: :docsUiExtensions
 ---
 
-The custom widgets API allows you to personalize the Contentful Web Application's entry editor, so that you can build plugins that meet your specific content editing or content management needs. It operates on top of any of our current field types, and gives you the power to manipulate its data through an iframe where you can embed custom functionality, styling, integrations or workflows.
+The custom widgets API allows you to extend the Contentful Web Application's entry editor, so that you can build plugins that meet your specific content editing or content management needs. It operates on top of any of our current field types, and gives you the power to manipulate its data through an iframe where you can embed custom functionality, styling, integrations or workflows.
 
 The Widgets API is still in development and therefore it is not encouraged to use it to build business critical solutions as it is likely to change. The purpose of making it available early is to provide early access to upcoming features and make our roadmap more transparent to users, as well as to collect early feedback before releasing, and commiting to support, a brand new API.<br>
 [View on Github](https://github.com/contentful/widget-sdk)

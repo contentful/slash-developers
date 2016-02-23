@@ -1,5 +1,5 @@
 ---
-page: :docsLibrariesJavascript
+page: :docsPlatformsJavascript
 ---
 
 [SDKs](#sdks)<br>
@@ -8,15 +8,15 @@ page: :docsLibrariesJavascript
 [Example Apps](#apps)
 
 ## SDKs
-Our SDKs gives you immediate access to our APIs and its features.
+Our SDKs give you immediate access to our APIs and its features.
 
 ###CDA - Content Delivery API<br>
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
-[View on Github](https://github.com/contentful/contentful.js)<br>
+[View on GitHub](https://github.com/contentful/contentful.js)<br>
 
 ###CMA - Content Management API<br>
 This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
-[View on Github](https://github.com/contentful/contentful-management.js)<br>
+[View on GitHub](https://github.com/contentful/contentful-management.js)<br>
 
 ## Tutorials
 Step by step guides to help you accomplishing specific tasks.
@@ -34,22 +34,22 @@ This tutorial will walk you through your first steps in using Contentful within 
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API.
 
 ## Apps
-Links to the source code of our in house built apps. Use them as examples when building your own product using Contentful.
+Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
 You can download them by looking for “Contentful” on Google Play.
 
 ### Data Browser
 Allows you to preview your data structure and content. Developed using AngularJS.<br>
-[View on Github](http://contentful.github.io/contentful.js/example/browser/index.html)<br>
+[View on GitHub](http://contentful.github.io/contentful.js/example/browser/index.html)<br>
 
 ### Space template apps
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API. Check the webinar.<br>
 [Watch Webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api)<br>
-[View on Github](https://github.com/contentful/cdn-webinar-store-demo)
+[View on GitHub](https://github.com/contentful/cdn-webinar-store-demo)
 
-## Tools
+## Tools and Framework Integrations
 
 These third-party libraries are **not officially supported** by Contentful and may be incomplete. If you want to include your own libraries on this list open a pull request that matches.<br>
 
 ### Angular-Contentful
 An AngularJS library to access the Contentful Content Delivery API<br>
-[View on Github](https://github.com/jvandemo/angular-contentful) - **This library is not officially supported**
+[View on GitHub](https://github.com/jvandemo/angular-contentful) - **This library is not officially supported**

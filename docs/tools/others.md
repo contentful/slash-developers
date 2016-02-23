@@ -29,15 +29,12 @@ This article is a comprehensive exposure to managing content via the Content Man
 
 ## Contentful Resolve Response
 
-Suppose you have a Contentful query's response JSON. The links are nice, but what we really usually need is the response with a resolved object graph.<br>
-[View on Github](https://github.com/contentful/contentful-resolve-response)
-
 ## Media Uploader
 
 Upload images to Contentful from OS X.<br>
 [View on Github](https://github.com/contentful/image-uploader-app)
 
-## Unofficial Tools
+## Third Part Tools
 
 Apart from official tools/libraries, there are others developed by our community, which you can find at [awesome-contentful](https://github.com/contentful-labs/awesome-contentful).
 There you can find integrations for other languages and platforms such as Python and .NET, or integrations with frameworks, static site generators and other tools.
