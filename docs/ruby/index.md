@@ -4,7 +4,7 @@ page: :docsPlatformsRuby
 
 [SDKs](#sdks)<br>
 [Tutorials](#tutorials)<br>
-[Tools](#tools)<br>
+[Tools](#tools-and-framework-integrations)<br>
 [Example Apps](#apps)
 
 ## SDKs
@@ -28,13 +28,13 @@ This guide shows how to make a call to the Contentful API, explains what the res
 View in [Ruby](/developers/api-demo/ruby/) |
 [cURL](/developers/api-demo/curl/)
 
-### [Getting Started with the CDA](/developers/docs/tutorials/ruby/getting-started-with-contentful-and-ruby/)
+### [Getting Started with the CDA](/developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/)
 This tutorial will walk you through your first steps in using Contentful within your Ruby application.
 
 ### [Getting Started with the CMA](/blog/2014/08/19/introducing-the-content-management-gem/)
 This tutorial will walk you through your first steps in using Contentful within your Ruby application.
 
-### [Using contentful_bootstrap for keeping up with your Spaces](/developers/docs/tutorials/ruby/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
+### [Using contentful_bootstrap for keeping up with your Spaces](/developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
 To get you jump-started in Contentful using Contentful Bootstrap.
 
 ## Tools and Framework Integrations
@@ -46,7 +46,7 @@ A Simple HTTP Webserver with pluggable behavior for listening to API Webhooks.<b
 
 ## Unofficial Tools
 
-These third-party libraries are **not officially supported** by Contentful and may be incomplete. If you want to include your own libraries on this list open a pull request that matches.<br>
+These third-party libraries are **not officially supported** by Contentful and may be incomplete. If you want to include your own libraries on this list open a pull request that matches our [contribution guidelines](https://github.com/contentful-labs/awesome-contentful/blob/master/CONTRIBUTING.md).<br>
 
 ### Rails Integration
 A collection of useful things to help make it easier to integrate Contentful into your Rails app.<br>
@@ -58,9 +58,9 @@ A collection of useful things to help make it easier to integrate Contentful int
 Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
 
 ### Rails Product Demo
-Simple Sinatra and Contentful Application.<br>
+Simple Rails and Contentful Application.<br>
 [View on GitHub - Contentful Rails](https://github.com/contentful/contentful_rails_tutorial)<br>
 
 ### Sinatra Product Demo
-Simple Rails and Contentful Application.<br>
-[View on GitHub - Contentful Rails](https://github.com/contentful/contentful_sinatra_tutorial)<br>
+Simple Sinatra and Contentful Application.<br>
+[View on GitHub - Contentful Sinatra](https://github.com/contentful/contentful_sinatra_tutorial)<br>

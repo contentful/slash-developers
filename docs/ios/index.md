@@ -4,7 +4,7 @@ page: :docsPlatformsIos
 
 [SDKs](#sdks)<br>
 [Tutorials](#tutorials)<br>
-[Tools](#tools)<br>
+[Tools](#tools-and-framework-integrations)<br>
 [Example Apps](#apps)
 
 ## SDKs
@@ -12,7 +12,7 @@ Our SDKs give you immediate access to our APIs and its features.
 
 ###CDA - Content Delivery API<br>
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
-[View on GitHub](https://github.com/contentful/contentful.swift)<br>
+[View on GitHub - Swift](https://github.com/contentful/contentful.swift)<br>
 [View on GitHub - ObjC](https://github.com/contentful/contentful.objc)<br>
 [API Reference](http://cocoadocs.org/docsets/ContentfulDeliveryAPI/)
 
@@ -29,19 +29,19 @@ This guide shows how to make a call to the Contentful API, explains what the res
 View in [Swift](/developers/api-demo/swift/) | 
 [cURL](/developers/api-demo/curl/)
 
-### [Getting Started with the CDA](/developers/docs/tutorials/ios/using-delivery-api-on-ios/)
+### [Getting Started with the CDA](/developers/docs/ios/tutorials/using-delivery-api-on-ios/)
 This walkthrough will help you getting started with your first basic hello world style iOS app of using Contentful with a demo space.
 
-### [Getting Started with the CMA](/developers/docs/tutorials/ios/using-management-api-on-ios/)
+### [Getting Started with the CMA](/developers/docs/ios/tutorials/using-management-api-on-ios/)
 This post will walk you through implementing a simple iOS app for uploading images from the device's Camera Roll to Contentful.
 
 ### [Delivering Content To & From iOS with Contentful](/blog/2014/09/18/webinar-delivering-content-to-from-ios-with-contentful/)
 Webinar showing how to use our CDA and CMA SDKs.
 
-### [Offline Persistence in the iOS SDK](/developers/docs/tutorials/ios/offline-persistence-in-ios-sdk/)
+### [Offline Persistence in the iOS SDK](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/)
 This tutorial helps you with persisting data retrieved from the Contentful Content Delivery API.
 
-### [Using the Contentful Xcode Plugin](/developers/docs/tutorials/ios/using-contentful-xcode-plugin/)
+### [Using the Contentful Xcode Plugin](/developers/docs/ios/tutorials/using-contentful-xcode-plugin/)
 Tool for recreating your content model inside Xcode.
 
 ## Tools and Framework Integrations
@@ -54,7 +54,7 @@ A plugin for automatically creating Core Data models from your Contentful conten
 ### ContentfulPersistence
 A library for making it easy to persist data retrieved from Contentful in Core Data..<br>
 [View on GitHub](https://github.com/contentful/contentful-persistence.objc)<br>
-[View the Tutorial](/developers/docs/tutorials/ios/offline-persistence-in-ios-sdk/)
+[View the Tutorial](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/)
 
 ### Concorde
 A library for displaying progressive JPEG images on iOS.<br>
@@ -101,7 +101,7 @@ Generic Product Catalogue / E-commerce app connected with an example Space in Co
 
 ### Brew
 A WatchKit app for finding bars near you, built on Contentful. [Read more.](/blog/2015/05/28/brew-app-for-apple-watch/)<br>
-[View on GitHub](https://github.com/contentful-labs/ContentfulWatchKitExample)
+[View on GitHub](https://github.com/contentful-labs/ContentfulWatchKitExample)<br>
 [Download on the App Store](https://itunes.apple.com/us/app/brew-discover-craft-beer-pubs/id986830433)
 
 ### Apple TV (tvOS)

@@ -4,7 +4,7 @@ page: :docsPlatformsJavascript
 
 [SDKs](#sdks)<br>
 [Tutorials](#tutorials)<br>
-[Tools](#tools)<br>
+[Tools](#tools-and-framework-integrations)<br>
 [Example Apps](#apps)
 
 ## SDKs
@@ -27,11 +27,19 @@ View in [Javascript](/developers/api-demo/javascript/) |
 [Node.js](/developers/api-demo/nodejs/) |
 [cURL](/developers/api-demo/curl/)
 
-### [Getting Started with the CDA](/developers/docs/tutorials/javascript/using-js-cda-sdk/)
+### [Getting Started with the CDA](/developers/docs/javascript/tutorials/using-js-cda-sdk/)
 This tutorial will walk you through your first steps in using Contentful within JavaScript.
 
 ### [CDA Webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API.
+
+## Tools and Framework Integrations
+
+These third-party libraries are **not officially supported** by Contentful and may be incomplete. If you want to include your own libraries on this list open a pull request that matches our [contribution guidelines](https://github.com/contentful-labs/awesome-contentful/blob/master/CONTRIBUTING.md).<br>
+
+### Angular-Contentful
+An AngularJS library to access the Contentful Content Delivery API<br>
+[View on GitHub](https://github.com/jvandemo/angular-contentful) - **This library is not officially supported**
 
 ## Apps
 Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
@@ -45,11 +53,3 @@ Allows you to preview your data structure and content. Developed using AngularJS
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API. Check the webinar.<br>
 [Watch Webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api)<br>
 [View on GitHub](https://github.com/contentful/cdn-webinar-store-demo)
-
-## Tools and Framework Integrations
-
-These third-party libraries are **not officially supported** by Contentful and may be incomplete. If you want to include your own libraries on this list open a pull request that matches.<br>
-
-### Angular-Contentful
-An AngularJS library to access the Contentful Content Delivery API<br>
-[View on GitHub](https://github.com/jvandemo/angular-contentful) - **This library is not officially supported**

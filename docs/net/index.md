@@ -9,8 +9,6 @@ If you want to check all of our non supported SDKs and Tools, check out our repo
 
 [SDKs](#sdks)<br>
 [Tutorials](#tutorials)<br>
-[Tools](#tools)<br>
-[Example Apps](#apps)
 
 ## SDKs
 The SDKs give you immediate access to our APIs and its features.
