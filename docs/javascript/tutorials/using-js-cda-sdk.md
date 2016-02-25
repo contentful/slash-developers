@@ -41,19 +41,13 @@ var contentful = require('contentful')
 
 If you are running your code in a web page, there are multiple ways you can get it ready to use.
 
-The quickest and easiest way is to download the [pre built and minified](https://raw.githubusercontent.com/contentful/contentful.js/master/dist/contentful.min.js) file from our repo.
-
-Don't link to that url directly in your page as it is not a recommended practice by github and the file can be updated in the future, which would break your code.
-
-Download it and use it locally.
-
-Once you've done so, you can include it with a script tag:
+The quickest and easiest way is to use the pre built and minified JavaScript file from a CDN:
 
 ~~~html
-<script src="contentful.min.js"></script>
+<script src="https://npmcdn.com/contentful@latest/browser-dist/contentful.min.js"></script>
 ~~~
 
-The recommended way would be to also managed your browser JavaScript code and dependencies with npm and use a build tool suck as browserify or webpack.
+The recommended way would be to also manage your browser JavaScript code and dependencies with npm and use a build tool suck as browserify or webpack.
 
 In that case, you'd need to first install the package:
 
@@ -93,7 +87,7 @@ var client = contentful.createClient({
 })
 ~~~
 
-See the README.md for [contentful.js](https://github.com/contentful/contentful.js) for more options.
+See the [reference documentation](https://contentful.github.io/contentful.js/contentful/latest/contentful.html) for more options.
 
 ## Requesting a single Entry
 
@@ -102,7 +96,7 @@ Once you have a client you can start getting content.
 In order to retrieve a specific Entry, you need the entry ID for that Entry. If you're looking at an Entry you created in the user interface, it should be the string in the URL after `/entries/`. In this particular case we have an Entry read to be retrieved with the id `O1ZiKekjgiE0Uu84oKqaY`.
 
 ~~~javascript
-client.entry('O1ZiKekjgiE0Uu84oKqaY')
+client.getEntry('O1ZiKekjgiE0Uu84oKqaY')
 .then(function (entry) {
   // logs the entry metadata
   console.log(entry.sys)
@@ -114,17 +108,17 @@ client.entry('O1ZiKekjgiE0Uu84oKqaY')
 
 The object received by the Promise callback represents the Entry `O1ZiKekjgiE0Uu84oKqaY` and contains two objects: `sys`, describing system properties of the Entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its Content Type (`Blog Post`).
 
-For more details on the information contained on `sys` check out the [Common Resource Attributes](https://www.contentful.com/developers/docs/references/content-delivery-api/#/introduction/common-resource-attributes) on the CDA API reference.
+For more details on the information contained on `sys` check out the [Common Resource Attributes](https://www.contentful.com/developers/docs/references/content-delivery-api/#/introduction/common-resource-attributes) on the CDA API reference or the Entities definitions on the [SDK reference](https://contentful.github.io/contentful.js/contentful/latest/Entities.html)
 
 ## Retrieving all Entries of a Space
 
 Now we're going to retrieve all the entries in a space.
 
 ~~~javascript
-client.entries()
+client.getEntries()
 .then(function (entries) {
   // log the title for all the entries that might have it
-  entries.forEach(function (entry) {
+  entries.items.forEach(function (entry) {
     if(entry.fields.title) {
       console.log(entry.fields.title)
     }
@@ -139,10 +133,10 @@ By default, one level of linked entries or assets are resolved.
 The following example demonstrates the usage of a linked asset on field `image`:
 
 ~~~javascript
-client.entries()
+client.getEntries()
 .then(function (entries) {
   // log the file url of any linked assets on field `image`
-  entries.forEach(function (entry) {
+  entries.items.forEach(function (entry) {
     if(entry.fields.image) {
       console.log(entry.fields.image.fields.file.url)
     }
@@ -153,30 +147,32 @@ client.entries()
 If you'd like to have additional levels of links resolved, or none at all, you can use the include parameter:
 
 ~~~javascript
-client.entries({include: 0})
+client.getEntries({include: 0})
 .then(function (entries) {
   // Link wasn't resolved, so it only contains the asset metadata
-  console.log(entries[0].fields.image.sys.id)
+  console.log(entries.items[0].fields.image.sys.id)
 })
 ~~~
+
+You can also turn off link resolultion when you initialize the SDK or with a `resolveLinks` property on every request.
 
 Check the [Links Reference Page](https://www.contentful.com/developers/docs/concepts/links/) for more information on linked entries.
 
 The entries method can also take additional parameters for filtering and querying.
 
 ~~~javascript
-client.entries({
+client.getEntries({
   'fields.title[match]': 'stars'
 })
 .then(function (entries) {
   // Logs only fields with a title field matching the string 'stars'
-  entries.forEach(function (entry) {
+  entries.items.forEach(function (entry) {
     console.log(entry.fields.title)
   })
 })
 ~~~
 
-Check out the [JavaScript CDA SDK](https://github.com/contentful/contentful.js) page for more examples and the [Search Parameters API page](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
+Check out the [JavaScript CDA SDK](https://contentful.github.io/contentful.js) page for more examples and the [Search Parameters API page](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
 
 ## Conclusion
 
