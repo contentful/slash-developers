@@ -51,7 +51,7 @@ There you have all the available commands:
 * `generate_json`
 * `generate_token`
 
-If you want to, and I leave this as an excersice to the reader, you can look for the help of each individual command.
+If you want to, and I leave this as an exercise to the reader, you can look for the help of each individual command.
 
 We will now proceed to explain some of their use cases.
 
@@ -61,7 +61,7 @@ Whenever you run `create_space` or `generate_token` the program will check if yo
 If you don't have them, then you will be asked to create them.
 
 A new browser window will be opened and will try to authenticate you in our [Login System](https://be.contentful.com/login).
-If you're not already authenticated, you will be promted to Log In or Sign Up.
+If you're not already authenticated, you will be prompted to Log In or Sign Up.
 
 After this, you will be requested permission to create an OAuth token for `contentful_bootstrap` to start creating your Space and Tokens.
 
@@ -78,7 +78,7 @@ $ contentful_bootstrap create_space my_first_space
 In this case, the space will be created empty, and you will be provided a URL to access it and manage it.
 
 This simple command also triggers a few other things under the hood, and you will be prompted to decide on them.
-You will be offered wether to automatically create Read-Only API keys for our [Content Delivery API][0], and also
+You will be offered whether to automatically create Read-Only API keys for our [Content Delivery API][0], and also
 if you want to save your credentials in a `~/.contentfulrc` file.
 
 We highly recommend that you do both things as they are really useful, this will be explained in a later section.
@@ -159,7 +159,7 @@ $ contentful_bootstrap create_space simple --json-template templates/simple.json
 
 Now that your content has been created, your tokens ready to use and saved into `~/.contentfulrc`, we can start consuming it.
 
-But first, let's disect the contents of `~/.contentfulrc`
+But first, let's dissect the contents of `~/.contentfulrc`
 
 ~~~ ini
 [global]
