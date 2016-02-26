@@ -53,7 +53,7 @@ A plugin for automatically creating Core Data models from your Contentful conten
 [View on GitHub](https://github.com/contentful/ContentfulXcodePlugin)
 
 ### ContentfulPersistence
-A library for making it easy to persist data retrieved from Contentful in Core Data..<br>
+A library for making it easy to persist data retrieved from Contentful in Core Data or Realm.<br>
 [View on GitHub](https://github.com/contentful/contentful-persistence.objc)<br>
 [View the Tutorial](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/)
 
@@ -108,5 +108,5 @@ A WatchKit app for finding bars near you, built on Contentful. [Read more.](/blo
 ### Apple TV (tvOS)
 
 ### TVFul
-Example for using the Contentful SDK for TVs apps.<br>
+Example for using the Contentful SDK for tvOS apps.<br>
 [View on GitHub](https://github.com/contentful/tvful)
