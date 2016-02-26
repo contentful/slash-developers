@@ -38,7 +38,7 @@ To get you jump-started in Contentful using Contentful Bootstrap. We also have a
 
 - [View on Github](https://github.com/contentful/contentful-bootstrap.rb)
 
-## Third Part Tools
+## Third Party Tools
 
 Please notice that this library is not officially supported by Contentful and may be incomplete, but we've at least tried it out.
 If you want to check all of our non supported SDKs and Tools, check out our repository on [Github](https://github.com/contentful-labs/awesome-contentful).
