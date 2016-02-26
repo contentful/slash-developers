@@ -52,5 +52,5 @@ Allows you to preview your data structure and content. Developed using AngularJS
 
 ### Space template apps
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API. Check the webinar.<br>
-[Watch Webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api)<br>
+[Watch Webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)<br>
 [View on GitHub](https://github.com/contentful/cdn-webinar-store-demo)

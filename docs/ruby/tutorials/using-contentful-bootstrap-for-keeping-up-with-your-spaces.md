@@ -60,7 +60,7 @@ We will now proceed to explain some of their use cases.
 Whenever you run `create_space` or `generate_token` the program will check if you already have Contentful Management API Credentials.
 If you don't have them, then you will be asked to create them.
 
-A new browser window will be opened and will try to authenticate you in our [Login System](https://be.contentful.com).
+A new browser window will be opened and will try to authenticate you in our [Login System](https://be.contentful.com/login).
 If you're not already authenticated, you will be promted to Log In or Sign Up.
 
 After this, you will be requested permission to create an OAuth token for `contentful_bootstrap` to start creating your Space and Tokens.

@@ -40,11 +40,11 @@ We provide libraries for major programming languages and platforms so you don't 
 
 - [Android / Java](/developers/docs/android/)
 - [Objective-C / Swift](/developers/docs/ios/)
-- [JavaScript](/developers/docs/javascript)
-- [PHP](/developers/docs/php)
-- [Ruby](/developers/docs/ruby)
-- [Python](/developers/docs/python)
-- [.NET](/developers/docs/net)
+- [JavaScript](/developers/docs/javascript/)
+- [PHP](/developers/docs/php/)
+- [Ruby](/developers/docs/ruby/)
+- [Python](/developers/docs/python/)
+- [.NET](/developers/docs/net/)
 
 ## Tools
 

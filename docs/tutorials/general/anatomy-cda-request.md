@@ -8,9 +8,9 @@ Contentful's Delivery API (CDA) is a read-only API for retrieving content from C
 
 This article goes into detail about how the requests and responses work using the CDA. Our official [SDKs](/developers/docs/code/libraries/) should free you from all of these details, but if you want to know exactly how the API works, this page is for you.
 
-To get started, for every request, clients [need to provide an access token](https://www.contentful.com/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
+To get started, for every request, clients [need to provide an access token](/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
 
-You can create an access token using [Contentful's Web Interface](http://app.contentful.com) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
+You can create an access token using [Contentful's Web Interface](https://be.contentful.com/login) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
 
 In a request, `access_token` may be provided as a query parameter `access_token=$token` or a HTTP header `Authorization: Bearer $token`. Still, header-based authorization is preferred in most cases.
 
