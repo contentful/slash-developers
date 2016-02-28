@@ -2,39 +2,41 @@
 page: :docsPlatformsJavascript
 ---
 
-[SDKs](#sdks)<br>
-[Tutorials](#tutorials)<br>
-[Tools](#tools-and-framework-integrations)<br>
-[Example Apps](#apps)
+- [SDKs](#sdks)
+- [Tutorials](#tutorials)
+- [Tools](#tools-and-framework-integrations)
+- [Example apps](#apps)
 
 ## SDKs
 Our SDKs give you immediate access to our APIs and its features.
 
-###CDA - Content Delivery API<br>
+### CDA - Content Delivery API<br>
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
 [View on GitHub](https://github.com/contentful/contentful.js)<br>
-[API Reference](https://contentful.github.io/contentful.js)
+[API reference](https://contentful.github.io/contentful.js)
 
-###CMA - Content Management API<br>
+### CMA - Content Management API<br>
 This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
 [View on GitHub](https://github.com/contentful/contentful-management.js)<br>
 
 ## Tutorials
 Step by step guides to help you accomplishing specific tasks.
 
-### API Demo
+### API demo
 This guide shows how to make a call to the Contentful API, explains what the response looks like, and suggests some relevant next steps.<br>
-View in [Javascript](/developers/api-demo/javascript/) |
+View in [JavaScript](/developers/api-demo/javascript/) |
 [Node.js](/developers/api-demo/nodejs/) |
 [cURL](/developers/api-demo/curl/)
 
-### [Getting Started with the CDA](/developers/docs/javascript/tutorials/using-js-cda-sdk/)
-This tutorial will walk you through your first steps in using Contentful within JavaScript.
+### Getting started with the CDA
+This tutorial will walk you through your first steps in using Contentful within JavaScript.<br>
+[View the tutorial](/developers/docs/javascript/tutorials/using-js-cda-sdk/)
 
-### [CDA Webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)
-This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API.
+### CDA Webinar
+This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API.<br>
+[Watch the webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)
 
-## Tools and Framework Integrations
+## Tools and framework integrations
 
 These third-party libraries are **not officially supported** by Contentful and may be incomplete. If you want to include your own libraries on this list open a pull request that matches our [contribution guidelines](https://github.com/contentful-labs/awesome-contentful/blob/master/CONTRIBUTING.md).<br>
 
@@ -46,11 +48,11 @@ An AngularJS library to access the Contentful Content Delivery API<br>
 Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
 You can download them by looking for “Contentful” on Google Play.
 
-### Data Browser
+### Data browser
 Allows you to preview your data structure and content. Developed using AngularJS.<br>
 [View on GitHub](http://contentful.github.io/contentful.js/example/browser/index.html)<br>
 
 ### Space template apps
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API. Check the webinar.<br>
-[Watch Webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)<br>
+[Watch the webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)<br>
 [View on GitHub](https://github.com/contentful/cdn-webinar-store-demo)

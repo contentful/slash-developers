@@ -6,11 +6,11 @@ page: :docsAnatomyCDARequest
 
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-This article goes into detail about how the requests and responses work using the CDA. Our official [SDKs](/developers/docs/code/libraries/) should free you from all of these details, but if you want to know exactly how the API works, this page is for you.
+This article goes into detail about how the requests and responses work using the CDA. If you want to keep it simple, you can use the SDKs we're offering for the most popular [programming languages](/developers/docs/#libraries). But if you want to know exactly how the API works, this page is for you.
 
 To get started, for every request, clients [need to provide an access token](/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
 
-You can create an access token using [Contentful's Web Interface](https://be.contentful.com/login) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
+You can create an access token using [Contentful's Web Interface](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
 
 In a request, `access_token` may be provided as a query parameter `access_token=$token` or a HTTP header `Authorization: Bearer $token`. Still, header-based authorization is preferred in most cases.
 
@@ -22,7 +22,7 @@ Finally, retrieved Entries also have a `field` object, which is used to assign v
 
 ## Pre-requisites
 
-In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [Developer Center](https://www.contentful.com/developers/docs/concepts/data-model/).
+In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [developer center](/developers/docs/concepts/data-model/).
 
 You should also be able to recognize the basic structure of JSON responses and requests of REST APIs.
 
@@ -501,7 +501,7 @@ Similar to our previous example, the array `items` will retrieve results matchin
   }
 ~~~
 
-This a simple usage of Links, for more advanced uses visit the [Links Reference Page](https://www.contentful.com/developers/docs/concepts/links/).
+This a simple usage of Links, for more advanced uses visit the [Links Reference Page](/developers/docs/concepts/links/).
 
 {:.note}
 **Note:** When omitted, the `include` parameter takes the standard value of `1`
