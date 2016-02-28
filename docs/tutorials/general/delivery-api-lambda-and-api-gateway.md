@@ -14,7 +14,9 @@ We will keep things simple in this tutorial and implement a straightforward tran
 
 In order to demonstrate our new API, we have created [this simple page][demo-page] that displays this tutorial as HTML.
 
-Because our API Gateway is a drop-in replacement for the [`/spaces/{id}/entries`][docs-entries-endpoint] endpoint of the Content Delivery API, we were able to use the official [contentful.js][] SDK to retrieve the content, and display the HTML result with just a few lines of JavaScript. You could also use any of our other [Official SDKs][sdks] to query it from different languages.
+Because our API Gateway is a drop-in replacement for the `/spaces/{id}/entries` [endpoint][docs-entries-endpoint] endpoint of the Content Delivery API, we were able to use the official [contentful.js][] SDK to retrieve the content, and display the HTML result with just a few lines of JavaScript.
+
+You can also check the [other languages][languages] we offer SDKs for.
 
 ### Tutorial steps:
 
@@ -179,7 +181,7 @@ Now we have shown you how to:
 3. Expose that Lambda function to your client-side apps with API Gateway.
 4. Layer any functionality you want on our API.
 
-One can easily imagine going a bit further than this example and create an API gateway that renders full HTML pages using predefined templates. By combining this with CloudFront integration you can have an extremely scalable page-delivery mechanism without administering a single server. One could even combine data from multiple sources, [the only limit is yourself](http://zombo.com).
+One can easily imagine going a bit further than this example and create an API gateway that renders full HTML pages using predefined templates. By combining this with CloudFront integration you can have an extremely scalable page-delivery mechanism without administering a single server. One could even combine data from multiple sources, the only limit is yourself.
 
 <!-- much links -->
 [Lambda]: https://aws.amazon.com/lambda/
@@ -192,10 +194,10 @@ One can easily imagine going a bit further than this example and create an API g
 [demo-page]: https://contentful-labs.github.io/md-to-html-lambda/
 
 [contentful.js]: https://github.com/contentful/contentful.js
-[sdks]: https://www.contentful.com/developers/docs/code/libraries/
-[cda-description]: https://www.contentful.com/developers/docs/concepts/apis/#content-delivery-api
-[docs-entries-endpoint]: http://docs.contentfulcda.apiary.io/#reference/entries/entries-collection
-[docs-query-params]: http://docs.contentfulcda.apiary.io/#reference/search-parameters
+[languages]: /developers/docs/#libraries
+[cda-description]: /developers/docs/concepts/apis/#content-delivery-api
+[docs-entries-endpoint]: /developers/docs/references/content-delivery-api/#/reference/entries/entries-collection
+[docs-query-params]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [contentful-resource-transform]: https://github.com/contentful/contentful-resource-transform
 
 [marked]: https://github.com/chjj/marked

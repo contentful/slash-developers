@@ -52,5 +52,5 @@ When syncing Entries or Assets they come in all available localizations instead 
 
 ## Further information
 
-- Using the Sync API for [offline persistence on iOS](/developers/docs/tutorials/ios/offline-persistence-in-ios-sdk/)
+- Using the Sync API for [offline persistence on iOS](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/)
 - Using Synchronization with the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/synchronization)

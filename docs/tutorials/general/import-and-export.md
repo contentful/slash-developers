@@ -282,7 +282,7 @@ After you've extracted data by using the above methods, you must install the `co
 gem install contentful-importer
 ~~~
 
-Before anything, we must create a content model using the [Contentful's Web Interface](http://www.contentful.com). Then, you download the content model and save it in a `content_model.json` file:
+Before anything, we must create a content model using the [Contentful's Web Interface](https://be.contentful.com/login). Then, you download the content model and save it in a `content_model.json` file:
 
 ~~~ bash
  curl -X GET \

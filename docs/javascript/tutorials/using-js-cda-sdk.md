@@ -16,9 +16,9 @@ In this tutorial, it is assumed you have understood the basic Contentful data mo
 
 ## Authentication
 
-To get started, for every request, clients [need to provide an access token](https://www.contentful.com/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
+To get started, for every request, clients [need to provide an access token](/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
 
-You can create an access token using [Contentful's Web Interface](http://app.contentful.com) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
+You can create an access token using [Contentful's Web Interface](https://be.contentful.com/login) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
 
 ## Setting up the client
 

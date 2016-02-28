@@ -109,4 +109,4 @@ You can also check out how to [use persistent data storage with Vault][4].
 
 [1]: https://github.com/contentful/contentful.java
 [2]: https://github.com/contentful-labs/contentful_middleman_examples
-[4]: /developers/docs/tutorials/android/offline-persistence-with-vault/
+[4]: /developers/docs/android/tutorials/getting-started-with-contentful-and-android/

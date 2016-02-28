@@ -854,4 +854,4 @@ In this article we have covered how to:
 4. Create, process and publish Assets
 5. Add Assets to Entries
 
-Although we have exposed many details of the Content Management API, there are still many uncovered features in the [Official Documentation](https://www.contentful.com/developers/docs/references/content-management-api/#/reference). You can also find many [SDKs](https://www.contentful.com/developers/docs/code/libraries/) and [tools](https://www.contentful.com/developers/docs/code/tools/) to build your application.
+Although we have exposed many details of the Content Management API, there are still many uncovered features in the [Official Documentation](/developers/docs/references/content-management-api/#/reference). We also offer SDKs and tools for the most popular [programming languages](/developers/docs/#libraries).

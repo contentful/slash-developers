@@ -152,7 +152,7 @@ In this article we have:
 - To learn more about the different kinds of filtering & querying supported by our API, check out [the reference documentation][filtering-reference].
 - Finally, you can find more static site generator integrations on our [Tools][tools] page.
 
-[cf-mm-examples]: https://github.com/contentful-labs/contentful_middleman_examples
+[cf-mm-examples]: https://github.com/contentful/contentful_middleman_examples
 [filtering-reference]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
 [tools]: https://www.contentful.com/developers/docs/code/tools/
 
