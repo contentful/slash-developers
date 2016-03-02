@@ -27,7 +27,9 @@ View in [PHP](/developers/api-demo/php/) |
 This tutorial will walk you through your first steps in using Contentful within your PHP application.<br>
 [View the tutorial](/developers/docs/php/tutorials/getting-started-with-contentful-and-php/)
 
-### [Using the Sync API with PHP](/developers/docs/php/tutorials/using-the-sync-api-with-php/)
+### Using the Sync API with PHP
+The Sync API allows you to keep a local copy of all content of a Space up-to-date via delta updates. This tutorial will walk you how to use the Sync API with the Contentful PHP SDK.<br>
+[View the tutorial](/developers/docs/php/tutorials/using-the-sync-api-with-php/)
 
 ## Tools and Framework Integrations
 
