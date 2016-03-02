@@ -37,6 +37,12 @@ Using the Content Delivery API on Android.<br>
 Vault is an Android library that simplifies persistence of data from Contentful via SQLite. It lets you define Java representations for your Contentful models.<br>
 [View the tutorial](/developers/docs/android/tutorials/offline-persistence-with-vault/)
 
+### Advanced Tutorials
+Those tutorials are targeting more complex aspects of this SDK:
+
+- [Type Retrieval](/developers/docs/android/tutorials/advanced-types/)
+- [Filtering and Searching](/developers/docs/android/tutorials/advanced-filtering-and-searching/)
+
 ## Tools and framework integrations
 Here are some tools developed by our team to help you completing some basic tasks.
 
