@@ -7,8 +7,7 @@ upcoming samples are using the following setup: `space id = cfexampleapi` and `a
 
 ## Searching
 
-In order query for all items, containing the complete string `nyan` anywhere ... (No matter if in name, description, or 
-somewhere else)
+In order query for all items, containing the complete string `nyan` in symbol or text fields.
 
 ~~~ java
 CDAArray found = client.fetch(CDAEntry.class)
@@ -68,18 +67,20 @@ CDAArray found = client.fetch(CDAEntry.class)
     .all();
 ~~~
 
-Ignoring the first entries, can be accomplished by using the `skip` parameter. This can be used nicely for paging:
+Ignoring the first entries, can be accomplished by using the `skip` parameter. This can be used nicely for paging, by
+skipping the first 13 elements:
 
 ~~~ java
 CDAArray found = client.fetch(CDAEntry.class)
-    .where("skip", "1")
+    .where("skip", "13")
     .all();
 ~~~ 
 
 ## Include
 
-If you do not want the query to return only top level entries, and not its children(the default), you could use the 
-parameter `include` with the value `0`. 
+If you do not want the query to return only top level entries, and not its children, you could use the
+parameter `include` with the value `0`. Otherwise this value will be used to determine how many hierarchy levels
+to be returned. If not set, it will return 1, only the first level of children.
 
 ~~~ java
 CDAArray found = client.fetch(CDAEntry.class)
