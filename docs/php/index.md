@@ -39,4 +39,8 @@ A Symfony2 bundle for integrating with the Contentful APIs (Content Delivery and
 
 ## Apps
 
-Coming Soon
+### Space template apps
+These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in our Dashboard.
+
+Generic Product Catalogue / E-commerce app connected with an example Space in Contentful.<br>
+[View on GitHub](https://github.com/contentful/product-catalogue-app-symfony2)
