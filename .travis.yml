@@ -1,7 +1,9 @@
 language: node_js
+dist: trusty
+sudo: required
 
 node_js:
-  - iojs-v2
+  - "5.1"
 
 before_install:
   - make -C apiary install
