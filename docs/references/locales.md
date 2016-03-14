@@ -223,9 +223,6 @@ GET https://cdn.contentful.com/spaces/mo94git5zcq9/entries/tcptFqv6xwQy6QYOAgK0C
 
 #### JSON Response
 
-<<<<<<< 445d5a7ca3ce14ec4af11c83573ed6dd6bb3cf8e
-### JSON Response
-
 ~~~ json
 {
   "sys": {
