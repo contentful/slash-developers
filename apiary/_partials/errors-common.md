@@ -1,6 +1,6 @@
 Whenever something goes wrong with an API request, the server returns an error. Information about the error is indicated by an HTTP status code, with further details in the response body, which will be a JSON resource.
 
-Errors share the same common attribues as other API resources; they have a `sys` property, where `sys.type` is always `"Error"` and `sys.id` identifies the exact error that occured. They also always have a `message` property which will be a short description of what went wrong.
+Errors share the same common attributes as other API resources; they have a `sys` property, where `sys.type` is always `"Error"` and `sys.id` identifies the exact error that occurred. They also always have a `message` property which will be a short description of what went wrong.
 
 Finally, some errors resulting from bad input (such as `ValidationFailed` errors) contain a `details` property. This property is structured data that indicates more precisely what was wrong with the input.
 

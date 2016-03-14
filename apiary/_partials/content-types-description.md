@@ -36,7 +36,7 @@ Symbol<sup>1</sup> |String        |Basic list of characters. Maximum length is 2
 Text<sup>2</sup>   |String        |Same as Symbol, but filterable via Full-Text Search. Maximum length is 50,000.| `" This is a post and ..."`
 Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53. | `42`
 Number |Number        |Number type with decimals. | `3.14`
-Date<sup>3</sup>  |String        |Date/Time in ISO-8601 format. | `"2015-11-06T09:45:27"`
+Date<sup>3</sup>  |String        |Date/Time in ISO 8601 format. | `"2015-11-06T09:45:27"`
 Boolean|Boolean       |Flag, `true` or `false` | true
 Location|Object        |A geographic location specified in latitude and longitude. | `{"lat":"52.5018616","lon":"13.4112619"}`
 Link   |Object        |A reference to an entry or asset. The type of the referenced item is defined by the `linkType` property. See [links](https: //www.contentful.com/developers/docs/concepts/links/) for more information| `{"sys": {"type": "Link", "linkType": "Entry", "id": "af35vcx8etbtwe8xv"}}`

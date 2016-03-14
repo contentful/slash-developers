@@ -4,7 +4,7 @@ page: :docsSync
 
 The Sync API allows you to keep a local copy of all content of a Space up-to-date via delta updates.
 
-Synchronizing content greatly improves the user experience of applications. Mobile data connections can be slow and have a very high latency compared to broadband internet connections. When apps sync content to the device and access it from a local database (e.g. CoreData, LocalStorage, SQLite) data access is much faster and apps can provide a much better user experience.
+Synchronizing content greatly improves the user experience of applications. Mobile data connections can be slow and have a very high latency compared to broadband internet connections. When apps sync content to the device and access it from a local database (e.g. Core Data, LocalStorage, SQLite) data access is much faster and apps can provide a much better user experience.
 
 Without a Sync API, applications require an ongoing internet connection and constantly download all data in each synchronization, including content they already knew about. This wastes a lot of mobile data and time, especially when syncing on cellular data.
 
@@ -30,7 +30,7 @@ Keep in mind that the synchronization endpoint will always give you all the cont
 
 - If users only want to see the newest content, it would be wasteful to download everything immediately. In that case, it might be better to only fetch selected content based on the date, using search.
 - Because the Sync API retrieves all localized content, it might be better to use the Delivery API to retrieve results of a single locale
-- Following the initial sync, removed items will be transfered in the form of Deletions, which may unnecessarily lengthen each response
+- Following the initial sync, removed items will be transferred in the form of Deletions, which may unnecessarily lengthen each response
 
 ## Usage
 

@@ -4,7 +4,7 @@ page: :docsErrors
 
 Whenever something goes wrong with an API request, the server produces an error. The error message contains an appropriate HTTP status code in the header and a JSON response in the body. The `sys` part of the JSON describes the error details.
 
-The `sys.type` will always be *Error*, and the `sys.id` identifies the precise error that has occured. The error messages sometimes include more details about the error.
+The `sys.type` will always be *Error*, and the `sys.id` identifies the precise error that has occurred. The error messages sometimes include more details about the error.
 
 ## Error types
 

@@ -5,7 +5,7 @@ page: :docsToolsOthers
 ## Contentful Webhook Listener
 
 A Simple HTTP Webserver with pluggable behavior for listening to API Webhooks<br>
-[View on Github](https://github.com/contentful/contentful-webhook-listener.rb)
+[View on GitHub](https://github.com/contentful/contentful-webhook-listener.rb)
 
 ## Extending the Delivery API with AWS Lambda & API Gateway
 
@@ -30,7 +30,7 @@ This article is a comprehensive exposure to managing content via the Content Man
 ## Media Uploader
 
 Upload images to Contentful from OS X.<br>
-[View on Github](https://github.com/contentful/image-uploader-app)
+[View on GitHub](https://github.com/contentful/image-uploader-app)
 
 ## Third Party Tools
 
