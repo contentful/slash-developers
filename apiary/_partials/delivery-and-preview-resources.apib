@@ -261,17 +261,15 @@ Even when not specified, the `include` parameter assumes the value of `1`. In th
 
   + Attributes (Empty Array)    
 
-## Links to a specific item [/spaces/{space_id}/entries?access_token={access_token}&include={value}&content_type={content_type}&fields.{linking_field}.sys.id={target_entry_id}]
+## Links to a specific entry [/spaces/{space_id}/entries?access_token={access_token}&include={value}&sys.id={target_entry_id}]
 
-It might be useful to retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` (field used to link  items) and `entry_id` from the target Entry.
+It might be useful to retrieve all items linked to a particular target Entry. To do so, a querying URL should filter Entries based on their specific `target_entry_id` from the target Entry.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, number, `2`) ... Number of levels to include.
-    + linking_field (required, string, `bestFriend`) ... Field used to link items
     + target_entry_id (required,string, `nyancat`) ... ID of the target Entry
-    + content_type (required,string, `cat`) ... ID of the Content Type
 
 ### Query Entries [GET]
 
