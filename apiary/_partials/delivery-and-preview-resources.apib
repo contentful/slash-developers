@@ -138,15 +138,13 @@ Entries are the documents contained within a space. They might represent blog po
 
 # Group Assets
 
-## Assets Collection [/spaces/{space_id}/assets?access_token={access_token}]
-
 Assets represent files in a Space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to Entries through Links.
 
 Assets can optionally be localized by providing separate files for each locale. Those Assets which are not localized simply provide a single file under the default locale.
 
 When querying the Content Delivery API for Entries which contain Links to Assets then all Assets will be included by default.
 
-Resize image assets on the fly by supplying the desired dimensions as query parameters.
+Asset properties:
 
 Field                           |Type          |Description
 --------------------------------|--------------|------------------------------------------------
@@ -159,6 +157,16 @@ fields.file.contentType         |Symbol        |Content type of the file.
 fields.file.url                 |Symbol        |URL of the file.
 fields.file.details             |Object        |Details of the file, depending on its mime type.
 fields.file.details.size        |Number        |Size (in bytes) of the file.
+
+For image assets, the `fields.file.url` field will point to `images.contentful.com`. For other file types, it will point to `assets.contentful.com`.
+
+For the images in `images.contentful.com` you can use query parameters to define the image size, cropping parameters and various other options.
+
+This means you don't need to create multiple versions of that image and store them as assets. You can just store the raw, larger size image, and then use query parameters to define the different sizes when you need them.
+
+All of this, with examples, is documented in our [Images API](https://www.contentful.com/developers/docs/references/images-api/) reference.
+
+## Assets Collection [/spaces/{space_id}/assets?access_token={access_token}]
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
@@ -200,16 +208,6 @@ fields.file.details.size        |Number        |Size (in bytes) of the file.
     + Attributes (Empty Array)
 
 ## Asset [/spaces/{space_id}/assets/{asset_id}?access_token={access_token}]
-
-### Image Asset resizing
-
-Instead of chosing image dimensions in Content Management you can specify the dimensions of images during delivery.
-
-Images are hosted on `images.contentful.com`. For files on this host you can attach the URI query parameters `w` and/or `h` to specify the desired dimensions. The image will never be stretched, skewed or enlarged. Instead it will be fit into the bounding box given by the `w` and `h` parameters.
-
-Additionaly, a `q` can be passed to define the JPEG compression quality between 1 and 100 and the `fm` parameter can be used to change the format to either "png" or "jpg".
-
-Example URL: <https://images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png?w=100&fm=jpg&q=50>
 
 + Parameters
     + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
