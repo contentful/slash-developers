@@ -126,6 +126,24 @@ client.getEntries()
 })
 ~~~
 
+It's very similar to getting a single entry, except you'll get an array with all the retrieved entries, and some parameters relevant to [pagination](https://www.contentful.com/developers/docs/references/content-delivery-api/#/introduction/collection-resources-and-pagination).
+
+By default you get 100 entries. If you'd like to retrieve more, you can skip the first 100. You can also retrieve more than 100 entries per request, up to 1000.
+~~~javascript
+client.getEntries({
+  skip: 100,
+  limit: 200,
+  order: 'sys.createdAt'
+})
+.then(function (entries) {
+  console.log(entries.items.length) // 200
+})
+~~~
+
+Don't forget to also specify an ordering parameter to get more predictable results. You can read more about ordering parameters in the [Search Parameters API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/order) reference.
+
+## Retrieving linked Entries
+
 Some entries might have links to each other, so when you retrieve a list of entries, those links are automatically resolved so you don't have to go look for the linked entry separately.
 
 By default, one level of linked entries or assets are resolved.
@@ -158,21 +176,68 @@ You can also turn off link resolultion when you initialize the SDK or with a `re
 
 Check the [Links Reference Page](https://www.contentful.com/developers/docs/concepts/links/) for more information on linked entries.
 
-The entries method can also take additional parameters for filtering and querying.
+## Retrieving Entries with search parameters
+
+The entries method can also take additional parameters for filtering and querying. You can also use those same parameters when getting Assets or Content Types.
+
+The following request filters all entries by a specific Content Type, using that Content Type's ID:
 
 ~~~javascript
 client.getEntries({
-  'fields.title[match]': 'stars'
+  'content_type': '6tw1zeDm5aMEIikMaCAgGk'
 })
 .then(function (entries) {
-  // Logs only fields with a title field matching the string 'stars'
-  entries.items.forEach(function (entry) {
-    console.log(entry.fields.title)
-  })
+  // Only entries of the Blog Post Content Type
+  console.log(entries)
 })
 ~~~
 
-Check out the [JavaScript CDA SDK](https://contentful.github.io/contentful.js) page for more examples and the [Search Parameters API page](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
+You can also filter by properties of your Entries:
+
+~~~javascript
+client.getEntries({
+  'sys.id': 'O1ZiKekjgiE0Uu84oKqaY'
+})
+.then(function (entries) {
+  // Only entries of the Blog Post Content Type
+  console.log(entries)
+})
+~~~
+
+Apart from simple equality filters, you can also use operators. This is the reverse of the previous example, except it will give you any Entries where `sys.id` is not equal (`[ne]`) to the specified id.
+
+~~~javascript
+client.getEntries({
+  'sys.id[ne]': 'O1ZiKekjgiE0Uu84oKqaY'
+})
+.then(function (entries) {
+  // All entries but the one specified
+  console.log(entries)
+})
+~~~
+
+If you want to filter by any of the fields, you'll also need to specify the Content Type, as fields are not the same across all Content Types:
+
+~~~javascript
+client.getEntries({
+  'content_type': '6tw1zeDm5aMEIikMaCAgGk',
+  'fields.image.sys.id': '1Idbf0HVsQeYIC0EmYgiuU'
+})
+.then(function (entries) {
+  // Only entries which link to the specified image
+  console.log(entries)
+})
+~~~
+
+There are many more search filters and operators you can use. You can perform the following kinds of searches:
+
+* [Equality/Inequality](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/equality-operator) ([as well as in Array fields](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-equalityinequality))
+* [Inclusion/Exclusion](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/inclusion)
+* [Ranges](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
+* [Full text search](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/full-text-search)
+* [Geo location searches](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
+
+Check out the [Search Parameters API page](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
 
 ## Conclusion
 
@@ -181,4 +246,4 @@ In this article, we have shown you how to use the Contentful JavaScript SDK to p
 1. Retrieve a single Entry
 2. Retrieve all Entries of a Space
 3. Retrieve all Entries and their linked resources
-4. Retrieve all filtered Entries by a search parameter
+4. Retrieve all filtered Entries by search parameters
