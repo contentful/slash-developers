@@ -36,6 +36,9 @@ This tutorial will walk you through your first steps in using Contentful within 
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API.<br>
 [Watch the webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)
 
+### Using the Sync API with JavaScript
+The Sync API allows you to keep a local copy of all content of a Space up to date via delta updates. This tutorial will show you how to use the Sync API with the Contentful JavaScript SDK.
+
 ## Tools and framework integrations
 
 These third-party libraries are **not officially supported** by Contentful and may be incomplete. If you want to include your own libraries on this list open a pull request that matches our [contribution guidelines](https://github.com/contentful-labs/awesome-contentful/blob/master/CONTRIBUTING.md).<br>
