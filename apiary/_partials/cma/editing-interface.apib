@@ -43,9 +43,9 @@ Please note that there are specific sets of applicable Widgets per Content Type 
 
 | Widget ID               | Applicable field types        | Description               |
 |-------------------------|-------------------------------|---------------------------|
-| assetLinkEditor         | Asset                         | Search and attach an asset. |
-| assetLinksEditor        | Asset (Array)                 | Search, attach, and reorder, multiple assets. |
-| assetGalleryEditor      | Asset (Array)                 | Search and attach multiple assets and preview them. |
+| assetLinkEditor         | Asset                         | Search, attach, and preview an asset. |
+| assetLinksEditor        | Asset (Array)                 | Search, attach, reorder, and preview multiple assets. |
+| assetGalleryEditor      | Asset (Array)                 | Search, attach, reorder, and preview multiple assets in a gallery layout |
 | boolean                 | Boolean                       | Radio buttons with customizable labels. |
 | datePicker              | Date                          | Select date, time, and timezon. |
 | entryLinkEditor         | Entry                         | Search and attach another entry.
@@ -61,7 +61,7 @@ Please note that there are specific sets of applicable Widgets per Content Type 
 | ooyalaEditor            | Symbol                        | Search and select a video hosted by [Ooyala][] |
 | kalturaEditor           | Symbol                        | Search and select a video hosted by [Kaltura][] |
 | kalturaMultiVideoEditor | Symbol (Array)                | Search and select multiple videos hosted by [Kaltura][] |
-| listInput               | Symbol (Array)                | Text input the splits values on `,`. |
+| listInput               | Symbol (Array)                | Text input that splits values on `,` and stores them as an array. |
 | multipleLine            | Text                          | A simple `<textarea>` input |
 | markdown                | Text                          | A full fleged [markdown editor][] |
 | singleLine              | Text, Symbol                  | A simple text input field |
@@ -83,8 +83,8 @@ The control entry for a field of type `Boolean`, for example, could look like th
   "widgetId": "boolean",
   "settings": {
     "helpText": "Should the post be featured on the homepage?",
-    "trueLable": "absolutely",
-    "falseLable": "rather not",
+    "trueLabel": "absolutely",
+    "falseLabel": "rather not",
   }
 }
 ```
