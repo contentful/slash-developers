@@ -79,7 +79,7 @@ client.sync({nextSyncToken: window.localStorage.getItem('contentfulSyncToken')})
 
 Every time you perform a sync you get a new token, which represents that point in time for your space, so don't forget to store it again.
 
-If you can then loop through the content you have previously stored and removed any content that is now marked as deleted, but that is left as an exercise to the reader.
+You can then loop through the content you have previously stored and removed any content that is now marked as deleted, but that is left as an exercise to the reader.
 
 ## Conclusion
 
