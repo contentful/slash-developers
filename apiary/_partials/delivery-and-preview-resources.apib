@@ -226,7 +226,7 @@ Links are a powerful way to model relationships between pieces of content.
 
 Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/links/).
 
-## Retrieval of linked items [/spaces/{space_id}/entries?access_token={access_token}&include={value}]
+## Retrieval of linked items [/spaces/{space_id}/entries?access_token={access_token}&include={include_value}]
 
 When you have related content (e.g. Entries with links to image Assets) it's possible to include both search results and related data in a single request. To do so, the `include` parameter should be used, specifying the number of levels to be resolved. The maximum number of inclusions is `10`.
 
@@ -237,7 +237,7 @@ Note that only Links between Entries, Spaces and Assets are resolved. Links betw
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + value (required, number, `2`) ... Number of levels to include.
+    + include_value (required, number, `2`) ... Number of levels to include.
 
 ### Query Entries [GET]
 
@@ -245,7 +245,7 @@ Example: Include 2 levels of linked entries.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
-  + Attributes (Empty Array)    
+  + Attributes (Array with includes)    
 
 ## Omission of linked items [/spaces/{space_id}/entries?access_token={access_token}&include=0]
 
@@ -261,14 +261,14 @@ Even when not specified, the `include` parameter assumes the value of `1`. In th
 
   + Attributes (Empty Array)    
 
-## Links to a specific item [/spaces/{space_id}/entries?access_token={access_token}&include={value}&content_type={content_type}&fields.{linking_field}.sys.id={target_entry_id}]
+## Links to a specific item [/spaces/{space_id}/entries?access_token={access_token}&include={include_value}&content_type={content_type}&fields.{linking_field}.sys.id={target_entry_id}]
 
 It might be useful to retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` (field used to link  items) and `entry_id` from the target Entry.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + value (required, number, `2`) ... Number of levels to include.
+    + include_value (required, number, `2`) ... Number of levels to include.
     + linking_field (required, string, `bestFriend`) ... Field used to link items
     + target_entry_id (required,string, `nyancat`) ... ID of the target Entry
     + content_type (required,string, `cat`) ... ID of the Content Type
@@ -277,7 +277,7 @@ It might be useful to retrieve all items linked to a particular target Entry. To
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
-  + Attributes (Empty Array)    
+  + Attributes (Array with includes)    
 
 # Group Search Parameters
 
