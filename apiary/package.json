@@ -6,7 +6,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "dredd": "^1.0.7",
+    "dredd": "https://github.com/contentful/dredd.git#private-header-use",
     "hercule": "^1.2.5"
   }
 }
