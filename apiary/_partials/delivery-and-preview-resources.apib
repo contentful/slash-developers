@@ -6,7 +6,7 @@ Note that none of the `sys` fields are editable and only the `sys.id` field can 
 
 The `sys.id` property will be defined for every resource that is not a collection. For example, a `Space` resource will have a `sys.type` and `sys.id`:
 
-```json
+```
 {
   "sys": {
     "type": "Space",
@@ -245,7 +245,7 @@ Example: Include 2 levels of linked entries.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
-  + Attributes (Empty Array)    
+  + Attributes (Empty Array)
 
 ## Omission of linked items [/spaces/{space_id}/entries?access_token={access_token}&include=0]
 
@@ -259,7 +259,7 @@ Even when not specified, the `include` parameter assumes the value of `1`. In th
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
-  + Attributes (Empty Array)    
+  + Attributes (Empty Array)
 
 ## Links to a specific item [/spaces/{space_id}/entries?access_token={access_token}&include={value}&content_type={content_type}&fields.{linking_field}.sys.id={target_entry_id}]
 
@@ -277,7 +277,7 @@ It might be useful to retrieve all items linked to a particular target Entry. To
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
-  + Attributes (Empty Array)    
+  + Attributes (Empty Array)
 
 # Group Search Parameters
 
