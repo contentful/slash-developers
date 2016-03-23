@@ -65,7 +65,7 @@ preview: check_apiary_token prepare
 	$(APIARY) preview --path=$(CPA_BLUEPRINT)
 	$(APIARY) preview --path=$(IMAGES_BLUEPRINT)
 
-publish: check_apiary_token check_ci_var prepare publish_docs notify_slack
+publish: check_apiary_token check_ci_var install prepare publish_docs notify_slack
 
 publish_docs:
 	$(APIARY) publish --api-name=$(CDA_APIARY_NAME) --path=$(CDA_BLUEPRINT)
