@@ -897,6 +897,31 @@ X-Contentful-Topic: ContentManagement.Entry.publish
 
 Your webhook receiver should also take into account the `Content-Type` header, which will have the value `application/vnd.contentful.management.v1+json`. Many web frameworks (such as Express.js) and their middleware components only automatically parse a request body if the content-type header is `application/json`, and thus require additional configuration to parse request bodies with a different content-type header.
 
+In addition the `X-Contentful-Webhook-Name` header is sent and contains the name of the webhook.
+
+Besides these predefined headers it is also possible to add a set of custom headers to the webhook
+definition, which get added to the list of headers.
+
+__example__
+
+Let's assume we have a webhook with a single custom header:
+
+```json
+{
+  "name": "My webhook",
+  "url": "https://www.example.com",
+  "headers": [{ "key": "X-My-Custom-Header", "value": "some value"}]
+}
+```
+
+If someone is now publishing an entry, the following headers will be sent:
+
+```
+X-Contentful-Topic: ContentManagement.Entry.publish
+X-Contentful-Webhook-Name: My webhook
+X-My-Custom-Header: some value
+```
+
 ### Body of Webhook HTTP Request
 
 The request body is the published Resource's body or deletion thereof.
@@ -935,7 +960,7 @@ For Example, when an Entry has been published:
 
 Or a Deletion of an Entry when an Entry has been unpublished:
 
-```
+```json
 {
   "sys": {
     "type": "DeletedEntry",
@@ -984,7 +1009,34 @@ increasing delays in between up to a maximum of 3 attempts.
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes
-        - url: https://www.example.com/test - URL the Webhook will call
+        - name: My webhook (required) - Name of the Webhook
+        - url: https://www.example.com/test (required) - URL the Webhook will call
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Webhook Definition)
+
++ Request Create a webhook with custom headers
+    This example creates a webhook with custom headers which can be defined by an array of objects
+    with `key` and `value` properties. Please note that the keys and values have to follow the
+    [RFC 7230 specification](https://tools.ietf.org/html/rfc7230#section-3.2), which means that
+    only US-ASCII characters are allowed.
+
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
+    + Attributes
+        - name: My webhook (required) - Name of the Webhook
+        - url: https://www.example.com/test (required) - URL the Webhook will call
+        - headers (array) - An object with header key-value pairs
+            - (object)
+                - key: header1
+                - value: value1
+            - (object)
+                - key: header2
+                - value: value2
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1005,6 +1057,7 @@ increasing delays in between up to a maximum of 3 attempts.
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes
+        - name: My webhook - Name of the Webhook
         - url: https://www.example.com - URL the Webhook will call
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -1019,6 +1072,7 @@ increasing delays in between up to a maximum of 3 attempts.
             X-Contentful-Version: 1
 
     + Attributes
+        - name: My webhook - Name of the Webhook
         - url: https://www.example.com - URL the Webhook will call
         - httpBasicUsername: yolo - Username for HTTP Basic Authentication
         - httpBasicPassword: yolo - Password for HTTP Basic Authentication
@@ -1513,8 +1567,16 @@ This endpoint allows the deletion of a Space Membership. It only affects the acc
     - version: 0 (number)
     - space (Space Link)
     - Include Resource Metadata
+- name: My webhook
 - url: https://www.example.com
 - httpBasicUsername
+- headers (array)
+    - (object)
+        - key: header1
+        - value: value1
+    - (object)
+        - key: header2
+        - value: value2
 
 ### API Key
 
