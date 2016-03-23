@@ -2,7 +2,7 @@
 
 Collections of resources are returned in a wrapper object that contains additional information useful for pagination over large result sets:
 
-```json
+```
 {
   "sys": { "type": "Array" },
   "skip": 0,

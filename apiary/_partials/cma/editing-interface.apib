@@ -9,7 +9,7 @@ __Example__
 Let's consider the following Content Type which describes a typical blog post kind of data structure.
 It has a title, a body and a category that can be either "General", "iOS" or "Android".
 
-```json
+```
 {
   "fields": [
     { "id": "title", "name": "Title", "type": "Symbol" },
@@ -29,7 +29,7 @@ dropdown field (= `dropdown`).
 
 The Editing Interface would look like this:
 
-```json
+```
 {
   "controls": [
     { "fieldId": "title", "widgetId": "singleLine" },
@@ -77,7 +77,7 @@ __Settings__
 A control may have custom settings that are passed to the widget to change its behavior or presentation.
 
 The control entry for a field of type `Boolean`, for example, could look like this.
-```json
+```
 {
   "fieldId": "isFeatured",
   "widgetId": "boolean",
@@ -174,7 +174,3 @@ Note that when updating an existing Editing Interface, you always need to specif
 + Response 200 (application/vnd.contentful.management.v1+json)
 
     + Attributes (Complete Editing Interface)
-
-
-
-
