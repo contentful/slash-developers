@@ -404,7 +404,7 @@ Let's get all cats that like neither rainbows nor lasagna.
 
   + Attributes (Empty Array)
 
-## Existence [/spaces/{space_id}/entries?access_token={access_token}&{attribute}%5Bexists%5D={value}]
+## Existence [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Bexists%5D={value}]
 
 You can check for the presence of a field using the `[exists]` operator. It checks if a certain fields is defined (i.e. it has any value).
 
@@ -413,8 +413,9 @@ If the field is not assigned a value, it will not have a JSON payload and will b
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.archivedVersion`) ... The attribute to match.
-    + value (required, boolean, `false`) ... The value to match.
+    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + attribute (required, string, `fields.likes`) ... The path to the property we're checking for existence
+    + value (required, boolean, `true`) ... True if the path from attribute should exist
 
 ### Query Entries [GET]
 
