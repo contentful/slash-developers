@@ -414,8 +414,8 @@ If the field is not assigned a value, it will not have a JSON payload and will b
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
-    + attribute (required, string, `fields.likes`) ... The attribute to match.
-    + value (required, boolean, `true`) ... The value to match.
+    + attribute (required, string, `fields.likes`) ... The path to the property we're checking for existence
+    + value (required, boolean, `true`) ... True if the path from attribute should exist
 
 ### Query Entries [GET]
 
