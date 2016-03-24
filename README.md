@@ -1,5 +1,7 @@
 # slash-developers
 
+[![Build Status](https://travis-ci.org/contentful/slash-developers.svg?branch=master)](https://travis-ci.org/contentful/slash-developers)
+
 This repo contains the raw content for `www.contentful.com/developers/`
 
 ## Usage
@@ -43,6 +45,14 @@ from the documentation.
  - use branches & pull requests
  - All pull requests should be reviewed by somebody else before merging to master. Preferably they are reviewed by @eugenekudashev.
  - To actually make your changes appear on staging/production, follow [this guide](https://github.com/contentful/marketing-website/blob/master/README.md#contribute-to-the-docs)
+
+## Tests
+
+The tests in this repository are using [dredd](https://github.com/apiaryio/dredd) to check that the examples defined in
+the docs actually work against the API. Generally this works by taking the URL template and example body, replacing all variables with the
+sample values and comparing the APIs response with the MSON defined for this request. Currently only GET requests are tested.
+
+Note: The tests only affect the blueprint used for the documentation on Apiary. Files in the `docs/` directory are not tested in any way.
 
 ## Apiary customization
 In order to understand how we include and theme the Apiary references, please see the [apiary_customization.md](https://github.com/contentful/marketing-website/blob/master/apiary_customization.md) file in the marketing website repo.
