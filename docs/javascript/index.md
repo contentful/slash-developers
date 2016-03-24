@@ -37,7 +37,7 @@ This demo project starts with a static HTML page and replaces the placeholder co
 [Watch the webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)
 
 ### Using the Sync API with JavaScript
-The Sync API allows you to keep a local copy of all content of a Space up to date via delta updates. This tutorial will show you how to use the Sync API with the Contentful JavaScript SDK.
+The Sync API allows you to keep a local copy of all content of a Space up to date via delta updates. This tutorial will show you how to use the Sync API with the Contentful JavaScript SDK.<br>
 [View the tutorial](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/)
 
 ## Tools and framework integrations
