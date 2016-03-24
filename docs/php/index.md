@@ -31,10 +31,14 @@ This tutorial will walk you through your first steps in using Contentful within 
 The Sync API allows you to keep a local copy of all content of a Space up-to-date via delta updates. This tutorial will walk you how to use the Sync API with the Contentful PHP SDK.<br>
 [View the tutorial](/developers/docs/php/tutorials/using-the-sync-api-with-php/)
 
+### Getting started with Contentful and Symfony
+How to setup the ContentfulBundle in your Symfony application is explained in this tutorial.<br>
+[View the tutorial](/developers/docs/php/tutorials/getting-started-with-contentful-and-symfony/)
+
 ## Tools and Framework Integrations
 
-### Symfony2 Integration
-A Symfony2 bundle for integrating with the Contentful APIs (Content Delivery and Content Management)<br>
+### Symfony Integration
+A Symfony bundle for integrating with the Contentful APIs (Content Delivery and Content Management)<br>
 [View on GitHub](https://github.com/contentful/ContentfulBundle)<br>
 
 ## Apps
