@@ -54,6 +54,7 @@ client.sync({initial: true})
 
 
 Your response will also contain a token, which you should store:
+
 ~~~javascript
 client.sync({initial: true})
 .then((response) => {
