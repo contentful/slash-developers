@@ -148,16 +148,19 @@ To discover how to use the Contentful client, check out the
 The ContentfulBundle integrates with Symfony's Web Debug Toolbar. If the toolbar is shown and there were requests to the
 Contentful API, there will be a section showing how many requests haven been made against the API.
 
+{: .img}
 ![](https://images.contentful.com/256tjdsmm689/4jmWz0SO80iecEIs4Ue2ao/6e8dafc679399db746951aeef77b3a70/symfony-debug-toolbar.png)
 
 Clicking on that section will open the Contentful panel in the Web Profiler.
 
+{: .img}
 ![](https://images.contentful.com/256tjdsmm689/3OcfVreme4Uc4guuMCquGC/705f2a7f68dd7c8f95f06ae845a59603/symfony-web-profiler.png?w=800)
 
 This view shows you a all requests that were made against one of Contentful's API including how long they took. Clicking
 on the the "Details" in the last column gives you an overview of the Request and Response and Exceptions thrown by
 the Contentful SDK.
 
+{: .img}
 ![](https://images.contentful.com/256tjdsmm689/5jlwmBgQeWWMyuik2Mae6e/a01a4f1c897cfb759ff0b14f4b591bb4/symfony-web-profiler-details.png?w=800)
 
 ## Conclusion
