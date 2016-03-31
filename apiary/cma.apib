@@ -913,7 +913,7 @@ The request body's content depends on the specific action:
 - On activate/publish: The Resource's body. In case of Entries and Assets
 their fields  will contain all locales, e.g. instead of `fields.name` there
 will be `fields['en-US'].name`.
-- On deactivate/unpublish: The Deletion of the Resource.
+- On deactivate/unpublish: The Deletion of the Resource. In the case of entries the Deletions are extended with the id of their Content Type.
 
 For Example, when an Entry has been published:
 
@@ -948,6 +948,7 @@ Or a Deletion of an Entry when an Entry has been unpublished:
     "type": "DeletedEntry",
     "id": "cat",
     "space": {"sys": {"type": "Link", "linkType": "Space", "id": "example"}},
+    "contentType": {"sys": {"type": "Link", "linkType": "ContentType", "id": "type"}},
     "createdAt": "2013-03-26T00:13:37.123Z",
     "updatedAt": "2013-03-26T00:13:37.123Z",
     "revision": 1
