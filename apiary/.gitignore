@@ -2,6 +2,7 @@ cda.html
 cma.html
 *.out.apib
 
-apiary/node_modules
 node_modules
+.bundle
+vendor
 out
