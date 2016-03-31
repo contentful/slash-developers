@@ -845,6 +845,8 @@ cannot be recreated by creating the same locale again.
 
 [See CDA documentation](http://docs.contentfulcda.apiary.io/#reference/search-parameters) for a list of search parameters supported for querying resources. Please note that the CMA does not support the `include` functionality.
 
+To use search parameters, these should be put in the end of your query, similar to the Delivery API (e.g. `https://api.contentful.com/spaces/space_id/entries?content_type=X`).
+
 # Group Webhooks
 
 Webhooks in Contentful can notify you or someone else when content has changed. For example, when an Entry has been published Contentful sends the published Entry to a preconfigured HTTP endpoint. This can be used for notifications, static site generators or other forms of post-processing that is sourced from Contentful.
