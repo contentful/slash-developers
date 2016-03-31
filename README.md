@@ -6,9 +6,10 @@ This repo contains the raw content for `www.contentful.com/developers/`
 
 ## Usage
 
-1. There's a `Makefile` for dealing with the reference blueprints:
+1. There's a `Makefile` inside the `apiary` folder for dealing with the reference blueprints:
 
 ```bash
+$ cd apiary/
 $ make clean    # remove generated files
 $ make install  # install the necessary tools
 $ make preview  # generates local HTML for blueprints, shows them in a browser
