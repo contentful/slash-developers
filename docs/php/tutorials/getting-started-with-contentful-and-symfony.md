@@ -30,6 +30,7 @@ Currently the SDK and the Bundle need to both be added to your composer.json bec
 Next you need to enable the Bundle by adding it to `app/Kernel.php`:
 
 ~~~ php
+<?php
 public function registerBundles()
 {
     return [
