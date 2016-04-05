@@ -47,7 +47,7 @@ The quickest and easiest way is to use the pre built and minified JavaScript fil
 <script src="https://npmcdn.com/contentful@latest/browser-dist/contentful.min.js"></script>
 ~~~
 
-The recommended way would be to also manage your browser JavaScript code and dependencies with npm and use a build tool suck as browserify or webpack.
+The recommended way would be to also manage your browser JavaScript code and dependencies with npm and use a build tool such as browserify or webpack.
 
 In that case, you'd need to first install the package:
 
