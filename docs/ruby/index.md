@@ -53,8 +53,8 @@ These third party libraries are **not officially supported** by Contentful and m
 
 ### Rails integration
 A collection of useful things to help make it easier to integrate Contentful into your Rails app.<br>
-[View on GitHub - Contentful Rails](https://github.com/errorstudio/contentful_rails)<br>
-[View on GitHub - Contentful Model](https://github.com/errorstudio/contentful_model)<br>
+[View on GitHub - Contentful Rails](https://github.com/contentful/contentful_rails)<br>
+[View on GitHub - Contentful Model](https://github.com/contentful/contentful_model)<br>
 [Tutorial](/blog/2015/02/23/contentfulmodel-and-contentfulrails-ruby-gems-help-building-ruby-apps-faster/)
 
 ## Apps
