@@ -248,8 +248,8 @@ You should also check out how some of our demos use `contentful_bootstrap` for s
 static site generator integrations with [Middleman][2] and [Jekyll][3].
 
 [0]: https://www.contentful.com/developers/docs/references/content-delivery-api/
-[1]: https://www.github.com/contentful/contentful-bootstrap.rb
-[2]: https://www.github.com/contentful/contentful_middleman_examples
-[3]: https://www.github.com/contentful/contentful_jekyll_examples
-[4]: https://www.github.com/contentful/contentful-management.rb
-[5]: https://www.github.com/contentful/contentful.rb
+[1]: https://github.com/contentful/contentful-bootstrap.rb
+[2]: https://github.com/contentful/contentful_middleman_examples
+[3]: https://github.com/contentful/contentful_jekyll_examples
+[4]: https://github.com/contentful/contentful-management.rb
+[5]: https://github.com/contentful/contentful.rb
