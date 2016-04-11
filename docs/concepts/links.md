@@ -7,7 +7,7 @@ pieces of content. Contentful search is built to make linked data retrieval
 as simple as adding an additional URI query parameter to retrieve an entire
 chain of related content that you can display in your application.
 
-Basically, *Resources* can have *Link* fields which point to other *Entries* or *Assets*, for example:
+Entries can have *Link* fields which point to other *Entries* or *Assets*, for example:
 
 - A restaurant linking to its menu (singular relationship)
 - A menu linking to its specific menu items (plural relationship)
@@ -17,18 +17,17 @@ Basically, *Resources* can have *Link* fields which point to other *Entries* or 
 When using links you benefit from many great features:
 
 - Relationships are clearly defined and validated by special Content Type Fields
-- Entry Links can be validated by Content Type.
-E.g.: Only allow Menu Items for `fields.menuItems`.
-- Asset Links can be validated by File Type.
-E.g.: Only allow Images for `fields.photo`.
-- The CDA is highly optimized for Links:
-A _single_ HTTP request let's you retrieve an entire web of linked Resources:
-A restaurant with its menu, all menu items  and all of their attachments -
-everything in the example above. A mobile app could immediately display
-something, if not everything, after a single request.
-This is very important for mobile apps where latency is a big issue:
-Instead of doing hundreds of requests, do a single request which can also
-be cached by Contentful's CDN to speed up future requests even more.
+- Entry Links can be validated by Content Type. E.g.: Only allow Menu Items for `fields.menuItems`.
+- Asset Links can be validated by File Type. E.g.: Only allow Images for `fields.photo`.
+
+A _single_ HTTP request lets you retrieve an entire web of linked Resources, such as a restaurant with its menu, all menu items and all of their attachments - everything in the example above.
+
+A mobile app could immediately display something, if not everything, after a single request.
+
+This is very important for mobile apps where latency is a big issue: Instead of doing hundreds of requests, do a single request which can also be cached by Contentful's CDN to speed up future requests even more.
+
+{: .note}
+**Note:** Because of the caching features describe above, this automated link resolution performed by the API is only available on the [Content Delivery API](/developers/docs/references/content-delivery-api/) and [Content Preview API](/developers/docs/references/content-preview-api/).
 
 ## Linked Entries
 
@@ -321,7 +320,7 @@ Linking an Entry to another Entry represents a relationship. In general, the str
              }
          },
         "title": {...
-         }, 
+         },
          ...
      }
 }
