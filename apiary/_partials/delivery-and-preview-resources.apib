@@ -230,6 +230,8 @@ Learn more [on our Developer Center](https://www.contentful.com/developers/docs/
 
 When you have related content (e.g. Entries with links to image Assets) it's possible to include both search results and related data in a single request. To do so, the `include` parameter should be used, specifying the number of levels to be resolved. The maximum number of inclusions is `10`.
 
+This feature is only available on the Delivery and Preview APIs.
+
 If linked entries have not already been retrieved in the standard `items` array, they will be placed in the `includes.Entry` array. Similarly, linked assets are put inside the `includes.Asset` array.
 
 Note that only Links between Entries, Spaces and Assets are resolved. Links between Spaces and Content Types are not included in the response when the `include` parameter is specified.
