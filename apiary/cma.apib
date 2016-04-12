@@ -239,15 +239,12 @@ Whenever you are creating or updating a Content Type you can add or remove valid
 
 Validation      |Description                              |Applicable to|Example                         |
 ----------------|-----------------------------------------|-------------|--------------------------------|
-`linkContentType`|Takes an array of content type ids and validates that the link points to an entry of that content type.|Links to Entries|`{"linkContentType": ['cate','doc','etc']}`
-`in`|Takes an array of values and validates that the field value is in this array.|Text, Symbol, Integer, Number| `{"in": ['foo', 'bar', 'baz']}`
+`linkContentType`|Takes an array of content type ids and validates that the link points to an entry of that content type.|Links to Entries|`{"linkContentType": ["post","doc","product"]}`
+`in`|Takes an array of values and validates that the field value is in this array.|Text, Symbol, Integer, Number| `{"in": ["General", "iOS", "Android"]}`
 `linkMimetypeGroup`|Takes a MimeType group name and validates that the link points to an asset of this group.|Links to Assets|`{"linkMimetypeGroup": "image"}`
 `size`|Takes optional min and max parameters and validates the size of the array (number of objects in it).|Arrays, Text, Symbol|`{"size": { "min": 5, "max": 20}}`
-`range`|Takes optional min and max parameters and validates the range of a value.|Number, Integer|-
+`range`|Takes optional min and max parameters and validates the range of a value.|Number, Integer|`{"range": { "min": 5, "max": 20}}`
 `regexp`|Takes a string that reflects a JS regex and flags, validates against a string. See [JS Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) for the parameters.|Text, Symbol|`{"regexp": {"pattern": "^such", "flags": "im"}}`
-`present`|Validates that a value is present.|None|-
-`linkField`|Validates that the property is a link (must not be a valid link, just that it looks like one).|None|-
-
 
 Please notice that validations will only take effect after the Content Type has been activated and that previously existing entries will not be validated until they are published again.
 
@@ -849,7 +846,7 @@ However, automated link resolution is **not available** on the Management API. L
 
 # Group Search Parameters
 
-[See CDA documentation](http://docs.contentfulcda.apiary.io/#reference/search-parameters) for a list of search parameters supported for querying resources. Please note that the CMA does not support the `include` functionality.
+[See CDA documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for a list of search parameters supported for querying resources. Please note that the CMA does not support the `include` functionality.
 
 To use search parameters, these should be put in the end of your query, similar to the Delivery API (e.g. `https://api.contentful.com/spaces/space_id/entries?content_type=X`).
 
