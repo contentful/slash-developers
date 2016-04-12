@@ -13,13 +13,12 @@ $ cd apiary/
 $ make clean    # remove generated files
 $ make install  # install the necessary tools
 $ make preview  # generates local HTML for blueprints, shows them in a browser
-$ make publish  # publishes local content to Apiary
 $ make test     # tests the blueprints
 ```
 
 Where appropriate, tests are run before the task is performed. The test use
 [dredd](https://github.com/apiaryio/dredd) to check the blueprint against the
-actual APIs.
+actual APIs. When changes are merged to `master`, they will be automatically published.
 
 Note: to reduce manual duplication of content between the different blueprints, [hercule](https://github.com/jamesramsay/hercule) is used for including content from `_partials` into the blueprints - the `Makefile` tasks take care of generating a full blueprint into the `out` directory, so make sure you are editing the actual sources, not the generated files.
 
@@ -39,13 +38,14 @@ from the documentation.
 ## Setting up the environment
 
 - For running the tests, the environment variable `CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN` needs to be set to a [valid CMA token](https://www.contentful.com/developers/docs/references/authentication/#getting-an-oauth-token) which has access to the testing space "5smsq22uwt4m".
-- For publishing to Apiary, the environment variable `APIARY_API_KEY` needs to be set (see [this](https://github.com/apiaryio/apiary-client#install) for more information).
+- For using the Apiary gem, the environment variable `APIARY_API_KEY` needs to be set (see [this](https://github.com/apiaryio/apiary-client#install) for more information).
 
 ## Tips on contributing
 
  - use branches & pull requests
  - All pull requests should be reviewed by somebody else before merging to master. Preferably they are reviewed by @eugenekudashev.
  - To actually make your changes appear on staging/production, follow [this guide](https://github.com/contentful/marketing-website/blob/master/README.md#contribute-to-the-docs)
+ - Changes to the API blueprints are automatically published once they are merged to `master`.
 
 ## Tests
 
