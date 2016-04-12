@@ -838,12 +838,6 @@ cannot be recreated by creating the same locale again.
             Content-Type: application/vnd.contentful.management.v1+json
 + Response 204
 
-# Group Links
-
-Links are a powerful way to model relationships between pieces of content.
-
-However, automated link resolution is **not available** on the Management API. Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/links/).
-
 # Group Search Parameters
 
 [See CDA documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for a list of search parameters supported for querying resources. Please note that the CMA does not support the `include` functionality.
@@ -852,75 +846,84 @@ To use search parameters, these should be put in the end of your query, similar 
 
 # Group Webhooks
 
-Webhooks in Contentful can notify you or someone else when content has changed. For example, when an Entry has been published Contentful sends the published Entry to a preconfigured HTTP endpoint. This can be used for notifications, static site generators or other forms of post-processing that is sourced from Contentful.
+Webhooks in Contentful can notify you or someone else when content has changed by calling a preconfigured HTTP endpoint. This can be used for notifications, static site generators or other forms of post-processing that is sourced from Contentful.
 
-Webhooks are called when Assets, Entries or Content Types are published or unpublished. Therefore the Webhook's receiver will always get the latest version (or deletion thereof) available through the Delivery API.
+### When are webhooks called
+Webhooks will be called as the result of an action executed against Assets, Entries or ContentTypes. The following table summarizes the actions that Contentful offers for every type:
 
-You can create and manipulate Webhook Definitions using the Management API.
+type/action| Create | Save | Auto save | Archive | Unarchive | Publish | Unpublish | Delete
+-----------|--------|------|-----------|---------|-----------|---------|-----------|---------
+ContentType | Yes   | Yes  | No        | No      | No        | Yes     | Yes       | Yes
+Entry      | Yes    | Yes  | Yes       | Yes     | Yes       | Yes     | Yes       | Yes
+Asset      | Yes    | Yes  | Yes       | Yes     | Yes       | Yes     | Yes       | Yes
+
+For example:
+
+- A configured webhook could be called for Entry creation or Asset save.
+- A configured webhook won't be called for ContentType archival because ContentTypes can't be archived.
+
+#### Topics
+When creating a webhook you have to explicitly specify for which changes on your content (topics) you want your webhook called. Think of it as if you were subscribing your webhook to different event sources. For example, you could decide that a webhook is going to be called when:
+
+- Any content (no matter which type) is published.
+- Assets are deleted.
+- Anything happens to your entries.
+
+These restrictions have to be translated into a list of `[Action].[Type]` pairs, `[*.publish, Asset.delete, Entry.*]`, and included in the payload that defines the webhook.
+
+`*` is a wildcard character that can be used in place of any Action or Type. The combination `*.*` is also valid and it means that your webhook will be subscribed to all actions across all types.  It's important that you keep in mind that using `*` opens the door for your webhook to be called for future actions or types that didn't exist when the webhook was created or updated.
+#### Auto save
+
+The Contentful Web App automatically saves the documents you are working on after every change you make. Besides that, Contentful keeps track of those documents that are active in the Web App and uses that information to call configured webhooks. For this matter Contentful considers active those documents that had been edited in the last 20 seconds.
+
+This means that, for example, if you are editing an Entry in the Contentful Web App for one minute, and you have a webhook configured to be called for `auto_save` actions, that webhook will be called 3 times.
 
 ## Request Format
 
-When content is published or unpublished all webhooks in a Space are fired.
-Each webhook has a URL which will receive an HTTP `POST` request.
-The HTTP request has the following headers & request body:
+When content changes all webhooks subscribed to that change are fired. For each webhook a `POST` request will be made to its `url`. The HTTP request has the following headers & request body:
 
-### Headers of Webhook HTTP Request
+### Headers
 
-The `X-Contentful-Topic` header is one of the following values,
-depending on which type of Resource has been published or unpublished:
+Every webhook request will include the following predefined headers:
 
-- ContentManagement.ContentType.publish
-- ContentManagement.ContentType.unpublish
-- ContentManagement.Entry.publish
-- ContentManagement.Entry.unpublish
-- ContentManagement.Asset.publish
-- ContentManagement.Asset.unpublish
+Header Name                 | Value
+----------------------------|--------
+`X-Contentful-Topic`        |`ContentManagement.[Type].[Action]`
+`X-Contentful-Webhook-Name` | Webhook's name
+`Content-Type`              |`application/vnd.contentful.management.v1+json`
 
-For example, when an Entry has been published:
+Consuming services can use the `X-Contentful-Topic` to determine the type of the payload included in the webhook call without looking into it. Notice that the `Content-Type` header has the `application/vnd.contentful.management.v1+json` value and many web frameworks (such as Express.js) and their middleware components only automatically parse a request body if the content-type header is `application/json`, and thus require additional configuration to parse request bodies with a different content-type header.
 
-```
-X-Contentful-Topic: ContentManagement.Entry.publish
-```
-
-Your webhook receiver should also take into account the `Content-Type` header, which will have the value `application/vnd.contentful.management.v1+json`. Many web frameworks (such as Express.js) and their middleware components only automatically parse a request body if the content-type header is `application/json`, and thus require additional configuration to parse request bodies with a different content-type header.
-
-In addition the `X-Contentful-Webhook-Name` header is sent and contains the name of the webhook.
-
-Besides these predefined headers it is also possible to add a set of custom headers to the webhook
-definition, which get added to the list of headers.
+Besides the aforementioned headers you can configure your webhooks to be called with a set of additional headers of your choice. When creating or updating a webhook you can provide a list of headers that will be included in successive calls to that webhook.
 
 __example__
 
-Let's assume we have a webhook with a single custom header:
+Let's assume that:
 
-```json
-{
-  "name": "My webhook",
-  "url": "https://www.example.com",
-  "headers": [{ "key": "X-My-Custom-Header", "value": "some value"}]
-}
-```
+- One of your entries has just been published.
+- The name of your webhook is `Very hook`.
+- You have defined two custom headers: `X-Very: wow` and `Authentication: indeed`.
 
-If someone is now publishing an entry, the following headers will be sent:
+In this scenario your webhook would we called with the following set of headers:
 
 ```
 X-Contentful-Topic: ContentManagement.Entry.publish
-X-Contentful-Webhook-Name: My webhook
-X-My-Custom-Header: some value
+X-Contentful-Webhook-Name: Very hook
+X-Very: wow
+Authentication: indeed
 ```
 
-### Body of Webhook HTTP Request
+### Body
 
-The request body is the published Resource's body or deletion thereof.
+The payload received by a webhook will change depending on the action type:
 
-The request body's content depends on the specific action:
+- For `Publish` it will receive the latest published version. That's the same payload as the one available through the Delivery API with the exception that the payload for Entries and Assets will contain all locales, e.g. instead of `fields.name` there will be `fields['en-US'].name`.
+- For `Unpublish` and `Delete` it will receive a deletion object. In the case of Entries the Deletions are extended with the id of their Content Type.
+- For `Auto Save`, `Archive`, `Unarchive` and `Create` it will receive the latest draft version at the time the webhook was triggered. That's the same payload as the one available through the Management API.
 
-- On activate/publish: The Resource's body. In case of Entries and Assets
-their fields  will contain all locales, e.g. instead of `fields.name` there
-will be `fields['en-US'].name`.
-- On deactivate/unpublish: The Deletion of the Resource. In the case of entries the Deletions are extended with the id of their Content Type.
+__example__
 
-For Example, when an Entry has been published:
+When an Entry has been published:
 
 ```json
 {
@@ -945,7 +948,7 @@ For Example, when an Entry has been published:
 }
 ```
 
-Or a Deletion of an Entry when an Entry has been unpublished:
+When an Entry has been unpublished:
 
 ```json
 {
@@ -961,13 +964,12 @@ Or a Deletion of an Entry when an Entry has been unpublished:
 }
 ```
 
-### Response Detection
+### Error handling
 
-When a webhook is triggered an HTTP POST request is made to its pre-configured HTTP URL.
-Depending on the HTTP response's status code the webhook will either succeed or fail:
+Contentful will use the HTTP response status code of the webhook call to decide whether it succeeded or failed:
 
-- Success: The HTTP endpoint responded with an HTTP status code < 300
-- Error: The HTTP endpoint responded with an HTTP status code >= 300
+- Success: The webhook responded with an HTTP status code < 300
+- Error: The webhook responded with an HTTP status code >= 300
 
 In case of an error, the webhook will periodically retry its request with
 increasing delays in between up to a maximum of 3 attempts.
@@ -996,9 +998,7 @@ increasing delays in between up to a maximum of 3 attempts.
             Authorization: Bearer b4c0n73n7fu1
             Content-Type: application/vnd.contentful.management.v1+json
 
-    + Attributes
-        - name: My webhook (required) - Name of the Webhook
-        - url: https://www.example.com/test (required) - URL the Webhook will call
+    + Attributes (Webhook attributes)
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1015,9 +1015,7 @@ increasing delays in between up to a maximum of 3 attempts.
             Authorization: Bearer b4c0n73n7fu1
             Content-Type: application/vnd.contentful.management.v1+json
 
-    + Attributes
-        - name: My webhook (required) - Name of the Webhook
-        - url: https://www.example.com/test (required) - URL the Webhook will call
+    + Attributes (Webhook attributes)
         - headers (array) - An object with header key-value pairs
             - (object)
                 - key: header1
@@ -1044,9 +1042,13 @@ increasing delays in between up to a maximum of 3 attempts.
             Authorization: Bearer b4c0n73n7fu1
             Content-Type: application/vnd.contentful.management.v1+json
 
-    + Attributes
-        - name: My webhook - Name of the Webhook
-        - url: https://www.example.com - URL the Webhook will call
+    + Attributes (Webhook attributes)
+        - headers (array) - An object with header key-value pairs
+            - (object)
+                - key: header1
+                - value: value1
+            - (object)
+                - key: header2
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1059,11 +1061,8 @@ increasing delays in between up to a maximum of 3 attempts.
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Version: 1
 
-    + Attributes
-        - name: My webhook - Name of the Webhook
-        - url: https://www.example.com - URL the Webhook will call
-        - httpBasicUsername: yolo - Username for HTTP Basic Authentication
-        - httpBasicPassword: yolo - Password for HTTP Basic Authentication
+    + Attributes (Webhook attributes)
+        - headers (array) - An object with header key-value pairs
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1616,15 +1615,20 @@ This endpoint allows the deletion of a Space Membership. It only affects the acc
 
 ### Webhook Definition
 
-- sys
+- sys: (object, required)
     - type: WebhookDefinition
     - id: foobar
     - version: 0 (number)
     - space (Space Link)
     - Include Resource Metadata
-- name: My webhook
-- url: https://www.example.com
-- httpBasicUsername
+- name: My webhook (string, required)
+- url: https://www.example.com (string, required)
+- topics: (array, required)
+    - Entry.create
+    - ContentType.create
+    - *.publish
+    - Asset.*
+- httpBasicUsername: (string)
 - headers (array)
     - (object)
         - key: header1
@@ -1632,6 +1636,13 @@ This endpoint allows the deletion of a Space Membership. It only affects the acc
     - (object)
         - key: header2
         - value: value2
+
+### Webhook attributes
+  - name: My webhook (string, required) - Name of the Webhook
+  - url: https://www.example.com/test (string, required) - URL the Webhook will call
+  - topics: Entry.create, ContentType.create, *.publish, Asset.* (array, required) - List of topics you want to subscribe to with this webhook.  Every topic has to follow the Type.Action pattern and you can use * as a wildcard value for Type and Action.
+  - httpBasicUsername: yolo (string) - Username for HTTP Basic Authentication
+  - httpBasicPassword: yolo (string) - Password for HTTP Basic Authentication
 
 ### Webhook Call Overview
 
