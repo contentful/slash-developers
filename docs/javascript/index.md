@@ -14,6 +14,8 @@ Our SDKs give you immediate access to our APIs and its features.
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
 [View on GitHub](https://github.com/contentful/contentful.js)<br>
 [API reference](https://contentful.github.io/contentful.js)
+[Try out the browser SDK on JSFiddle](https://jsfiddle.net/trodrigues/btvhh4ma/)
+[Try out the Node.js package on Tonic](https://tonicdev.com/npm/contentful)
 
 ### CMA - Content Management API<br>
 This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
