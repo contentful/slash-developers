@@ -14,6 +14,8 @@ Our SDKs give you immediate access to our APIs and its features.
 Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
 [View on GitHub](https://github.com/contentful/contentful.js)<br>
 [API reference](https://contentful.github.io/contentful.js)
+[Try out the browser SDK on JSFiddle](https://jsfiddle.net/trodrigues/btvhh4ma/)
+[Try out the Node.js package on Tonic](https://tonicdev.com/npm/contentful)
 
 ### CMA - Content Management API<br>
 This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
@@ -52,9 +54,15 @@ An AngularJS library to access the Contentful Content Delivery API<br>
 Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
 You can download them by looking for “Contentful” on Google Play.
 
-### Data browser
-Allows you to preview your data structure and content. Developed using AngularJS.<br>
-[View on GitHub](http://contentful.github.io/contentful.js/example/browser/index.html)<br>
+### Product Catalogue
+This demo project is a simple app shows how to build a frontend JavaScript based application with Contentful for a Product Catalogue, based on the Contentful starter Product Catalogue example space.
+[Try it out](http://contentful.github.io/product-catalogue-js/)
+[View on GitHub](https://github.com/contentful/product-catalogue-js)
+
+### Discovery App
+The Discovery App allows you to browse and preview your content on Contentful. You can also look at the code to see how it was built.
+[Try it out](https://contentful.github.io/discovery-app-react)
+[View on GitHub](https://github.com/contentful/discovery-app-react)
 
 ### Space template apps
 This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Contentful Delivery API. Check the webinar.<br>
