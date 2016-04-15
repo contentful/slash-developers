@@ -25,29 +25,27 @@ required   |Boolean       |Describes whether the Field is mandatory.
 localized  |Boolean       |Describes whether the Field will support different values for different locales.
 disabled   |Boolean       |Describes whether the Field is disabled. Disabled fields are hidden in the editing application.
 
-All data in Contentful has a field type, which is defined in the [creation of a content type](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type). 
+All data in Contentful has a field type, which is defined in the [creation of a content type](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type).
 
 Each field type corresponds to a JSON type, though there are more field types than JSON types.
 
 
 Name   |JSON Type|Description|Example
 -------|--------------|-----------|------------
-Symbol<sup>1</sup> |String        |Basic list of characters. Maximum length is 256.| `"The title"`
-Text<sup>2</sup>   |String        |Same as Symbol, but filterable via Full-Text Search. Maximum length is 50,000.| `" This is a post and ..."`
+Symbol |String        |Basic list of characters. Maximum length is 256.| `"The title"`
+Text<sup>1</sup>   |String        |Same as Symbol, but filterable via Full-Text Search. Maximum length is 50,000.| `" This is a post and ..."`
 Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53. | `42`
 Number |Number        |Number type with decimals. | `3.14`
-Date<sup>3</sup>  |String        |Date/Time in ISO 8601 format. | `"2015-11-06T09:45:27"`
+Date<sup>2</sup>  |String        |Date/Time in ISO 8601 format. | `"2015-11-06T09:45:27"`
 Boolean|Boolean       |Flag, `true` or `false` | true
 Location|Object        |A geographic location specified in latitude and longitude. | `{"lat":"52.5018616","lon":"13.4112619"}`
 Link   |Object        |A reference to an entry or asset. The type of the referenced item is defined by the `linkType` property. See [links](https: //www.contentful.com/developers/docs/concepts/links/) for more information| `{"sys": {"type": "Link", "linkType": "Entry", "id": "af35vcx8etbtwe8xv"}}`
 Array  |Array         |List of values. See **Array fields** below for details on what types of values can be stored in an array. |`["name1", "name2", ...]`
 Object |Object        |Arbitrary Object. | `{"somekey": ["arbitrary", "json"]}"`
 
-1. **Symbol**: fields do not support the `match` operator for full-text searching within the field value
+1. **Text**: fields do not support ordering or strict equality
 
-2. **Text**: fields do not support ordering or strict equality
-
-3. **Date**: fields must be ISO8601 formatted, but do not require a time portion
+2. **Date**: fields must be ISO8601 formatted, but do not require a time portion
 
 #### Array fields
 
