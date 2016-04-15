@@ -81,6 +81,6 @@ Generic Product Catalogue / E-commerce app connected with an example Space in Co
 [View on GitHub](https://github.com/contentful/product-catalogue-android)<br>
 [Download on Google Play](https://play.google.com/store/apps/details?id=catalogue.contentful)
 
-### Contentful Cardboard
+### Contentful Android Cardboard
 Example to demonstrate how to use Google's Cardboard with Contentful.<br>
 [View on GitHub](https://github.com/contentful-labs/contentful-cardboard)
