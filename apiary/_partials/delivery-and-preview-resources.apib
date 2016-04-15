@@ -1,6 +1,6 @@
 ## Common Resource Attributes
 
-Every resource returned by the Content Delivery API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property should be defined.
+Every resource returned by the Content Delivery API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property is defined.
 
 Note that none of the `sys` fields are editable and only the `sys.id` field can be specified in the creation of an item (as long as it is not a Space).
 
@@ -283,11 +283,11 @@ It might be useful to retrieve all items linked to a particular target Entry. To
 
 # Group Search Parameters
 
-Each collection endpoint supports a variety of query parameters to search & filter the items that will be included in the response. While the API calls in this section are focused on entries, the same query parameter syntax can be used to filter assets and content types as well.
+Each collection endpoint supports a variety of query parameters to search and filter the items that will be included in the response. While the API calls in this section are focused on entries, the same query parameter syntax can be used to filter assets and content types as well.
 
 ## Content Type [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}]
 
-Search for Entries with a specific Content Type by setting the content_type URI query parameter to the ID of the Content Type you want to search for'. Please note that only one value for content_type can be specified at a time.
+Search for Entries with a specific Content Type by setting the content_type URI query parameter to the ID of the Content Type you want to search for. Please note that only one value for content_type can be specified at a time.
 
 When querying Entries and using search filters based on `fields` or ordering by `fields` you must specify this parameter.
 
@@ -586,11 +586,11 @@ This will return entries where `fields.center` is within the rectangle with:
 
 ## Order [/spaces/{space_id}/entries?access_token={access_token}&order={attribute}]
 
-When fetching a collection endpoint, you can & should order items in the response by specifying the `order` search parameter. You can order items both by their `sys` properties (such as `sys.createdAt`) or field values (such as `fields.myCustomDateField`).
+When fetching a collection endpoint, you can order items in the response by specifying the `order` search parameter. Both the `sys` properties (such as `sys.createdAt`) or field values (such as `fields.myCustomDateField`) can be used for ordering.
 
 Note that when ordering Entries by fields you must set the `content_type` URI query parameter to the ID of the Content Type you want to filter by.
 
-Also note that only the following field types can be used alongside the order parameter:
+Also note that only the following field types can be used with the order parameter:
 
 Name   |JSON Primitive|Description
 -------|--------------|----------------------------------------------------
@@ -600,7 +600,7 @@ Number |Number        |Number type with decimals.
 Date   |String        |Date/Time in ISO-8601 format.
 Boolean|Boolean       |Flag, `true` or `false`.
 
-The following field types ** are not** support alongside the order parameter:
+The following field types **do not** support the order parameter:
 
 Name   |JSON Primitive|Description
 -------|--------------|-----------------------------------------------------
@@ -722,11 +722,11 @@ Example: Include only image assets.
 
 ## Retrieve localized entries [/spaces/{space_id}/entries/{entry_id}?access_token={access_token}&locale={locale}]
 
-Specify requested locale as locale URI query parameter.
+Specify a requested locale as `locale` URI query parameter.
 
 The locale parameter must be the code of a locale in the Space that's being queried, or the special wildcard value `*`. If no locale is specified, the default locale of the Space will be used.
 
-When `locale=*` is specified, field values will be nested in an object with keys corresponding to each locale with a defined value. Instead of writing `fields.name`, you would write `fields.name[localeCode]`.
+When `locale=*` is specified, field values will be nested in an object with keys corresponding to each locale with a defined value. Instead of writing `fields.name` when accessing the response data from your code, you would write `fields.name[localeCode]`.
 
 If the result contains only a single locale, resources will include the property `sys.locale` indicating the locale of that object.
 
