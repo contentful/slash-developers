@@ -12,4 +12,5 @@ Collections of resources are returned in a wrapper object that contains addition
 }
 ```
 
-In the above example, a client would get the next 100 resources by repeating their request with the `skip` query parameter set to `100`. Keep in mind that you should use the `order` parameter when paging through larger result sets, for example `order=sys.createdAt`.
+In the above example, a client would get the next 100 resources by repeating the same request with the `skip` query parameter changed to `100`. The `order` parameter, for example `order=sys.createdAt`,
+should be used when paging through larger result sets to keep ordering predictable.
