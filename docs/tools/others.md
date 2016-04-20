@@ -4,7 +4,7 @@ page: :docsToolsOthers
 
 ## Contentful Webhook Listener
 
-A Simple HTTP Webserver with pluggable behavior for listening to Webhooks API.<br>
+A Simple HTTP Webserver with pluggable behavior for listening to Webhooks.<br>
 [View on GitHub](https://github.com/contentful/contentful-webhook-listener.rb)
 
 ## Contentful Scheduler
