@@ -13,8 +13,8 @@ These articles introduce the basics of Contentful, explain our data model, and p
 - [Links](/developers/docs/concepts/links/)
 - [Locales](/developers/docs/concepts/locales/)
 - [Synchronization](/developers/docs/concepts/sync/)
-- [Webhooks](/developers/docs/concepts/webhooks/)
 - [UI Extensions](/developers/docs/concepts/uiextensions/)
+- [Webhooks](/developers/docs/concepts/webhooks/)
 
 ## API references
 
