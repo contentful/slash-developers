@@ -1120,8 +1120,8 @@ Request and response body are currently truncated at 500kb and 200kb respectivel
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + hook_id: 3fygxBWGvK7hqRTDPLkyLG (required, string) - ID of the Webhook in form of a string
-    + call_id: 2TErCiknI48m4KmWcaEeg8 (required, string) - ID of the WebhookCall in form of a string
+    + hook_id: foobar (required, string) - ID of the Webhook in form of a string
+    + call_id: 5H0hqP2t68ww4eQCWYOyas (required, string) - ID of the WebhookCall in form of a string
 
 ### Get the webhook call details [GET]
 
@@ -1615,7 +1615,7 @@ This endpoint allows the deletion of a Space Membership. It only affects the acc
 
 ### Webhook Definition
 
-- sys: (object, required)
+- sys - System Attributes
     - type: WebhookDefinition
     - id: foobar
     - version: 0 (number)
@@ -1623,12 +1623,12 @@ This endpoint allows the deletion of a Space Membership. It only affects the acc
     - Include Resource Metadata
 - name: My webhook (string, required)
 - url: https://www.example.com (string, required)
-- topics: (array, required)
+- topics (array, required)
     - Entry.create
     - ContentType.create
     - *.publish
     - Asset.*
-- httpBasicUsername: (string)
+- httpBasicUsername: yolo (string)
 - headers (array)
     - (object)
         - key: header1

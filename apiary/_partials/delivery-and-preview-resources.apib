@@ -369,16 +369,16 @@ Let's find all cats who like `lasagna` by matching `fields.likes` (Array) agains
 
 It is possible to use the `[all]` operator to retrieve entries matching a specific set of values (e.g. `fields.likes[all]=rainbows,fish`)
 
- Parameters
+### Query Entries [GET]
+
+Let's find all cats who like both `rainbows` and `fish` by using the all operator with `fields.likes` (Array) and these two values.
+
++ Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
     + field_id (required, string, `likes`) ... The attribute to match.
     + values (required, `rainbows,fish`) ... The value to match.
-
-### Query Entries [GET]
-
-Let's find all cats who like both `rainbows` and `fish` by using the all operator with `fields.likes` (Array) and these two values.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
