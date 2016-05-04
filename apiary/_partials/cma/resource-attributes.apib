@@ -1,0 +1,35 @@
+## Common Resource Attributes
+
+Every resource returned by the API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property is defined.
+
+Note that none of the `sys` fields are editable and only the `sys.id` field can be specified in the creation of an item (as long as it is not a Space).
+
+The `sys.id` property will be defined for every resource that is not a collection. For example, a `Space` resource will have a `sys.type` and `sys.id`:
+
+```
+{
+  "sys": {
+    "type": "Space",
+    "id": "cfexampleapi"
+  }
+}
+```
+
+Field               |Type          |Description                                |Applies to
+--------------------|--------------|-----------------------------------------  |-----------------------------
+sys.type            |String        |Type of resource.                          |All
+sys.id              |String        |Unique ID of resource.                     |All except Arrays
+sys.space           |Link          |Link to resource's Space.                  |Entries, Assets, Content Types
+sys.contentType     |Link          |Link to Entry's Content Type.              |Entries
+sys.publishedCounter|Integer       |Number of times resource was published.    |Entries, Assets, Content Types
+sys.publishedVersion|Integer       |Published version of resource.             |Entries, Assets, Content Types
+sys.version         |Integer       |Current version of resource.               |Entries, Assets, Content Types
+sys.firstPublishedAt|Date          |Time resource was first published.         |Entries, Assets, Content Types
+sys.createdAt       |Date          |Time resource was created.                 |Entries, Assets, Content Types
+sys.createdBy       |Link          |Link to creating User.                     |Entries, Assets, Content Types
+sys.publishedAt     |Date          |Time resource was published.               |Entries, Assets, Content Types
+sys.publishedBy     |Link          |Link to publishing User.                   |Entries, Assets, Content Types
+sys.updatedAt       |Date          |Time resource was updated.                 |Entries, Assets, Content Types
+sys.updatedBy       |Link          |Link to updating User.                     |Entries, Assets, Content Types
+
+:[Collection Resources and Pagination](../collections-and-pagination.md)
