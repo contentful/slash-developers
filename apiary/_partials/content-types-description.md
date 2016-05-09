@@ -24,6 +24,7 @@ items      |Schema        | Defines a subschema for the elements of an array fie
 required   |Boolean       |Describes whether the Field is mandatory.
 localized  |Boolean       |Describes whether the Field will support different values for different locales.
 disabled   |Boolean       |Describes whether the Field is disabled. Disabled fields are hidden in the editing application.
+omitted    |Boolean       |If set to `true` fully omits this field in the Content Delivery API and Content Preview API responses. The Content Management API is not affected by this.
 
 All data in Contentful has a field type, which is defined in the [creation of a content type](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type).
 
@@ -49,7 +50,7 @@ Object |Object        |Arbitrary Object. | `{"somekey": ["arbitrary", "json"]}"`
 
 #### Array fields
 
-Contentful supports fields that contain multiple values with it's `Array` type. Currently an array can contain either symbols (strings up to 256 characters), **or** [links](/developers/docs/concepts/links/) to other entries or assets. The allowed values in the array are defined by the `items` property of the field definition. The maximum allowed number of items in an array is 1000.
+Contentful supports fields that contain multiple values with its `Array` type. Currently an array can contain either symbols (strings up to 256 characters), **or** [links](/developers/docs/concepts/links/) to other entries or assets. The allowed values in the array are defined by the `items` property of the field definition. The maximum allowed number of items in an array is 1000.
 
 A field that contains symbols is defined like this:
 
