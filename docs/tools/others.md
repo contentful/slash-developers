@@ -2,26 +2,16 @@
 page: :docsToolsOthers
 ---
 
-## Contentful Webhook Listener
-
-A Simple HTTP Webserver with pluggable behavior for listening to Webhooks.<br>
-[View on GitHub](https://github.com/contentful/contentful-webhook-listener.rb)
-
-## Contentful Scheduler
-
-This gem provides automated scheduled entry publishing using the Webhooks API.<br>
-[View on GitHub](https://github.com/contentful/contentful-scheduler.rb)
-
 ## Extending the Delivery API with AWS Lambda & API Gateway
 
 This tutorial will show you how you can use two new Amazon services, Lambda and API Gateway, to provide additional functionality on top of Contentful's Content Delivery API (CDA) without running any of your own infrastructure.<br>
 [Read the Tutorial](/developers/docs/tutorials/general/delivery-api-lambda-and-api-gateway/)
 
-## Scheduling Posts
+## Advanced Filtering: Using filters to schedule your posts
 
 In this article, we will expose how to manage the publishing time of content.<br>
 [Read the Tutorial](/developers/docs/tutorials/general/scheduling-posts/)<br>
-Please notice that this tutorial doesn't use our new Contentful Scheduler gem. An updated guide will be published soon.
+Please check our [Contentful Scheduler](/developers/docs/tools/extensions/) gem for automated scheduled entry publishing.
 
 ## Anatomy of a CDA Request
 
