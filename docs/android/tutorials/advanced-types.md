@@ -11,7 +11,7 @@ CDAClient client = CDAClient.builder()
     .build();
 ~~~
 
-as described in our [getting started guide](/developers/docs/tutorials/android/getting-started-with-contentful-and-android/).
+as described in our [getting started guide](/developers/docs/android/tutorials/getting-started-with-contentful-and-android/).
 
 ## All Entries
 
