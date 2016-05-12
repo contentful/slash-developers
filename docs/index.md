@@ -53,6 +53,7 @@ There are more tools which help speed up development. Find content import/export
 
 - [Static Site Generators](/developers/docs/tools/staticsitegenerators/)
 - [Space Management Tools](/developers/docs/tools/spacemanagement/)
+- [Extensions](/developers/docs/tools/extensions/)
 - [Others and 3rd part Tools](/developers/docs/tools/others/)
 
 ## More
