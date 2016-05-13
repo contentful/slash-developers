@@ -378,7 +378,7 @@ Retrieves the activated versions of content types, ignoring any changes made sin
     + Attributes (Empty Array)
 
 
-:[Group Editing Interfaces](_partials/cma/editing-interface.apib)
+:[Group Editor Interface](_partials/cma/editor-interface.apib)
 
 # Group Entries
 
@@ -1121,9 +1121,9 @@ The call details provide detailed information about the outgoing request and the
 Request and response body are currently truncated at 500kb and 200kb respectively.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
-    + hook_id: foobar (required, string) - ID of the webhook in form of a string
-    + call_id: 5H0hqP2t68ww4eQCWYOyas (required, string) - ID of the webhook call in form of a string
+    + space_id: example (required, string) - ID of the space in form of a string
+    + hook_id: hook123 (required, string) - ID of the webhook in form of a string
+    + call_id: A123FOO (required, string) - ID of the webhook call in form of a string
 
 ### Get the webhook call details [GET]
 
@@ -1132,6 +1132,7 @@ Request and response body are currently truncated at 500kb and 200kb respectivel
 
             Authorization: Bearer b4c0n73n7fu1
             Content-Type: application/vnd.contentful.management.v1+json
+
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
