@@ -32,7 +32,8 @@ View in [Swift](/developers/api-demo/swift/) |
 
 ### Getting started with the CDA
 This walkthrough will help you getting started with your first basic hello world style iOS app of using Contentful with a demo space.<br>
-[View the tutorial](/developers/docs/ios/tutorials/using-delivery-api-on-ios/)
+[View the tutorial - ObjC](/developers/docs/ios/tutorials/using-delivery-api-on-ios/)
+[View the tutorial - Swift](/developers/docs/ios/tutorials/using-delivery-api-with-swift/)
 
 ### Getting started with the CMA
 This post will walk you through implementing a simple iOS app for uploading images from the device's Camera Roll to Contentful.<br>
