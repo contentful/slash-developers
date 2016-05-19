@@ -63,6 +63,11 @@ A library for making it easy to persist data retrieved from Contentful in Core D
 [View on GitHub](https://github.com/contentful/contentful-persistence.objc)<br>
 [View the tutorial](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/)
 
+### ContentfulPersistenceSwift
+A library for making it easy to persist data retrieved from Contentful in Core Data or other persistence stores.<br>
+[View on GitHub](https://github.com/contentful/contentful-persistence.swift)<br>
+[View the tutorial](/developers/docs/ios/tutorials/using-delivery-api-with-swift/)
+
 ### Concorde
 A library for displaying progressive JPEG images on iOS.<br>
 [View on GitHub](https://github.com/contentful-labs/Concorde)
