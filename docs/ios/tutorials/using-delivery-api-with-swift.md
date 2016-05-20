@@ -2,7 +2,7 @@
 page: :docsCdaSwift
 ---
 
-Read on to find out what our iOS SDK does and how you can use it to build content-driven apps more easily. The [product catalogue app][1] will provide an example and walk you through building a simple app from start to finish.
+Read on to find out what our iOS SDK does and how you can use it to build content-driven apps more easily. This tutorial will walk you through building a simple app from start to finish with the [product catalogue app][1] being used as an example.
 
 ## Setup
 
@@ -44,9 +44,9 @@ Each content type in Contentful has its own unique ID, you can find it by lookin
 
 ![](content-type-id.png)
 
-The [`fetchEntries(_:)`][8] method returns a tuple of `NSURLSessionDataTask`, for cancellation purposes, and a [signal][10], which will called on completion of the request. The error is also available via `.error` and if you prefer, there is [a variant][9], which takes a completion closure instead.
+The [`fetchEntries(_:)`][8] method returns a tuple of `NSURLSessionDataTask`, for cancellation purposes, and a [signal][10], which will be called on completion of the request. The error is also available via `.error` and if you prefer, there is [a variant][9], which takes a completion closure instead.
 
-Our API includes supports a variety of parameters to search, filter and sort your content. Those parameters are passed as a dictionary when using the SDK, in this case only entries of a certain content type will be retrieved. You can learn more about search parameters [here][20]. You can also explore more of our API using [this Playground][12].
+Our API supports a variety of parameters to search, filter and sort your content. Those parameters are passed as a dictionary when using the SDK, in this case only entries of a certain content type will be retrieved. You can learn more about search parameters [here][20]. You can also explore more of our API using [this Playground][12].
 
 ## Offline persistence
 
@@ -59,7 +59,7 @@ let synchronizer = ContentfulSynchronizer(client: client, persistenceStore: stor
 
 It is your own responsibility to provide the right `NSManagedObjectContext` for your application here. If you are working with Core Data in a multi-threaded environment, make sure to check out [Apple's Core Data Programming Guide][16]. Depending on your setup, you might also want to create different managed object contexts for writing and reading data. While the `CoreDataStore` class can be used for querying, you don't have to use it.
 
-The best way to replicate your content model from Contentful in your own app is using [our Xcode plugin][17]. This requires management access to the space, though, so you can only use the plugin on your own spaces. For the purpose of this tutorial, you can use the [generated model][18] from the example's GitHub repository. The generated model contains a class per content type, with fields matching the ones from Contentful, and there are also dedicated classes for assets and spaces. From the data model, you can generate classes using Xcode -- each class must implement a protocol, though, which requires a manual step (`Resource` for entries, `Asset` for assets and `Space` for spaces).
+The best way to replicate your content model from Contentful in your own app is using [our Xcode plugin][17]. This requires management access to the space, though, so you can only use the plugin on your own spaces. For the purpose of this tutorial, you can use the [generated model][18] from the example's GitHub repository. The generated model contains a class per content type, with fields matching the ones from Contentful, and there are also dedicated classes for assets and spaces. From the data model, you can generate classes using Xcode -- each class must implement a protocol, which requires a manual step (`Resource` for entries, `Asset` for assets and `Space` for spaces).
 
 Using this, a mapping can be defined between your content model and the local entities:
 
