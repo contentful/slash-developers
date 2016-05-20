@@ -20,7 +20,7 @@ To add a locale in the Web Interface, go to **Settings** > **Locales** and click
 Choose a Locale and its options:
 
 {:.img}
-![](https://images.contentful.com/3ts464by117l/633NaPM11uo0qcsEWaW8IU/4cb24f447ddda520f5f24896de3f4e6d/newlocale.png)
+![](https://raw.githubusercontent.com/contentful/slash-developers/4388132a427f96d5858e4e10d6596d32dd04f194/images/locale-editor.png)
 
 Alternatively, if you are writing scripts or applications, you can also use the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/locales) to add a locale to a Space:
 
@@ -79,7 +79,8 @@ Content-Type: application/vnd.contentful.management.v1+json
   "fallback_code":null,
   "default":false,
   "contentManagementApi":true,
-  "contentDeliveryApi":true
+  "contentDeliveryApi":true,
+  "optional":false
 }
 ~~~
 
