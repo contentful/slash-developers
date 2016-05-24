@@ -187,7 +187,7 @@ One can easily imagine going a bit further than this example and create an API g
 [Lambda]: https://aws.amazon.com/lambda/
 [API Gateway]: https://aws.amazon.com/api-gateway/
 [AWS Console]: https://console.aws.amazon.com/
-[aws-setup]: http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html
+[aws-setup]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html
 [lambda-docs]: https://aws.amazon.com/documentation/lambda/
 
 [project-repo]: https://github.com/contentful-labs/md-to-html-lambda

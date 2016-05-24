@@ -55,7 +55,7 @@ Links to the source code of our in house built apps. Use them as examples when b
 
 ### Product Catalogue
 This demo project is a simple app shows how to build a frontend JavaScript based application with Contentful for a product catalogue, based on the Contentful starter product catalogue example space.<br>
-[Try it out](http://contentful.github.io/product-catalogue-js/)<br>
+[Try it out](https://contentful.github.io/product-catalogue-js/)<br>
 [View on GitHub](https://github.com/contentful/product-catalogue-js)
 
 ### Discovery App
