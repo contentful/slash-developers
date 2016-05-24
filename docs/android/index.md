@@ -4,14 +4,14 @@ page: :docsPlatformsAndroid
 
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
-- [Tools](#tools-and-framework-integrations)
+- [Tools](#tools-and-integrations)
 - [Example apps](#apps)
 
 ## SDKs
 Our SDKs give you immediate access to our APIs and its features.
 
 ###CDA - Content Delivery API<br>
-Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
 [View on GitHub](https://github.com/contentful/contentful.java)<br>
 [API reference](https://contentful.github.io/contentful.java/)
 
@@ -37,13 +37,13 @@ Using the Content Delivery API on Android.<br>
 Vault is an Android library that simplifies persistence of data from Contentful via SQLite. It lets you define Java representations for your Contentful models.<br>
 [View the tutorial](/developers/docs/android/tutorials/offline-persistence-with-vault/)
 
-### Advanced Tutorials
+### Advanced tutorials
 Those tutorials are targeting more complex aspects of this SDK:
 
-- [Type Retrieval](/developers/docs/android/tutorials/advanced-types/)
-- [Filtering and Searching](/developers/docs/android/tutorials/advanced-filtering-and-searching/)
+- [Type retrieval](/developers/docs/android/tutorials/advanced-types/)
+- [Filtering and searching](/developers/docs/android/tutorials/advanced-filtering-and-searching/)
 
-## Tools and framework integrations
+## Tools and integrations
 Here are some tools developed by our team to help you completing some basic tasks.
 
 ### IntelliJ/Android Studio plugin
@@ -58,26 +58,26 @@ A library for making it easy to persist data retrieved from Contentful in SQLite
 Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
 You can download them by looking for “Contentful” on Google Play.
 
-### Discovery app
-This app enables you to browse and preview your Contentful Spaces on iOS.<br>
+### Discovery App
+This app enables you to browse and preview your Contentful spaces on iOS.<br>
 [View on GitHub](https://github.com/contentful/discovery-app-android)<br>
 [Download on Google Play](https://play.google.com/store/apps/details?id=discovery.contentful)
 
 ### Space template apps
-These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in our Dashboard.
+These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in the Contentful web app.
 
-**Blog**<br>
-Generic Blog app connected to an example Space in Contentful.<br>
+#### Blog
+Generic blog app connected to an example space in Contentful.<br>
 [View on GitHub](https://github.com/contentful/blog-app-android)<br>
 [Download on Google Play](https://play.google.com/store/apps/details?id=blog.contentful)
 
-**Gallery**<br>
-Generic Gallery app connected to an example Space in Contentful.<br>
+#### Gallery
+Generic gallery app connected to an example space in Contentful.<br>
 [View on GitHub](https://github.com/contentful/gallery-app-android)<br>
 [Download on Google Play](https://play.google.com/store/apps/details?id=gallery.templates.contentful)
 
-**Product Catalogue**<br>
-Generic Product Catalogue / E-commerce app connected with an example Space in Contentful.<br>
+#### Product Catalogue
+Generic product catalogue / e-commerce app connected with an example space in Contentful.<br>
 [View on GitHub](https://github.com/contentful/product-catalogue-android)<br>
 [Download on Google Play](https://play.google.com/store/apps/details?id=catalogue.contentful)
 

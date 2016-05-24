@@ -3,11 +3,11 @@ page: :docsLinks
 ---
 
 Links are a very powerful way to model relationships between
-pieces of content. Contentful search is built to make linked data retrieval
+pieces of content. The Contentful search is built to make linked data retrieval
 as simple as adding an additional URI query parameter to retrieve an entire
 chain of related content that you can display in your application.
 
-Entries can have *Link* fields which point to other *Entries* or *Assets*, for example:
+Entries can have link fields which point to other entries or assets, for example:
 
 - A restaurant linking to its menu (singular relationship)
 - A menu linking to its specific menu items (plural relationship)
@@ -16,27 +16,24 @@ Entries can have *Link* fields which point to other *Entries* or *Assets*, for e
 
 When using links you benefit from many great features:
 
-- Relationships are clearly defined and validated by special Content Type Fields
-- Entry Links can be validated by Content Type. E.g.: Only allow Menu Items for `fields.menuItems`.
-- Asset Links can be validated by File Type. E.g.: Only allow Images for `fields.photo`.
+- Relationships are clearly defined and validated by special content type fields
+- Entry links can be validated by content type. E.g.: Only allow Menu Items for `fields.menuItems`.
+- Asset links can be validated by file type. E.g.: Only allow Images for `fields.photo`.
 
-A _single_ HTTP request lets you retrieve an entire web of linked Resources, such as a restaurant with its menu, all menu items and all of their attachments - everything in the example above.
+A _single_ HTTP request lets you retrieve an entire web of linked resources, such as a restaurant with its menu, all menu items and all of their attachments - everything in the example above.
 
 A mobile app could immediately display something, if not everything, after a single request.
 
 This is very important for mobile apps where latency is a big issue: Instead of doing hundreds of requests, do a single request which can also be cached by Contentful's CDN to speed up future requests even more.
 
 {: .note}
-**Note:** Because of the caching features describe above, this automated link resolution performed by the API is only available on the [Content Delivery API](/developers/docs/references/content-delivery-api/) and [Content Preview API](/developers/docs/references/content-preview-api/).
+**Note:** Because of the caching features describe above, this automated link resolution performed by the API is only available on the [Content Delivery API](/developers/docs/references/content-delivery-api/) and [Preview API](/developers/docs/references/content-preview-api/).
 
-## Linked Entries
+## Linked entries
 
-When you have related content (e.g. Entries with links to other Entries)
-it's possible include both search results and related data in a single request.
+When you have related content (e.g. entries with links to other entries) it's possible to include both search results and related data in a single request.
 
-Simply tell the search to include the targets of links in the response:
-Set the `include` parameter to the number of levels you want to resolve.
-The maximum number of inclusion is 10.
+Simply tell the search to include the targets of links in the response: Set the `include` parameter to the number of levels you want to resolve. The maximum number of inclusion is 10.
 
 The search results will include the requested entries matching the query in items, along with the linked entries and assets they contain.
 
@@ -46,9 +43,9 @@ Link resolution works regardless of how many results are there in `items`. Some 
 - Get a single restaurant in items along with its menu, menu items and photos (Assets) in includes.
 
 {: .note}
-**Note:** Only Links between Entries, Spaces and Assets are resolved. Links between Spaces and Content Types are not included in the response when the `include` parameter is specified.
+**Note:** Only links between entries, spaces and assets are resolved. Links between spaces and content types are not included in the response when the `include` parameter is specified.
 
-### Querying Linked Entries
+### Querying linked entries
 
 Querying linked items is as simple as adding a specific `include` parameter to retrieve a desired level of related content to be displayed in an application.
 
@@ -62,9 +59,9 @@ Before anything, we need a successful query URL using the `include=1` parameter:
 curl -v https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&include=1
 ~~~
 
-The first part of a JSON response gets information about Entries and their Links.
+The first part of a JSON response gets information about entries and their links.
 
-In the following example, the restaurant Entry `Spaceburger` is fetched alongside its Links to images by using the `restaurantImages` linking field:
+In the following example, the restaurant entry `Spaceburger` is fetched alongside its links to images by using the `restaurantImages` linking field:
 
 ~~~ json
   "items": [
@@ -93,7 +90,7 @@ In the following example, the restaurant Entry `Spaceburger` is fetched alongsid
   ],
 ~~~
 
-As seen in the above response, the linked image with `id=23qqdlTciMGm6IYy224euu` is only retrieved as a Link to an Asset.
+As seen in the above response, the linked image with `id=23qqdlTciMGm6IYy224euu` is only retrieved as a link to an asset.
 
 Instead, information about the `23qqdlTciMGm6IYy224euu` image is placed in the `includes` array:
 
@@ -127,9 +124,9 @@ Instead, information about the `23qqdlTciMGm6IYy224euu` image is placed in the `
   }
 ~~~
 
-However, the structure of a JSON response could have been different. Before resolving Links to items, Contentful matches the filter conditions of a query.
+However, the structure of a JSON response could have been different. Before resolving links to items, Contentful matches the filter conditions of a query.
 
-As a consequence, if our linked resource had matched the filter conditions of the query parameters, it would have been put inside the `items` array. In the end, when an Entry matches the search criteria of the querying URL, it will automatically be put inside the `items` array.
+As a consequence, if our linked resource had matched the filter conditions of the query parameters, it would have been put inside the `items` array. In the end, when an entry matches the search criteria of the querying URL, it will automatically be put inside the `items` array.
 
 Lets take a look at the response of a menu pointing to its meals:
 
@@ -201,17 +198,17 @@ In the end, since `AstroChicken` and `AstroCattle` are already present in the re
 {: .note}
 **Note:** When omitted, the `include` parameter takes the standard value of `1`
 
-### Fetching resources linked to a specific Entry
+### Fetching resources linked to a specific entry
 
-It might be useful to retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` used to link such items and `entry_id` from our target Entry.
+It might be useful to retrieve all items linked to a particular target entry. To do so, a query URL should filter entries based on their specific `content_type`, `linking_field` used to link such items and `entry_id` from our target entry.
 
-For example, let's retrieve all resources of Content Type `Menu` linked to the restaurant `Space Burger` by using the following query URL:
+For example, let's retrieve all resources of content type `Menu` linked to the restaurant `Space Burger` by using the following query URL:
 
 ~~~ bash
 curl -v https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&content_type=3HjHXUYR3yyosUqAGmi8wu&fields.restaurantField.sys.id=2UmoQ8Bo4g4S82WmGiQIQE
 ~~~
 
-Because these are all Menus linked to the `Space Burger` restaurant , `Menu for Humans`, `Menu for Romulans` and `Menu for Klingons` are all retrieved alongside their own links and the target Entry:
+Because these are all Menus linked to the `Space Burger` restaurant , `Menu for Humans`, `Menu for Romulans` and `Menu for Klingons` are all retrieved alongside their own links and the target entry:
 
 ~~~ json
   "items": [
@@ -305,7 +302,7 @@ Because these are all Menus linked to the `Space Burger` restaurant , `Menu for 
 
 ## Modeling Relationships
 
-Linking an Entry to another Entry represents a relationship. In general, the structure of linked items should be as follows:
+Linking an entry to another entry represents a relationship. In general, the structure of linked items should be as follows:
 
 ~~~ json
 {
@@ -351,27 +348,18 @@ For example, here's a restaurant pointing to its menu:
 "il-doges" `fields.menu` links to "il-doges-nice-menu".
 
 It's possible to create circular links:
-You could model a circular chain of Entries to model a dialog in a video game
-or more complex graphs. There are many possibilities, it's up to you to decide!
+You could model a circular chain of entries to model a dialog in a video game or more complex graphs. There are many possibilities, it's up to you to decide!
 
-Various fields in every Resource's `sys` are also Links: The Space they're in,
-their Content Type (in case of Entries) or Users who created or modified them.
+Various fields in every Resource's `sys` are also links: The space they're in, their content type (in case of entries) or users who created or modified them.
 
-Of course, an Entry can also link to more than one Entry or Asset:
+Of course, an entry can also link to more than one entry or asset:
 
-- Have multiple Link Fields, e.g. `fields.menu` and `fields.openingHours`
-in the restaurant. These represent semantically different Links because of the
-name & type of the Field they're stored in.
-You can even limit the Entries a Link Field may point to by specifying a
-Link Content Type Validation on the Field.
-- Have an Array of Links Field, e.g. `fields.menuItems` in the restaurant's
-menu. This represents an (orderable) list of related items. Often you may want
-to model nothing but an ordered list: In this case, simply create a
-Content Type with a single Field that links to Entries.
+- Have multiple link fields, e.g. `fields.menu` and `fields.openingHours` in the restaurant. These represent semantically different links because of the name & type of the field they're stored in. You can even limit the entries a link field may point to by specifying a link content type validation on the field.
+- Have an array of links field, e.g. `fields.menuItems` in the restaurant's menu. This represents an (orderable) list of related items. Often you may want to model nothing but an ordered list: In this case, simply create a content type with a single field that links to entries.
 
-## Modeling Attachments
+## Modeling attachments
 
-Entries linking to Assets represent attachments. In general, the structure of linked attachments should be as follows:
+Entries linking to assets represent attachments. In general, the structure of linked attachments should be as follows:
 
 ~~~ json
 {
@@ -419,22 +407,17 @@ For example, here's a restaurant pointing to some photos:
 ~~~
 
 
-_il-doges' `fields.mainPhoto` links to such-doge, `fields.photos` link to more
-photos, including the mainPhoto._
+_il-doges' `fields.mainPhoto` links to such-doge, `fields.photos` link to more photos, including the mainPhoto._
 
-Just as with Entry links you can have multiple Fields linking to a
-single (`fields.mainPhoto`) or multiple (`fields.photos`) Assets.
+Just as with entry links you can have multiple fields linking to a single (`fields.mainPhoto`) or multiple (`fields.photos`) assets.
 
-You can limit the type of Asset a Link Field can link to by specifying an
-Asset File Type Validation on the Field.
+You can limit the type of asset a link field can link to by specifying an asset file type validation on the field.
 
-## Link Fields in Content Types
+## Link fields in content types
 
-Adding Links to an Entry requires the Entry's Content Type to have
-one or more Link Fields.
+Adding links to an entry requires the entry's content type to have one or more link fields.
 
-Let's look at some example Field values.
-Remember that these need to be used in context of a Content Type like this:
+Let's look at some example field values. Remember that these need to be used in context of a content type like this:
 
 ~~~ json
 {
@@ -445,7 +428,7 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-### Link Field for Entry
+### Link field for entry
 
 ~~~ json
 {
@@ -455,7 +438,7 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-### Link Field for multiple Entries
+### Link field for multiple entries
 
 ~~~ json
 {
@@ -468,7 +451,7 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-### Link Field for Asset
+### Link field for asset
 
 ~~~ json
 {
@@ -478,7 +461,7 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-### Link Field for multiple Assets
+### Link field for multiple assets
 
 ~~~ json
 {
@@ -491,14 +474,11 @@ Remember that these need to be used in context of a Content Type like this:
 }
 ~~~
 
-## Link values in Entries
+## Link values in entries
 
-Link values are used in Entries to specify actual Links to other
-Entries or Assets. Before you can add those links you need to have
-added Link Fields to a Content Type.
+Link values are used in entries to specify actual links to other entries or assets. Before you can add those links you need to have added link fields to a content type.
 
-Link values are represented as objects containing a sys property with the
-type and ID of the resource they're linking to:
+Link values are represented as objects containing a sys property with the type and ID of the resource they're linking to:
 
 {:.table}
 Field       |Type  |Description
@@ -507,8 +487,7 @@ sys.type    |String|Always "Link".
 sys.linkType|String|Type of linked Resource.
 sys.id      |String|ID of linked Resource.
 
-Let's look at some example Link values.
-Remember that these need to be used in context of an Entry like this:
+Let's look at some example link values. Remember that these need to be used in context of an entry like this:
 
 ~~~ json
 {
@@ -521,7 +500,7 @@ Remember that these need to be used in context of an Entry like this:
 }
 ~~~
 
-### Link to an Entry
+### Link to an entry
 
 ~~~ json
 {
@@ -533,7 +512,7 @@ Remember that these need to be used in context of an Entry like this:
 }
 ~~~
 
-### Links to multiple Entries
+### Links to multiple entries
 
 ~~~ json
 [
@@ -543,7 +522,7 @@ Remember that these need to be used in context of an Entry like this:
 ]
 ~~~
 
-### Link to an Asset
+### Link to an asset
 
 ~~~ json
 {
@@ -555,7 +534,7 @@ Remember that these need to be used in context of an Entry like this:
 }
 ~~~
 
-### Links to multiple Assets
+### Links to multiple assets
 
 ~~~ json
 [

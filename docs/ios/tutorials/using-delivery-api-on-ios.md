@@ -35,7 +35,7 @@ The class [*CDAClient*][3] manages all requests to the API. For most apps, you w
 @end
 ~~~
 
-For creating a client object, the Space ID and a Content Delivery API access token are required. We provide an example Space for this tutorial, but you can learn more about authentication with our APIs [here][19].
+For creating a client object, the space ID and a Content Delivery API access token are required. We provide an example space for this tutorial, but you can learn more about authentication with our APIs [here][19].
 
 ## Accessing data
 
@@ -48,11 +48,11 @@ Now that the client is available everywhere, you can fetch entries:
                                        } failure:nil];
 ~~~
 
-Our API includes supports a variety of parameters to search, filter and sort your content. Those parameters are passed as a dictionary when using the SDK, in this case only entries of a certain Content Type will be retrieved. You can learn more about search parameters [here][20].
+Our API includes supports a variety of parameters to search, filter and sort your content. Those parameters are passed as a dictionary when using the SDK, in this case only entries of a certain content type will be retrieved. You can learn more about search parameters [here][20].
 
 A [*CDAArray*][5] contains a list of [*CDAResource*][6] objects whose concrete type depends on the query. In this case, the *items* property will contain a list of [*CDAEntry*][7] objects.
 
-Each *CDAEntry* has a *fields* property, containing the values for Fields defined in the content model. To decouple your app from Contentful, you can register custom subclasses for Content Types, like this:
+Each *CDAEntry* has a *fields* property, containing the values for fields defined in the content model. To decouple your app from Contentful, you can register custom subclasses for content types, like this:
 
 ~~~ objc
 [sharedClient registerClass:[BBUPlace class] forContentTypeWithIdentifier:@"3hEsRfcKgMGSaiocGQaqCo"];
@@ -66,7 +66,7 @@ The *BBUPlace* class defines properties like:
 }
 ~~~
 
-so that you can deal with Entries like with any other value object.
+so that you can deal with entries like with any other value object.
 
 In the guide app, the class also implements the *MKAnnotation* protocol, which enables directly showing Entries in a map view.
 
@@ -88,12 +88,12 @@ The basic setup is done in your subclasse's *init* method:
 }
 ~~~
 
-The cell mapping is a dictionary for specifying which property of the *UITableViewCell* corresponds to properties in the content model. In addition to that, the shared client is specified as the client to use and the entries are limited to a certain Content Type. Setting the *query* property is optional, in that case all Entries will be shown.
+The cell mapping is a dictionary for specifying which property of the *UITableViewCell* corresponds to properties in the content model. In addition to that, the shared client is specified as the client to use and the entries are limited to a certain content type. Setting the *query* property is optional, in that case all entries will be shown.
 
 <img alt="*CDAEntriesViewController* in action" style="width: initial; display: block;
   margin: 0 auto;" src="https://raw.githubusercontent.com/contentful-labs/guide-app-ios/master/Screenshots/menu.png" />
 
-If you want to show Resources in a *UICollectionView*, there is [*CDAResourcesCollectionViewController*][9]. It works similar to the Entries view controller:
+If you want to show resources in a *UICollectionView*, there is [*CDAResourcesCollectionViewController*][9]. It works similar to the Entries view controller:
 
 ~~~ objc
 self = [super initWithCollectionViewLayout:layout cellMapping:@{ @"imageURL": @"URL" }];
@@ -115,7 +115,7 @@ Of course, it is also possible and often needed to write normal *UIViewControlle
 Two things to consider here:
 
 * [Links][12] might not be resolved, depending on your query. If that is the case, use the *resolveWithSuccess:failure:* method on any *CDAResource*. This should be done inside your custom class, look at the *fetchPictureAssetsWithCompletionBlock:* method from *BBUPlace* for an example. You can also add the `include` parameter to your query to adjust how many levels of links are automatically included as part of the API response. This helps to keep the number of API requests your app has to make low and therefore improves performance. You learn more about includes [here][21].
-* Fields can include [Markdown][14]. There is [another example app][15] which shows how to use the [Bypass][16] library for converting Markdown into *NSAttributedString* which can be displayed in a *UITextView* since iOS 7. Depending on your use case and target platform, you might want to evaluate other options, for example converting to HTML. Also keep in mind that the library does not support the whole range of GitHub flavoured Markdown syntax available in Contentful's Entry editor.
+* Fields can include [Markdown][14]. There is [another example app][15] which shows how to use the [Bypass][16] library for converting Markdown into *NSAttributedString* which can be displayed in a *UITextView* since iOS 7. Depending on your use case and target platform, you might want to evaluate other options, for example converting to HTML. Also keep in mind that the library does not support the whole range of GitHub flavoured Markdown syntax available in the Contentful entry editor.
 
 With this, our walk through the [coffee guide app][1] is done. You should have everything you need to start building your own iOS apps with Contentful. Check out [the SDK][17] and start building.
 

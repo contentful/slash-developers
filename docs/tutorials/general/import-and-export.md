@@ -5,20 +5,20 @@ page: :docsImportExport
 
 ## Overview
 
-Before joining Contentful, most of our customers have struggled with other CMS systems like Wordpress or Drupal. In that way, we've built tools to assist in migrating existing content from a different CMS to Contentful. By the end of this tutorial, you will be able to seamlessly shift to Contentful and enjoy all its benefits, spending as little time as possible dealing with issues.
+Before joining Contentful, most of our customers have struggled with other CMS systems like WordPress or Drupal. In that way, we've built tools to assist in migrating existing content from a different CMS to Contentful. By the end of this tutorial, you will be able to seamlessly shift to Contentful and enjoy all its benefits, spending as little time as possible dealing with issues.
 
 This will be the structure of this post:
 
-1. [Extracting content](#extracting-content)
-	1. [Extracting content from a relational database](#extracting-content-from-a-relational-database)
-	2. [Extracting content from WordPress](#extracting-content-from-wordpress)
-	3. [Extracting content from Drupal](#extracting-content-from-drupal)
-2. [Importing Content](#importing-content)
+- [Extracting content](#extracting-content)
+  - [Extracting content from a relational database](#extracting-content-from-a-relational-database)
+  - [Extracting content from WordPress](#extracting-content-from-wordpress)
+  - [Extracting content from Drupal](#extracting-content-from-drupal)
+- [Importing content](#importing-content)
 
 
-## 1. Extracting content
+## Extracting content
 
-### 1.1. Extracting content from a relational database
+### Extracting content from a relational database
 
 It is possible to migrate content from a relational database to Contentful. To do that, we must install the `database-exporter` executable:
 
@@ -26,7 +26,7 @@ It is possible to migrate content from a relational database to Contentful. To d
 gem install database-exporter
 ~~~
 
-Then, we must create a content model using [Contentful's Web Interface](https://www.contentful.com). With that, we download the content model and save it in a `content_model.json` file:
+Then, we must create a content model using the [Contentful web app](https://be.contentful.com/login). With that, we download the content model and save it in a `content_model.json` file:
 
 ~~~ bash
  curl -X GET \
@@ -120,11 +120,11 @@ database-exporter --config-file settings.yml --extract-to-json
 
 The `data_dir` path will be used along with subdirectories to store data from each table. The sub-directories name depends on the `content_type` parameter used in the `mapping.json` file.
 
-### 1.2. Extracting content from WordPress
+### Extracting content from WordPress
 
-It is also possible to extract the following content from a WordPress Blog:
+It is also possible to extract the following content from a WordPress blog:
 
-+ Blog with Posts
++ Blog with posts
 + Categories, tags and items from custom taxonomies
 + Attachments
 
@@ -148,7 +148,7 @@ data_dir: PATH_TO_ALL_DATA
 # Exported XML file from WordPress
 wordpress_xml_path: PATH_TO_XML/file.xml
 
-# Convert Contentful model to Contentful Import structure
+# Convert Contentful model to Contentful import structure
 content_model_json: data/contentful_model.json
 converted_model_dir: data/contentful_structure.json
 
@@ -175,11 +175,11 @@ With that, we create a Contentful model from the JSON file:
 wordpress-exporter --config-file settings.yml --create-contentful-model-from-json
 ~~~
 
-Finally, we are able to import this model, as will be shown at Section 2.
+Finally, we are able to import this model, as will be shown later.
 
-### 1.3. Extracting content from Drupal
+### Extracting content from Drupal
 
-Contentful's team created a gem to extract Vocabularies, Tags, Users and Content types (Blog, Article, Page, Custom content types) from a Drupal database dump file.
+Contentful's team created a gem to extract vocabularies, tags, users and content types (blog, article, page, custom content types) from a Drupal database dump file.
 
 #### Installation
 Use the following command to install the `drupal-exporter` executable:
@@ -218,9 +218,9 @@ converted_model_dir: PATH_WHERE_CONVERTED_CONTENT_MODEL_WILL_BE_SAVED/contentful
 contentful_structure_dir: PATH_TO_CONTENTFUL_STRUCTURE_JSON_FILE/contentful_structure.json
 ~~~
 
-#### Content Type Files
-1. Create a Content Type using Contentful's web application
-2. Download the Content Type and store it in a `contentful_model.json`( it will be used to subsequently transform `settings.yml` into JSON):
+#### Content type files
+1. Create a content type using the Contentful web app
+2. Download the content type and store it in a `contentful_model.json`( it will be used to subsequently transform `settings.yml` into JSON):
 
 ~~~ bash
  curl -X GET \
@@ -274,7 +274,7 @@ Finally, we extract the content from the database and generate the JSON files fo
 drupal-exporter --config-file settings.yml --extract-to-json
 ~~~
 
-## 2. Importing Content
+## Importing content
 
 After you've extracted data by using the above methods, you must install the `contentful-importer` executable:
 
@@ -282,7 +282,7 @@ After you've extracted data by using the above methods, you must install the `co
 gem install contentful-importer
 ~~~
 
-Before anything, we must create a content model using the [Contentful's Web Interface](https://be.contentful.com/login). Then, you download the content model and save it in a `content_model.json` file:
+Before anything, we must create a content model using the [Contentful web app](https://be.contentful.com/login). Then, you download the content model and save it in a `content_model.json` file:
 
 ~~~ bash
  curl -X GET \
@@ -313,10 +313,10 @@ With that, we can use the `contentful-importer` command to manage how content mo
 # Import content model
 contentful-importer --configuration=settings.yml import-content-model
 
-# Import only Entries
+# Import only entries
 contentful-importer --configuration=settings.yml import-entries
 
-# Import only Assets
+# Import only assets
 contentful-importer --configuration=settings.yml import-assets
 ~~~
 

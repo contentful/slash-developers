@@ -5,7 +5,7 @@ page: :docsOfflinePersistenceIos
 There are basically two approaches for getting content for offline use (or for any use for that matter):
 
 - Synchronization, which you should use if most of your content is relevant for all users and if it is not timely. Good examples for that would be a travel or reference guide.
-- Search Queries, which you should use if your content is timely, like a news app. You would not want to synchronize all kinds of old content for new users or people who haven't used the app in a long time in this case.
+- Search queries, which you should use if your content is timely, like a news app. You would not want to synchronize all kinds of old content for new users or people who haven't used the app in a long time in this case.
 
 ## Synchronization
 
@@ -14,7 +14,7 @@ You should be familiar with search queries from our [last blog post][1], so here
 ~~~ objc
 [client initialSynchronizationWithSuccess:^(CDAResponse *response,
                                             CDASyncedSpace *space) {
-  self.space = space; // Hold on to the synchronized Space
+  self.space = space; // Hold on to the synchronized space
   NSLog(@"Assets: %@", space.assets);
   NSLog(@"Entries: %@", space.entries);
 } failure:^(CDAResponse *response, NSError *error) {
@@ -22,7 +22,7 @@ You should be familiar with search queries from our [last blog post][1], so here
 }];
 ~~~
 
-An initial synchronization will download **all** content of a Space and return a [*CDASyncedSpace*][4] instance which contains all the Resources and also keeps track of the synchronization process. Subsequent synchronizations can be performed like this:
+An initial synchronization will download **all** content of a space and return a [*CDASyncedSpace*][4] instance which contains all the resources and also keeps track of the synchronization process. Subsequent synchronizations can be performed like this:
 
 ~~~ objc
 [space performSynchronization:^{
@@ -32,9 +32,9 @@ An initial synchronization will download **all** content of a Space and return a
 }];
 ~~~
 
-You will be informed about changes by either using [Key-Value Observation][13] on the *assets* / *entries* properties of the Space or by specifying a [*CDASyncedSpaceDelegate*][12].
+You will be informed about changes by either using [key-value observation][13] on the *assets* / *entries* properties of the space or by specifying a [*CDASyncedSpaceDelegate*][12].
 
-If you want to continue a synchronization session after an app restart, store the *syncToken* and *lastSyncTimestamp* values and create a shallow Space like this:
+If you want to continue a synchronization session after an app restart, store the *syncToken* and *lastSyncTimestamp* values and create a shallow space like this:
 
 ~~~ objc
 CDASyncedSpace* space = [CDASyncedSpace shallowSyncSpaceWithToken:syncToken client:client];
@@ -47,15 +47,15 @@ space.lastSyncToken = lastSyncToken;
 }];
 ~~~
 
-Keep in mind that continuing a synchronization session like this will not reinstate the previous data, so you have to use the delegate to keep your own copy of the data current. You can also check the [Synchronization documentation][2] for some more information on the synchronization API.
+Keep in mind that continuing a synchronization session like this will not reinstate the previous data, so you have to use the delegate to keep your own copy of the data current. You can also check the [synchronization documentation][2] for some more information on the synchronization API.
 
 ## Persistence
 
-In addition to that, there are many way to actually persist your data, you might want to use property lists, SQLite or something else entirely. If you need more than just persistence, your choice will probably be Core Data. That is why our SDK is very flexible in this regard. Out of the box, all Resources and also [*CDASyncedSpace*][4] support *NSCoding* so that you can simply serialise some data to disk. If you need more flexibility, there is the abstract [*CDAPersistenceManager*][5] class with a sample implementation on top of Core Data. Let's look at the options in detail:
+In addition to that, there are many way to actually persist your data, you might want to use property lists, SQLite or something else entirely. If you need more than just persistence, your choice will probably be Core Data. That is why our SDK is very flexible in this regard. Out of the box, all resources and also [*CDASyncedSpace*][4] support *NSCoding* so that you can simply serialise some data to disk. If you need more flexibility, there is the abstract [*CDAPersistenceManager*][5] class with a sample implementation on top of Core Data. Let's look at the options in detail:
 
 ### Using NSCoding
 
-Writing any Resource to disk can be done like this:
+Writing any resource to disk can be done like this:
 
 ~~~ objc
 [resource writeToFile:@"/some/path"];
@@ -95,9 +95,9 @@ manager.classForEntries = [MyManagedObjectForEntries class];
 manager.classForSpaces = [MyManagedObjectForSpaces class];
 ~~~
 
-This will make the data model and managed object subclasses known to the manager. As it only provides a reference implementation, it is assumed that there is only one class for all your Entries and also that you do not need to store additional data for Assets or the Space.
+This will make the data model and managed object subclasses known to the manager. As it only provides a reference implementation, it is assumed that there is only one class for all your entries and also that you do not need to store additional data for assets or the space.
 
-For Entries, a mapping is defined to store certain Fields in their corresponding properties:
+For entries, a mapping is defined to store certain fields in their corresponding properties:
 
 ~~~ objc
 manager.mappingForEntries = @{
@@ -107,7 +107,7 @@ manager.mappingForEntries = @{
 };
 ~~~
 
-This will store the Field value specified by the key in the property specified by the value of each mapping dictionary entry.
+This will store the field value specified by the key in the property specified by the value of each mapping dictionary entry.
 
 Both the initial fetch as well as subsequent synchronizations can be done like this:
 
@@ -119,9 +119,9 @@ Both the initial fetch as well as subsequent synchronizations can be done like t
 }];
 ~~~
 
-The manager will add new Resources to the managed object context and delete/update existing ones, until it finally saves the context automatically.
+The manager will add new resources to the managed object context and delete/update existing ones, until it finally saves the context automatically.
 
-If you want to use a search query to fetch Entries, you can use an alternative initializer:
+If you want to use a search query to fetch entries, you can use an alternative initializer:
 
 ~~~ objc
 CoreDataManager* manager = [[CoreDataManager alloc] initWithClient:client
@@ -129,15 +129,15 @@ CoreDataManager* manager = [[CoreDataManager alloc] initWithClient:client
                                                              query:@{ @"content_type": @"books" }];
 ~~~
 
-Using this approach allows you to only fetch a limited data set from your Space. It will use *sys.updatedAt* in later queries to only fetch updated Resources and use an additional selective synchronization session to also delete no longer existing Resources. Depending on your use case, this will still fetch more data than desirable, in that case, you should also modify the provided reference implementation.
+Using this approach allows you to only fetch a limited data set from your space. It will use *sys.updatedAt* in later queries to only fetch updated resources and use an additional selective synchronization session to also delete no longer existing Resources. Depending on your use case, this will still fetch more data than desirable, in that case, you should also modify the provided reference implementation.
 
-### Seed with Initial Content
+### Seed with initial content
 
 Another [example][7] demonstrates how to ship your app with a pre-seeded SQLite database for Core Data, so that your users will not even need a data connection when they are using your app for the first time.
 
-This is achieved by running a [commandline OS X application][19] which uses the SDK to fetch Resources and also all the Asset content, which can then be copied into your app as part of your build process or manually. You will have to modify this tool for your needs, specifying the data model, Space information and conditions on what Asset content to fetch.
+This is achieved by running a [commandline OS X application][19] which uses the SDK to fetch resources and also all the asset content, which can then be copied into your app as part of your build process or manually. You will have to modify this tool for your needs, specifying the data model, space information and conditions on what asset content to fetch.
 
-The *CDAPersistenceManager* provides a convenience method for copying the database and cached Assets from your bundle into the right place:
+The *CDAPersistenceManager* provides a convenience method for copying the database and cached assets from your bundle into the right place:
 
 ~~~ objc
 [manager seedFromBundleWithInitialCacheDirectory:@"SeededAssets"];

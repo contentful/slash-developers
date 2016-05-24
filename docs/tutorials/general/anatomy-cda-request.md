@@ -4,21 +4,21 @@ page: :docsAnatomyCDARequest
 
 ## Overview
 
-Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
 This article goes into detail about how the requests and responses work using the CDA. If you want to keep it simple, you can use the SDKs we're offering for the most popular [programming languages](/developers/docs/#libraries). But if you want to know exactly how the API works, this page is for you.
 
-To get started, for every request, clients [need to provide an access token](/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
+To get started, for every request, clients [need to provide an access token](/developers/docs/references/authentication/), which is created per space and used to delimit audiences and content classes.
 
-You can create an access token using [Contentful's Web Interface](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
 
 In a request, `access_token` may be provided as a query parameter `access_token=$token` or a HTTP header `Authorization: Bearer $token`. Still, header-based authorization is preferred in most cases.
 
-In this article, we will focus on retrieving Entries, which are documents (e.g. Blog Posts, Events) contained within a Space (similar to a database) and based on a Content Type (describes fields of Entries).
+In this article, we will focus on retrieving entries, which are documents (e.g. blog posts, events) contained within a space (similar to a database) and based on a content type (describes fields of entries).
 
-In each returned Entry, it will be fetched a `sys` property, which is an object containing system managed metadata. It retrieves essential information about a resource, such as `sys.type` and `sys.id`.
+In each returned entry, it will be fetched a `sys` property, which is an object containing system managed metadata. It retrieves essential information about a resource, such as `sys.type` and `sys.id`.
 
-Finally, retrieved Entries also have a `field` object, which is used to assign values to Content Type fields.
+Finally, retrieved entries also have a `field` object, which is used to assign values to content type fields.
 
 ## Pre-requisites
 
@@ -26,9 +26,9 @@ In this tutorial, it is assumed you have understood the basic Contentful data mo
 
 You should also be able to recognize the basic structure of JSON responses and requests of REST APIs.
 
-## Requesting a single Entry
+## Requesting a single entry
 
-In order to retrieve a specific Entry, the request should include a `space_id`, `entry_id` and `access_token`. Note that you only need to provide `space_id` and the space itself does not have to be retrieved. In the following request, we will retrieve a blog post Entry with `id=O1ZiKekjgiE0Uu84oKqaY` from the Space `mo94git5zcq9`:
+In order to retrieve a specific entry, the request should include a `space_id`, `entry_id` and `access_token`. Note that you only need to provide `space_id` and the space itself does not have to be retrieved. In the following request, we will retrieve a blog post entry with `id=O1ZiKekjgiE0Uu84oKqaY` from the space `mo94git5zcq9`:
 
 ~~~ bash
 # Request with access_token as a query parameter
@@ -38,7 +38,7 @@ curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries/O1ZiKekjgiE0Uu84o
 curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries/O1ZiKekjgiE0Uu84oKqaY -H 'Authorization: Bearer b933b531a7f37efbfc68838d24b416ddb3d53ea16377606045d3bfcdf705b0fb'
 ~~~
 
-In the response, the Entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two objects: `sys`, describing system properties of the Entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its Content Type (`Blog Post`):
+In the response, the entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two objects: `sys`, describing system properties of the entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its content type (`Blog Post`):
 
 ~~~ json
 {
@@ -67,7 +67,7 @@ In the response, the Entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two ob
     "locale": "en-US"
   },
 
-# The following object retrieves a list of fields that belongs to the retrieved Entry
+# The following object retrieves a list of fields that belongs to the retrieved entry
   "fields": {
     "title": "The Oldest Galaxies in the Universe",
     "body": "The formation of this galaxy, and others like it, was a momentous event in cosmic evolution. This galaxy and its brethren helped to ...",
@@ -91,11 +91,11 @@ In the response, the Entry `O1ZiKekjgiE0Uu84oKqaY` is retrieved alongside two ob
 }
 ~~~
 
-## Retrieving all Entries of a Space
+## Retrieving all entries of a space
 
-Similar to our previous example, we need to provide a `space_id` and `access_token`. However, it is necessary to state whether our response should include items that are linked to our Entries.
+Similar to our previous example, we need to provide a `space_id` and `access_token`. However, it is necessary to state whether our response should include items that are linked to our entries.
 
-In that way, we need to specify the number of levels we want to resolve using the `include` parameter. In this first example, we will only retrieve Entries, so we must set `include=0`:
+In that way, we need to specify the number of levels we want to resolve using the `include` parameter. In this first example, we will only retrieve entries, so we must set `include=0`:
 
 ~~~ bash
 # Request with access_token as a query parameter
@@ -115,7 +115,7 @@ curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries?include=0 -H 'Aut
   "skip": 0,
   "limit": 100,
 
-# The following array retrieves the entire structure of each Entry of our Space
+# The following array retrieves the entire structure of each entry of our space
 # Each retrieved entry follows the same structure (sys and fields objects)
   "items": [
     {
@@ -247,9 +247,9 @@ curl -v https://cdn.contentful.com/spaces/mo94git5zcq9/entries?include=0 -H 'Aut
 
 As you can see, the response is limited to the array `items` which include the Entries `O1ZiKekjgiE0Uu84oKqaY`, `5v10yZCONUS044UUgiqaO4` and `6NX8Kkd9ZYS6igQQMyuC2O`.
 
-Although these Entries contain Links to other resources, the content of the linked items is not included in the response, just an object that specifies the link target.
+Although these entries contain links to other resources, the content of the linked items is not included in the response, just an object that specifies the link target.
 
-## Fetching Linked Resources
+## Fetching linked resources
 
 Similar to our previous queries, we need to specify our `space_id` and `access_token`. However, as we need to fetch linked resources, we're going to set `include=1`, resolving `1` level of included resources:
 
@@ -501,7 +501,7 @@ Similar to our previous example, the array `items` will retrieve results matchin
   }
 ~~~
 
-This a simple usage of Links, for more advanced uses visit the [Links Reference Page](/developers/docs/concepts/links/).
+This a simple usage of links, for more advanced uses visit the [links reference page](/developers/docs/concepts/links/).
 
 {:.note}
 **Note:** When omitted, the `include` parameter takes the standard value of `1`
@@ -510,12 +510,12 @@ This a simple usage of Links, for more advanced uses visit the [Links Reference 
 
 In this article, we have exposed the structure of CDA requests and responses by showing you how to:
 
-1. Retrieve a single Entry
-2. Retrieve all Entries of a Space
-3. Retrieve all Entries and their linked resources
+1. Retrieve a single entry
+2. Retrieve all entries of a space
+3. Retrieve all entries and their linked resources
 
 In the first example, we've uncovered the general structure of requests and responses and what parameters should be used.
 
-In the last two examples, we've seen the importance of the `include` parameter while retrieving Entries with linked resources.
+In the last two examples, we've seen the importance of the `include` parameter while retrieving entries with linked resources.
 
-In the next article, we will expose features and details of Contentful's Management API (CMA).
+In the next article, we will expose features and details of the Content Management API.

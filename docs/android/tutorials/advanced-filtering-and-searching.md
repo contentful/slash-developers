@@ -15,10 +15,10 @@ CDAArray found = client.fetch(CDAEntry.class)
     .all();
 ~~~
 
-## Inexact Searches
+## Inexact searches
 
 If you want to search for just a part of a text, you could use a `match` operator. Keep in mind, you have to define
-the field to be matched, so it won't work on all fields automatically. Also for this request to work, you have to 
+the field to be matched, so it won't work on all fields automatically. Also for this request to work, you have to
 specify a `content type` to look for:
 
 ~~~ java
@@ -59,7 +59,7 @@ CDAArray found = client.fetch(CDAEntry.class)
 
 ## Limit
 
-To retrieve a given amount of elements, you can use the `limit` parameter. 
+To retrieve a given amount of elements, you can use the `limit` parameter.
 
 ~~~ java
 CDAArray found = client.fetch(CDAEntry.class)
@@ -74,7 +74,7 @@ skipping the first 13 elements:
 CDAArray found = client.fetch(CDAEntry.class)
     .where("skip", "13")
     .all();
-~~~ 
+~~~
 
 ## Include
 
@@ -112,7 +112,7 @@ CDAArray found = client.fetch(CDAEntry.class)
 
 ## Existence
 
-Querying for all entries having a specific *field* set to something (aka it is existing), you would issue a request 
+Querying for all entries having a specific *field* set to something (aka it is existing), you would issue a request
 like:
 
 ~~~ java
@@ -121,7 +121,7 @@ CDAArray found = client.fetch(CDAEntry.class)
     .all();
 ~~~
 
-## Mathematical Comparisons
+## Mathematical comparisons
 
 Contentful is also able to query entries, based on a mathematical comparison operator:
 
@@ -132,7 +132,7 @@ CDAArray found = client.fetch(CDAEntry.class)
     .all();
 ~~~
 
-this will return all entries with the `birthday` `less or equal then` *1980-01-01*. Other operators are available too, 
+This will return all entries with the `birthday` `less or equal then` *1980-01-01*. Other operators are available too,
 [see REST API doc](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
 
 ## Inequality
@@ -147,7 +147,7 @@ CDAArray found = client.fetch(CDAEntry.class)
 
 ## Location
 
-Did you ever wanted to query based on a real world location? This is how to do this in java:
+Did you ever want to query based on a real world location? This is how to do this in java:
 
 ~~~ java
 CDAArray found = client.fetch(CDAEntry.class)
@@ -171,7 +171,7 @@ CDAArray found = client.fetch(CDAEntry.class)
 returning all elements whose `center` is in the given area. (Do not forget the `content_type`)
 
 
-## Assets Mimetype
+## Assets mimetype
 
 This last example will tell you how to query for assets, which are only of a specific `mimetype`:
 
@@ -180,4 +180,3 @@ CDAArray found = client.fetch(CDAAsset.class)
     .where("mimetype_group", "image")
     .all();
 ~~~
-

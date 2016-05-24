@@ -13,7 +13,7 @@ These articles introduce the basics of Contentful, explain our data model, and p
 - [Links](/developers/docs/concepts/links/)
 - [Locales](/developers/docs/concepts/locales/)
 - [Synchronization](/developers/docs/concepts/sync/)
-- [UI Extensions](/developers/docs/concepts/uiextensions/)
+- [UI extensions](/developers/docs/concepts/uiextensions/)
 - [Webhooks](/developers/docs/concepts/webhooks/)
 
 ## API references
@@ -24,7 +24,7 @@ There are four APIs available, and each serves one specific purpose:
 
 - <a href="https://www.contentful.com/developers/docs/references/content-delivery-api/" target="_blank">Content Delivery API</a> for retrieving content
 - <a href="https://www.contentful.com/developers/docs/references/content-management-api/" target="_blank">Content Management API</a> for managing content (e.g. creating, updating, deleting content)
-- <a href="https://www.contentful.com/developers/docs/references/content-preview-api/" target="_blank">Content Preview API</a> for previewing the content before publishing it to production
+- <a href="https://www.contentful.com/developers/docs/references/content-preview-api/" target="_blank">Preview API</a> for previewing the content before publishing it to production
 - <a href="https://www.contentful.com/developers/docs/references/images-api/" target="_blank">Images API</a> for requesting images of specific sizes and formats
 
 Also, there are several documents which are relevant for all the APIs:
@@ -33,7 +33,7 @@ Also, there are several documents which are relevant for all the APIs:
 - [Errors](/developers/docs/references/errors/)
 - [HTTP response details](/developers/docs/references/http-details/)
 - [Locales](/developers/docs/references/locales/)
-- [Field Types](/developers/docs/references/field-type/)
+- [Field types](/developers/docs/references/field-type/)
 
 ## Libraries
 
@@ -51,10 +51,10 @@ We provide libraries for major programming languages and platforms so you don't 
 
 There are more tools which help speed up development. Find content import/export tools, iOS and Android development plugins and more.
 
-- [Static Site Generators](/developers/docs/tools/staticsitegenerators/)
-- [Space Management Tools](/developers/docs/tools/spacemanagement/)
+- [Static site generators](/developers/docs/tools/staticsitegenerators/)
+- [Space management tools](/developers/docs/tools/spacemanagement/)
 - [Extensions](/developers/docs/tools/extensions/)
-- [Others and 3rd part Tools](/developers/docs/tools/others/)
+- [Others and third party tools](/developers/docs/tools/others/)
 
 ## More
 

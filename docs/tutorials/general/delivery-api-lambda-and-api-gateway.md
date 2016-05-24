@@ -2,7 +2,7 @@
 page: :docsExtendingDeliveryApi
 ---
 
-When using 3rd-party API's sometimes you want (or need) additional functionality on top of what the API provides. Previously your only options were to complicate your API client, or run your own API (often referred to as API orchestration) on your own servers. This tutorial will show you how you can use two new Amazon services, [Lambda][] and [API Gateway][], to provide additional functionality on top of Contentful's [Content Delivery API][cda-description] (CDA) without running any of your own infrastructure.
+When using 3rd-party API's sometimes you want (or need) additional functionality on top of what the API provides. Previously your only options were to complicate your API client, or run your own API (often referred to as API orchestration) on your own servers. This tutorial will show you how you can use two new Amazon services, [Lambda][] and [API Gateway][], to provide additional functionality on top of Contentful's [Content Delivery API][cda-description] without running any of your own infrastructure.
 
 Lambda is a new service from Amazon that runs your code in response to various events, and API Gateway is a service for managing HTTP endpoints that can send events to Lambda.
 
@@ -20,20 +20,20 @@ You can also check the [other languages][languages] we offer SDKs for.
 
 ### Tutorial steps:
 
- 1. Creating the lambda function
-    1. Get the code
-    2. Create a zip file
-    3. Upload the zip file in the AWS Console
-    4. Test our lambda function
- 2. Create an API Gateway endpoint
- 3. Test the API endpoint.
+- Creating the lambda function
+  - Get the code
+  - Create a zip file
+  - Upload the zip file in the AWS Console
+  - Test our lambda function
+- Create an API Gateway endpoint
+- Test the API endpoint.
 
 
 ## 1. Creating the Lambda function
 
 The [official lambda documentation][lambda-docs] starts you off with pasting some JavaScript code into a web-based editor. While this is good enough for "hello world", we want to deploy code with packages from npm in `node_modules`, so we need to upload a zip file of our code instead.
 
-### 1.1. Get the code
+### Get the code
 
 The code for our lambda is [available on GitHub][project-repo]. You can clone the repository to your machine with the following command:
 
@@ -46,13 +46,13 @@ ls
 You should see two directories and a `Makefile` here. The `lambda` directory contains the code we will package and deploy to AWS Lambda, while the `deploy` directory contains a script to automate deployment of the code and and API gateway.
 
 {:.note}
-**Note:** We'll use the automated deployment in section 2, but if you want to skip ahead you can just run `make deploy`.
+**Note:** We'll use the automated deployment later, but if you want to skip ahead you can just run `make deploy`.
 
-### 1.2. Create a zip file
+### Create a zip file
 
 In the project directory (the one containing `Makefile`) run `make lambda.zip`
 
-### 1.2. Upload the zip file
+### Upload the zip file
 
 1. Sign in to the [AWS Console][]
 2. Select "Lambda" from the "Services" section of the top menu.
@@ -69,11 +69,11 @@ On the next screen:
 5. In the "Role" dropdown, select "New Role > Basic execution role". This will pop up a new window where you must confirm the creation of the role.
 6. Finally, click "Next" and "Create function" after reviewing the settings.
 
-### 1.3. Test the lambda function
+### Test the lambda function
 
 Now that we've created a lambda function we can easily test it by clicking on the "Test" button. The first time you test a function you will be asked to supply a test JSON object. Our handler will receive this object it's `event` argument.
 
-Recalling that our handler function uses `event.query` to pass  [filter query parameters][docs-query-params] to the Delivery API, replace the example payload with the one below:
+Recalling that our handler function uses `event.query` to pass  [filter query parameters][docs-query-params] to the Content Delivery API, replace the example payload with the one below:
 
 ~~~ json
 {
@@ -117,7 +117,7 @@ After clicking "Submit", you should see a response like the following:
 
 As you can see, we have a normal Contentful response, but the markdown content of the `fields.body` property has been transformed to HTML.
 
-## 2. Create an API
+## Create an API
 
 While it's possible to call Lambda functions directly over HTTP by sending a signed `PUT` request to the Lambda service endpoint, we're going to go a bit further and create an [API Gateway][] to more easily query the entries in our space. This API gateway will mimic the URL structure of the Content Delivery API so that we can query it directly with any of the [official SDKs][sdks].
 
@@ -126,7 +126,7 @@ The web UI for API gateway is a bit cumbersome, so at this point we're going to 
 {:.note}
 **Note:** These scripts assume that you have correctly configured your AWS credentials using the official `aws` command line interface. If you haven't yet done so, please follow [these directions][aws-setup] to install and configure the AWS CLI.
 
-### 2.1. Deploying the API
+### Deploying the API
 
 In the project root, simply run `make AWS_ACCOUNT_ID=111111 deploy` (replacing "111111" with your actual AWS account ID). You should see output something like the following:
 
@@ -176,7 +176,7 @@ client.entries({ content_type: ContentTypes.Tutorial }).then(function (tutorials
 
 Now we have shown you how to:
 
-1. Create a Lambda function that uses the Delivery API.
+1. Create a Lambda function that uses the Content Delivery API.
 2. Deploy that function.
 3. Expose that Lambda function to your client-side apps with API Gateway.
 4. Layer any functionality you want on our API.

@@ -1,12 +1,12 @@
-# Group Editing Interface
+# Group Editing interface
 
-Editing interfaces represent the look and feel of Content Type fields in the UI. They are tightly
-coupled to a specific Content Type and define which Widget has to be rendered for the Content Type's
+Editing interfaces represent the look and feel of content type fields in the UI. They are tightly
+coupled to a specific content type and define which widget has to be rendered for the content type's
 fields.
 
 __Example__
 
-Let's consider the following Content Type which describes a typical blog post kind of data structure.
+Let's consider the following content type which describes a typical blog post kind of data structure.
 It has a title, a body and a category that can be either "General", "iOS" or "Android".
 
 ```
@@ -22,12 +22,12 @@ It has a title, a body and a category that can be either "General", "iOS" or "An
 }
 ```
 
-An Editing Interface can for example define that the `title` field should be rendered as a normal
+An editing interface can for example define that the `title` field should be rendered as a normal
 input field (the respective widget's id is `singleLine`). Furthermore it can define that the `body`
 should be a normal textarea (= `multipleLine`) and also that the `category` should be rendered as a
 dropdown field (= `dropdown`).
 
-The Editing Interface would look like this:
+The editing interface would look like this:
 
 ```
 {
@@ -39,19 +39,19 @@ The Editing Interface would look like this:
 }
 ```
 
-Please note that there are specific sets of applicable Widgets per Content Type field type:
+Please note that there are specific sets of applicable widgets per content type field type:
 
 | Widget ID               | Applicable field types        | Description               |
 |-------------------------|-------------------------------|---------------------------|
 | assetLinkEditor         | Asset                         | Search, attach, and preview an asset. |
-| assetLinksEditor        | Asset (Array)                 | Search, attach, reorder, and preview multiple assets. |
-| assetGalleryEditor      | Asset (Array)                 | Search, attach, reorder, and preview multiple assets in a gallery layout |
+| assetLinksEditor        | Asset (array)                 | Search, attach, reorder, and preview multiple assets. |
+| assetGalleryEditor      | Asset (array)                 | Search, attach, reorder, and preview multiple assets in a gallery layout |
 | boolean                 | Boolean                       | Radio buttons with customizable labels. |
 | datePicker              | Date                          | Select date, time, and timezon. |
 | entryLinkEditor         | Entry                         | Search and attach another entry.
-| entryLinksEditor        | Entry (Array)                 | Search and attach multiple entries. |
+| entryLinksEditor        | Entry (array)                 | Search and attach multiple entries. |
 | entryCardEditor         | Entry                         | Search, attach, and preview another entry. |
-| entryCardsEditor        | Entry (Array)                 | Search, attach, and preview multiple entries. |
+| entryCardsEditor        | Entry (array)                 | Search, attach, and preview multiple entries. |
 | numberEditor            | Integer, Number               | A simple input for numbers. |
 | rating                  | Integer, Number               | Uses stars to select a number. |
 | locationEditor          | Location                      | A map to select or find coordinates from an address. |
@@ -60,10 +60,10 @@ Please note that there are specific sets of applicable Widgets per Content Type 
 | slugEditor              | Symbol                        | Automatically generates a slug and validates its uniqueness across entries. |
 | ooyalaEditor            | Symbol                        | Search and select a video hosted by [Ooyala][] |
 | kalturaEditor           | Symbol                        | Search and select a video hosted by [Kaltura][] |
-| kalturaMultiVideoEditor | Symbol (Array)                | Search and select multiple videos hosted by [Kaltura][] |
-| listInput               | Symbol (Array)                | Text input that splits values on `,` and stores them as an array. |
-| checkbox                | Symbol (Array)                | A group of checkboxes. One for each value from the `in` validation on the content type field |
-| tagEditor               | Symbol (Array)                | A text input to add a string to the list. Shows the items as tags and allows to remove them. |
+| kalturaMultiVideoEditor | Symbol (array)                | Search and select multiple videos hosted by [Kaltura][] |
+| listInput               | Symbol (array)                | Text input that splits values on `,` and stores them as an array. |
+| checkbox                | Symbol (array)                | A group of checkboxes. One for each value from the `in` validation on the content type field |
+| tagEditor               | Symbol (array)                | A text input to add a string to the list. Shows the items as tags and allows to remove them. |
 | multipleLine            | Text                          | A simple `<textarea>` input |
 | markdown                | Text                          | A full-fledged [markdown editor][] |
 | singleLine              | Text, Symbol                  | A simple text input field |
@@ -131,30 +131,30 @@ the widget. Other settings are widget specific.
 </table>
 
 
-## Editing Interface [/spaces/{space_id}/content_types/{content_type_id}/editor_interfaces/{editor_interface_id}]
+## Editing interface [/spaces/{space_id}/content_types/{content_type_id}/editor_interfaces/{editor_interface_id}]
 
-While it is theoretically possible to create more than one Editing Interface
-(by using different IDs) the UI will only ever read and use the Editing Interface with the ID `default`.
+While it is theoretically possible to create more than one editing interface
+(by using different IDs) the UI will only ever read and use the editing interface with the ID `default`.
 
 __Limitations__
 
-Since Editing Interfaces are describing Content Type fields, they are tightly coupled to the Content Type field's IDs. Please note
-that there is currently no automatic synchronization in the API between a Content Type and an Editing Interface. This means that an
-Editing Interface might get out of sync when you rename a Content Type's field. In that case you will have to update the
-respective Editing Interface as well.
+Since editing interfaces are describing content type fields, they are tightly coupled to the content type field's IDs. Please note
+that there is currently no automatic synchronization in the API between a content type and an editing interface. This means that an
+editing interface might get out of sync when you rename a content type's field. In that case you will have to update the
+respective editing interface as well.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + content_type_id: hfM9RCJIk0wIm06WkEOQY (required, string) - ID of the Content Type in form of a string
-    + editor_interface_id: default (required, string) -  ID of the Editor Interface in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + content_type_id: hfM9RCJIk0wIm06WkEOQY (required, string) - ID of the content type in form of a string
+    + editor_interface_id: default (required, string) -  ID of the editor interface in form of a string
 
-### Create/Update an Editing Interface [PUT]
+### Create/update an editing interface [PUT]
 
-This endpoint can be used to create a new Editing Interface with an ID specified by the user, or to update a specific Editing Interface via its ID.
+This endpoint can be used to create a new editing interface with an ID specified by the user, or to update a specific editing interface via its ID.
 
-Note that when updating an existing Editing Interface, you always need to specify the last version you got of the Editing Interface you are updating with `X-Contentful-Version`.
+Note that when updating an existing editing interface, you always need to specify the last version you got of the editing interface you are updating with `X-Contentful-Version`.
 
-+ Request Create new Editing Interface with a predefined identifier
++ Request Create new editing interface with a predefined identifier
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1

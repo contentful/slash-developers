@@ -13,7 +13,7 @@ CDAClient client = CDAClient.builder()
 
 as described in our [getting started guide](/developers/docs/android/tutorials/getting-started-with-contentful-and-android/).
 
-## All Entries
+## All entries
 
 To fetch all entries of the given space, you could use:
 
@@ -21,7 +21,7 @@ To fetch all entries of the given space, you could use:
 CDAArray array = client.fetch(CDAEntry.class).all();
 ~~~
 
-This will result in 
+This will result in
 
 ~~~ json
 {
@@ -51,7 +51,7 @@ This will result in
 }
 ~~~
 
-## One specific Entry
+## One specific entry
 
 Using the `.one(`_`YOUR_ITEM_ID`_`)` method of the client, like follows
 
@@ -78,7 +78,7 @@ you'll get a response like
 }
 ~~~
 
-## All Assets
+## All assets
 
 Retrieving all assets of a space, this snippet could help:
 
@@ -127,7 +127,7 @@ And this will be the result for a _different_ (`space = cfexampleapi`, `token = 
 }
 ~~~
 
-## Only One Assets
+## Only one asset
 
 Retrieving one specific asset, take a look at this example:
 
@@ -167,16 +167,16 @@ And this will be the result in only one asset (again using the `cfexampleapi` sp
 }
 ~~~
 
-## ContentTypes
+## Content types
 
-In order to request all [ContentType](http://contentful.github.io/contentful.java/index.html?com/contentful/java/cda/CDAContentType.html)s,
+In order to request all [content types](http://contentful.github.io/contentful.java/index.html?com/contentful/java/cda/CDAContentType.html),
 you could use a call like this:
 
 ~~~ java
 CDAArray array = client.fetch(CDAContentType.class).all();
 ~~~
 
-Taking the resulting object, it'll be printed as (This example will only contain one ContentType, since the space only
+Taking the resulting object, it'll be printed as (This example will only contain one content type, since the space only
 contains one type).
 
 ~~~ json
@@ -260,7 +260,7 @@ yielding
 
 ## Fetching all spaces
 
-For this example, you will need to [get a CMA API token](https://www.contentful.com/developers/docs/references/authentication/#the-management-api) 
+For this example, you will need to [get a CMA API token](https://www.contentful.com/developers/docs/references/authentication/#the-management-api)
 and create a [CMAClient](http://contentful.github.io/contentful-management.java/index.html?com/contentful/java/cma/CMAClient.html) using it:
 
 ~~~ java

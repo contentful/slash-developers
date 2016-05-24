@@ -4,7 +4,7 @@ page: :docsUsingJsCdaSdk
 
 ## Overview
 
-Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
 In order to makes things easier for our users, we publish SDKs for various languages which make the task easier.
 
@@ -12,13 +12,13 @@ This article goes into detail about how to get content using the [JavaScript CDA
 
 ## Pre-requisites
 
-In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [Developer Center](https://www.contentful.com/developers/docs/concepts/data-model/).
+In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [developer center](https://www.contentful.com/developers/docs/concepts/data-model/).
 
 ## Authentication
 
-To get started, for every request, clients [need to provide an access token](/developers/docs/references/authentication/), which is created per Space and used to delimit audiences and content classes.
+To get started, for every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit audiences and content classes.
 
-You can create an access token using [Contentful's Web Interface](https://be.contentful.com/login) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
 
 ## Setting up the client
 
@@ -89,11 +89,11 @@ var client = contentful.createClient({
 
 See the [reference documentation](https://contentful.github.io/contentful.js/contentful/latest/contentful.html) for more options.
 
-## Requesting a single Entry
+## Requesting a single entry
 
 Once you have a client you can start getting content.
 
-In order to retrieve a specific Entry, you need the entry ID for that Entry. If you're looking at an Entry you created in the user interface, it should be the string in the URL after `/entries/`. In this particular case we have an Entry read to be retrieved with the id `O1ZiKekjgiE0Uu84oKqaY`.
+In order to retrieve a specific entry, you need the ID for that entry. If you're looking at an entry you created in the Contentful web app, it should be the string in the URL after `/entries/`. In this particular case we have an entry read to be retrieved with the id `O1ZiKekjgiE0Uu84oKqaY`.
 
 ~~~javascript
 client.getEntry('O1ZiKekjgiE0Uu84oKqaY')
@@ -106,11 +106,11 @@ client.getEntry('O1ZiKekjgiE0Uu84oKqaY')
 })
 ~~~
 
-The object received by the Promise callback represents the Entry `O1ZiKekjgiE0Uu84oKqaY` and contains two objects: `sys`, describing system properties of the Entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its Content Type (`Blog Post`).
+The object received by the Promise callback represents the Entry `O1ZiKekjgiE0Uu84oKqaY` and contains two objects: `sys`, describing system properties of the entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its content type (`Blog Post`).
 
-For more details on the information contained on `sys` check out the [Common Resource Attributes](https://www.contentful.com/developers/docs/references/content-delivery-api/#/introduction/common-resource-attributes) on the CDA API reference or the Entities definitions on the [SDK reference](https://contentful.github.io/contentful.js/contentful/latest/Entities.html)
+For more details on the information contained on `sys` check out the [common resource attributes](https://www.contentful.com/developers/docs/references/content-delivery-api/#/introduction/common-resource-attributes) on the CDA API reference or the entities definitions on the [SDK reference](https://contentful.github.io/contentful.js/contentful/latest/Entities.html)
 
-## Retrieving all Entries of a Space
+## Retrieving all entries of a space
 
 Now we're going to retrieve all the entries in a space.
 
@@ -140,9 +140,9 @@ client.getEntries({
 })
 ~~~
 
-Don't forget to also specify an ordering parameter to get more predictable results. You can read more about ordering parameters in the [Search Parameters API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/order) reference.
+Don't forget to also specify an ordering parameter to get more predictable results. You can read more about ordering parameters in the [search parameters API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/order) reference.
 
-## Retrieving linked Entries
+## Retrieving linked entries
 
 Some entries might have links to each other, so when you retrieve a list of entries, those links are automatically resolved so you don't have to go look for the linked entry separately.
 
@@ -174,37 +174,37 @@ client.getEntries({include: 0})
 
 You can also turn off link resolultion when you initialize the SDK or with a `resolveLinks` property on every request.
 
-Check the [Links Reference Page](https://www.contentful.com/developers/docs/concepts/links/) for more information on linked entries.
+Check the [links reference page](https://www.contentful.com/developers/docs/concepts/links/) for more information on linked entries.
 
-## Retrieving Entries with search parameters
+## Retrieving entries with search parameters
 
-The entries method can also take additional parameters for filtering and querying. You can also use those same parameters when getting Assets or Content Types.
+The entries method can also take additional parameters for filtering and querying. You can also use those same parameters when getting assets or content types.
 
-The following request filters all entries by a specific Content Type, using that Content Type's ID:
+The following request filters all entries by a specific content type, using that content type's ID:
 
 ~~~javascript
 client.getEntries({
   'content_type': '6tw1zeDm5aMEIikMaCAgGk'
 })
 .then(function (entries) {
-  // Only entries of the Blog Post Content Type
+  // Only entries of the Blog Post content type
   console.log(entries)
 })
 ~~~
 
-You can also filter by properties of your Entries:
+You can also filter by properties of your entries:
 
 ~~~javascript
 client.getEntries({
   'sys.id': 'O1ZiKekjgiE0Uu84oKqaY'
 })
 .then(function (entries) {
-  // Only entries of the Blog Post Content Type
+  // Only entries of the Blog Post content type
   console.log(entries)
 })
 ~~~
 
-Apart from simple equality filters, you can also use operators. This is the reverse of the previous example, except it will give you any Entries where `sys.id` is not equal (`[ne]`) to the specified id.
+Apart from simple equality filters, you can also use operators. This is the reverse of the previous example, except it will give you any entries where `sys.id` is not equal (`[ne]`) to the specified id.
 
 ~~~javascript
 client.getEntries({
@@ -216,7 +216,7 @@ client.getEntries({
 })
 ~~~
 
-If you want to filter by any of the fields, you'll also need to specify the Content Type, as fields are not the same across all Content Types:
+If you want to filter by any of the fields, you'll also need to specify the content type, as fields are not the same across all content types:
 
 ~~~javascript
 client.getEntries({
@@ -231,19 +231,19 @@ client.getEntries({
 
 There are many more search filters and operators you can use. You can perform the following kinds of searches:
 
-* [Equality/Inequality](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/equality-operator) ([as well as in Array fields](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-equalityinequality))
-* [Inclusion/Exclusion](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/inclusion)
+* [Equality/inequality](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/equality-operator) ([as well as in array fields](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-equalityinequality))
+* [Inclusion/exclusion](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/inclusion)
 * [Ranges](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
 * [Full text search](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/full-text-search)
 * [Geo location searches](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
 
-Check out the [Search Parameters API page](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
+Check out the [search parameters API page](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
 
 ## Conclusion
 
 In this article, we have shown you how to use the Contentful JavaScript SDK to perform some requests and handle their responses by performing the following actions:
 
-1. Retrieve a single Entry
-2. Retrieve all Entries of a Space
-3. Retrieve all Entries and their linked resources
-4. Retrieve all filtered Entries by search parameters
+1. Retrieve a single entry
+2. Retrieve all entries of a space
+3. Retrieve all entries and their linked resources
+4. Retrieve all filtered entries by search parameters

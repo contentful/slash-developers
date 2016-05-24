@@ -2,7 +2,7 @@
 page: :docsSyncApiWithJS
 ---
 
-The [Sync](/developers/docs/concepts/sync/) API allows you to keep a local copy of all content of a Space up to date via delta updates. This tutorial will show you how to use the Sync API with the Contentful JavaScript SDK.
+The [sync](/developers/docs/concepts/sync/) API allows you to keep a local copy of all content of a space up to date via delta updates. This tutorial will show you how to use the Sync API with the Contentful JavaScript SDK.
 
 This tutorial shows some examples using the [localStorage](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage) API on a browser, but you can also use any other [storage](https://github.com/mozilla/localForage) [wrapper](https://pouchdb.com/) or any [storage layer](https://github.com/Level/levelup) in Node.js.
 
@@ -27,9 +27,9 @@ client.sync({initial: true})
 })
 ~~~
 
-As this is the first sync, your response will contain all existing Entries and Assets.
+As this is the first sync, your response will contain all existing entries and assets.
 
-Any links from Entries to other Entries and assets will also be resolved. If you don't want that to happen, you can turn it off:
+Any links from entries to other entries and assets will also be resolved. If you don't want that to happen, you can turn it off:
 
 ~~~javascript
 client.sync({

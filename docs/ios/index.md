@@ -4,14 +4,14 @@ page: :docsPlatformsIos
 
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
-- [Tools](#tools-and-framework-integrations)
+- [Tools](#tools-and-integrations)
 - [Example apps](#apps)
 
 ## SDKs
 Our SDKs give you immediate access to our APIs and its features.
 
 ###CDA - Content Delivery API<br>
-Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
 [View on GitHub - Swift](https://github.com/contentful/contentful.swift)<br>
 [View on GitHub - ObjC](https://github.com/contentful/contentful.objc)<br>
 [API reference - ObjC](http://cocoadocs.org/docsets/ContentfulDeliveryAPI/)<br>
@@ -50,10 +50,10 @@ This tutorial helps you with persisting data retrieved from the Contentful Conte
 Tool for recreating your content model inside Xcode.<br>
 [View the tutorial](/developers/docs/ios/tutorials/using-contentful-xcode-plugin/)
 
-## Tools and framework integrations
+## Tools and integrations
 Here are some tools developed by our team to help you completing some basic tasks.
 
-### Xcode plugin
+### Xcode Plugin
 A plugin for automatically creating Core Data models from your Contentful content model. Read this to get up and running with it.<br>
 [View on GitHub](https://github.com/contentful/ContentfulXcodePlugin)
 
@@ -72,8 +72,8 @@ You can download them by looking for “Contentful” on the App Store.
 
 ### iPhone (iOS)
 
-#### Discovery app
-This app enables you to browse and preview your Contentful Spaces.<br>
+#### Discovery App
+This app enables you to browse and preview your Contentful spaces.<br>
 [View on GitHub](https://github.com/contentful/discovery-app)<br>
 [Download on the App Store](https://itunes.apple.com/us/app/contentful-discovery-cms-for/id892840015)
 
@@ -86,20 +86,20 @@ A demo for how to use Contentful in Swift.<br>
 [View on GitHub](https://github.com/contentful/guide-app-ios)
 
 ### Space template apps
-These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in our Dashboard.
+These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in the Contentful web app.
 
 #### Blog
-Generic Blog app connected to an example Space in Contentful.<br>
+Generic blog app connected to an example space in Contentful.<br>
 [View on GitHub](https://github.com/contentful/blog-app-ios)<br>
 [Download on the App Store](https://itunes.apple.com/us/app/contentful-blog-showcase/id962456216)
 
 #### Gallery
-Generic Gallery app connected to an example Space in Contentful.<br>
+Generic gallery app connected to an example space in Contentful.<br>
 [View on GitHub](https://github.com/contentful/gallery-app-ios)<br>
 [Download on the App Store](https://itunes.apple.com/us/app/contentful-gallery-showcase/id975142754)
 
 #### Product Catalogue
-Generic Product Catalogue / E-commerce app connected with an example Space in Contentful.<br>
+Generic product catalogue / e-commerce app connected with an example space in Contentful.<br>
 [View on GitHub](https://github.com/contentful/product-catalogue-ios)<br>
 [Download on the App Store](https://itunes.apple.com/us/app/contentful-product-catalogue/id963680410)
 

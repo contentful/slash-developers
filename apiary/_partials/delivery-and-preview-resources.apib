@@ -2,20 +2,20 @@
 
 :[Common errors](errors-common.md)
 
-## HTTP Details
+## HTTP details
 
-Learn more [on our Developer Center](https://www.contentful.com/developers/docs/references/http-details/).
+Learn more in the [developer center](https://www.contentful.com/developers/docs/references/http-details/).
 
 # Group Spaces
 
-All content in Contentful belongs to a _Space_. You can think of spaces like databases, you will generally have at least one space for a project, but may opt to use a separate space for e.g. testing.
+All content in Contentful belongs to a space. You can think of spaces like databases, you will generally have at least one space for a project, but may opt to use a separate space for e.g. testing.
 
 ## Space [/spaces/{space_id}?access_token={access_token}]
 
 Each space has a name, a set of locales, and some system metadata.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
 + Model (application/vnd.contentful.delivery.v1+json)
@@ -40,36 +40,36 @@ Each space has a name, a set of locales, and some system metadata.
           ]
         }
 
-### Get a Space [GET]
+### Get a space [GET]
 
 + Response 200
 
     [Space][]
 
-# Group Content Types
+# Group Content types
 
-:[What is a Content Type?](content-types-description.md)
+:[What is a content type?](content-types-description.md)
 
-## Content Type Collection [/spaces/{space_id}/content_types?access_token={access_token}]
+## Content type collection [/spaces/{space_id}/content_types?access_token={access_token}]
 
 + Parameters
-    + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
+    + space_id: cfexampleapi (required, string) - ID of the space in form of a string
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
-### Get all content types of a Space [GET]
+### Get all content types of a space [GET]
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
     + Attributes (Empty Array)
 
-## Content Type [/spaces/{space_id}/content_types/{content_type_id}?access_token={access_token}]
+## Content type [/spaces/{space_id}/content_types/{content_type_id}?access_token={access_token}]
 
 + Parameters
-    + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
+    + space_id: cfexampleapi (required, string) - ID of the space in form of a string
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type_id: cat (required, string) - ID of the Content Type in form of a string
+    + content_type_id: cat (required, string) - ID of the content type in form of a string
 
-### Get a single Content Type [GET]
+### Get a single content type [GET]
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -79,10 +79,10 @@ Each space has a name, a set of locales, and some system metadata.
 
 Entries are the documents contained within a space. They might represent blog posts or events or anything else that you have defined a [Content Type](#content-types) for.
 
-## Entries Collection [/spaces/{space_id}/entries?access_token={access_token}]
+## Entries collection [/spaces/{space_id}/entries?access_token={access_token}]
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
 ### Get all entries of a Space [GET]
@@ -94,9 +94,9 @@ Entries are the documents contained within a space. They might represent blog po
 ## Entry [/spaces/{space_id}/entries/{entry_id}?access_token={access_token}]
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + entry_id (required, string, `nyancat`) ... Alphanumeric `id` of the Entry to retrieve
+    + entry_id (required, string, `nyancat`) ... Alphanumeric `id` of the entry to retrieve
 
 ### Get a single entry [GET]
 
@@ -106,20 +106,20 @@ Entries are the documents contained within a space. They might represent blog po
 
 # Group Assets
 
-Assets represent files in a Space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to Entries through Links.
+Assets represent files in a space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to entries through links.
 
-Assets can optionally be localized by providing separate files for each locale. Those Assets which are not localized simply provide a single file under the default locale.
+Assets can optionally be localized by providing separate files for each locale. Those assets which are not localized simply provide a single file under the default locale.
 
-When querying the Content Delivery API for Entries which contain Links to Assets then all Assets will be included by default.
+When querying the Content Delivery API for entries which contain links to assets then all assets will be included by default.
 
 Asset properties:
 
 Field                           |Type          |Description
 --------------------------------|--------------|------------------------------------------------
 sys                             |Sys           |Common system properties.
-fields.title                    |Text          |Title of the Asset.
-fields.description              |Text          |Description of the Asset.
-fields.file                     |File          |File(s) of the Asset.
+fields.title                    |Text          |Title of the asset.
+fields.description              |Text          |Description of the asset.
+fields.file                     |File          |File(s) of the asset.
 fields.file.fileName            |Symbol        |Original filename of the file.
 fields.file.contentType         |Symbol        |Content type of the file.
 fields.file.url                 |Symbol        |URL of the file.
@@ -134,10 +134,10 @@ This means you don't need to create multiple versions of that image and store th
 
 All of this, with examples, is documented in our [Images API](https://www.contentful.com/developers/docs/references/images-api/) reference.
 
-## Assets Collection [/spaces/{space_id}/assets?access_token={access_token}]
+## Assets collection [/spaces/{space_id}/assets?access_token={access_token}]
 
 + Parameters
-    + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
+    + space_id: cfexampleapi (required, string) - ID of the space in form of a string
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
 + Model (application/vnd.contentful.delivery.v1+json)
@@ -169,7 +169,7 @@ All of this, with examples, is documented in our [Images API](https://www.conten
             }
         }
 
-### Get all Assets of a Space [GET]
+### Get all assets of a space [GET]
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -178,11 +178,11 @@ All of this, with examples, is documented in our [Images API](https://www.conten
 ## Asset [/spaces/{space_id}/assets/{asset_id}?access_token={access_token}]
 
 + Parameters
-    + space_id: cfexampleapi (required, string) - ID of the Space in form of a string
-    + asset_id: nyancat (required, string) - ID of the Asset in form of a string
+    + space_id: cfexampleapi (required, string) - ID of the space in form of a string
+    + asset_id: nyancat (required, string) - ID of the asset in form of a string
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
-### Get a single Asset [GET]
+### Get a single asset [GET]
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -192,24 +192,24 @@ All of this, with examples, is documented in our [Images API](https://www.conten
 
 Links are a powerful way to model relationships between pieces of content.
 
-Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/links/).
+Learn more in the [developer center](https://www.contentful.com/developers/docs/concepts/links/).
 
 ## Retrieval of linked items [/spaces/{space_id}/entries?access_token={access_token}&include={value}]
 
-When you have related content (e.g. Entries with links to image Assets) it's possible to include both search results and related data in a single request. To do so, the `include` parameter should be used, specifying the number of levels to be resolved. The maximum number of inclusions is `10`.
+When you have related content (e.g. entries with links to image assets) it's possible to include both search results and related data in a single request. To do so, the `include` parameter should be used, specifying the number of levels to be resolved. The maximum number of inclusions is `10`.
 
-This feature is only available on the Delivery and Preview APIs.
+This feature is only available on the Content Delivery API and the Preview API.
 
 If linked entries have not already been retrieved in the standard `items` array, they will be placed in the `includes.Entry` array. Similarly, linked assets are put inside the `includes.Asset` array.
 
-Note that only Links between Entries, Spaces and Assets are resolved. Links between Spaces and Content Types are not included in the response when the `include` parameter is specified.
+Note that only links between entries, spaces and assets are resolved. Links between spaces and content types are not included in the response when the `include` parameter is specified.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, number, `2`) ... Number of levels to include.
 
-### Query Entries [GET]
+### Query entries [GET]
 
 Example: Include 2 levels of linked entries.
 
@@ -222,10 +222,10 @@ Example: Include 2 levels of linked entries.
 Even when not specified, the `include` parameter assumes the value of `1`. In that way, whenever it's desirable to omit linked items, `include` should be specified as `0`.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
 
-### Query Entries [GET]
+### Query entries [GET]
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -233,62 +233,62 @@ Even when not specified, the `include` parameter assumes the value of `1`. In th
 
 ## Links to a specific item [/spaces/{space_id}/entries?access_token={access_token}&include={value}&content_type={content_type}&fields.{linking_field}.sys.id={target_entry_id}]
 
-It might be useful to retrieve all items linked to a particular target Entry. To do so, a query URL should filter Entries based on their specific `content_type`, `linking_field` (field used to link  items) and `entry_id` from the target Entry.
+It might be useful to retrieve all items linked to a particular target entry. To do so, a query URL should filter entries based on their specific `content_type`, `linking_field` (field used to link  items) and `entry_id` from the target entry.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, number, `2`) ... Number of levels to include.
     + linking_field (required, string, `bestFriend`) ... Field used to link items
-    + target_entry_id (required,string, `nyancat`) ... ID of the target Entry
-    + content_type (required,string, `cat`) ... ID of the Content Type
+    + target_entry_id (required,string, `nyancat`) ... ID of the target entry
+    + content_type (required,string, `cat`) ... ID of the content type
 
-### Query Entries [GET]
+### Query entries [GET]
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
   + Attributes (Empty Array)
 
-# Group Search Parameters
+# Group Search parameters
 
 Each collection endpoint supports a variety of query parameters to search and filter the items that will be included in the response. While the API calls in this section are focused on entries, the same query parameter syntax can be used to filter assets and content types as well.
 
-## Content Type [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}]
+## Content type [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}]
 
-Search for Entries with a specific Content Type by setting the content_type URI query parameter to the ID of the Content Type you want to search for. Please note that only one value for content_type can be specified at a time.
+Search for entries with a specific content type by setting the content_type URI query parameter to the ID of the content type you want to search for. Please note that only one value for content_type can be specified at a time.
 
-When querying Entries and using search filters based on `fields` or ordering by `fields` you must specify this parameter.
+When querying entries and using search filters based on `fields` or ordering by `fields` you must specify this parameter.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-Let's find all Entries of Content Type "cat".
+Let's find all entries of content type "cat".
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
   + Attributes (Empty Array)
 
-## Equality Operator [/spaces/{space_id}/entries?access_token={access_token}&{attribute}={value}]
+## Equality operator [/spaces/{space_id}/entries?access_token={access_token}&{attribute}={value}]
 
 Search for exact matches by using the equality operator.
 
-A reason to query an Entry by ID instead of retrieving the Entry itself might be because you want to include resolved links.
+A reason to query an entry by ID instead of retrieving the Entry itself might be because you want to include resolved links.
 
-Note that equality & inequality operators are not supported for Text fields and that search queries for fields have to be constrained by a `content_type` URI query parameter.
+Note that equality & inequality operators are not supported for text fields and that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.id`) ... The attribute to match.
     + value (required, `nyancat`) ... The value to match.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-Let's find all Entries with ID nyancat (hint: IDs are unique and there can only be one).
+Let's find all entries with ID nyancat (hint: IDs are unique and there can only be one).
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -299,35 +299,35 @@ Let's find all Entries with ID nyancat (hint: IDs are unique and there can only 
 Uses the parameter `[ne]` to exclude items matching a certain pattern.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.id`) ... The attribute to match.
     + value (required, `nyancat`) ... The value to match.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-For example, here's how to get all Entries except nyancat.
+For example, here's how to get all entries except nyancat.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
   + Attributes (Empty Array)
 
-## Array Equality/Inequality [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}={value}]
+## Array equality/inequality [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}={value}]
 
-The equality/inequality operators also works with Array fields: If one of the items in an Array field matches the value the field will match. Also, as it filters by a field, it becomes necessary to specify a Content Type.
+The equality/inequality operators also works with array fields: If one of the items in an array field matches the value the field will match. Also, as it filters by a field, it becomes necessary to specify a content type.
 
 Note that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
     + field_id (required, string, `likes`) ... The attribute to match.
     + value (required, `lasagna`) ... The value to match.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-Let's find all cats who like `lasagna` by matching `fields.likes` (Array) against a single value.
+Let's find all cats who like `lasagna` by matching `fields.likes` (array) against a single value.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -337,14 +337,14 @@ Let's find all cats who like `lasagna` by matching `fields.likes` (Array) agains
 
 It is possible to use the `[all]` operator to retrieve entries matching a specific set of values (e.g. `fields.likes[all]=rainbows,fish`)
 
-### Query Entries [GET]
+### Query entries [GET]
 
-Let's find all cats who like both `rainbows` and `fish` by using the all operator with `fields.likes` (Array) and these two values.
+Let's find all cats who like both `rainbows` and `fish` by using the all operator with `fields.likes` (array) and these two values.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
     + field_id (required, string, `likes`) ... The attribute to match.
     + values (required, `rainbows,fish`) ... The value to match.
 
@@ -358,14 +358,14 @@ Filter a field by multiple values via the `[in]` operator.
 When applied to an array value there must be at least one matching item. Similarly, when including a field value, it's necessary to specify a Content Type.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.id`) ... The attribute to match.
     + value (required, `finn,jake`) ... The value to match.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-Let's get Entries for finn and jake.
+Let's get entries for finn and jake.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -374,18 +374,18 @@ Let's get Entries for finn and jake.
 ## Exclusion [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&{attribute}%5Bnin%5D={value}]
 
 Filter a field by multiple values via the `[nin]` operator.
-When applied to an array value there must be at least one not matching item. Similarly, when including a field value, it's necessary to specify a Content Type.
+When applied to an array value there must be at least one not matching item. Similarly, when including a field value, it's necessary to specify a content type.
 
 Note that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
     + attribute (required, string, `fields.likes`) ... The attribute to match.
     + value (required, `rainbows,lasagna`) ... The value to match.
 
-### Query Entries [GET]
+### Query entries [GET]
 
 Let's get all cats that like neither rainbows nor lasagna.
 
@@ -400,13 +400,13 @@ You can check for the presence of a field using the `[exists]` operator. It chec
 If the field is not assigned a value, it will not have a JSON payload and will be taken as "non-existent" by the operator.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
     + attribute (required, string, `fields.likes`) ... The path to the property we're checking for existence
     + value (required, boolean, `true`) ... True if the path from attribute should exist
 
-### Query Entries [GET]
+### Query entries [GET]
 
 Let's find all non-archived entries.
 
@@ -423,57 +423,57 @@ Four range operators are available:
 - `[gt]`: Greater than
 - `[gte]`: Greater than or equal to
 
-Those operators can be applied to Date and Number Fields.
+Those operators can be applied to date and number fields.
 
 Note that search queries for fields have to be constrained by a `content_type` URI query parameter.
 
-When applied to field values, there must be a specified Content Type in the query.
+When applied to field values, there must be a specified content type in the query.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.updatedAt`) ... The attribute to match.
     + value (required, `2013-01-01T00:00:00Z`) ... The value to match.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-Let's look for Entries that've been updated since midnight of January 1st 2013.
+Let's look for entries that've been updated since midnight of January 1st 2013.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
   + Attributes (Empty Array)
 
-## Full-text Search [/spaces/{space_id}/entries?access_token={access_token}&query={value}]
+## Full-text search [/spaces/{space_id}/entries?access_token={access_token}&query={value}]
 
-Full-text search across all Text and Symbol Fields via query querystring parameter. Please take into account that full text search is case insensitive and therefore you might get more results than expected. Also note that the query will only take values with more than 1 character.
+Full-text search across all text and symbol Fields via query querystring parameter. Please take into account that full-text search is case insensitive and therefore you might get more results than expected. Also note that the query will only take values with more than 1 character.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, string, `bacon`) ... The value to match.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-Let's find all Entries matching "bacon".
+Let's find all entries matching "bacon".
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
   + Attributes (Empty Array)
 
-## Full-text Search on Field [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}%5Bmatch%5D={value}]
+## Full-text search on field [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}%5Bmatch%5D={value}]
 
-Full-text Search on a specific field via the `[match]` operator
+Full-text search on a specific field via the `[match]` operator
 
-After specifying a Content Type, it is possible to filter results based on a given field. Note that the query will only take values with more than 1 character.
+After specifying a content type, it is possible to filter results based on a given field. Note that the query will only take values with more than 1 character.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `dog`) ... Alphanumeric `id` of the Content Type to retrieve.
-    + field_id (required, string, `description`) ... Alphanumeric `id` of Field to retrieve.
+    + content_type (required, string, `dog`) ... Alphanumeric `id` of the content type to retrieve.
+    + field_id (required, string, `description`) ... Alphanumeric `id` of field to retrieve.
     + value (required, string, `bacon pancakes`) ... The value to match.
 
-### Query Entries [GET]
+### Query entries [GET]
 
 Let's find all things with "bacon pancakes" in their description.
 
@@ -489,20 +489,20 @@ Contentful works great with location-enabled content:
 - Show places within a specific map area
 - Find places in the vicinity of another place
 
-Entries can have location fields. For example, imagine a City Entry
+Entries can have location fields. For example, imagine a content type `city`
 with a field called `center` indicating where the city is located.
 Once you've added location information to your content you can benefit from
 all of the above features simply by using the search in a specific way.
 
-When you are performing geographical searches please keep in mind that queries including exact coordinates are usually no able to take advantage of our caching layer. Depending on your use-case it might be enough to round the coords to 3 decimal places (accuracy ~100m) or 2 decimal places (accuracy ~1km) or even further to improve your cache-hit rate.
+When you are performing geographical searches please keep in mind that queries including exact coordinates are usually no able to take advantage of our caching layer. Depending on your use case it might be enough to round the coords to 3 decimal places (accuracy ~100m) or 2 decimal places (accuracy ~1km) or even further to improve your cache-hit rate.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the content type to retrieve.
     + coordinate (required, string, `38,-122`) ... Latitude and longitude of a location.
 
-### Query Entries [GET]
+### Query entries [GET]
 
 A common use case for location search is to search for places close to the user's current position.
 
@@ -519,7 +519,7 @@ This will return all entries sorted by distance from the point at latitude=38 an
 
 When you're displaying content on a map it makes sense to retrieve only content that is visible on the currently visible map rectangle or circle. For these cases, use the `within` operator.
 
-Similar to the "near me" use case, this lets you search for locations that are within the specific object on the map. This can be useful for finding related Entries that are in the vicinity of another Entry.
+Similar to the "near me" use case, this lets you search for locations that are within the specific object on the map. This can be useful for finding related entries that are in the vicinity of another entry.
 
 There are two mechanisms to search for nearby locations:
 
@@ -533,15 +533,15 @@ To search for locations within a rectangle object, use the structure `field.cent
 
 2) Using a bounding circle:
 
-The structure `field.center[within]=latitute,longitude,radius` will return Entries included in the circle with `fields.center` of the given latitude, longitude and radius. The unit of the radius parameter is kilometer.
+The structure `field.center[within]=latitute,longitude,radius` will return entries included in the circle with `fields.center` of the given latitude, longitude and radius. The unit of the radius parameter is kilometer.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the content type to retrieve.
     + rectangle (required, string, `40,-124,36,-121`) ... Coordinate rectangle to search in.
 
-### Query Entries [GET]
+### Query entries [GET]
 
 This will return entries where `fields.center` is within the rectangle with:
 
@@ -556,7 +556,7 @@ This will return entries where `fields.center` is within the rectangle with:
 
 When fetching a collection endpoint, you can order items in the response by specifying the `order` search parameter. Both the `sys` properties (such as `sys.createdAt`) or field values (such as `fields.myCustomDateField`) can be used for ordering.
 
-Note that when ordering Entries by fields you must set the `content_type` URI query parameter to the ID of the Content Type you want to filter by.
+Note that when ordering entries by fields you must set the `content_type` URI query parameter to the ID of the content type you want to filter by.
 
 Also note that only the following field types can be used with the order parameter:
 
@@ -565,17 +565,17 @@ Name   |JSON Primitive|Description
 Symbol |String        |Basic list of characters. Maximum length is 256.
 Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53.
 Number |Number        |Number type with decimals.
-Date   |String        |Date/Time in ISO-8601 format.
+Date   |String        |Date/time in ISO-8601 format.
 Boolean|Boolean       |Flag, `true` or `false`.
 
 The following field types **do not** support the order parameter:
 
 Name   |JSON Primitive|Description
 -------|--------------|-----------------------------------------------------
-Text   |String        |Same as Symbol, but can be filtered via Full-Text Search. Maximum length is 50,000.
-Link   |Object        |See [Links](https://www.contentful.com/developers/docs/concepts/links/)
+Text   |String        |Same as symbol, but can be filtered via full-text search. Maximum length is 50,000.
+Link   |Object        |See [links](https://www.contentful.com/developers/docs/concepts/links/)
 Array  |Array         |List of values. Value type depends on `field.items.type`.
-Object |Object        |Arbitrary Object.
+Object |Object        |Arbitrary object.
 
 
 
@@ -584,26 +584,26 @@ Object |Object        |Arbitrary Object.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.createdAt`) ... Attribute to order by.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-To get all Entries ordered by their creation date.
+To get all entries ordered by their creation date.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
   + Attributes (Empty Array)
 
-## Reverse Order [/spaces/{space_id}/entries?access_token={access_token}&order=-{attribute}]
+## Reverse order [/spaces/{space_id}/entries?access_token={access_token}&order=-{attribute}]
 
-Reverse the sort-order by prefixing the field with a minus-sign.
+Reverse the sort order by prefixing the field with a minus sign.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required, string, `sys.updatedAt`) ... Attribute to order by.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-For example, order by time of last update starting with the newest Entries.
+For example, order by time of last update starting with the newest entries.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -611,15 +611,15 @@ For example, order by time of last update starting with the newest Entries.
 
 ## Order with multiple parameters [/spaces/{space_id}/entries?access_token={access_token}&order={attribute},{attribute2}]
 
-Order items by specifying your `order` parameter along with your attributes(`attribute`, `attribute2`). Prefix the field with a minus-sign to reverse the sort-order of your attribute.
+Order items by specifying your `order` parameter along with your attributes(`attribute`, `attribute2`). Prefix the field with a minus sign to reverse the sort order of your attribute.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + attribute (required,string,`sys.createdAt`) ... First attribute to order by
     + attribute2 (required, string, `sys.id`) ... Second attribute to order by.
 
-### Query Entries [GET]
+### Query entries [GET]
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -632,13 +632,13 @@ Specify the maximum number of results as limit search parameter.
 Please note that the maximum number of entries returned by the API is 1000. Limits higher than 1000 will be ignored. The default number of entries returned by the API is 100.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, number, `3`) ... Limit for number of results.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-Example: Limit to 3 Entries.
+Example: Limit to 3 entries.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -656,29 +656,29 @@ By combining `skip` and `limit` you can achieve pagination:
     etc.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + value (required, number, `3`) ... Offset for results.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-Example: Skip 3 Entries.
+Example: skip 3 entries.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
   + Attributes (Empty Array)
 
-## Filtering Assets by MIME-Type [/spaces/{space_id}/assets?access_token={access_token}&mimetype_group={mimetype_group}]
+## Filtering assets by MIME type [/spaces/{space_id}/assets?access_token={access_token}&mimetype_group={mimetype_group}]
 
-Assets can be filtered by their MIME-Type group by using the `mimetype_group` query parameter. Valid groups are `attachment`, `plaintext`, `image`, `audio`, `video`, `richtext`, `presentation`,
+Assets can be filtered by their MIME type group by using the `mimetype_group` query parameter. Valid groups are `attachment`, `plaintext`, `image`, `audio`, `video`, `richtext`, `presentation`,
 `spreadsheet`, `pdfdocument`, `archive`, `code` and `markup`. By default, all assets will be returned.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
     + mimetype_group (required, string, `image`) ... MIME-Type group to include.
 
-### Query Assets [GET]
+### Query assets [GET]
 
 Example: Include only image assets.
 
@@ -692,23 +692,23 @@ Example: Include only image assets.
 
 Specify a requested locale as `locale` URI query parameter.
 
-The locale parameter must be the code of a locale in the Space that's being queried, or the special wildcard value `*`. If no locale is specified, the default locale of the Space will be used.
+The locale parameter must be the code of a locale in the space that's being queried, or the special wildcard value `*`. If no locale is specified, the default locale of the space will be used.
 
 When `locale=*` is specified, field values will be nested in an object with keys corresponding to each locale with a defined value. Instead of writing `fields.name` when accessing the response data from your code, you would write `fields.name[localeCode]`.
 
 If the result contains only a single locale, resources will include the property `sys.locale` indicating the locale of that object.
 
-Learn more [on our Developer Center](https://www.contentful.com/developers/docs/concepts/locales/).
+Learn more in the [developer center](https://www.contentful.com/developers/docs/concepts/locales/).
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + entry_id (optional, string, `nyancat`) ... Alphanumeric `id` of the Entry to retrieve.
+    + entry_id (optional, string, `nyancat`) ... Alphanumeric `id` of the entry to retrieve.
     + locale (required, string, `tlh`) ... The locale to use.
 
-### Query Entries [GET]
+### Query entries [GET]
 
-`fields.name` is the only localized Field in the `cat` Content Type, so all other Fields are returned in the default locale.
+`fields.name` is the only localized field in the `cat` content type, so all other fields are returned in the default locale.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 

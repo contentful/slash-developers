@@ -1,32 +1,32 @@
 FORMAT: 1A
 HOST: https://preview.contentful.com
 
-# Content Preview API
+# Preview API
 
-In addition to the Delivery API for published content, there is also a Preview API for previewing unpublished content as though it were published. It maintains the same behaviour and parameters as the Content Delivery API, but delivers the latest draft for entries and assets.
+In addition to the Content Delivery API for published content, there is also a Preview API for previewing unpublished content as though it were published. It maintains the same behaviour and parameters as the Content Delivery API, but delivers the latest draft for entries and assets.
 
-## Preview API Authentication
+## Preview API authentication
 
-You authenticate with the Preview API in the same way as the Delivery API, but using a Preview access token.
+You authenticate with the Preview API in the same way as the Content Delivery API, but using a preview access token.
 
-Your production Delivery API access tokens will not work with the Preview API. The use of a separate token helps prevent accidentally leaking unpublished content. Every Delivery API key has an associated preview access token, which you can view in the "API" tab of the Contentful app.
+Your production access tokens will not work with the Preview API. The use of a separate token helps prevent accidentally leaking unpublished content. Every delivery API key has an associated preview access token, which you can view in the "APIs" tab in the Contentful web app.
 
 ## Using the Preview API
 
-You use the Preview API as though it were the Delivery API, but replacing the hostname `cdn.contentful.com` with `preview.contentful.com`, and the production access token with a preview access token.
+You use the Preview API as though it were the Content Delivery API, but replacing the hostname `cdn.contentful.com` with `preview.contentful.com`, and the production access token with a preview access token.
 
-## Preview API Limitations
+## Preview API limitations
 
 The Preview API does not implement the Sync API, so applications that rely exclusively on the Sync API to load data will not be usable with the Preview API.
 
 ## API rate limits
 
-In the Content Preview API, there is a limit of 10 requests per second. The limit exists to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited.
+In the Preview API, there is a limit of 10 requests per second. The limit exists to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited.
 
 The rate limit is implemented through a standard mechanism of the HTTP protocol (returning response code 429).
 
 :[Common Resource Attributes](_partials/cma/resource-attributes.apib)
 
-:[Shared Preview/Delivery Docs](_partials/delivery-and-preview-resources.apib tokentype:"A *preview* Content Delivery API Key.")
+:[Shared Preview/Delivery Docs](_partials/delivery-and-preview-resources.apib tokentype:"A *preview* Content Delivery API key.")
 
 :[Data Structures](_partials/delivery-and-preview-data-structures.apib)
