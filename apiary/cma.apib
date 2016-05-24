@@ -207,7 +207,7 @@ Delete an existing space by doing a DELETE request to `/spaces/ID`. Note that de
 
 When using this endpoint, an ID will be automatically generated for the created content type and returned on the response.
 
-In contrast, using the `PUT` method below allows you to control the ID of the created content type. This is especially important for content type ID's because they are often used as parameters in your own code. It's much nicer to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
+In contrast, using the `PUT` method below allows you to control the ID of the created content type. This is especially important for content type IDs because they are often used as parameters in your own code. It's much nicer to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
 
 Finally, in these responses, you can also specify validations and determine whether a field should be required or localized.
 
@@ -797,7 +797,7 @@ the same locale code.
 
 ### Get a locale [GET]
 
-This endpoint returns a single locale with all it's metadata.
+This endpoint returns a single locale with all its metadata.
 
 + Request
   + Headers
@@ -1168,7 +1168,7 @@ The health endpoint provides a simple overview of the amount of recently success
  The following list explains the supported constraints:
 
 
-- `and` - The AndConstraint evaluates if all it's conditions are true. The value of the AndConstraint needs to be an array with an arbitrary amount of constraints.
+- `and` - The AndConstraint evaluates if all its conditions are true. The value of the AndConstraint needs to be an array with an arbitrary amount of constraints.
 
   The AndConstraint is necessary and useful for a broad variety of use cases. An example for the constraint is the limitation to a specific content type:
 
@@ -1183,7 +1183,7 @@ The health endpoint provides a simple overview of the amount of recently success
 
   EqualityConstraints are one of the very basic constraints and are typically used to ensure the type of a document or to match entries of a content type. See the other use cases for examples.
 
-- `not` - The NotConstraint inverts the result of it's value.
+- `not` - The NotConstraint inverts the result of its value.
 
   A typical use case for the NotConstraint is the inversion of whitelists to blacklist. If for example a user should not be able to see entries of a specific content type, it can either be achieved by denying access to those content types or by allowing access to all but the entries of the content type:
 
@@ -1194,7 +1194,7 @@ The health endpoint provides a simple overview of the amount of recently success
   ]}
   ```
 
-- `or` - The OrConstaint evaluates if one if it's conditions returns true. The value of the OrConstraint needs to be an array with an arbitrary amount of constraints.
+- `or` - The OrConstaint evaluates if one if its conditions returns true. The value of the OrConstraint needs to be an array with an arbitrary amount of constraints.
 
   OrConstraints can be used to enable an effect for various different resources. E.g. a user should only be allowed to read entries of a specific content type or all assets:
 

@@ -6,7 +6,7 @@ page: :docsReferenceLocales
 
 Locales are a great advantage of Contentful's [premium plans](https://www.contentful.com/pricing/). They allow you to define multiple localizations of each piece of content and select a specific locale when querying the Content Delivery API.
 
-Every space has it's own set of locales, where each locale is uniquely identified by its ISO code (e.g., en-US or de-AT). There is always one default locale defined when a space is created, which is shown by default in the Contentful web app and used for Content Delivery API queries that do not request a specific locale. Note that as a default locale is specified in a space, it becomes permanent and cannot be changed afterwards.
+Every space has its own set of locales, where each locale is uniquely identified by its ISO code (e.g., en-US or de-AT). There is always one default locale defined when a space is created, which is shown by default in the Contentful web app and used for Content Delivery API queries that do not request a specific locale. Note that as a default locale is specified in a space, it becomes permanent and cannot be changed afterwards.
 
 ## Working with locales
 

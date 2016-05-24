@@ -1,5 +1,5 @@
 Content types are schemas that define the fields of entries. Every entry can
-only contain values in the fields defined by it's content type, and the values
+only contain values in the fields defined by its content type, and the values
 of those fields must match the data type defined in the content type. There is a
 limit of 50 fields per content type.
 
