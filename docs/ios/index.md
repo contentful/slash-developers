@@ -32,7 +32,8 @@ View in [Swift](/developers/api-demo/swift/) |
 
 ### Getting started with the CDA
 This walkthrough will help you getting started with your first basic hello world style iOS app of using Contentful with a demo space.<br>
-[View the tutorial](/developers/docs/ios/tutorials/using-delivery-api-on-ios/)
+[View the tutorial - ObjC](/developers/docs/ios/tutorials/using-delivery-api-on-ios/)<br>
+[View the tutorial - Swift](/developers/docs/ios/tutorials/using-delivery-api-with-swift/)
 
 ### Getting started with the CMA
 This post will walk you through implementing a simple iOS app for uploading images from the device's Camera Roll to Contentful.<br>
@@ -61,6 +62,11 @@ A plugin for automatically creating Core Data models from your Contentful conten
 A library for making it easy to persist data retrieved from Contentful in Core Data or Realm.<br>
 [View on GitHub](https://github.com/contentful/contentful-persistence.objc)<br>
 [View the tutorial](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/)
+
+### ContentfulPersistenceSwift
+A library for making it easy to persist data retrieved from Contentful in Core Data or other persistence stores.<br>
+[View on GitHub](https://github.com/contentful/contentful-persistence.swift)<br>
+[View the tutorial](/developers/docs/ios/tutorials/using-delivery-api-with-swift/)
 
 ### Concorde
 A library for displaying progressive JPEG images on iOS.<br>
