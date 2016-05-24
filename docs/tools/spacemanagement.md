@@ -37,6 +37,7 @@ When you have a link to an entry or asset on a published entry, if you delete th
 To get you jump-started in Contentful using Contentful Bootstrap. We also have a tutorial.
 
 - [View on GitHub](https://github.com/contentful/contentful-bootstrap.rb)
+- [Read the tutorial](developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
 
 ## Third party tools
 
