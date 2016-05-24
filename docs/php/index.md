@@ -38,7 +38,7 @@ How to setup the ContentfulBundle in your Symfony application is explained in th
 ## Tools and integrations
 
 ### Symfony integration
-A Symfony bundle for integrating with the Contentful APIs (Content Delivery API and Content Management API)<br>
+A Symfony bundle for integrating with the Content Delivery API<br>
 [View on GitHub](https://github.com/contentful/ContentfulBundle)<br>
 
 ## Apps
