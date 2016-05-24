@@ -4,16 +4,16 @@ page: :docsContentfulBootstrap
 
 This post will walk you through your first steps in using [Contentful Bootstrap][1] to get you jump-started in Contentful.
 
-We will assume that you have basic knowledge of the Command Line Interface and that you have basic understanding of Contentful and Ruby.
+We will assume that you have basic knowledge of the command line interface and that you have basic understanding of Contentful and Ruby.
 
 We will provide simple steps for doing the following tasks:
 
-* Setup your account from the Command Line
-* Create a Space
-* Create and use Templates for your Spaces and Entries
-* Using your Bootstrap generated Content
-* Generate Templates from existing Spaces
-* Generate API Access Tokens
+* Setup your account from the command line
+* Create a space
+* Create and use templates for your spaces and entries
+* Using your bootstrap generated content
+* Generate templates from existing spaces
+* Generate API tokens
 
 ## Installation
 
@@ -55,21 +55,21 @@ If you want to, and I leave this as an exercise to the reader, you can look for 
 
 We will now proceed to explain some of their use cases.
 
-### Creating an Account via the Command Line
+### Creating an account via the command line
 
-Whenever you run `create_space` or `generate_token` the program will check if you already have Contentful Management API Credentials.
+Whenever you run `create_space` or `generate_token` the program will check if you already have credentials for the Content Management API.
 If you don't have them, then you will be asked to create them.
 
-A new browser window will be opened and will try to authenticate you in our [Login System](https://be.contentful.com/login).
-If you're not already authenticated, you will be prompted to Log In or Sign Up.
+A new browser window will be opened and will try to authenticate you in our [login system](https://be.contentful.com/login).
+If you're not already authenticated, you will be prompted to log in or sign up.
 
-After this, you will be requested permission to create an OAuth token for `contentful_bootstrap` to start creating your Space and Tokens.
+After this, you will be requested permission to create an OAuth token for `contentful_bootstrap` to start creating your space and tokens.
 
-### Creating a Space
+### Creating a space
 
-The most basic use case for `contentful_bootstrap` is to create new Test Spaces.
+The most basic use case for `contentful_bootstrap` is to create new test spaces.
 
-A Space is a container for your resources, called Entries, and your resource definitions, called Content Types, and can be created by a simple command:
+A space is a container for your resources, called entries, and your resource definitions, called content types, and can be created by a simple command:
 
 ~~~ bash
 $ contentful_bootstrap create_space my_first_space
@@ -78,17 +78,17 @@ $ contentful_bootstrap create_space my_first_space
 In this case, the space will be created empty, and you will be provided a URL to access it and manage it.
 
 This simple command also triggers a few other things under the hood, and you will be prompted to decide on them.
-You will be offered whether to automatically create Read-Only API keys for our [Content Delivery API][0], and also
+You will be offered whether to automatically create read-only API keys for our [Content Delivery API][0], and also
 if you want to save your credentials in a `~/.contentfulrc` file.
 
 We highly recommend that you do both things as they are really useful, this will be explained in a later section.
 
-#### Using Templates
+#### Using templates
 
-When creating a Space, in most cases you want to have it pre-populated with content. For that purpose, we offer
-the possibility to use Pre-Built templates or using JSON Templates.
+When creating a space, in most cases you want to have it pre-populated with content. For that purpose, we offer
+the possibility to use pre-built templates or using JSON templates.
 
-##### Pre-Built Templates
+##### Pre-built templates
 
 For the case of pre-built templates, we have:
 
@@ -96,7 +96,7 @@ For the case of pre-built templates, we have:
 * `catalogue`
 * `gallery`
 
-Each of these templates come bundled with a few Content Types and Entries.
+Each of these templates come bundled with a few content types and entries.
 
 They are useful for small demos, but do not allow any customization of the content model.
 We will cover custom templates in the next section.
@@ -109,14 +109,14 @@ $ contentful_bootstrap create_space my_blog --template blog
 
 You may replace `blog` for the other two templates.
 
-##### JSON Templates
+##### JSON templates
 
-The real power of `contentful_bootstrap` comes in the form of JSON Templates.
-Using this tool along with JSON Templates, you can store blueprints for your Spaces.
+The real power of `contentful_bootstrap` comes in the form of JSON templates.
+Using this tool along with JSON templates, you can store blueprints for your spaces.
 
-A JSON Template is a simplified representation of a Space and all of its contents.
+A JSON template is a simplified representation of a space and all of its contents.
 
-Here I'll show you a very simple example, containing a Content Type with just one Symbol (short text) field and one Entry:
+Here I'll show you a very simple example, containing a content type with just one symbol (short text) field and one entry:
 
 ~~~ json
 {
@@ -155,7 +155,7 @@ After saving this template to a file named `templates/simple.json` you can call 
 $ contentful_bootstrap create_space simple --json-template templates/simple.json
 ~~~
 
-### Using your Bootstrap generated Content
+### Using your Bootstrap generated content
 
 Now that your content has been created, your tokens ready to use and saved into `~/.contentfulrc`, we can start consuming it.
 
@@ -173,14 +173,14 @@ SPACE_ID = wbpasdkseprz
 The content of this file is an `.ini` formatted file. You will find only one or multiple sections, depending on how many spaces you've created
 through `contentful_bootstrap`.
 
-The `[global]` section will always be present and have only one key containing your CMA API Token.
+The `[global]` section will always be present and have only one key containing your CMA API key.
 
-The following sections will be for each of your Spaces, in the example shown above, you can find the `[simple]` Space created in the previous
-section. Each Space section contains two keys, the Read-Only CDA Token and the Space ID.
+The following sections will be for each of your spaces, in the example shown above, you can find the `[simple]` space created in the previous
+section. Each space section contains two keys, the read-only CDA key and the space ID.
 
 With this information, you can start using all your Contentful data.
 
-Let's for example use the [CDA Client][5] with the newly generated Space:
+Let's for example use the [CDA Client][5] with the newly generated space:
 
 ~~~ ruby
 require 'contentful'
@@ -198,16 +198,16 @@ client.entries.first.my_text
 # => "some fancy text"
 ~~~
 
-With this, you can now use your `contentful_bootstrap` generated data. If you want to use [Contentful Management API][4] for managing your content, just make sure to use
-the Management Key as explained above.
+With this, you can now use your `contentful_bootstrap` generated data. If you want to use the [Content Management API][4] for managing your content, just make sure to use
+the CMA key as explained above.
 
-### Generating Templates from existing Spaces
+### Generating templates from existing spaces
 
-There will be cases were you might want to make an export of your current Space to have as a blueprint for several cases, for example:
+There will be cases were you might want to make an export of your current space to have as a blueprint for several cases, for example:
 
-* Creating new Testing or Staging Spaces
-* Creating a Demo from existing data
-* Version Control your Content outside of Contentful
+* Creating new testing or staging spaces
+* Creating a demo from existing data
+* Version control your content outside of Contentful
 
 For those cases, you can use our `generate_json` command:
 
@@ -218,28 +218,28 @@ Usage: generate_json <space_id> <access_token> [--output-file OUTPUT_PATH]
     -h, --help                       Print this message
 ~~~
 
-With this command, you can generate a JSON Template of your live Spaces, you can optionally automatically export it to a file.
+With this command, you can generate a JSON template of your live spaces, you can optionally automatically export it to a file.
 
-All the files generated can be used as JSON Templates in the `create_space` command.
+All the files generated can be used as JSON templates in the `create_space` command.
 
-### Generating Additional API Tokens
+### Generating additional API tokens
 
-There are many cases in which you might want to have separate API Tokens for your Space.
+There are many cases in which you might want to have separate API tokens for your space.
 
 With `contentful_bootstrap` you can create additional tokens by running the following command:
 
 ~~~ bash
 $ contentful_bootstrap generate_token -h
 Usage: generate_token <space_id> [--name TOKEN_NAME] [--config CONFIG_PATH]
-    -n, --name TOKEN_NAME            Specify Token Name
-    -c, --config CONFIG_PATH         Specify Configuration Path
+    -n, --name TOKEN_NAME            Specify token name
+    -c, --config CONFIG_PATH         Specify configuration path
     -h, --help                       Print this message
 ~~~
 
 ## Conclusion
 
-While not every Field Type is yet supported, you can automate a big part of your Contentful Space creation using `contentful_bootstrap`.
-You can keep track of evolving Content Types and create complicated Demo datasets via Templates.
+While not every field type is yet supported, you can automate a big part of your Contentful space creation using `contentful_bootstrap`.
+You can keep track of evolving content types and create complicated demo datasets via templates.
 
 If you want to stay up to date or contribute in the development of `contentful_bootstrap` you can
 look in our [GitHub Repository][1] for the latest updates and releases. We're getting new feature updates regularly.

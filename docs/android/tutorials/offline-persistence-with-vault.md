@@ -2,9 +2,9 @@
 page: :docsOfflinePersistenceAndroid
 ---
 
-In this tutorial we will walkthrough the essential steps of settings up Vault with your Android project. For that, we've open-sourced [DroidStory][droidstory], which is a simple app showcasing several best practices for integrating Vault in an Android project.
+In this tutorial we will walk through the essential steps of settings up Vault with your Android project. For that, we've open-sourced [DroidStory][droidstory], which is a simple app showcasing several best practices for integrating Vault in an Android project.
 
-## Getting Started
+## Getting started
 
 Vault is split into two artifacts - `compiler` and `runtime`. The compiler is only required at compile time, and should not be bundled with the final APK. To achieve that, we first need to setup the [android-apt][] Gradle plugin. The plugin not only lets us declare compile time only dependencies, but it also increases visibility for the generated classes inside IntelliJ/Android Studio.
 
@@ -30,7 +30,7 @@ compile 'com.contentful.vault:core:0.9.9'
 Make sure you're using the latest version of Vault in your own projects, which is available on the official [GitHub repository][vault].
 Now that we have our dependencies ready to go, let's move over to the code.
 
-## Models, Fields and Space
+## Models, fields and space
 
 The DroidStory space has a single content type, `Story`, which contains the following fields:
 
@@ -53,7 +53,7 @@ public final class Story extends Resource {
 }
 ~~~
 
-Notice that long value `5RFNQmUj5Y6aAggqAswiqK`? That's the ID of the `Story` content type. If you already know how to find it, move over to the next section. Otherwise, simply log-in to the Contentful web application, hit the `Content Types` button on the top bar, select the desired content type, and copy the last path segment of the URL.
+Notice that long value `5RFNQmUj5Y6aAggqAswiqK`? That's the ID of the `Story` content type. If you already know how to find it, move over to the next section. Otherwise, simply log-in to the Contentful web app, go to your content model, select the desired content type, and copy the last path segment of the URL.
 
 {: .img}
 ![Story Content Type ID](content-type-id.png)
@@ -108,8 +108,6 @@ $ java -jar generator.jar --folder /tmp/generated/ --package com.contentful.samp
 ~~~
 
 This will result in the same classes as above, only with less manual labor.
-
-
 
 ## Synchronization
 

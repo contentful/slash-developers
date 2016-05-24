@@ -2,11 +2,11 @@ FORMAT: 1A
 HOST: https://api.contentful.com
 
 # Content Management API
-The Content Management API is a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API for managing content.
+Contentful's Content Management API is a [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API for managing content.
 
-In Contentful content is represented as Entries and Assets divided into Spaces. Apps and websites depend on the structure of Entries, so every Entry must comply to a specific Content Type. Assets represent binary files like images, videos and other media.
+In Contentful content is represented as entries and assets divided into spaces. Apps and websites depend on the structure of entries, so every entry must comply to a specific content type. Assets represent binary files like images, videos and other media.
 
-Entries are represented as JSON data; Assets are represented as (binary) files.
+Entries are represented as JSON data; assets are represented as (binary) files.
 
 The API can be securely accessed via HTTPS and will only be available to clients authenticating with an access token.
 
@@ -14,17 +14,17 @@ Managing content via an API has many benefits:
 
 - Custom applications can use the API to manage content.
 - Scripts can use the API to automate various tasks.
-- Contentful's own content management web app is a user-friendly JavaScript application which is solely based on the API.
+- The Contentful web app is a user-friendly JavaScript application which is solely based on the API.
 
-If you want to deliver content (e.g. to the web or to mobile apps), you should often use the Content Delivery API. Whereas the Content Management API may be used to deliver and manage content within an application, it shouldn't be used to massively deliver content to end users. For example, you shouldn't use the Content Management API to display blog posts on a web site or pull information into a mobile web app unless that app is meant for editing content.
+If you want to deliver content (e.g. to the web or to mobile apps), you should use the Content Delivery API. Whereas the Content Management API may be used to deliver and manage content within an application, it shouldn't be used to massively deliver content to end users. For example, you shouldn't use the Content Management API to display blog posts on a web site or pull information into a mobile web app unless that app is meant for editing content.
 
-Note that the structure of responses of the Management API differs from those of the Delivery API. GET responses from the Management API retrieve the entirety of items (i.e. includes all localized or even unpublished content).
+Note that the structure of responses of the Content Management API differs from those of the Content Delivery API. GET responses from the Content Management API retrieve the entirety of items (i.e. includes all localized or even unpublished content).
 
-Conceptual documentation, as well as further resources like tutorials and libraries can be found on [our Developer Center](https://contentful.com/developers/documentation/).
+Conceptual documentation, as well as further resources like tutorials and libraries can be found in the [developer center](https://contentful.com/developers/documentation/).
 
 ## Authentication
 
-Learn about authenticating to the CMA and obtain your access token at [our Developer Center](http://www.contentful.com/developers/docs/references/authentication/#the-management-api).
+Learn about authenticating to the Content Management API and obtain your access token in the [developer center](http://www.contentful.com/developers/docs/references/authentication/#the-management-api).
 
 ## Resource IDs
 
@@ -37,7 +37,7 @@ When choosing an ID yourself it must adhere to the following rules:
 
 In terms of a regular expression: `/^[a-zA-Z0-9-_.]{1,64}$/`.
 
-## Updating Resources
+## Updating resources
 
 When updating an existing resource don't only pass the changes you made; Instead pass the entire resource including the changes you've made. In other words: Do not pass a subset of properties and expect some kind of merge to occur. If you update with only a subset of properties all existing properties which are not part of that update will be gone.
 
@@ -51,7 +51,7 @@ This way no unseen changes are ever overridden and unexpected conflicts are unli
 
 Be aware that none of the `sys` property fields can be updated, including `sys.id`.
 
-## Updating and Version Locking
+## Updating and version locking
 
 Contentful uses optimistic locking. When updating an existing resource its current version needs to be specified as the value of the `X-Contentful-Version` HTTP header (this header is automatically set when using our [official SDKs][sdks]). The version is compared with the resource's current version on the server to ensure that a client doesn't overwrite a resource that has since been updated. If the version changed in between the update will be rejected.
 
@@ -69,7 +69,7 @@ The rate limit is implemented through a standard mechanism of the HTTP protocol 
 
 :[Common errors](_partials/errors-common.md)
 
-### Management API Error types
+### Management API error types
 
 HTTP Status Code   |Error Code       |Description
 -------------------|-----------------|----------------------------------------------------------------------------------
@@ -78,11 +78,11 @@ HTTP Status Code   |Error Code       |Description
 `422`|`InvalidEntryError`|The entered value is invalid.
 `422`|`ValidationFailedError`|The triggered query references an invalid field.
 
-## HTTP Details
+## HTTP details
 
-Learn more [on our Developer Center](https://www.contentful.com/developers/docs/references/http-details/).
+Learn more in the [developer center](https://www.contentful.com/developers/docs/references/http-details/).
 
-## API Versioning
+## API versioning
 
 All API requests should specify a `Content-Type` header of `application/vnd.contentful.management.v1+json`.
 
@@ -92,21 +92,21 @@ To be on the safe side, always specify the `Content-Type` header.
 
 # Group Spaces
 
-## Spaces Collection [/spaces]
+## Spaces collection [/spaces]
 
-Spaces are containers for Content Types, Entries and Assets and other resources. API consumers, like mobile apps or websites, typically fetch data by getting Entries and Assets from one or more Spaces.
+Spaces are containers for content types, entries and assets and other resources. API consumers, like mobile apps or websites, typically fetch data by getting entries and assets from one or more spaces.
 
-In Contentful you can be a member of multiple Organizations.
+In Contentful you can be a member of multiple organizations.
 
-Depending on your role in the organization you can create Spaces in them or not: Only organization owners and admins have this permission.
+Depending on your role in the organization you can create spaces in them or not: Only organization owners and admins have this permission.
 
 When you sign up the first time, you'll create a new organization. When you're invited to an existing organization, you'll become a member of it.
 
-If you only have a single organization, any Space you create will be automatically associated with that organization.
+If you only have a single organization, any space you create will be automatically associated with that organization.
 
-However, if you're an admin or an owner in multiple organizations you need to pass the ID of the organization you want to create the Space in.
+However, if you're an admin or an owner in multiple organizations you need to pass the ID of the organization you want to create the space in.
 
-### Create a Space [POST]
+### Create a space [POST]
 
 The `X-Contentful-Organization` header is optional if an account only belongs to one organization.
 
@@ -141,7 +141,7 @@ The `X-Contentful-Organization` header is optional if an account only belongs to
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
 
-### Update a Space [PUT]
+### Update a space [PUT]
 
 The `X-Contentful-Organization` header is optional if an account only belongs to one organization.
 
@@ -159,7 +159,7 @@ The `X-Contentful-Organization` header is optional if an account only belongs to
 
     + Attributes (Space)
 
-### Get a Space [GET]
+### Get a space [GET]
 
 + Request
     + Headers
@@ -170,9 +170,9 @@ The `X-Contentful-Organization` header is optional if an account only belongs to
 
     + Attributes (Space)
 
-### Delete a Space [DELETE]
+### Delete a space [DELETE]
 
-Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that deleting a Space will remove its entire content, including all Content Types, Entries and Assets. Be careful as this action can not be undone.
+Delete an existing space by doing a DELETE request to `/spaces/ID`. Note that deleting a space will remove its entire content, including all content types, entries and assets. Be careful as this action can not be undone.
 
 + Request
     + Headers
@@ -181,16 +181,16 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
-# Group Content Types
+# Group Content types
 
 :[What is a Content Type?](_partials/content-types-description.md)
 
-## Content Type Collection [/spaces/{space_id}/content_types]
+## Content type collection [/spaces/{space_id}/content_types]
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
 
-### Get all content types of a Space [GET]
+### Get all content types of a space [GET]
 
 + Request
     + Headers
@@ -201,13 +201,13 @@ Delete an existing Space by doing a DELETE request to `/spaces/ID`. Note that de
 
     + Attributes (Empty Array)
 
-### Create a Content Type [POST]
+### Create a content type [POST]
 
 **Creating content types with `POST` is strongly discouraged!**
 
-When using this endpoint, an ID will be automatically generated for the created Content Type and returned on the response.
+When using this endpoint, an ID will be automatically generated for the created content type and returned on the response.
 
-In contrast, using the `PUT` method below allows you to control the ID of the created Content Type. This is especially important for Content Type ID's because they are often used as parameters in your own code. It's much nicer to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
+In contrast, using the `PUT` method below allows you to control the ID of the created content type. This is especially important for content type ID's because they are often used as parameters in your own code. It's much nicer to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
 
 Finally, in these responses, you can also specify validations and determine whether a field should be required or localized.
 
@@ -224,38 +224,38 @@ Finally, in these responses, you can also specify validations and determine whet
     + Attributes (Content Type)
 
 
-## Content Type [/spaces/{space_id}/content_types/{content_type_id}]
+## Content type [/spaces/{space_id}/content_types/{content_type_id}]
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
     + content_type_id: 3ORKIAOaJqQWWg86MWkyOs (required, string) - ID of the Content Type in form of a string
 
-### Create/Update a Content Type [PUT]
+### Create/update a content type [PUT]
 
-This endpoint can be used to create a new Content Type with an ID specified by the user, or to update a specific Content Type via its ID.
+This endpoint can be used to create a new content type with an ID specified by the user, or to update a specific content type via its ID.
 
-Note that when updating an existing Content Type, you always need to specify the last version you got of the Content Type you are updating with `X-Contentful-Version`.
+Note that when updating an existing content type, you always need to specify the last version you got of the content type you are updating with `X-Contentful-Version`.
 
-Whenever you are creating or updating a Content Type you can add or remove validations to the fields present in the Content Type schema. Validations, specified in the validations property a field, are included in the payload sent to the server when you create or update a Content Type.
+Whenever you are creating or updating a content type you can add or remove validations to the fields present in the content type schema. Validations, specified in the validations property a field, are included in the payload sent to the server when you create or update a content type.
 
 Validation      |Description                              |Applicable to|Example                         |
 ----------------|-----------------------------------------|-------------|--------------------------------|
-`linkContentType`|Takes an array of content type ids and validates that the link points to an entry of that content type.|Links to Entries|`{"linkContentType": ["post","doc","product"]}`
+`linkContentType`|Takes an array of content type ids and validates that the link points to an entry of that content type.|Links to entries|`{"linkContentType": ["post","doc","product"]}`
 `in`|Takes an array of values and validates that the field value is in this array.|Text, Symbol, Integer, Number| `{"in": ["General", "iOS", "Android"]}`
-`linkMimetypeGroup`|Takes a MimeType group name and validates that the link points to an asset of this group.|Links to Assets|`{"linkMimetypeGroup": "image"}`
+`linkMimetypeGroup`|Takes a MimeType group name and validates that the link points to an asset of this group.|Links to assets|`{"linkMimetypeGroup": "image"}`
 `size`|Takes optional min and max parameters and validates the size of the array (number of objects in it).|Arrays, Text, Symbol|`{"size": { "min": 5, "max": 20}}`
 `range`|Takes optional min and max parameters and validates the range of a value.|Number, Integer|`{"range": { "min": 5, "max": 20}}`
-`regexp`|Takes a string that reflects a JS regex and flags, validates against a string. See [JS Reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) for the parameters.|Text, Symbol|`{"regexp": {"pattern": "^such", "flags": "im"}}`
+`regexp`|Takes a string that reflects a JS regex and flags, validates against a string. See [JS reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) for the parameters.|Text, Symbol|`{"regexp": {"pattern": "^such", "flags": "im"}}`
 
-Please notice that validations will only take effect after the Content Type has been activated and that previously existing entries will not be validated until they are published again.
+Please notice that validations will only take effect after the content type has been activated and that previously existing entries will not be validated until they are published again.
 
-To remove a specific validation, update the Content Type leaving that validation out of the field's validations collection. To remove all the validations applied to a field update the Content Type schema removing the validations property.
+To remove a specific validation, update the content type leaving that validation out of the field's validations collection. To remove all the validations applied to a field update the content type schema removing the validations property.
 
-It is possible to change the ID of a Content Type's field. Please note, that the API will return different data afterwards and that this might break your currently existing code base.
+It is possible to change the ID of a content type's field. Please note, that the API will return different data afterwards and that this might break your currently existing code base.
 
-__Usecase__
+__Use case__
 
-Imagine you created a Content Type and started developing your application. During the development process you find out, that the initially chosen name of a field was not perfect and you want to change it. Especially you want to change the response of the API.
+Imagine you created a content type and started developing your application. During the development process you find out, that the initially chosen name of a field was not perfect and you want to change it. Especially you want to change the response of the API.
 
 + Request Create new Content Type with a predefined identifier
     + Headers
@@ -308,7 +308,7 @@ Imagine you created a Content Type and started developing your application. Duri
 
     + Attributes (Content Type Update)
 
-### Get a single Content Type [GET]
+### Get a single content type [GET]
 
 + Request
     + Headers
@@ -319,9 +319,9 @@ Imagine you created a Content Type and started developing your application. Duri
 
     + Attributes (Content Type)
 
-### Delete a Content Type [DELETE]
+### Delete a content type [DELETE]
 
-Before you can delete a Content Type you need to deactivate it.
+Before you can delete a content type you need to deactivate it.
 
 + Request
     + Headers
@@ -330,13 +330,13 @@ Before you can delete a Content Type you need to deactivate it.
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
-## Content Type Activation [/spaces/{space_id}/content_types/{content_type_id}/published]
+## Content type activation [/spaces/{space_id}/content_types/{content_type_id}/published]
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + content_type_id: 3ORKIAOaJqQWWg86MWkyOs (required, string) - ID of the Content Type in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + content_type_id: 3ORKIAOaJqQWWg86MWkyOs (required, string) - ID of the content type in form of a string
 
-### Activate a Content Type [PUT]
+### Activate a content type [PUT]
 
 + Request
     + Headers
@@ -348,7 +348,7 @@ Before you can delete a Content Type you need to deactivate it.
 
     + Attributes (Content Type Published)
 
-### Deactivate a Content Type [DELETE]
+### Deactivate a content type [DELETE]
 
 + Request
     + Headers
@@ -359,14 +359,14 @@ Before you can delete a Content Type you need to deactivate it.
 
     + Attributes (Content Type Unpublished)
 
-## Activated Content Type Collection [/spaces/{space_id}/public/content_types]
+## Activated content type collection [/spaces/{space_id}/public/content_types]
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
 
-### Get all activated content types of a Space [GET]
+### Get all activated content types of a space [GET]
 
-Retrieves the activated versions of Content Types, ignoring any changes made since the last activation.
+Retrieves the activated versions of content types, ignoring any changes made since the last activation.
 
 + Request
     + Headers
@@ -382,14 +382,14 @@ Retrieves the activated versions of Content Types, ignoring any changes made sin
 
 # Group Entries
 
-## Entries Collection [/spaces/{space_id}/entries]
+## Entries collection [/spaces/{space_id}/entries]
 
-Entries represent textual content in a Space. An Entry's data adheres to a certain Content Type.
+Entries represent textual content in a space. An entry's data adheres to a certain content type.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
 
-### Get all entries of a Space [GET]
+### Get all entries of a space [GET]
 
 + Request
     + Headers
@@ -400,13 +400,13 @@ Entries represent textual content in a Space. An Entry's data adheres to a certa
 
     + Attributes (Empty Array)
 
-### Create an Entry [POST]
+### Create an entry [POST]
 
-Before you can create an Entry you need to create and activate a Content Type.
+Before you can create an entry you need to create and activate a content type.
 
-When creating a new Entry you need to pass the ID of the Entry's desired Content Type as the `X-Contentful-Content-Type` header.
+When creating a new entry you need to pass the ID of the entry's desired content type as the `X-Contentful-Content-Type` header.
 
-When using this endpoint, an ID will be automatically generated for the created Entry and returned on the response.
+When using this endpoint, an ID will be automatically generated for the created entry and returned on the response.
 
 + Request
     + Headers
@@ -424,22 +424,22 @@ When using this endpoint, an ID will be automatically generated for the created 
 ## Entry [/spaces/{space_id}/entries/{entry_id}]
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + entry_id: helloworld (required, string) - ID of the Entry in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + entry_id: helloworld (required, string) - ID of the entry in form of a string
 
-### Create/Update an Entry  [PUT]
+### Create/update an entry  [PUT]
 
-This endpoint can be used to create a new Entry with an ID specified by the user, or to update a specific Entry via its ID.
+This endpoint can be used to create a new entry with an ID specified by the user, or to update a specific entry via its ID.
 
-Note that when updating an existing Entry, you always need to specify the last version you got of the Entry you are updating with `X-Contentful-Version`.
+Note that when updating an existing entry, you always need to specify the last version you got of the entry you are updating with `X-Contentful-Version`.
 
-Before you can create an Entry you need to create and activate a Content Type.
+Before you can create an entry you need to create and activate a content type.
 
-When creating a new Entry you need to pass the ID of the Entry's desired Content Type as the `X-Contentful-Content-Type` header.
+When creating a new entry you need to pass the ID of the entry's desired content type as the `X-Contentful-Content-Type` header.
 
-For updating an Entry, passing the ID of the Entry's Content Type is not required.
+For updating an entry, passing the ID of the entry's content type is not required.
 
-+ Request Create new Entry with a predefined identifier
++ Request Create new entry with a predefined identifier
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -452,7 +452,7 @@ For updating an Entry, passing the ID of the Entry's Content Type is not require
 
     + Attributes (Entry)
 
-+ Request Update existing Entry
++ Request Update existing entry
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -487,15 +487,15 @@ For updating an Entry, passing the ID of the Entry's Content Type is not require
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
-## Entry Publishing [/spaces/{space_id}/entries/{entry_id}/published]
+## Entry publishing [/spaces/{space_id}/entries/{entry_id}/published]
 
-After publishing the Entry it will be available via the Content Delivery API.
+After publishing the entry it will be available via the Content Delivery API.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + entry_id: helloworld (required, string) - ID of the Entry in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + entry_id: helloworld (required, string) - ID of the entry in form of a string
 
-### Publish an Entry [PUT]
+### Publish an entry [PUT]
 
 + Request
     + Headers
@@ -507,7 +507,7 @@ After publishing the Entry it will be available via the Content Delivery API.
 
     + Attributes (Entry Published)
 
-### Unpublish an Entry [DELETE]
+### Unpublish an entry [DELETE]
 
 + Request
     + Headers
@@ -519,15 +519,15 @@ After publishing the Entry it will be available via the Content Delivery API.
 
     + Attributes (Entry Update)
 
-## Entry Archiving [/spaces/{space_id}/entries/{entry_id}/archived]
+## Entry archiving [/spaces/{space_id}/entries/{entry_id}/archived]
 
-An Entry can only be archived when it's not published.
+An entry can only be archived when it's not published.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + entry_id: helloworld (required, string) - ID of the Entry in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + entry_id: helloworld (required, string) - ID of the entry in form of a string
 
-### Archive an Entry [PUT]
+### Archive an entry [PUT]
 
 + Request
     + Headers
@@ -539,7 +539,7 @@ An Entry can only be archived when it's not published.
 
     + Attributes (Entry Update)
 
-### Unarchive an Entry [DELETE]
+### Unarchive an entry [DELETE]
 
 + Request
     + Headers
@@ -553,16 +553,16 @@ An Entry can only be archived when it's not published.
 
 # Group Assets
 
-## Assets Collection [/spaces/{space_id}/assets]
+## Assets collection [/spaces/{space_id}/assets]
 
-Assets represent files in a Space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to Entries through Links.
+Assets represent files in a space. An asset can be any kind of file: an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to entries through links.
 
-Assets can optionally be localized by providing separate files for each locale. Those Assets which are not localized simply provide a single file under the default locale.
+Assets can optionally be localized by providing separate files for each locale. Those assets which are not localized simply provide a single file under the default locale.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
 
-### Get all Assets of a Space [GET]
+### Get all assets of a space [GET]
 
 + Request
     + Headers
@@ -573,9 +573,9 @@ Assets can optionally be localized by providing separate files for each locale. 
 
     + Attributes (Empty Array)
 
-### Create an Asset [POST]
+### Create an asset [POST]
 
-When using this endpoint, an ID will be automatically generated for the created Asset and returned on the response.
+When using this endpoint, an ID will be automatically generated for the created asset and returned on the response.
 
 + Request
     + Headers
@@ -590,14 +590,14 @@ When using this endpoint, an ID will be automatically generated for the created 
     + Attributes (Asset)
 
 
-## Published Assets Collection [/spaces/{space_id}/public/assets]
+## Published assets collection [/spaces/{space_id}/public/assets]
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
 
-### Get all published Assets of a Space [GET]
+### Get all published assets of a space [GET]
 
-Retrieves the published versions of Assets.
+Retrieves the published versions of assets.
 
 + Request
     + Headers
@@ -614,13 +614,13 @@ Retrieves the published versions of Assets.
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
     + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
 
-### Create/Update an Asset [PUT]
+### Create/update an asset [PUT]
 
-This endpoint can be used to create a new Asset with an ID specified by the user, or to update a specific Asset via its ID.
+This endpoint can be used to create a new asset with an ID specified by the user, or to update a specific asset via its ID.
 
-Note that when updating an existing Asset, you always need to specify the last version you got of the Asset you are updating with `X-Contentful-Version`.
+Note that when updating an existing asset, you always need to specify the last version you got of the asset you are updating with `X-Contentful-Version`.
 
-+ Request Create a new Asset with a predefined identifier
++ Request Create a new asset with a predefined identifier
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -632,7 +632,7 @@ Note that when updating an existing Asset, you always need to specify the last v
 
     + Attributes (Asset)
 
-+ Request Update existing Asset
++ Request Update existing asset
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
@@ -645,7 +645,7 @@ Note that when updating an existing Asset, you always need to specify the last v
 
     + Attributes (Asset)
 
-### Get a single Asset [GET]
+### Get a single asset [GET]
 
 + Request
     + Headers
@@ -656,7 +656,7 @@ Note that when updating an existing Asset, you always need to specify the last v
 
     + Attributes (Asset)
 
-### Delete an Asset [DELETE]
+### Delete an asset [DELETE]
 
 + Request
     + Headers
@@ -666,16 +666,16 @@ Note that when updating an existing Asset, you always need to specify the last v
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
-## Asset Processing [/spaces/{space_id}/assets/{asset_id}/files/{locale}/process]
+## Asset processing [/spaces/{space_id}/assets/{asset_id}/files/{locale}/process]
 
 Asset processing happens asynchronously, the call will not block until it has finished.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + asset_id: baconpancakes (required, string) - ID of the asset in form of a string
     + locale: `en-US` (required, string) - Locale for which files should be processed
 
-### Process an Asset [PUT]
+### Process an asset [PUT]
 
 + Request
     + Headers
@@ -685,15 +685,15 @@ Asset processing happens asynchronously, the call will not block until it has fi
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
-## Asset Publishing [/spaces/{space_id}/assets/{asset_id}/published]
+## Asset publishing [/spaces/{space_id}/assets/{asset_id}/published]
 
-After publishing the Asset it will be available via the Content Delivery API.
+After publishing the asset it will be available via the Content Delivery API.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + asset_id: baconpancakes (required, string) - ID of the asset in form of a string
 
-### Publish an Asset [PUT]
+### Publish an asset [PUT]
 
 + Request
     + Headers
@@ -705,7 +705,7 @@ After publishing the Asset it will be available via the Content Delivery API.
 
     + Attributes (Asset Published)
 
-### Unpublish an Asset [DELETE]
+### Unpublish an asset [DELETE]
 
 + Request
     + Headers
@@ -717,15 +717,15 @@ After publishing the Asset it will be available via the Content Delivery API.
 
     + Attributes (Asset)
 
-## Asset Archiving [/spaces/{space_id}/assets/{asset_id}/archived]
+## Asset archiving [/spaces/{space_id}/assets/{asset_id}/archived]
 
-An Asset can only be archived when it's not published.
+An asset can only be archived when it's not published.
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
     + asset_id: baconpancakes (required, string) - ID of the Asset in form of a string
 
-### Archive an Asset [PUT]
+### Archive an asset [PUT]
 
 + Request
     + Headers
@@ -737,7 +737,7 @@ An Asset can only be archived when it's not published.
 
     + Attributes (Asset)
 
-### Unarchive an Asset [DELETE]
+### Unarchive an asset [DELETE]
 
 + Request
     + Headers
@@ -751,15 +751,15 @@ An Asset can only be archived when it's not published.
 
 # Group Locales
 
-Locales allow the definition of translated content for both Assets and Entries. A locale
+Locales allow the definition of translated content for both assets and entries. A locale
 consists mainly of a name and a locale code.
 
-## Locale Collection [/spaces/{space_key}/locales]
+## Locale collection [/spaces/{space_key}/locales]
 
 + Parameters
-    + space_key: fp91oelsziea (required, string) - ID of the Space in form of a string
+    + space_key: fp91oelsziea (required, string) - ID of the space in form of a string
 
-### Get all Locales of a Space [GET]
+### Get all locales of a space [GET]
 
 The locale collection endpoint returns a list of all the created locales. One of those
 will have the flag `default` set to true and is the locale that is used if no other
@@ -774,7 +774,7 @@ locale was specified for the request (e.g. when reading an entry).
 + Response 200 (application/vnd.contentful.management.v1+json)
   + Attributes (Empty Array)
 
-### Create a Locale [POST]
+### Create a locale [POST]
 
 Posting a payload to the locale's collection endpoint creates a new locale
 for the given space. Please note that you cannot create two locales with
@@ -795,7 +795,7 @@ the same locale code.
   + space_key: fp91oelsziea (required, string) - ID of the Space in form of a string
   + locale_id: 1WFZQhacJ9SJvkd7e0d8ys (required, string) - ID of the Locale in form of a string
 
-### Get a Locale [GET]
+### Get a locale [GET]
 
 This endpoint returns a single locale with all it's metadata.
 
@@ -807,14 +807,14 @@ This endpoint returns a single locale with all it's metadata.
 + Response 200 (application/vnd.contentful.management.v1+json)
   + Attribute (Locale Complete)
 
-### Update a Locale [PUT]
+### Update a locale [PUT]
 
 Putting a payload against a single entities endpoint allows an update of a locale.
 
 Please note that renaming a locale changes the responses for upcoming requests, which
 might break your existing code.
 
-Finally, it is not possible to change what is the default locale of a Space, as these are
+Finally, it is not possible to change what is the default locale of a space, as these are
 permanent entities.
 
 + Request
@@ -826,7 +826,7 @@ permanent entities.
 + Response 201 (application/vnd.contentful.management.v1+json)
   + Attribute (Locale Complete)
 
-### Deleting a Locale [DELETE]
+### Deleting a locale [DELETE]
 
 This endpoint deletes an existing locale. Please note that it is **not** possible to recover
 from this action! Every content that was stored for that specific locale gets deleted and
@@ -839,29 +839,29 @@ cannot be recreated by creating the same locale again.
             Content-Type: application/vnd.contentful.management.v1+json
 + Response 204
 
-# Group Search Parameters
+# Group Search parameters
 
-[See CDA documentation](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for a list of search parameters supported for querying resources. Please note that the CMA does not support the `include` functionality.
+See the [reference documentation for the Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for a list of search parameters supported for querying resources. Please note that the Content Management API does not support the `include` functionality.
 
-To use search parameters, these should be put in the end of your query, similar to the Delivery API (e.g. `https://api.contentful.com/spaces/space_id/entries?content_type=X`).
+To use search parameters, these should be put in the end of your query, similar to the Content Delivery API (e.g. `https://api.contentful.com/spaces/space_id/entries?content_type=X`).
 
 # Group Webhooks
 
 Webhooks in Contentful can notify you or someone else when content has changed by calling a preconfigured HTTP endpoint. This can be used for notifications, static site generators or other forms of post-processing that is sourced from Contentful.
 
 ### When are webhooks called
-Webhooks will be called as the result of an action executed against Assets, Entries or ContentTypes. The following table summarizes the actions that Contentful offers for every type:
+Webhooks will be called as the result of an action executed against assets, entries or content types. The following table summarizes the actions that Contentful offers for every type:
 
 type/action| Create | Save | Auto save | Archive | Unarchive | Publish | Unpublish | Delete
 -----------|--------|------|-----------|---------|-----------|---------|-----------|---------
-ContentType | Yes   | Yes  | No        | No      | No        | Yes     | Yes       | Yes
+Content type | Yes   | Yes  | No        | No      | No        | Yes     | Yes       | Yes
 Entry      | Yes    | Yes  | Yes       | Yes     | Yes       | Yes     | Yes       | Yes
 Asset      | Yes    | Yes  | Yes       | Yes     | Yes       | Yes     | Yes       | Yes
 
 For example:
 
-- A configured webhook could be called for Entry creation or Asset save.
-- A configured webhook won't be called for ContentType archival because ContentTypes can't be archived.
+- A configured webhook could be called for entry creation or asset save.
+- A configured webhook won't be called for content type archival because content types can't be archived.
 
 #### Topics
 When creating a webhook you have to explicitly specify for which changes on your content (topics) you want your webhook called. Think of it as if you were subscribing your webhook to different event sources. For example, you could decide that a webhook is going to be called when:
@@ -872,12 +872,13 @@ When creating a webhook you have to explicitly specify for which changes on your
 
 These restrictions have to be translated into a list of `[Action].[Type]` pairs, `[*.publish, Asset.delete, Entry.*]`, and included in the payload that defines the webhook.
 
-`*` is a wildcard character that can be used in place of any Action or Type. The combination `*.*` is also valid and it means that your webhook will be subscribed to all actions across all types.  It's important that you keep in mind that using `*` opens the door for your webhook to be called for future actions or types that didn't exist when the webhook was created or updated.
+`*` is a wildcard character that can be used in place of any action or type. The combination `*.*` is also valid and it means that your webhook will be subscribed to all actions across all types. It's important that you keep in mind that using `*` opens the door for your webhook to be called for future actions or types that didn't exist when the webhook was created or updated.
+
 #### Auto save
 
-The Contentful Web App automatically saves the documents you are working on after every change you make. Besides that, Contentful keeps track of those documents that are active in the Web App and uses that information to call configured webhooks. For this matter Contentful considers active those documents that had been edited in the last 20 seconds.
+The Contentful web app automatically saves the documents you are working on after every change you make. Besides that, Contentful keeps track of those documents that are active in the web app and uses that information to call configured webhooks. For this matter Contentful considers active those documents that had been edited in the last 20 seconds.
 
-This means that, for example, if you are editing an Entry in the Contentful Web App for one minute, and you have a webhook configured to be called for `auto_save` actions, that webhook will be called 3 times.
+This means that, for example, if you are editing an entry in the web app for one minute, and you have a webhook configured to be called for `auto_save` actions, that webhook will be called 3 times.
 
 ## Request Format
 
@@ -922,9 +923,9 @@ The payload received by a webhook will change depending on the action type:
 - For `Unpublish` and `Delete` it will receive a deletion object. In the case of Entries the Deletions are extended with the id of their Content Type.
 - For `Auto Save`, `Archive`, `Unarchive` and `Create` it will receive the latest draft version at the time the webhook was triggered. That's the same payload as the one available through the Management API.
 
-__example__
+__Example__
 
-When an Entry has been published:
+When an entry has been published:
 
 ```json
 {
@@ -949,7 +950,7 @@ When an Entry has been published:
 }
 ```
 
-When an Entry has been unpublished:
+When an entry has been unpublished:
 
 ```json
 {
@@ -975,12 +976,12 @@ Contentful will use the HTTP response status code of the webhook call to decide 
 In case of an error, the webhook will periodically retry its request with
 increasing delays in between up to a maximum of 3 attempts.
 
-## Webhooks Collection [/spaces/{space_id}/webhook_definitions]
+## Webhooks collection [/spaces/{space_id}/webhook_definitions]
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
 
-### Get all Webhooks of a Space [GET]
+### Get all webhooks of a space [GET]
 
 + Request
     + Headers
@@ -991,7 +992,7 @@ increasing delays in between up to a maximum of 3 attempts.
 
     + Attributes (Empty Array)
 
-### Create a Webhook [POST]
+### Create a webhook [POST]
 
 + Request
     + Headers
@@ -1032,10 +1033,10 @@ increasing delays in between up to a maximum of 3 attempts.
 ## Webhook [/spaces/{space_id}/webhook_definitions/{webhook_id}]
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + webhook_id: foobar (required, string) - ID of the Webhook in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + webhook_id: foobar (required, string) - ID of the webhook in form of a string
 
-### Create/Update a Webhook [PUT]
+### Create/update a webhook [PUT]
 
 + Request Create with a predefined identifier
     + Headers
@@ -1080,7 +1081,7 @@ increasing delays in between up to a maximum of 3 attempts.
 
     + Attributes (Webhook Definition)
 
-### Delete a Webhook [DELETE]
+### Delete a webhook [DELETE]
 
 + Request
     + Headers
@@ -1092,7 +1093,7 @@ increasing delays in between up to a maximum of 3 attempts.
 
 # Group Webhook calls
 
-When setting up and maintaining Webhook endpoints, it is often necessary to analyze the exact request and response payloads and headers in order to verify that the setup is correct or to diagnose issues.
+When setting up and maintaining webhook endpoints, it is often necessary to analyze the exact request and response payloads and headers in order to verify that the setup is correct or to diagnose issues.
 To facilitate this process, a number of API endpoints are available that expose this information.
 
 ## Webhook call overviews [/spaces/{space_id}/webhooks/{webhook_id}/calls]
@@ -1100,8 +1101,8 @@ To facilitate this process, a number of API endpoints are available that expose 
 The call overviews consist of a list of the most recent webhook calls made, their status, possible errors, and the target URL.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + webhook_id: foobar (required, string) - ID of the Webhook in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + webhook_id: foobar (required, string) - ID of the webhook in form of a string
 
 ### Get the most recent call overviews [GET]
 + Request
@@ -1120,9 +1121,9 @@ The call details provide detailed information about the outgoing request and the
 Request and response body are currently truncated at 500kb and 200kb respectively.
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + hook_id: foobar (required, string) - ID of the Webhook in form of a string
-    + call_id: 5H0hqP2t68ww4eQCWYOyas (required, string) - ID of the WebhookCall in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + hook_id: foobar (required, string) - ID of the webhook in form of a string
+    + call_id: 5H0hqP2t68ww4eQCWYOyas (required, string) - ID of the webhook call in form of a string
 
 ### Get the webhook call details [GET]
 
@@ -1158,8 +1159,7 @@ The health endpoint provides a simple overview of the amount of recently success
 
 # Group Roles
 
- Creating custom roles allows the admin to restrict access of users to certain resources. Roles are following a whitelisting approach, which means that everything that a user is allowed to do, needs to be explicitly defined. A role contains a name, a description, permissions and
- policies.
+ Creating custom roles allows the admin to restrict access of users to certain resources. Roles are following a whitelisting approach, which means that everything that a user is allowed to do, needs to be explicitly defined. A role contains a name, a description, permissions and policies.
 
  Permissions on the one hand are basic rules which define whether or not a user can access content types, settings and entries. It can be specified if a user can read and/or manage those.
 
@@ -1208,12 +1208,12 @@ The health endpoint provides a simple overview of the amount of recently success
   ]}
   ```
 
-## Roles Collection [/spaces/{space_id}/roles]
+## Roles collection [/spaces/{space_id}/roles]
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
 
-### Get all Roles [GET]
+### Get all roles [GET]
 
 This endpoint returns a paginated list of roles for a given space. Each role contains a name, a description, as well as permissions and policies, which describe what a user can and cannot do.
 
@@ -1226,7 +1226,7 @@ This endpoint returns a paginated list of roles for a given space. Each role con
 
     + Attributes (Empty Array)
 
-### Create a Role [POST]
+### Create a role [POST]
 
 This endpoint can be used to create a custom role. Please note that a role name must be unique within the space.
 
@@ -1245,10 +1245,10 @@ This endpoint can be used to create a custom role. Please note that a role name 
 ## Role [/spaces/{space_id}/roles/{role_id}]
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
-    + role_id: 1ElgCn1mi1UHSBLTP2v4TD (required, string) - ID of the Role in a form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
+    + role_id: 1ElgCn1mi1UHSBLTP2v4TD (required, string) - ID of the role in a form of a string
 
-### Get a single Role [GET]
+### Get a single role [GET]
 
 This endpoint can be used to read an existing single role.
 
@@ -1263,7 +1263,7 @@ This endpoint can be used to read an existing single role.
 
     + Attributes (Complete Role)
 
-### Update a single Role [PUT]
+### Update a single role [PUT]
 
 This endpoint can be used to update an existing role. Please note that this endpoint cannot be used to create a new role with a specific id.
 
@@ -1279,7 +1279,7 @@ This endpoint can be used to update an existing role. Please note that this endp
 
     + Attributes (Complete Role)
 
-### Delete a single Role [DELETE]
+### Delete a single role [DELETE]
 
 This endpoint can be used to delete an existing role. The deletion of roles only possible if there is no user in the space which only has the soon-to-be-deleted role assigned.
 
@@ -1290,14 +1290,14 @@ This endpoint can be used to delete an existing role. The deletion of roles only
 
 + Response 204
 
-# Group Space Memberships
+# Group Space memberships
 
-## Space Memberships Collection [/spaces/{space_id}/space_memberships]
+## Space memberships collection [/spaces/{space_id}/space_memberships]
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
 
-### Get all Space Memberships [GET]
+### Get all space memberships [GET]
 
 This endpoint returns a paginated list of all space memberships.
 
@@ -1310,7 +1310,7 @@ This endpoint returns a paginated list of all space memberships.
 
     + Attributes (Empty Array)
 
-### Create a Space Membership [POST]
+### Create a space membership [POST]
 
 This endpoint allows the creation of a space membership (or in other words the invitation of a user to a space). A user can and must either be flagged as "admin" or assigned to certain roles.
 
@@ -1326,15 +1326,15 @@ This endpoint allows the creation of a space membership (or in other words the i
 
     + Attributes (Complete Space Membership)
 
-## Space Membership [/spaces/{space_id}/space_memberships/{space_membership_id}]
+## Space membership [/spaces/{space_id}/space_memberships/{space_membership_id}]
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in a form of a string
-    + space_membership_id: 13ju26yx8X4xd6cNgrA5YA (required, string) - ID of the Space Membership in a form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in a form of a string
+    + space_membership_id: 13ju26yx8X4xd6cNgrA5YA (required, string) - ID of the space membership in a form of a string
 
-### Get a single Space Membership [GET]
+### Get a single space membership [GET]
 
-The endpoint returns details about an existing Space Membership.
+The endpoint returns details about an existing space membership.
 
 + Request
     + Headers
@@ -1345,9 +1345,9 @@ The endpoint returns details about an existing Space Membership.
 
     + Attributes (Complete Space Membership)
 
-### Update a single Space Membership [PUT]
+### Update a single space membership [PUT]
 
-The endpoints allows the modification of a Space Membership. This way additional roles can be assigned or a user can be flagged as an admin.
+The endpoints allows the modification of a space membership. This way additional roles can be assigned or a user can be flagged as an admin.
 
 + Request
     + Headers
@@ -1361,9 +1361,9 @@ The endpoints allows the modification of a Space Membership. This way additional
 
     + Attributes (Complete Space Membership)
 
-### Delete a single Space Membership [DELETE]
+### Delete a single space membership [DELETE]
 
-This endpoint allows the deletion of a Space Membership. It only affects the accessibility of space for user and not a user itself. Please note that it is possible to remove every administrator from a space. This means, there is no one left to manage the users. This can be fixed by inviting someone through the web application's organization settings.
+This endpoint allows the deletion of a space membership. It only affects the accessibility of space for user and not a user itself. Please note that it is possible to remove every administrator from a space. This means, there is no one left to manage the users. This can be fixed by inviting someone through the web application's organization settings.
 
 + Request
     + Headers
@@ -1372,14 +1372,14 @@ This endpoint allows the deletion of a Space Membership. It only affects the acc
 
 + Response 204
 
-# Group API Keys
+# Group API keys
 
-## API Keys Collection [/spaces/{space_id}/api_keys]
+## API keys collection [/spaces/{space_id}/api_keys]
 
 + Parameters
-    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
+    + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
 
-### Get all API Keys [GET]
+### Get all API keys [GET]
 
 + Request
     + Headers
@@ -1391,7 +1391,7 @@ This endpoint allows the deletion of a Space Membership. It only affects the acc
     + Attributes (Empty Array)
 
 
-### Create an API Key [POST]
+### Create an API key [POST]
 
 + Request
     + Headers

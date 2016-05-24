@@ -9,17 +9,17 @@ All data in Contentful has a field type, which is defined in the [creation of a 
 Each field type corresponds to a JSON type, though there are more field types than JSON types.
 
 {:.table}
-Name   |JSON Type|Description|Example
+Name   |JSON type|Description|Example
 -------|--------------|-----------|------------
 Symbol |String        |Basic list of characters. Maximum length is 256.| "The title"
-Text<sup>1</sup>   |String        |Same as Symbol, but filterable via Full-Text Search. Maximum length is 50,000.|" This is a post and ..."
+Text<sup>1</sup>   |String        |Same as Symbol, but filterable via full-text search. Maximum length is 50,000.|" This is a post and ..."
 Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53. | 42
 Number |Number        |Number type with decimals. | 3.14
-Date<sup>2</sup>  |String        |Date/Time in ISO 8601 format. | 2015-11-06T09:45:27
+Date<sup>2</sup>  |String        |Date/time in ISO 8601 format. | 2015-11-06T09:45:27
 Boolean|Boolean       |Flag, `true` or `false` | true
 Link   |Object        |A reference to an entry or asset. The type of the referenced item is defined by the `linkType` property. See [links](https://www.contentful.com/developers/docs/concepts/links/) for more information| -
-Array  |Array         |List of values. See [Array fields](#array-fields) below. |["name1", "name2", ...]
-Object |Object        |Arbitrary Object. | `fields.file.details`
+Array  |Array         |List of values. See [array fields](#array-fields) below. |["name1", "name2", ...]
+Object |Object        |Arbitrary object. | `fields.file.details`
 
 1. **Text**: fields do not support ordering or strict equality
 

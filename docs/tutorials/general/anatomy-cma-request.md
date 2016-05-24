@@ -3,26 +3,26 @@ page: :docsAnatomyCMARequest
 ---
 ## Overview
 
-In Contentful, content is defined as Entries and Assets (e.g images, videos and other media) and divided into Spaces. Apps and websites depend on the structure of Entries, so every Entry must comply to a specific Content Type.
+In Contentful, content is defined as entries and assets (e.g images, videos and other media) and divided into spaces. Apps and websites depend on the structure of entries, so every entry must comply to a specific content type.
 
-This article is a comprehensive exposure to managing content via the Content Management API(CMA). In the end, you should be able to write custom applications and scripts using our API.
+This article is a comprehensive exposure to managing content via the Content Management API. In the end, you should be able to write custom applications and scripts using our API.
 
 In this example, we will create an online magazine, publish a blog post and add an image to it.
 
 To do so, we will do the following:
 
-+ Create a Space named `Galactic magazine`;
-+ Establish a Content Type named `Blog Posts` with fields `body`, `title`
-+ Create and publish a blog post Entry
-+ Create, process and publish an Asset (image)
-+ Add a field `image` to the Content Type `Blog Posts`
-+ Add this image to our blog post Entry
++ Create a space named `Galactic magazine`;
++ Establish a content type named `Blog Posts` with fields `body`, `title`
++ Create and publish a blog post entry
++ Create, process and publish an asset (image)
++ Add a field `image` to the content type `Blog Posts`
++ Add this image to our blog post entry
 
-## Part 1: Structuring Blog Posts
+## Structuring blog posts
 
-### Creating a Space
+### Creating a space
 
-Spaces are containers for Content Types, Entries and Assets and other resources. API consumers retrieve data by getting Entries and Assets from one or more Spaces. To create a Space, a request should have the following structure:
+Spaces are containers for content types, entries and assets and other resources. API consumers retrieve data by getting entries and assets from one or more spaces. To create a space, a request should have the following structure:
 
 #### URL
 
@@ -47,7 +47,7 @@ In the body of our request we should specify a `name` and `defaultLocale` (defin
 }
 ~~~
 
-We get a JSON response with the array `sys`, containing managed system properties, and additional Space information on `name` and `locales`:
+We get a JSON response with the array `sys`, containing managed system properties, and additional space information on `name` and `locales`:
 
 ~~~ json
 {
@@ -83,9 +83,9 @@ We get a JSON response with the array `sys`, containing managed system propertie
 }
 ~~~
 
-### Creating and Activating a Content Type
-Content Types are mainly list of fields acting as a blueprint for Entries.
-In this example of an online magazine, we will create the Content Type `Blog Post`, which will yield the structure of our future Entries:
+### Creating and activating a content type
+Content types are mainly list of fields acting as a blueprint for entries.
+In this example of an online magazine, we will create the content type `Blog Post`, which will yield the structure of our future entries:
 
 #### URL
 
@@ -120,7 +120,7 @@ Content-Type: application/vnd.contentful.management.v1+json
 }
 ~~~
 
-As you can see in the following response, we've just created a Content Type named `Blog Posts` with fields `body` and `title`:
+As you can see in the following response, we've just created a content type named `Blog Posts` with fields `body` and `title`:
 
 ~~~ json
 {
@@ -172,7 +172,7 @@ As you can see in the following response, we've just created a Content Type name
 }
 ~~~
 
-We will be using this schema to create our Entry in the next section. Before we do that, we must activate our Content Type by using the following request:
+We will be using this schema to create our entry in the next section. Before we do that, we must activate our content type by using the following request:
 
 #### URL
 
@@ -226,8 +226,8 @@ Whereas the response yields the same `fields` array, `sys` is updated with new i
 }
 ~~~
 
-### Creating and Publishing an Entry
-To create an Entry, we must specify a `X-Contentful-Content-Type` in the header and specify [locales](https://www.contentful.com/developers/docs/concepts/locales/) for its fields. In the following example, we will create a blog post Entry :
+### Creating and publishing an entry
+To create an entry, we must specify a `X-Contentful-Content-Type` in the header and specify [locales](https://www.contentful.com/developers/docs/concepts/locales/) for its fields. In the following example, we will create a blog post entry:
 
 #### URL
 
@@ -258,7 +258,7 @@ X-Contentful-Content-Type: blog_post
 }
 ~~~
 
-Our request payload assigns a value to each Content Type field:
+Our request payload assigns a value to each content type field:
 
 ~~~ json
 {
@@ -308,9 +308,9 @@ Our request payload assigns a value to each Content Type field:
 }
 ~~~
 
-Our Entry is still a draft, so it's not possible to to deliver its content.
+Our entry is still a draft, so it's not possible to to deliver its content.
 
-To deliver content, we must publish our Entry and indicate its version (`X-Contentful-Version`) in the header of a PUT request:
+To deliver content, we must publish our entry and indicate its version (`X-Contentful-Version`) in the header of a PUT request:
 
 #### URL
 
@@ -326,7 +326,7 @@ Authorization: $token
 X-Contentful-Version: 1
 ~~~
 
-Similar to activating a Content-Type, publishing an Entry retrieves a `sys` array with updated information about versioning:
+Similar to activating a content type, publishing an entry retrieves a `sys` array with updated information about versioning:
 
 ~~~ json
 {
@@ -387,10 +387,10 @@ Similar to activating a Content-Type, publishing an Entry retrieves a `sys` arra
 }
 ~~~
 
-## Part 2: Adding Assets to Blog Posts
+## Adding assets to blog posts
 
 ### Creating an asset
-To create Assets using the CMA, we must provide a publicly available upload URL.
+To create assets using the Content Management API, we must provide a publicly available upload URL.
 
 These can be hosted on your own domain, be tunneled from `localhost` (using a tool like [ngrok](https://ngrok.com/)) or stored in a third-party website.
 
@@ -475,7 +475,7 @@ A JSON response is retrieved with `sys` and `fields`, which describes the title,
 }
 ~~~
 
-Now, we must tell Contentful to download and store the file from the URL we've just specified. In other words, we must process this Asset:
+Now, we must tell Contentful to download and store the file from the URL we've just specified. In other words, we must process this asset:
 
 #### URL
 
@@ -491,7 +491,7 @@ Content-Type: application/vnd.contentful.management.v1+json
 X-Contentful-Version: 1
 ~~~
 
-Note that while no response is given, processing is asynchronous, so we may have to wait a little longer until the Asset is publishable.
+Note that while no response is given, processing is asynchronous, so we may have to wait a little longer until the asset is publishable.
 
 When finished, a GET request should reveal the updated image URL:
 
@@ -520,7 +520,7 @@ When finished, a GET request should reveal the updated image URL:
 
 As you can see, the image has been stored and given a new URL (placed under the `images.contentful.com` domain).
 
-Now, we are ready to publish our Asset. Note that we must specify the correct `X-Contentful-Version` on our header:
+Now, we are ready to publish our asset. Note that we must specify the correct `X-Contentful-Version` on our header:
 
 #### URL
 
@@ -585,7 +585,7 @@ The response has the same `field` array, but `sys` has been updated with new ver
 }
 ~~~
 
-Now, to add our Asset to an Entry, we must update our Content Type `Blog Posts` to include an `image` field:
+Now, to add our asset to an entry, we must update our content type `Blog Posts` to include an `image` field:
 
 #### URL
 
@@ -692,7 +692,7 @@ The response reveals the new `image` field:
 }
 ~~~
 
-Finally, we update our Entry and include the Asset using the new `field.image`:
+Finally, we update our entry and include the asset using the new `field.image`:
 
 #### URL
 
@@ -732,7 +732,7 @@ X-Contentful-Version: 2
 }
 ~~~
 
-The response confirms the recently included Asset:
+The response confirms the recently included asset:
 
 ~~~ json
 {
@@ -759,7 +759,7 @@ The response confirms the recently included Asset:
 }
 ~~~
 
-Then, we must publish the Entry:
+Then, we must publish the entry:
 
 #### URL
 
@@ -848,10 +848,10 @@ X-Contentful-Version: 2
 
 In this article we have covered how to:
 
-1. Create Spaces
-2. Create and activate Content Types
-3. Create and publish Entries
-4. Create, process and publish Assets
-5. Add Assets to Entries
+1. Create spaces
+2. Create and activate content types
+3. Create and publish entries
+4. Create, process and publish assets
+5. Add assets to entries
 
-Although we have exposed many details of the Content Management API, there are still many uncovered features in the [Official Documentation](/developers/docs/references/content-management-api/#/reference). We also offer SDKs and tools for the most popular [programming languages](/developers/docs/#libraries).
+Although we have exposed many details of the Content Management API, there are still many uncovered features in the [reference documentation](/developers/docs/references/content-management-api/#/reference). We also offer SDKs and tools for the most popular [programming languages](/developers/docs/#libraries).

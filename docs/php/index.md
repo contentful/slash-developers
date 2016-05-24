@@ -4,14 +4,14 @@ page: :docsPlatformsPhp
 
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
-- [Tools](#tools-and-framework-integrations)
+- [Tools](#tools-and-integrations)
 - [Example apps](#apps)
 
 ## SDKs
 Our SDKs give you immediate access to our APIs and its features.
 
 ### CDA - Content Delivery API
-Contentful's Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
 [View on GitHub](https://github.com/contentful/contentful.php)<br>
 [API reference](http://contentful.github.io/contentful.php/api/)
 
@@ -28,23 +28,23 @@ This tutorial will walk you through your first steps in using Contentful within 
 [View the tutorial](/developers/docs/php/tutorials/getting-started-with-contentful-and-php/)
 
 ### Using the Sync API with PHP
-The Sync API allows you to keep a local copy of all content of a Space up-to-date via delta updates. This tutorial will walk you how to use the Sync API with the Contentful PHP SDK.<br>
+The Sync API allows you to keep a local copy of all content of a space up-to-date via delta updates. This tutorial will walk you how to use the Sync API with the Contentful PHP SDK.<br>
 [View the tutorial](/developers/docs/php/tutorials/using-the-sync-api-with-php/)
 
 ### Getting started with Contentful and Symfony
 How to setup the ContentfulBundle in your Symfony application is explained in this tutorial.<br>
 [View the tutorial](/developers/docs/php/tutorials/getting-started-with-contentful-and-symfony/)
 
-## Tools and Framework Integrations
+## Tools and integrations
 
-### Symfony Integration
-A Symfony bundle for integrating with the Contentful APIs (Content Delivery and Content Management)<br>
+### Symfony integration
+A Symfony bundle for integrating with the Contentful APIs (Content Delivery API and Content Management API)<br>
 [View on GitHub](https://github.com/contentful/ContentfulBundle)<br>
 
 ## Apps
 
 ### Space template apps
-These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in our Dashboard.
+These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in the Contentful web app.
 
-Generic Product Catalogue / E-commerce app connected with an example Space in Contentful.<br>
+Generic product catalogue / e-commerce app connected with an example space in Contentful.<br>
 [View on GitHub](https://github.com/contentful/product-catalogue-app-symfony)

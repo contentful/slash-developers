@@ -62,7 +62,7 @@ page: :docsAuthentication
 
   Most likely you wouldn't need to send the token manually. Check the [programming languages](/developers/docs/#libraries) we offer SDKs for, they know how to authenticate with Contentful, so you don't have to write extra code. Set it up with the token and you're done.
 
-  ## The Delivery API and Preview API
+  ## The delivery API and Preview API
 
   A token provides read-only access to a single space – that is, you need to obtain a new token for every new space that you want to access.
 
@@ -70,11 +70,11 @@ page: :docsAuthentication
 
   These two APIs use the access token which you can create [using the Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
 
-  Alternatively, you can also create API keys using Contentful's web interface. [Go to the app](https://app.contentful.com), open the space that you want to access (top left corner lists all the spaces), and navigate to the *APIs* area. Open the *API Keys* section and create your first token. Done.
+  Alternatively, you can also create API keys by using the [Contentful web app](https://app.contentful.com). Open the space that you want to access (top left corner lists all the spaces), and navigate to the *APIs* area. Open the *API keys* section and create your first token. Done.
 
-  ## The Management API
+  ## The management API
 
-  To access the Management API – that is, to put content in Contentful from your apps – you need to get an OAuth 2.0 token that would represent your account. Naturally, this token will have the same rights as the owner of the account.
+  To access the management API – that is, to put content in Contentful from your apps – you need to get an OAuth 2.0 token that would represent your account. Naturally, this token will have the same rights as the owner of the account.
 
   ## Getting an OAuth token
 
@@ -132,7 +132,7 @@ page: :docsAuthentication
 
   [Create a new OAuth 2.0 application](https://app.contentful.com/account/profile/developers/applications/new)
 
-  ## Requesting an OAuth 2.0 Access Token
+  ## Requesting an OAuth 2.0 access token
 
   After having created an OAuth 2.0 application, you can use it to request OAuth 2.0 access tokens.
 

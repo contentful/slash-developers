@@ -23,7 +23,7 @@ php composer.phar require contentful/contentful-bundle:@beta
 ~~~
 
 {: .note}
-Currently the SDK and the Bundle need to both be added to your composer.json because both only have had beta quality releases.
+Currently the SDK and the Bundle both need to be added to your composer.json because both only have had beta quality releases.
 
 ### Adding ContentfulBundle to the application kernel
 
@@ -52,7 +52,7 @@ contentful:
     token: b4c0n73n7fu1
 ~~~
 
-This is the minimum configuration necessary to use ContentfulBundle. To use the Preview API instead of the Delivery API,
+This is the minimum configuration necessary to use ContentfulBundle. To use the Preview API instead of the Content Delivery API,
 simply add `preview: true`:
 
 ~~~ yaml
@@ -63,7 +63,7 @@ contentful:
     preview: true
 ~~~
 
-If you need access to multiple spaces or to both the Delivery API and the Preview API you can configure multiple clients:
+If you need access to multiple spaces or to both the delivery API and the Preview API you can configure multiple clients:
 
 ~~~ yaml
 contentful:
@@ -142,7 +142,7 @@ class DefaultController extends Controller
 ~~~
 
 To discover how to use the Contentful client, check out the
-[Getting Started with Contentful and PHP](/developers/docs/php/tutorials/getting-started-with-contentful-and-php/) tutorial.
+[getting started with Contentful and PHP](/developers/docs/php/tutorials/getting-started-with-contentful-and-php/) tutorial.
 
 ## Using the Web Debug Toolbar
 
@@ -152,13 +152,13 @@ Contentful API, there will be a section showing how many requests haven been mad
 {: .img}
 ![](https://images.contentful.com/256tjdsmm689/4jmWz0SO80iecEIs4Ue2ao/6e8dafc679399db746951aeef77b3a70/symfony-debug-toolbar.png)
 
-Clicking on that section will open the Contentful panel in the Web Profiler.
+Clicking on that section will open the Contentful panel in the web profiler.
 
 {: .img}
 ![](https://images.contentful.com/256tjdsmm689/3OcfVreme4Uc4guuMCquGC/705f2a7f68dd7c8f95f06ae845a59603/symfony-web-profiler.png?w=800)
 
 This view shows you a all requests that were made against one of Contentful's API including how long they took. Clicking
-on the the "Details" in the last column gives you an overview of the Request and Response and Exceptions thrown by
+on the the "Details" in the last column gives you an overview of the request and response and exceptions thrown by
 the Contentful SDK.
 
 {: .img}
@@ -171,3 +171,4 @@ Now you should be familiar with the basics of how to use Contentful in a Symfony
 To get a deeper understanding, read some of our other [PHP tutorials](/developers/docs/php/#tutorials). If you find a bug,
 or have an idea how to further integrate with Symfony, please open an [issue on GitHub](https://github.com/contentful/ContentfulBundle/issues).
 
+[2]: https://getcomposer.org

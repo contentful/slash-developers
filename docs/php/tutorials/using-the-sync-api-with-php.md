@@ -2,7 +2,7 @@
 page: :docsSyncApiWithPhp
 ---
 
-The [Sync](/developers/docs/concepts/sync/) API allows you to keep a local copy of all content of a Space up-to-date via
+The [sync](/developers/docs/concepts/sync/) API allows you to keep a local copy of all content of a space up-to-date via
 delta updates. This tutorial will walk you how to use the Sync API with the Contentful PHP SDK.
 
 {: .note}
@@ -11,7 +11,7 @@ The Contentful PHP SDK is currently in beta and the API may change before a stab
 ## Getting started
 
 After you've [installed the SDK](/developers/docs/php/tutorials/getting-started-with-contentful-and-php/#installation)
-you need to set up the Client and get an instance of the synchronization manager. For this tutorial we'll be using the example space.
+you need to set up the client and get an instance of the synchronization manager. For this tutorial we'll be using an example space.
 
 ~~~ php
 <?php

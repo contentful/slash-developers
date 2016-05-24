@@ -6,7 +6,7 @@ This walkthrough will help you getting started with your first basic hello world
 of using Contentful with a demo space.
 
 For a more in-depth tutorial containing steps on how to persist this data, please take a look at
-[offline persistence with vault][4]
+[offline persistence with Vault][4]
 
 To participate in this tutorial, we assume you do have Android Studio installed, and are familiar
 with it.
@@ -15,7 +15,7 @@ with it.
 
 Please create a new project, so we can start with a clean environment. We used the `Blank Activity`
 template, but you can choose whichever you prefer. After creating the usual project name and folder
-structure, summarized in the following image, we continue with creating the dependencies to 
+structure, summarized in the following image, we continue with creating the dependencies to
 Contentful in the project settings.
 
 
@@ -37,7 +37,7 @@ first data from the demo space, by the press of a button:
 
 ## Fetching all data from our demo space
 
-Please add the internet permission to the `AndroidManifest.xml`: 
+Please add the internet permission to the `AndroidManifest.xml`:
 
 ~~~ xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
@@ -60,8 +60,8 @@ CDAClient client = CDAClient.builder()
 ~~~
 
 This will create a `CDAClient` which will be used for the communication with Contentful. The `Space` is
-a named entity you want to access. Both, the `Space` and the `Token` can be obtained through 
-the Contentful UI.
+a named entity you want to access. Both, the `Space` and the `Token` can be obtained through
+the Contentful web app.
 
 Next step is to actually do a request:
 
@@ -78,7 +78,7 @@ which will call the `onSuccess` handler, once the data got loaded, you can proce
 Also on production applications you might like to override
 
 ~~~ java
-protected void onFailure(Throwable error) {   
+protected void onFailure(Throwable error) {
 }
 ~~~
 
@@ -86,7 +86,7 @@ to handle any error occurring.
 
 ## Fetching only specific items
 
-If you only want to get data of a specific entry, you would use the `id` of the entry you want to 
+If you only want to get data of a specific entry, you would use the `id` of the entry you want to
 get like this:
 
 

@@ -21,11 +21,11 @@ gem 'contentful'
 
 Once in your `Gemfile`, running `bundle install` will install the gem and all its dependencies.
 
-## Setting up your Contentful Client
+## Setting up your Contentful client
 
 Once you have your gem installed, you can start using it inside your application.
 
-In this example, we'll use the Example Space:
+In this example, we'll use an example space:
 
 ~~~ ruby
 require 'contentful'
@@ -37,19 +37,19 @@ client = Contentful::Client.new(
 )
 ~~~
 
-You'll need to create a Contentful client. For that you'll need your **Space ID** and **Access token**,
-both of which can be obtained through the Contentful UI.
+You'll need to create a Contentful client. For that you'll need your **space ID** and **API key**,
+both of which can be obtained through the Contentful web app.
 
 {: .note}
-**Note**: The `dynamic_entries: :auto` attribute will automatically map the fields in your Entries to methods, so that you can use them directly as objects.
+**Note**: The `dynamic_entries: :auto` attribute will automatically map the fields in your entries to methods, so that you can use them directly as objects.
 
 ## Getting your content
 
-In Contentful, we separate content between Entries, which contain your data and relationships with other
-content or images, and Assets, which represent static content, like images, and are served as files. You can read more
-about that in our [Data Model Concepts guide][6].
+In Contentful, we separate content between entries, which contain your data and relationships with other
+content or images, and assets, which represent static content, like images, and are served as files. You can read more
+about that in our [data model concepts guide][6].
 
-In this section we'll address Entries. Assets will be addressed on a later section.
+In this section we'll address entries. Assets will be addressed in a later section.
 
 With the client already created, all that's left to do is to start consuming the data from the API.
 
@@ -72,7 +72,7 @@ You can also specify the same [query parameters the API accepts][5]:
 cat_entries_by_date = client.entries(content_type: 'cat', order: 'sys.createdAt')
 ~~~
 
-### Using your Entry
+### Using your entry
 
 Once we've got our entry, we can just use it as any Ruby object:
 
@@ -92,15 +92,15 @@ cats_with_many_likes.each do |cat|
 end
 ~~~
 
-In this case we've added the `include: 2` parameter, which allows the API to resolve [Links][4] into Entries.
+In this case we've added the `include: 2` parameter, which allows the API to resolve [links][4] into entries.
 This allows us to get the properties from our cat's best friend.
 
-## Using Assets
+## Using assets
 
-Assets have a similar querying API than Entries.
+Assets have a similar querying API than entries.
 You can see more [specific queries][7] and also can use the [Images API][8].
 
-To query a Single Asset:
+To query a single asset:
 
 ~~~ ruby
 client.asset('happycat').image_url
@@ -108,7 +108,7 @@ client.asset('happycat').image_url
 #     382a48dfa2cb16c47aa2c72f7b23bf09/happycatw.jpg"
 ~~~
 
-To query all Assets in Space:
+To query all assets in a space:
 
 ~~~ ruby
 assets = client.assets
@@ -116,13 +116,13 @@ assets = client.assets
 
 ## Conclusion
 
-With this basic guide, you should be able to start using Contentful within your Ruby Applications.
+With this basic guide, you should be able to start using Contentful within your Ruby applications.
 
 You can read about the library in more detail on our [contentful.rb GitHub][1].
 
-Do you like building Static Sites? Maybe you can check how to build static sites using Contentful with [Middleman][2] or [Jekyll][9].
+Do you like building static sites? Maybe you can check how to build static sites using Contentful with [Middleman][2] or [Jekyll][9].
 
-You can also check out how to get your Spaces started with a single command using [Contentful Bootstrap][3].
+You can also check out how to get your spaces started with a single command using [Contentful Bootstrap][3].
 
 [1]: https://github.com/contentful/contentful.rb
 [2]: https://github.com/contentful/contentful_middleman_examples

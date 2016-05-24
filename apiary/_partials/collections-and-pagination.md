@@ -1,4 +1,4 @@
-## Collection Resources and Pagination
+## Collection resources and pagination
 
 Collections of resources are returned in a wrapper object that contains additional information useful for pagination over large result sets:
 

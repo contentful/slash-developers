@@ -24,12 +24,12 @@ If not already done, you'll also need to load the Composer autoloader:
 require_once 'vendor/autoload.php';
 ~~~
 
-## Setting up your Contentful Client
+## Setting up your Contentful client
 
-Once the SDK is installed you can start using it by creating a `Client`. To do so you need the ID of the Space you'd
-like to use and an access token for this Space, both of which can be obtained through the Contentful UI.
+Once the SDK is installed you can start using it by creating a `Client`. To do so you need the ID of the space you'd
+like to use and an API key for this space, both of which can be obtained through the Contentful web app.
 
-For this tutorial we'll use the example Space
+For this tutorial we'll use an example space
 
 ~~~ php
 <?php
@@ -38,15 +38,15 @@ $client = new \Contentful\Delivery\Client('b4c0n73n7fu1', 'cfexampleapi');
 
 ## Getting your content
 
-In Contentful, we separate content between Entries, which contain your data and relationships with other
-content or images, and Assets, which represent static content, like images, and are served as files. You can read more
-about that in our [Data Model Concepts guide][3].
+In Contentful, we separate content between entries, which contain your data and relationships with other
+content or images, and assets, which represent static content, like images, and are served as files. You can read more
+about that in our [data model concepts guide][3].
 
-In this section we'll address Entries. Assets will be addressed in a later section.
+In this section we'll address entries. Assets will be addressed in a later section.
 
 With the client already created, all that's left to do is to start consuming the data from the API.
 
-To do so, you can request all your Entries from the API:
+To do so, you can request all your entries from the API:
 
 ~~~ php
 <?php
@@ -69,9 +69,9 @@ $query->setContentType('cat')
 $catEntriesByDate = $client->getEntries($query);
 ~~~
 
-### Using your Entry
+### Using your entry
 
-Once you've got your Entry, you can access the content it holds through getter methods:
+Once you've got your entry, you can access the content it holds through getter methods:
 
 ~~~ php
 <?php
@@ -79,18 +79,18 @@ echo $cat->getName(); // "Nyan Cat"
 echo "I have $cat->getLives() lives"; // "I have 1337 lives"
 ~~~
 
-If an entry contains a [link][5] to an Asset or another Entry, it will automatically be loaded when accessing it:
+If an entry contains a [link][5] to an asset or another entry, it will automatically be loaded when accessing it:
 
 ~~~ php
 <?php
 echo $cat->getBestFriend()->getName(); // "Happy Cat"
 ~~~
 
-## Using Assets
+## Using assets
 
-Querying Assets works just like querying Entries.
+Querying assets works just like querying entries.
 
-You can retrieve all Assets of your Space:
+You can retrieve all assets of your space:
 
 ~~~ php
 <?php
@@ -105,7 +105,7 @@ $assetId = 'nyancat';
 $asset = $client->getAsset($assetId);
 ~~~
 
-Just as with Entries you can also use more [complex queries][6]:
+Just as with entries you can also use more [complex queries][6]:
 
 ~~~ php
 <?php
@@ -114,7 +114,7 @@ $query->orderBy('sys.createdAt');
 $assets = $client->getAssets($query);
 ~~~
 
-Once you have an Asset, you can access its metadata and an URL for the actual file:
+Once you have an asset, you can access its metadata and an URL for the actual file:
 
 ~~~ php
 <?php
