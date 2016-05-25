@@ -133,9 +133,9 @@ With this, our walk through the [coffee guide app][1] is done. You should have e
 [12]: /developers/docs/concepts/links/
 [14]: /blog/2014/02/28/here-be-bold-headlines/
 [15]: https://github.com/contentful/blog-app-ios
-[16]: http://uncodin.github.io/bypass/
+[16]: https://uncodin.github.io/bypass/
 [17]: https://github.com/contentful/contentful.objc
-[18]: http://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.9.2.zip
+[18]: https://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.9.2.zip
 [19]: /developers/docs/references/authentication/
 [20]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
 [21]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/including-linked-entries

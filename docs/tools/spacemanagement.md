@@ -21,22 +21,20 @@ By the end of this tutorial, you will be able to seamlessly shift to Contentful 
 
 ## Contentful Space Sync
 
-This tool allows you to perform a one way synchronization from one Contentful space to another. Use this tool to generate your development and staging spaces.
-
-- [View on GitHub](https://github.com/contentful/contentful-space-sync)
-- [Read the tutorial](/developers/docs/tutorials/general/using-contentful-space-sync/)
+This tool allows you to perform a one way synchronization from one Contentful space to another. Use this tool to generate your development and staging spaces.<br>
+[View on GitHub](https://github.com/contentful/contentful-space-sync)<br>
+[Read the tutorial](/developers/docs/tutorials/general/using-contentful-space-sync/)<br>
 
 ## Contentful Link Cleaner
 
-When you have a link to an entry or asset on a published entry, if you delete the linked entry the entry that links to it will have a reference to a non existing entity. This tool cleans up unresolved entry links in Contentful spaces.
-
-- [View on GitHub](https://github.com/contentful/contentful-link-cleaner)
+When you have a link to an entry or asset on a published entry, if you delete the linked entry the entry that links to it will have a reference to a non existing entity. This tool cleans up unresolved entry links in Contentful spaces.<br>
+[View on GitHub](https://github.com/contentful/contentful-link-cleaner)
 
 ## Contentful Bootstrap
 
-To get you jump-started in Contentful using Contentful Bootstrap. We also have a tutorial.
-
-- [View on GitHub](https://github.com/contentful/contentful-bootstrap.rb)
+To get you jump-started in Contentful using Contentful Bootstrap. We also have a tutorial.<br>
+[View on GitHub](https://github.com/contentful/contentful-bootstrap.rb)<br>
+[Read the tutorial](developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)<br>
 
 ## Third party tools
 
@@ -44,4 +42,5 @@ Please notice that this library is not officially supported by Contentful and ma
 If you want to check all of our non supported SDKs and tools, check out our repository on [GitHub](https://github.com/contentful-labs/awesome-contentful).
 
 ## commercetools
-A Swift script which enables syncing content from commercetools to Contentful - [view on GitHub](https://github.com/contentful-labs/Cube)
+A Swift script which enables syncing content from commercetools to Contentful<br>
+[View on GitHub](https://github.com/contentful-labs/Cube)

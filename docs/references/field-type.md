@@ -27,7 +27,7 @@ Object |Object        |Arbitrary object. | `fields.file.details`
 
 ## Array fields
 
-Contentful supports fields that contain multiple values with it's `Array` type. Currently an array can contain either symbols (strings up to 256 characters), **or** [links](/developers/docs/concepts/links/) to other entries or assets. The allowed values in the array are defined by the `items` property of the field definition.
+Contentful supports fields that contain multiple values with its `Array` type. Currently an array can contain either symbols (strings up to 256 characters), **or** [links](/developers/docs/concepts/links/) to other entries or assets. The allowed values in the array are defined by the `items` property of the field definition.
 
 A field that contains symbols is defined like this:
 

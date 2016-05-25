@@ -51,11 +51,11 @@ An AngularJS library to access the Content Delivery API<br>
 [View on GitHub](https://github.com/jvandemo/angular-contentful) - **This library is not officially supported**
 
 ## Apps
-Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful. You can download them by looking for “Contentful” on Google Play.
+Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
 
 ### Product Catalogue
 This demo project is a simple app shows how to build a frontend JavaScript based application with Contentful for a product catalogue, based on the Contentful starter product catalogue example space.<br>
-[Try it out](http://contentful.github.io/product-catalogue-js/)<br>
+[Try it out](https://contentful.github.io/product-catalogue-js/)<br>
 [View on GitHub](https://github.com/contentful/product-catalogue-js)
 
 ### Discovery App

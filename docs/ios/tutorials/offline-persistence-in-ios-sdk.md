@@ -156,7 +156,7 @@ With this, our overview of synchronizing and keeping your content available for 
 [7]: https://github.com/contentful/contentful.objc/tree/master/Examples/SeedDatabase
 [8]: https://github.com/contentful/contentful.objc/releases/tag/1.0.0
 [9]: https://cocoapods.org/
-[10]: http://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.0.0.zip
+[10]: https://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.0.0.zip
 [11]: https://github.com/contentful/contentful.objc
 [12]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Protocols/CDASyncedSpaceDelegate.html
 [13]: http://nshipster.com/key-value-observing/

@@ -65,13 +65,13 @@ On the next screen:
 1. Name the new function "contentful-md-to-html"
 2. Make sure the "Node.js" runtime is selected
 3. Choose the option to upload a zip file, then upload the file created in step 1.2.
-4. Leave the "Handler" input set to it's default value of `index.handler`.
+4. Leave the "Handler" input set to its default value of `index.handler`.
 5. In the "Role" dropdown, select "New Role > Basic execution role". This will pop up a new window where you must confirm the creation of the role.
 6. Finally, click "Next" and "Create function" after reviewing the settings.
 
 ### Test the lambda function
 
-Now that we've created a lambda function we can easily test it by clicking on the "Test" button. The first time you test a function you will be asked to supply a test JSON object. Our handler will receive this object it's `event` argument.
+Now that we've created a lambda function we can easily test it by clicking on the "Test" button. The first time you test a function you will be asked to supply a test JSON object. Our handler will receive this object in its `event` argument.
 
 Recalling that our handler function uses `event.query` to pass  [filter query parameters][docs-query-params] to the Content Delivery API, replace the example payload with the one below:
 
@@ -187,7 +187,7 @@ One can easily imagine going a bit further than this example and create an API g
 [Lambda]: https://aws.amazon.com/lambda/
 [API Gateway]: https://aws.amazon.com/api-gateway/
 [AWS Console]: https://console.aws.amazon.com/
-[aws-setup]: http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html
+[aws-setup]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html
 [lambda-docs]: https://aws.amazon.com/documentation/lambda/
 
 [project-repo]: https://github.com/contentful-labs/md-to-html-lambda

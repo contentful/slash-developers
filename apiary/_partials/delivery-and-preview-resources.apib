@@ -123,7 +123,7 @@ fields.file                     |File          |File(s) of the asset.
 fields.file.fileName            |Symbol        |Original filename of the file.
 fields.file.contentType         |Symbol        |Content type of the file.
 fields.file.url                 |Symbol        |URL of the file.
-fields.file.details             |Object        |Details of the file, depending on its mime type.
+fields.file.details             |Object        |Details of the file, depending on its MIME type.
 fields.file.details.size        |Number        |Size (in bytes) of the file.
 
 For image assets, the `fields.file.url` field will point to `images.contentful.com`. For other file types, it will point to `assets.contentful.com`.
@@ -676,7 +676,7 @@ Assets can be filtered by their MIME type group by using the `mimetype_group` qu
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + mimetype_group (required, string, `image`) ... MIME-Type group to include.
+    + mimetype_group (required, string, `image`) ... MIME type group to include.
 
 ### Query assets [GET]
 
