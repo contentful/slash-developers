@@ -2,7 +2,7 @@
 page: :docsUiExtensions
 ---
 
-The UI Extensions API allows you to extend the Contentful Web Application's entry editor, so that you can build plugins that meet your specific content editing or content management needs. It operates on top of any of our current field types, and gives you the power to manipulate its data through an iframe where you can embed custom functionality, styling, integrations or workflows
+The UI Extensions API allows you to extend the Contentful Web Application's entry editor, so that you can build plugins that meet your specific content editing or content management needs. It operates on top of any of our current field types, and gives you the power to manipulate its data through an iframe where you can embed custom functionality, styling, integrations or workflows.
 
 The UI Extensions API remains under active development so please reach out to us if you intend to use it for business critical operations. The purpose of making it available is to provide early access to upcoming features and make our roadmap more transparent to users, as well as to collect early feedback before releasing, and commiting to support, a brand new API.<br>
 [View on GitHub](https://github.com/contentful/widget-sdk)
