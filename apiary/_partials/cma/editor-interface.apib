@@ -1,6 +1,6 @@
-# Group Editing interface
+# Group Editor interface
 
-Editing interfaces represent the look and feel of content type fields in the UI. They are tightly
+An editor interface represent the look and feel of content type fields in the UI. They are tightly
 coupled to a specific content type and define which widget has to be rendered for the content type's
 fields.
 
@@ -22,12 +22,12 @@ It has a title, a body and a category that can be either "General", "iOS" or "An
 }
 ```
 
-An editing interface can for example define that the `title` field should be rendered as a normal
+An editor interface can for example define that the `title` field should be rendered as a normal
 input field (the respective widget's id is `singleLine`). Furthermore it can define that the `body`
 should be a normal textarea (= `multipleLine`) and also that the `category` should be rendered as a
 dropdown field (= `dropdown`).
 
-The editing interface would look like this:
+The editor interface would look like this:
 
 ```
 {
@@ -131,42 +131,40 @@ the widget. Other settings are widget specific.
 </table>
 
 
-## Editing interface [/spaces/{space_id}/content_types/{content_type_id}/editor_interfaces/{editor_interface_id}]
+## Editor interface [/spaces/{space_id}/content_types/{content_type_id}/editor_interface]
 
-While it is theoretically possible to create more than one editing interface
-(by using different IDs) the UI will only ever read and use the editing interface with the ID `default`.
+An editor interface is a singleton resource of a content type, meaning that there can only be one editor interface per content type at any point in time.
 
 __Limitations__
 
-Since editing interfaces are describing content type fields, they are tightly coupled to the content type field's IDs. Please note
-that there is currently no automatic synchronization in the API between a content type and an editing interface. This means that an
-editing interface might get out of sync when you rename a content type's field. In that case you will have to update the
-respective editing interface as well.
+Since an editor interface describes content type fields, it's tightly coupled to the content type field's IDs. Please note
+that there is currently no automatic synchronization in the API between a content type and its editor interface. This means that an
+editor interface might get out of sync when you rename a content type's field. In that case you will have to update the
+respective editor interface as well.
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
     + content_type_id: hfM9RCJIk0wIm06WkEOQY (required, string) - ID of the content type in form of a string
-    + editor_interface_id: default (required, string) -  ID of the editor interface in form of a string
 
-### Create/update an editing interface [PUT]
+### Create/update the editor interface [PUT]
 
-This endpoint can be used to create a new editing interface with an ID specified by the user, or to update a specific editing interface via its ID.
+This endpoint can be used to create a new editor interface, or to update the existing one.
 
-Note that when updating an existing editing interface, you always need to specify the last version you got of the editing interface you are updating with `X-Contentful-Version`.
+Note that when updating the editor interface, you always need to specify its last version with `X-Contentful-Version`.
 
-+ Request Create new editing interface with a predefined identifier
++ Request Create the editor interface
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
             Content-Type: application/vnd.contentful.management.v1+json
 
-    + Attributes (Editing Interface)
+    + Attributes (Editor Interface)
 
 + Response 201 (application/vnd.contentful.management.v1+json)
 
-    + Attributes (Complete Editing Interface)
+    + Attributes (Complete Editor Interface)
 
-### Get a single Editing Interface [GET]
+### Get the editor interface [GET]
 
 + Request
     + Headers
@@ -175,4 +173,4 @@ Note that when updating an existing editing interface, you always need to specif
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
-    + Attributes (Complete Editing Interface)
+    + Attributes (Complete Editor Interface)
