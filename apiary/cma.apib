@@ -236,6 +236,8 @@ This endpoint can be used to create a new content type with an ID specified by t
 
 Note that when updating an existing content type, you always need to specify the last version you got of the content type you are updating with `X-Contentful-Version`.
 
+__Validations__
+
 Whenever you are creating or updating a content type you can add or remove validations to the fields present in the content type schema. Validations, specified in the validations property a field, are included in the payload sent to the server when you create or update a content type.
 
 Validation      |Description                              |Applicable to|Example                         |
@@ -251,11 +253,24 @@ Please notice that validations will only take effect after the content type has 
 
 To remove a specific validation, update the content type leaving that validation out of the field's validations collection. To remove all the validations applied to a field update the content type schema removing the validations property.
 
-It is possible to change the ID of a content type's field. Please note, that the API will return different data afterwards and that this might break your currently existing code base.
+__Field IDs__
 
-__Use case__
+It is possible to change the ID of a content type's field in the Contentful Web App. Please note, that the API will return different data afterwards and that this might break your currently existing code base.
 
-Imagine you created a content type and started developing your application. During the development process you find out, that the initially chosen name of a field was not perfect and you want to change it. Especially you want to change the response of the API.
+__Omitting Fields__
+
+If you have fields in your content type and entries, which you don't want to distribute to end users (eg. workflow states), you can omit fields from the CDA and CPA responses.
+To do so, update the content type with the `omitted` property set to `true` in the chosen field and activate it.
+From then on, it will still be available as part of the CMA responses and the Web App but skipped in the CDA and CPA.
+To revert this, repeat this but with `omitted` set to `false`.
+
+__Deleting Fields__
+
+Sometimes you may want to permanently delete certain content type fields and all the related data in the entries, for example to remove legacy data that is no longer needed.
+In order to accomplish this, the first step is to omit the field you're targeting for deletion and activate the content type.
+We made this step mandatory in order to avoid accidental data loss. You can first try out whether your client applications can handle the deletion correctly and have a quick and easy way to revert that change.
+Once you have confirmed that you are safe to delete the field, you can proceed to update your content type either with the corresponding field left out of the payload, or with a `deleted` property set to `true` on the content type field you intend to delete. The deletion becomes final after you once again activate the content type. This action is permanent and cannot be undone.
+After this, you will not receive this field as part of any API response anymore and your limit of 50 fields per content type is reduced by 1.
 
 + Request Create new Content Type with a predefined identifier
     + Headers
