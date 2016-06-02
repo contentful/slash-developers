@@ -34,10 +34,6 @@ View in [JavaScript](/developers/api-demo/javascript/) |
 This tutorial will walk you through your first steps in using Contentful within JavaScript.<br>
 [View the tutorial](/developers/docs/javascript/tutorials/using-js-cda-sdk/)
 
-### CDA webinar
-This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Content Delivery API.<br>
-[Watch the webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)
-
 ### Using the Sync API with JavaScript
 The Sync API allows you to keep a local copy of all content of a space up to date via delta updates. This tutorial will show you how to use the Sync API with the Contentful JavaScript SDK.<br>
 [View the tutorial](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/)
@@ -62,8 +58,3 @@ This demo project is a simple app shows how to build a frontend JavaScript based
 The Discovery App allows you to browse and preview your content on Contentful. You can also look at the code to see how it was built.<br>
 [Try it out](https://contentful.github.io/discovery-app-react)<br>
 [View on GitHub](https://github.com/contentful/discovery-app-react)
-
-### Space template apps
-This demo project starts with a static HTML page and replaces the placeholder content with dynamic content retrieved from the Content Delivery API. Check the webinar.<br>
-[Watch the webinar](/blog/2014/07/22/contentful-webinar-content-delivery-api/)<br>
-[View on GitHub](https://github.com/contentful/cdn-webinar-store-demo)
