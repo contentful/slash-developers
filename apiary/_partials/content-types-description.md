@@ -40,7 +40,7 @@ Number |Number        |Number type with decimals. | `3.14`
 Date<sup>2</sup>  |String        |Date/time in ISO 8601 format. | `"2015-11-06T09:45:27"`
 Boolean|Boolean       |Flag, `true` or `false` | true
 Location|Object        |A geographic location specified in latitude and longitude. | `{"lat":"52.5018616","lon":"13.4112619"}`
-Link   |Object        |A reference to an entry or asset. The type of the referenced item is defined by the `linkType` property. See [links](https: //www.contentful.com/developers/docs/concepts/links/) for more information| `{"sys": {"type": "Link", "linkType": "Entry", "id": "af35vcx8etbtwe8xv"}}`
+Link   |Object        |A reference to an entry or asset. The type of the referenced item is defined by the `linkType` property. See [links](https://www.contentful.com/developers/docs/concepts/links/) for more information| `{"sys": {"type": "Link", "linkType": "Entry", "id": "af35vcx8etbtwe8xv"}}`
 Array  |Array         |List of values. See **array fields** below for details on what types of values can be stored in an array. |`["name1", "name2", ...]`
 Object |Object        |Arbitrary Object. | `{"somekey": ["arbitrary", "json"]}"`
 
