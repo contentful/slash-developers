@@ -885,7 +885,7 @@ When creating a webhook you have to explicitly specify for which changes on your
 - Assets are deleted.
 - Anything happens to your entries.
 
-These restrictions have to be translated into a list of `[Action].[Type]` pairs, `[*.publish, Asset.delete, Entry.*]`, and included in the payload that defines the webhook.
+These restrictions have to be translated into a list of `[Type].[Action]` pairs, `[*.publish, Asset.delete, Entry.*]`, and included in the payload that defines the webhook.
 
 `*` is a wildcard character that can be used in place of any action or type. The combination `*.*` is also valid and it means that your webhook will be subscribed to all actions across all types. It's important that you keep in mind that using `*` opens the door for your webhook to be called for future actions or types that didn't exist when the webhook was created or updated.
 
