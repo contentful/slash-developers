@@ -194,9 +194,11 @@ Links are a powerful way to model relationships between pieces of content.
 
 Learn more in the [developer center](https://www.contentful.com/developers/docs/concepts/links/).
 
-## Retrieval of linked items [/spaces/{space_id}/entries?access_token={access_token}&include={value}]
+## Retrieval of linked items [/spaces/{space_id}/entries?access_token={access_token}&include={include}]
 
-When you have related content (e.g. entries with links to image assets) it's possible to include both search results and related data in a single request. To do so, the `include` parameter should be used, specifying the number of levels to be resolved. The maximum number of inclusions is `10`.
+When you have related content (e.g. entries with links to image assets) it's possible to include both search results and related data in a single request. To do so, the `include` parameter should be used, specifying the number of levels to be resolved.
+
+The maximum number of inclusions is `10`. The default number, if the parameter is not specified, is `1`. If you want no inclusions at all, you should set it to `0`.
 
 This feature is only available on the Content Delivery API and the Preview API.
 
@@ -207,7 +209,7 @@ Note that only links between entries, spaces and assets are resolved. Links betw
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
     + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + value (required, number, `2`) ... Number of levels to include.
+    + include (required, number, `2`) ... Number of levels to include (defaults to 1)
 
 ### Query entries [GET]
 
