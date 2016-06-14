@@ -33,7 +33,10 @@ This is very important for mobile apps where latency is a big issue: Instead of 
 
 When you have related content (e.g. entries with links to other entries) it's possible to include both search results and related data in a single request.
 
-Simply tell the search to include the targets of links in the response: Set the `include` parameter to the number of levels you want to resolve. The maximum number of inclusion is 10.
+Simply tell the search to include the targets of links in the response: Set the `include` parameter to the number of levels you want to resolve. The maximum number of inclusions is `10`.
+
+{: .note}
+**Note:** By default, and if not specified, only the first level of links will be included in your response.
 
 The search results will include the requested entries matching the query in items, along with the linked entries and assets they contain.
 
@@ -48,6 +51,9 @@ Link resolution works regardless of how many results are there in `items`. Some 
 ### Querying linked entries
 
 Querying linked items is as simple as adding a specific `include` parameter to retrieve a desired level of related content to be displayed in an application.
+
+{: .note}
+**Note:** When omitted, the `include` parameter takes the standard value of `1`. If you want no links at all to be included, you should set the value to `0`.
 
 In the JSON response of a successful query, when not already fetched in the `items` array, linked items are placed in the `includes` array.
 
@@ -194,9 +200,6 @@ Lets take a look at the response of a menu pointing to its meals:
 As you can see, although 'Menu for Humans' is linked to its meals, `AstroChicken` and `AstroCattle`, they are all fetched in the same `items` array. That happens because they all primarily match the conditions of our query parameters.
 
 In the end, since `AstroChicken` and `AstroCattle` are already present in the response's `items`, they should not be included in the `includes.Entry` array again.
-
-{: .note}
-**Note:** When omitted, the `include` parameter takes the standard value of `1`
 
 ### Fetching resources linked to a specific entry
 
