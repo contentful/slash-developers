@@ -1,6 +1,6 @@
 # Group Editor interface
 
-An editor interface represent the look and feel of content type fields in the UI. They are tightly
+An editor interface represents the look and feel of content type fields in the UI. They are tightly
 coupled to a specific content type and define which widget has to be rendered for the content type's
 fields.
 
@@ -133,26 +133,22 @@ the widget. Other settings are widget specific.
 
 ## Editor interface [/spaces/{space_id}/content_types/{content_type_id}/editor_interface]
 
-An editor interface is a singleton resource of a content type, meaning that there can only be one editor interface per content type at any point in time.
-
-__Limitations__
-
-Since an editor interface describes content type fields, it's tightly coupled to the content type field's IDs. Please note
-that there is currently no automatic synchronization in the API between a content type and its editor interface. This means that an
-editor interface might get out of sync when you rename a content type's field. In that case you will have to update the
-respective editor interface as well.
+An editor interface is a singleton resource of a content type, meaning that there can only be one editor interface per content type at any point in time. It gets created automatically on the first time publish of a
+content type and is updated when a content type field is added, removed or changed. Please note that
+cascaded updates are only happening when the content type is published. Since the editor
+interface is created on the server side, it is not possible to create an editor interface manually via some
+http request.
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
     + content_type_id: hfM9RCJIk0wIm06WkEOQY (required, string) - ID of the content type in form of a string
 
-### Create/update the editor interface [PUT]
+### Update the editor interface [PUT]
 
-This endpoint can be used to create a new editor interface, or to update the existing one.
+This endpoint can be used to update an existing editor interface.
+Note that you always need to specify its last version with `X-Contentful-Version`.
 
-Note that when updating the editor interface, you always need to specify its last version with `X-Contentful-Version`.
-
-+ Request Create the editor interface
++ Request Update the editor interface
     + Headers
 
             Authorization: Bearer b4c0n73n7fu1
