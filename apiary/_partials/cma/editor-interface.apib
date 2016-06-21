@@ -143,6 +143,25 @@ http request.
     + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
     + content_type_id: hfM9RCJIk0wIm06WkEOQY (required, string) - ID of the content type in form of a string
 
+### Get the editor interface [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Complete Editor Interface)
+
++ Response 404
+
+    The server will return a 404 if there is no editor interface for the requested content type.
+    This typically happens when the content type was not yet published or if it was created before
+    the automatic editor interface creation (June 20, 2016). (Re-) Publishing the content type
+    should fix both scenarios.
+
+
 ### Update the editor interface [PUT]
 
 This endpoint can be used to update an existing editor interface.
@@ -157,16 +176,5 @@ Note that you always need to specify its last version with `X-Contentful-Version
     + Attributes (Editor Interface)
 
 + Response 201 (application/vnd.contentful.management.v1+json)
-
-    + Attributes (Complete Editor Interface)
-
-### Get the editor interface [GET]
-
-+ Request
-    + Headers
-
-            Authorization: Bearer b4c0n73n7fu1
-
-+ Response 200 (application/vnd.contentful.management.v1+json)
 
     + Attributes (Complete Editor Interface)
