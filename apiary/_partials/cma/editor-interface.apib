@@ -154,6 +154,14 @@ http request.
 
     + Attributes (Complete Editor Interface)
 
++ Response 404
+
+    The server will return a 404 if there is no editor interface for the requested content type.
+    This typically happens when the content type was not yet published or if it was created before
+    the automatic editor interface creation (June 20, 2016). (Re-) Publishing the content type
+    should fix both scenarios.
+
+
 ### Update the editor interface [PUT]
 
 This endpoint can be used to update an existing editor interface.
