@@ -40,7 +40,7 @@ This tutorial will walk you through your first steps in using Contentful within 
 To get you jump-started in Contentful using Contentful Bootstrap.<br>
 [View the tutorial](/developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
 
-### Automated Rebuild and Deploy with CircleCI and Webhooks
+### Automated rebuild and deploy with CircleCI and Webhooks
 This tutorial will get you set up for running and automatically deploying static sites using Jekyll or Middleman.<br>
 [View the tutorial](/developers/docs/ruby/tutorials/automated-rebuild-and-deploy-with-circleci-and-webhooks/)
 

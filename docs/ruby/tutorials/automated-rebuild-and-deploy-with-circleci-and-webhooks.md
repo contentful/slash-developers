@@ -26,18 +26,18 @@ If not, you can check the basic example applications here:
 * [Middleman Examples](https://github.com/contentful/contentful_middleman_examples)
 * [Jekyll Examples](https://github.com/contentful/contentful_jekyll_examples)
 
-## Setup your Contentful Webhooks to trigger Circle builds
+## Setup your Contentful webhooks to trigger Circle builds
 
 * Generate your CircleCI Token [here](https://circleci.com/account/api).
-* On the Contentful Webhook admin page, create a webhook with (replacing the upper-cased values):
+* On the Contentful webhook admin page, create a webhook with (replacing the upper-cased values):
 
 ~~~
 Name: CircleCI
 URL: https://circleci.com/api/v1/project/YOUR_COMPANY/YOUR_PROJECT/tree/YOUR_BRANCH?circle-token=YOUR_CIRCLECI_TOKEN
-On: Entry -> publish
+On: Entry -> publish, unpublish
 ~~~
 
-## Create Automated Build Script
+## Create automated build script
 
 Here the setups differ a bit, but the structure is pretty similar.
 
@@ -46,20 +46,20 @@ Create a file called `automated_build.sh` and include the following:
 * Middleman:
 
 ~~~bash
-# Copy Static Site
+# Copy static site
 CWD=`pwd`
 
-# Clone Pages Repo
+# Clone Pages repo
 cd /tmp
 git clone YOUR_PAGES_REPO build
 
 # cd build && git checkout -b YOUR_BRANCH origin/YOUR_BRANCH # If not using master
 
-# Trigger Middleman Rebuild
+# Trigger Middleman rebuild
 cd $CWD
 bundle exec middleman contentful --rebuild
 
-# Push Newly built Repo
+# Push newly built repo
 cp -r $CWD/build/* /tmp/build
 
 cd /tmp/build
@@ -75,19 +75,19 @@ git push -f origin YOUR_PAGES_BRANCH
 * Jekyll:
 
 ~~~bash
-# Copy Static Site
+# Copy static site
 CWD=`pwd`
 
-# Clone Pages Repo
+# Clone Pages repo
 cd /tmp
 git clone YOUR_PAGES_REPO build
 # cd build && git checkout -b YOUR_BRANCH origin/YOUR_BRANCH # If not using master
 
-# Trigger Jekyll Rebuild
+# Trigger Jekyll rebuild
 cd $CWD
 bundle exec jekyll contentful --rebuild
 
-# Push Newly built Repo
+# Push newly built repo
 cp -r $CWD/_build/* /tmp/build
 
 cd /tmp/build
@@ -103,7 +103,7 @@ git push -f origin YOUR_PAGES_BRANCH
 > Make sure your CircleCI machine has access to your Pages repo.
 > This requires adding SSH Keys to the CircleCI machine and configuring them on GitHub.
 
-## Setup Circle Build Steps
+## Setup Circle build steps
 
 Now we have everything we need to create our automated builds, only thing missing
 is to add a build step in Circle to run our build.
