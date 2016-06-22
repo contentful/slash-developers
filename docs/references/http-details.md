@@ -44,7 +44,7 @@ The API support conditional GET-requests via ETag & If-None-Match headers:
 
 Every API response (both single resources and searches) includes an `ETag` header. The `ETag` header changes depending on the content of the response: If something is updated or a search result changes in some way the ETag also changes. But if nothing changes the ETag also stays the same.
 
-To avoid unnecessary transfers you can set the `If-None-Match` header of an API request to a the `ETag` previously received for the same API request.
+To avoid unnecessary transfers you can set the `If-None-Match` header of an API request to the `ETag` previously received for the same API request.
 
 If the content hasn't changed in the meantime the API will respond with a short 304 Not Modified response. This makes quite a difference for large responses and especially binary files.
 
