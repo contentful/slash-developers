@@ -35,7 +35,7 @@ public function registerBundles()
 {
     return [
         // ...
-        new Contenful\ContentfulBundle\ContentfulBundle(),
+        new Contentful\ContentfulBundle\ContentfulBundle(),
         // ...
     ];
 }
