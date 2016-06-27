@@ -88,7 +88,7 @@ cd $CWD
 bundle exec jekyll contentful --rebuild
 
 # Push newly built repo
-cp -r $CWD/_build/* /tmp/build
+cp -r $CWD/_build/* /tmp/build # or $CWD/_site
 
 cd /tmp/build
 
