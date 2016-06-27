@@ -85,7 +85,8 @@ git clone YOUR_PAGES_REPO build
 
 # Trigger Jekyll rebuild
 cd $CWD
-bundle exec jekyll contentful --rebuild
+bundle exec jekyll contentful
+bundle exec jekyll build
 
 # Push newly built repo
 cp -r $CWD/_build/* /tmp/build # or $CWD/_site
