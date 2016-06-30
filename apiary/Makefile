@@ -77,11 +77,11 @@ test: check_cma_token prepare
 	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST) --hookfiles=./test-hooks.js
 	$(DREDD) $(CDA_BLUEPRINT) $(CDA_HOST) --hookfiles=./test-hooks.js
 	@$(DREDD) $(CMA_BLUEPRINT) $(CMA_HOST) \
-		--hookfiles=./test-hooks.js \
+		--hookfiles=./test-hooks-cma.js \
 		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
 		--private-header Authorization \
 		-m GET #-m PUT -m POST #-m DELETE
-	#$(DREDD) $(IMAGES_BLUEPRINT) $(IMAGES_HOST) --hookfiles=./test-hooks.js
+	#$(DREDD) $(IMAGES_BLUEPRINT) $(IMAGES_HOST)
 
 notify_slack:
 	@if [ "$(WEBHOOK_URL)" != "" -a "$(SLACK_CHANNEL)" != "" ]; then \
