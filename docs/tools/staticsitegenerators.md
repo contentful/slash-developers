@@ -12,7 +12,7 @@ Use Middleman, a static site generator, and manage content with Contentful<br>
 [View examples](https://github.com/contentful/contentful_middleman_examples)<br>
 
 ### Jekyll
-An extension for static site generator Jekyll that pulls content from Contentful
+An extension for static site generator Jekyll that pulls content from Contentful<br>
 [View on GitHub](https://github.com/contentful/jekyll-contentful-data-import)<br>
 [View examples](https://github.com/contentful/contentful_jekyll_examples)<br>
 
