@@ -35,16 +35,27 @@ The Sync API allows you to keep a local copy of all content of a space up-to-dat
 How to setup the ContentfulBundle in your Symfony application is explained in this tutorial.<br>
 [View the tutorial](/developers/docs/php/tutorials/getting-started-with-contentful-and-symfony/)
 
+### Getting started with Contentful and Laravel
+How to setup the Laravel integration in your application is what you'll lean in this tutorial.<br>
+[View the tutorial](/developers/docs/php/tutorials/getting-started-with-contentful-and-laravel/)
+
 ## Tools and integrations
 
 ### Symfony integration
 A Symfony bundle for integrating with the Content Delivery API<br>
 [View on GitHub](https://github.com/contentful/ContentfulBundle)<br>
 
+### Laravel integration
+Simple integration to make it easier to use the Content Delivery API in a Laravel app<br>
+[View on GitHub](https://github.com/contentful/contentful-laravel)<br>
+
 ## Apps
 
 ### Space template apps
 These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in the Contentful web app.
 
-Generic product catalogue / e-commerce app connected with an example space in Contentful.<br>
+Generic product catalogue / e-commerce app connected with an example space in Contentful, using Symfont.<br>
 [View on GitHub](https://github.com/contentful/product-catalogue-app-symfony)
+
+Simple blog using Contentful and Laravel.<br>
+[View on GitHub](https://github.com/contentful/blog-app-laravel)
