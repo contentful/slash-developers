@@ -154,5 +154,5 @@ In this article we have:
 
 [cf-mm-examples]: https://github.com/contentful/contentful_middleman_examples
 [filtering-reference]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
-[tools]: /developers/docs/code/tools/
+[tools]: /developers/docs/tools/staticsitegenerators/
 
