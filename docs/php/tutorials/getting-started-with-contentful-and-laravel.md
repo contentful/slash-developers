@@ -1,7 +1,7 @@
 ---
 page: :docsGettingStartedLaravel
 ---
-This tutorial will show you how to setup the Content Delivery API in your Laravel application and how to access you content
+This tutorial will show you how to setup the Content Delivery API in your Laravel application and how to access your content
 inside the framework.
 
 {: .note}
@@ -49,7 +49,7 @@ php artisan vendor:publish
 
 This will add a file called `contentful.php` to your `/config` folder.
 
-Now open that file and fill add your space ID and API key.
+Now open that file and fill in your space ID and API key.
 
 ~~~ php
 <?php
@@ -116,6 +116,6 @@ To discover how to use the Contentful client, check out the
 Now you should be familiar with the basics of how to use Contentful in a Laravel application. You can find the integration on
 [GitHub](https://github.com/contentful/contentful-laravel/) and [Packagist](https://packagist.org/packages/contentful/laravel).
 To get a deeper understanding, read some of our other [PHP tutorials](/developers/docs/php/#tutorials). If you find a bug,
-or have an idea how to further integrate with Symfony, please open an [issue on GitHub](https://github.com/contentful/contentful-laravel/issues).
+or have an idea how to further integrate with Laravel, please open an [issue on GitHub](https://github.com/contentful/contentful-laravel/issues).
 
 [1]: https://getcomposer.org
