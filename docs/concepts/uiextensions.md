@@ -64,7 +64,7 @@ This extension integrates the JSON editor library to display an edit form based 
 ### YouTube ID
 
 This example extracts the video id from a valid YouTube URI. Useful as a simple way to integrate with 3rd party media services.<br>
-[View on GitHub](https://github.com/contentful/extension-sdk/tree/master/examples/youtube-id)
+[View on GitHub](https://github.com/contentful/extensions/tree/master/samples/youtube-id)
 
 {: .img}
 ![YouTube ID](youtube-id.png)

@@ -230,7 +230,7 @@ If you have any questions or feedback, please feel free to drop us an email to [
 [bgradle-app]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/build.gradle
 [vault]: https://github.com/contentful/vault
 [story_java]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/src/main/java/com/contentful/droidstory/data/vault/Story.java
-[retained_fragment]: http://developer.android.com/guide/topics/resources/runtime-changes.html#RetainingAnObject
+[retained_fragment]: https://developer.android.com/guide/topics/resources/runtime-changes.html#RetainingAnObject
 [storyfragment_java]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/src/main/java/com/contentful/droidstory/ui/story/StoryFragment.java
 [storyfragment_requestsync]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/src/main/java/com/contentful/droidstory/ui/story/StoryFragment.java#L53
 [storyactivity_ptr]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/src/main/java/com/contentful/droidstory/ui/story/StoryActivity.java#L72

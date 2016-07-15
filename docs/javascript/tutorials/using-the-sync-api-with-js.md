@@ -4,7 +4,7 @@ page: :docsSyncApiWithJS
 
 The [sync](/developers/docs/concepts/sync/) API allows you to keep a local copy of all content of a space up to date via delta updates. This tutorial will show you how to use the Sync API with the Contentful JavaScript SDK.
 
-This tutorial shows some examples using the [localStorage](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage) API on a browser, but you can also use any other [storage](https://github.com/mozilla/localForage) [wrapper](https://pouchdb.com/) or any [storage layer](https://github.com/Level/levelup) in Node.js.
+This tutorial shows some examples using the [localStorage](https://developer.mozilla.org/en/docs/Web/API/Window/localStorage) API on a browser, but you can also use any other [storage](https://github.com/localForage/localForage) [wrapper](https://pouchdb.com/) or any [storage layer](https://github.com/Level/levelup) in Node.js.
 
 ## Getting started
 

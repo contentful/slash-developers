@@ -113,7 +113,7 @@ Generic product catalogue / e-commerce app connected with an example space in Co
 
 #### Brew
 A WatchKit app for finding bars near you, built on Contentful. [Read more.](/blog/2015/05/28/brew-app-for-apple-watch/)<br>
-[View on GitHub](https://github.com/contentful-labs/ContentfulWatchKitExample)<br>
+[View on GitHub](https://github.com/contentful/ContentfulWatchKitExample)<br>
 [Download on the App Store](https://itunes.apple.com/us/app/brew-discover-craft-beer-pubs/id986830433)
 
 ### Apple TV (tvOS)
