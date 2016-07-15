@@ -21,9 +21,16 @@ As an authorization HTTP request-header field and as an URI query parameter name
 ## API rate limits
 
 Rate limits refer to the amount of requests per unit of time that can be done against our APIs.
-On the Content Delivery API there are no limits enforced on requests that hit the cache (i.e. a cache hit does not count towards rate limit and an unlimited amount of cache hits can be done). Nonetheless, there is still a rate limit of approximately 80 requests per seconds on the origin.
-
+On the Content Delivery API there are no limits enforced on requests that hit the cache (i.e. a cache hit does not count towards rate limit and an unlimited amount of cache hits can be done). Nonetheless, there is still a rate limit of 216000 requests per hour and 78 requests per seconds on the origin. Higher rate limits may apply for enterprise clients.
 The limit exists to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited. The rate limit is implemented through a standard mechanism of the HTTP protocol (returning response code 429). Keep in mind that there are internal layers of caching close to the origin that again do not contribute to the rate limit.
+
+Contentful uses the `X-Contentful-RateLimit-Reset` header to inform a user when they can make their next request. This header is only sent for rate limited requests (429) due to caching mechanisms. If the header was sent for requests in the 2xx range it would be cached at the CDN layer and become inaccurate. Unlike requests that respond with the status code `200 OK`, a `429  Too Many Requests` response is not cached.
+
+Header                            | Status Code                                       | Description
+----------------------------------|---------------------------------------------------|----------------------------------------------------
+`X-Contentful-RateLimit-Reset`    | `429`. Returned only for rate limited requests.   | The number of seconds until the next request can be made.
+
+It's important to note that the `X-Contentful-RateLimit-Reset` header does _not_ return the time until the next full reset. Instead it tells you when the next request can be made. If a per second rate limit is enforced it will return `1` (time until the next second). If an hourly rate limit is enforced it will return the time until the next sliding window.
 
 :[Common Resource Attributes](_partials/cda/resource-attributes.apib apiname:"Content Delivery API")
 
