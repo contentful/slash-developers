@@ -2,10 +2,10 @@
 page: :docsUiExtensions
 ---
 
-The UI Extensions SDK allows you to customize and extend the functionality of [Contentful](https://www.contentful.com)
-Web Application's entry editor. The editor itself is a container for many components that enable editors to manipulate the content stored in content fields. Extensions can be simple user interface controls, such as a dropdown, or more complex micro web applications such as our Markdown editor. They are decoupled entities from field types, and can be reused (for example using a dropdown to edit number or text fields).
+The UI Extensions SDK allows you to customize and extend the functionality of the Contentful
+Web App's entry editor. The editor itself is a container for many components that enable editors to manipulate the content stored in content fields. Extensions can be simple user interface controls, such as a dropdown, or more complex micro web applications such as our Markdown editor. They are decoupled entities from field types, and can be reused (for example using a dropdown to edit number or text fields).
 
-Previously, the Contentful Web Application only offered our core platform components to manipulate fields' content. Now, with the UI Extensions SDK it is possible to personalize this Web App based on your needs.
+Previously, the Contentful Web App only offered our core platform components to manipulate fields' content. Now, with the UI Extensions SDK it is possible to personalize this Web App based on your needs.
 Core components and custom extensions are both built on top of the same API, leading them to follow the same approach. The main difference resides in the fact that custom extensions are rendered inside a secure iframe.<br>
 [View on GitHub](https://github.com/contentful/ui-extensions-sdk)
 
