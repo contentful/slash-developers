@@ -23,7 +23,7 @@ type       |String        |The `type` of the field determines what data can be s
 items      |Schema        | Defines a subschema for the elements of an array field. This is required when `type` is `"Array"`.
 required   |Boolean       |Describes whether the field is mandatory.
 localized  |Boolean       |Describes whether the field will support different values for different locales.
-disabled   |Boolean       |Describes whether the field is disabled. Disabled fields are hidden in the editing application.
+disabled   |Boolean       |Describes whether the field is disabled. Disabled fields are hidden in the Contentful web app.
 omitted    |Boolean       |If set to `true` fully omits this field in the Content Delivery API and Preview API responses. The Content Management API is not affected by this.
 
 All data in Contentful has a field type, which is defined in the [creation of a content type](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type).
