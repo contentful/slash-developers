@@ -24,37 +24,7 @@ On the Content Delivery API there are no limits enforced on requests that hit th
 
 The limit exists to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited. The rate limit is implemented through a standard mechanism of the HTTP protocol (returning response code 429). Keep in mind that there are internal layers of caching close to the origin that again do not contribute to the rate limit.
 
-## Common resource attributes
-
-Every resource returned by the Content Delivery API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property is defined.
-
-Note that none of the `sys` fields are editable and only the `sys.id` field can be specified in the creation of an item (as long as it is not a Space).
-
-The `sys.id` property will be defined for every resource that is not a collection. For example, a `Space` resource will have a `sys.type` and `sys.id`:
-
-```
-{
-  "sys": {
-    "type": "Space",
-    "id": "cfexampleapi"
-  }
-}
-```
-
-Field          |Type          |Description                     |Applies to
----------------|--------------|--------------------------------|-----------------------------
-sys.type       |String        |Type of resource.               |All
-sys.id         |String        |Unique ID of resource.          |All except arrays
-sys.space      |Link          |Link to resource's space.       |Entries, assets, content types
-sys.contentType|Link          |Link to entry's content type.   |Entries
-sys.revision   |Integer       |Published version of resource.* |Entries, assets, content types
-sys.createdAt  |Date          |Time resource was created.      |Entries, assets, content types
-sys.updatedAt  |Date          |Time resource was updated.      |Entries, assets, content types
-sys.locale     |String        |Locale of the resource.         |Entries and assets
-
-* Observation: the `revision` field refers to the published version exposed by the Content Management API.
-
-:[Collection Resources and Pagination](_partials/collections-and-pagination.md)
+:[Common Resource Attributes](_partials/cda/resource-attributes.apib)
 
 :[Shared Preview/Delivery Docs](_partials/delivery-and-preview-resources.apib tokentype:"A *production* Content Delivery API key.")
 
