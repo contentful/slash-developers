@@ -28,7 +28,7 @@ If not, you can check the basic example applications here:
 
 ## Setup your Contentful webhooks to trigger Circle builds
 
-* Generate your CircleCI Token [here](https://circleci.com/account/api).
+* Generate your CircleCI Token [here](https://circleci.com/docs/api/#getting-started).
 * On the Contentful webhook admin page, create a webhook with (replacing the upper-cased values):
 
 ~~~
