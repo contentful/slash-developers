@@ -24,6 +24,7 @@ then
 	exit 1
 fi
 
+TMPDIR="${TMPDIR:-/tmp}"
 TMPFILE2=`mktemp $TMPDIR/tmp.XXXXXX`
 
 curl -s -X POST --data-binary @"$BLUEPRINT" 'https://api.apiblueprint.org/parser' \
