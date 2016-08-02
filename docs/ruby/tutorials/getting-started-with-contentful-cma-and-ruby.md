@@ -9,7 +9,12 @@ For that, we'll be building a simple blog system with posts, authors, assets and
 linked to the posts. Of course, the Contentful platform is capable of managing any content model
 you can dream up, blogs are just an easy to understand example.
 
-## Creating a Blog space
+{: .note}
+**Note**: This Getting Started guide will be covering the `1.x` version of the gem.
+If you're using `0.x` versions, the top-level `client` methods we use in this guide will not be present.
+For reference on that check the older version's [README][3]
+
+## Creating a blog space
 
 Let's start with mapping out the type of items we need to publish a blog.
 A cursory glance will reveal that a standard blog post contains the following fields:
@@ -37,7 +42,7 @@ And each author entry will have the following fields:
 It is always a good idea to plan ahead when designing the model for your content types,
 since changing it after creating entries can be a lot of work.
 For a better understanding of how to structure your data,
-I recommend our [Content Modelling Guide][1]
+we recommend our [Content Modelling Guide][1]
 
 When using media assets in Contentful keep in mind a simple rule of thumb:
 a single asset does not require a separate content type, since it is handled
@@ -65,16 +70,17 @@ gem 'contentful-management', '~> 1.0'
 
 Once in your `Gemfile`, running `bundle install` will install the gem and all its dependencies.
 
-*The gem is compatible with all major Ruby versions including jRuby 1.9.*
+{: .note}
+The gem is compatible with all major Ruby versions including jRuby 1.9.
 
 ## Setting up your Contentful Management client
 
 Once you have your gem installed, you can start using it inside your application.
 
-For this example, we'll assume you have an account already created. You can fetch your management tokens
+For this example, we'll assume you have already created an account. You can fetch your management token
 from [our authentication docs][2]
 
-Once with the management token, you can create the client:
+Once you have the management token, you can create the client:
 
 ~~~ ruby
 require 'contentful/management'
@@ -82,12 +88,7 @@ require 'contentful/management'
 client = Contentful::Management::Client.new("YOUR_MANAGEMENT_TOKEN")
 ~~~
 
-{: .note}
-**Note**: This Getting Started guide will be covering the `1.0` version of the gem.
-If you're using `0.x` versions, the top-level `client` methods we use in this guide will not be present.
-For reference on that check the older version's [README][3]
-
-## Creating Content Types
+## Creating content types
 
 First, we are creating a new space to start from scratch:
 
@@ -98,7 +99,7 @@ space = client.spaces.create(name: 'Blog')
 If you happen to be in more than one organization you need to specify an organization ID.
 The ID can be found in your account settings in the url once you selected the organization.
 
-Before we can create Posts we need to create the content types. A content type consists
+Before we can create posts we need to create the content types. A content type consists
 of an optional custom id, a name, a type and more fields that can be found in
 the [documentation][4].
 
@@ -126,7 +127,7 @@ category.fields.create(id: 'description', name: 'Description', type: 'Text')
 category.update(displayField: 'name')
 ~~~
 
-Last but not least, we add a content type for author entry:
+Last but not least, we add a content type for authors:
 
 ~~~ ruby
 author = space.content_types.create(name: 'Author')
@@ -170,12 +171,12 @@ post.fields.create(id: 'author', name: 'Post Author', type: 'Link', link_type: '
 ~~~
 
 At this point we have created the basic structure for our blog,
-but before we start creating entries we need to activate our content types:
+but before we start creating entries we need to publish our content types:
 
 ~~~ ruby
-post.activate
-category.activate
-author.activate
+post.publish
+category.publish
+author.publish
 ~~~
 
 If you now take a look at the Contentful Web App you will see your newly prepared space,
@@ -257,9 +258,9 @@ of the existing links:
 post_entry.update(categories: categories, assets: [asset], author: author)
 ~~~
 
-The last step now is to publish the entry so we can fetch it through the Delivery API
+The last step now is to publish the entry so we can fetch it through the Content Delivery API
 or view it in the web interface. Please note that entries in 'draft' state will not
-show up in the Delivery API.
+show up in the Content Delivery API.
 
 ~~~ ruby
 post_entry.publish
@@ -287,8 +288,8 @@ You can also check out how to get your spaces started with a single command usin
 
 * [Content Management API Documentation][0]
 * [contentful-management.rb on Github][11]
-* [RubyGems][12]
-* [Ruby Documentation][13]
+* [contentful-management.rb on RubyGems][12]
+* [contentful-management.rb Documentation][13]
 * [Example Script][9] using the [Open Beer Database][8] to create a space with multiple content types and entries.
 
 
@@ -305,7 +306,7 @@ You can also check out how to get your spaces started with a single command usin
 [5]: https://farm9.staticflickr.com/8144/6974761828_51c4fb1d54_z_d.jpg "Unter den Linden"
 [6]: https://github.com/contentful/contentful.rb
 [7]: https://www.contentful.com/developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/
-[8]: http://openbeerdb.com/
+[8]: https://openbeerdb.com/
 [9]: https://github.com/contentful-labs/cma_import_script
 [10]: https://github.com/contentful/contentful-bootstrap.rb
 [11]: https://github.com/contentful/contentful-management.rb
