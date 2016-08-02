@@ -20,6 +20,12 @@ An extension for static site generator Jekyll that pulls content from Contentful
 An example for building a static site using AWS Lambda.<br>
 [View example](https://github.com/contentful-labs/contentful-aws-lambda-static)
 
+## Tutorials
+
+### Automated rebuild and deploy with CircleCI and Webhooks
+This tutorial will get you set up for running and automatically deploying static sites using Jekyll or Middleman.<br>
+[View the tutorial](/developers/docs/ruby/tutorials/automated-rebuild-and-deploy-with-circleci-and-webhooks/)
+
 ## Third party tools
 
 Please notice that this library is not officially supported by Contentful and may be incomplete, but we've at least tried it out.
