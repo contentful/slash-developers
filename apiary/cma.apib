@@ -1390,6 +1390,10 @@ This endpoint allows the deletion of a space membership. It only affects the acc
 
 # Group API keys
 
+This endpoint allows the management of the Content Delivery API (CDA) keys. These tokens provide read-only access to a single space – that is, you need to obtain a new token for every new space that you want to access.
+
+We recommend using different access tokens for different applications or delivery channels: for example, one for iOS app and another for Android app. One of the reasons is to be able to revoke them individually in the future: with several tokens you can manipulate your delivery channels independently.
+
 ## API keys collection [/spaces/{space_id}/api_keys]
 
 + Parameters

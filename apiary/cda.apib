@@ -20,6 +20,7 @@ As an authorization HTTP request-header field and as an URI query parameter name
 
 ## API rate limits
 
+Rate limits refer to the amount of requests per unit of time that can be done against our APIs.
 On the Content Delivery API there are no limits enforced on requests that hit the cache (i.e. a cache hit does not count towards rate limit and an unlimited amount of cache hits can be done). Nonetheless, there is still a rate limit of approximately 80 requests per seconds on the origin.
 
 The limit exists to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited. The rate limit is implemented through a standard mechanism of the HTTP protocol (returning response code 429). Keep in mind that there are internal layers of caching close to the origin that again do not contribute to the rate limit.
