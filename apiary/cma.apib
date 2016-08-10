@@ -59,9 +59,21 @@ Contentful uses optimistic locking. When updating an existing resource its curre
 
 ## API rate limits
 
-In the Content Management API, there is a limit of 10 requests per second. The limit exists to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited.
+The Content Management API enforces standard rate limits per hour and per second. The limits exist to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited. Rate limits are set to 18000 requests per hour and 10 requests per second.
 
-The rate limit is implemented through a standard mechanism of the HTTP protocol (returning response code 429).
+The rate limits are implemented through a standard mechanism of the HTTP protocol (returning response code 429).
+
+Contentful uses HTTP headers to inform users how they're rate limited, what their rate limits are and when they can make their next request.
+
+Header                                    | Status Code   | Description
+------------------------------------------|---------------|----------------------------------------------------
+`X-Contentful-RateLimit-Hour-Limit`       | All requests. | The hourly rate limit.
+`X-Contentful-RateLimit-Hour-Remaining`   | All requests. | The number of requests remaining before the hourly rate limits are enforced.
+`X-Contentful-RateLimit-Second-Limit`     | All requests. | The per second rate limit.
+`X-Contentful-RateLimit-Second-Remaining` | All requests. | The number of requests remaining before the per second rate limits are enforced.
+`X-Contentful-RateLimit-Reset`            | All requests. | The number of seconds until the next request can be made.
+
+It's important to note that the `X-Contentful-RateLimit-Reset` header does _not_ return the time until the next full reset. Instead it tells you when the next request can be made. If a per second rate limit is enforced it will return `1` (time until the next second). If an hourly rate limit is enforced it will return the time until the next sliding window. If no limits are enforced it returns `0` because the next request can be made immediately.
 
 :[Common Resource Attribute](_partials/cma/resource-attributes.apib)
 
