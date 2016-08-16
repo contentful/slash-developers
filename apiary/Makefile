@@ -58,6 +58,9 @@ $(CPA_BLUEPRINT): outdir cpa.apib
 #	apiary fetch --api-name=$(CMA_APIARY_NAME) >$(CMA_BLUEPRINT)
 
 prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
+	for blueprint in $^; do \
+		./lint.sh $$blueprint || exit 1; \
+	done
 
 preview: check_apiary_token prepare
 	$(APIARY) preview --path=$(CDA_BLUEPRINT)
