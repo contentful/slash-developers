@@ -36,6 +36,10 @@ This tutorial will walk you through your first steps in using Contentful within 
 This tutorial will walk you through your first steps in using Contentful within your Ruby application.<br>
 [View the tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/)
 
+### Full-stack getting started with the Contentful
+This tutorial will walk you through your first steps in using Contentful within your Rails application.<br>
+[View the tutorial](/developers/docs/ruby/tutorials/full-stack-getting-started/)
+
 ### Using contentful_bootstrap for keeping up with your spaces
 To get you jump-started in Contentful using Contentful Bootstrap.<br>
 [View the tutorial](/developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
