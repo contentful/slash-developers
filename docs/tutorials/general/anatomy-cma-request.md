@@ -47,7 +47,7 @@ In the body of our request we should specify a `name` and `defaultLocale` (defin
 }
 ~~~
 
-We get a JSON response with the array `sys`, containing managed system properties, and additional space information on `name` and `locales`:
+We get a JSON response with a `sys` property, containing managed system properties, and additional space information like `name` and `locales`:
 
 ~~~ json
 {
