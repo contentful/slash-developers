@@ -7,45 +7,47 @@ We will provide simple steps to get your first entries and start using the conte
 
 ## Requirements
 
-* A Heroku account
-* Ruby and Git installed
+* A [Heroku][8] account
+* Ruby 2.3.1 (via [RVM][16] or [rbenv][17])
+* [Postgres][18] installed
+* [Git][19] installed
 * Basic Command Line Interface, Ruby and Rails knowledge
 
 ## Start from a demo application
 
-First we'll start with a [demo project][10], so that you can see it running for yourself.
+First we'll start with a [demo project][10], a simple Rails application using Contentful's Product Catalogue template, so that you can see it running for yourself.
 
 Run the following commands to get you started.
 
 * Clone the example repository:
 
-```bash
+~~~bash
 $ git clone https://github.com/contentful/contentful_rails_tutorial.git
-```
+~~~
 
 * Navigate into the repository's directory:
 
-```bash
+~~~bash
 $ cd contentful_rails_tutorial
-```
+~~~
 
 * Install dependencies:
 
-```bash
+~~~bash
 $ bundle install
-```
+~~~
 
-* Create and seed the database:
+* Install a default Contentful configuration:
 
-```bash
+~~~bash
 $ bundle exec rake db:create db:migrate db:seed
-```
+~~~
 
 * Run the server:
 
-```bash
+~~~bash
 $ bundle exec rails s
-```
+~~~
 
 Everything is now set up. You can new view your data by opening [`http://localhost:3000/contentful_users/1`][11] in your browser
 
@@ -58,15 +60,24 @@ It will look something like this:
 You can create your own custom data by following these steps:
 
 * Create an Account in [Contentful][12] or [Log In][13]
-* Create a new Space with the `Product` Template
+* Create a new Space with the *Product Catalogue* Template
 * In the Rails application:
-  * Press the `Edit Demo Configuration` button on the top navigation bar
-  * Press the `New Contentful Configuration` button and fill in the form with (obtained from [Contentful Web App][13])
-    * Configuration name - You can choose how to name it
-    * Your newly created Space ID - `Contentful Web App -> APIs -> Content delivery/preview keys -> Website -> Space ID`
-    * Production Delivery API Access Token - `Contentful Web App -> APIs -> Content delivery/preview keys -> Website -> Production`
-    * Product's Content Type ID - `Contentful Web App -> APIs -> Content model explorer -> Product -> Identifier`
+  * Press the *Edit Demo Configuration* button on the top navigation bar
+  * Press the *New Contentful Configuration* button and fill in the form as follows:
+    * *Configuration name*: Choose a name for your configuration
+    * *Space*: [Contentful Web App][13] > APIs > Content delivery/preview keys > Website > Space ID
+    * *Access token*: get the Production Delivery API Access Token from [Contentful Web App][13] > APIs > Content delivery/preview keys > Website > Production
+    * *Content type*: get the Product's Content Type ID from [Contentful Web App][13] > APIs > Content model explorer > Product > Identifier
   * Your space will be now displayed on your application
+
+![API Keys page](http://i.imgur.com/l82B3hb.png)
+
+* In the [Contentful Web App][13]:
+  * Open the product called: `Playsam Streamliner Classic Car, Espresso`
+  * Edit the `Product name` field
+  * Press the *Publish changes* button
+  * Wait for a few seconds for the changes to propagate to the CDN
+* Reload your Rails application and see the changes
 
 You can then edit your content inside the [Contentful Web App][13] and see the content changed inside your Rails application.
 
@@ -76,57 +87,59 @@ To view the demo application live in your own controlled production environment,
 
 * Install Heroku toolbelt (you may skip if you already have it installed):
 
-```bash
+~~~bash
 $ gem install heroku
-```
+~~~
 
 * Login to Heroku (you may skip if you are already logged in):
 
-```bash
+~~~bash
 $ heroku login
-```
+~~~
 
 * Create a new instance:
 
-```bash
+~~~bash
 $ heroku create
-```
+~~~
 
 * Create a Postgres database:
 
-```bash
-$ heroku pg
-```
+~~~bash
+$ heroku addons:create heroku-postgresql:hobby-dev
+~~~
 
 * Update the `config/database.yml` file:
 
 Replace `VALUE_OBTAINED_FROM_YOUR_HEROKU_PG_CONFIG` with the database name in your Heroku Dashboard.
 To get the name go to: `Heroku Dashboard -> Your instance -> Resources -> Your Postgres instance -> Database name`
 
+![Heroku Database Name](http://i.imgur.com/RLXL5bA.png)
+
 * Commit your change:
 
-```bash
+~~~bash
 $ git add .
 $ git commit -m "Update Database Configuration"
-```
+~~~
 
 * Deploy to Heroku:
 
-```bash
+~~~bash
 $ git push heroku master
-```
+~~~
 
-* Migrate and seed the database:
+* Install your default Contentful configuration:
 
-```bash
+~~~bash
 $ heroku run env bundle exec rake db:migrate db:seed
-```
+~~~
 
 * Open your application in your browser:
 
-```bash
+~~~bash
 $ heroku open
-```
+~~~
 
 ## Conclusion
 
@@ -135,7 +148,8 @@ with the best solutions we can.
 
 With this basic guide, you should be able to start using Contentful within your Rails applications.
 
-You can read about the Contentful CDA library in more detail on our [contentful.rb GitHub][1] or our [Getting Started with CDA SDK tutorial][15] and take a look at our [Contentful Rails Example Application][10].
+You can read about the Contentful CDA library in more detail on our [contentful.rb GitHub][1] or our [Getting Started with CDA SDK tutorial][15]
+and take a look at our [Contentful Rails Example Application][10].
 
 Now that you've already seen it in action, you're ready to create your own project. Create your own Rails project by following this [tutorial][14].
 
@@ -161,3 +175,7 @@ In case you you want to set up your new spaces via the command line we also prov
 [13]: https://app.contentful.com
 [14]: /developers/docs/ruby/tutorials/create-your-own-rails-app/
 [15]: /developer/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/
+[16]: https://rvm.io/rvm/install
+[17]: https://github.com/rbenv/rbenv#installation
+[18]: https://wiki.postgresql.org/wiki/Detailed_installation_guides
+[19]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git

@@ -12,17 +12,17 @@ The first step to get you started is the creation of the Rails application itsel
 
 You can do so by running the following command:
 
-```bash
+~~~bash
 $ rails init <YOUR_PROJECT_NAME>
-```
+~~~
 
 ## Add Contentful to your project dependencies
 
 On your project's `Gemfile`:
 
-```ruby
+~~~ruby
 gem 'contentful'
-```
+~~~
 
 ## Decide how to include Contentful
 
@@ -36,7 +36,7 @@ your models, you may want to use this approach. It will let you use your Content
 
 On `app/helpers/application_helper.rb`:
 
-```ruby
+~~~ruby
 def contentful
   @client ||= Contentful::Client.new(
     access_token: ENV['CONTENTFUL_ACCESS_TOKEN'],
@@ -45,11 +45,11 @@ def contentful
     raise_errors: true
   )
 end
-```
+~~~
 
 On your views then you can use it like follows:
 
-```erb
+~~~erb
 <% products = contentful.entries(content_type: ENV['CONTENTFUL_PRODUCT_CT_ID'], include: 2) %>
 <% products.each do |product| %>
   <div class="contentful_product">
@@ -59,7 +59,7 @@ On your views then you can use it like follows:
     <a href="<%= product.website %>">Buy Now!</a>
   </div>
 <% end %>
-```
+~~~
 
 ### Contentful as a Concern
 
@@ -70,7 +70,7 @@ the following approach will allow you to accomplish this.
 
 * On the newly created concern, add the following code:
 
-```ruby
+~~~ruby
 module ContentfulRenderable
   extend ActiveSupport::Concern
 
@@ -103,17 +103,17 @@ module ContentfulRenderable
     end
   end
 end
-```
+~~~
 
 * Add the fields to your Model:
 
-```bash
+~~~bash
 $ rails g migration add_contentful_fields_to_<MODEL_NAME> contentful_id:string
-```
+~~~
 
 * Include Concern on your Model:
 
-```ruby
+~~~ruby
 class MyModel < ActiveRecord::Base
   include ContentfulRenderable
 
@@ -123,7 +123,7 @@ class MyModel < ActiveRecord::Base
 
   # ... your regular model stuff ...
 end
-```
+~~~
 
 * Now you can use it on your views as follows:
 
@@ -131,7 +131,7 @@ Assuming our model is a Product
 
 * For fetching a single entry:
 
-```erb
+~~~erb
 <% @product.render.tap do |product| %>
   <div class="contentful_product">
     <h1><%= product.title %></h1>
@@ -140,11 +140,11 @@ Assuming our model is a Product
     <a href="<%= product.website %>">Buy Now!</a>
   </div>
 <% end %>
-```
+~~~
 
 * For fetching the collection:
 
-```erb
+~~~erb
 <% Product.render_all.each do |product| %>
   <div class="contentful_product">
     <h1><%= product.title %></h1>
@@ -153,7 +153,7 @@ Assuming our model is a Product
     <a href="<%= product.website %>">Buy Now!</a>
   </div>
 <% end %>
-```
+~~~
 
 Using the Concern approach makes each of the instances of your model configurable.
 If you want to pull out the configuration to a separate object, you are free to add a `belongs_to` relationship.
