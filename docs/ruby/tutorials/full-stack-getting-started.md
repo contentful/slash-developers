@@ -111,10 +111,10 @@ $ heroku addons:create heroku-postgresql:hobby-dev
 
 * Update the `config/database.yml` file:
 
-Replace `VALUE_OBTAINED_FROM_YOUR_HEROKU_PG_CONFIG` with the database name in your Heroku Dashboard.
-To get the name go to: `Heroku Dashboard -> Your instance -> Resources -> Your Postgres instance -> Database name`
+Replace `VALUE_OBTAINED_FROM_YOUR_HEROKU_PG_CONFIG` with the database name in your [Heroku Database's Dashboard][20].
+To get the name go to: [Heroku Database Dashboard][20] > Your Postgres instance > Database name
 
-![Heroku Database Name](http://i.imgur.com/RLXL5bA.png)
+![Heroku Database Name](http://i.imgur.com/Tis7KPp.png)
 
 * Commit your change:
 
@@ -179,3 +179,4 @@ In case you you want to set up your new spaces via the command line we also prov
 [17]: https://github.com/rbenv/rbenv#installation
 [18]: https://wiki.postgresql.org/wiki/Detailed_installation_guides
 [19]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+[20]: https://postgres.heroku.com/databases
