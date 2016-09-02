@@ -17,7 +17,7 @@ Contentful's Content Delivery API (CDA) is a read-only API for retrieving conten
 
 ### CMA - Content Management API
 This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
-[View on GitHub](https://github.com/contentful/contentful-management.rb/)<br>
+[View on GitHub](https://github.com/contentful/contentful-management.rb)<br>
 [API reference](http://www.rubydoc.info/gems/contentful-management/)
 
 ## Tutorials
