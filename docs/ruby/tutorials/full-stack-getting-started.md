@@ -36,7 +36,7 @@ cd contentful_rails_tutorial
 bundle install
 ~~~
 
-- Install a default Contentful database configuration:
+- Install default Contentful configuration:
 
 ~~~bash
 bundle exec rake db:create db:migrate db:seed
@@ -48,7 +48,7 @@ bundle exec rake db:create db:migrate db:seed
 bundle exec rails s
 ~~~
 
-Everything is now set up. You can view your new data by opening [_http://localhost:3000/contentful_users/1_][11] in your browser
+Everything is now set up. You can view your new data by opening [_http://localhost:3000/contentful_users/1_][11] in your browser.
 
 It should look something like this:
 
