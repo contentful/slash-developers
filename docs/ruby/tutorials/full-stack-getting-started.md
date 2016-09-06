@@ -58,18 +58,15 @@ It should look something like this:
 
 You can create your own custom data by following these steps:
 
-- Create an Account with [Contentful][12] or [Log In][13].
+- Create an account with [Contentful][12] or [Log In][13].
 - Create a new Space with the 'Product Catalogue' template, name it whatever you like.
 - In the Rails application:
-
   - Click the _Edit Demo Configuration_ button on the top navigation bar.
   - Click the _New Contentful Configuration_ button and fill in the form as follows:
-
     - _Configuration name_: Choose a name for your configuration.
     - _Space_: Add the value from _[the Contentful web app][13] > APIs > Content delivery/preview keys > Website key > Space ID_.
     - _Access token_: Add the Production Delivery API Access Token from _[the Contentful web app][13] > APIs > Content delivery/preview keys > Website key > Production_.
     - _Content type_: Add the Product's Content Type ID from _[the Contentful web app][13] > APIs > Content model explorer > Product > Identifier_.
-
   - Your space will be now displayed in your application
 
 ![Keys Page](keys_and_ids.png)
