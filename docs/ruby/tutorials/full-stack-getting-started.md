@@ -1,174 +1,156 @@
 ---
-page: :docsRubyFullStack
+page: ':docsRubyFullStack'
 ---
 
-This guide will walk you through your first steps in using Contentful within your Rails applications.
-We will provide simple steps to get your first entries and start using the content you create on Contentful.
+This guide will walk you through your first steps using Contentful within a Rails application. It will provide a step-by-step guide on how to get your first entries and start using the content you create on Contentful.
 
 ## Requirements
 
-* A [Heroku][8] account
-* Ruby 2.3.1 (via [RVM][16] or [rbenv][17])
-* [Postgres][18] installed
-* [Git][19] installed
-* Basic Command Line Interface, Ruby and Rails knowledge
+- A [Heroku][8] account
+- Ruby 2.3.1 (via [RVM][16] or [rbenv][17])
+- [Postgres][18] installed
+- [Git][19] installed
+- Basic Command Line Interface, Ruby and Rails knowledge
 
 ## Start from a demo application
 
-First we'll start with a [demo project][10], a simple Rails application using Contentful's Product Catalogue template, so that you can see it running for yourself.
+First we'll start with a [demo project][10], which is a simple Rails application using Contentful's 'Product Catalogue' template, so that you can see it running for yourself.
 
-Run the following commands to get you started.
+Run the following commands to get started.
 
-* Clone the example repository:
+- Clone the example repository:
 
-~~~bash
-$ git clone https://github.com/contentful/contentful_rails_tutorial.git
-~~~
+```bash
+git clone https://github.com/contentful/contentful_rails_tutorial.git
+```
 
-* Navigate into the repository's directory:
+- Navigate into the repository's directory:
 
-~~~bash
-$ cd contentful_rails_tutorial
-~~~
+```bash
+cd contentful_rails_tutorial
+```
 
-* Install dependencies:
+- Install dependencies:
 
-~~~bash
-$ bundle install
-~~~
+```bash
+bundle install
+```
 
-* Install a default Contentful configuration:
+- Install a default Contentful database configuration:
 
-~~~bash
-$ bundle exec rake db:create db:migrate db:seed
-~~~
+```bash
+bundle exec rake db:create db:migrate db:seed
+```
 
-* Run the server:
+- Run the server:
 
-~~~bash
-$ bundle exec rails s
-~~~
+```bash
+bundle exec rails s
+```
 
-Everything is now set up. You can new view your data by opening [`http://localhost:3000/contentful_users/1`][11] in your browser
+Everything is now set up. You can view your new data by opening [_http://localhost:3000/contentful_users/1_][11] in your browser
 
-It will look something like this:
+It should look something like this:
 
-![Rails Demo Application](http://i.imgur.com/pR6o4lE.png)
+![Rails Demo Application](./default_website.png)
 
-### How to use your own content
+### Using your own content
 
 You can create your own custom data by following these steps:
 
-* Create an Account in [Contentful][12] or [Log In][13]
-* Create a new Space with the *Product Catalogue* Template
-* In the Rails application:
-  * Press the *Edit Demo Configuration* button on the top navigation bar
-  * Press the *New Contentful Configuration* button and fill in the form as follows:
-    * *Configuration name*: Choose a name for your configuration
-    * *Space*: [Contentful Web App][13] > APIs > Content delivery/preview keys > Website > Space ID
-    * *Access token*: get the Production Delivery API Access Token from [Contentful Web App][13] > APIs > Content delivery/preview keys > Website > Production
-    * *Content type*: get the Product's Content Type ID from [Contentful Web App][13] > APIs > Content model explorer > Product > Identifier
-  * Your space will be now displayed on your application
+- Create an Account with [Contentful][12] or [Log In][13].
+- Create a new Space with the 'Product Catalogue' template, name it whatever you like.
+- In the Rails application:
 
-![API Keys page](http://i.imgur.com/l82B3hb.png)
+  - Click the _Edit Demo Configuration_ button on the top navigation bar.
+  - Click the _New Contentful Configuration_ button and fill in the form as follows:
 
-* In the [Contentful Web App][13]:
-  * Open the product called: `Playsam Streamliner Classic Car, Espresso`
-  * Edit the `Product name` field
-  * Press the *Publish changes* button
-  * Wait for a few seconds for the changes to propagate to the CDN
-* Reload your Rails application and see the changes
+    - _Configuration name_: Choose a name for your configuration.
+    - _Space_: Add the value from _[the Contentful web app][13] > APIs > Content delivery/preview keys > Website key > Space ID_.
+    - _Access token_: Add the Production Delivery API Access Token from _[the Contentful web app][13] > APIs > Content delivery/preview keys > Website key > Production_.
+    - _Content type_: Add the Product's Content Type ID from _[the Contentful web app][13] > APIs > Content model explorer > Product > Identifier_.
 
-You can then edit your content inside the [Contentful Web App][13] and see the content changed inside your Rails application.
+  - Your space will be now displayed in your application
+
+![Keys Page](keys_and_ids.png)
+
+Next in the _[Contentful web app][13] > Content_:
+
+- Open the product called 'Playsam Streamliner Classic Car, Espresso'.
+- Change the value of the _Product name_ field to a new value,
+- Click the _Publish changes_ button.
+- Wait a few seconds for the changes to propagate to the CDN.
+- Reload your Rails application and you will see the new product name.
+
+You can continue to edit your content inside the [Contentful web app][13] and see the content change inside your Rails application.
 
 ### Deploy the demo to Heroku
 
-To view the demo application live in your own controlled production environment, follow these steps:
+To view the demo application live in your own production environment, follow these steps:
 
-* Install Heroku toolbelt (you may skip if you already have it installed):
+- Install the [Heroku toolbelt](https://devcenter.heroku.com/articles/heroku-command-line#download-and-install) if you don't already have it.
+- Login to Heroku if you're not already:
 
-~~~bash
-$ gem install heroku
-~~~
+```bash
+heroku login
+```
 
-* Login to Heroku (you may skip if you are already logged in):
+- Create a new instance:
 
-~~~bash
-$ heroku login
-~~~
+```bash
+heroku create
+```
 
-* Create a new instance:
+- Create a Postgres database:
 
-~~~bash
-$ heroku create
-~~~
+```bash
+heroku addons:create heroku-postgresql:hobby-dev
+```
 
-* Create a Postgres database:
+- Update the _config/database.yml_ file:
 
-~~~bash
-$ heroku addons:create heroku-postgresql:hobby-dev
-~~~
+Replace `VALUE_OBTAINED_FROM_YOUR_HEROKU_PG_CONFIG` with the database name in your [Heroku Database's Dashboard][20]. You can find the name at _[Heroku Database Dashboard][20] > Your Postgres instance > Database_.
 
-* Update the `config/database.yml` file:
+![Heroku Database Name](./database_name.png)
 
-Replace `VALUE_OBTAINED_FROM_YOUR_HEROKU_PG_CONFIG` with the database name in your [Heroku Database's Dashboard][20].
-To get the name go to: [Heroku Database Dashboard][20] > Your Postgres instance > Database name
+- Commit your change:
 
-![Heroku Database Name](http://i.imgur.com/Tis7KPp.png)
+```bash
+git add .
+git commit -m "Update Database Configuration"
+```
 
-* Commit your change:
+- Deploy to Heroku:
 
-~~~bash
-$ git add .
-$ git commit -m "Update Database Configuration"
-~~~
+```bash
+git push heroku master
+```
 
-* Deploy to Heroku:
+- Install your default Contentful configuration:
 
-~~~bash
-$ git push heroku master
-~~~
+```bash
+heroku run env bundle exec rake db:migrate db:seed
+```
 
-* Install your default Contentful configuration:
+- Open the application in your browser:
 
-~~~bash
-$ heroku run env bundle exec rake db:migrate db:seed
-~~~
+```bash
+heroku open
+```
 
-* Open your application in your browser:
+## Next Steps
 
-~~~bash
-$ heroku open
-~~~
+After this guide, you should be able to start using Contentful with your Rails applications, but every project has different needs and we want to provide you with the best solutions we can.
 
-## Conclusion
+You can read about the Contentful CDA library in more detail on our [contentful.rb GitHub][1] or our [Getting Started with CDA SDK tutorial][15], we also suggest taking a look at our [Contentful Rails Example Application][10].
 
-This is a very simple tutorial to get things running, but every project has different needs and we want to provide you
-with the best solutions we can.
+If you want to create your own Rails project we recommend following this [tutorial][14], or our Rails integration libraries [`contentful_model`][2] and [`contentful_rails`][3], which provide a more Rails-like approach to creating Contentful based applications.
 
-With this basic guide, you should be able to start using Contentful within your Rails applications.
+Do you like building static sites? Check how to build static sites using Contentful with [Middleman][4] or [Jekyll][5].
 
-You can read about the Contentful CDA library in more detail on our [contentful.rb GitHub][1] or our [Getting Started with CDA SDK tutorial][15]
-and take a look at our [Contentful Rails Example Application][10].
-
-Now that you've already seen it in action, you're ready to create your own project. Create your own Rails project by following this [tutorial][14].
-
-Also check our Rails integration libraries [`contentful_model`][2] and [`contentful_rails`][3], which provide a more Rails-like
-approach to create Contentful based applications.
-
-Do you like building static sites? Maybe you want to check how to build static sites using Contentful with [Middleman][4] or [Jekyll][5].
-
-In case you you want to set up your new spaces via the command line we also provide [Contentful Bootstrap][6].
+If you want to set up new spaces via the command line we also provide [Contentful Bootstrap][6].
 
 [1]: https://github.com/contentful/contentful.rb
-[2]: https://github.com/contentful/contentful_model
-[3]: https://github.com/contentful/contentful_rails
-[4]: https://github.com/contentful/contentful_middleman_examples
-[5]: https://github.com/contentful/contentful_jekyll_examples
-[6]: https://github.com/contentful/contentful-bootstrap.rb
-[7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
-[8]: https://heroku.com
-[9]: https://devcenter.heroku.com/articles/getting-started-with-rails4
 [10]: https://github.com/contentful/contentful_rails_tutorial
 [11]: http://localhost:3000/contentful_users/1
 [12]: https://www.contentful.com/sign-up/#starter
@@ -179,4 +161,12 @@ In case you you want to set up your new spaces via the command line we also prov
 [17]: https://github.com/rbenv/rbenv#installation
 [18]: https://wiki.postgresql.org/wiki/Detailed_installation_guides
 [19]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+[2]: https://github.com/contentful/contentful_model
 [20]: https://postgres.heroku.com/databases
+[3]: https://github.com/contentful/contentful_rails
+[4]: https://github.com/contentful/contentful_middleman_examples
+[5]: https://github.com/contentful/contentful_jekyll_examples
+[6]: https://github.com/contentful/contentful-bootstrap.rb
+[7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
+[8]: https://heroku.com
+[9]: https://devcenter.heroku.com/articles/getting-started-with-rails4
