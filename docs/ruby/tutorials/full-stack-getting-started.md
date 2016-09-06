@@ -1,5 +1,5 @@
 ---
-page: ':docsRubyFullStack'
+page: :docsRubyFullStack
 ---
 
 This guide will walk you through your first steps using Contentful within a Rails application. It will provide a step-by-step guide on how to get your first entries and start using the content you create on Contentful.
