@@ -20,33 +20,33 @@ Run the following commands to get started.
 
 - Clone the example repository:
 
-```bash
+~~~bash
 git clone https://github.com/contentful/contentful_rails_tutorial.git
-```
+~~~
 
 - Navigate into the repository's directory:
 
-```bash
+~~~bash
 cd contentful_rails_tutorial
-```
+~~~
 
 - Install dependencies:
 
-```bash
+~~~bash
 bundle install
-```
+~~~
 
 - Install a default Contentful database configuration:
 
-```bash
+~~~bash
 bundle exec rake db:create db:migrate db:seed
-```
+~~~
 
 - Run the server:
 
-```bash
+~~~bash
 bundle exec rails s
-```
+~~~
 
 Everything is now set up. You can view your new data by opening [_http://localhost:3000/contentful_users/1_][11] in your browser
 
@@ -91,21 +91,21 @@ To view the demo application live in your own production environment, follow the
 - Install the [Heroku toolbelt](https://devcenter.heroku.com/articles/heroku-command-line#download-and-install) if you don't already have it.
 - Login to Heroku if you're not already:
 
-```bash
+~~~bash
 heroku login
-```
+~~~
 
 - Create a new instance:
 
-```bash
+~~~bash
 heroku create
-```
+~~~
 
 - Create a Postgres database:
 
-```bash
+~~~bash
 heroku addons:create heroku-postgresql:hobby-dev
-```
+~~~
 
 - Update the _config/database.yml_ file:
 
@@ -115,28 +115,28 @@ Replace `VALUE_OBTAINED_FROM_YOUR_HEROKU_PG_CONFIG` with the database name in yo
 
 - Commit your change:
 
-```bash
+~~~bash
 git add .
 git commit -m "Update Database Configuration"
-```
+~~~
 
 - Deploy to Heroku:
 
-```bash
+~~~bash
 git push heroku master
-```
+~~~
 
 - Install your default Contentful configuration:
 
-```bash
+~~~bash
 heroku run env bundle exec rake db:migrate db:seed
-```
+~~~
 
 - Open the application in your browser:
 
-```bash
+~~~bash
 heroku open
-```
+~~~
 
 ## Next Steps
 
