@@ -260,6 +260,7 @@ Validation      |Description                              |Applicable to|Example
 `size`|Takes optional min and max parameters and validates the size of the array (number of objects in it).|Arrays, Text, Symbol|`{"size": { "min": 5, "max": 20}}`
 `range`|Takes optional min and max parameters and validates the range of a value.|Number, Integer|`{"range": { "min": 5, "max": 20}}`
 `regexp`|Takes a string that reflects a JS regex and flags, validates against a string. See [JS reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) for the parameters.|Text, Symbol|`{"regexp": {"pattern": "^such", "flags": "im"}}`
+`unique`|Validates that there are no other entries that have the same field value at the time of publication.|Symbol, Integer, Number|`{"unique": true}`
 
 Please notice that validations will only take effect after the content type has been activated and that previously existing entries will not be validated until they are published again.
 
