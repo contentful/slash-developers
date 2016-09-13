@@ -76,7 +76,7 @@ Content-Type: application/vnd.contentful.management.v1+json
   },
   "name":"German (Austria)",
   "code":"de-AT",
-  "fallback_code":null,
+  "fallbackCode":null,
   "default":false,
   "contentManagementApi":true,
   "contentDeliveryApi":true,

@@ -30,12 +30,20 @@ Each space has a name, a set of locales, and some system metadata.
             {
               "code": "en-US",
               "default": true,
-              "name": "English"
+              "name": "English",
+              "fallbackCode": null
             },
             {
               "code": "tlh",
               "default": false,
-              "name": "Klingon"
+              "name": "Klingon",
+              "fallbackCode": "en-US"
+            },
+            {
+              "code": "bc-BC",
+              "default": false,
+              "name": "Baconglish",
+              "fallbackCode": "tlh"
             }
           ]
         }
@@ -701,6 +709,8 @@ Example: Include only image assets.
 Specify a requested locale as `locale` URI query parameter.
 
 The locale parameter must be the code of a locale in the space that's being queried, or the special wildcard value `*`. If no locale is specified, the default locale of the space will be used.
+
+If there's no content for the requested locale (i.e. a field doesn't exist for a given locale) the API will try with the fallback locale of the requested one. As an example you could create the `de-CH` locale and configure it to fallback to `de-DE`. Any time you request content for `ch-DE` any missing field in that locale will be replace with its counterpart in `de-DE` (provided that they exist). For more information about fallbacks take a look [to the locale section in the CMA docs](www.contentful.com/developers/docs/references/content-management-api/#/reference/locales).
 
 When `locale=*` is specified, field values will be nested in an object with keys corresponding to each locale with a defined value. Instead of writing `fields.name` when accessing the response data from your code, you would write `fields.name[localeCode]`.
 

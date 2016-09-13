@@ -780,7 +780,28 @@ An asset can only be archived when it's not published.
 # Group Locales
 
 Locales allow the definition of translated content for both assets and entries. A locale
-consists mainly of a name and a locale code.
+consists mainly of the following properties:
+
+- `name`, a human readable identifier for a locale. For example: "British English"
+- `code`, an identifier that will be used to differentiate translated content in the API responses. For example: 'en-GB'
+- `fallbackCode`, the code of the locale to use in case there is no translated content for the requested one. For example: 'en-US'. You could also set it to `null` if you want a
+locale to not fallback to any other locale in the space.
+
+### Fallback locales
+
+When reading entries or assets via the content delivery api there can be situation where there is no content for the requested locale.
+On those cases the API will, by default, return content for the default locale in the space (provided there's content for it). You can override this behaviour
+by setting a custom `fallbackCode` in your locale. If there's no content for a locale but it exists for the fallback one then the content delivery api
+will return its content.
+
+Some considerations about fallback locales:
+
+- If you don't want a locale to fallback to anything set its `fallbackCode` property to `null`.
+- You can create fallback chains. Setups where for example `de-CH` (Swiss German) fallbacks to `de-AT` (Austrian German) and `de-AT` fallbacks itself to `de-DE` (German German) are
+perfectly valid. If a locale in the chain doesn't have content the API will try with the next one.
+- Your fallback chain can't contain cycles. A fallback chain where `de-CH` fallbacks to `de-AT` and `de-AT` fallbacks to `de-CH` won't be allowed.
+- The system will only use the content of the fallback locale when the requested one is not present in the entry or asset (i.e. you request 'en-US' but the entry has only content for 'de-DE').
+This means that values like `null` or an empty string (`""`) will not cause the system to use the value of the fallback locale.
 
 ## Locale collection [/spaces/{space_key}/locales]
 
@@ -790,7 +811,7 @@ consists mainly of a name and a locale code.
 ### Get all locales of a space [GET]
 
 The locale collection endpoint returns a list of all the created locales. One of those
-will have the flag `default` set to true and is the locale that is used if no other
+will have the flag `default` set to true and is the locale that is used in the content delivery api if no other
 locale was specified for the request (e.g. when reading an entry).
 
 + Request
@@ -837,10 +858,12 @@ This endpoint returns a single locale with all its metadata.
 
 ### Update a locale [PUT]
 
-Putting a payload against a single entities endpoint allows an update of a locale.
+Putting a payload against the single entity endpoint updates of a locale.
 
-Please note that renaming a locale changes the responses for upcoming requests, which
-might break your existing code.
+Please note that modifying the `code` of a locale changes the responses for upcoming requests, which
+might break your existing code. Also modifications of the `code` property of locales used as fallabck
+are not allowed. You would have to first ensure that the locale is not used as fallback by any other
+locale before being able to change its `code`.
 
 Finally, it is not possible to change what is the default locale of a space, as these are
 permanent entities.
@@ -859,6 +882,9 @@ permanent entities.
 This endpoint deletes an existing locale. Please note that it is **not** possible to recover
 from this action! Every content that was stored for that specific locale gets deleted and
 cannot be recreated by creating the same locale again.
+
+Deleting a locale that it is used as a fallback is not allowed. You would have to first ensure that
+a locale is not used as fallback before being able to delete it.
 
 + Request
   + Headers
@@ -1589,6 +1615,7 @@ We recommend using different access tokens for different applications or deliver
 
 - name: `English (United States)` (string, required)
 - code: `en-US` (string, required)
+- fallbackCode: `en-US` (string, nullable) - Defaults to the default locale in the space
 - optional: false (boolean) - Declare a locale as optional in localized fields
 
 ### Locale Complete
