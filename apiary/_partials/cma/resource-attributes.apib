@@ -1,8 +1,8 @@
 ## Common Resource Attributes
 
-Every resource returned by the API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property is defined.
+Every resource returned by the API will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the resource type, but at minimum it defines the `sys.type` property.
 
-Note that none of the `sys` fields are editable and only the `sys.id` field can be specified in the creation of an item (as long as it is not a Space).
+**Note**: None of the `sys` fields are editable and you can only specify the `sys.id` field when creating an item (as long as it's not a Space).
 
 The `sys.id` property will be defined for every resource that is not a collection. For example, a `Space` resource will have a `sys.type` and `sys.id`:
 
