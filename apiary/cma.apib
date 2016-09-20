@@ -4,11 +4,11 @@ HOST: https://api.contentful.com
 # Content Management API
 Contentful's Content Management [REST](https://en.wikipedia.org/wiki/Representational_state_transfer) API helps you manage content.
 
-Content is organized into spaces, represented as entries and assets. The layout and logic of apps and websites relies on the structure of entries, so every entry must comply to a specific content type. Assets are binary files like images, videos and other media.
+Contentful organizes content into spaces, represented as entries and assets. The layout and logic of apps and websites relies on the structure of entries, so every entry must comply to a specific content type. Assets are binary files like images, videos and other media.
 
 Entries are represented as JSON data, assets as binary files.
 
-You can access the API securely via HTTPS and it will only be available to clients authenticating with an access token.
+You can access the API securely via HTTPS and it will be available to clients authenticating with an access token.
 
 Managing content via an API creates consistency in your applications, and for scripts to use the API to automate various tasks.
 
@@ -49,15 +49,15 @@ To summarize, you should always update resources in the following order:
 
 This way no unseen changes are ever overridden and unexpected conflicts are unlikely to occur.
 
-**Note**: None of the `sys` property fields can be updated, including `sys.id`.
+**Note**: You can't update any of the `sys` property fields, including `sys.id`.
 
 ## Updating and version locking
 
-Contentful uses [optimistic locking](https://en.wikipedia.org/wiki/Optimistic_concurrency_control). When updating an existing resource you need to specify its current version with the `X-Contentful-Version` HTTP header (this header is automatically set when using our [official SDKs][sdks]). Contentful compares this version with the current stored version to ensure that a client doesn't overwrite a resource that has since been updated. If the version changed inbetween, Contentful will reject the update.
+Contentful uses [optimistic locking](https://en.wikipedia.org/wiki/Optimistic_concurrency_control). When updating an existing resource you need to specify its current version with the `X-Contentful-Version` HTTP header (this header is automatically set when using our [official SDKs][sdks]). Contentful compares this version with the current stored version to ensure that a client doesn't overwrite a resource that has since been updated. If the version changed in-between, Contentful will reject the update.
 
 ## API rate limits
 
-The Content Management API enforces standard rate limits per hour and per second. The limits exist to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited. Rate limits are set to **18000** requests per hour and **10** requests per second.
+The Content Management API enforces standard rate limits per hour and per second. This exists to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited. Rate limits are set to **18000** requests per hour and **10** requests per second.
 
 The rate limits are implemented through a standard mechanism of the HTTP protocol, by returning response code 429.
 
@@ -69,7 +69,7 @@ Header                                    | Status Code   | Description
 `X-Contentful-RateLimit-Hour-Remaining`   | All requests. | The number of requests remaining before the hourly rate limits are enforced.
 `X-Contentful-RateLimit-Second-Limit`     | All requests. | The per second rate limit.
 `X-Contentful-RateLimit-Second-Remaining` | All requests. | The number of requests remaining before the per second rate limits are enforced.
-`X-Contentful-RateLimit-Reset`            | All requests. | The number of seconds until the next request can be made.
+`X-Contentful-RateLimit-Reset`            | All requests. | The number of seconds until you can make the next request.
 
 **Note**: The `X-Contentful-RateLimit-Reset` header does _not_ return the time until the next full reset. Instead it tells you when you can make the next request. If a per second rate limit is enforced it will return `1` (time until the next second). If an hourly rate limit is enforced it will return the time until the next sliding window. If no limits are enforced it returns `0` because the next request can be made immediately.
 
@@ -96,7 +96,7 @@ Learn more in the [developer center](https://www.contentful.com/developers/docs/
 
 All API requests should specify a `Content-Type` header of `application/vnd.contentful.management.v1+json`.
 
-Otherwise, Contentful will automatically route your request to the latest version of the API. This could break clients which expect the outdated API version. To be certain, always specify the `Content-Type` header.
+If not specified, Contentful will route your request to the latest version of the API. This could break clients which expect the outdated API version. To be certain, always specify the `Content-Type` header.
 
 # Group Spaces
 
@@ -109,7 +109,7 @@ In Contentful you can be a member of multiple organizations. Depending on your r
 
 When you sign up the first time, you create a new organization. When you're invited to an existing organization, you become a member of it.
 
-If you only have a single organization, any space you create will be automatically associated with that organization.
+If you have a single organization, any space you create will be automatically associated with that organization.
 
 If you're an admin or an owner in multiple organizations you need to pass the ID of the organization you want to create the space in.
 
@@ -126,7 +126,7 @@ If you're an admin or an owner in multiple organizations you need to pass the ID
 
 ### Create a space [POST]
 
-The `X-Contentful-Organization` header is optional if an account only belongs to one organization. Attributes are sent in the body of the request as a JSON payload.
+The `X-Contentful-Organization` header is optional if an account belongs to one organization. Attributes are sent in the body of the request as a JSON payload.
 
 + Request
     + Headers
@@ -148,20 +148,20 @@ The `X-Contentful-Organization` header is optional if an account only belongs to
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
 
-    ### Get a space [GET]
+### Get a space [GET]
 
-    + Request
-        + Headers
++ Request
+    + Headers
 
-                Authorization: Bearer b4c0n73n7fu1
+            Authorization: Bearer b4c0n73n7fu1
 
-    + Response 200 (application/vnd.contentful.management.v1+json)
++ Response 200 (application/vnd.contentful.management.v1+json)
 
-        + Attributes (Space)
+    + Attributes (Space)
 
 ### Update a space name [PUT]
 
-The `X-Contentful-Organization` header is optional if an account only belongs to one organization. Attributes are sent in the body of the request as a JSON payload and you need to set the `X-Contentful-Version` to teh Contentul API version you are using.
+The `X-Contentful-Organization` header is optional if an account belongs to one organization. Attributes are sent in the body of the request as a JSON payload and you need to set the `X-Contentful-Version` to the Contentul API version you are using.
 
 + Request Update existing
     + Headers
@@ -214,7 +214,7 @@ You delete an existing space by issuing a `DELETE` request to `/spaces/ID`. Dele
 
 When using this endpoint, an ID will be automatically generated for the created content type and returned on the response.
 
-Using the `PUT` method outlined below allows you to control the ID of the created content type. This is especially important for content type IDs because they are often used as parameters in code. It's tidier to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
+Using the `PUT` method outlined below allows you to control the ID of the created content type. This is important for content type IDs because they are often used as parameters in code. It's tidier to query for  `content_type=newsArticle` than `content_type=hs7Kj10al3b6x`.
 
 In these responses, you can also specify validations and determine whether a field is required or localized.
 
@@ -257,7 +257,7 @@ Validation      |Description                              |Applicable to|Example
 `regexp`|Takes a string that reflects a JS regex and flags, validates against a string. See [JS reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) for the parameters.|Text, Symbol|`{"regexp": {"pattern": "^such", "flags": "im"}}`
 `unique`|Validates that there are no other entries that have the same field value at the time of publication.|Symbol, Integer, Number|`{"unique": true}`
 
-**Note**: Validations will only take effect after the content type has been activated and previously existing entries will not be validated until they are re-published.
+**Note**: Validations will only take effect after the content type has been activated and existing entries will not be validated until they are re-published.
 
 To remove a specific validation, update the content type leaving that validation out of the field's validations collection. To remove all the validations applied to a field, update the content type schema removing the validations property.
 
@@ -267,7 +267,7 @@ It's possible to change the ID of a content type field in the Contentful Web App
 
 __Omitting Fields__
 
-If you have fields in your content type and entries which you don't want to distribute to end users (eg. workflow states), you can omit fields from the [CDA](/developers/docs/references/content-delivery-api/) and [CPA](/developers/docs/references/content-preview-api/) responses. To do so, update the content type with the `omitted` property set to `true` in the chosen field and activate it.
+If you have fields in your content type and entries which you don't want to distribute to end users (e.g. workflow states), you can omit fields from the [CDA](/developers/docs/references/content-delivery-api/) and [CPA](/developers/docs/references/content-preview-api/) responses. To do so, update the content type with the `omitted` property set to `true` in the chosen field and activate it.
 
 The field will still be available as part of the CMA responses and the Web App but skipped in the [CDA](/developers/docs/references/content-delivery-api/) and [CPA](/developers/docs/references/content-preview-api/).
 To revert this, repeat this but with `omitted` set to `false`.
@@ -454,7 +454,7 @@ When using this endpoint, an ID will be automatically generated for the created 
 
 ### Create/update an entry  [PUT]
 
-This endpoint can be used to create a new entry with an ID specified by the user, or to update a specific entry via its ID.
+Use this endpoint to create a new entry with an ID specified by the user, or to update a specific entry via its ID.
 
 Note that when updating an existing entry, you always need to specify the last version you got of the entry you are updating with `X-Contentful-Version`.
 
@@ -580,9 +580,9 @@ An entry can only be archived when it's not published.
 
 ## Assets collection [/spaces/{space_id}/assets]
 
-Assets represent files in a space. An asset can be any kind of file, an image, a video, an audio file, a PDF or any other filetype. Assets are usually attached to entries with links.
+Assets represent files in a space. An asset can be any type of file, including an image, a video, an audio file, or PDF. Assets are usually attached to entries with links.
 
-Assets can be localized by providing separate files for each locale. Assets which are not localized provide a single file under the default locale.
+You can localize assets by providing separate files for each locale. Assets which are not localized provide a single file under the default locale.
 
 Creating an asset requires three steps and API calls:
 
@@ -750,7 +750,7 @@ After publishing the asset it will be available via the [Content Delivery API](/
 
 ## Asset archiving [/spaces/{space_id}/assets/{asset_id}/archived]
 
-An asset can only be archived when it's not published.
+You can only archive an asset when it's not published.
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
@@ -808,7 +808,7 @@ Considerations on fallback locales:
 
 ### Get all locales of a space [GET]
 
-The locale endpoint returns a list of all locales created. One will have the flag `default` set to true and is the locale used in the content delivery API if no other locale was specified in the request (e.g. when reading an entry).
+The locale endpoint returns a list of all locales created. One will have the flag `default` set to true and is the locale used in the content delivery API if you specified no other locale in the request (e.g. when reading an entry).
 
 + Request
     + Headers
@@ -870,7 +870,7 @@ It's not possible to change the default locale of a space, as these are permanen
 ### Deleting a locale [DELETE]
 
 This endpoint deletes an existing locale. It's **not** possible to recover
-from this action, all content associated with this specific locale is deleted and cannot be recreated by creating the same locale again.
+from this action, all content associated with this specific locale will be deleted and cannot be recreated by creating the same locale again.
 
 Deleting a locale used as a fallback is not allowed. You first have to ensure that a locale is not used as a fallback before being able to delete it.
 
@@ -902,7 +902,7 @@ Asset      | Yes    | Yes  | Yes       | Yes     | Yes       | Yes     | Yes    
 
 For example:
 
-- You could call a configured webhook for entry creation or asset save.
+- Calling a configured webhook for entry creation or asset save.
 - A configured webhook won't be called for content type archival because content types can't be archived.
 
 #### Topics
