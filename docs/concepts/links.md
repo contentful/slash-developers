@@ -1,5 +1,5 @@
 ---
-page: ':docsLinks'
+page: :docsLinks
 ---
 
 Links are a powerful way to model relationships between content. You can use an additional URI query parameter with the Contentful search to retrieve an entire chain of related content to display in your application.
@@ -19,7 +19,8 @@ Links bring you other features:
 - Entry links can be validated by content type. E.g. Only allow Menu Items for `fields.menuItems`.
 - Asset links can be validated by file type. E.g. Only allow Images for `fields.photo`.
 
-{: .note} **Note:** Because of the caching features describe above, this automated link resolution performed by the API is only available with the [Content Delivery API](/developers/docs/references/content-delivery-api/) and [Preview API](/developers/docs/references/content-preview-api/).
+{: .note}
+**Note:** Because of the caching features describe above, this automated link resolution performed by the API is only available with the [Content Delivery API](/developers/docs/references/content-delivery-api/) and [Preview API](/developers/docs/references/content-preview-api/).
 
 ## Link level
 
@@ -27,7 +28,8 @@ By default, a response includes the first level of linked content. Use the `incl
 
 Link resolution works regardless of how many results are there in `items`.
 
-{: .note} **Note:** Only links between entries, spaces and assets are resolved. Links between spaces and content types are not included in the response.
+{: .note}
+**Note:** Only links between entries, spaces and assets are resolved. Links between spaces and content types are not included in the response.
 
 ## JSON response
 
@@ -35,13 +37,13 @@ In the JSON response of a successful query, linked items are placed in the `incl
 
 Take this query:
 
-```bash
+~~~bash
 curl -v https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&include=1
-```
+~~~
 
 This fetches the restaurant entry `Spaceburger` alongside its image links by using the `restaurantImages` linking field:
 
-```json
+~~~json
 "items": [
   {
     "sys": {
@@ -66,11 +68,11 @@ This fetches the restaurant entry `Spaceburger` alongside its image links by usi
 
   ...
 ],
-```
+~~~
 
 The response retrieves the image with `id=23qqdlTciMGm6IYy224euu` as a link to an asset. Information about the `23qqdlTciMGm6IYy224euu` image is in the `includes` array:
 
-```json
+~~~json
 "includes": {
   "Asset": [
     {
@@ -98,13 +100,13 @@ The response retrieves the image with `id=23qqdlTciMGm6IYy224euu` as a link to a
     ...
   ]
 }
-```
+~~~
 
 The structure of the JSON response will always be different, as before resolving links to items, Contentful matches the filter conditions of a query. When an entry matches the search criteria of the querying URL, the results will be inside the `items` array.
 
 Here's the response for a menu linked to its meals:
 
-```json
+~~~json
 "items": [
     {
       "sys": {
@@ -163,7 +165,7 @@ Here's the response for a menu linked to its meals:
     ...
 
 ]
-```
+~~~
 
 As `AstroChicken` and `AstroCattle` all match the conditions of the query parameters and are linked to `Menu for Humans`, they are all fetched in the same `items` array. Since `AstroChicken` and `AstroCattle` are present in the response's `items`, they are not included in the `includes.Entry` array.
 
@@ -173,13 +175,13 @@ You might want retrieve all items linked to a particular target entry. Your quer
 
 For example, to retrieve all resources of content type `Menu` linked to the restaurant `Space Burger` by using the following query URL:
 
-```bash
+~~~bash
 curl -v https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&content_type=3HjHXUYR3yyosUqAGmi8wu&fields.restaurantField.sys.id=2UmoQ8Bo4g4S82WmGiQIQE
-```
+~~~
 
 Because these are all Menus linked to the `Space Burger` restaurant, `Menu for Humans`, `Menu for Romulans` and `Menu for Klingons` are all retrieved alongside their own links and the target entry:
 
-```json
+~~~json
   "items": [
     {
       "fields": {
@@ -267,13 +269,13 @@ Because these are all Menus linked to the `Space Burger` restaurant, `Menu for H
     },
     ...
   ]
-```
+~~~
 
 ## Modeling Relationships
 
 Linking an entry to another entry represents a relationship. The structure of linked items should be like this:
 
-```json
+~~~json
 {
   "fields": {
       "reference_field": {
@@ -291,11 +293,11 @@ Linking an entry to another entry represents a relationship. The structure of li
        ...
    }
 }
-```
+~~~
 
 Here's a restaurant linked to its menu:
 
-```json
+~~~json
 {
   "sys": {
     "type": "Entry",
@@ -313,7 +315,7 @@ Here's a restaurant linked to its menu:
     }
   }
 }
-```
+~~~
 
 ## Multiple links
 
@@ -330,7 +332,7 @@ An entry can link to more than one entry or asset, here's how:
 
 Assets linked to entries represent attachments. In general, the structure of linked attachments will be something like this:
 
-```json
+~~~json
 {
   "fields": {
     "title": {
@@ -353,11 +355,11 @@ Assets linked to entries represent attachments. In general, the structure of lin
     }
   }
 }
-```
+~~~
 
 For example, here's a restaurant with related photos:
 
-```json
+~~~json
 {
   "sys": {
     "type": "Entry",
@@ -374,7 +376,7 @@ For example, here's a restaurant with related photos:
     ]}
   }
 }
-```
+~~~
 
 As with entry links, you can have multiple fields linking to a single `fields.mainPhoto` or multiple `fields.photos` assets.
 
@@ -386,28 +388,28 @@ Adding links to an entry requires the entry's content type to have one or more l
 
 Here are some other examples, used in the context of a content type like this:
 
-```json
+~~~json
 {
   "sys": {"type": "ContentType", "id": "restaurant"},
   "fields": [
     ...
   ]
 }
-```
+~~~
 
 ### Link field for entry
 
-```json
+~~~json
 {
   "id": "menu",
   "type": "Link",
   "linkType": "Entry"
 }
-```
+~~~
 
 ### Link field for multiple entries
 
-```json
+~~~json
 {
   "id": "menuItems",
   "type": "Array",
@@ -416,21 +418,21 @@ Here are some other examples, used in the context of a content type like this:
     "linkType": "Entry"
   }
 }
-```
+~~~
 
 ### Link field for asset
 
-```json
+~~~json
 {
   "id": "mainPhoto",
   "type": "Link",
   "linkType": "Asset"
 }
-```
+~~~
 
 ### Link field for multiple assets
 
-```json
+~~~json
 {
   "id": "photos",
   "type": "Array",
@@ -439,7 +441,7 @@ Here are some other examples, used in the context of a content type like this:
     "linkType": "Asset"
   }
 }
-```
+~~~
 
 ## Link values in entries
 
@@ -447,11 +449,12 @@ You can use link values in entries to specify actual links to other entries or a
 
 Link values are represented as objects containing a `sys` property with the type and ID of the resource they're linking to:
 
-{:.table} Field |Type |Description ------------|------|------------------------ sys.type |String|Always "Link". sys.linkType|String|Type of linked Resource. sys.id |String|ID of linked Resource.
+{:.table}
+Field |Type |Description ------------|------|------------------------ sys.type |String|Always "Link". sys.linkType|String|Type of linked Resource. sys.id |String|ID of linked Resource.
 
 Here are some examples, used in the context of an entry like this:
 
-```json
+~~~json
 {
   "sys": {"type": "Entry", "id": "restaurant"},
   "fields": {
@@ -460,11 +463,11 @@ Here are some examples, used in the context of an entry like this:
     }
   }
 }
-```
+~~~
 
 ### Link to an entry
 
-```json
+~~~json
 {
   "sys": {
     "type": "Link",
@@ -472,21 +475,21 @@ Here are some examples, used in the context of an entry like this:
     "id": "il-doges-nice-menu"
   }
 }
-```
+~~~
 
 ### Links to multiple entries
 
-```json
+~~~json
 [
   {"sys": {"type": "Link", "linkType": "Entry", "id": "nice-burger"}},
   {"sys": {"type": "Link", "linkType": "Entry", "id": "such-dessert"}},
   {"sys": {"type": "Link", "linkType": "Entry", "id": "WOW"}}
 ]
-```
+~~~
 
 ### Link to an asset
 
-```json
+~~~json
 {
   "sys": {
     "type": "Link",
@@ -494,14 +497,14 @@ Here are some examples, used in the context of an entry like this:
     "id": "such-doge"
   }
 }
-```
+~~~
 
 ### Links to multiple assets
 
-```json
+~~~json
 [
   {"sys": {"type": "Link", "linkType": "Entry", "id": "nice-food"}},
   {"sys": {"type": "Link", "linkType": "Entry", "id": "such-doge"}},
   {"sys": {"type": "Link", "linkType": "Entry", "id": "wow"}}
 ]
-```
+~~~
