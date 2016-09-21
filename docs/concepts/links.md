@@ -450,7 +450,9 @@ You can use link values in entries to specify actual links to other entries or a
 Link values are represented as objects containing a `sys` property with the type and ID of the resource they're linking to:
 
 {:.table}
-Field |Type |Description ------------|------|------------------------ sys.type |String|Always "Link". sys.linkType|String|Type of linked Resource. sys.id |String|ID of linked Resource.
+Field |Type |Description
+------------|------|------------------------
+sys.type |String|Always "Link". sys.linkType|String|Type of linked Resource. sys.id |String|ID of linked Resource.
 
 Here are some examples, used in the context of an entry like this:
 
