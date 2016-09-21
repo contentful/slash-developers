@@ -786,7 +786,7 @@ Locales allow you to define translatable content for assets and entries. A local
 
 - `name`, a human readable identifier for a locale. For example, 'British English'.
 - `code`, an identifier used to differentiate translated content in API responses. For example, 'en-GB'.
-- `fallbackCode`, the code of the locale to use if there is no translated content for the requested locale. For example, 'en-US'. You can also set it to `null` if you don't want a locale to fallback to any other locale in the space.
+- `fallbackCode`, the code of the locale to use if there is no translated content for the requested locale. For example, `en-US`. You can set it to `null` if you don't want a default locale. This can only be set via the API, and not with the Web app or SDKs.
 
 ### Fallback locales
 
@@ -799,7 +799,7 @@ Considerations on fallback locales:
 - If you don't want a locale to fallback to anything, set its `fallbackCode` property to `null`.
 - You can create fallback chains. For example `de-CH` (Swiss German) fallbacks to `de-AT` (Austrian German) and `de-AT` fallbacks to `de-DE` (German German) is a valid setup. If a locale in the chain doesn't have content, the API will try with the next one.
 - Your fallback chain can't contain cycles. A fallback chain where `de-CH` fallbacks to `de-AT` and `de-AT` fallbacks to `de-CH` won't be allowed.
-- Contentful will only use the content of the fallback locale when the requested one is not present in the entry or asset (i.e. you request 'en-US' but the entry has only content for 'de-DE'). This means that values like `null` or an empty string (`""`) will not cause the system to use the value of the fallback locale.
+- Contentful will only use the content of the fallback locale when the requested one is not present in the entry or asset (i.e. you request 'en-US' but the entry has only content for 'de-DE'). This means that values like `null` or an empty string (`""`) will not cause the system to use the value of the fallback locale. This can only be set via the API, and not with the Web app or SDKs.
 
 ## Locale collection [/spaces/{space_key}/locales]
 
