@@ -11,11 +11,11 @@ Entries can have link fields which point to other entries or assets, for example
 - Each menu item linking to a photo (attachment).
 - A restaurant linking to multiple photos (attachments).
 
-A _single_ HTTP request lets you retrieve the entire set of linked resources above, starting with the menu, in one request. Contentful's CDN can cache these requests to further speed up future requests.
+A _single_ HTTP request lets you retrieve the entire set of linked resources above, starting with the menu, in one request. Contentful's CDN can cache these requests to further speed up future requests. This is useful for mobile apps, where developers need to optimize for bandwidth consumption. One request allows an app to immediately start displaying content.
 
 Links bring you other features:
 
-- Relationships are clearly defined and validated by special content type fields.
+- Relationships are clearly defined and validated by specific content type fields.
 - Entry links can be validated by content type. E.g. Only allow Menu Items for `fields.menuItems`.
 - Asset links can be validated by file type. E.g. Only allow Images for `fields.photo`.
 
@@ -102,7 +102,7 @@ The response retrieves the image with `id=23qqdlTciMGm6IYy224euu` as a link to a
 }
 ~~~
 
-The structure of the JSON response will always be different, as before resolving links to items, Contentful matches the filter conditions of a query. When an entry matches the search criteria of the querying URL, the results will be inside the `items` array.
+Before resolving links to items, Contentful matches the filter conditions of a query. This changes the response contained within the `items` array to reflect the search criteria of the querying URL.
 
 Here's the response for a menu linked to its meals:
 
@@ -330,7 +330,7 @@ An entry can link to more than one entry or asset, here's how:
 
 ## Modeling attachments
 
-Assets linked to entries represent attachments. In general, the structure of linked attachments will be something like this:
+Below is the example JSON structure of an entry with an asset attached:
 
 ~~~json
 {
@@ -447,7 +447,7 @@ Here are some other examples, used in the context of a content type like this:
 
 You can use link values in entries to specify actual links to other entries or assets. Before you can add these links you need to have added link fields to a content type.
 
-Link values are represented as objects containing a `sys` property with the type and ID of the resource they're linking to:
+Contentful represents link values as objects containing a `sys` property with the type and ID of the resource they're linking to:
 
 {:.table}
 Field |Type |Description
