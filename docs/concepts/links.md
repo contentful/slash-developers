@@ -38,7 +38,7 @@ In the JSON response of a successful query, linked items are placed in the `incl
 Take this query:
 
 ~~~bash
-curl -v https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&include=1
+curl -v 'https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&include=1'
 ~~~
 
 This fetches the restaurant entry `Spaceburger` alongside its image links by using the `restaurantImages` linking field:
@@ -176,7 +176,7 @@ You might want retrieve all items linked to a particular target entry. Your quer
 For example, to retrieve all resources of content type `Menu` linked to the restaurant `Space Burger` by using the following query URL:
 
 ~~~bash
-curl -v https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&content_type=3HjHXUYR3yyosUqAGmi8wu&fields.restaurantField.sys.id=2UmoQ8Bo4g4S82WmGiQIQE
+curl -v 'https://cdn.contentful.com/spaces/oc3u7dt7mty5/entries?access_token=6cabb22c95d52aa7752fe70ae9b3271a1fc2decf7ae7d99ccd7dceba718980e6&content_type=3HjHXUYR3yyosUqAGmi8wu&fields.restaurantField.sys.id=2UmoQ8Bo4g4S82WmGiQIQE'
 ~~~
 
 Because these are all Menus linked to the `Space Burger` restaurant, `Menu for Humans`, `Menu for Romulans` and `Menu for Klingons` are all retrieved alongside their own links and the target entry:
