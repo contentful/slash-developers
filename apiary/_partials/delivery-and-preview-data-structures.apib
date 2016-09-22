@@ -134,3 +134,18 @@
     - type: Link - Type of Resource
     - linkType: Space - Type of linked resources
     - id: fp91oelsziea - Identifier of Resource
+
+### Selected Entry Properties
+- fields
+    - sys
+        - id: entry_1
+    - sys
+        - id: entry_2
+
+### Select operator example
+- sys - System Attributes
+    - type: Array - Type of Resource
+- total: 1 (number) - Total number of resources matching
+- skip: 0 (number) - Number of resources skipped
+- limit: 100 (number) - Maximum number of resources in this response
+- items (array[Selected Entry Properties]) - Resources contained in the array

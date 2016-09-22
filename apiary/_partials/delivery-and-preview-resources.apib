@@ -282,6 +282,62 @@ Let's find all entries of content type "cat".
 
   + Attributes (Empty Array)
 
+## Select operator [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&select={value}]
+
+The select operator allows you to choose what is returned from an entity. You provide a json path
+and the API returns the property at that path. Multiple operators can be combined to retrieve
+different paths of an entity.
+
+For example, if you only want to select `sys.id` and `fields.author` of an Entry, you can query
+`/spaces/<space-id>/assets/?select=sys.id,fields.author&content_type=my_first_content_type`.
+
+
+The the API will return:
+
+~~~json
+
+{
+  "sys": {
+    "id": "my_first_entry"
+  },
+  "fields": {
+    "author": {
+      "en-US": "George Carlin"
+    }
+  }
+}
+~~~
+
+Select has a few restrictions:
+
+- The select operator is only applicable for Entries and Assets.
+
+- The select operator is only applicable for a collection of Entries or Assets. Selecting properties from a single Entry
+is invalid, e.g `/entries/<entry-id>?select=fields.foo` is invalid.
+
+- The select operator can only select properties at a depth of 2. For example, `select=fields.foo.en-US` is not valid.
+If you want to select a property for a specific locale you need to combine the `select` and `locale` operators, e.g
+`/assets/?select=fields.foo&locale=en-US`.
+
+- Up to 100 properties can be selected.
+
+If an invalid property path is provided, e.g `sys.doesNotExist`, a `400 Bad request` is returned containing the property
+path that is invalid.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
+    + value (required, string, `sys.id`) ... The path of the property to select.
+
+### Query entries [GET]
+
+Let's select all the Entry IDs.
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Select operator example)
+
 ## Equality operator [/spaces/{space_id}/entries?access_token={access_token}&{attribute}={value}]
 
 Search for exact matches by using the equality operator.
