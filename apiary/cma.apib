@@ -39,7 +39,7 @@ Or as a regular expression, `/^[a-zA-Z0-9-_.]{1,64}$/`.
 
 ## Updating content
 
-Contentful doesn't merge changes to content, so when you want to update an existing resource, don't pass the changes you made, but instead the entire resource, including the changes. If you update content with a subset of properties, you will lose all existing properties which not part of that update.
+Contentful doesn't merge changes made to content, so when updating content you need to send the entire body of an entry. If you update content with a subset of properties, you will lose all existing properties which were not part of that update.
 
 To summarize, you should always update resources in the following order:
 
@@ -939,7 +939,7 @@ Header Name                 | Value
 `X-Contentful-Webhook-Name` | Webhook's name
 `Content-Type`              |`application/vnd.contentful.management.v1+json`
 
-Consuming services can use the `X-Contentful-Topic` to determine the type of the payload included in the webhook call without looking into it. Notice that the `Content-Type` header has the `application/vnd.contentful.management.v1+json` value and many web frameworks (such as Express.js) and their middleware components only automatically parse a request body if the `content-type` header is `application/json`, and thus require additional configuration to parse request bodies with a different `content-type` header.
+Consuming services can use the `X-Contentful-Topic` header to determine the type of the payload included in the webhook call without looking into it. Notice that the `Content-Type` header has the `application/vnd.contentful.management.v1+json` value as many web frameworks and their middleware components only automatically parse a request body if the `content-type` header is `application/json`, and thus require additional configuration to parse request bodies with a different `content-type` header.
 
 Besides these headers you can configure your webhooks to be called with a set of additional headers of your choice. When creating or updating a webhook you can provide a list of headers that will be included in successive calls to that webhook.
 
