@@ -289,7 +289,7 @@ and the API returns the property at that path. Multiple operators can be combine
 different paths of an entity.
 
 For example, if you only want to select `sys.id` and `fields.author` of an Entry, you can query
-`/spaces/<space-id>/assets/?select=sys.id,fields.author&content_type=my_first_content_type`.
+`/spaces/<space-id>/entries/?select=sys.id,fields.author&content_type=my_first_content_type`.
 
 
 The the API will return:
@@ -309,6 +309,8 @@ The the API will return:
 ~~~
 
 Select has a few restrictions:
+
+- When using select with an Entry, the `content_type` query parameter must be provided.
 
 - The select operator is only applicable for Entries and Assets.
 
