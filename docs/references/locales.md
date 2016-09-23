@@ -20,7 +20,7 @@ To add a locale in the web app, go to **Settings** > **Locales** and click in **
 Choose a locale and its options:
 
 {:.img}
-![](../../images/locale-editor.png)
+![](locale-editor.png)
 
 Alternatively, if you are writing scripts or applications, you can also use the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/locales) to add a locale to a space:
 
@@ -76,7 +76,7 @@ Content-Type: application/vnd.contentful.management.v1+json
   },
   "name":"German (Austria)",
   "code":"de-AT",
-  "fallback_code":null,
+  "fallbackCode":null,
   "default":false,
   "contentManagementApi":true,
   "contentDeliveryApi":true,

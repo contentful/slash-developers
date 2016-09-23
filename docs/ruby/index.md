@@ -17,7 +17,7 @@ Contentful's Content Delivery API (CDA) is a read-only API for retrieving conten
 
 ### CMA - Content Management API
 This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
-[View on GitHub](https://github.com/contentful/contentful-management.rb/)<br>
+[View on GitHub](https://github.com/contentful/contentful-management.rb)<br>
 [API reference](http://www.rubydoc.info/gems/contentful-management/)
 
 ## Tutorials
@@ -28,21 +28,25 @@ This guide shows how to make a call to the Contentful API, explains what the res
 View in [Ruby](/developers/api-demo/ruby/) |
 [cURL](/developers/api-demo/curl/)
 
-### Getting started with the CDA
+### Getting started with the CDA SDK in Ruby
 This tutorial will walk you through your first steps in using Contentful within your Ruby application.<br>
 [View the tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/)
 
-### Getting started with the CMA
-This tutorial will walk you through your first steps in using Contentful within your Ruby application.<br>
-[View the tutorial](/blog/2014/08/19/introducing-the-content-management-gem/)
+### Getting started with the CMA SDK in Ruby
+This tutorial will walk you through your first steps in using Contentful Management API within your Ruby application.<br>
+[View the tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/)
+
+### Create and deploy your Rails application using Contentful
+A guide to quickly start and run with Contentful and Ruby on Rails.<br>
+[View the tutorial](/developers/docs/ruby/tutorials/full-stack-getting-started/)
+
+### Create your own Rails Application using Contentful
+A guide to create a Ruby on Rails application from scratch and integrate it with Contentful.<br>
+[View the tutorial](/developers/docs/ruby/tutorials/create-your-own-rails-app/)
 
 ### Using contentful_bootstrap for keeping up with your spaces
 To get you jump-started in Contentful using Contentful Bootstrap.<br>
 [View the tutorial](/developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
-
-### Automated rebuild and deploy with CircleCI and Webhooks
-This tutorial will get you set up for running and automatically deploying static sites using Jekyll or Middleman.<br>
-[View the tutorial](/developers/docs/ruby/tutorials/automated-rebuild-and-deploy-with-circleci-and-webhooks/)
 
 ## Tools and integrations
 Here are some tools developed by our team to help you completing some basic tasks.

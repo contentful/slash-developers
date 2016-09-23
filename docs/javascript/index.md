@@ -42,9 +42,14 @@ The Sync API allows you to keep a local copy of all content of a space up to dat
 Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
 
 ### Product Catalogue
-This demo project is a simple app shows how to build a frontend JavaScript based application with Contentful for a product catalogue, based on the Contentful starter product catalogue example space.<br>
+This demo project is a simple app showing how to build a frontend JavaScript based application with Contentful for a product catalogue, based on the Contentful starter product catalogue example space.<br>
 [Try it out](https://contentful.github.io/product-catalogue-js/)<br>
 [View on GitHub](https://github.com/contentful/product-catalogue-js)
+
+### Photo Gallery
+This demo project is a simple photo gallery app build with [React](https://facebook.github.io/react/) showing how to build a frontend single page application connected to a Contentful space.<br>
+[Try it out](https://contentful.github.io/gallery-app-react/)<br>
+[View on GitHub](https://github.com/contentful/gallery-app-react)
 
 ### Discovery App
 The Discovery App allows you to browse and preview your content on Contentful. You can also look at the code to see how it was built.<br>

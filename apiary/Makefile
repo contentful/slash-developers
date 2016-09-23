@@ -58,6 +58,9 @@ $(CPA_BLUEPRINT): outdir cpa.apib
 #	apiary fetch --api-name=$(CMA_APIARY_NAME) >$(CMA_BLUEPRINT)
 
 prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
+	for blueprint in $^; do \
+		./lint.sh $$blueprint || exit 1; \
+	done
 
 preview: check_apiary_token prepare
 	$(APIARY) preview --path=$(CDA_BLUEPRINT)
@@ -74,12 +77,15 @@ publish_docs:
 	$(APIARY) publish --api-name=$(IMAGES_APIARY_NAME) --path=$(IMAGES_BLUEPRINT)
 
 test: check_cma_token prepare
-	$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST) --hookfiles=./test-hooks.js
-	$(DREDD) $(CDA_BLUEPRINT) $(CDA_HOST) --hookfiles=./test-hooks.js
+	@$(DREDD) $(CPA_BLUEPRINT) $(CPA_HOST) --hookfiles=./test-hooks.js \
+	    --reporter apiary -j apiaryApiName:contentfulcpa -j apiaryApiKey:$(APIARY_API_KEY)
+	@$(DREDD) $(CDA_BLUEPRINT) $(CDA_HOST) --hookfiles=./test-hooks.js \
+	    --reporter apiary -j apiaryApiName:contentfulcda -j apiaryApiKey:$(APIARY_API_KEY)
 	@$(DREDD) $(CMA_BLUEPRINT) $(CMA_HOST) \
 		--hookfiles=./test-hooks-cma.js \
 		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
 		--private-header Authorization \
+		--reporter apiary -j apiaryApiName:contentfulcma -j apiaryApiKey:$(APIARY_API_KEY) \
 		-m GET #-m PUT -m POST #-m DELETE
 	#$(DREDD) $(IMAGES_BLUEPRINT) $(IMAGES_HOST)
 

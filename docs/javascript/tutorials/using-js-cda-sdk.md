@@ -44,7 +44,7 @@ If you are running your code in a web page, there are multiple ways you can get 
 The quickest and easiest way is to use the pre built and minified JavaScript file from a CDN:
 
 ~~~html
-<script src="https://npmcdn.com/contentful@latest/browser-dist/contentful.min.js"></script>
+<script src="https://unpkg.com/contentful@latest/browser-dist/contentful.min.js"></script>
 ~~~
 
 The recommended way would be to also manage your browser JavaScript code and dependencies with npm and use a build tool such as browserify or webpack.

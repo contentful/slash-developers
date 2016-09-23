@@ -59,9 +59,21 @@ Contentful uses optimistic locking. When updating an existing resource its curre
 
 ## API rate limits
 
-In the Content Management API, there is a limit of 10 requests per second. The limit exists to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited.
+The Content Management API enforces standard rate limits per hour and per second. The limits exist to prevent unlimited usage and ensure the consumption of resources that a single account can exercise is limited. Rate limits are set to 18000 requests per hour and 10 requests per second.
 
-The rate limit is implemented through a standard mechanism of the HTTP protocol (returning response code 429).
+The rate limits are implemented through a standard mechanism of the HTTP protocol (returning response code 429).
+
+Contentful uses HTTP headers to inform users how they're rate limited, what their rate limits are and when they can make their next request.
+
+Header                                    | Status Code   | Description
+------------------------------------------|---------------|----------------------------------------------------
+`X-Contentful-RateLimit-Hour-Limit`       | All requests. | The hourly rate limit.
+`X-Contentful-RateLimit-Hour-Remaining`   | All requests. | The number of requests remaining before the hourly rate limits are enforced.
+`X-Contentful-RateLimit-Second-Limit`     | All requests. | The per second rate limit.
+`X-Contentful-RateLimit-Second-Remaining` | All requests. | The number of requests remaining before the per second rate limits are enforced.
+`X-Contentful-RateLimit-Reset`            | All requests. | The number of seconds until the next request can be made.
+
+It's important to note that the `X-Contentful-RateLimit-Reset` header does _not_ return the time until the next full reset. Instead it tells you when the next request can be made. If a per second rate limit is enforced it will return `1` (time until the next second). If an hourly rate limit is enforced it will return the time until the next sliding window. If no limits are enforced it returns `0` because the next request can be made immediately.
 
 :[Common Resource Attribute](_partials/cma/resource-attributes.apib)
 
@@ -248,6 +260,7 @@ Validation      |Description                              |Applicable to|Example
 `size`|Takes optional min and max parameters and validates the size of the array (number of objects in it).|Arrays, Text, Symbol|`{"size": { "min": 5, "max": 20}}`
 `range`|Takes optional min and max parameters and validates the range of a value.|Number, Integer|`{"range": { "min": 5, "max": 20}}`
 `regexp`|Takes a string that reflects a JS regex and flags, validates against a string. See [JS reference](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) for the parameters.|Text, Symbol|`{"regexp": {"pattern": "^such", "flags": "im"}}`
+`unique`|Validates that there are no other entries that have the same field value at the time of publication.|Symbol, Integer, Number|`{"unique": true}`
 
 Please notice that validations will only take effect after the content type has been activated and that previously existing entries will not be validated until they are published again.
 
@@ -767,7 +780,28 @@ An asset can only be archived when it's not published.
 # Group Locales
 
 Locales allow the definition of translated content for both assets and entries. A locale
-consists mainly of a name and a locale code.
+consists mainly of the following properties:
+
+- `name`, a human readable identifier for a locale. For example: "British English"
+- `code`, an identifier that will be used to differentiate translated content in the API responses. For example: 'en-GB'
+- `fallbackCode`, the code of the locale to use in case there is no translated content for the requested one. For example: 'en-US'. You could also set it to `null` if you want a
+locale to not fallback to any other locale in the space.
+
+### Fallback locales
+
+When reading entries or assets via the content delivery api there can be situation where there is no content for the requested locale.
+On those cases the API will, by default, return content for the default locale in the space (provided there's content for it). You can override this behaviour
+by setting a custom `fallbackCode` in your locale. If there's no content for a locale but it exists for the fallback one then the content delivery api
+will return its content.
+
+Some considerations about fallback locales:
+
+- If you don't want a locale to fallback to anything set its `fallbackCode` property to `null`.
+- You can create fallback chains. Setups where for example `de-CH` (Swiss German) fallbacks to `de-AT` (Austrian German) and `de-AT` fallbacks itself to `de-DE` (German German) are
+perfectly valid. If a locale in the chain doesn't have content the API will try with the next one.
+- Your fallback chain can't contain cycles. A fallback chain where `de-CH` fallbacks to `de-AT` and `de-AT` fallbacks to `de-CH` won't be allowed.
+- The system will only use the content of the fallback locale when the requested one is not present in the entry or asset (i.e. you request 'en-US' but the entry has only content for 'de-DE').
+This means that values like `null` or an empty string (`""`) will not cause the system to use the value of the fallback locale.
 
 ## Locale collection [/spaces/{space_key}/locales]
 
@@ -777,7 +811,7 @@ consists mainly of a name and a locale code.
 ### Get all locales of a space [GET]
 
 The locale collection endpoint returns a list of all the created locales. One of those
-will have the flag `default` set to true and is the locale that is used if no other
+will have the flag `default` set to true and is the locale that is used in the content delivery api if no other
 locale was specified for the request (e.g. when reading an entry).
 
 + Request
@@ -824,10 +858,12 @@ This endpoint returns a single locale with all its metadata.
 
 ### Update a locale [PUT]
 
-Putting a payload against a single entities endpoint allows an update of a locale.
+Putting a payload against the single entity endpoint updates of a locale.
 
-Please note that renaming a locale changes the responses for upcoming requests, which
-might break your existing code.
+Please note that modifying the `code` of a locale changes the responses for upcoming requests, which
+might break your existing code. Also modifications of the `code` property of locales used as fallabck
+are not allowed. You would have to first ensure that the locale is not used as fallback by any other
+locale before being able to change its `code`.
 
 Finally, it is not possible to change what is the default locale of a space, as these are
 permanent entities.
@@ -846,6 +882,9 @@ permanent entities.
 This endpoint deletes an existing locale. Please note that it is **not** possible to recover
 from this action! Every content that was stored for that specific locale gets deleted and
 cannot be recreated by creating the same locale again.
+
+Deleting a locale that it is used as a fallback is not allowed. You would have to first ensure that
+a locale is not used as fallback before being able to delete it.
 
 + Request
   + Headers
@@ -1390,6 +1429,10 @@ This endpoint allows the deletion of a space membership. It only affects the acc
 
 # Group API keys
 
+This endpoint allows the management of the Content Delivery API (CDA) keys. These tokens provide read-only access to a single space – that is, you need to obtain a new token for every new space that you want to access.
+
+We recommend using different access tokens for different applications or delivery channels: for example, one for iOS app and another for Android app. One of the reasons is to be able to revoke them individually in the future: with several tokens you can manipulate your delivery channels independently.
+
 ## API keys collection [/spaces/{space_id}/api_keys]
 
 + Parameters
@@ -1572,6 +1615,7 @@ This endpoint allows the deletion of a space membership. It only affects the acc
 
 - name: `English (United States)` (string, required)
 - code: `en-US` (string, required)
+- fallbackCode: `en-US` (string, nullable) - Defaults to the default locale in the space
 - optional: false (boolean) - Declare a locale as optional in localized fields
 
 ### Locale Complete
@@ -1785,8 +1829,7 @@ This endpoint allows the deletion of a space membership. It only affects the acc
     - unarchive
 - constraint
     - equals (array)
-        - doc
-            - doc: sys.type (string)
+        - doc: sys.type (string)
         - Entry (string)
 
 ### Space Membership
