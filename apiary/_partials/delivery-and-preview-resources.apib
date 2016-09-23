@@ -284,15 +284,11 @@ Let's find all entries of content type "cat".
 
 ## Select operator [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&select={value}]
 
-The select operator allows you to choose what is returned from an entity. You provide a json path
-and the API returns the property at that path. Multiple operators can be combined to retrieve
-different paths of an entity.
+The select operator allows you to choose what to return from an entity. You provide a json path and the API will return the property at that path. You can combine multiple operators to retrieve different paths of an entity.
 
-For example, if you only want to select `sys.id` and `fields.author` of an Entry, you can query
-`/spaces/<space-id>/entries/?select=sys.id,fields.author&content_type=my_first_content_type`.
+For example, if you only want to select `sys.id` and `fields.author` of an Entry, you can query `/spaces/<space-id>/entries/?select=sys.id,fields.author&content_type=my_first_content_type`.
 
-
-The the API will return:
+The API will return:
 
 ~~~json
 
@@ -308,23 +304,16 @@ The the API will return:
 }
 ~~~
 
-Select has a few restrictions:
+Select has some restrictions:
 
-- When using select with an Entry, the `content_type` query parameter must be provided.
-
+- When using select with an Entry, you must provide the `content_type` query parameter.
 - The select operator is only applicable for Entries and Assets.
-
-- The select operator is only applicable for a collection of Entries or Assets. Selecting properties from a single Entry
-is invalid, e.g `/entries/<entry-id>?select=fields.foo` is invalid.
-
+- The select operator is only applicable for a collection of Entries or Assets. Selecting properties from a single Entry is invalid, e.g `/entries/<entry-id>?select=fields.foo` is invalid.
 - The select operator can only select properties at a depth of 2. For example, `select=fields.foo.en-US` is not valid.
-If you want to select a property for a specific locale you need to combine the `select` and `locale` operators, e.g
-`/assets/?select=fields.foo&locale=en-US`.
+- If you want to select a property for a specific locale you need to combine the `select` and `locale` operators, e.g `/assets/?select=fields.foo&locale=en-US`.
+- You can select up to 100 properties.
 
-- Up to 100 properties can be selected.
-
-If an invalid property path is provided, e.g `sys.doesNotExist`, a `400 Bad request` is returned containing the property
-path that is invalid.
+If you provide an invalid property path, e.g `sys.doesNotExist`, Contentful returns a `400 Bad request` containing the property path that is invalid.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
@@ -342,11 +331,11 @@ Let's select all the Entry IDs.
 
 ## Equality operator [/spaces/{space_id}/entries?access_token={access_token}&{attribute}={value}]
 
-Search for exact matches by using the equality operator.
+You can search for exact matches by using the equality operator.
 
-A reason to query an entry by ID instead of retrieving the Entry itself might be because you want to include resolved links.
+You might want to query an entry by an ID instead of retrieving the Entry itself because you want to include resolved links.
 
-Note that equality & inequality operators are not supported for text fields and that search queries for fields have to be constrained by a `content_type` URI query parameter.
+**Note**: The equality & inequality operators are not supported for text fields and search queries for fields have to be constrained by a `content_type` URI query parameter.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
