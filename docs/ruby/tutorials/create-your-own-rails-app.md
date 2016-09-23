@@ -188,4 +188,4 @@ In case you you want to set up your new spaces via the command line we also prov
 [7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [8]: https://github.com/contentful/contentful_rails_tutorial
 [9]: /developers/docs/ruby/tutorials/full-stack-getting-started/
-[10]: /developer/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/
+[10]: /developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/

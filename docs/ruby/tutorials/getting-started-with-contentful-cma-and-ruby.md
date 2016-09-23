@@ -299,7 +299,7 @@ You can also check out how to get your spaces started with a single command usin
 
 
 [0]: https://www.contentful.com/developers/docs/references/content-management-api/
-[1]: https://www.contentful.com/r/knowledgebase/content-modelling-basics/.
+[1]: https://www.contentful.com/r/knowledgebase/content-modelling-basics/
 [2]: https://www.contentful.com/developers/docs/references/authentication/#getting-an-oauth-token
 [3]: https://github.com/contentful/contentful-management.rb/blob/01f5b2abfd1c00888197a6f79093b7ae0baee274/README.md
 [4]: https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types
