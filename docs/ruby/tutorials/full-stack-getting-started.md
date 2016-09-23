@@ -153,7 +153,7 @@ If you want to set up new spaces via the command line we also provide [Contentfu
 [12]: https://www.contentful.com/sign-up/#starter
 [13]: https://app.contentful.com
 [14]: /developers/docs/ruby/tutorials/create-your-own-rails-app/
-[15]: /developer/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/
+[15]: /developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/
 [16]: https://rvm.io/rvm/install
 [17]: https://github.com/rbenv/rbenv#installation
 [18]: https://wiki.postgresql.org/wiki/Detailed_installation_guides
