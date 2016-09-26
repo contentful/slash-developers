@@ -1,9 +1,10 @@
 ---
-page: ':docsDataModel'
+page: :docsDataModel
 ---
 
 Contentful organizes content into _spaces_, that allows you to group all the related resources for a project together, this includes content entries, media assets, and settings for localizing content into different languages.
 
+{: .img}
 ![Overview of Contentful resources](resource-model.png)
 
 Each space has a _content model_ that represents the _content types_ you create.
@@ -19,6 +20,7 @@ Each _content type_ consists of a set of up to 50 fields that you define, these 
 - **JSON object**: For storing any other types of objects you have defined.
 - **Reference**: To model relationships between content, including other content types. For example, linking a blog to a category.
 
+{: .img}
 ![New fields dialogue](add_new_fields.png)
 
 Fields also contain metadata, such as validations and widget appearance.
@@ -29,6 +31,7 @@ You can see how Contentful represents your content model in JSON by clicking the
 
 If you want to hide fields from appearing in JSON output, you can disable it by clicking the three dots to the right of the field.
 
+{: .img}
 ![Disable Field](disable-field.png)
 
 This is useful for content information that is important to writers and editors, but not for public consumption.
