@@ -21,7 +21,7 @@ Each _content type_ consists of a set of up to 50 fields that you define, these 
 - **Reference**: To model relationships between content, including other content types. For example, linking a blog to a category.
 
 {: .img}
-![New fields dialogue](add_new_fields.png)
+![New fields dialogue](add-new-fields.png)
 
 Fields also contain metadata, such as validations and widget appearance.
 
