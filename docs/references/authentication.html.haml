@@ -87,7 +87,9 @@ page: :docsAuthentication
   .ng-cloak
     %div{'ng-hide' => 'auth'}
       %p
-        This page contains a JavaScript app which helps you get an authentication token from your account. Please log in, and the token will appear below.
+        %i
+          This page contains a JavaScript app which helps you get an authentication token from your account. Please log in, and the token will appear below.
+        %i  
       %p
         .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'login()'}
           Login to get the token
