@@ -46,7 +46,7 @@ One of the template spaces in Contentful is for a product catalogue, it consists
 
 And for example, the **Brand** content type consists of the following fields:
 
-- **Company Name**: This is the title of the entry, it's a required field, with the _Single line_ appearance setting.
+- **Company Name**: A text field that represents the title of the entry, it's required, with the _Single line_ appearance setting.
 - **Logo**: A media field that references assets.
 - **Description**: Describes the brand, it's a longer text field with the Markdown editor enabled.
 - **Website, Twitter, Email**: Three text fields that hold the contact details for the brand. They have validation rules to ensure the correct contact information.
