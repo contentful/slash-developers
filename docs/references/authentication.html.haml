@@ -14,19 +14,19 @@ page: :docsAuthentication
 
   There are two ways to send the authentication token to an API. You can include it as a query parameter, `access_token=$token`, or as an HTTP header `Authorization: Bearer $token`. The header method is preferred.
 
-  ```bash
+  ~~~bash
   # As a query parameter:
   curl -v https://cdn.contentful.com/spaces/cfexampleapi/entries?access_token=b4c0n73n7fu1
-  ```
+  ~~~
 
-  ```bash
+  ~~~bash
   # As a header:
   curl -v https://cdn.contentful.com/spaces/cfexampleapi/entries -H 'Authorization: Bearer b4c0n73n7fu1'
-  ```
+  ~~~
 
   If you fail to include a valid access token, you will receive an error message:
 
-  ```bash
+  ~~~bash
   # Request
   curl https://cdn.contentful.com/spaces/cfexampleapi/entries?access_token=wrong
 
@@ -39,11 +39,11 @@ page: :docsAuthentication
     "message": "The access token you sent could not be found or is invalid.",
     "requestId": "bcc-1808911724"
   }
-  ```
+  ~~~
 
   If you include a valid access token, but one that is not able to access a resource, you will receive a 404 error:
 
-  ```bash
+  ~~~bash
   # Request
   curl https://cdn.contentful.com/spaces/some_other_space/entries?access_token=b4c0n73n7fu1
 
@@ -61,7 +61,7 @@ page: :docsAuthentication
     },
     "requestId": "9f3-2148374087"
   }
-  ```
+  ~~~
 
   **Note**: If you use [one our language or platform SDKs](/developers/docs/#libraries), setting your token in a configuration file will handle the authentication process for you.
 
@@ -85,30 +85,35 @@ page: :docsAuthentication
 
   If you are creating an application intended for re-use by other Contentful users, you should follow the instructions in the next section to create your own OAuth application.
 
-  %login-form .ng-cloak %div{'ng-hide' => 'auth'} %p This page contains a JavaScript app which helps you get an authentication token from your account. Please log in, and the token will appear below. %p .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'login()'} Login to get the token
-
-  ```
-  %div{'ng-show' => 'auth'}
-    %div{'ng-show' => 'auth.message'}
+  %login-form
+  .ng-cloak
+    %div{'ng-hide' => 'auth'}
       %p
-        Something went wrong during login, please refresh the page to try again.
-        If the problem persists, please [get in touch](#getting-help) and include the following error message:
-        {{auth.message}}
+        This page contains a JavaScript app which helps you get an authentication token from your account. Please log in, and the token will appear below.
       %p
         .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'login()'}
-          Try login again
+          Login to get the token
 
-    %div{'ng-show' => 'auth.user'}
-      %p
-        Logged in as {{auth.user.firstName}}. Here's your OAuth access token:
-        %code
-          {{auth.accessToken}}
-      %p
-        This access token should only be used for learning and testing purposes. Please create a separate OAuth application for production usage.
-      %p
-        .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'logout()'}
-          Logout
-  ```
+    %div{'ng-show' => 'auth'}
+      %div{'ng-show' => 'auth.message'}
+        %p
+          Something went wrong during login, please refresh the page to try again.
+          If the problem persists, please [get in touch](#getting-help) and include the following error message:
+          {{auth.message}}
+        %p
+          .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'login()'}
+            Try login again
+
+      %div{'ng-show' => 'auth.user'}
+        %p
+          Logged in as {{auth.user.firstName}}. Here's your OAuth access token:
+          %code
+            {{auth.accessToken}}
+        %p
+          This access token should only be used for learning and testing purposes. Please create a separate OAuth application for production usage.
+        %p
+          .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'logout()'}
+            Logout
 
   :markdown
 
@@ -131,15 +136,15 @@ page: :docsAuthentication
 
     1. Redirect your users to Contentful's OAuth 2.0 endpoint URI. This will show a web page where logged in Contentful users can authorize your application to access their content.
 
-    ```plain
+    ~~~plain
     https://be.contentful.com/oauth/authorize?response_type=token&client_id=$YOUR_APPS_CLIENT_ID&redirect_uri=$YOUR_APPS_REDIRECT_URL&scope=content_management_manage
-    ```
+    ~~~
 
   2. After a user has logged in, handle the callback from Contentful to your app redirect URI. This will look similar to the example below, and you can extract the access token from the URI hash fragment.
 
-    ```plain
+    ~~~plain
     http://localhost:8080/my-app/#access_token=$CONTENT_MANAGEMENT_API_ACCESS_TOKEN
-    ```
+    ~~~
 
   3. Keep the extracted access token for future use. You are now be able to make Content Management API requests on behalf of the authenticated user.
 
