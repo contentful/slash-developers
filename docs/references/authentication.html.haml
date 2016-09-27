@@ -3,7 +3,6 @@ page: :docsAuthentication
 ---
 
 :markdown
-  **This is an essential read for getting started with Contentful and setting up your first _Hello, World_ app.** --> Is it? Is there one?
 
   # General
 
@@ -13,7 +12,7 @@ page: :docsAuthentication
 
   We recommend using different access tokens for different applications or delivery channels, for example, one for an iOS app and another for Android app. This allows you to revoke them individually in the future and manage your delivery channels independently.
 
-  There are two ways to send the authentication token to an API, including it as a query parameter `access_token=$token` or as an HTTP header `Authorization: Bearer $token`. **--> Check this, do you have this freedom**
+  There are two ways to send the authentication token to an API. You can include it as a query parameter, `access_token=$token`, or as an HTTP header `Authorization: Bearer $token`. The header method is preferred.
 
   ```bash
   # As a query parameter:
@@ -84,7 +83,7 @@ page: :docsAuthentication
 
   Contentful doesn't have an API for acquiring an OAuth token directly for a user account, they are acquired by OAuth applications. If you need a token for use in a local script or for experimenting with the API, you can use the OAuth application embedded below to get a token.
 
-  If you are creating an application intended for re-use by other Contentful users, you should follow the instructions in the next section (**link/title**) to create your own OAuth application.
+  If you are creating an application intended for re-use by other Contentful users, you should follow the instructions in the next section to create your own OAuth application.
 
   %login-form .ng-cloak %div{'ng-hide' => 'auth'} %p This page contains a JavaScript app which helps you get an authentication token from your account. Please log in, and the token will appear below. %p .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'login()'} Login to get the token
 
@@ -115,16 +114,11 @@ page: :docsAuthentication
 
   # Creating an OAuth 2.0 application
 
-  If you are creating apps for changing content stored in Contentful, you will need to create a custom OAuth application. See more information on that in the section below. (**again, where/what**)
+  If you are creating apps for changing content stored in Contentful, you will need to create a custom OAuth application.
 
-  Examples of when you need to create an OAuth 2.0 application are:
+  An OAuth 2.0 application has a number of benefits:
 
-  - A JavaScript web app requesting permission to manage content in Contentful on behalf of a user.
-  - An API built on top of the Content Management API.
-
-    Your own OAuth 2.0 application has a number of benefits:
-
-  - OAuth 2.0 access tokens are linked to your app.
+  - OAuth 2.0 access tokens are linked to ~~your~~ app.
   - You can request the correct OAuth 2.0 scopes for your application (`content_management_read` or `content_management_manage`).
   - You can specify a custom redirect URI that will receive the access token as part of the URI's hash fragment.
   - You can specify a custom name and description.
