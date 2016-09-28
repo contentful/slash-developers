@@ -286,32 +286,17 @@ Let's find all entries of content type "cat".
 
 The select operator allows you to choose what to return from an entity. You provide a json path and the API will return the property at that path. You can combine multiple operators to retrieve different paths of an entity.
 
-For example, if you only want to select `sys.id` and `fields.author` of an Entry, you can query `/spaces/<space-id>/entries/?select=sys.id,fields.author&content_type=my_first_content_type`.
-
-The API will return:
-
-~~~json
-
-{
-  "sys": {
-    "id": "my_first_entry"
-  },
-  "fields": {
-    "author": {
-      "en-US": "George Carlin"
-    }
-  }
-}
-~~~
+For example, if you only want to return the `sys.id` and `fields.name` of an Entry, you can query `/spaces/<space-id>/entries/?select=sys.id,fields.name&content_type=<content_type_id>`.
 
 Select has some restrictions:
 
 - When using select with an Entry, you must provide the `content_type` query parameter.
 - The select operator is only applicable for Entries and Assets.
-- The select operator is only applicable for a collection of Entries or Assets. Selecting properties from a single Entry is invalid, e.g `/entries/<entry-id>?select=fields.foo` is invalid.
-- The select operator can only select properties at a depth of 2. For example, `select=fields.foo.en-US` is not valid.
-- If you want to select a property for a specific locale you need to combine the `select` and `locale` operators, e.g `/assets/?select=fields.foo&locale=en-US`.
+- The select operator is only applicable for a collection of Entries or Assets. Selecting properties from a single Entry is invalid, e.g `/entries/<entry-id>?select=fields.name` is invalid.
+- The select operator can only select properties at a depth of 2. For example, `select=fields.name.en-US` is not valid.
+- If you want to select a property for a specific locale you need to combine the `select` and `locale` operators, e.g `/assets/?select=fields.name&locale=en-US`.
 - You can select up to 100 properties.
+- If you use the select operator on an Entry with linked fields, only the content linked to a field you select will be returned.
 
 If you provide an invalid property path, e.g `sys.doesNotExist`, Contentful returns a `400 Bad request` containing the property path that is invalid.
 
