@@ -4,7 +4,7 @@ page: :docsDataModel
 
 Contentful organizes content into _spaces_, that allows you to group all the related resources for a project together, this includes content entries, media assets, and settings for localizing content into different languages.
 
-{: .img}
+{: .animated}
 ![Overview of Contentful resources](resource-model.png)
 
 Each space has a _content model_ that represents the _content types_ you create.
