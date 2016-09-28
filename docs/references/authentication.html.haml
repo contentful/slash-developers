@@ -73,9 +73,9 @@ page: :docsAuthentication
 
   ![API Keys in Web App](api-keys-webapp.png)
 
-  ## The content management API
+  ## The Content Management API
 
-  To access the content management API and store content created in your apps, you need an OAuth 2.0 token that represents your account. This token will have the same rights as the owner of the account.
+  To access the content management API and store content created in your apps, you need an OAuth 2.0 token that represents the desired account of your user. This token will have the same rights as the owner of the account.
 
   ### Getting an OAuth token
 
@@ -89,7 +89,7 @@ page: :docsAuthentication
       %p
         %i
           This page contains a JavaScript app which helps you get an authentication token from your account. Please log in, and a token will appear below.
-        %i  
+        %i
       %p
         .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'login()'}
           Login to get a token
