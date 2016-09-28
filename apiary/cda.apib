@@ -9,19 +9,19 @@ Our global CDN powers the API, so you get the benefits of our content-aware cach
 
 ## Authentication
 
-To get content from the Content Delivery API, clients need to provide an access token. You create access tokens per space and they are used by clients to access the space's content.
-
-You can create access tokens for your own spaces in the _APIs_ tab of the Contentful web app.
-
-The Content Delivery API implements the standardized OAuth 2.0 bearer token specification. This authorization scheme is already supported by many HTTP clients.
+To get content from the Content Delivery API, clients need to provide an access token. You create access tokens per space and use them in your clients to access a space's content.
 
 The API supports two mechanisms for supplying the access token. As an authorization HTTP `request-header` field and as an URI query parameter named `access_token`.
 
+The Content Delivery API implements the standardized OAuth 2.0 bearer token specification. This authorization scheme is already supported by many HTTP clients.
+
+You can create access tokens in the _APIs_ tab of each space in the Contentful web app.[Our reference guide](developers/docs/references/authentication/) has more details on how authentication works with Contentful.
+
 ## API rate limits
 
-Rate limits refer to the amount of requests per unit of time that you can make against our APIs.
+Rate limits refer to the amount of requests per unit of time that you can make against Contentful APIs.
 
-The Content Delivery API has no limits enforced on requests that hit the cache (i.e. a cache hit does not count towards your rate limit and you can make an unlimited amount of cache hits). Nonetheless, there is still a rate limit of **216000** requests per hour and **78** requests per seconds on the origin. Higher rate limits may apply for enterprise clients.
+The Content Delivery API has no limits enforced on requests that hit the cache (i.e. a cache hit does not count towards your rate limit and you can make an unlimited amount of cache hits). But, there is still a rate limit of **216000** requests per hour and **78** requests per seconds on the origin. Higher rate limits may apply for enterprise clients.
 
 The limit exists to prevent unlimited usage and restrict the consumption of resources that a single account can exercise. The rate limit is implemented through a standard mechanism of the HTTP protocol (returning response code 429). Keep in mind that there are internal layers of caching close to the origin that again do not contribute to the rate limit.
 
@@ -29,7 +29,8 @@ Contentful uses the `X-Contentful-RateLimit-Reset` header to inform a user when 
 
 Header                            | Status Code                                       | Description
 ----------------------------------|---------------------------------------------------|----------------------------------------------------
-`X-Contentful-RateLimit-Reset`    | `429`. Returned only for rate limited requests.   | The number of seconds until you can make the next request.
+`X-Contentful-RateLimit-Reset`    | `429`. Returned only for rate limited requests.   | The number of seconds until the next request can be made.
+
 
 **Note**: The `X-Contentful-RateLimit-Reset` header does **not** return the time until the next full reset. Instead it tells you when you can make the next request. If a per second rate limit is enforced it will return `1` (time until the next second). If an hourly rate limit is enforced it will return the time until the next sliding window.
 
