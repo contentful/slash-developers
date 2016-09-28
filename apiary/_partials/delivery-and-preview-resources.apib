@@ -539,7 +539,7 @@ Similar to the "near me" use case, this lets you search for locations that are w
 
 There are two mechanisms to search for nearby locations:
 
-1) Using a bounding rectangle:
+#### 1. Using a bounding rectangle:
 
 To search for locations within a rectangle object, use the structure `field.center[within]=latitude1,longitude1,latitude2,longitude2` where:
 
@@ -547,7 +547,7 @@ To search for locations within a rectangle object, use the structure `field.cent
 
  + `latitude2` and `longitude2` refer to the coordinates of the top right corner of the rectangle;
 
-2) Using a bounding circle:
+#### 2. Using a bounding circle:
 
 The structure `field.center[within]=latitute,longitude,radius` will return entries included in the circle with `fields.center` of the given latitude, longitude and radius. The unit of the radius parameter is kilometer.
 
@@ -579,7 +579,7 @@ Also note that only the following field types can be used with the order paramet
 Name   |JSON Primitive|Description
 -------|--------------|----------------------------------------------------
 Symbol |String        |Basic list of characters. Maximum length is 256.
-Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53.
+Integer|Number        |Number type without decimals. Values from  -2<sup>53</sup> to 2<sup>53</sup>.
 Number |Number        |Number type with decimals.
 Date   |String        |Date/time in ISO-8601 format.
 Boolean|Boolean       |Flag, `true` or `false`.
