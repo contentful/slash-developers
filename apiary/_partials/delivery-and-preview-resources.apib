@@ -284,9 +284,9 @@ Let's find all entries of content type "cat".
 
 ## Select operator [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&select={value}]
 
-The select operator allows you to choose what to return from an entity. You provide a json path and the API will return the property at that path. You can combine multiple operators to retrieve different paths of an entity.
+The select operator allows you to choose what to return from an entity. You provide a json path and the API will return the property at that path. You can use combine multiple comma separated operators to retrieve different paths of an entity.
 
-For example, if you only want to return the `sys.id` and `fields.name` of an Entry, you can query `/spaces/<space-id>/entries/?select=sys.id,fields.name&content_type=<content_type_id>`.
+For example, if you want to return the `sys.id` and `fields.name` of an Entry, you can query `/spaces/<space-id>/entries/?select=sys.id,fields.name&content_type=<content_type_id>`.
 
 Select has some restrictions:
 
