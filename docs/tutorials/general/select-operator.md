@@ -53,6 +53,36 @@ Instead of returning all fields, this will just return the fields requested and 
 
 Much more efficient!
 
-## Android
+## Usage with Contentful SDKs
 
-Clone the Contentful Android product cataligue app to your local machine and configure the _Const.java_ file to match your space, API key and content types.
+Our SDKs are all ready to work with the new operator by adding it to the SDK entries fetching method, here are a couple of examples.
+
+### Ruby SDK
+
+To use the new operator in your Ruby applications, add it to your `entries` API call:
+
+```ruby
+filtered_result = client.entries(
+  content_type: '<content_type_id>',
+  select: 'fields.productName'
+)
+
+puts filtered_result
+```
+
+### JavaScript SDK
+
+To use the new operator in your JavaScript applications, add it to your `getEntries` API call:
+
+```javascript
+client.getEntries({
+  'select': 'fields.productName',
+  'content_type': '<content_type_id>'
+})
+  .then(function (entries) {
+    console.log(entries)
+  })
+  .catch(function (e) {
+    console.log(e);
+  });
+```
