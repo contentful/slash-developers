@@ -286,7 +286,17 @@ Let's find all entries of content type "cat".
 
 The select operator allows you to choose what to return from an entity. You provide a json path and the API will return the property at that path. You can use combine multiple comma separated operators to retrieve different paths of an entity.
 
-For example, if you want to return the `sys.id` and `fields.name` of an Entry, you can query `/spaces/<space-id>/entries/?select=sys.id,fields.name&content_type=<content_type_id>`.
+For example, if you want to return the `sys.id` and `fields.name` of an Entry:
+
+```bash
+/spaces/<space-id>/entries/?select=sys.id,fields.name&content_type=<content_type_id>
+```
+
+You can fetch the entire `sys` or `fields` object and it's sub-fields by passing it to the `select` operator. For example to omit the `sys` object:
+
+```bash
+/spaces/<space-id>/entries/?select=fields&content_type=<content_type_id>
+```
 
 Select has some restrictions:
 
