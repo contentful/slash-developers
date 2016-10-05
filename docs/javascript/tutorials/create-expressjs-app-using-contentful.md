@@ -2,7 +2,7 @@
 page: :docsExpressjsApp
 ---
 
-This guide will walk you through your first steps using Contentful within an Express Node js application. It will provide a step-by-step guide on how to get your first entries and start using the content you create on Contentful.
+This guide will walk you through your first steps using Contentful within an Express Node.js application. It will provide a step-by-step guide on how to get your first entries and start using the content you create on Contentful.
 
 ## Requirements
 
@@ -55,7 +55,7 @@ You can create your own custom data by following these steps:
 
 - Create an account with [Contentful][6] or [Log In][5].
 - Create a new Space with the 'Product Catalogue' template, name it whatever you like.
-- Copy the space Id and api key as shown in the screenshot
+- Copy the space Id and API key as shown in the screenshot
 
 ![Keys Page](keys_and_ids.png)
 

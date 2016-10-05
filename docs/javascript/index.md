@@ -38,7 +38,7 @@ This tutorial will walk you through your first steps in using Contentful within 
 The Sync API allows you to keep a local copy of all content of a space up to date via delta updates. This tutorial will show you how to use the Sync API with the Contentful JavaScript SDK.<br>
 [View the tutorial](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/)
 
-### Create and deploy your express js app Using Contentful
+### Create and deploy your Express.js app Using Contentful
 A guide to quickly create and deploy an Express js app that uses Contentful. </br>
 View the tutorial](/developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/)
 
