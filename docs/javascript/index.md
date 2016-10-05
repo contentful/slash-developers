@@ -40,7 +40,7 @@ The Sync API allows you to keep a local copy of all content of a space up to dat
 
 ### Create and deploy your express js app Using Contentful
 A guide to quickly create and deploy an Express js app that uses Contentful. </br>
-View the tutorial](/developers/docs/javascript/tutorials/create-expresjs-app-using-contentful/)
+View the tutorial](/developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/)
 
 ## Apps
 Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
