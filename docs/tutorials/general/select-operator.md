@@ -1,5 +1,5 @@
 ---
-page: ':docsSelectOperator'
+page: :docsSelectOperator
 ---
 
 # temp
@@ -10,9 +10,11 @@ This tutorial will show some of the ways you can use the operator, using the 'Pr
 
 ![Import Examples](import-example.png)
 
-To use the `select` operator, append it to your call to retrieve entries, with a comma seperated list of fields you want, for example:
+## Choosing fields
 
-```
+To use the `select` operator, append it to your call to retrieve entries, with a comma separated list of fields you want, for example:
+
+```bash
 https://cdn.contentful.com/spaces/<space_id>/entries/?select=fields.productName&content_type=<content_type_id>
 ```
 
@@ -55,8 +57,82 @@ Contentful already has fields that you can hide from the JSON output, but if you
 
 The `select` operator now allows you to use the same content types for different platforms and instead selectively load the relevant fields for each application use case.
 
+## Including and excluding objects
+
 Only fetching one of the objects contained within a request will exclude the other, and fetching the entire `sys` or `fields` object will return all it's sub-fields. For example to omit the `sys` object from a request:
 
 ```bash
-/spaces/<space-id>/entries/?select=fields&content_type=<content_type_id>
+https://cdn.contentful.com/spaces/<space-id>/entries/?select=fields&content_type=<content_type_id>
 ```
+
+## Assets
+
+You can use the operator with assets in your space in the same way. For example, to fetch the names of assets:
+
+```bash
+https://cdn.contentful.com/spaces/<space-id>/assets?select=fields.title
+```
+
+Will return:
+
+```json
+{
+  "sys": {
+    "type": "Array"
+  },
+  "total": 7,
+  "skip": 0,
+  "limit": 100,
+  "items": [
+    {
+      "fields": {
+        "title": "City Street"
+      }
+    },
+    {
+      "fields": {
+        "title": "Janine"
+      }
+    },
+    {
+      "fields": {
+        "title": "Celebration"
+      }
+    },
+    {
+      "fields": {
+        "title": "Golden Gate Bridge"
+      }
+    },
+    {
+      "fields": {
+        "title": "The world on a digital screen"
+      }
+    },
+    {
+      "fields": {
+        "title": "Air Baloon"
+      }
+    },
+    {
+      "fields": {
+        "title": "The Flower"
+      }
+    }
+  ]
+}
+```
+
+## The preview API
+
+The `select` operator also works with the preview API for your draft and unpublished content. For example:
+
+```bash
+https://preview.contentful.com/spaces/<space_id>/entries?access_token=<access_token>&content_type=<content_type_id>&select=fields.productName
+```
+
+Will return the same result structure as above.
+
+## Work with the content you want
+
+The `select` operator is one of the ways we plan to make working with the content you want easier. Our SDKs will support the feature soon, as with other APIs and endpoints.
