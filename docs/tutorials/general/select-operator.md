@@ -4,9 +4,9 @@ page: ':docsSelectOperator'
 
 # temp
 
-The `select` operator is a powerful Query parameter you can use to selectively load the content you want to display in your app, instead of loading entire entries. This reduces network and memory impact as you can request exactly the data you need.
+The `select` operator is a powerful query parameter you can use to selectively load the content you want to display in your app, instead of loading entire entries. Combined with other parameters, this gives you more flexibility in managing and querying your content models. It also helps you reduce network and memory impact as you can more precisely request the data you need.
 
-Create a new space using the 'Product Catalogue' example and wait for the default content to import.
+This tutorial will show some of the ways you can use the operator, using the 'Product Catalogue' example you can load into any space for experimentation.
 
 ![Import Examples](import-example.png)
 
@@ -16,7 +16,7 @@ To use the `select` operator, append it to your call to retrieve entries, with a
 https://cdn.contentful.com/spaces/<space_id>/entries/?select=fields.productName&content_type=<content_type_id>
 ```
 
-Instead of returning all fields, this will just return the fields requested and some metadata about the results.
+Instead of returning all fields, this will return the fields requested and metadata about the results.
 
 ```json
 {
@@ -51,38 +51,12 @@ Instead of returning all fields, this will just return the fields requested and 
 }
 ```
 
-Much more efficient!
+Contentful already has fields that you can hide from the JSON output, but if you had fields you wanted to selectively hide and show depending on the platform, you had to retrieve them anyway and not display them, or maintain different content models for different purposes.
 
-## Usage with Contentful SDKs
+The `select` operator now allows you to use the same content types for different platforms and instead selectively load the relevant fields for each application use case.
 
-Our SDKs are all ready to work with the new operator by adding it to the SDK entries fetching method, here are a couple of examples.
+Only fetching one of the objects contained within a request will exclude the other, and fetching the entire `sys` or `fields` object will return all it's sub-fields. For example to omit the `sys` object from a request:
 
-### Ruby SDK
-
-To use the new operator in your Ruby applications, add it to your `entries` API call:
-
-```ruby
-filtered_result = client.entries(
-  content_type: '<content_type_id>',
-  select: 'fields.productName'
-)
-
-puts filtered_result
-```
-
-### JavaScript SDK
-
-To use the new operator in your JavaScript applications, add it to your `getEntries` API call:
-
-```javascript
-client.getEntries({
-  'select': 'fields.productName',
-  'content_type': '<content_type_id>'
-})
-  .then(function (entries) {
-    console.log(entries)
-  })
-  .catch(function (e) {
-    console.log(e);
-  });
+```bash
+/spaces/<space-id>/entries/?select=fields&content_type=<content_type_id>
 ```
