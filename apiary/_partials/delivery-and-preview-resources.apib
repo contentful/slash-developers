@@ -298,6 +298,108 @@ You can fetch the entire `sys` or `fields` object and it's sub-fields by passing
 /spaces/<space-id>/entries/?select=fields&content_type=<content_type_id>
 ```
 
+Select does not filter properties in `includes`. Select resolves included entities based on the
+fields that were selected in an Entry. If a linked field is not selected the referenced links will
+not be shown in the includes. For example:
+
+`curl https://cdn.quirely.com/spaces/whqvxznpxecc/entries&select=fields`
+
+```json
+{
+  "sys": {
+    "type": "Array"
+  },
+  "total": 1,
+  "skip": 0,
+  "limit": 100,
+  "items": [
+    {
+      "fields": {
+        "link_1": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset_1"
+            }
+          },
+        },
+        "link_2": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset_2"
+            }
+          },
+        }
+      }
+    }
+  ],
+  "includes": [
+    {
+      "sys": {
+        "id": "asset_1",
+        "type": "Asset",
+      },
+      "fields": {
+        ...
+      }
+    },
+    {
+      "sys": {
+        "id": "asset_2",
+        "type": "Asset",
+      },
+      "fields": {
+        ...
+      }
+    }
+  ]
+}
+```
+
+If we select `fields.link_1` only the linked Asset with ID `link_1` will be resolved:
+
+`curl https://cdn.quirely.com/spaces/whqvxznpxecc/entries?select=fields.link_1&content_type=foo`
+
+```json
+{
+  "sys": {
+    "type": "Array"
+  },
+  "total": 1,
+  "skip": 0,
+  "limit": 100,
+  "items": [
+    {
+      "fields": {
+        "link_1": {
+          "en-US": {
+            "sys": {
+              "type": "Link",
+              "linkType": "Asset",
+              "id": "asset_1"
+            }
+          },
+        }
+      }
+    }
+  ],
+  "includes": [
+    {
+      "sys": {
+        "id": "asset_1",
+        "type": "Asset",
+      },
+      "fields": {
+        ...
+      }
+    },
+  ]
+}
+```
+
 Select has some restrictions:
 
 - When using select with an Entry, you must provide the `content_type` query parameter.
