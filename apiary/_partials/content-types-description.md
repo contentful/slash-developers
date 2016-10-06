@@ -1,7 +1,4 @@
-Content types are schemas that define the fields of entries. Every entry can
-only contain values in the fields defined by its content type, and the values
-of those fields must match the data type defined in the content type. There is a
-limit of 50 fields per content type.
+Content types are a schema that define the fields of content entries. Every entry can only contain values in the fields defined by its content type, and the values of those fields must match the data type defined in the content type. There's a limit of **50** fields per content type.
 
 Content type properties:
 
@@ -18,15 +15,15 @@ Each field in the content type describes a single allowed field value of an entr
 Field      |Type          |Description
 -----------|--------------|-------------------------------------------
 id         |String        |The `id` of a field corresponds to a key in the `fields` property of entries with this content type. It must be unique among all fields in the content type.
-name       |String        |The `name` of the field is the human readable label that will be used for this field in the Contentful web app.
-type       |String        |The `type` of the field determines what data can be stored here, as well was what query operations you can perform with this field. See below for more details.
-items      |Schema        | Defines a subschema for the elements of an array field. This is required when `type` is `"Array"`.
+name       |String        |The `name` of the field is the human readable label used for this field in the Contentful web app.
+type       |String        |The `type` of the field determines what data you can store here, as well was what query operations you can perform with this field. See below for more details.
+items      |Schema        | Defines a subschema for the elements of an array field. Required when `type` is `"Array"`.
 required   |Boolean       |Describes whether the field is mandatory.
 localized  |Boolean       |Describes whether the field will support different values for different locales.
 disabled   |Boolean       |Describes whether the field is disabled. Disabled fields are hidden in the Contentful web app.
 omitted    |Boolean       |If set to `true` fully omits this field in the Content Delivery API and Preview API responses. The Content Management API is not affected by this.
 
-All data in Contentful has a field type, which is defined in the [creation of a content type](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type).
+All data in Contentful has a field type, defined in the [creation of a content type](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type).
 
 Each field type corresponds to a JSON type, though there are more field types than JSON types.
 
@@ -35,7 +32,7 @@ Name   |JSON Type|Description|Example
 -------|--------------|-----------|------------
 Symbol |String        |Basic list of characters. Maximum length is 256.| `"The title"`
 Text<sup>1</sup>   |String        |Same as symbol, but filterable via full-text search. Maximum length is 50,000.| `" This is a post and ..."`
-Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53. | `42`
+Integer|Number        |Number type without decimals. Values from  -2<sup>53</sup> to 2<sup>53</sup>. | `42`
 Number |Number        |Number type with decimals. | `3.14`
 Date<sup>2</sup>  |String        |Date/time in ISO 8601 format. | `"2015-11-06T09:45:27"`
 Boolean|Boolean       |Flag, `true` or `false` | true
@@ -50,11 +47,11 @@ Object |Object        |Arbitrary Object. | `{"somekey": ["arbitrary", "json"]}"`
 
 #### Array fields
 
-Contentful supports fields that contain multiple values with its `Array` type. Currently an array can contain either symbols (strings up to 256 characters), **or** [links](/developers/docs/concepts/links/) to other entries or assets. The allowed values in the array are defined by the `items` property of the field definition. The maximum allowed number of items in an array is 1000.
+Contentful supports fields that contain multiple values with its `Array` type. An array can contain symbols (strings up to 256 characters), **or** [links](/developers/docs/concepts/links/) to other entries or assets. The allowed values in the array are defined by the `items` property of the field definition. The maximum allowed number of items in an array is 1000.
 
-A field that contains symbols is defined like this:
+Contentful defines a field that contains symbols like this:
 
-```
+```json
 {
   "id": "tags",
   "type": "Array",
@@ -62,9 +59,9 @@ A field that contains symbols is defined like this:
 }
 ```
 
-A field containing an array of links to assets is defined like this:
+Contentful defines a field that contains an array of links like this:
 
-```
+```json
 {
   "id": "relatedImages",
   "type": "Array",
@@ -72,9 +69,9 @@ A field containing an array of links to assets is defined like this:
 }
 ```
 
-A reference field takes linked items as the following:
+A reference field represents linked items like the following:
 
-```
+```json
 "reference_field": {
       "en-US": [
         {"sys": {

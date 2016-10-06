@@ -2,13 +2,13 @@ Whenever something goes wrong with an API request, the server returns an error. 
 
 Errors share the same common attributes as other API resources; they have a `sys` property, where `sys.type` is always `"Error"` and `sys.id` identifies the exact error code (see tables below) that occurred. They also always have a `message` property which will be a short description of what went wrong.
 
-Finally, some errors resulting from bad input (such as `ValidationFailed` errors) contain a `details` property. This property is structured data that indicates more precisely what was wrong with the input.
+Errors resulting from bad input (such as `ValidationFailed` errors) contain a `details` property. This property is structured data that indicates more precisely what was wrong with the input.
 
 ### Shared error types
 
 HTTP Status Code |Error Code       |Description
 -------------------|-----------------|----------------------------------------------------------------------------------
-`400`|`BadRequestError`|The request was malformed or it is missing a required parameter.
+`400`|`BadRequestError`|The request was malformed or is missing a required parameter.
 `400`|`InvalidQueryError`|The request contained invalid or unknown query parameters.
 `401`|`AccessTokenInvalidError`|The authorization token was invalid.
 `403`|`AccessDeniedError`|The user tried to access a resource that they do not have access to. This could include a missing role.

@@ -43,7 +43,7 @@ from the documentation.
 ## Tips on contributing
 
  - use branches & pull requests
- - All pull requests should be reviewed by somebody else before merging to master. Preferably they are reviewed by @eugenekudashev.
+ - All pull requests should be reviewed by somebody else before merging to master. Preferably they are reviewed by [@chrischinchilla](https://github.com/ChrisChinchilla).
  - To actually make your changes appear on staging/production, follow [this guide](https://github.com/contentful/marketing-website/blob/master/README.md#contribute-to-the-docs)
  - Changes to the API blueprints are automatically published once they are merged to `master`.
 
