@@ -8,9 +8,11 @@ ruby: 2.2.3
 before_install:
   - sudo apt-get install jq
   - make -C apiary install
+  - npm i markdown-spellcheck -g
 
 script:
   - make -C apiary test
+  - mdspell -r 'docs/*.md'
 
 cache:
   directories:
