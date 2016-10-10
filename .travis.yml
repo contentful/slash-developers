@@ -13,7 +13,7 @@ before_install:
 
 script:
   - make -C apiary test
-  - mdspell -r 'docs/*.md'
+  - mdspell -r -n -a --en-us '**/*.md'
 
 cache:
   directories:
