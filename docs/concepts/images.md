@@ -19,7 +19,7 @@ Typically images are retrieved from [the context of one or more entries](/develo
 Read [how to setup and authenticate a JavaScript app](/developers/docs/javascript/tutorials/using-js-cda-sdk/), and then fetch the assets from the space, constructing a url for the image file.
 
 ~~~javascript
-client.getAssets({})
+client.getAssets()
   .then(function (assets) {
     assets.items.forEach(function (asset) {
       var imageURL = 'https:' + asset.fields.file.url;
@@ -30,7 +30,7 @@ client.getAssets({})
   });
 ~~~
 
-Create a skeleton _index.html_ file to display the images.
+Create a skeleton _index.html_ file to display the images. The example below uses [browserify to package the JavaScript](/developers/docs/javascript/tutorials/using-js-cda-sdk/#in-a-browser) for use in a browser.
 
 ~~~html
 <!DOCTYPE html>
