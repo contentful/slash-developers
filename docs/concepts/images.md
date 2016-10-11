@@ -130,7 +130,7 @@ assets.items.forEach(function (asset) {
 ...
 ~~~
 
-![An example of images rendered as circles](rounded-images.png)
+![An example of images rendered as circles](rounded-images.png){: .animated}
 
 ## Adding your own images
 
