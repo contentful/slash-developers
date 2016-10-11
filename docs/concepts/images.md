@@ -1,8 +1,6 @@
 ---
-page: ':docsImages'
+page: :docsImages
 ---
-
-# temp
 
 Images are a powerful way of explaining concepts, attracting a readers attention and creating an impact. Contentful has a seperate [Images API](/developers/docs/references/images-api/) that helps you add and retrieve image files in Spaces, but also offers manipulation features to make images look how you want.
 
@@ -12,7 +10,7 @@ To best understand how to manipulate images we recommend you create a Space fill
 
 If you switch to the _Media_ tab you will see the images in the space, note that most of them are quite large, requesting and loading each of these into your app will be a significant network and memory hit, ideally you want to request images at the size you need them.
 
-Typically images are retrieved from [the context of one or more entries](/developers/docs/references/content-delivery-api/#/reference/links), or by [calling assets directly](/developers/docs/references/content-delivery-api/#/reference/assets). To make it clearer we will use a small JavaScript application to show Contentful's image features and how image assets relate to content entries.
+Typically images are retrieved from [the context of one or more entries](/developers/docs/references/content-delivery-api/#/reference/links), or by [assets directly](/developers/docs/references/content-delivery-api/#/reference/assets). To make it clearer we will use a small JavaScript application to show Contentful's image features and how image assets relate to content entries.
 
 ![The Image content type selected and the entries it contains](image-content-type.png)
 
@@ -20,7 +18,7 @@ Typically images are retrieved from [the context of one or more entries](/develo
 
 Read [how to setup and authenticate a JavaScript app](/developers/docs/javascript/tutorials/using-js-cda-sdk/), and then fetch the assets from the space, constructing a url for the image file.
 
-```javascript
+~~~javascript
 client.getAssets({})
   .then(function (assets) {
     assets.items.forEach(function (asset) {
@@ -30,11 +28,11 @@ client.getAssets({})
   .catch(function (e) {
     console.log(e);
   });
-```
+~~~
 
 Create a skeleton _index.html_ file to display the images.
 
-```html
+~~~html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,13 +46,13 @@ Create a skeleton _index.html_ file to display the images.
 </div>
 </body>
 </html>
-```
+~~~
 
 ## Populate page with images
 
 Inside the `forEach` loop, create an `image` element for each asset, `div` elements to contain them, and populate the `images` `div` with them.
 
-```javascript
+~~~javascript
 ...
 assets.items.forEach(function (asset) {
   var imagesDiv = document.getElementById('images');
@@ -66,7 +64,7 @@ assets.items.forEach(function (asset) {
   imagesDiv.appendChild(imageDiv);
 });
 ...
-```
+~~~
 
 This results in a page of large images, in terms of dimensions and file size.
 
@@ -78,7 +76,7 @@ Now you have the structure ready, it's time to experiment with Contentful's mani
 
 You can resize images by adding a parameter to the image url that sets a width, but will also maintain aspect ratio.
 
-```javascript
+~~~javascript
 ...
 assets.items.forEach(function (asset) {
   ...
@@ -86,13 +84,13 @@ assets.items.forEach(function (asset) {
   ...
 });
 ...
-```
+~~~
 
 ![A chrome window with images resized by Contentful's Images API](resized-images.png)
 
 Setting both the width and height of an image will still maintain the aspect ratio, so the code below will generate the same output as the previous example.
 
-```javascript
+~~~javascript
 ...
 assets.items.forEach(function (asset) {
   ...
@@ -100,13 +98,13 @@ assets.items.forEach(function (asset) {
   ...
 });
 ...
-```
+~~~
 
 If you want to override this behavior, you can use the `fit` parameter to control what part of the image Contentful returns.
 
 This example creates a thumbnail of the image from the top left corner of the image.
 
-```javascript
+~~~javascript
 ...
 assets.items.forEach(function (asset) {
   ...
@@ -114,7 +112,7 @@ assets.items.forEach(function (asset) {
   ...
 });
 ...
-```
+~~~
 
 ![Images cropped to the top left corner](top-left-images.png)
 
@@ -122,7 +120,7 @@ The `fit` parameter can take other values to change this behaviour and suit your
 
 When you crop or resize an image you can round the corners with the `r` parameter. If you want to generate rounded images without resorting to CSS, set the value to `180`.
 
-```javascript
+~~~javascript
 ...
 assets.items.forEach(function (asset) {
   ...
@@ -130,7 +128,7 @@ assets.items.forEach(function (asset) {
   ...
 });
 ...
-```
+~~~
 
 ![An example of images rendered as circles](rounded-images.png)
 
@@ -152,16 +150,16 @@ Authenticate and create a Contentful client, [this time using the management SDK
 
 Get the space you want to add an asset to.
 
-```javascript
+~~~javascript
 client.getSpace('idpvf88znfe3')
   .then(function (space) {
     ...
   });
-```
+~~~
 
 Inside the `.then` method create the data object that contains information about the image you want to upload to Contentful, including the title for the asset, and data about the image file itself.
 
-```javascript
+~~~javascript
 var fileData = {
   fields: {
       title: {
@@ -176,20 +174,20 @@ var fileData = {
       }
   }
 };
-```
+~~~
 
 Create the asset in the space:
 
-```javascript
+~~~javascript
 space.createAsset(fileData)
   .then(function (asset) {
     ...
   })
-```
+~~~
 
 This will create an asset ready to process and publish inside the `.then` method:
 
-```javascript
+~~~javascript
 asset.processForAllLocales()
     .then(function (processedAsset) {
         processedAsset.publish()
@@ -197,7 +195,7 @@ asset.processForAllLocales()
                 console.log(publishedAsset);
             })
     })
-```
+~~~
 
 Open up the space and you will see the new image inside.
 
