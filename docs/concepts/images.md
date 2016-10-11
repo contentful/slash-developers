@@ -140,9 +140,9 @@ You can add images to your spaces using the web app, which provides a comprehens
 
 Adding images via the content management API involves three separate API calls, which all SDKs expose:
 
-- Creating an asset, which is an entry for the media file.
-- Processing an asset by uploading a file.
-- Publishing an asset, making the entry and media file live.
+- **Creating an asset**, which is an entry for the media file.
+- **Processing an asset** by uploading a file.
+- **Publishing an asset**, making the entry and media file live.
 
 ### Creating an asset
 
@@ -203,4 +203,4 @@ Open up the space and you will see the new image inside.
 
 If you load the images page you made earlier again you will also now the see the new image listed alongside the existing images.
 
-![Image uploaded now available](new-image.png)
+![Image uploaded now available](new-image.png){: .animated}
