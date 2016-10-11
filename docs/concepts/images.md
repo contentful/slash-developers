@@ -4,15 +4,15 @@ page: ':docsImages'
 
 # temp
 
-Images are a powerful way of explaining concepts, attracting a readers attention and creating an impact. Contentful has a seperate [Images API](/developers/docs/references/images-api/) that not only helps you retrieve image files for your Spaces, but also offers manipulation features to make images look how you want.
+Images are a powerful way of explaining concepts, attracting a readers attention and creating an impact. Contentful has a seperate [Images API](/developers/docs/references/images-api/) that helps you add and retrieve image files in Spaces, but also offers manipulation features to make images look how you want.
 
-To best understand how to manipulate images we recommend you create a space filled with content from the 'Photo Gallery' example space.
+To best understand how to manipulate images we recommend you create a Space filled with content from the 'Photo Gallery' example space.
 
 ![Create Space](create-image-space.png)
 
 If you switch to the _Media_ tab you will see the images in the space, note that most of them are quite large, requesting and loading each of these into your app will be a significant network and memory hit, ideally you want to request images at the size you need them.
 
-Typically images are retrieved from [the context of one or more entries](/developers/docs/references/content-delivery-api/#/reference/links), or by [calling assets directly](/developers/docs/references/content-delivery-api/#/reference/assets). To make it clearer we will use a small JavaScript application to show Contentful's image features.
+Typically images are retrieved from [the context of one or more entries](/developers/docs/references/content-delivery-api/#/reference/links), or by [calling assets directly](/developers/docs/references/content-delivery-api/#/reference/assets). To make it clearer we will use a small JavaScript application to show Contentful's image features and how image assets relate to content entries.
 
 ![The Image content type selected and the entries it contains](image-content-type.png)
 
@@ -52,7 +52,7 @@ Create a skeleton _index.html_ file to display the images.
 
 ## Populate page with images
 
-Inside the `forEach` loop, create an `image` element for each asset, `div` elements to contain them, and populate the `images` div with them.
+Inside the `forEach` loop, create an `image` element for each asset, `div` elements to contain them, and populate the `images` `div` with them.
 
 ```javascript
 ...
@@ -70,13 +70,13 @@ assets.items.forEach(function (asset) {
 
 This results in a page of large images, in terms of dimensions and file size.
 
-![Chrome browser with large images showing](original-images.png)
+![Browser with large images showing](original-images.png)
 
-Now you have the structure ready, it's time to experiment.
+Now you have the structure ready, it's time to experiment with Contentful's manipulation features.
 
 ## Resizing images
 
-Let's resize the images by adding a parameter to the image url that sets a width, but will also maintain aspect ratio.
+You can resize images by adding a parameter to the image url that sets a width, but will also maintain aspect ratio.
 
 ```javascript
 ...
@@ -118,8 +118,91 @@ assets.items.forEach(function (asset) {
 
 ![Images cropped to the top left corner](top-left-images.png)
 
-The `fit` parameter can take other values to change this behaviour, [read more about what's possible in the API guide](/developers/docs/references/images-api/#/reference/resizing-&-cropping).
+The `fit` parameter can take other values to change this behaviour and suit your use case, [read more about what's possible in the API guide](/developers/docs/references/images-api/#/reference/resizing-&-cropping).
 
-## What's next
+When you crop or resize an image you can round the corners with the `r` parameter. If you want to generate rounded images without resorting to CSS, set the value to `180`.
 
-There's more possible with the Images API such as adding rounded corners and background images, and changing the file format, all dynamically as you request the image.
+```javascript
+...
+assets.items.forEach(function (asset) {
+  ...
+  var imageURL = 'https:' + asset.fields.file.url + '?fit=thumb&f=top_left&h=200&w=200&r=180';
+  ...
+});
+...
+```
+
+![An example of images rendered as circles](rounded-images.png)
+
+## Adding your own images
+
+You can add images to your spaces using the web app, which provides a comprehensive variety of methods for uploading files.
+
+![The Contentful Image uploader form](image-uploader.png)
+
+Adding images via the content management API involves three separate API calls, which all SDKs expose:
+
+- Creating an asset, which is an entry for the media file.
+- Processing an asset by uploading a file.
+- Publishing an asset, making the entry and media file live.
+
+### Creating an asset
+
+Authenticate and create a Contentful client, [this time using the management SDK as you want to create content](https://github.com/contentful/contentful-management.js).
+
+Get the space you want to add an asset to.
+
+```javascript
+client.getSpace('idpvf88znfe3')
+  .then(function (space) {
+    ...
+  });
+```
+
+Inside the `.then` method create the data object that contains information about the image you want to upload to Contentful, including the title for the asset, and data about the image file itself.
+
+```javascript
+var fileData = {
+  fields: {
+      title: {
+          'en-US': 'Berlin'
+      },
+      file: {
+          'en-US': {
+              contentType: 'image/jpeg',
+              fileName: 'berlin_english.jpg',
+              upload: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/Siegessaeule_Aussicht_10-13_img4_Tiergarten.jpg'
+          }
+      }
+  }
+};
+```
+
+Create the asset in the space:
+
+```javascript
+space.createAsset(fileData)
+  .then(function (asset) {
+    ...
+  })
+```
+
+This will create an asset ready to process and publish inside the `.then` method:
+
+```javascript
+asset.processForAllLocales()
+    .then(function (processedAsset) {
+        processedAsset.publish()
+            .then(function (publishedAsset) {
+                console.log(publishedAsset);
+            })
+    })
+```
+
+Open up the space and you will see the new image inside.
+
+![The Asset uploaded available in the space](asset-in-space.png)
+
+If you load the images page you made earlier again you will also now the see the new image listed alongside the existing images.
+
+![Image uploaded now available](new-image.png)
