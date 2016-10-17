@@ -832,6 +832,25 @@ Use this endpoint to create a new locale for the specified space. You cannot cre
 + Response 201 (application/vnd.contentful.management.v1+json)
   + Attribute (Locale Complete)
 
+## Field locales [/spaces/{space_key}/content_type/{content_type_id}]
+
++ Parameters
+    + space_key: fp91oelsziea (required, string) - ID of the space in form of a string
+    + content_type_id: 3ORKIAOaJqQWWg86MWkyOs (required, string) - ID of the Content Type in form of a string
+
+### Create a field locale [PUT]
+
+Use this endpoint to create locales for specific fields. You will need to send data for all fields, even those you are not updating.
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+            Content-Type: application/vnd.contentful.management.v1+json
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+  + Attributes (Content Type Creation)
+
 ## Locale [/spaces/{space_key}/locales/{locale_id}]
 
 + Parameters
