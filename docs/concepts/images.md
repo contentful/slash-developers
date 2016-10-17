@@ -2,21 +2,21 @@
 page: :docsImages
 ---
 
-Images are a powerful way of explaining concepts, attracting a readers attention and creating an impact. Contentful has a seperate [Images API](/developers/docs/references/images-api/) that helps you add and retrieve image files in Spaces, but also offers manipulation features to make images look how you want.
+Images are a powerful way of explaining concepts, attracting a readers attention and creating an impact. Contentful has a seperate [Images API](/developers/docs/references/images-api/) that helps you add and retrieve image files in spaces, but also offers manipulation features to make images look how you want.
 
-To best understand how to manipulate images we recommend you create a Space filled with content from the 'Photo Gallery' example space.
+To best understand how to manipulate images we recommend you create a space filled with content from the 'Photo Gallery' example space.
 
 ![Create Space](create-image-space.png)
 
-If you switch to the _Media_ tab you will see the images in the space, note that most of them are quite large, requesting and loading each of these into your app will be a significant network and memory hit, ideally you want to request images at the size you need them.
+If you switch to the _Media_ tab you will see the images in the space, note that most of them are large, requesting and loading each of these into your app will be a significant network and memory hit, ideally you want to request images at the size you need them.
 
-Typically images are retrieved from [the context of one or more entries](/developers/docs/references/content-delivery-api/#/reference/links), or by [assets directly](/developers/docs/references/content-delivery-api/#/reference/assets). To make it clearer we will use a small JavaScript application to show Contentful's image features and how image assets relate to content entries.
+Typically you retrieve images from [the context of one or more entries](/developers/docs/references/content-delivery-api/#/reference/links), or by [assets directly](/developers/docs/references/content-delivery-api/#/reference/assets). To make it clearer we will use a small JavaScript application to show Contentful's image features and how image assets relate to content entries.
 
 ![The Image content type selected and the entries it contains](image-content-type.png)
 
 ## Retrieve assets and image url
 
-Read [how to setup and authenticate a JavaScript app](/developers/docs/javascript/tutorials/using-js-cda-sdk/), and then fetch the assets from the space, constructing a url for the image file.
+Read [how to setup and authenticate a JavaScript app](/developers/docs/javascript/tutorials/using-js-cda-sdk/), and then fetch the assets from the space, constructing a URL for the image file.
 
 ~~~javascript
 client.getAssets()
@@ -86,9 +86,9 @@ assets.items.forEach(function (asset) {
 ...
 ~~~
 
-![A chrome window with images resized by Contentful's Images API](resized-images.png)
+![A browser with images resized by Contentful's Images API](resized-images.png)
 
-Setting both the width and height of an image will still maintain the aspect ratio, so the code below will generate the same output as the previous example.
+Setting both the width and height of an image will still maintain the aspect ratio, so the code below will generate the same output as the previous example and possibly not the exact size you expect.
 
 ~~~javascript
 ...
@@ -116,7 +116,7 @@ assets.items.forEach(function (asset) {
 
 ![Images cropped to the top left corner](top-left-images.png)
 
-The `fit` parameter can take other values to change this behaviour and suit your use case, [read more about what's possible in the API guide](/developers/docs/references/images-api/#/reference/resizing-&-cropping).
+The `fit` parameter can take other values to change this behavior and suit your use case, [read more about what's possible in the Images API guide](/developers/docs/references/images-api/#/reference/resizing-&-cropping).
 
 When you crop or resize an image you can round the corners with the `r` parameter. If you want to generate rounded images without resorting to CSS, set the value to `180`.
 
@@ -141,8 +141,8 @@ You can add images to your spaces using the web app, which provides a comprehens
 Adding images via the content management API involves three separate API calls, which all SDKs expose:
 
 - **Creating an asset**, which is an entry for the media file.
-- **Processing an asset** by uploading a file.
-- **Publishing an asset**, making the entry and media file live.
+- **Processing an asset**, Contentful downloads the media file from the URL supplied and processes it.
+- **Publishing an asset**, making the entry and media file publicly available.
 
 ### Creating an asset
 
