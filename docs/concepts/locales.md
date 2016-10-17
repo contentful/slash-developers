@@ -16,17 +16,17 @@ You can add a new locale to a space in the Contentful web app or by using the Co
 
 To add a locale in the web app, open _Settings -> Locales_ and click _Add locale_:
 
-{:.img} ![Shows the web app interface for creating a new space locale](main-locale.png)
+![Shows the web app interface for creating a new space locale](main-locale.png){:.img}
 
 Choose a locale and its options:
 
-{:.img} ![The settings available for creating a locale](locale-editor.png)
+![The settings available for creating a locale](locale-editor.png){:.img}
 
 ### With the API
 
 If you are writing scripts or applications, use the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/locales) to add a locale to a space use the following POST request with the name and ISO code contained within the body:
 
-```bash
+~~~bash
 curl -X POST
   -H "Authorization: Bearer <CONTENT_MANAGEMENT_KEY>"
   -H "Content-Type: application/vnd.contentful.management.v1+json"
@@ -35,7 +35,7 @@ curl -X POST
    "code":"en-GB"
 }'
 "https://api.contentful.com/spaces/<SPACE_ID>/locales"
-```
+~~~
 
 There are a couple of other options you can send with the API call, r[ead our API documentation](/developers/docs/references/content-management-api/#/reference/locales/locale-collection/create-a-locale) to find out more.
 
@@ -47,7 +47,7 @@ After adding a locale to a Space, you can define which fields in your content ty
 
 To enable localization of a field in the web app, check the corresponding option in the field settings:
 
-{:.img} ![Enabling localization for a field](enablelocalization.png)
+![Enabling localization for a field](enablelocalization.png){:.img}
 
 ### With the API
 
@@ -55,7 +55,7 @@ It's possible to use the [Content Management API](/developers/docs/references/co
 
 The following PUT request enables localization for the fields `productName` and `productDescription` of the content type `Product` by setting their `localized` property to `true`:
 
-```bash
+~~~bash
 curl -X PUT
   -H "Authorization: Bearer <CONTENT_MANAGEMENT_KEY>"
   -H "Content-Type: application/vnd.contentful.management.v1+json"
@@ -81,33 +81,33 @@ curl -X PUT
   ]
 }'
 "https://api.contentful.com/spaces/<SPACE_ID>/content_types/<CONTENT_TYPE_ID>"
-```
+~~~
 
 **Note**: The example above doesn't show all fields in the content type, but you need to include all, even those that you are not changing.
 
 Next, select which translations will be available for each entry:
 
-{:.img} ![Selecting the translations used in the web app](choosetranslations.png)
+![Selecting the translations used in the web app](choosetranslations.png){:.img}
 
 After this step, entries will have different field values for each locale:
 
-{:.img} ![A field in the web app with a value for a particular translation](geenfields.png)
+![A field in the web app with a value for a particular translation](geenfields.png){:.img}
 
 ## Retrieving entries without a specific locale
 
 If you don't specify a locale in your request, you will receive the entry from the default locale (`en-US` in this example):
 
-```bash
+~~~bash
 curl -X GET "https://cdn.contentful.com/spaces/<SPACE_ID>/entries/<ENTRY_ID>?access_token=<CONTENT_DELIVERY_KEY>"
-```
+~~~
 
 ### Retrieving entries with a specific locale
 
 If you want to retrieve fields from a specific locale (e.g `de-AT`), use the `locale=de-AT` parameter in your request:
 
-```bash
+~~~bash
 curl -X GET "https://cdn.contentful.com/spaces/<SPACE_ID>/entries/<ENTRY_ID>?access_token=<CONTENT_DELIVERY_KEY>&locale=de-AT"
-```
+~~~
 
 ### Retrieving all translations for an entry
 
@@ -115,9 +115,9 @@ You can retrieve all localized versions of an entry by using the 'wildcard' `loc
 
 #### URL of request
 
-```bash
+~~~bash
 curl -X GET "https://cdn.contentful.com/spaces/<SPACE_ID>/entries/<ENTRY_ID>?access_token=<CONTENT_DELIVERY_KEY>&locale=*"
-```
+~~~
 
 ## Locales and the Sync API
 
@@ -125,6 +125,6 @@ No matter which locale you specify, the [synchronization API](https://www.conten
 
 ### URL of request
 
-```bash
+~~~bash
 curl -X GET "https://cdn.contentful.com/spaces/<SPACE_ID>/entries/<ENTRY_ID>sync?initial=true?access_token=<CONTENT_DELIVERY_KEY>&locale=de-AT"
-```
+~~~
