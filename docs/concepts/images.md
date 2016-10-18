@@ -54,8 +54,9 @@ Inside the `forEach` loop, create an `image` element for each asset, `div` eleme
 
 ~~~javascript
 ...
+var imagesDiv = document.getElementById('images');
+
 assets.items.forEach(function (asset) {
-  var imagesDiv = document.getElementById('images');
   var imageURL = 'https:' + asset.fields.file.url;
   var imageDiv = document.createElement("div");
   var imageFile = document.createElement("img");
@@ -188,6 +189,7 @@ space.createAsset(fileData)
 This will create an asset ready to process and publish inside the `.then` method:
 
 ~~~javascript
+...
 asset.processForAllLocales()
     .then(function (processedAsset) {
         processedAsset.publish()
@@ -195,6 +197,7 @@ asset.processForAllLocales()
                 console.log(publishedAsset);
             })
     })
+    ...
 ~~~
 
 Open up the space and you will see the new image inside.
