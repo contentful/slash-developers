@@ -16,7 +16,7 @@ Typically you retrieve images from [the context of one or more entries](/develop
 
 ## Retrieve assets and image url
 
-Read [how to setup and authenticate a JavaScript app](/developers/docs/javascript/tutorials/using-js-cda-sdk/), and then fetch the assets from the space, constructing a URL for the image file.
+Read [how to setup and authenticate a JavaScript app](/developers/docs/javascript/tutorials/using-js-cda-sdk/), and then fetch the assets from the space, constructing an URL for the image file.
 
 ~~~javascript
 client.getAssets()
