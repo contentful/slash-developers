@@ -13,7 +13,7 @@ Name   |JSON type|Description|Example
 -------|--------------|-----------|------------
 Symbol |String        |Basic list of characters. Maximum length is 256.| "The title"
 Text<sup>1</sup>   |String        |Same as Symbol, but filterable via full-text search. Maximum length is 50,000.|" This is a post and ..."
-Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53. | 42
+Integer|Number        |Number type without decimals. Values from  -2<sup>53</sup> to 2<sup>53</sup>. | 42
 Number |Number        |Number type with decimals. | 3.14
 Date<sup>2</sup>  |String        |Date/time in ISO 8601 format. | 2015-11-06T09:45:27
 Boolean|Boolean       |Flag, `true` or `false` | true

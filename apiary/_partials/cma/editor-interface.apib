@@ -1,15 +1,12 @@
 # Group Editor interface
 
-An editor interface represents the look and feel of content type fields in the UI. They are tightly
-coupled to a specific content type and define which widget has to be rendered for the content type's
-fields.
+An editor interface represents the look and feel of content type fields in the UI. They are tightly coupled to a specific content type and define which widget is rendered for the content type's fields.
 
 __Example__
 
-Let's consider the following content type which describes a typical blog post kind of data structure.
-It has a title, a body and a category that can be either "General", "iOS" or "Android".
+Consider the following content type which describes a typical blog post data structure. It has a title, a body, and a category that can be either "General", "iOS" or "Android".
 
-```
+```json
 {
   "fields": [
     { "id": "title", "name": "Title", "type": "Symbol" },
@@ -22,14 +19,12 @@ It has a title, a body and a category that can be either "General", "iOS" or "An
 }
 ```
 
-An editor interface can for example define that the `title` field should be rendered as a normal
-input field (the respective widget's id is `singleLine`). Furthermore it can define that the `body`
-should be a normal textarea (= `multipleLine`) and also that the `category` should be rendered as a
-dropdown field (= `dropdown`).
+An editor interface could, for example, define that the `title` field should be rendered as a normal input field (the widget id is `singleLine`). It could then define that the `body` should be a normal text area (the widget id is `multipleLine`), and that the `category` should be rendered as a
+dropdown field (the widget id is `dropdown`).
 
 The editor interface would look like this:
 
-```
+```json
 {
   "controls": [
     { "fieldId": "title", "widgetId": "singleLine" },
@@ -39,7 +34,7 @@ The editor interface would look like this:
 }
 ```
 
-Please note that there are specific sets of applicable widgets per content type field type:
+**Note**: There are specific sets of applicable widgets per content type field type:
 
 | Widget ID               | Applicable field types        | Description               |
 |-------------------------|-------------------------------|---------------------------|
@@ -76,10 +71,11 @@ Please note that there are specific sets of applicable widgets per content type 
 
 __Settings__
 
-A control may have custom settings that are passed to the widget to change its behavior or presentation.
+A control may have custom settings that passed to the widget to change its behavior or presentation.
 
-The control entry for a field of type `Boolean`, for example, could look like this.
-```
+The control entry for a field of type `Boolean`, for example, would look like this.
+
+```json
 {
   "fieldId": "isFeatured",
   "widgetId": "boolean",
@@ -92,7 +88,7 @@ The control entry for a field of type `Boolean`, for example, could look like th
 ```
 
 If present, the `settings` object of a control must be an object. All widgets
-accept the `helpText` setting and use it to render additional information with
+accept the `helpText` setting and use it to render extra information with
 the widget. Other settings are widget specific.
 
 <table>
@@ -133,15 +129,11 @@ the widget. Other settings are widget specific.
 
 ## Editor interface [/spaces/{space_id}/content_types/{content_type_id}/editor_interface]
 
-An editor interface is a singleton resource of a content type, meaning that there can only be one editor interface per content type at any point in time. It gets created automatically on the first time publish of a
-content type and is updated when a content type field is added, removed or changed. Please note that
-cascaded updates are only happening when the content type is published. Since the editor
-interface is created on the server side, it is not possible to create an editor interface manually via some
-http request.
+An editor interface is a singleton resource of a content type, meaning that there can only be one editor interface per content type at a time. It gets created automatically on the first publish of a content type and is updated when a content type field is added, removed or changed.
 
-The server will return a 404 if there is no editor interface for the requested content type.
-This typically happens when the content type was not yet published or if it was created before
-the automatic editor interface creation (June 20, 2016). (Re-) Publishing the content type
+**Note**: Cascading updates happen when the content type is published. As the editor interface is created on the server side, it's not possible to create an editor interface manually via an http request.
+
+The server will return a 404 response if there is no editor interface for the requested content type. This typically happens when the content type was not yet published or if it was created before the automatic editor interface creation feature was added (June 20, 2016). (Re-)Publishing the content type
 should fix both scenarios.
 
 + Parameters
@@ -161,8 +153,7 @@ should fix both scenarios.
 
 ### Update the editor interface [PUT]
 
-This endpoint can be used to update an existing editor interface.
-Note that you always need to specify its last version with `X-Contentful-Version`.
+You can use this endpoint to update an existing editor interface. you will need to specify its last version with `X-Contentful-Version`.
 
 + Request Update the editor interface
     + Headers

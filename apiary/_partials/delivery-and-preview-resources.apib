@@ -278,7 +278,49 @@ This example finds all entries of content type 'cat'.
 
   + Attributes (Empty Array)
 
+## Select operator [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&select={value}]
+
+The select operator allows you to choose what to return from an entity. You provide a json path and the API will return the property at that path. You can use combine multiple comma separated operators to retrieve different paths of an entity.
+
+For example, if you want to return the `sys.id` and `fields.name` of an Entry:
+
+```bash
+/spaces/<space-id>/entries/?select=sys.id,fields.name&content_type=<content_type_id>
+```
+
+You can fetch the entire `sys` or `fields` object and it's sub-fields by passing it to the `select` operator. For example to omit the `sys` object:
+
+```bash
+/spaces/<space-id>/entries/?select=fields&content_type=<content_type_id>
+```
+
+Select has some restrictions:
+
+- The select operator is only applicable for collections of Entries and Assets, and with an Entry you must provide the `content_type` query parameter.
+- The select operator can only select properties to a depth of 2. For example, `select=fields.name.en-US` is not valid.
+- If you want to select a property for a specific locale you need to combine the `select` and `locale` operators, e.g `/assets/?select=fields.name&locale=en-US`.
+- You can select up to 100 properties.
+- If you use the select operator on an Entry with linked fields, only the content linked to a field you select will be returned.
+
+If you provide an invalid property path, e.g `sys.doesNotExist`, Contentful returns a `400 Bad request` containing the property path that is invalid.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
+    + value (required, string, `sys.id`) ... The path of the property to select.
+
+### Query entries [GET]
+
+Let's select all the Entry IDs.
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Select operator example)
+
 ## Equality operator [/spaces/{space_id}/entries?access_token={access_token}&{attribute}={value}]
+
+You can search for exact matches by using the equality operator.
 
 Search for exact matches by using the equality operator. This includes querying an entry by ID value instead of retrieving the Entry directly, which would allow you to include resolved links.
 
@@ -551,7 +593,7 @@ When fetching a collection endpoint, you can order items in the response by spec
 Name   |JSON Primitive|Description
 -------|--------------|----------------------------------------------------
 Symbol |String        |Basic list of characters. Maximum length is 256.
-Integer|Number        |Number type without decimals. Values from  -2^53 to 2^53.
+Integer|Number        |Number type without decimals. Values from  -2<sup>53</sup> to 2<sup>53</sup>.
 Number |Number        |Number type with decimals.
 Date   |String        |Date/time in ISO-8601 format.
 Boolean|Boolean       |Flag, `true` or `false`.
