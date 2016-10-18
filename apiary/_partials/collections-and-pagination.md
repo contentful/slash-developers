@@ -1,8 +1,8 @@
 ## Collection resources and pagination
 
-Collections of resources are returned in a wrapper object that contains additional information useful for pagination over large result sets:
+Contentful returns collections of resources in a wrapper object that contains additional information useful for paginating over large result sets:
 
-```
+```json
 {
   "sys": { "type": "Array" },
   "skip": 0,
@@ -12,5 +12,4 @@ Collections of resources are returned in a wrapper object that contains addition
 }
 ```
 
-In the above example, a client would get the next 100 resources by repeating the same request with the `skip` query parameter changed to `100`. The `order` parameter, for example `order=sys.createdAt`,
-should be used when paging through larger result sets to keep ordering predictable.
+In the above example, a client would get the next 100 resources by repeating the same request, changing the `skip` query parameter to `100`. Use the `order` parameter, for example `order=sys.createdAt`, when paging through larger result sets to keep ordering predictable.
