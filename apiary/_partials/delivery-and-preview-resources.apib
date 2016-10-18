@@ -4,15 +4,15 @@
 
 ## HTTP details
 
-Learn more about the http details behind our delivery and preview APIs in the [developer center](https://www.contentful.com/developers/docs/references/http-details/).
+Learn more about the HTTP details behind our Delivery and Preview APIs in the [developer center](https://www.contentful.com/developers/docs/references/http-details/).
 
 # Group Spaces
 
-All content entries in Contentful belongs to a space. You will generally have at least one space for a project, but may decide to use separate spaces for testing or staging purposes.
+All content and assets in Contentful belongs to a space. You will generally have at least one space for a project, but may decide to use separate spaces for testing or staging purposes.
 
 ## Space [/spaces/{space_id}?access_token={access_token}]
 
-Each space has a name, a set of locales, and system metadata.
+Each space has a name, a set of locales, and metadata.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
@@ -202,11 +202,11 @@ When you have related content (e.g. entries with links to image assets) it's pos
 
 The maximum number of inclusions is `10`. The default number, if the parameter is not specified, is `1`. If you want no inclusions at all, you should set it to `0`.
 
-This feature is only available in the Content Delivery and Preview API.
+This feature is only available in the Content Delivery and Preview APIs.
 
 If the standard `items` array has not already retrieved the linked entries, they will be in the `includes.Entry` array. Linked assets are inside the `includes.Asset` array.
 
-**Note**: The `include` parameter only resolves links between entries, spaces and assets. Links between spaces and content types are not included in the response.
+**Note**: The `include` parameter only resolves links between entries, assets and spaces. Links between spaces and content types are not included in the response.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
@@ -324,7 +324,7 @@ You can search for exact matches by using the equality operator.
 
 Search for exact matches by using the equality operator. This includes querying an entry by ID value instead of retrieving the Entry directly, which would allow you to include resolved links.
 
-**Note**: Equality & inequality operators are not supported for text fields and that you have to constrain search queries for fields with a `content_type` URI query parameter.
+**Note**: Equality and inequality operators are not supported for text fields and you need to constrain search queries for fields with a `content_type` URI query parameter.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
@@ -659,7 +659,7 @@ You can order items by specifying the `order` parameter along with attributes(`a
 
 You can specify the maximum number of results as a `limit` search parameter.
 
-**Note**: The maximum number of entries returned by the API is 1000 and it will ignore limits higher than **1000**. The default number of entries returned by the API is **100**.
+**Note**: The maximum number of entries returned by the API is **1000** and it will ignore limits higher than **1000**. The default number of entries returned by the API is **100**.
 
 + Parameters
     + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
@@ -678,7 +678,7 @@ This example limits results to 3 entries.
 
 You can specify an offset with the `skip` search parameter.
 
-By combining `skip` and `limit` you can create pagination:
+By combining `skip` and `limit` you can paginate through results:
 
     Page 1: skip=0, limit=15
     Page 2: skip=15, limit=15
@@ -710,7 +710,7 @@ You can filter assets by their MIME type group by using the `mimetype_group` que
 
 ### Query assets [GET]
 
-This example will include only image assets.
+This example will return only image assets.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -742,7 +742,7 @@ Learn more about locales in our [concepts document](https://www.contentful.com/d
 
 ### Query entries [GET]
 
-`fields.name` is the only localized field in the `cat` content type, so all other fields are returned in the default locale.
+`fields.name` is the only localized field in the `cat` content type, so returns all other fields in the default locale.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 

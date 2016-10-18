@@ -2,7 +2,7 @@
 
 Every resource returned by the :[API name](apiname) will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the resource type, but at minimum it defines the `sys.type` property.
 
-**Note**: None of the `sys` fields are editable and you can only specify the `sys.id` in the creation of an item (when not a _Space_).
+**Note**: None of the `sys` fields are editable and you can only specify the `sys.id` in the creation of an item (If it's not a _space_).
 
 Contentful defines the `sys.id` property for every resource that is not a collection. For example, a `Space` resource will have a `sys.type` and `sys.id`:
 
@@ -26,6 +26,6 @@ sys.createdAt  |Date          |Time resource was created.      |Entries, assets,
 sys.updatedAt  |Date          |Time resource was updated.      |Entries, assets, content types
 sys.locale     |String        |Locale of the resource.         |Entries and assets
 
-**Note**: the `revision` field refers to the published version exposed by the Content Management API.
+**Note**: the `revision` field refers to the current published version exposed by the Content Management API.
 
 :[Collection Resources and Pagination](../collections-and-pagination.md)
