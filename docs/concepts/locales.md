@@ -37,11 +37,11 @@ curl -X POST
 "https://api.contentful.com/spaces/<SPACE_ID>/locales"
 ~~~
 
-There are a couple of other options you can send with the API call, r[ead our API documentation](/developers/docs/references/content-management-api/#/reference/locales/locale-collection/create-a-locale) to find out more.
+There are a couple of other options you can send with the API call, [read our API documentation](/developers/docs/references/content-management-api/#/reference/locales/locale-collection/create-a-locale) to find out more.
 
 ## Locales and fields
 
-After adding a locale to a Space, you can define which fields in your content types you want localized. You can do this with the web app or the Content Management API.
+After adding a locale to a space, you can define which fields in your content types you want localized. You can do this with the web app or the Content Management API.
 
 ### With the Web App
 
