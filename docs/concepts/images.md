@@ -2,7 +2,7 @@
 page: :docsImages
 ---
 
-Images are a powerful way of explaining concepts, attracting a readers attention and creating an impact. Contentful has a seperate [Images API](/developers/docs/references/images-api/) that helps you add and retrieve image files in spaces, but also offers manipulation features to make images look how you want.
+Images are a powerful way of explaining concepts, attracting a readers attention and creating an impact. Contentful has a separate [Images API](/developers/docs/references/images-api/) that helps you add and retrieve image files in spaces, but also offers manipulation features to make images look how you want.
 
 To best understand how to manipulate images we recommend you create a space filled with content from the 'Photo Gallery' example space.
 
@@ -21,7 +21,7 @@ Read [how to setup and authenticate a JavaScript app](/developers/docs/javascrip
 ~~~javascript
 client.getAssets()
   .then(function (assets) {
-    assets.items.forEach(function (asset) {
+    assets.items.map(function(asset){
       var imageURL = 'https:' + asset.fields.file.url;
     });
   })
@@ -30,7 +30,10 @@ client.getAssets()
   });
 ~~~
 
-Create a skeleton _index.html_ file to display the images. The example below uses [browserify to package the JavaScript](/developers/docs/javascript/tutorials/using-js-cda-sdk/#in-a-browser) for use in a browser.
+Create a skeleton _index.html_ file to display the images. The example below uses [browserify (webpack is also usable) to package the SDK](/developers/docs/javascript/tutorials/using-js-cda-sdk/#in-a-browser) for use in a browser.
+
+{: .note}
+**Note**: This step would be unnecessary if you are using the SDK directly outside of a browser.
 
 ~~~html
 <!DOCTYPE html>
