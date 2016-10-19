@@ -9,7 +9,7 @@ This guide will walk you through your first steps using Contentful within an Exp
 - A [Heroku][1] account
 - [Heroku CLI][14] installed
 - [Node.js] [2] 6.2.1 installed 
-- Npm 3.10.7 which should be installed with Nodejs
+- Npm 3.10.7 which should be installed with `Node.js`
 - [Git][12] installed
 - Basic Command Line Interface knowledge
 
@@ -43,7 +43,7 @@ $ npm install
 $ npm run dev
 ~~~
 
-Everything is now set up. You can view your new data by opening [_http://localhost:3000/_][4] in your browser.
+Everything is now set up. You can view your new data by opening [http://localhost:3000/][4] in your browser.
 
 It should look something like this:
 
@@ -65,7 +65,7 @@ You can create your own custom data by following these steps:
   - Your space will be now displayed in your application
 
 
-Next in the _[Contentful web app][6] > Content_:
+Next in the [Contentful web app][6] > Content:
 
 - Open the product called 'Playsam Streamliner Classic Car, Espresso'.
 - Change the value of the _Product name_ field to a new value,
