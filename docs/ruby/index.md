@@ -28,6 +28,10 @@ This guide shows how to make a call to the Contentful API, explains what the res
 View in [Ruby](/developers/api-demo/ruby/) |
 [cURL](/developers/api-demo/curl/)
 
+### Create and deploy your Rails application using Contentful
+A guide to quickly start and run with Contentful and Ruby on Rails.<br>
+[View the tutorial](/developers/docs/ruby/tutorials/full-stack-getting-started/)
+
 ### Getting started with the CDA SDK in Ruby
 This tutorial will walk you through your first steps in using Contentful within your Ruby application.<br>
 [View the tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/)
@@ -35,10 +39,6 @@ This tutorial will walk you through your first steps in using Contentful within 
 ### Getting started with the CMA SDK in Ruby
 This tutorial will walk you through your first steps in using Contentful Management API within your Ruby application.<br>
 [View the tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/)
-
-### Create and deploy your Rails application using Contentful
-A guide to quickly start and run with Contentful and Ruby on Rails.<br>
-[View the tutorial](/developers/docs/ruby/tutorials/full-stack-getting-started/)
 
 ### Create your own Rails Application using Contentful
 A guide to create a Ruby on Rails application from scratch and integrate it with Contentful.<br>

@@ -1,12 +1,12 @@
 ## Common resource attributes
 
-Every resource returned by the :[API name](apiname) will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the type of the resource, but at minimum the `sys.type` property is defined.
+Every resource returned by the :[API name](apiname) will have a `sys` property, which is an object containing system managed metadata. The exact metadata available depends on the resource type, but at minimum it defines the `sys.type` property.
 
-Note that none of the `sys` fields are editable and only the `sys.id` field can be specified in the creation of an item (as long as it is not a Space).
+**Note**: None of the `sys` fields are editable and you can only specify the `sys.id` in the creation of an item (If it's not a _space_).
 
-The `sys.id` property will be defined for every resource that is not a collection. For example, a `Space` resource will have a `sys.type` and `sys.id`:
+Contentful defines the `sys.id` property for every resource that is not a collection. For example, a `Space` resource will have a `sys.type` and `sys.id`:
 
-```
+```json
 {
   "sys": {
     "type": "Space",
@@ -17,16 +17,15 @@ The `sys.id` property will be defined for every resource that is not a collectio
 
 Field          |Type          |Description                     |Applies to
 ---------------|--------------|--------------------------------|-----------------------------
-sys.type       |String        |Type of resource.               |All
+sys.type       |String        |Resource type.               |All
 sys.id         |String        |Unique ID of resource.          |All except arrays
 sys.space      |Link          |Link to resource's space.       |Entries, assets, content types
 sys.contentType|Link          |Link to entry's content type.   |Entries
-sys.revision   |Integer       |Published version of resource.* |Entries, assets, content types
+sys.revision   |Integer       |Published version of resource. |Entries, assets, content types
 sys.createdAt  |Date          |Time resource was created.      |Entries, assets, content types
 sys.updatedAt  |Date          |Time resource was updated.      |Entries, assets, content types
 sys.locale     |String        |Locale of the resource.         |Entries and assets
 
-* Observation: the `revision` field refers to the published version exposed by the Content Management API.
+**Note**: the `revision` field refers to the current number of revisions of an entry published. [Find out more in the Content Management API documentation.](/developers/docs/references/content-management-api/#/introduction/collection-resources-and-pagination)
 
 :[Collection Resources and Pagination](../collections-and-pagination.md)
-
