@@ -15,7 +15,7 @@ This guide will walk you through your first steps using Contentful within an Exp
 
 ## Start from a demo application
 
-First we'll start with a [demo project][3], which is a simple Express js application using Contentful's 'Product Catalogue' template, so that you can see it running for yourself.
+First we'll start with a [demo project][3], which is a simple Express.js application using Contentful's 'Product Catalogue' template, so that you can see it running for yourself.
 
 Run the following commands to get started.
 
