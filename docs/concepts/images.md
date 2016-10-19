@@ -208,5 +208,3 @@ Open up the space and you will see the new image inside.
 ![The Asset uploaded available in the space](asset-in-space.png)
 
 If you load the images page you made earlier again you will also now the see the new image listed alongside the existing images.
-
-![Image uploaded now available](new-image.png){: .animated}
