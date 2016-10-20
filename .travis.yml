@@ -13,7 +13,7 @@ before_install:
 
 script:
   - make -C apiary test
-  - write-good docs/**/*.md > write-good.txt
+  - write-good docs/**/*.md
 
 cache:
   directories:
