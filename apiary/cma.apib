@@ -1347,6 +1347,55 @@ Use this endpoint to delete an existing role. It's only possible to delete roles
 
 + Response 204
 
+# Group Snapshots
+
+Snapshots represent an entry as it was at a given time in the past. A snapshot is automatically created each time an entry is published.
+
+Each snapshot has two top level objects,  `sys` and `snapshot`. The `snapshot` object contains the content of the entry at the moment the snapshot was taken. The `sys` object contains meta information about the snapshot and has the following nested properties:
+
+Field        |Type    |Description
+-------------|--------|----------------------------------------------------------
+type         |String  | Type of the resource. For snapshots it will always be 'Snapshot'
+createdAt    |Date    | Timestamp with the moment when the snapshot was created
+createdBy    |Date    | A reference to the user who created the snapshot
+id           |String  | The unique identifier for this snapshot
+snapshotType |String  | The type of snapshot. For now the only valid value is `publish`
+
+## Snapshots collection [/spaces/{space_id}/entries/{entry_id}/snapshots]
+
++ Parameters
+    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
+    + entry_id: helloworld (required, string) - ID of the entry in form of a string
+
+### Get all snapshots of an entry [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Empty Array)
+
+## Snapshot [/spaces/{space_id}/entries/{entry_id}/snapshots/{snapshot_id}]
+
++ Parameters
+    + space_id: fp91oelsziea (required, string) - ID of the Space in form of a string
+    + entry_id: helloworld (required, string) - ID of the entry in form of a string
+    + snapshot_id: 5dD4PfXLnYPyaDmDorG3pj (required, string) - ID of the snapshot in form of a string
+
+### Get a snapshot [GET]
+
++ Request
+    + Headers
+
+            Authorization: Bearer b4c0n73n7fu1
+
++ Response 200 (application/vnd.contentful.management.v1+json)
+
+    + Attributes (Snapshot)
+
 # Group Space memberships
 
 ## Space memberships collection [/spaces/{space_id}/space_memberships]
