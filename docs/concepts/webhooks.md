@@ -1,33 +1,35 @@
 ---
-page: :docsWebhooks
+page: ':docsWebhooks'
 ---
 
-Webhooks in Contentful can notify you or someone else when content (assets, entries or content types) has changed by calling a preconfigured HTTP endpoint. This can be used for notifications, static site generators or other forms of post-processing that is sourced from Contentful.
+# tbc
 
-Whenever an event like that occurs, you can set up a webhook that would call the specified URI in order to somehow react. For instance, you can send a push notification or a message to a Slack channel every time an entry has been edited to keep up with the changes.
+Webhooks in Contentful can notify you, someone, or something else when content (assets, entries or content types) have changed by calling a pre-configured HTTP endpoint.
 
-[See our documentation for all the details](/developers/docs/references/content-management-api/#/reference/webhooks/) and the screenshots below to better understand how it works.
+Whenever a matching event occurs, you can set up a webhook that would call the specified URI to react. For example, every time a user edits an entry, send a push notification or message to a Slack channel.
 
-### New webhook
-You can create multiple webhooks with different configurations each.
+[Read the webhooks section of our Content Management API guide](/developers/docs/references/content-management-api/#/reference/webhooks/) to find out more details.
 
-{: .img}
-![Creating new webhook](https://images.contentful.com/sxx7gi06ja5s/1Gn2WOuwG42K6A08gwY0Ai/300653f7e0d89081203a5c3f0f36c020/webhook__new_webhook.png)
+## Create a new webhook
 
-### Webhook configuration
-When creating a webhook you can specify for which changes on your content (topics) you want your webhook called.
+You can create webhooks with different configurations.
 
-{: .img}
-![Select when the webhook should be triggered](https://images.contentful.com/sxx7gi06ja5s/488gvUzJoQ4GIKggqOQO4K/f360d313073264682822ff6fb2ceafc5/webhook__events.png)
+{: .img} ![Creating new webhook](https://images.contentful.com/sxx7gi06ja5s/1Gn2WOuwG42K6A08gwY0Ai/300653f7e0d89081203a5c3f0f36c020/webhook__new_webhook.png)
 
-### Webhook call overviews
-The call overviews consist of a list of the most recent webhook calls made, their status, possible errors, and the target URL.
+## Webhook configuration
 
-{: .img}
-![See how your requests are doing](https://images.contentful.com/sxx7gi06ja5s/OJSwxatFAceAqOQgC42GO/f359e7105e8abaaea919fc6c45624622/webhook__activity_log.png)
+When creating a webhook you can specify for which changes to your entries you want your webhook called.
 
-### Webhook call details
+{: .img} ![Select when the webhook should be triggered](https://images.contentful.com/sxx7gi06ja5s/488gvUzJoQ4GIKggqOQO4K/f360d313073264682822ff6fb2ceafc5/webhook__events.png)
+
+## Webhook call overview
+
+The call overview consist of a list of the most recent webhook calls made, their status, possible errors, and the target URL.
+
+{: .img} ![See how your requests are doing](https://images.contentful.com/sxx7gi06ja5s/OJSwxatFAceAqOQgC42GO/f359e7105e8abaaea919fc6c45624622/webhook__activity_log.png)
+
+## Webhook call details
+
 The call details provide detailed information about the outgoing request and the response, including headers, body and possible errors.
 
-{: .img}
-![Investigate the details](https://images.contentful.com/sxx7gi06ja5s/5DArLijukoIwKi8Eo2IsCk/67e763564548233b4490a7348e0c9ed4/webhook__request_details__super_secret.png)
+{: .img} ![Investigate the details](https://images.contentful.com/sxx7gi06ja5s/5DArLijukoIwKi8Eo2IsCk/67e763564548233b4490a7348e0c9ed4/webhook__request_details__super_secret.png)
