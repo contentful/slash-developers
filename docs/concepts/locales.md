@@ -16,11 +16,11 @@ You can add a new locale to a space in the Contentful web app or by using the Co
 
 To add a locale in the web app, open _Settings -> Locales_ and click _Add locale_:
 
-![Shows the web app interface for creating a new space locale](main-locale.png){:.img}
+![Shows the web app interface for creating a new space locale](https://images.contentful.com/tz3n7fnw4ujc/6JdwCfLKtG2gE88oMiWace/6406cea9ef458f45ed5c14da7d577b12/FE1B7BCC-549C-4A13-AF1B-667C5C091EF7.png_dl_1){:.img}
 
 Choose a locale and its options:
 
-![The settings available for creating a locale](locale-editor.png){:.img}
+![The settings available for creating a locale](https://images.contentful.com/tz3n7fnw4ujc/UtvZezi9kyCWy6q60oOUk/4f94379308d79309a4f6396a277f0917/6B99358A-F73F-49B2-88C3-D334C0133197.png_dl_1){:.img}
 
 ### With the API
 
@@ -47,7 +47,7 @@ After adding a locale to a space, you can define which fields in your content ty
 
 To enable localization of a field in the web app, check the corresponding option in the field settings:
 
-![Enabling localization for a field](enablelocalization.png){:.img}
+![Enabling localization for a field](https://images.contentful.com/tz3n7fnw4ujc/1iQFl4rdoOWcu44miI0i8K/e175b4493881efba36bf6cd548c19e1c/74C319EE-B150-4055-A30B-57EE8F49D71D.png_dl_1){:.img}
 
 ### With the API
 
@@ -87,11 +87,11 @@ curl -X PUT
 
 Next, select which translations will be available for each entry:
 
-![Selecting the translations used in the web app](choosetranslations.png){:.img}
+![Selecting the translations used in the web app](https://images.contentful.com/tz3n7fnw4ujc/5eOsGAPNTOqU2aOciOcYay/7a1234a51301438ba1faa29bf805d94a/C79DEAF9-5A28-463D-B02C-295B990ED121.png_dl_1){:.img}
 
 After this step, entries will have different field values for each locale:
 
-![A field in the web app with a value for a particular translation](geenfields.png){:.img}
+![A field in the web app with a value for a particular translation](https://images.contentful.com/tz3n7fnw4ujc/3z7lNJMvRmQmqgiWAs8q8a/7452a6c11dc3ce03b648679e0dbc4f4f/5C9A28E3-2E53-4FA3-B79C-60F740170454.png_dl_1){:.img}
 
 ## Retrieving entries without a specific locale
 
