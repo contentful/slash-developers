@@ -6,13 +6,13 @@ Images are a powerful way of explaining concepts, attracting a readers attention
 
 To best understand how to manipulate images we recommend you create a space filled with content from the 'Photo Gallery' example space.
 
-![Create Space](create-image-space.png)
+![Create Space dialog](https://images.contentful.com/tz3n7fnw4ujc/5NvRrRmt9uW8aOUWIKSYui/c4172d774e25fc8a9608bc97c9fc6d5e/354BFE0A-179E-4B65-BFEA-91BA174E4269.png_dl_1)
 
 If you switch to the _Media_ tab you will see the images in the space, note that most of them are large, requesting and loading each of these into your app will be a significant network and memory hit, ideally you want to request images at the size you need them.
 
 Typically you retrieve images from [the context of one or more entries](/developers/docs/references/content-delivery-api/#/reference/links), or by [assets directly](/developers/docs/references/content-delivery-api/#/reference/assets). To make it clearer we will use a small JavaScript application to show Contentful's image features and how image assets relate to content entries.
 
-![The Image content type selected and the entries it contains](image-content-type.png)
+![The Image content type selected and the entries it contains](https://images.contentful.com/tz3n7fnw4ujc/6ylJFXN3lSMeYiCIOqoIyK/272fc1628bb5e4959d22352d7a2a71b4/E8084960-8F4B-47CB-AA90-29D49A655DFD.png_dl_1)
 
 ## Retrieve assets and image url
 
@@ -72,7 +72,7 @@ assets.items.forEach(function (asset) {
 
 This results in a page of large images, in terms of dimensions and file size.
 
-![Browser with large images showing](original-images.png)
+![Browser with large images showing](https://images.contentful.com/tz3n7fnw4ujc/Et4A7sGSsgOW00k84IgGg/110db601f41b0d564829fb590f34deb6/4AD6920B-8243-4A2B-B200-10F6CE338328.png_dl_1)
 
 Now you have the structure ready, it's time to experiment with Contentful's manipulation features.
 
@@ -90,7 +90,7 @@ assets.items.forEach(function (asset) {
 ...
 ~~~
 
-![A browser with images resized by Contentful's Images API](resized-images.png)
+![A browser with images resized by Contentful's Images API](https://images.contentful.com/tz3n7fnw4ujc/1oErqsRy44USwg886aOs60/8687ab5b2d2fc21675b4782247e5e427/BB35A865-8CE0-4DEC-86AA-2130CB001C03.png_dl_1)
 
 Setting both the width and height of an image will still maintain the aspect ratio, so the code below will generate the same output as the previous example and possibly not the exact size you expect.
 
@@ -118,7 +118,7 @@ assets.items.forEach(function (asset) {
 ...
 ~~~
 
-![Images cropped to the top left corner](top-left-images.png)
+![Images cropped to the top left corner](https://images.contentful.com/tz3n7fnw4ujc/4lZOBjlfSUCew4iKESKUWg/719aa6e1fdfc82cab02f5f2fd69dabb7/E5451651-380D-4C70-8B8F-CD5300AF620D.png_dl_1)
 
 The `fit` parameter can take other values to change this behavior and suit your use case, [read more about what's possible in the Images API guide](/developers/docs/references/images-api/#/reference/resizing-&-cropping).
 
@@ -134,13 +134,13 @@ assets.items.forEach(function (asset) {
 ...
 ~~~
 
-![An example of images rendered as circles](rounded-images.png){: .animated}
+![An example of images rendered as circles](https://images.contentful.com/tz3n7fnw4ujc/IYjocRckSIWAuuqs6eKkO/255e197cd0a97d7df6917321ebce4b1a/21EF3CC9-3783-490B-B3F0-2C33E0A7CC4F.png_dl_1){: .animated}
 
 ## Adding your own images
 
 You can add images to your spaces using the web app, which provides a comprehensive variety of methods for uploading files.
 
-![The Contentful Image uploader form](image-uploader.png)
+![The Contentful Image uploader form](https://images.contentful.com/tz3n7fnw4ujc/4aiM6qazlK6eKYcUESUeQO/80bbf85d469549cd369b7c014340f0ea/5AAF25BB-64F1-4274-BDB4-C76734C270AA.png_dl_1)
 
 Adding images via the content management API involves three separate API calls, which all SDKs expose:
 
@@ -205,6 +205,6 @@ asset.processForAllLocales()
 
 Open up the space and you will see the new image inside.
 
-![The Asset uploaded available in the space](asset-in-space.png)
+![The Asset uploaded available in the space](https://images.contentful.com/tz3n7fnw4ujc/5WQd6ttXzyKKIig44kqUu4/1facf73658fe4bbe145d79394244e991/E6E90F1A-0D5E-4049-B7C6-67D8C3116E16.png_dl_1)
 
 If you load the images page you made earlier again you will also now the see the new image listed alongside the existing images.
