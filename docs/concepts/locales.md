@@ -6,6 +6,7 @@ Locales are a feature of Contentful's [paid plans](https://www.contentful.com/pr
 
 Every Space has its own set of locales, and each locale is uniquely identified by its ISO code (e.g., `en-US` or `de-AT`). There's always one default locale defined when you create a space, shown by default in the Contentful web app and used for Content Delivery API queries that do not request a specific locale.
 
+{: .note}
 **Note**: As a space specifies a default locale, it's permanent and you cannot change it afterwards.
 
 ## Adding a locale
@@ -83,6 +84,7 @@ curl -X PUT
 "https://api.contentful.com/spaces/<SPACE_ID>/content_types/<CONTENT_TYPE_ID>"
 ~~~
 
+{: .note}
 **Note**: The example above doesn't show all fields in the content type, but you need to include all, even those that you are not changing.
 
 Next, select which translations will be available for each entry:
