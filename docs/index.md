@@ -2,11 +2,11 @@
 page: :docsOverview
 ---
 
-Here you'll find everything necessary for setting up and going deeper: introductory explanations, API references, more specific tutorials, SDKs and libraries for major platforms, as well as other helpful tools and code samples.
+You're in the right place to find everything you need to deeper understand and use Contentful. This includes an overview of Contentful concepts, API references, tutorials, details of SDKs and libraries for major platforms, helpful tools and code samples.
 
 ## Concepts
 
-These articles introduce the basics of Contentful, explain our data model, and provide best practice ideas. This is the best place to start if you haven't built anything with Contentful before.
+These concepts introduce the basics of Contentful. This is the best place to start if you haven't built anything with Contentful before.
 
 - [API basics](/developers/docs/concepts/apis/)
 - [Data model](/developers/docs/concepts/data-model/)
@@ -16,28 +16,25 @@ These articles introduce the basics of Contentful, explain our data model, and p
 - [UI extensions](/developers/docs/concepts/uiextensions/)
 - [Webhooks](/developers/docs/concepts/webhooks/)
 
-## API references
+## Reference
 
-This is the go-to place if you have specific questions in mind. *How do I authorize my app? How do I fetch an entry? How do I request an image of a specific size?* You can find the answers to these questions (and more) below.
+Our four APIs are the core of Contentful, with each one serving a specific purpose:
 
-There are four APIs available, and each serves one specific purpose:
+- [Content Delivery API](/developers/docs/references/content-delivery-api/) for retrieving content
+- [Content Management API](/developers/docs/references/content-management-api/) for managing content (e.g. creating, updating and deleting content)
+- [Preview API](/developers/docs/references/content-preview-api/) for previewing the content before publishing it to production
+- [Images API](/developers/docs/references/images-api/) for requesting images in specific sizes and formats
 
-- <a href="https://www.contentful.com/developers/docs/references/content-delivery-api/" target="_blank">Content Delivery API</a> for retrieving content
-- <a href="https://www.contentful.com/developers/docs/references/content-management-api/" target="_blank">Content Management API</a> for managing content (e.g. creating, updating, deleting content)
-- <a href="https://www.contentful.com/developers/docs/references/content-preview-api/" target="_blank">Preview API</a> for previewing the content before publishing it to production
-- <a href="https://www.contentful.com/developers/docs/references/images-api/" target="_blank">Images API</a> for requesting images of specific sizes and formats
-
-There are several other documents relevant for all APIs:
+These guides will help you answer questions you might have when using our APIs:
 
 - [Authentication](/developers/docs/references/authentication/)
 - [Errors](/developers/docs/references/errors/)
 - [HTTP response details](/developers/docs/references/http-details/)
-- [Locales](/developers/docs/references/locales/)
 - [Field types](/developers/docs/references/field-type/)
 
-## Libraries
+## Platforms
 
-We provide libraries for major programming languages and platforms so you don't have to write the code for interacting with API from scratch.
+We provide libraries and SDKs for major programming languages and platforms so you don't have to write code for interacting with APIs from scratch.
 
 - [Android / Java](/developers/docs/android/)
 - [Objective-C / Swift](/developers/docs/ios/)
@@ -49,15 +46,18 @@ We provide libraries for major programming languages and platforms so you don't 
 
 ## Tools
 
-There are more tools which help speed up development. Find content import/export tools, iOS and Android development plugins and more.
+We have content import/export tools, iOS and Android development plugins and more, all designed to help speed up development.
 
 - [Static site generators](/developers/docs/tools/staticsitegenerators/)
 - [Space management tools](/developers/docs/tools/spacemanagement/)
 - [Extensions](/developers/docs/tools/extensions/)
 - [Others and third party tools](/developers/docs/tools/others/)
 
+
 ## More
 
+Looking for support or detail on our release schedule?
+
 - [Changelog](/developers/changelog/)
-- <a href="https://support.contentful.com/hc/en-us/requests/new" target="_blank">Support</a>
-- <a href="http://stackoverflow.com/questions/tagged/contentful?sort=newest" target="_blank">Stack Overflow</a>
+- [Support](https://support.contentful.com/hc/en-us/requests/new)
+- [Stack Overflow](http://stackoverflow.com/questions/tagged/contentful?sort=newest)

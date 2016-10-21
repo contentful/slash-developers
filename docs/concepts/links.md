@@ -2,7 +2,7 @@
 page: :docsLinks
 ---
 
-Links are a powerful way to model relationships between content. You can use an additional URI query parameter with the Contentful search to retrieve an entire chain of related content to display in your application.
+Links are a powerful way to model relationships between content. You can use a URI query parameter with the Contentful search to retrieve an entire chain of related content to display in your application.
 
 Entries can have link fields which point to other entries or assets, for example:
 
@@ -11,7 +11,7 @@ Entries can have link fields which point to other entries or assets, for example
 - Each menu item linking to a photo (attachment).
 - A restaurant linking to multiple photos (attachments).
 
-A _single_ HTTP request lets you retrieve the entire set of linked resources above, starting with the menu, in one request. Contentful's CDN can cache these requests to further speed up future requests. This is useful for mobile apps as it reduces the need for multiple concurrent connections, and the latency for results to return.
+A **single** HTTP request lets you retrieve the entire set of linked resources above, starting with the menu, in one request. Contentful's CDN can cache these requests to further speed up future requests. This is useful for mobile apps as it reduces the need for multiple concurrent connections, and the latency for results to return.
 
 Links bring you other features:
 
