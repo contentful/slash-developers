@@ -14,7 +14,8 @@ A dropdown component to change the value of a number field and make a Content Ma
 
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/rating-dropdown)
 
-{: .img} ![Basic rating dropdown extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/45NRCrYg8gwKW08kug8M2W/3050ef93c62eff65642dc29d0cb8821d/BBD4DC36-163A-43A4-B13F-8AE5F6993434.png_dl_1)
+{: .img}
+![Basic rating dropdown extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/45NRCrYg8gwKW08kug8M2W/3050ef93c62eff65642dc29d0cb8821d/BBD4DC36-163A-43A4-B13F-8AE5F6993434.png_dl_1)
 
 ### Rich text editor
 
@@ -22,7 +23,8 @@ This example integrates the Alloy rich text editor into text fields.
 
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/alloy-editor)
 
-{: .img} ![Rich text editor extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/3Rzmmj2fuEgwg6kwQ8kSmg/4e9dc78ee1fc95df3bd6063c73fd9bc6/9CDF5788-57FC-444C-8199-04408341F0D7.png_dl_1)
+{: .img}
+![Rich text editor extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/3Rzmmj2fuEgwg6kwQ8kSmg/4e9dc78ee1fc95df3bd6063c73fd9bc6/9CDF5788-57FC-444C-8199-04408341F0D7.png_dl_1)
 
 ### Chessboard
 
@@ -30,7 +32,8 @@ This extension displays a chessboard and stores the board position as a JSON obj
 
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/chessboard)
 
-{: .img} ![Chessboard extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/1cSM1cmGUKIIMqcAI8KE4u/c740287f67d682ffbbc014665500efe0/B58EE807-A598-478E-A509-C7203A0C35A2.gif_dl_1)
+{: .img}
+![Chessboard extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/1cSM1cmGUKIIMqcAI8KE4u/c740287f67d682ffbbc014665500efe0/B58EE807-A598-478E-A509-C7203A0C35A2.gif_dl_1)
 
 ### Slug generator
 
@@ -38,7 +41,8 @@ This extension automatically generates its value from the title field of an entr
 
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/slug)
 
-{: .img} ![Slug generator extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/3JUTcNxs7eSkIMKgKeCA62/2f0bcb05d409436c322fb425f8838c78/D0B28EA2-9E86-4A23-ACE0-EED81A758A6D.png_dl_1)
+{: .img}
+![Slug generator extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/3JUTcNxs7eSkIMKgKeCA62/2f0bcb05d409436c322fb425f8838c78/D0B28EA2-9E86-4A23-ACE0-EED81A758A6D.png_dl_1)
 
 ### Translator
 
@@ -46,7 +50,8 @@ This extension translates text from the default locale to other locales in a spa
 
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/translate)
 
-{: .img} ![Translator extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/4qrgjGbN7y0oMYSkS6cyko/ee50c251463c954ec875ee35775deefa/92CB0364-E3DA-4649-9D99-8458D7A6A6DD.png_dl_1)
+{: .img}
+![Translator extension screenshot](https://images.contentful.com/tz3n7fnw4ujc/4qrgjGbN7y0oMYSkS6cyko/ee50c251463c954ec875ee35775deefa/92CB0364-E3DA-4649-9D99-8458D7A6A6DD.png_dl_1)
 
 ### JSON editor
 
@@ -54,7 +59,8 @@ This extension provides a JSON formatter and validator based on the CodeMirror l
 It should be used with fields with the type "Object".<br>
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/json-editor)
 
-{: .img} ![Translator](json-editor.png)
+{: .img}
+![Translator](json-editor.png)
 
 ### JSON form editor
 
@@ -70,7 +76,8 @@ This extension extracts the video id from a valid YouTube URL for a simple way t
 
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/youtube-id)
 
-{: .img} ![YouTube ID extension](https://images.contentful.com/tz3n7fnw4ujc/4M2yCNPQTK8wmiSGmmKIaI/36ec7f8fc7990fff1b521da1dcb359b0/ACC6E270-9904-45F6-94E2-FE0ECEAEADD1.png_dl_1)
+{: .img}
+![YouTube ID extension](https://images.contentful.com/tz3n7fnw4ujc/4M2yCNPQTK8wmiSGmmKIaI/36ec7f8fc7990fff1b521da1dcb359b0/ACC6E270-9904-45F6-94E2-FE0ECEAEADD1.png_dl_1)
 
 ### Wistia Videos
 
@@ -78,4 +85,5 @@ The extension loads videos from a project on [wistia](https://wistia.com/) into 
 
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/wistia)
 
-{: .img} ![Wistia Video extension](https://images.contentful.com/tz3n7fnw4ujc/4Olj3gwXIAEMCqscKIq0yC/68f37a3b6a5daf2664e0b2b3aad6063e/D1F4EE3E-D811-4C4C-BBA5-C990E5B1DD85.gif_dl_1)
+{: .img}
+![Wistia Video extension](https://images.contentful.com/tz3n7fnw4ujc/4Olj3gwXIAEMCqscKIq0yC/68f37a3b6a5daf2664e0b2b3aad6063e/D1F4EE3E-D811-4C4C-BBA5-C990E5B1DD85.gif_dl_1)

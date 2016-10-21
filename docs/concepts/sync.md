@@ -36,11 +36,11 @@ The synchronization endpoint will always return the content of a space or a spec
 
 The first time you use the Sync API in your application, you need to specify the `initial` URL parameter:
 
-```bash
+~~~bash
 curl -X GET \
      -H 'Authorization: Bearer b4c0n73n7fu1' \
      'https://cdn.contentful.com/spaces/cfexampleapi/sync?initial=true'
-```
+~~~
 
 The response will contain a `nextPageUrl` value if your request returned more results than fit into a single page. When retrieving the last page, the response will contain a `nextSyncUrl` which contains a sync token you can use to receive delta updates of changes since your last request.
 
