@@ -25,7 +25,7 @@ Our four APIs are the core of Contentful, with each one serving a specific purpo
 - [Preview API](/developers/docs/references/content-preview-api/) for previewing the content before publishing it to production
 - [Images API](/developers/docs/references/images-api/) for requesting images in specific sizes and formats
 
-Other documents will help you answer questions you might have when using our APIs:
+These guides will help you answer questions you might have when using our APIs:
 
 - [Authentication](/developers/docs/references/authentication/)
 - [Errors](/developers/docs/references/errors/)

@@ -25,7 +25,8 @@ The Content Management API (CMA), available at _<https://api.contentful.com`>_, 
 - Integration with other backend systems, such as an e-commerce shop.
 - Building custom editing experiences. We built the [Contentful web app](https://app.contentful.com) on top of this API.
 
-{: .note} **Note**: You can also use the Content Management API to retrieve content. But as it's used to manage content, it will retrieve **all** items (i.e. all localized and unpublished content).
+{: .note}
+**Note**: You can also use the Content Management API to retrieve content. But as it's used to manage content, it will retrieve **all** items (i.e. all localized and unpublished content).
 
 For more details [read the reference documentation for the Content Management API][2].
 
