@@ -55,12 +55,12 @@ This extension translates text from the default locale to other locales in a spa
 
 ### JSON editor
 
-This extension provides a JSON formatter and validator based on the CodeMirror library.<br>
-It should be used with fields with the type "Object".<br>
+This extension formats and validates JSON based on the CodeMirror library. You can use it with fields of type "Object".
+
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/json-editor)
 
 {: .img}
-![Translator](json-editor.png)
+![Translator extension](https://images.contentful.com/tz3n7fnw4ujc/47FwXETOc0E4u8U62sImq4/b409b273b03a1ed897c88d576ad5e6af/C020349F-ECC0-49D8-A22F-B143F4233F2C.png_dl_1)
 
 ### JSON form editor
 
@@ -68,7 +68,8 @@ This extension integrates the JSON editor library to display an edit form based 
 
 [View on GitHub](https://github.com/contentful/extensions/tree/master/samples/json-form-editor)
 
-{: .img} ![Translator](https://images.contentful.com/tz3n7fnw4ujc/1M9qxfkvLqi4wI0GGASMwq/5da14e00202b17ae754aedcafe662c5a/E200B073-BC43-4B2E-A89B-6EC48D5AD722.png_dl_1)
+{: .img}
+![Translator extension](https://images.contentful.com/tz3n7fnw4ujc/1M9qxfkvLqi4wI0GGASMwq/5da14e00202b17ae754aedcafe662c5a/E200B073-BC43-4B2E-A89B-6EC48D5AD722.png_dl_1)
 
 ### YouTube ID
 
