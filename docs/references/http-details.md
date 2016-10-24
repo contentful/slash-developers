@@ -1,8 +1,6 @@
 ---
-page: ':docsHttpDetails'
+page: :docsHttpDetails
 ---
-
-# tbc
 
 ## Security
 
