@@ -8,7 +8,7 @@ The Content Delivery API and Preview API are fully available via SSL. You should
 
 Our client libraries enable SSL by default. Unless there is a reason to disable SSL you should leave it enabled to ensure maximum privacy for clients.
 
-The Content Management API is only available via SSL, and you must make all requests using the _https:_ protocol.
+The Content Management API is only available via SSL, and you must make all requests using the _https_ protocol.
 
 Using SSL ensures that the content and access tokens of a space remain secure and that potential eavesdroppers cannot intercept your data.
 
