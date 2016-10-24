@@ -1,8 +1,6 @@
 ---
-page: ':docsFieldTypes'
+page: :docsFieldTypes
 ---
-
-# tbc
 
 All data in Contentful has a field type, which is defined in the [creation of a content type](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type).
 
