@@ -8,7 +8,8 @@ The `sys.type` will always be `Error`, and the `sys.id` identifies the precise e
 
 ## Error types
 
-{:.table} HTTP status code |Error code |Description
+{:.table}
+HTTP status code |Error code |Description
 -------------------|-----------------|--------------------------------------
 `400 Bad Request` |`BadRequestError`|The request was malformed or missing a required parameter.
 `400 Invalid query`|`InvalidQueryError`|The request contained invalid or unknown query parameters.
