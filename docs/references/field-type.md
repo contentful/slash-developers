@@ -30,17 +30,17 @@ Contentful supports fields that can contain multiple values with the `Array` typ
 
 You define a field that contains symbols like this:
 
-```json
+~~~json
 {
   "id": "tags",
   "type": "Array",
   "items": { "type": "Symbol" }
 }
-```
+~~~
 
 You define a field that contains links to assets like this:
 
-```json
+~~~json
 {
   "id": "relatedImages",
   "type": "Array",
@@ -49,11 +49,11 @@ You define a field that contains links to assets like this:
     "linkType": "Asset"
   }
 }
-```
+~~~
 
 A reference field takes linked items as the following:
 
-```json
+~~~json
 "reference_field": {
   "en-US": [
     {
@@ -71,4 +71,4 @@ A reference field takes linked items as the following:
     ...
   ]
 }
-```
+~~~
