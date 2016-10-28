@@ -7,7 +7,7 @@ page: ':docsPlatformsRuby'
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
 - [Tools](#tools-and-integrations)
-- [Example apps](#apps)
+- [Example apps](#example-apps)
 
 ## SDKs
 
@@ -65,13 +65,11 @@ A simple HTTP webserver for listening to API webhooks that you can override to s
 
 ### Rails integration
 
-A collection of useful gems that it easier to integrate Contentful into a Rails app.
+A collection of useful gems that make it easier to integrate Contentful into a Rails app. [Read this blog post](/blog/2016/07/21/contentful-on-rails/) to find out how to use them in your applications.
 
-[View on GitHub - Contentful Rails](https://github.com/contentful/contentful_rails)
+[View Contentful Rails on GitHub](https://github.com/contentful/contentful_rails)
 
-[View on GitHub - Contentful Model](https://github.com/contentful/contentful_model)
-
-[Tutorial](/blog/2015/02/23/contentfulmodel-and-contentfulrails-ruby-gems-help-building-ruby-apps-faster/)
+[View Contentful Model on GitHub](https://github.com/contentful/contentful_model)
 
 ## Example apps
 
