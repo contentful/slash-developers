@@ -1,8 +1,6 @@
 ---
-page: ':docsPlatformsRuby'
+page: :docsPlatformsRuby
 ---
-
-# tbc
 
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
@@ -77,10 +75,10 @@ A collection of useful gems that make it easier to integrate Contentful into a R
 
 A Rails application that connects to a Contentful product catalogue example space.
 
-[View on GitHub](https://github.com/contentful/contentful_rails_tutorial)<br>
+[View on GitHub](https://github.com/contentful/contentful_rails_tutorial)
 
 ### Sinatra product demo
 
 A Sinatra application that connects to a Contentful product catalogue example space.
 
-[View on GitHub](https://github.com/contentful/contentful_sinatra_tutorial)<br>
+[View on GitHub](https://github.com/contentful/contentful_sinatra_tutorial)
