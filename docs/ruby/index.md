@@ -15,7 +15,7 @@ Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and thei
 
 ### Content Delivery API SDK
 
-This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location using our global CDN.
+This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.
 
 [View on GitHub](https://github.com/contentful/contentful.rb)
 
@@ -39,11 +39,11 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 [This tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/) will walk you through the first steps using the Content Delivery API with a Ruby application.
 
-### Getting started with the CMA SDK in Ruby
+### Getting started with the Content Management API SDK
 
 [This tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/) will walk you through the first steps using the Contentful Management API with a Ruby application.
 
-### Create your own Rails Application using Contentful
+### Create your own Rails application using Contentful
 
 [This guide](/developers/docs/ruby/tutorials/create-your-own-rails-app/) shows you how to create a Ruby on Rails application from scratch and integrate it with Contentful.
 
