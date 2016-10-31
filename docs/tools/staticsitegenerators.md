@@ -30,7 +30,7 @@ We love static sites and have plugins to support three of our favorites.
 
 ## Tutorials
 
-### Automated rebuild and deploy with CircleCI and Webhooks
+### Automated rebuild and deployment with CircleCI and Webhooks
 
 [This tutorial](/developers/docs/ruby/tutorials/automated-rebuild-and-deploy-with-circleci-and-webhooks/) shows you how to setup and automatically deploy static sites using Jekyll or Middleman with CircleCI.
 

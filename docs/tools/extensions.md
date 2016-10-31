@@ -2,7 +2,7 @@
 page: :docsToolsExtensions
 ---
 
-These extensions add extra functionality to Contentful, find detailed instructions in each individual GitHub repository.
+These extensions add extra functionality to Contentful, you can find detailed instructions in each individual GitHub repository.
 
 ## Contentful Scheduler
 

@@ -12,4 +12,4 @@ Upload images to Contentful with this macOS tool.
 
 ## Third party tools
 
-Apart from official tools/libraries, there are others developed by our community, which you can find at [awesome-contentful](https://github.com/contentful-labs/awesome-contentful). These include languages and platforms such as Python and .NET.
+Apart from official tools and libraries, there are others developed by our community, which you can find at [awesome-contentful](https://github.com/contentful-labs/awesome-contentful). These include languages and platforms such as Python and .NET.
