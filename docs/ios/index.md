@@ -5,7 +5,7 @@ page: :docsPlatformsIos
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
 - [Tools](#tools-and-integrations)
-- [Example apps](#apps)
+- [Example apps](#example-apps)
 
 ## SDKs
 
@@ -93,11 +93,13 @@ This library helps you display progressive JPEGs with iOS.
 
 [View on GitHub](https://github.com/contentful-labs/Concorde)
 
-## iOS Sample apps
+## Example apps
 
-You can use these example apps as inspiration for building your own iOS apps.
+You can use these example apps as inspiration for building your own apps.
 
-### Discovery App
+### iOS
+
+#### Discovery App
 
 This app lets you browse and preview your Contentful spaces.
 
@@ -105,7 +107,31 @@ This app lets you browse and preview your Contentful spaces.
 
 [View on GitHub](https://github.com/contentful/discovery-app)
 
-### Coffee Guide
+#### Blog
+
+A generic blog app connected to a Contentful example space.
+
+[Download on the App Store](https://itunes.apple.com/us/app/contentful-blog-showcase/id962456216)
+
+[View on GitHub](https://github.com/contentful/blog-app-ios)
+
+#### Gallery
+
+A generic gallery app connected to a Contentful example space.
+
+[Download on the App Store](https://itunes.apple.com/us/app/contentful-gallery-showcase/id975142754)
+
+[View on GitHub](https://github.com/contentful/gallery-app-ios)
+
+#### Product Catalogue
+
+A generic product catalogue / e-commerce app connected to a Contentful example space.
+
+[Download on the App Store](https://itunes.apple.com/us/app/contentful-product-catalogue/id963680410)
+
+[View on GitHub](https://github.com/contentful/product-catalogue-ios)
+
+#### Coffee Guide
 
 An app that guides users to the nearest café.
 
@@ -117,39 +143,11 @@ A demo app that shows how to use Contentful with Swift and iOS.
 
 [View on GitHub](https://github.com/contentful-labs/Swiftful)
 
-## iOS App templates
-
-These example apps are the best way to start building with Contentful. They show you how to start a project based on example spaces available in the Contentful web app.
-
-### Blog
-
-A generic blog app connected to a Contentful example space.
-
-[Download on the App Store](https://itunes.apple.com/us/app/contentful-blog-showcase/id962456216)
-
-[View on GitHub](https://github.com/contentful/blog-app-ios)
-
-### Gallery
-
-A generic gallery app connected to a Contentful example space.
-
-[Download on the App Store](https://itunes.apple.com/us/app/contentful-gallery-showcase/id975142754)
-
-[View on GitHub](https://github.com/contentful/gallery-app-ios)
-
-### Product Catalogue
-
-A generic product catalogue / e-commerce app connected to a Contentful example space.
-
-[Download on the App Store](https://itunes.apple.com/us/app/contentful-product-catalogue/id963680410)
-
-[View on GitHub](https://github.com/contentful/product-catalogue-ios)
-
-## watchOS Sample apps
+### watchOS Sample apps
 
 You can use these example apps as inspiration for building your own watchOS apps.
 
-### Brew
+#### Brew
 
 A watchOS app for finding bars near you. You can [read more about the app in this blog post](/blog/2015/05/28/brew-app-for-apple-watch/).
 
@@ -157,9 +155,9 @@ A watchOS app for finding bars near you. You can [read more about the app in thi
 
 [View on GitHub](https://github.com/contentful/ContentfulWatchKitExample)
 
-## tvOS
+### tvOS
 
-### TVFul
+#### TVFul
 
 This example shows you how to use the Contentful SDK with tvOS apps.
 
