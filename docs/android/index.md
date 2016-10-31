@@ -5,7 +5,7 @@ page: :docsPlatformsAndroid
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
 - [Tools](#tools-and-integrations)
-- [Example apps](#apps)
+- [Example apps](#example-apps)
 
 ## SDKs
 
@@ -65,9 +65,9 @@ A library to simplify persisting data retrieved from Contentful in SQLite.
 
 [View on GitHub](https://github.com/contentful/vault)
 
-## Sample apps
+## Example apps
 
-You can use these example apps as inspiration for building your own Android apps.
+These example apps are the best way to start building with Contentful. They show you how to start a project based on example spaces available in the Contentful web app.
 
 ### Discovery App
 
@@ -76,10 +76,6 @@ This app lets you browse and preview your Contentful spaces.
 [Download on Google Play](https://play.google.com/store/apps/details?id=discovery.contentful)
 
 [View on GitHub](https://github.com/contentful/discovery-app-android)
-
-## App templates
-
-These example apps are the best way to start building with Contentful. They show you how to start a project based on example spaces available in the Contentful web app.
 
 ### Blog
 
