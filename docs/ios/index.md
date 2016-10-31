@@ -1,6 +1,8 @@
 ---
-page: :docsPlatformsIos
+page: ':docsPlatformsIos'
 ---
+
+# tbc
 
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
@@ -8,116 +10,159 @@ page: :docsPlatformsIos
 - [Example apps](#apps)
 
 ## SDKs
-Our SDKs give you immediate access to our APIs and its features.
 
-###CDA - Content Delivery API<br>
-Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
-[View on GitHub - Swift](https://github.com/contentful/contentful.swift)<br>
-[View on GitHub - ObjC](https://github.com/contentful/contentful.objc)<br>
-[API reference - ObjC](http://cocoadocs.org/docsets/ContentfulDeliveryAPI/)<br>
+Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and their features.
+
+### Content Delivery API SDK
+
+This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.
+
+[View on GitHub - Swift](https://github.com/contentful/contentful.swift)
+
+[View on GitHub - ObjC](https://github.com/contentful/contentful.objc)
+
+[API reference - ObjC](http://cocoadocs.org/docsets/ContentfulDeliveryAPI/)
+
 [API Playground - Swift](https://github.com/contentful/ContentfulPlayground)
 
-###CMA - Content Management API<br>
-This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
-[View on GitHub - ObjC](https://github.com/contentful/contentful-management.objc)<br>
+### Content Management API SDK
+
+This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content. The API also offers tools for managing editorial teams and cooperation.
+
+[View on GitHub - ObjC](https://github.com/contentful/contentful-management.objc)
+
 [API reference](http://cocoadocs.org/docsets/ContentfulManagementAPI/)
 
 ## Tutorials
-Step by step guides to help you accomplishing specific tasks.
 
 ### API demo
-This guide shows how to make a call to the Contentful API, explains what the response looks like, and suggests some relevant next steps.<br>
-View in [Swift](/developers/api-demo/swift/) |
-[cURL](/developers/api-demo/curl/)
 
-### Getting started with the CDA
-This walkthrough will help you getting started with your first basic hello world style iOS app of using Contentful with a demo space.<br>
-[View the tutorial - ObjC](/developers/docs/ios/tutorials/using-delivery-api-on-ios/)<br>
-[View the tutorial - Swift](/developers/docs/ios/tutorials/using-delivery-api-with-swift/)
+[This guide](/developers/api-demo/swift/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggest next steps.
 
-### Getting started with the CMA
-This post will walk you through implementing a simple iOS app for uploading images from the device's Camera Roll to Contentful.<br>
-[View the tutorial](/developers/docs/ios/tutorials/using-management-api-on-ios/)
+### Getting started with the Content Delivery API SDK and Swift
 
-### Delivering content to & from iOS with Contentful
-Webinar showing how to use our CDA and CMA SDKs.<br>
-[Watch the webinar](/blog/2014/09/18/webinar-delivering-content-to-from-ios-with-contentful/)
+These tutorials will walk you through the first steps using the Content Delivery API with a Java application.
 
-### Offline persistence in the iOS SDK
-This tutorial helps you with persisting data retrieved from the Contentful Content Delivery API.<br>
+[View the Objective-C tutorial](/developers/docs/ios/tutorials/using-delivery-api-on-ios/)
+
+[View the Swift tutorial](/developers/docs/ios/tutorials/using-delivery-api-with-swift/)
+
+### Getting started with the Content Management API SDK and Objective-C
+
+[This tutorial](/developers/docs/ios/tutorials/using-management-api-on-ios/) will walk you through the first steps using the Contentful Management API with an Objective-C application.
+
+### Delivering content with Contentful and iOS
+
+[This webinar](/blog/2014/09/18/webinar-delivering-content-to-from-ios-with-contentful/) shows you how to use the Content Delivery and Content Management SDKs.
+
+### Offline persistence with the iOS SDK
+
+This tutorial helps you understand how to persist data retrieved from the Contentful Content Delivery API.
+
 [View the tutorial](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/)
 
 ### Using the Contentful Xcode plugin
-Tool for recreating your content model inside Xcode.<br>
-[View the tutorial](/developers/docs/ios/tutorials/using-contentful-xcode-plugin/)
+
+[This tutorial](/developers/docs/ios/tutorials/using-contentful-xcode-plugin/) will help you understand how to use [our XCode plugin](https://github.com/contentful/ContentfulXcodePlugin) for generating models from your content types.
 
 ## Tools and integrations
-Here are some tools developed by our team to help you completing some basic tasks.
 
 ### Xcode Plugin
-A plugin for automatically creating Core Data models from your Contentful content model. Read this to get up and running with it.<br>
+
+This plugin automatically creates Core Data models from your Contentful content model.
+
 [View on GitHub](https://github.com/contentful/ContentfulXcodePlugin)
 
-### ContentfulPersistence
-A library for making it easy to persist data retrieved from Contentful in Core Data or Realm.<br>
-[View on GitHub](https://github.com/contentful/contentful-persistence.objc)<br>
+### ContentfulPersistence (Objective-C)
+
+This Objective-C library makes it easier to persist data retrieved from Contentful into Core Data or other data stores.
+
+[View on GitHub](https://github.com/contentful/contentful-persistence.objc)
+
 [View the tutorial](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/)
 
-### ContentfulPersistenceSwift
-A library for making it easy to persist data retrieved from Contentful in Core Data or other persistence stores.<br>
-[View on GitHub](https://github.com/contentful/contentful-persistence.swift)<br>
+### ContentfulPersistence (Swift)
+
+This Swift library makes it easier to persist data retrieved from Contentful into Core Data or other data stores.
+
+[View on GitHub](https://github.com/contentful/contentful-persistence.swift)
+
 [View the tutorial](/developers/docs/ios/tutorials/using-delivery-api-with-swift/)
 
 ### Concorde
-A library for displaying progressive JPEG images on iOS.<br>
+
+This library helps you display progressive JPEGs with iOS.
+
 [View on GitHub](https://github.com/contentful-labs/Concorde)
 
-## Apps
-Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
-You can download them by looking for “Contentful” on the App Store.
+## iOS Sample apps
 
-### iPhone (iOS)
+You can use these example apps as inspiration for building your own iOS apps.
 
-#### Discovery App
-This app enables you to browse and preview your Contentful spaces.<br>
-[View on GitHub](https://github.com/contentful/discovery-app)<br>
+### Discovery App
+
+This app lets you browse and preview your Contentful spaces.
+
 [Download on the App Store](https://itunes.apple.com/us/app/contentful-discovery-cms-for/id892840015)
 
-#### Coffee Guide
-A generic app for shop guides. Uses GPS, Maps.<br>
-[View on GitHub](https://github.com/contentful-labs/Swiftful)
+[View on GitHub](https://github.com/contentful/discovery-app)
 
-#### Swiftful
-A demo for how to use Contentful in Swift.<br>
+### Coffee Guide
+
+An app that guides users to the nearest café.
+
 [View on GitHub](https://github.com/contentful/guide-app-ios)
 
-### Space template apps
-These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in the Contentful web app.
+#### Swiftful
 
-#### Blog
-Generic blog app connected to an example space in Contentful.<br>
-[View on GitHub](https://github.com/contentful/blog-app-ios)<br>
+A demo app that shows how to use Contentful with Swift and iOS.
+
+[View on GitHub](https://github.com/contentful-labs/Swiftful)
+
+## iOS App templates
+
+These example apps are the best way to start building with Contentful. They show you how to start a project based on example spaces available in the Contentful web app.
+
+### Blog
+
+A generic blog app connected to a Contentful example space.
+
 [Download on the App Store](https://itunes.apple.com/us/app/contentful-blog-showcase/id962456216)
 
-#### Gallery
-Generic gallery app connected to an example space in Contentful.<br>
-[View on GitHub](https://github.com/contentful/gallery-app-ios)<br>
+[View on GitHub](https://github.com/contentful/blog-app-ios)
+
+### Gallery
+
+A generic gallery app connected to a Contentful example space.
+
 [Download on the App Store](https://itunes.apple.com/us/app/contentful-gallery-showcase/id975142754)
 
-#### Product Catalogue
-Generic product catalogue / e-commerce app connected with an example space in Contentful.<br>
-[View on GitHub](https://github.com/contentful/product-catalogue-ios)<br>
+[View on GitHub](https://github.com/contentful/gallery-app-ios)
+
+### Product Catalogue
+
+A generic product catalogue / e-commerce app connected to a Contentful example space.
+
 [Download on the App Store](https://itunes.apple.com/us/app/contentful-product-catalogue/id963680410)
 
-### Apple Watch (watchOS)
+[View on GitHub](https://github.com/contentful/product-catalogue-ios)
 
-#### Brew
-A WatchKit app for finding bars near you, built on Contentful. [Read more.](/blog/2015/05/28/brew-app-for-apple-watch/)<br>
-[View on GitHub](https://github.com/contentful/ContentfulWatchKitExample)<br>
+## watchOS Sample apps
+
+You can use these example apps as inspiration for building your own watchOS apps.
+
+### Brew
+
+A watchOS app for finding bars near you. You can [read more about the app in this blog post](/blog/2015/05/28/brew-app-for-apple-watch/).
+
 [Download on the App Store](https://itunes.apple.com/us/app/brew-discover-craft-beer-pubs/id986830433)
 
-### Apple TV (tvOS)
+[View on GitHub](https://github.com/contentful/ContentfulWatchKitExample)
 
-#### TVFul
-Example for using the Contentful SDK for tvOS apps.<br>
+## tvOS
+
+### TVFul
+
+This example shows you how to use the Contentful SDK with tvOS apps.
+
 [View on GitHub](https://github.com/contentful/tvful)
