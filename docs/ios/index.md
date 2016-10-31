@@ -1,8 +1,6 @@
 ---
-page: ':docsPlatformsIos'
+page: :docsPlatformsIos
 ---
-
-# tbc
 
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
