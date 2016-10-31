@@ -143,7 +143,7 @@ A demo app that shows how to use Contentful with Swift and iOS.
 
 [View on GitHub](https://github.com/contentful-labs/Swiftful)
 
-### watchOS Sample apps
+### watchOS
 
 You can use these example apps as inspiration for building your own watchOS apps.
 
