@@ -43,7 +43,7 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 The Sync API allows you to keep a local copy of all content from a space up to date via delta updates. [This tutorial](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/) will show you how to use the Sync API with the Contentful JavaScript SDK.
 
-### Create and deploy your Express.js app Using Contentful
+### Create and deploy your Express.js app using Contentful
 
 [This guide](/developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/) shows you how to create and deploy an Express.js app that uses Contentful.
 

@@ -37,9 +37,9 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 [This guide](/developers/api-demo/swift/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggest next steps.
 
-### Getting started with the Content Delivery API SDK and Swift
+### Getting started with the Content Delivery API SDK and iOS
 
-These tutorials will walk you through the first steps using the Content Delivery API with a Java application.
+These tutorials will walk you through the first steps using the Content Delivery API with an iOS application.
 
 [View the Objective-C tutorial](/developers/docs/ios/tutorials/using-delivery-api-on-ios/)
 
@@ -65,7 +65,7 @@ This tutorial helps you understand how to persist data retrieved from the Conten
 
 ## Tools and integrations
 
-### Xcode Plugin
+### Xcode plugin
 
 This plugin automatically creates Core Data models from your Contentful content model.
 
@@ -99,7 +99,7 @@ You can use these example apps as inspiration for building your own apps.
 
 ### iOS
 
-#### Discovery App
+#### Discovery app
 
 This app lets you browse and preview your Contentful spaces.
 
@@ -123,7 +123,7 @@ A generic gallery app connected to a Contentful example space.
 
 [View on GitHub](https://github.com/contentful/gallery-app-ios)
 
-#### Product Catalogue
+#### Product catalogue
 
 A generic product catalogue / e-commerce app connected to a Contentful example space.
 
@@ -131,7 +131,7 @@ A generic product catalogue / e-commerce app connected to a Contentful example s
 
 [View on GitHub](https://github.com/contentful/product-catalogue-ios)
 
-#### Coffee Guide
+#### Coffee guide
 
 An app that guides users to the nearest café.
 
