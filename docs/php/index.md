@@ -5,7 +5,7 @@ page: :docsPlatformsPhp
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
 - [Tools](#tools-and-integrations)
-- [Example apps](#apps)
+- [Example apps](#example-apps)
 
 ## SDKs
 

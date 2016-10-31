@@ -5,7 +5,7 @@ page: :docsPlatformsJavascript
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
 - [Tools](#tools-and-integrations)
-- [Example apps](#apps)
+- [Example apps](#example-apps)
 
 ## SDKs
 
@@ -49,7 +49,7 @@ The Sync API allows you to keep a local copy of all content from a space up to d
 
 ## Example apps
 
-### Product Catalogue
+### Product catalogue
 
 This demo project shows how to build a frontend JavaScript based application with Contentful for a product catalogue, based on the Contentful starter product catalogue example space.
 
@@ -57,7 +57,7 @@ This demo project shows how to build a frontend JavaScript based application wit
 
 [View on GitHub](https://github.com/contentful/product-catalogue-js)
 
-### Photo Gallery
+### Photo gallery
 
 This single page application shows how to build a photo gallery app with [React](https://facebook.github.io/react/) connected to a Contentful space.
 
@@ -65,7 +65,7 @@ This single page application shows how to build a photo gallery app with [React]
 
 [View on GitHub](https://github.com/contentful/gallery-app-react)
 
-### Discovery App
+### Discovery app
 
 The Discovery App allows you to browse and preview your Contentful content.
 
