@@ -31,13 +31,13 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 ### API demo
 
-[This guide](/theelopers/api-demo/ruby/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggests next steps.
+[This guide](/developers/api-demo/ruby/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggest next steps.
 
-### Getting started with the Content Delivery API SDK
+### Getting started with the Content Delivery API SDK and Ruby
 
 [This tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/) will walk you through the first steps using the Content Delivery API with a Ruby application.
 
-### Getting started with the Content Management API SDK
+### Getting started with the Content Management API SDK and Ruby
 
 [This tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/) will walk you through the first steps using the Contentful Management API with a Ruby application.
 
