@@ -13,6 +13,12 @@ This guide will walk you through your first steps using Contentful within an Exp
 - [Git][12] installed
 - Basic Command Line Interface knowledge
 
+## Check out the final project
+
+You can already deploy the final project to Heroku and check it out. To do so click the herku deploy button
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/contentful/contentful_express_tutorial)   
+
 ## Start from a demo application
 
 First we'll start with a [demo project][3], which is a simple Express.js application using Contentful's 'Product Catalogue' template, so that you can see it running for yourself.
