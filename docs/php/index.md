@@ -55,7 +55,7 @@ This bundle helps you integrate Laravel with the Content Delivery API
 
 [View on GitHub](https://github.com/contentful/contentful-laravel)
 
-## App templates
+## Example apps
 
 These example apps are the best way to start building with Contentful. They show you how to start a project based on example spaces available in the Contentful web app.
 

@@ -33,7 +33,7 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 [This guide](/developers/api-demo/java/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggest next steps.
 
-### Getting started with the Content Delivery API SDK and Ruby
+### Getting started with the Content Delivery API SDK and Java
 
 [This tutorial](/developers/docs/android/tutorials/getting-started-with-contentful-and-android/) will walk you through the first steps using the Content Delivery API with a Java application.
 
@@ -93,7 +93,7 @@ A generic gallery app connected to a Contentful example space.
 
 [View on GitHub](https://github.com/contentful/gallery-app-android)
 
-### Product Catalogue
+### Product catalogue
 
 A generic product catalogue / e-commerce app connected to a Contentful example space.
 

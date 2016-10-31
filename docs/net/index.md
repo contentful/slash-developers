@@ -9,7 +9,7 @@ page: :docsPlatformsNet
 
 Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and their features.
 
-{. :note}
+{: .note}
 **Note**: We don't have an official .NET SDK, but if you would like to start developing, you can use the [HTTP endpoints](/developers/docs/concepts/apis/) or the third party SDK listed below, which is **not supported**.
 
 ### Content Delivery API SDK
