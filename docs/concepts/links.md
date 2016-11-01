@@ -505,8 +505,8 @@ Here are some examples, used in the context of an entry like this:
 
 ~~~json
 [
-  {"sys": {"type": "Link", "linkType": "Entry", "id": "nice-food"}},
-  {"sys": {"type": "Link", "linkType": "Entry", "id": "such-doge"}},
-  {"sys": {"type": "Link", "linkType": "Entry", "id": "wow"}}
+  {"sys": {"type": "Link", "linkType": "Asset", "id": "nice-food"}},
+  {"sys": {"type": "Link", "linkType": "Asset", "id": "such-doge"}},
+  {"sys": {"type": "Link", "linkType": "Asset", "id": "wow"}}
 ]
 ~~~
