@@ -9,15 +9,15 @@ Each field type corresponds to a JSON type, though there are more field types th
 {:.table}
 Name |JSON type|Description|Limits|Example
 -------|--------------|-----------|------------|------------
-Symbol |String |Basic list of characters.|Maximum length is 256.| `"The title"`
+Symbol|String|Basic list of characters.|Maximum length is 256.|`"The title"`
 Text <sup>1</sup>|String |Same as Symbol, but filterable via full-text search.|Maximum length is 50,000.|`"This is a post and ..."`
-Integer|Number |Number type without decimals.|Values from -2 <sup>53</sup> to 2 <sup>53</sup>. | `42`
-Number |Number |Number type with decimals. ||`3.14`
-Date <sup>2</sup> |String |Date/time in ISO 8601 format.||`"2015-11-06T09:45:27"`
+Integer|Number|Number type without decimals.|Values from -2 <sup>53</sup> to 2 <sup>53</sup>.|`42`
+Number|Number|Number type with decimals.|Values from -2 <sup>53</sup> to 2 <sup>53</sup>.|`3.14`
+Date <sup>2</sup>|String|Date/time in ISO 8601 format.||`"2015-11-06T09:45:27"`
 Boolean|Boolean|Flag, `true` or `false`||`true`
-Link |Object |A reference to an entry or asset. The type of the referenced item is defined by the `linkType` property. See [links](https://www.contentful.com/developers/docs/concepts/links/) for more information|||
-Array|Array|List of values. See [array fields](#array-fields) below.||`["name1", "name2", ...]`
-Object|Object|Arbitrary object.||`{ "foo": "bar" }`
+Link |Object|A reference to an entry or asset. The type of the referenced item is defined by the `linkType` property. See [links](https://www.contentful.com/developers/docs/concepts/links/) for more information|||
+Array|Array|List of values. See [array fields](#array-fields) below.|Limited by entry size.|`["name1", "name2", ...]`
+Object|Object|Arbitrary object.|Limited by entry size.|`{ "foo": "bar" }`
 
 1. **Text**: Fields do not support ordering or strict equality.
 2. **Date**: Fields must be ISO8601 formatted, but do not require a time portion.
