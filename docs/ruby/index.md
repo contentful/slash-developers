@@ -5,69 +5,80 @@ page: :docsPlatformsRuby
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
 - [Tools](#tools-and-integrations)
-- [Example apps](#apps)
+- [Example apps](#example-apps)
 
 ## SDKs
-Our SDKs gives you immediate access to our APIs and its features.
 
-### CDA - Content Delivery API
-Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
-[View on GitHub](https://github.com/contentful/contentful.rb)<br>
+Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and their features.
+
+### Content Delivery API SDK
+
+This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.
+
+[View on GitHub](https://github.com/contentful/contentful.rb)
+
 [API reference](http://www.rubydoc.info/gems/contentful/)
 
-### CMA - Content Management API
-This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
-[View on GitHub](https://github.com/contentful/contentful-management.rb)<br>
+### Content Management API SDK
+
+This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content. The API also offers tools for managing editorial teams and cooperation.
+
+[View on GitHub](https://github.com/contentful/contentful-management.rb)
+
 [API reference](http://www.rubydoc.info/gems/contentful-management/)
 
 ## Tutorials
-Step by step guides to help you accomplishing specific tasks.
 
 ### API demo
-This guide shows how to make a call to the Contentful API, explains what the response looks like, and suggests some relevant next steps.<br>
-View in [Ruby](/developers/api-demo/ruby/) |
-[cURL](/developers/api-demo/curl/)
+
+[This guide](/developers/api-demo/ruby/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggest next steps.
+
+### Getting started with the Content Delivery API SDK and Ruby
+
+[This tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/) will walk you through the first steps using the Content Delivery API with a Ruby application.
+
+### Getting started with the Content Management API SDK and Ruby
+
+[This tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/) will walk you through the first steps using the Contentful Management API with a Ruby application.
+
+### Create your own Rails application using Contentful
+
+[This guide](/developers/docs/ruby/tutorials/create-your-own-rails-app/) shows you how to create a Ruby on Rails application from scratch and integrate it with Contentful.
 
 ### Create and deploy your Rails application using Contentful
-A guide to quickly start and run with Contentful and Ruby on Rails.<br>
-[View the tutorial](/developers/docs/ruby/tutorials/full-stack-getting-started/)
 
-### Getting started with the CDA SDK in Ruby
-This tutorial will walk you through your first steps in using Contentful within your Ruby application.<br>
-[View the tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/)
-
-### Getting started with the CMA SDK in Ruby
-This tutorial will walk you through your first steps in using Contentful Management API within your Ruby application.<br>
-[View the tutorial](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/)
-
-### Create your own Rails Application using Contentful
-A guide to create a Ruby on Rails application from scratch and integrate it with Contentful.<br>
-[View the tutorial](/developers/docs/ruby/tutorials/create-your-own-rails-app/)
-
-### Using contentful_bootstrap for keeping up with your spaces
-To get you jump-started in Contentful using Contentful Bootstrap.<br>
-[View the tutorial](/developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)
+[This guide](/developers/docs/ruby/tutorials/full-stack-getting-started/) explains how to use Contentful with a Ruby on Rails application.
 
 ## Tools and integrations
-Here are some tools developed by our team to help you completing some basic tasks.
 
-### Rails integration
-A collection of useful things to help make it easier to integrate Contentful into your Rails app.<br>
-[View on GitHub - Contentful Rails](https://github.com/contentful/contentful_rails)<br>
-[View on GitHub - Contentful Model](https://github.com/contentful/contentful_model)<br>
-[Tutorial](/blog/2015/02/23/contentfulmodel-and-contentfulrails-ruby-gems-help-building-ruby-apps-faster/)
+### Contentful bootstrap command line tool
 
-### Contentful Webhook Listener
-A simple HTTP webserver with pluggable behavior for listening to API webhooks.<br>
+[This tool](https://github.com/contentful/contentful-bootstrap.rb) will help you create, populate and manage your Contentful spaces from the command line. [Read this tutorial](/developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/) to learn more about how to use the tool.
+
+### Contentful webhook listener
+
+A simple HTTP webserver for listening to API webhooks that you can override to suit your own behaviors.
+
 [View on GitHub](https://github.com/contentful/contentful-webhook-listener.rb)
 
-## Apps
-Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
+### Rails integration
 
-### Rails Product Demo
-Simple Rails and Contentful application.<br>
-[View on GitHub - Contentful Rails](https://github.com/contentful/contentful_rails_tutorial)<br>
+A collection of useful gems that make it easier to integrate Contentful into a Rails app. [Read this blog post](/blog/2016/07/21/contentful-on-rails/) to find out how to use them in your applications.
 
-### Sinatra Product Demo
-Simple Sinatra and Contentful Application.<br>
-[View on GitHub - Contentful Sinatra](https://github.com/contentful/contentful_sinatra_tutorial)<br>
+[View Contentful Rails on GitHub](https://github.com/contentful/contentful_rails)
+
+[View Contentful Model on GitHub](https://github.com/contentful/contentful_model)
+
+## Example apps
+
+### Rails product demo
+
+A Rails application that connects to a Contentful product catalogue example space.
+
+[View on GitHub](https://github.com/contentful/contentful_rails_tutorial)
+
+### Sinatra product demo
+
+A Sinatra application that connects to a Contentful product catalogue example space.
+
+[View on GitHub](https://github.com/contentful/contentful_sinatra_tutorial)

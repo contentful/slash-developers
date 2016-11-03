@@ -5,82 +5,104 @@ page: :docsPlatformsAndroid
 - [SDKs](#sdks)
 - [Tutorials](#tutorials)
 - [Tools](#tools-and-integrations)
-- [Example apps](#apps)
+- [Example apps](#example-apps)
 
 ## SDKs
-Our SDKs give you immediate access to our APIs and its features.
 
-###CDA - Content Delivery API<br>
-Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.<br>
-[View on GitHub](https://github.com/contentful/contentful.java)<br>
+Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and their features.
+
+### Content Delivery API SDK
+
+This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.
+
+[View on GitHub](https://github.com/contentful/contentful.java)
+
 [API reference](https://contentful.github.io/contentful.java/)
 
-###CMA - Content Management API<br>
-This SDK allows you to create, edit & manage content in the cloud and publish it anywhere via powerful API. Contentful also offers tools for managing editorial teams and enabling cooperation between organizations.<br>
-[View on GitHub](https://github.com/contentful/contentful-management.java)<br>
+### Content Management API SDK
+
+This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content. The API also offers tools for managing editorial teams and cooperation.
+
+[View on GitHub](https://github.com/contentful/contentful-management.java)
+
 [API reference](http://contentful.github.io/contentful-management.java/)
 
 ## Tutorials
-Step by step guides to help you accomplishing specific tasks.
 
 ### API demo
-This guide shows how to make a call to the Contentful API, explains what the response looks like, and suggests some relevant next steps.<br>
-View in [Java](/developers/api-demo/java/) |
-[cURL](/developers/api-demo/curl/)
 
-### Getting started with the CDA
-This walkthrough will help you getting started with your first basic hello world style Android app of using Contentful with a demo space.
-Using the Content Delivery API on Android.<br>
-[View the tutorial](/developers/docs/android/tutorials/getting-started-with-contentful-and-android/)
+[This guide](/developers/api-demo/java/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggest next steps.
+
+### Getting started with the Content Delivery API SDK and Java
+
+[This tutorial](/developers/docs/android/tutorials/getting-started-with-contentful-and-android/) will walk you through the first steps using the Content Delivery API with a Java application.
 
 ### Offline persistence with Vault on Android
-Vault is an Android library that simplifies persistence of data from Contentful via SQLite. It lets you define Java representations for your Contentful models.<br>
+
+[Vault](https://github.com/contentful/vault) is an Android library that lets you define Java representations for your Contentful models and simplifies the persistence of data from Contentful via SQLite.
+
 [View the tutorial](/developers/docs/android/tutorials/offline-persistence-with-vault/)
 
-### Advanced tutorials
-Those tutorials are targeting more complex aspects of this SDK:
+### Type retrieval
 
-- [Type retrieval](/developers/docs/android/tutorials/advanced-types/)
-- [Filtering and searching](/developers/docs/android/tutorials/advanced-filtering-and-searching/)
+[This tutorial](/developers/docs/android/tutorials/advanced-types/) helps you understand how to filter fetching entries from Contentful based on content and asset types.
+
+### Filtering and searching
+
+[This tutorial](/developers/docs/android/tutorials/advanced-fetchedng-andContentfulg/) shows how to filter, search and order entries fetched from Contentful.
 
 ## Tools and integrations
-Here are some tools developed by our team to help you completing some basic tasks.
 
-### IntelliJ/Android Studio plugin
-Generates model classes from your Contentful content model.<br>
+### IntelliJ / Android Studio plugin
+
+This plugin generates model classes automatically from your Contentful content model.
+
 [View on GitHub](https://github.com/contentful/cf-generator-intellij)
 
 ### Vault
-A library for making it easy to persist data retrieved from Contentful in SQLite.<br>
+
+A library to simplify persisting data retrieved from Contentful in SQLite.
+
 [View on GitHub](https://github.com/contentful/vault)
 
-## Apps
-Links to the source code of our in house built apps. Use them as examples when building your own product with Contentful.
-You can download them by looking for “Contentful” on Google Play.
+## Example apps
+
+These example apps are the best way to start building with Contentful. They show you how to start a project based on example spaces available in the Contentful web app.
 
 ### Discovery App
-This app enables you to browse and preview your Contentful spaces on iOS.<br>
-[View on GitHub](https://github.com/contentful/discovery-app-android)<br>
+
+This app lets you browse and preview your Contentful spaces.
+
 [Download on Google Play](https://play.google.com/store/apps/details?id=discovery.contentful)
 
-### Space template apps
-These apps are the best way to start building your platform with Contentful. They show you how to start your project based on example templates available in the Contentful web app.
+[View on GitHub](https://github.com/contentful/discovery-app-android)
 
-#### Blog
-Generic blog app connected to an example space in Contentful.<br>
-[View on GitHub](https://github.com/contentful/blog-app-android)<br>
+### Blog
+
+A generic blog app connected to a Contentful example space.
+
 [Download on Google Play](https://play.google.com/store/apps/details?id=blog.contentful)
 
-#### Gallery
-Generic gallery app connected to an example space in Contentful.<br>
-[View on GitHub](https://github.com/contentful/gallery-app-android)<br>
+[View on GitHub](https://github.com/contentful/blog-app-android)
+
+### Gallery
+
+A generic gallery app connected to a Contentful example space.
+
 [Download on Google Play](https://play.google.com/store/apps/details?id=gallery.templates.contentful)
 
-#### Product Catalogue
-Generic product catalogue / e-commerce app connected with an example space in Contentful.<br>
-[View on GitHub](https://github.com/contentful/product-catalogue-android)<br>
+[View on GitHub](https://github.com/contentful/gallery-app-android)
+
+### Product catalogue
+
+A generic product catalogue / e-commerce app connected to a Contentful example space.
+
 [Download on Google Play](https://play.google.com/store/apps/details?id=catalogue.contentful)
 
+[View on GitHub](https://github.com/contentful/product-catalogue-android)
+
 ### Contentful Android Cardboard
-Example to demonstrate how to use Google's Cardboard with Contentful.<br>
+
+A example to show how to use Google Cardboard with Contentful.
+
 [View on GitHub](https://github.com/contentful-labs/contentful-cardboard)
