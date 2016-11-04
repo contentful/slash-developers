@@ -13,7 +13,7 @@ before_install:
 
 script:
   - make -C apiary test
-  - mdspell -r -n -a --en-us '**/*.md' '!**/node_modules/**/*.md'
+  - mdspell -r -n -a --en-us '**/*.md' '!**/node_modules/**/*.md' && exit 1
 
 cache:
   directories:
