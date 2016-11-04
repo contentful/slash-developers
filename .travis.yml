@@ -26,7 +26,3 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
-
-matrix:
-  allow_failures:
-  - script: mdspell -r -n -a --en-us '**/*.md' '!**/node_modules/**/*.md'
