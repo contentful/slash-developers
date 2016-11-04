@@ -452,7 +452,9 @@ Contentful represents link values as objects containing a `sys` property with th
 {:.table}
 Field |Type |Description
 ------------|------|------------------------
-sys.type |String|Always "Link". sys.linkType|String|Type of linked Resource. sys.id |String|ID of linked Resource.
+sys.type |String|Always "Link".
+sys.linkType|String|Type of linked Resource.
+sys.id |String|ID of linked Resource.
 
 Here are some examples, used in the context of an entry like this:
 
