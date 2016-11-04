@@ -10,7 +10,7 @@ Whenever a matching event occurs, a webhook calls a specified URI to react. For 
 
 ### With the web app
 
-In the top navigation bar, open _Settings_ → _Webhooks_. Click _Add webhook_, configure the remote host, and click _save_.
+In the top navigation bar, open _Settings_ → _Webhooks_. Click _Add webhook_, configure the remote host, and click _Save_.
 
 {: .img}
 ![Creating a new webhook](https://images.contentful.com/sxx7gi06ja5s/1Gn2WOuwG42K6A08gwY0Ai/300653f7e0d89081203a5c3f0f36c020/webhook__new_webhook.png)
@@ -33,12 +33,12 @@ Select what events trigger the webhook
 
 Create a webhook by sending the settings for the webhook in a body with your API call, for example, the following:
 
-```bash
+~~~bash
 curl -X POST "https://api.contentful.com/spaces/<SPACE_ID>/webhook_definitions"
   -d '{"url": "<URL>", "name": "foo", "topics": ["*.*"]}'
   -H 'Authorization:Bearer <API_KEY>'
   -H 'Content-Type: application/vnd.contentful.management.v1+json'
-```
+~~~
 
 Will create a new webhook in the specified space with a `url`, `name`, and `topics` which match the configuration options mentioned above.
 
@@ -59,11 +59,11 @@ The _Webhooks_ overview screen shows a list of the most recent webhook calls mad
 
 To list all webhooks in a space, use the following endpoint:
 
-```bash
+~~~bash
 curl -X GET "https://api.contentful.com/spaces/<SPACE_ID>/webhook_definitions"
 -H "Authorization: Bearer <API_KEY>"
 -H "Content-Type: application/vnd.contentful.management.v1+json"
-```
+~~~
 
 [Find more details on listing the webhooks in a space with the API in our reference docs](/developers/docs/references/content-management-api/#/reference/webhooks/webhooks-collection/get-all-webhooks-of-a-space).
 
@@ -83,11 +83,11 @@ Click the _View details_ link of any webhook in the overview screen to get a det
 
 The following endpoint will return the status of recent calls made by a webhook and any errors.
 
-```bash
+~~~bash
 curl -X GET "https://api.contentful.com/spaces/<SPACE_ID>/webhooks/<WEBHOOK_ID>/calls"
 -H "Authorization: Bearer <API_KEY>"
 -H "Content-Type: application/vnd.contentful.management.v1+json"
-```
+~~~
 
 [Find more details on getting the activity log of a webhook with the API in our reference docs](/developers/docs/references/content-management-api/#/reference/webhook-calls/webhook-call-overview/get-an-overview-of-recent-calls).
 
