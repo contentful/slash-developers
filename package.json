@@ -1,0 +1,11 @@
+{
+  "name": "slash-developers",
+  "private": true,
+  "devDependencies": {
+    "markdown-spellcheck": "^0.10.0"
+  },
+  "scripts": {
+    "spellcheck-main": "mdspell -r -n -a --en-us docs/**/*.md",
+    "spellcheck-apiary": "mdspell -r -n -a --en-us apiary/**/*.apib"
+  }
+}
