@@ -1,0 +1,11 @@
+{
+  "name": "slash-developers",
+  "private": true,
+  "devDependencies": {
+    "write-good": "^0.9.0"
+  },
+  "scripts": {
+    "write-good-main": "write-good docs/**/*.md",
+    "write-good-apiary": "write-good apiary/**/*.apib"
+  }
+}

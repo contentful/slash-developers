@@ -9,11 +9,11 @@ before_install:
   - mv Spelling-and-style-sheet/.spelling ./.spelling
   - sudo apt-get install jq
   - make -C apiary install
-  - npm i write-good -g
 
 script:
   - make -C apiary test
-  - write-good docs/**/*.md
+  - npm run-script write-good-main; exit 0
+  - npm run-script write-good-apiary; exit 0
 
 cache:
   directories:
@@ -26,3 +26,8 @@ deploy:
   skip_cleanup: true
   on:
     branch: master
+
+notifications:
+  slack: contentful:o4vrtCfCCvlN0ebhJ3ypu2je
+  on_success: always
+  on_failure: always
