@@ -40,7 +40,7 @@ As an introduction to writing Xcode plugins, you can check out the writing plugi
 
 This plugin is generally rather small, because the majority of the work does not involve Xcode. The class [XcodeProjectManipulation][6] demonstrates how to interact with the project file using the `PBXProject` class from the `DevToolsCore` framework.
 
-The Core Data model generation revolves around two parts and is encapsulated in a separate commandline utility. This allows its use in buildscripts and also avoids problems regarding the use of Swift depedencies in a plugin written in Objective-C.
+The Core Data model generation revolves around two parts and is encapsulated in a separate commandline utility. This allows its use in build scripts and also avoids problems regarding the use of Swift dependencies in a plugin written in Objective-C.
 
 The first part is converting from the content model to a `NSManagedObjectModel` instance, accomplished by the [ContentfulModelGenerator][7]. A managed object model consists of `NSEntityDescription` instances, which in turn are a container for `NSAttributeDescription` and `NSRelationshipDescription` objects. The latter is the most critical part, because we have to ensure that each relationship is typed and has an inverse to avoid any warnings when using the model. This is done by introspecting the validations on your content model and by creating missing inverse relations where needed.
 
