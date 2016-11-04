@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/contentful/slash-developers.svg?branch=master)](https://travis-ci.org/contentful/slash-developers)
 
-This repo contains the raw content for `www.contentful.com/developers/`
+This repository contains the raw content for `www.contentful.com/developers/`
 
 ## Usage
 
@@ -24,7 +24,7 @@ Note: to reduce manual duplication of content between the different blueprints, 
 
 2. The rest of the documentation consists of Markdown files which will end up on the
 Contentful website, via a Git submodule in the
-[marketing repo](https://github.com/contentful/marketing-website).
+[marketing repository](https://github.com/contentful/marketing-website).
 
 3. To make the lists of SDKs and projects more maintainable, there's a script:
 
@@ -56,4 +56,4 @@ sample values and comparing the APIs response with the MSON defined for this req
 Note: The tests only affect the blueprint used for the documentation on Apiary. Files in the `docs/` directory are not tested in any way.
 
 ## Apiary customization
-In order to understand how we include and theme the Apiary references, please see the [apiary_customization.md](https://github.com/contentful/marketing-website/blob/master/apiary_customization.md) file in the marketing website repo.
+In order to understand how we include and theme the Apiary references, please see the [apiary_customization.md](https://github.com/contentful/marketing-website/blob/master/apiary_customization.md) file in the marketing website repository.

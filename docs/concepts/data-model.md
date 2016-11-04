@@ -18,7 +18,7 @@ Each _content type_ consists of a set of up to 50 fields that you define, these 
 - **Reference**: To model relationships between content, including other content types. For example, linking a blog to a category.
 
 {: .img}
-![New fields dialogue](add-new-fields.png)
+![New fields dialogue showing field types you can select](https://images.contentful.com/tz3n7fnw4ujc/5T9aAqcOrKOmGgYSwGq22s/530cf1377a1a16709df46fa4b3f2b106/0F75057E-1696-4631-86A6-AAC78904098F.png_dl_1)
 
 Fields also contain metadata, such as validations and widget appearance.
 
@@ -29,7 +29,7 @@ You can see how Contentful represents your content model in JSON by clicking the
 If you want to hide fields from appearing in JSON output, you can disable it by clicking the three dots to the right of the field.
 
 {: .img}
-![Disable Field](disable-field.png)
+![Disable Field](https://images.contentful.com/tz3n7fnw4ujc/3OjFlMBvmEu86ig0Yeoi6m/f6df20bb8baca265f34176295c753187/ECFFF57E-2FB6-44D5-B677-F0B58B3F43B4.png_dl_1)
 
 This is useful for content information that is important to writers and editors, but not for public consumption.
 

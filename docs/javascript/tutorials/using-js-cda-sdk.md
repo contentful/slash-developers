@@ -41,7 +41,7 @@ var contentful = require('contentful')
 
 If you are running your code in a web page, there are multiple ways you can get it ready to use.
 
-The quickest and easiest way is to use the pre built and minified JavaScript file from a CDN:
+The quickest and easiest way is to use the pre-built and minified JavaScript file from a CDN:
 
 ~~~html
 <script src="https://unpkg.com/contentful@latest/browser-dist/contentful.min.js"></script>
@@ -172,7 +172,7 @@ client.getEntries({include: 0})
 })
 ~~~
 
-You can also turn off link resolultion when you initialize the SDK or with a `resolveLinks` property on every request.
+You can also turn off link resolution when you initialize the SDK or with a `resolveLinks` property on every request.
 
 Check the [links reference page](https://www.contentful.com/developers/docs/concepts/links/) for more information on linked entries.
 

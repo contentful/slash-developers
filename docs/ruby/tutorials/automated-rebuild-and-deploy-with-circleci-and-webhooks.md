@@ -49,7 +49,7 @@ Create a file called `automated_build.sh` and include the following:
 # Copy static site
 CWD=`pwd`
 
-# Clone Pages repo
+# Clone Pages repository
 cd /tmp
 git clone YOUR_PAGES_REPO build
 
@@ -59,7 +59,7 @@ git clone YOUR_PAGES_REPO build
 cd $CWD
 bundle exec middleman contentful --rebuild
 
-# Push newly built repo
+# Push newly built repository
 cp -r $CWD/build/* /tmp/build
 
 cd /tmp/build
@@ -78,7 +78,7 @@ git push -f origin YOUR_PAGES_BRANCH
 # Copy static site
 CWD=`pwd`
 
-# Clone Pages repo
+# Clone Pages repository
 cd /tmp
 git clone YOUR_PAGES_REPO build
 # cd build && git checkout -b YOUR_BRANCH origin/YOUR_BRANCH # If not using master
@@ -88,7 +88,7 @@ cd $CWD
 bundle exec jekyll contentful
 bundle exec jekyll build
 
-# Push newly built repo
+# Push newly built repository
 cp -r $CWD/_build/* /tmp/build # or $CWD/_site
 
 cd /tmp/build
@@ -101,7 +101,7 @@ git commit -m "Automated Rebuild"
 git push -f origin YOUR_PAGES_BRANCH
 ~~~
 
-> Make sure your CircleCI machine has access to your Pages repo.
+> Make sure your CircleCI machine has access to your Pages repository.
 > This requires adding SSH Keys to the CircleCI machine and configuring them on GitHub.
 
 ## Setup Circle build steps

@@ -31,7 +31,7 @@ simplest. These will get you started to consume content as fast as possible.
 
 ### Contentful as a View Helper
 
-If your project uses a single Contentful Space and reuses content accross multiple pages that are not necessarily tied to
+If your project uses a single Contentful Space and reuses content across multiple pages that are not necessarily tied to
 your models, you may want to use this approach. It will let you use your Contentful client across your views.
 
 On `app/helpers/application_helper.rb`:

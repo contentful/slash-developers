@@ -2,17 +2,22 @@
 page: :docsToolsExtensions
 ---
 
+These extensions add extra functionality to Contentful, you can find detailed instructions in each individual GitHub repository.
+
 ## Contentful Scheduler
 
-This gem provides automated scheduled entry publishing using the webhooks API.<br>
+This Ruby gem provides automated scheduled entry publishing using our [webhooks API](/developers/docs/references/content-management-api/#/reference/webhooks).
+
 [View on GitHub](https://github.com/contentful/contentful-scheduler.rb)
 
 ## Contentful Moderator
 
-Create moderated authoring workflows for your entries.<br>
+This Ruby gem provides moderated authoring workflows for your entries.
+
 [View on GitHub](https://github.com/contentful/contentful-moderator.rb)
 
 ## Contentful Social
 
-Post directly to social networks when publishing your entries.<br>
+This Ruby gem provides the ability to post directly to social networks when publishing your entries.
+
 [View on GitHub](https://github.com/contentful/contentful-social.rb)
