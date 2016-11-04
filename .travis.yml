@@ -12,8 +12,8 @@ before_install:
 
 script:
   - make -C apiary test
-  - npm spellcheck-main
-  - npm spellcheck-apiary
+  - npm run-script spellcheck-main
+  - npm run-script spellcheck-apiary
 
 cache:
   directories:
