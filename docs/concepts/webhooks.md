@@ -36,7 +36,7 @@ Create a webhook by sending the settings for the webhook in a body with your API
 ~~~bash
 curl -X POST "https://api.contentful.com/spaces/<SPACE_ID>/webhook_definitions"
   -d '{"url": "<URL>", "name": "foo", "topics": ["*.*"]}'
-  -H 'Authorization:Bearer <API_KEY>'
+  -H 'Authorization: Bearer <API_KEY>'
   -H 'Content-Type: application/vnd.contentful.management.v1+json'
 ~~~
 
