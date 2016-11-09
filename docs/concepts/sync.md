@@ -15,6 +15,8 @@ Using the Sync API, applications sync periodically, syncing every few hours when
 
 To enable delta updates, Contentful provides [a synchronization endpoint](/developers/docs/references/content-delivery-api/#/reference/synchronization) to the Content Delivery API. This endpoint delivers only new and changed content and notifies about deleted content. It will never transfer duplicate content the client has received before.
 
+For mobile applications pre-packaging the data of an an initial sync into the application might be adviced. By keeping the pre-packaged data updated with every release of your application, initial synchronization can be optimized.
+
 ## The upside
 
 Syncing with delta updates has the following advantages:
@@ -30,7 +32,8 @@ The synchronization endpoint will always return the content of a space or a spec
 
 - If users only want to see the newest content, it would be wasteful to download everything immediately. In this case, it might be better to only fetch selected content based on the date, using search.
 - Because the Sync API retrieves all localized content, it might be better to use the delivery API to retrieve results of a single locale.
-- Following the initial sync, deleted entries will be transferred, which may unnecessarily lengthen each response.
+- Following the initial sync, deleted entries will be transferred as tombstones, which may lengthen each response.
+- The synchronization endpoint delivers a maximum of 100 items per page. An initial sync of very large data sets might need multiple requests to complete.
 
 ## Usage
 
