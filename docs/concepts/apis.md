@@ -11,7 +11,7 @@ Contentful is an API first content management system, offering four REST APIs fo
 
 ## Content Delivery API
 
-The Content Delivery API (CDA), available at _<https://cdn.contentful.com>_, is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.
+The Content Delivery API (CDA), available at _https://cdn.contentful.com_, is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.
 
 The API is available via a globally distributed content delivery network. The server closest to the user serves all content, both JSON and binary. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple global data centers also greatly improves the availability of content.
 
