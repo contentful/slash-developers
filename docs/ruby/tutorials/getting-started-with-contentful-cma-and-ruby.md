@@ -42,7 +42,7 @@ And each author entry will have the following fields:
 It is always a good idea to plan ahead when designing the model for your content types,
 since changing it after creating entries can be a lot of work.
 For a better understanding of how to structure your data,
-we recommend our [Content Modelling Guide][1]
+we recommend our [Content Modeling Guide][1]
 
 When using media assets in Contentful keep in mind a simple rule of thumb:
 a single asset does not require a separate content type, since it is handled

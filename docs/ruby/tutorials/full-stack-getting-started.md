@@ -52,7 +52,7 @@ Everything is now set up. You can view your new data by opening [_http://localho
 
 It should look something like this:
 
-![Rails Demo Application](./default_website.png)
+![Rails Demo Application](https://images.contentful.com/tz3n7fnw4ujc/5dDie9nWkwKWAaqcIWmoSU/ad1878388550c6f8e7821675451d366d/A6D4F97E-7975-4FA8-9AD6-7571774A06EE.png_dl_1)
 
 ### Using your own content
 
@@ -69,7 +69,7 @@ You can create your own custom data by following these steps:
     - _Content type_: Add the Product's Content Type ID from _[the Contentful web app][13] > APIs > Content model explorer > Product > Identifier_.
   - Your space will be now displayed in your application
 
-![Keys Page](keys_and_ids.png)
+![Keys Page](https://images.contentful.com/tz3n7fnw4ujc/3NHMiPiuh2Sgo0KYcc4UqK/9041b5ea8c1a703e7764ecc27f8badbd/3F7D8F12-EE78-4C79-93A7-1A964B285262.png_dl_1)
 
 Next in the _[Contentful web app][13] > Content_:
 
@@ -108,7 +108,7 @@ heroku addons:create heroku-postgresql:hobby-dev
 
 Replace `VALUE_OBTAINED_FROM_YOUR_HEROKU_PG_CONFIG` with the database name in your [Heroku Database's Dashboard][20]. You can find the name at _[Heroku Database Dashboard][20] > Your Postgres instance > Database_.
 
-![Heroku Database Name](./database_name.png)
+![Heroku Database Name](https://images.contentful.com/tz3n7fnw4ujc/3RfC9ZLwQg64Kw2MUYwiqQ/992ae696db96883c00eeb33d08727595/317AD4A3-90AE-4422-89C2-DFB3BE0BFB25.png_dl_1)
 
 - Commit your change:
 

@@ -2,45 +2,34 @@
 page: :docsToolsSpaceManagement
 ---
 
-## Data import tools
+These tools will help you import and manage entries in your spaces.
+
+## Data import
 
 You can import data from other systems into Contentful using our [contentful-importer.rb](https://github.com/contentful/contentful-importer.rb) gem.
 
-The importer is using a flexible input format for which you can write your own exporters, but we also provide exporters for:
+The importer uses a flexible input format that you can write your own exporters for, we provide exporters for:
 
 - [Drupal](https://github.com/contentful/drupal-exporter.rb)
 - [SQL databases](https://github.com/contentful/database-exporter.rb)
 - [WordPress](https://github.com/contentful/wordpress-exporter.rb)
 
-### Tutorials
+[Read this tutorial](/developers/docs/tutorials/general/import-and-export/) to learn how to export content from the systems listed above and import it into your Contentful spaces.
 
-- [Import and export](/developers/docs/tutorials/general/import-and-export/)<br>
-By the end of this tutorial, you will be able to seamlessly shift to Contentful and enjoy all its benefits, spending as little time as possible dealing with issues.
+## Contentful space sync
 
-- [Exporting from Drupal](/blog/2015/03/09/exporting-content-from-wordpress-drupal-or-elsewhere-and-importing-in-contentful/)
+This tool allows you to synchronize entries from one Contentful space to another. You can use this tool to generate your development and staging spaces. [Read this tutorial](/developers/docs/tutorials/general/using-contentful-space-sync/) for more details on how to use the tool.
 
-## Contentful Space Sync
+[View on GitHub](https://github.com/contentful/contentful-space-sync)
 
-This tool allows you to perform a one way synchronization from one Contentful space to another. Use this tool to generate your development and staging spaces.<br>
-[View on GitHub](https://github.com/contentful/contentful-space-sync)<br>
-[Read the tutorial](/developers/docs/tutorials/general/using-contentful-space-sync/)<br>
+## Contentful link cleaner
 
-## Contentful Link Cleaner
+If you delete an entry linked to another entry, then you will have loose references to non-existent entries. This tool cleans up these links.
 
-When you have a link to an entry or asset on a published entry, if you delete the linked entry the entry that links to it will have a reference to a non existing entity. This tool cleans up unresolved entry links in Contentful spaces.<br>
 [View on GitHub](https://github.com/contentful/contentful-link-cleaner)
 
-## Contentful Bootstrap
+## Contentful bootstrap
 
-To get you jump-started in Contentful using Contentful Bootstrap. We also have a tutorial.<br>
-[View on GitHub](https://github.com/contentful/contentful-bootstrap.rb)<br>
-[Read the tutorial](/developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/)<br>
+This Ruby gem gets you started using Contentful with one command, creating the spaces, entries and more with one command. [Read this tutorial](/developers/docs/ruby/tutorials/using-contentful-bootstrap-for-keeping-up-with-your-spaces/) for more details.
 
-## Third party tools
-
-Please notice that this library is not officially supported by Contentful and may be incomplete, but we've at least tried it out.
-If you want to check all of our non supported SDKs and tools, check out our repository on [GitHub](https://github.com/contentful-labs/awesome-contentful).
-
-## commercetools
-A Swift script which enables syncing content from commercetools to Contentful<br>
-[View on GitHub](https://github.com/contentful-labs/Cube)
+[View on GitHub](https://github.com/contentful/contentful-bootstrap.rb)

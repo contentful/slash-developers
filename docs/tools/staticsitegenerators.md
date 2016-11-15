@@ -2,49 +2,58 @@
 page: :docsToolsStaticSiteGenerators
 ---
 
-## Static site generators
+We love static sites and have plugins to support three of our favorites.
 
-We love static sites.
+## Middleman
 
-There are three plugins for using Contentful with the major static site generators and one example using AWS Lambda:
+[Middleman](https://middlemanapp.com/) is a Ruby based static site generator, and this plugin will help you manage your Contentful content.
 
-### Middleman
-Use Middleman, a static site generator, and manage content with Contentful<br>
-[View on GitHub](https://github.com/contentful/contentful_middleman)<br>
-[View examples](https://github.com/contentful/contentful_middleman_examples)<br>
+[View on GitHub](https://github.com/contentful/contentful_middleman)
 
-### Jekyll
-An extension for static site generator Jekyll that pulls content from Contentful<br>
-[View on GitHub](https://github.com/contentful/jekyll-contentful-data-import)<br>
-[View examples](https://github.com/contentful/contentful_jekyll_examples)<br>
+[View examples](https://github.com/contentful/contentful_middleman_examples)
+
+## Jekyll
+
+[Jekyll](https://jekyllrb.com/) is a Ruby based static site generator, and this plugin pulls content from Contentful.
+
+[View on GitHub](https://github.com/contentful/jekyll-contentful-data-import)
+
+[View examples](https://github.com/contentful/contentful_jekyll_examples)
 
 ## Metalsmith
 
-A metalsmith plugin to easily fetch data from Contentful and render files with it.
-[View on GitHub](https://github.com/contentful-labs/contentful-metalsmith)<br>
-[View examples](https://github.com/contentful-labs/contentful-metalsmith-example)<br>
+[Metalsmith](http://www.metalsmith.io/) is a JavaScript based static site generator, and this plugin fetches and renders data from Contentful.
 
-### AWS Lambda
-An example for building a static site using AWS Lambda.<br>
-[View example](https://github.com/contentful-labs/contentful-aws-lambda-static)
+[View on GitHub](https://github.com/contentful-labs/contentful-metalsmith)
+
+[View examples](https://github.com/contentful-labs/contentful-metalsmith-example)
 
 ## Tutorials
 
-### Automated rebuild and deploy with CircleCI and Webhooks
-This tutorial will get you set up for running and automatically deploying static sites using Jekyll or Middleman.<br>
-[View the tutorial](/developers/docs/ruby/tutorials/automated-rebuild-and-deploy-with-circleci-and-webhooks/)
+### Automated rebuild and deployment with CircleCI and Webhooks
 
-## Third party tools
+[This tutorial](/developers/docs/ruby/tutorials/automated-rebuild-and-deploy-with-circleci-and-webhooks/) shows you how to setup and automatically deploy static sites using Jekyll or Middleman with CircleCI.
 
-Please notice that this library is not officially supported by Contentful and may be incomplete, but we've at least tried it out.
-If you want to check all of our non supported SDKs and tools, check out our repository on [GitHub](https://github.com/contentful-labs/awesome-contentful).
+## Other tools
 
-## Roots
-Use Roots, a static site generator, and manage content with Contentful<br>
-[View on GitHub](https://github.com/carrot/roots-contentful)<br>
+We have more tools available to extend the functionality of Contentful. We have tested these tools, but they are not officially supported by Contentful.
+
+### Roots
+
+[Roots](http://roots.cx/) is a JavaScript based static site generator, and this plugin helps you manage content from Contentful.
+
+[View on GitHub](https://github.com/carrot/roots-contentful)
+
 [View examples](/blog/2015/04/28/webinar-contentful-roots-static-sites/)
 
-## Simple static site generator
+### Simple static site generator
 
-A CLI tool to generate a site from templates + data from a Contentful space<br>
+A CLI tool to generate a site from templates and data in a Contentful space.
+
 [View on GitHub](https://github.com/Textalk/contentful-static)
+
+### AWS Lambda
+
+An example project for building a static site using AWS Lambda.
+
+[View example](https://github.com/contentful-labs/contentful-aws-lambda-static)

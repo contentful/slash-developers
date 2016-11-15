@@ -35,7 +35,7 @@ The [official lambda documentation][lambda-docs] starts you off with pasting som
 
 ### Get the code
 
-The code for our lambda is [available on GitHub][project-repo]. You can clone the repository to your machine with the following command:
+The code for our lambda is [available on GitHub][project-repository]. You can clone the repository to your machine with the following command:
 
 ~~~ bash
 git clone git@github.com:contentful-labs/markdown-to-html-lambda
@@ -190,7 +190,7 @@ One can easily imagine going a bit further than this example and create an API g
 [aws-setup]: https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-set-up.html
 [lambda-docs]: https://aws.amazon.com/documentation/lambda/
 
-[project-repo]: https://github.com/contentful-labs/md-to-html-lambda
+[project-repository]: https://github.com/contentful-labs/md-to-html-lambda
 [demo-page]: https://contentful-labs.github.io/md-to-html-lambda/
 
 [contentful.js]: https://github.com/contentful/contentful.js
