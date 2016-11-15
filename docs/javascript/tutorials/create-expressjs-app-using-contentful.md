@@ -2,22 +2,22 @@
 page: :docsExpressjsApp
 ---
 
-This guide will walk you through your first steps using Contentful within an Express Node.js application. It will provide a step-by-step guide on how to get your first entries and start using the content you create on Contentful.
+This guide will walk you through your first steps using Contentful with an Express Node.js application. It will provide a step-by-step guide on how to get your first entries and start using the content you create on Contentful.
 
 ## Requirements
 
 - A [Heroku][1] account
 - [Heroku CLI][14] installed
-- [Node.js] [2] 6.2.1 installed 
+- [Node.js][2] 6.2.1 installed
 - Npm 3.10.7 which should be installed with `Node.js`
 - [Git][12] installed
 - Basic Command Line Interface knowledge
 
 ## Check out the final project
 
-You can already deploy the final project to Heroku and check it out. To do so click the herku deploy button
+You can deploy the final project to Heroku to see how it works by clicking the button below.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/contentful/contentful_express_tutorial)   
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/contentful/contentful_express_tutorial)
 
 ## Start from a demo application
 
@@ -66,10 +66,10 @@ You can create your own custom data by following these steps:
 ![Keys Page](keys_and_ids.png)
 
 - In the Express js application:
+
   - navigate to the package.json file open it and change the values `accessToken` and `space` in the `config` section and save.
   - run `npm run dev` to start the server
   - Your space will be now displayed in your application
-
 
 Next in the [Contentful web app][6] > Content:
 
@@ -122,9 +122,13 @@ After this guide, you should be able to start using Contentful with your Express
 
 You can read about the Contentful CDA library in more detail on our [contentful.js GitHub][1] or our [Getting Started with CDA SDK tutorial][9]. We also suggest taking a look at our [Product Example Application][10].
 
-Do you like building static sites? Check how to build static sites using Contentful with [Metalsmith][11] 
+Do you like building static sites? Check how to build static sites using Contentful with [Metalsmith][11]
 
 [1]: https://heroku.com
+[10]: https://github.com/contentful/product-catalogue-js
+[11]: https://github.com/contentful-labs/contentful-metalsmith-example
+[12]: https://git-scm.com/downloads
+[14]: https://devcenter.heroku.com/articles/heroku-command-line#download-and-install
 [2]: https://nodejs.org
 [3]: https://github.com/contentful/contentful_express_tutorial
 [4]: http://localhost:3000
@@ -133,7 +137,3 @@ Do you like building static sites? Check how to build static sites using Content
 [7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [8]: https://github.com/contentful/contentful.js
 [9]: https://www.contentful.com/developers/docs/javascript/tutorials/using-js-cda-sdk/
-[10]: https://github.com/contentful/product-catalogue-js
-[11]: https://github.com/contentful-labs/contentful-metalsmith-example
-[12]: https://git-scm.com/downloads
-[14]: https://devcenter.heroku.com/articles/heroku-command-line#download-and-install
