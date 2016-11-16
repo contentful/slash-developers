@@ -17,7 +17,7 @@ Date <sup>2</sup>|String|Date/time in ISO 8601 format.||`"2015-11-06T09:45:27"`
 Boolean|Boolean|Flag, `true` or `false`||`true`
 Link |Object|A reference to an entry or asset. The type of the referenced item is defined by the `linkType` property. See [links](https://www.contentful.com/developers/docs/concepts/links/) for more information|||
 Array|Array|List of values. See [array fields](#array-fields) below.|Limited by entry size.|`["name1", "name2", ...]`
-Object|Object|Arbitrary object.|Limited by entry size.|`{ "foo": "bar" }`
+JSON Object|Object|Arbitrary object.|Limited by entry size.|`{ "foo": "bar" }`
 
 1. **Text**: Fields do not support ordering or strict equality.
 2. **Date**: Fields must be ISO8601 formatted, but do not require a time portion.
