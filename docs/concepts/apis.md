@@ -11,7 +11,7 @@ Contentful is an API first content management system, offering four REST APIs fo
 
 ## Content Delivery API
 
-The Content Delivery API (CDA), available at _<https://cdn.contentful.com>_, is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.
+The Content Delivery API (CDA), available at _https://cdn.contentful.com_, is a read-only API for delivering content from Contentful to apps, websites and other media. Content is delivered as JSON data, and images, videos and other media as files.
 
 The API is available via a globally distributed content delivery network. The server closest to the user serves all content, both JSON and binary. This minimizes latency, which especially benefits mobile apps. Hosting content in multiple global data centers also greatly improves the availability of content.
 
@@ -19,7 +19,7 @@ For more details [read the reference guide for the Content Delivery API][1].
 
 ## Content Management API
 
-The Content Management API (CMA), available at _<https://api.contentful.com`>_, is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could us the CMA for several use cases, such as:
+The Content Management API (CMA), available at _https://api.contentful.com_, is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could us the CMA for several use cases, such as:
 
 - Automatic imports from different CMSes like WordPress or Drupal.
 - Integration with other backend systems, such as an e-commerce shop.
@@ -32,13 +32,13 @@ For more details [read the reference documentation for the Content Management AP
 
 ## Preview API
 
-The Preview API, available at _<https://preview.contentful.com>_, is a variant of the CDA for previewing your content before delivering it to your customers. You use the Preview API in combination with a "preview" deployment of your website (or a "preview" build of your mobile app) that allows content managers and authors to view their work in-context, as if it were published, using a "preview" access token as though it were delivered by the CDA.
+The Preview API, available at _https://preview.contentful.com_, is a variant of the CDA for previewing your content before delivering it to your customers. You use the Preview API in combination with a "preview" deployment of your website (or a "preview" build of your mobile app) that allows content managers and authors to view their work in-context, as if it were published, using a "preview" access token as though it were delivered by the CDA.
 
 For more details [read the reference documentation for the Preview API][3].
 
 ## Images API
 
-The Images API, available at _<https://images.contentful.com>_, allows you to resize and crop images, change their background color and convert them to different formats. Using our API for these transformations lets you upload high-quality assets, deliver exactly what your app needs, and still get all the benefits of our caching CDN.
+The Images API, available at _https://images.contentful.com_, allows you to resize and crop images, change their background color and convert them to different formats. Using our API for these transformations lets you upload high-quality assets, deliver exactly what your app needs, and still get all the benefits of our caching CDN.
 
 For more details [read the reference documentation for the Images API][4].
 
