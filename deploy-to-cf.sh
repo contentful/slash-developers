@@ -1,3 +1,3 @@
 #!/bin/bash
 
-mc.uploader -t $(slash-developers-api-key) -s $(slash-developers-space) -c devDoc -p docs/index.md
+mc.uploader -t $(SLASH-DEVELOPERS-API-KEY) -s $(SLASH-DEVELOPERS-SPACE) -c devDoc -p docs/index.md
