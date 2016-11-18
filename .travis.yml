@@ -8,10 +8,8 @@ ruby: 2.2.3
 before_install:
   - mv Spelling-and-style-sheet/.spelling ./.spelling
   - sudo apt-get install jq
-  - make -C apiary install
 
 script:
-  - make -C apiary test
   - npm run-script write-good-main; exit 0
   - npm run-script write-good-apiary; exit 0
   - npm run-script spellcheck-main; exit 0
