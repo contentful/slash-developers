@@ -29,7 +29,7 @@ deploy:
     on:
       branch: master
   - provider: script
-    script: ./deploy-to-cf.sh; exit 0
+    script: ./deploy-to-cf.sh
     skip_cleanup: true
     on:
       branch: experiment/push-to-cf
