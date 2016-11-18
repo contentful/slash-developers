@@ -32,7 +32,7 @@ deploy:
     script: ./deploy-to-cf.sh
     skip_cleanup: true
     on:
-      branch: experiment/push-to-cf
+      branch: master
 
 notifications:
   slack: contentful:o4vrtCfCCvlN0ebhJ3ypu2je
