@@ -49,7 +49,7 @@ $ npm install
 $ npm run dev
 ~~~
 
-Everything is now set up. You can view your new data by opening [http://localhost:3000/][4] in your browser.
+Everything is now set up. You can view your new data by opening _http://localhost:3000_ in your browser.
 
 It should look something like this:
 
@@ -124,14 +124,13 @@ You can read about the Contentful CDA library in more detail on our [contentful.
 
 Do you like building static sites? Check how to build static sites using Contentful with [Metalsmith][11]
 
-[1]: https://heroku.com
+[1]: https://www.heroku.com
 [10]: https://github.com/contentful/product-catalogue-js
 [11]: https://github.com/contentful-labs/contentful-metalsmith-example
 [12]: https://git-scm.com/downloads
 [14]: https://devcenter.heroku.com/articles/heroku-command-line#download-and-install
 [2]: https://nodejs.org
 [3]: https://github.com/contentful/contentful_express_tutorial
-[4]: http://localhost:3000
 [5]: https://www.contentful.com/sign-up/#starter
 [6]: https://app.contentful.com
 [7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters

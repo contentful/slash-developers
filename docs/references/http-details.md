@@ -16,7 +16,7 @@ Using SSL ensures that the content and access tokens of a space remain secure an
 
 [CORS (Cross-origin resource sharing)](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) allows JavaScript web apps to make HTTP requests to other domains. This is important for third party web apps using Contentful, as without CORS, a JavaScript app hosted on _example.com_ couldn't access our APIs because they're hosted on _contentful.com_ which is a different domain.
 
-CORS is [supported by all modern browsers](http://caniuse.com/cors). Read more about using CORS in this [tutorial](http://www.html5rocks.com/en/tutorials/cors/).
+CORS is [supported by all modern browsers](http://caniuse.com/cors). Read more about using CORS in this [tutorial](https://www.html5rocks.com/en/tutorials/cors/).
 
 To allow JavaScript applications running inside browsers to interact with our APIs, we set the following HTTP response headers:
 
