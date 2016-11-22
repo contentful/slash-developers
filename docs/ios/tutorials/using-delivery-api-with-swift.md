@@ -86,7 +86,7 @@ func fetchedResultsController(forContentType type: Any.Type, predicate: NSPredic
 }
 ~~~
 
-Using the fetched results controller as a table view data source is done through some glue code in a `CoreDataFetchDataSource` class, which is out of scope to discuss here, but you can check it out in [the example on GitHub][20]. 
+Using the fetched results controller as a table view data source is done through some glue code in a `CoreDataFetchDataSource` class, which is out of scope to discuss here, but you can check it out in [the example on GitHub][20].
 
 All the Contentful synchronization specific code is placed into a single class `ContentfulDataManager` ([see here on GitHub][21]):
 
@@ -131,9 +131,9 @@ With this, our walk through the [product catalogue app][1] is done. You should h
 [11]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
 [12]: https://github.com/contentful/ContentfulPlayground
 [13]: https://www.contentful.com/developers/docs/concepts/sync/
-[14]: https://developer.apple.com/library/watchos/documentation/Cocoa/Conceptual/CoreData/index.html
+[14]: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html
 [15]: http://cocoadocs.org/docsets/ContentfulPersistenceSwift/0.2.0/Protocols/PersistenceStore.html
-[16]: https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreData/Concurrency.html
+[16]: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/Concurrency.html
 [17]: https://www.contentful.com/developers/docs/ios/tutorials/using-contentful-xcode-plugin/
 [18]: https://github.com/contentful/product-catalogue-swift/tree/master/Resources/Product%20Catalogue.xcdatamodeld
 [19]: https://github.com/path/FastImageCache

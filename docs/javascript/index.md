@@ -21,7 +21,7 @@ This SDK interacts with the Content Delivery API, a read-only API for retrieving
 
 [Try out the browser SDK with JSFiddle](https://jsfiddle.net/contentful/kefaj4s8/)
 
-[Try out the Node.js package with Tonic](https://tonicdev.com/npm/contentful)
+[Try out the Node.js package with Tonic](https://runkit.com/npm/contentful)
 
 ### Content Management API SDK
 
