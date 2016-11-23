@@ -1,12 +1,12 @@
 ---
-page: :docsDataModel
+page: :docsContentModel
 ---
 
 Contentful organizes content into _spaces_, that allows you to group all the related resources for a project together, this includes content entries, media assets, and settings for localizing content into different languages.
 
 Each space has a _content model_ that represents the _content types_ you create.
 
-Each _content type_ consists of a set of up to 50 fields that you define, these fields can be one of the following.
+Each _content type_ consists of a set of up to **50** fields that you define, these fields can be one of the following.
 
 - **Text**: A short or long text field for titles, names, or paragraphs of text.
 - **Number**: For storing integer or decimal numbers, such as prices, SKUs or quantities.
@@ -21,6 +21,9 @@ Each _content type_ consists of a set of up to 50 fields that you define, these 
 ![New fields dialogue showing field types you can select](https://images.contentful.com/tz3n7fnw4ujc/5T9aAqcOrKOmGgYSwGq22s/530cf1377a1a16709df46fa4b3f2b106/0F75057E-1696-4631-86A6-AAC78904098F.png_dl_1)
 
 Fields also contain metadata, such as validations and widget appearance.
+
+{: .note}
+You can find more details on field properties, limits, and their underlying JSON structure in our [Content management API reference](/developers/docs/references/content-management-api/#/reference/content-types).
 
 Contentful stores individual items of content as _entries_, which represent textual or structural information based on the content type used. Items can also be _assets_, which are binary files, such as images, videos or documents. Assets have three fixed fields, the name, description and attached file.
 

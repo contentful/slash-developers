@@ -9,7 +9,7 @@ You're in the right place to find everything you need to deeper understand and u
 These concepts introduce the basics of Contentful. This is the best place to start if you haven't built anything with Contentful before.
 
 - [API basics](/developers/docs/concepts/apis/)
-- [Data model](/developers/docs/concepts/data-model/)
+- [Content model](/developers/docs/concepts/content-model/)
 - [Links](/developers/docs/concepts/links/)
 - [Locales](/developers/docs/concepts/locales/)
 - [Synchronization](/developers/docs/concepts/sync/)
