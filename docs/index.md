@@ -9,7 +9,7 @@ You're in the right place to find everything you need to deeper understand and u
 These concepts introduce the basics of Contentful. This is the best place to start if you haven't built anything with Contentful before.
 
 - [API basics](/developers/docs/concepts/apis/)
-- [Data model](/developers/docs/concepts/data-model/)
+- [Content model](/developers/docs/concepts/data-model/)
 - [Links](/developers/docs/concepts/links/)
 - [Locales](/developers/docs/concepts/locales/)
 - [Synchronization](/developers/docs/concepts/sync/)
@@ -30,7 +30,6 @@ These guides will help you answer questions you might have when using our APIs:
 - [Authentication](/developers/docs/references/authentication/)
 - [Errors](/developers/docs/references/errors/)
 - [HTTP response details](/developers/docs/references/http-details/)
-- [Field types](/developers/docs/references/field-type/)
 
 ## Platforms
 

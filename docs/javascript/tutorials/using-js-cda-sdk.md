@@ -12,7 +12,7 @@ This article goes into detail about how to get content using the [JavaScript CDA
 
 ## Pre-requisites
 
-In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [developer center](https://www.contentful.com/developers/docs/concepts/data-model/).
+In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [developer center](/developers/docs/concepts/data-model/).
 
 ## Authentication
 
