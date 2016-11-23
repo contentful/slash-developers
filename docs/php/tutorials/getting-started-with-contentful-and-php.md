@@ -141,7 +141,7 @@ You can find the source code and more details about the SDK on [GitHub][1].
 
 [1]: https://github.com/contentful/contentful.php
 [2]: https://getcomposer.org
-[3]: /developers/docs/concepts/content-model/
+[3]: /developers/docs/concepts/data-model/
 [4]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [5]: /developers/docs/concepts/links/
 [6]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type

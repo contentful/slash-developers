@@ -129,7 +129,7 @@ You can also check out how to get your spaces started with a single command usin
 [3]: https://github.com/contentful/contentful-bootstrap.rb
 [4]: /developers/docs/concepts/links/
 [5]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
-[6]: /developers/docs/concepts/content-model/
+[6]: /developers/docs/concepts/data-model/
 [7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type
 [8]: /developers/docs/references/images-api/
 [9]: https://github.com/contentful/contentful_jekyll_examples
