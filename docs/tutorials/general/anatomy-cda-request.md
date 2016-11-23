@@ -22,7 +22,7 @@ Finally, retrieved entries also have a `field` object, which is used to assign v
 
 ## Pre-requisites
 
-In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [developer center](/developers/docs/concepts/data-model/).
+In this tutorial, it is assumed you have understood the basic Contentful data model as described above and in the [developer center](/developers/docs/concepts/content-model/).
 
 You should also be able to recognize the basic structure of JSON responses and requests of REST APIs.
 

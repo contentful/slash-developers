@@ -30,7 +30,6 @@ These guides will help you answer questions you might have when using our APIs:
 - [Authentication](/developers/docs/references/authentication/)
 - [Errors](/developers/docs/references/errors/)
 - [HTTP response details](/developers/docs/references/http-details/)
-- [Field types](/developers/docs/references/field-type/)
 
 ## Platforms
 
