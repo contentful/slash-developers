@@ -27,7 +27,7 @@ You can find more details on field properties, limits, and their underlying JSON
 
 Contentful stores individual items of content as _entries_, which represent textual or structural information based on the content type used. Items can also be _assets_, which are binary files, such as images, videos or documents. Assets have three fixed fields, the name, description and attached file.
 
-You can see how Contentful represents your content model in JSON by clicking the _JSON preview_ tab next to _the_ fields tab.
+You can see how Contentful represents your content model in JSON by clicking the _JSON preview_ tab next to the _fields_ tab.
 
 If you want to hide fields from appearing in JSON output, you can disable it by clicking the three dots to the right of the field.
 
