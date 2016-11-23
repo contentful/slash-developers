@@ -48,7 +48,7 @@ bundle exec rake db:create db:migrate db:seed
 bundle exec rails s
 ~~~
 
-Everything is now set up. You can view your new data by opening [_http://localhost:3000/contentful_users/1_][11] in your browser.
+Everything is now set up. You can view your new data by opening _http://localhost:3000/contentful_users/1_ in your browser.
 
 It should look something like this:
 
@@ -106,7 +106,7 @@ heroku addons:create heroku-postgresql:hobby-dev
 
 - Update the _config/database.yml_ file:
 
-Replace `VALUE_OBTAINED_FROM_YOUR_HEROKU_PG_CONFIG` with the database name in your [Heroku Database's Dashboard][20]. You can find the name at _[Heroku Database Dashboard][20] > Your Postgres instance > Database_.
+Replace `VALUE_OBTAINED_FROM_YOUR_HEROKU_PG_CONFIG` with the database name in your _Heroku Database's Dashboard_. You can find the name at _Heroku Database Dashboard > Your Postgres instance > Database_.
 
 ![Heroku Database Name](https://images.contentful.com/tz3n7fnw4ujc/3RfC9ZLwQg64Kw2MUYwiqQ/992ae696db96883c00eeb33d08727595/317AD4A3-90AE-4422-89C2-DFB3BE0BFB25.png_dl_1)
 
@@ -149,7 +149,6 @@ If you want to set up new spaces via the command line we also provide [Contentfu
 
 [1]: https://github.com/contentful/contentful.rb
 [10]: https://github.com/contentful/contentful_rails_tutorial
-[11]: http://localhost:3000/contentful_users/1
 [12]: https://www.contentful.com/sign-up/#starter
 [13]: https://app.contentful.com
 [14]: /developers/docs/ruby/tutorials/create-your-own-rails-app/
@@ -159,11 +158,10 @@ If you want to set up new spaces via the command line we also provide [Contentfu
 [18]: https://wiki.postgresql.org/wiki/Detailed_installation_guides
 [19]: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 [2]: https://github.com/contentful/contentful_model
-[20]: https://postgres.heroku.com/databases
 [3]: https://github.com/contentful/contentful_rails
 [4]: https://github.com/contentful/contentful_middleman_examples
 [5]: https://github.com/contentful/contentful_jekyll_examples
 [6]: https://github.com/contentful/contentful-bootstrap.rb
 [7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
-[8]: https://heroku.com
+[8]: https://www.heroku.com
 [9]: https://devcenter.heroku.com/articles/getting-started-with-rails4
