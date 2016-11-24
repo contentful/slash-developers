@@ -15,7 +15,6 @@ This SDK interacts with the Content Delivery API, a read-only API for retrieving
 
 [View on GitHub](https://github.com/contentful/contentful.net)
 
-
 ## Tutorials
 
 ### API demo
