@@ -130,7 +130,7 @@ With this, our walk through the [product catalogue app][1] is done. You should h
 [10]: http://cocoadocs.org/docsets/Interstellar/1.4.0/Classes/Signal.html
 [11]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [12]: https://github.com/contentful/ContentfulPlayground
-[13]: developers/docs/concepts/sync/
+[13]: /developers/docs/concepts/sync/
 [14]: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/index.html
 [15]: http://cocoadocs.org/docsets/ContentfulPersistenceSwift/0.2.0/Protocols/PersistenceStore.html
 [16]: https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/CoreData/Concurrency.html

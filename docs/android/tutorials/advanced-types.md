@@ -169,7 +169,7 @@ And this will be the result in only one asset (again using the `cfexampleapi` sp
 
 ## Content types
 
-In order to request all [content types](http://contentful.github.io/contentful.java/index.html?com/contentful/java/cda/CDAContentType.html),
+In order to request all [content types](https://contentful.github.io/contentful.java/index.html?com/contentful/java/cda/CDAContentType.html),
 you could use a call like this:
 
 ~~~ java
@@ -261,7 +261,7 @@ yielding
 ## Fetching all spaces
 
 For this example, you will need to [get a CMA API token](/developers/docs/references/authentication/#the-management-api)
-and create a [CMAClient](http://contentful.github.io/contentful-management.java/index.html?com/contentful/java/cma/CMAClient.html) using it:
+and create a [CMAClient](https://contentful.github.io/contentful-management.java/index.html?com/contentful/java/cma/CMAClient.html) using it:
 
 ~~~ java
 CMAClient cmaClient = new CMAClient.Builder()
