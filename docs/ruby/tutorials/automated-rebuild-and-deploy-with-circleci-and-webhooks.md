@@ -5,7 +5,7 @@ page: :docsRubyAutomatedRebuild
 If you're running our [Jekyll](https://github.com/contentful/jekyll-contentful-data-import) or [Middleman](https://github.com/contentful/contentful_middleman) integrations,
 you might be wondering how to automate your site building and publishing process.
 
-Here we'll discuss how you can automate this process using [Contentful Webhooks](https://www.contentful.com/developers/docs/concepts/webhooks/)
+Here we'll discuss how you can automate this process using [Contentful Webhooks](/developers/docs/concepts/webhooks/)
 and CircleCI API.
 
 > Everything we'll discuss here is for the case of using a public [GitHub](https://github.com) repository,

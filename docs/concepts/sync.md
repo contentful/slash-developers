@@ -56,6 +56,6 @@ Syncing entries or assets returns all available localizations instead of a singl
 ## Further information
 
 - Using the Sync API for [offline persistence on iOS](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/).
-- Using synchronization with the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/synchronization).
+- Using synchronization with the [Content Delivery API](/developers/docs/references/content-delivery-api/#/reference/synchronization).
 - Using synchronization with the [PHP SDK](/developers/docs/php/tutorials/using-the-sync-api-with-php/).
 - Using synchronization with the [JavaScript SDK](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/).

@@ -18,7 +18,7 @@ In this tutorial, it is assumed you have understood the basic Contentful data mo
 
 To get started, for every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit audiences and content classes.
 
-You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
 
 ## Setting up the client
 
@@ -108,7 +108,7 @@ client.getEntry('O1ZiKekjgiE0Uu84oKqaY')
 
 The object received by the Promise callback represents the Entry `O1ZiKekjgiE0Uu84oKqaY` and contains two objects: `sys`, describing system properties of the entry, and `fields`, assigning specific values to fields (`title`,`body`,`image`) of its content type (`Blog Post`).
 
-For more details on the information contained on `sys` check out the [common resource attributes](https://www.contentful.com/developers/docs/references/content-delivery-api/#/introduction/common-resource-attributes) on the CDA API reference or the entities definitions on the [SDK reference](https://contentful.github.io/contentful.js/contentful/latest/Entities.html)
+For more details on the information contained on `sys` check out the [common resource attributes](/developers/docs/references/content-delivery-api/#/introduction/common-resource-attributes) on the CDA API reference or the entities definitions on the [SDK reference](https://contentful.github.io/contentful.js/contentful/latest/Entities.html)
 
 ## Retrieving all entries of a space
 
@@ -126,7 +126,7 @@ client.getEntries()
 })
 ~~~
 
-It's very similar to getting a single entry, except you'll get an array with all the retrieved entries, and some parameters relevant to [pagination](https://www.contentful.com/developers/docs/references/content-delivery-api/#/introduction/collection-resources-and-pagination).
+It's very similar to getting a single entry, except you'll get an array with all the retrieved entries, and some parameters relevant to [pagination](/developers/docs/references/content-delivery-api/#/introduction/collection-resources-and-pagination).
 
 By default you get 100 entries. If you'd like to retrieve more, you can skip the first 100. You can also retrieve more than 100 entries per request, up to 1000.
 ~~~javascript
@@ -140,7 +140,7 @@ client.getEntries({
 })
 ~~~
 
-Don't forget to also specify an ordering parameter to get more predictable results. You can read more about ordering parameters in the [search parameters API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/order) reference.
+Don't forget to also specify an ordering parameter to get more predictable results. You can read more about ordering parameters in the [search parameters API](/developers/docs/references/content-delivery-api/#/reference/search-parameters/order) reference.
 
 ## Retrieving linked entries
 
@@ -174,7 +174,7 @@ client.getEntries({include: 0})
 
 You can also turn off link resolution when you initialize the SDK or with a `resolveLinks` property on every request.
 
-Check the [links reference page](https://www.contentful.com/developers/docs/concepts/links/) for more information on linked entries.
+Check the [links reference page](/developers/docs/concepts/links/) for more information on linked entries.
 
 ## Retrieving entries with search parameters
 
@@ -231,13 +231,13 @@ client.getEntries({
 
 There are many more search filters and operators you can use. You can perform the following kinds of searches:
 
-* [Equality/inequality](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/equality-operator) ([as well as in array fields](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-equalityinequality))
-* [Inclusion/exclusion](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/inclusion)
-* [Ranges](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
-* [Full text search](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/full-text-search)
-* [Geo location searches](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
+* [Equality/inequality](/developers/docs/references/content-delivery-api/#/reference/search-parameters/equality-operator) ([as well as in array fields](/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-equalityinequality))
+* [Inclusion/exclusion](/developers/docs/references/content-delivery-api/#/reference/search-parameters/inclusion)
+* [Ranges](/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
+* [Full text search](/developers/docs/references/content-delivery-api/#/reference/search-parameters/full-text-search)
+* [Geo location searches](/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
 
-Check out the [search parameters API page](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
+Check out the [search parameters API page](/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
 
 ## Conclusion
 

@@ -98,7 +98,7 @@ Now that you have the generator downloaded, you need to call it with the followi
 * `--folder <arg>` arg is the target folder to put the generated java sources into
 * `--package <arg>` use arg to specify the package name of the generated classes
 * `--space <arg>` use the space id given as arg (see above for details on how to get it)
-* `--token <arg>` please supply a management access token here. ([Find out more about your token](https://www.contentful.com/developers/docs/references/authentication/#the-management-api))
+* `--token <arg>` please supply a management access token here. ([Find out more about your token](/developers/docs/references/authentication/#the-management-api))
 
 
 The complete command will look like this (please provide your own space id and token, since we do not want to give them to the public):
@@ -238,5 +238,5 @@ If you have any questions or feedback, please feel free to drop us an email to [
 [config_xml]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/src/main/res/values/config.xml#L3
 [droidstoryspace_java]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/src/main/java/com/contentful/droidstory/data/vault/DroidStorySpace.java#L22
 [dsc]: https://github.com/contentful-labs/droidstory/tree/master/droidstory-spacecreator
-[cma_token]: https://www.contentful.com/developers/docs/references/authentication/#the-management-api
+[cma_token]: /developers/docs/references/authentication/#the-management-api
 

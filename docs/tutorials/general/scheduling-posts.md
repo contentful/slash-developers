@@ -153,6 +153,6 @@ In this article we have:
 - Finally, you can find more static site generator integrations on our [tools][tools] page.
 
 [cf-mm-examples]: https://github.com/contentful/contentful_middleman_examples
-[filtering-reference]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
+[filtering-reference]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [tools]: /developers/docs/tools/staticsitegenerators/
 

@@ -260,7 +260,7 @@ yielding
 
 ## Fetching all spaces
 
-For this example, you will need to [get a CMA API token](https://www.contentful.com/developers/docs/references/authentication/#the-management-api)
+For this example, you will need to [get a CMA API token](/developers/docs/references/authentication/#the-management-api)
 and create a [CMAClient](http://contentful.github.io/contentful-management.java/index.html?com/contentful/java/cma/CMAClient.html) using it:
 
 ~~~ java

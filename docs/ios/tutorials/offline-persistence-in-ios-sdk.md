@@ -147,7 +147,7 @@ The method will also ensure that the pre-seeded data is only used after the firs
 
 With this, our overview of synchronizing and keeping your content available for offline use is done. You should be able to provide a great experience for your users regardless of their data connection.
 
-[1]: https://www.contentful.com/blog/2014/09/03/content-management-api-sdk-ios/
+[1]: /blog/2014/09/03/content-management-api-sdk-ios/
 [2]: /developers/docs/concepts/sync/
 [3]: https://github.com/contentful/contentful.objc/tree/master/Examples
 [4]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Classes/CDASyncedSpace.html
@@ -160,7 +160,7 @@ With this, our overview of synchronizing and keeping your content available for 
 [11]: https://github.com/contentful/contentful.objc
 [12]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Protocols/CDASyncedSpaceDelegate.html
 [13]: http://nshipster.com/key-value-observing/
-[14]: https://www.contentful.com/developers/docs/content-delivery-api/objc/#sync
+[14]: /developers/docs/content-delivery-api/objc/#sync
 [15]: https://github.com/contentful/contentful-persistence.objc/blob/master/Code/CoreDataManager.h
 [16]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Protocols/CDAPersistedAsset.html
 [17]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.0.0/Protocols/CDAPersistedEntry.html

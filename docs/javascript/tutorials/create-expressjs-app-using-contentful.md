@@ -131,8 +131,8 @@ Do you like building static sites? Check how to build static sites using Content
 [14]: https://devcenter.heroku.com/articles/heroku-command-line#download-and-install
 [2]: https://nodejs.org
 [3]: https://github.com/contentful/contentful_express_tutorial
-[5]: https://www.contentful.com/sign-up/#starter
+[5]: /sign-up/#starter
 [6]: https://app.contentful.com
 [7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [8]: https://github.com/contentful/contentful.js
-[9]: https://www.contentful.com/developers/docs/javascript/tutorials/using-js-cda-sdk/
+[9]: /developers/docs/javascript/tutorials/using-js-cda-sdk/
