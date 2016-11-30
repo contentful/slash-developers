@@ -135,7 +135,7 @@ Using this approach allows you to only fetch a limited data set from your space.
 
 Another [example][7] demonstrates how to ship your app with a pre-seeded SQLite database for Core Data, so that your users will not even need a data connection when they are using your app for the first time.
 
-This is achieved by running a [commandline OS X application][19] which uses the SDK to fetch resources and also all the asset content, which can then be copied into your app as part of your build process or manually. You will have to modify this tool for your needs, specifying the data model, space information and conditions on what asset content to fetch.
+This is achieved by running a [commandline macOS application][19] which uses the SDK to fetch resources and also all the asset content, which can then be copied into your app as part of your build process or manually. You will have to modify this tool for your needs, specifying the data model, space information and conditions on what asset content to fetch.
 
 The *CDAPersistenceManager* provides a convenience method for copying the database and cached assets from your bundle into the right place:
 
