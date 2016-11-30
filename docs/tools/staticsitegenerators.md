@@ -40,7 +40,7 @@ We have more tools available to extend the functionality of Contentful. We have 
 
 ### Roots
 
-[Roots](http://roots.cx/) is a JavaScript based static site generator, and this plugin helps you manage content from Contentful.
+[Roots](https://roots.cx/) is a JavaScript based static site generator, and this plugin helps you manage content from Contentful.
 
 [View on GitHub](https://github.com/carrot/roots-contentful)
 

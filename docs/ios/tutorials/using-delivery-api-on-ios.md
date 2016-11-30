@@ -137,5 +137,5 @@ With this, our walk through the [coffee guide app][1] is done. You should have e
 [17]: https://github.com/contentful/contentful.objc
 [18]: https://static.contentful.com/downloads/iOS/ContentfulDeliveryAPI-1.9.2.zip
 [19]: /developers/docs/references/authentication/
-[20]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters
-[21]: https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/including-linked-entries
+[20]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
+[21]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/including-linked-entries

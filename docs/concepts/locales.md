@@ -2,7 +2,7 @@
 page: :docsLocales
 ---
 
-Locales are a feature of Contentful's [paid plans](https://www.contentful.com/pricing/). If you are working with content that needs to be available in multiple languages, locales let you define localizations of content and select a specific locale when querying the Content Delivery API.
+Locales are a feature of Contentful's [paid plans](/pricing/). If you are working with content that needs to be available in multiple languages, locales let you define localizations of content and select a specific locale when querying the Content Delivery API.
 
 Every Space has its own set of locales, and each locale is uniquely identified by its ISO code (e.g., `en-US` or `de-AT`). There's always one default locale defined when you create a space, shown by default in the Contentful web app and used for Content Delivery API queries that do not request a specific locale.
 
@@ -25,7 +25,7 @@ Choose a locale and its options:
 
 ### With the API
 
-If you are writing scripts or applications, use the [Content Management API](https://www.contentful.com/developers/docs/references/content-management-api/#/reference/locales) to add a locale to a space use the following POST request with the name and ISO code contained within the body:
+If you are writing scripts or applications, use the [Content Management API](/developers/docs/references/content-management-api/#/reference/locales) to add a locale to a space use the following POST request with the name and ISO code contained within the body:
 
 ~~~bash
 curl -X POST
@@ -123,7 +123,7 @@ curl -X GET "https://cdn.contentful.com/spaces/<SPACE_ID>/entries/<ENTRY_ID>?acc
 
 ## Locales and the Sync API
 
-No matter which locale you specify, the [synchronization API](https://www.contentful.com/developers/docs/concepts/sync/) always includes all localized content, using the same structure as the wildcard locale option above:
+No matter which locale you specify, the [synchronization API](/developers/docs/concepts/sync/) always includes all localized content, using the same structure as the wildcard locale option above:
 
 ### URL of request
 

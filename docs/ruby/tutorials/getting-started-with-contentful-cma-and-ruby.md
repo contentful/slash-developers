@@ -298,14 +298,14 @@ You can also check out how to get your spaces started with a single command usin
 * Image Credits: Picture "Unter den Linden", [Amira A][14] [License: Creative Commons 2.0][15]
 
 
-[0]: https://www.contentful.com/developers/docs/references/content-management-api/
-[1]: https://www.contentful.com/r/knowledgebase/content-modelling-basics/
-[2]: https://www.contentful.com/developers/docs/references/authentication/#getting-an-oauth-token
+[0]: /developers/docs/references/content-management-api/
+[1]: /r/knowledgebase/content-modelling-basics/
+[2]: /developers/docs/references/authentication/#getting-an-oauth-token
 [3]: https://github.com/contentful/contentful-management.rb/blob/01f5b2abfd1c00888197a6f79093b7ae0baee274/README.md
-[4]: https://www.contentful.com/developers/docs/references/content-management-api/#/reference/content-types
+[4]: /developers/docs/references/content-management-api/#/reference/content-types
 [5]: https://farm9.staticflickr.com/8144/6974761828_51c4fb1d54_z_d.jpg "Unter den Linden"
 [6]: https://github.com/contentful/contentful.rb
-[7]: https://www.contentful.com/developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/
+[7]: /developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/
 [8]: https://openbeerdb.com/
 [9]: https://github.com/contentful-labs/cma_import_script
 [10]: https://github.com/contentful/contentful-bootstrap.rb

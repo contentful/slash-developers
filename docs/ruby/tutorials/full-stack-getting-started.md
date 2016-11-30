@@ -149,7 +149,7 @@ If you want to set up new spaces via the command line we also provide [Contentfu
 
 [1]: https://github.com/contentful/contentful.rb
 [10]: https://github.com/contentful/contentful_rails_tutorial
-[12]: https://www.contentful.com/sign-up/#starter
+[12]: /sign-up/#starter
 [13]: https://app.contentful.com
 [14]: /developers/docs/ruby/tutorials/create-your-own-rails-app/
 [15]: /developers/docs/ruby/tutorials/getting-started-with-contentful-and-ruby/
