@@ -1,5 +1,16 @@
 ---
 page: :docsCdaSwift
+name: Using the Delivery API on Swift
+title: Using the Delivery API on Swift
+metainformation: 'This tutorial will walk you through building a simple app from start to finish.'
+slug: null
+tags:
+  - CDA
+  - iOS
+  - Mobile
+nextsteps:
+  - docsCdaIos
+  - docsCmaIos
 ---
 
 Read on to find out what our iOS SDK does and how you can use it to build content-driven apps more easily. This tutorial will walk you through building a simple app from start to finish with the [product catalogue app][1] being used as an example.
@@ -86,7 +97,7 @@ func fetchedResultsController(forContentType type: Any.Type, predicate: NSPredic
 }
 ~~~
 
-Using the fetched results controller as a table view data source is done through some glue code in a `CoreDataFetchDataSource` class, which is out of scope to discuss here, but you can check it out in [the example on GitHub][20]. 
+Using the fetched results controller as a table view data source is done through some glue code in a `CoreDataFetchDataSource` class, which is out of scope to discuss here, but you can check it out in [the example on GitHub][20].
 
 All the Contentful synchronization specific code is placed into a single class `ContentfulDataManager` ([see here on GitHub][21]):
 
