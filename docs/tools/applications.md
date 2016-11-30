@@ -2,7 +2,7 @@
 page: :docsToolsApplications
 ---
 
-## OS X media uploader
+## macOS media uploader
 
 Upload images to Contentful with this macOS tool.
 

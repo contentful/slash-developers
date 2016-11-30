@@ -227,7 +227,7 @@ Whereas the response yields the same `fields` array, `sys` is updated with new i
 ~~~
 
 ### Creating and publishing an entry
-To create an entry, we must specify a `X-Contentful-Content-Type` in the header and specify [locales](https://www.contentful.com/developers/docs/concepts/locales/) for its fields. In the following example, we will create a blog post entry:
+To create an entry, we must specify a `X-Contentful-Content-Type` in the header and specify [locales](/developers/docs/concepts/locales/) for its fields. In the following example, we will create a blog post entry:
 
 #### URL
 

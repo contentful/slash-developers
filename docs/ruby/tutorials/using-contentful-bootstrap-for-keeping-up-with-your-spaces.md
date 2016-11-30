@@ -247,7 +247,7 @@ look in our [GitHub Repository][1] for the latest updates and releases. We're ge
 You should also check out how some of our demos use `contentful_bootstrap` for showcasing our
 static site generator integrations with [Middleman][2] and [Jekyll][3].
 
-[0]: https://www.contentful.com/developers/docs/references/content-delivery-api/
+[0]: /developers/docs/references/content-delivery-api/
 [1]: https://github.com/contentful/contentful-bootstrap.rb
 [2]: https://github.com/contentful/contentful_middleman_examples
 [3]: https://github.com/contentful/contentful_jekyll_examples

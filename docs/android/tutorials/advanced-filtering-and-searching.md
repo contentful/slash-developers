@@ -133,7 +133,7 @@ CDAArray found = client.fetch(CDAEntry.class)
 ~~~
 
 This will return all entries with the `birthday` `less or equal then` *1980-01-01*. Other operators are available too,
-[see REST API doc](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
+[see REST API doc](/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
 
 ## Inequality
 

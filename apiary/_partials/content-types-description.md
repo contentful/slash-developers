@@ -1,4 +1,4 @@
-Content types are a schema that define the fields of content entries. Every entry can only contain values in the fields defined by its content type, and the values of those fields must match the data type defined in the content type. There's a limit of **50** fields per content type.
+All data in Contentful has a field type, which is defined in the [creation of a content type](/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type), and the values of those fields must match the data type defined in the content type. There's a limit of **50** fields per content type.
 
 Content type properties:
 

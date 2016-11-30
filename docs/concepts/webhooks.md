@@ -89,7 +89,7 @@ curl -X GET "https://api.contentful.com/spaces/<SPACE_ID>/webhooks/<WEBHOOK_ID>/
 -H "Content-Type: application/vnd.contentful.management.v1+json"
 ~~~
 
-[Find more details on getting the activity log of a webhook with the API in our reference docs](/developers/docs/references/content-management-api/#/reference/webhook-calls/webhook-call-overview/get-an-overview-of-recent-calls).
+[Find more details on getting the activity log of a webhook with the API in our reference docs](/developers/docs/references/content-management-api/#/reference/webhook-calls).
 
 ## Next steps
 

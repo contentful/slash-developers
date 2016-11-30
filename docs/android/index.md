@@ -25,7 +25,7 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 [View on GitHub](https://github.com/contentful/contentful-management.java)
 
-[API reference](http://contentful.github.io/contentful-management.java/)
+[API reference](https://contentful.github.io/contentful-management.java/)
 
 ## Tutorials
 
@@ -49,7 +49,7 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 ### Filtering and searching
 
-[This tutorial](/developers/docs/android/tutorials/advanced-fetchedng-andContentfulg/) shows how to filter, search and order entries fetched from Contentful.
+[This tutorial](/developers/docs/android/tutorials/advanced-filtering-and-searching) shows how to filter, search and order entries fetched from Contentful.
 
 ## Tools and integrations
 

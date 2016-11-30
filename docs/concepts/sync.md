@@ -1,5 +1,15 @@
 ---
 page: :docsSync
+name: Synchronization
+title: Synchronization
+metainformation: 'The Sync API allows you to keep a local copy of all content in a space up-to-date via delta updates, or content that has changed.'
+slug: null
+tags:
+  - Basics
+  - Content model
+nextsteps:
+  - docsSyncApiWithPhp
+  - docsOfflinePersistenceIos
 ---
 
 The Sync API allows you to keep a local copy of all content in a space up-to-date via [delta updates](https://en.wikipedia.org/wiki/Delta_update), or content that has changed.
@@ -56,6 +66,6 @@ Syncing entries or assets returns all available localizations instead of a singl
 ## Further information
 
 - Using the Sync API for [offline persistence on iOS](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/).
-- Using synchronization with the [Content Delivery API](https://www.contentful.com/developers/docs/references/content-delivery-api/#/reference/synchronization).
+- Using synchronization with the [Content Delivery API](/developers/docs/references/content-delivery-api/#/reference/synchronization).
 - Using synchronization with the [PHP SDK](/developers/docs/php/tutorials/using-the-sync-api-with-php/).
 - Using synchronization with the [JavaScript SDK](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/).
