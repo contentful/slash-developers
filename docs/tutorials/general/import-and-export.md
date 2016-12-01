@@ -1,5 +1,14 @@
 ---
 page: :docsImportExport
+name: Importing and Exporting Content
+title:  Importing and Exporting Content
+metainformation: 'This tutorial shows you how to import and export content from your spaces.'
+slug: null
+tags:
+  - Workflow
+nextsteps:
+  - docsSchedulingPosts
+  - docsUsingContentfulSpaceSync
 ---
 
 

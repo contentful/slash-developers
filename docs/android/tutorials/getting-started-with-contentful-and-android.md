@@ -1,5 +1,16 @@
 ---
 page: :docsGettingStartedAndroid
+name: Getting Started with Contentful and Android
+title: Getting Started with Contentful and Android
+metainformation: 'This guide will help you get started with your first basic hello world style Android app using Contentful with a demo space.'
+slug: null
+tags:
+  - Basics
+  - SDKs
+  - Android
+nextsteps:
+ - docsAdvancedFilteringAndSearchingAndroid
+ - docsAdvancedTypesAndRetrievalAndroid
 ---
 
 This walkthrough will help you getting started with your first basic hello world style Android app

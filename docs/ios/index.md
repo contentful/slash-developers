@@ -1,5 +1,15 @@
 ---
 page: :docsPlatformsIos
+name: iOS
+title: Using Contentful with iOS
+metainformation: 'Our SDKs give you access to our APIs and their features.'
+slug: null
+tags:
+  - Basics
+  - SDKs
+nextsteps:
+  - docsCdaIos
+  - docsCdaSwift
 ---
 
 - [SDKs](#sdks)

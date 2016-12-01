@@ -1,5 +1,15 @@
 ---
 page: :docsGettingStartedRuby
+name: Getting Started with Contentful and Ruby
+title: Getting Started with Contentful and Ruby
+metainformation: 'This guide shows you how to use the Ruby SDK to interact with the Contentful APIs.'
+slug: null
+tags:
+  - SDKs
+  - Ruby
+nextsteps:
+  - docsGettingStartedRubyCMA
+  - docsRubyFullStack
 ---
 
 This post will walk you through your first steps in using Contentful within your Ruby applications.
