@@ -10,7 +10,7 @@ To make development easier for our users, we publish SDKs for various languages 
 
 This tutorial assumes you understand the basic Contentful data model as described in the [developer center](/developers/docs/concepts/data-model/).
 
-Contentful.net is built on .net core and targets .Net Standard 1.6\. The SDK is cross platform and runs on Linux, macOS and Windows.
+Contentful.net is built on .net core and targets .Net Standard 1.4\. The SDK is cross platform and runs on Linux, macOS and Windows.
 
 ## Installation
 
