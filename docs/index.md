@@ -50,7 +50,7 @@ We have content import/export tools, iOS and Android development plugins and mor
 - [Static site generators](/developers/docs/tools/staticsitegenerators/)
 - [Space management tools](/developers/docs/tools/spacemanagement/)
 - [Extensions](/developers/docs/tools/extensions/)
-- [Others and third party tools](/developers/docs/tools/aplications/)
+- [Others and third party tools](/developers/docs/tools/applications/)
 
 
 ## More
