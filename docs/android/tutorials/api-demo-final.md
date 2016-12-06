@@ -11,10 +11,8 @@ This guide shows you how to make a call to one of the [Contentful APIs](/develop
 Download the Java SDK library jar file:
 
 ~~~bash
-wget 'http://search.maven.org/remotecontent?filepath=com/contentful/java/java-sdk/6.1.2/java-sdk-6.1.2-jar-with-dependencies.jar' -O contentful.jar
+wget 'http://search.maven.org/remotecontent?filepath=com/contentful/java/java-sdk/7.2.0/java-sdk-7.2.0-jar-with-dependencies.jar' -O contentful.jar
 ~~~
-
-**VERSION?**
 
 Create a _HelloContentful.java_ file and copy these lines into it:
 
@@ -91,7 +89,9 @@ Contentful is built on the principle of structured content, a set of key-value p
 
 The same way you can set up any [content structure](/developers/docs/concepts/data-model) in a MySQL database, you can set up a custom content structure in Contentful. There are no presets, templates, or similar, you can (and should) set everything up depending on the logic of your project.
 
-You maintain this structure with _content types_, which define what data fields are present in a content entry. You might have noticed the `sys.contentType` property of the entry above:
+You maintain this structure with _content types_, which define what data fields are present in a content entry.
+
+You might have noticed the `sys.contentType` property of the entry above:
 
 ~~~json
 "contentType": {
@@ -165,13 +165,11 @@ Re-running the script should now produce the following output:
 }
 ~~~
 
-## Usable by all (??)
-
-Contentful enables structuring content in any possible way, making it accessible both to developers through the API and for editors via the web interface. It's a perfect tool to use for any project that involves content that should be properly managed by editors, in a CMS, instead of developers having to deal with the hardcoded content.
-
 ## Explore further
 
-We'd like to help you understand our product, so here are our suggested next steps:
+Contentful lets you structure content in any possible way, making it accessible both to developers through the API and for editors via the web interface. It's a perfect tool to use for any project that involves content that should be properly managed by editors, in a CMS, instead of developers having to deal with hardcoded content.
+
+We'd like to help you understand Contenful more, so here are our suggested next steps:
 
 - [Browse other Java tutorials](/developers/docs/java/)
 - [Explore our four APIs](/developers/docs/concepts/apis)

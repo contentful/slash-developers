@@ -27,7 +27,7 @@ We assume you have [Android Studio installed](https://developer.android.com/stud
 
 For every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit applications and content classes.
 
-You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
 
 ## Create a new Android project
 
@@ -37,20 +37,18 @@ Create a new project in Android Studio using the 'Blank Activity' template, and 
 
 To include the CDA SDK in your app, add the following lines to the _build.gradle_ file:
 
-~~~gradle
+```gradle
 dependencies {
     // [...]
-    compile 'com.contentful.java:java-sdk:4.0.2'
+    compile 'com.contentful.java:java-sdk:7.2.0'
 }
-~~~
-
-**VERSION?**
+```
 
 ## Fetching all data from a demo space
 
 Add the internet permission to the _AndroidManifest.xml_ file so your app can access the Contentful APIs:
 
-~~~xml
+```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.demospaceexplorer" >
 
@@ -59,52 +57,49 @@ Add the internet permission to the _AndroidManifest.xml_ file so your app can ac
 <!-- ... -->
 
 </manifest>
-~~~
+```
 
 Add the following code to the click handler of the floating action button, or in the `onCreate` function:
 
-~~~java
+```java
 CDAClient client = CDAClient.builder()
         .setSpace("cfexampleapi")
         .setToken("b4c0n73n7fu1")
         .build();
-~~~
+```
 
 This will create a `CDAClient` that communicates with the Contentful APIs using the space id and token you gained earlier.
 
-Next it's time to make a request to fetch all entries:
+To fetch all entries:
 
-~~~java
+```java
 client.fetch(CDAEntry.class).all(new CDACallback<CDAArray>() {
     @Override
     protected void onSuccess(CDAArray result) {
         // do something with the result.
     }
 });
-~~~
+```
 
 The `onSuccess` handler is called once the data is loaded and you can process the results. In production applications you should override the failure handler to cope with any problems.
 
-~~~java
+```java
 protected void onFailure(Throwable error) {
 }
-~~~
+```
 
 ## Fetching specific items
 
 If you want to fetch the data of a specific entry, use the `id` of the entry:
 
-~~~java
+```java
 client.fetch(CDAEntry.class).one("happycat", new CDACallback<CDAEntry>() {
     @Override
     protected void onSuccess(CDAEntry result) {
         textView.setText(result.toString());
     }
 });
-~~~
-
-## 'Conclusion'
+```
 
 [1]: https://github.com/contentful/contentful.java
-[2]: https://github.com/contentful-labs/contentful_middleman_examples
 [4]: /developers/docs/android/tutorials/getting-started-with-contentful-and-android/
