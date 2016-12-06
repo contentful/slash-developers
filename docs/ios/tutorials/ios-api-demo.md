@@ -1,10 +1,6 @@
 # Your first API call with Swift
 
-You're a developer, you've discovered Contentful and you're interested in understanding what it is and how it works. This introduction will show you how to fetch content from Contentful in just 3 minutes
-
-Contentful is an API-first Content management system (CMS) which helps developers get content in their apps with API calls, and offers editors a familiar-looking web app for creating and managing content.
-
-This guide shows you how to make a call to one of the [Contentful APIs](/developers/docs/concepts/apis), explains how the response looks, and suggests next steps.
+:[API demo intro](../../_partials/api-demo-intro.md)
 
 ## Setup
 
@@ -101,13 +97,9 @@ Entry(
 )
 ~~~
 
-## Custom content structures
+:[Custom content Structures](../../_partials/custom-content-structures.md)
 
-Contentful is built on the principle of structured content, a set of key-value pairs is not a great interface to program against if the keys and data types are always changing.
-
-The same way you can set up any [content structure](/developers/docs/concepts/data-model) in a MySQL database, you can set up a custom content structure in Contentful. There are no presets, templates, or similar, you can (and should) set everything up depending on the logic of your project.
-
-You maintain this structure with _content types_, which define what data fields are present in a content entry. You might have noticed the `sys.contentType` property of the entry above:
+You might have noticed the `sys.contentType` property of the entry above:
 
 ~~~json
 "contentType": {
@@ -180,13 +172,7 @@ ContentType(
 )
 ~~~
 
-## Usable by all (??)
-
-Contentful enables structuring content in any possible way, making it accessible both to developers through the API and for editors via the web interface. It's a perfect tool to use for any project that involves content that should be properly managed by editors, in a CMS, instead of developers having to deal with the hardcoded content.
-
-## Explore further
-
-We'd like to help you understand our product, so here are our suggested next steps:
+:[Explore Further](../../_partials/explore-further.md)
 
 - [Browse other iOS tutorials](/developers/docs/ios/)
 - [Explore our four APIs](/developers/docs/concepts/apis)
