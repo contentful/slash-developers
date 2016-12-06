@@ -24,7 +24,7 @@ This tutorial assumes you have read and understood [the guide that covers the Co
 
 For every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit applications and content classes.
 
-You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key)
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
 
 ## Setting up the client
 
@@ -123,7 +123,7 @@ Now you're going to retrieve all the entries in a space.
 ~~~javascript
 client.getEntries()
 .then(function (entries) {
-  // log the title for all the entries that might have it
+  // log the title for all the entries that have it
   entries.items.forEach(function (entry) {
     if(entry.fields.title) {
       console.log(entry.fields.title)
