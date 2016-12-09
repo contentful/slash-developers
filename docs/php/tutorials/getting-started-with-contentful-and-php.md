@@ -11,8 +11,6 @@ nextsteps:
   - docsSyncApiWithPhp
 ---
 
-# t
-
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
 We publish SDKs for various languages to make developing applications easier. This article details how to get content using the [PHP CDA SDK](https://github.com/contentful/contentful.php).
@@ -156,7 +154,7 @@ $url = $asset->getName()->getFile()->getUrl($options);
 
 ## Next steps
 
-- [Explore the Ruby CDA SDK GitHub repository](1).
+- [Explore the PHP CDA SDK GitHub repository](1).
 - [Getting started with the Sync API and PHP](/developers/docs/php/tutorials/using-the-sync-api-with-php)
 
 [1]: https://github.com/contentful/contentful.php

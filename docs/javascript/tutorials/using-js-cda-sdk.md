@@ -248,9 +248,6 @@ Read the [search parameters API guide](/developers/docs/references/content-deliv
 
 ## Next steps
 
-In this article, we showed you how to use the Contentful JavaScript SDK to perform requests and handle their responses by performing the following actions:
-
-1. Retrieve a single entry.
 - [Explore the JavaScript CDA SDK GitHub repository](https://github.com/contentful/contentful.js).
 - [Using the Sync API with JavaScript](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/).
 - [Creating an Express JavaScript application with Contentful](/developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/).
