@@ -1,5 +1,15 @@
 ---
 page: :docsPlatformsRuby
+name: Ruby
+title:  Using Contentful with Ruby
+metainformation: 'This guide shows you how to use the Ruby SDK to interact with the Contentful APIs.'
+slug: null
+tags:
+  - SDKs
+  - Ruby
+nextsteps:
+  - docsGettingStartedRuby
+  - docsRubyFullStack
 ---
 
 - [SDKs](#sdks)

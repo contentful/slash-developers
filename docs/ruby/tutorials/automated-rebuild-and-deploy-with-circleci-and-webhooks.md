@@ -1,5 +1,14 @@
 ---
 page: :docsRubyAutomatedRebuild
+name: Automated rebuild and deploy with CircleCI and Webhooks
+title: Automated rebuild and deploy with CircleCI and Webhooks
+metainformation: 'This guide will show you how you can automate this process using Webhooks and CircleCI.'
+slug: null
+tags:
+  - SDKs
+  - Ruby
+  - Workflow
+nextsteps: null
 ---
 
 If you're running our [Jekyll](https://github.com/contentful/jekyll-contentful-data-import) or [Middleman](https://github.com/contentful/contentful_middleman) integrations,

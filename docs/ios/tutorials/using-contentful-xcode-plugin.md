@@ -1,5 +1,16 @@
 ---
 page: :docsContentfulXcode
+name: Using the Contentful Xcode Plugin
+title: Using the Contentful Xcode Plugin
+metainformation: 'Our plugin for Xcode generates a Core Data model directly from your content model, making it easier than ever to use the Content Delivery API in your iOS and macOS projects.'
+slug: null
+tags:
+  - Tools
+  - iOS
+  - Mobile
+nextsteps:
+  - docsCdaIos
+  - docsCmaIos
 ---
 
 If you are using Contentful with Core Data in your iOS app, a painful manual step is recreating your content model inside Xcode. This is often both time consuming and prone to errors because mismatches between the two models can lead to bugs that are hard to spot. Today we are releasing a plugin for Xcode, which generates a Core Data model directly from your content model, making it easier than ever to use the Content Delivery API in your iOS and macOS projects.

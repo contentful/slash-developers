@@ -1,5 +1,16 @@
 ---
 page: :docsAnatomyCDARequest
+name: Anatomy of a CDA Request
+title: Anatomy of a CDA Request
+metainformation: 'This article goes into detail about how the requests and responses work using the CDA.'
+slug: null
+tags:
+  - API
+  - Request
+  - Advanced
+nextsteps:
+  - docsAnatomyCMARequest
+  - docsContentfulCda
 ---
 
 ## Overview

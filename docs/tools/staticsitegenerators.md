@@ -1,5 +1,15 @@
 ---
 page: :docsToolsStaticSiteGenerators
+name: Static site generators
+title: Static site generators
+metainformation: 'We love static sites and have plugins to support three of our favorites.'
+slug: null
+tags:
+ - Tools
+ - Extending
+nextsteps:
+ - docsToolsExtensions
+ - docsToolsApplications
 ---
 
 We love static sites and have plugins to support three of our favorites.

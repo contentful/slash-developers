@@ -1,5 +1,15 @@
 ---
 page: :docsToolsSpaceManagement
+name: Space management
+title: Space management tools
+metainformation: 'These tools will help you import and manage entries in your spaces.'
+slug: null
+tags:
+ - Tools
+ - Extending
+nextsteps:
+ - docsToolsStaticSiteGenerators
+ - docsToolsApplications
 ---
 
 These tools will help you import and manage entries in your spaces.
