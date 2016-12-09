@@ -134,9 +134,11 @@ To query all assets in a space:
 assets = client.assets
 ```
 
-## Conclusion
+## Next steps
 
-After reading this guide, you should be to start using Contentful within your Ruby applications. You can read more detail about the library in [the GitHub repository][1].
+- [Explore the Ruby CDA SDK GitHub repository](1).
+- [A full stack guide for using Contentful with Ruby](/developers/docs/ruby/tutorials/full-stack-getting-started/).
+- [Getting Started with Ruby and the Content Management API](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/).
 
 [1]: https://github.com/contentful/contentful.rb
 [2]: https://github.com/contentful/contentful_middleman_examples

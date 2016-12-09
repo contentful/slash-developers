@@ -140,9 +140,11 @@ lazy var dataSource: CoreDataFetchDataSource<ProductCell> = {
 }
 ```
 
-## Conclusion
+## Next steps
 
-That completes the explanation of the [product catalogue app][1] and you have enough knowledge to start building your own iOS apps with Contentful.
+- [Explore the Swift SDK GitHub repository](https://github.com/contentful/contentful.swift).
+- [Using the Contentful Management API with Swift](/developers/docs/ios/tutorials/using-management-api-on-ios/).
+- [Offline Persistence with the iOS SDK](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/).
 
 [1]: https://github.com/contentful/product-catalogue-swift
 [10]: http://cocoadocs.org/docsets/Interstellar/1.4.0/Classes/Signal.html
