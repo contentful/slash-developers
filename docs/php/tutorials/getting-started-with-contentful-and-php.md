@@ -154,7 +154,7 @@ $url = $asset->getName()->getFile()->getUrl($options);
 
 ## Next steps
 
-- [Explore the PHP CDA SDK GitHub repository](1).
+- [Explore the PHP CDA SDK GitHub repository](https://github.com/contentful/contentful.php).
 - [Getting started with the Sync API and PHP](/developers/docs/php/tutorials/using-the-sync-api-with-php)
 
 [1]: https://github.com/contentful/contentful.php
