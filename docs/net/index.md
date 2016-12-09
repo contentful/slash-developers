@@ -23,4 +23,4 @@ This SDK interacts with the Content Delivery API, a read-only API for retrieving
 
 ### Getting started with the Content Delivery API SDK and .Net
 
-[This tutorial](/developers/docs/net/tutorials/using-net-cda-sdk) will walk you through the first steps using the Content Delivery API with a .Net application.
+[This tutorial](/developers/docs/net/tutorials/using-net-cda-sdk/) will walk you through the first steps using the Content Delivery API with a .Net application.
