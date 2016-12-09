@@ -101,5 +101,12 @@ client.fetch(CDAEntry.class).one("happycat", new CDACallback<CDAEntry>() {
 });
 ~~~
 
+## Next steps
+
+- [Explore the contentful.java SDK GitHub repository][1].
+- [Persistent offline data storage with Vault][4].
+- [Advanced filtering and searching](/developers/docs/docs/android/tutorials/advanced-filtering-and-searching/)
+
+
 [1]: https://github.com/contentful/contentful.java
 [4]: /developers/docs/android/tutorials/getting-started-with-contentful-and-android/
