@@ -32,15 +32,15 @@ You can create an access token using the [Contentful web app](https://be.content
 
 First, you need to install the 'contentful' gem, you can do this with the console:
 
-```bash
+~~~bash
 gem install contentful
-```
+~~~
 
 Or you can add it inside your _Gemfile_:
 
-```ruby
+~~~ruby
 gem 'contentful'
-```
+~~~
 
 And then run `bundle install` to install the gem and all its dependencies.
 
@@ -50,7 +50,7 @@ Once you have the gem installed, you can start using it inside your application.
 
 To create a Contentful client you will need the authentication key created earlier and the ID of a space:
 
-```ruby
+~~~ruby
 require 'contentful'
 
 client = Contentful::Client.new(
@@ -58,7 +58,7 @@ client = Contentful::Client.new(
   access_token: 'b4c0n73n7fu1',
   dynamic_entries: :auto
 )
-```
+~~~
 
 {: .note}
 **Note**: The `dynamic_entries: :auto` attribute will automatically map the fields in your entries to methods, so that you can use them directly as objects.
@@ -73,42 +73,42 @@ With the client created, you can now start consuming data from the API.
 
 For example, to request all entries in a space from the API:
 
-```ruby
+~~~ruby
 entries = client.entries
-```
+~~~
 
 Or to request a single entry:
 
-```ruby
+~~~ruby
 entry_id = 'nyancat'
 cat = client.entry(entry_id)
-```
+~~~
 
 You can specify any of the [query parameters accepted by the API][5], for example:
 
-```ruby
+~~~ruby
 cat_entries_by_date = client.entries(content_type: 'cat', order: 'sys.createdAt')
-```
+~~~
 
 ### Using your entry as a Ruby object
 
 Once you've got your entry, you can use it as a Ruby object:
 
-```ruby
+~~~ruby
 puts cat.name # => "Nyan Cat"
 puts "I like #{cat.likes.join(' and ')}" # => "I like rainbows and fish"
 puts "I have #{cat.lives} lives" # => "I have 1337 lives"
-```
+~~~
 
 You can form complicated queries and interaction with your entries:
 
-```ruby
+~~~ruby
 cats_with_many_likes = client.entries(content_type: 'cat', include: 2).select { |cat| cat.likes.size > 1 }
 cats_with_many_likes.each do |cat|
   puts "I like #{cat.likes.join(' and ')}"
   puts "My Best Friend is: #{cat.best_friend.name}"
 end
-```
+~~~
 
 In this case you've added the `include: 2` parameter, which allows the API to resolve [links][4] to other entries that are related.
 
@@ -118,21 +118,21 @@ You query assets in a similar way to entries, but the CDA offers more specific f
 
 To query a single asset:
 
-```ruby
+~~~ruby
 client.asset('happycat').image_url
-```
+~~~
 
 Will return a URL for the image, something like:
 
-```
+~~~
 "//images.contentful.com/cfexampleapi/3MZPnjZTIskAIIkuuosCss/382a48dfa2cb16c47aa2c72f7b23bf09/happycatw.jpg"
-```
+~~~
 
 To query all assets in a space:
 
-```ruby
+~~~ruby
 assets = client.assets
-```
+~~~
 
 ## Conclusion
 
