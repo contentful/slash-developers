@@ -246,11 +246,8 @@ If you're interested in knowing what other filters and operators you can use, re
 
 Read the [search parameters API guide](/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
 
-## Conclusion
+## Next steps
 
-In this article, we showed you how to use the Contentful JavaScript SDK to perform requests and handle their responses by performing the following actions:
-
-1. Retrieve a single entry.
-2. Retrieve all entries of a space.
-3. Retrieve all entries and their linked resources.
-4. Retrieve all filtered entries by search parameters.
+- [Explore the JavaScript CDA SDK GitHub repository](https://github.com/contentful/contentful.js).
+- [Using the Sync API with JavaScript](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/).
+- [Creating an Express JavaScript application with Contentful](/developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/).
