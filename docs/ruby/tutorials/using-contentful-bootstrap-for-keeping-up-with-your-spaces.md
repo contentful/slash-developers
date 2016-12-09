@@ -1,5 +1,14 @@
 ---
 page: :docsContentfulBootstrap
+name: Contentful Bootstrap
+title: Contentful Bootstrap
+metainformation: 'This tutorial will walk you through your first steps in using Contentful Bootstrap to get you jump-started in Contentful.'
+slug: null
+tags:
+  - Workflow
+  - Ruby
+nextsteps:
+  - docsRubyFullStack
 ---
 
 This post will walk you through your first steps in using [Contentful Bootstrap][1] to get you jump-started in Contentful.

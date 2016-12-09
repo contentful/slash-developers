@@ -1,5 +1,15 @@
 ---
 page: :docsOfflinePersistenceAndroid
+name: Offline persistence with Vault on Android
+title: Offline persistence with Vault on Android
+metainformation: 'This tutorial shows you how to get offline access to your Contentful content.'
+slug: null
+tags:
+- Offline
+- Content model
+nextsteps:
+ - docsContentfulCma
+ - docsSync
 ---
 
 In this tutorial we will walk through the essential steps of settings up Vault with your Android project. For that, we've open-sourced [DroidStory][droidstory], which is a simple app showcasing several best practices for integrating Vault in an Android project.
@@ -239,4 +249,3 @@ If you have any questions or feedback, please feel free to drop us an email to [
 [droidstoryspace_java]: https://github.com/contentful-labs/droidstory/blob/master/droidstory-android/app/src/main/java/com/contentful/droidstory/data/vault/DroidStorySpace.java#L22
 [dsc]: https://github.com/contentful-labs/droidstory/tree/master/droidstory-spacecreator
 [cma_token]: /developers/docs/references/authentication/#the-management-api
-

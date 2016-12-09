@@ -1,5 +1,15 @@
 ---
 page: :docsPlatformsPhp
+name: PHP
+title:  Using Contentful with PHP
+metainformation: 'This guide shows you how to use the PHP SDK to interact with the Contentful APIs.'
+slug: null
+tags:
+  - SDKs
+  - PHP
+nextsteps:
+  - docsGettingStartedPhp
+  - docsSyncApiWithPhp
 ---
 
 - [SDKs](#sdks)

@@ -1,5 +1,16 @@
 ---
 page: :docsCmaIos
+name: Using the Management API on iOS
+title: Using the Management API on iOS
+metainformation: 'This post will walk you through implementing a simple iOS app for uploading images from the device's Camera Roll to Contentful.'
+slug: null
+tags:
+  - CMA
+  - iOS
+  - Mobile
+nextsteps:
+  - docsCdaIos
+  - docsCdaSwift
 ---
 
 This post will walk you through implementing a simple iOS app for uploading images from the device's Camera Roll to Contentful.

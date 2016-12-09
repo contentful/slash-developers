@@ -1,5 +1,13 @@
 ---
 page: :docsExtendingDeliveryApi
+name: Extending the Content Delivery API
+title: Extending the Content Delivery API with AWS Lambda & API Gateway
+metainformation: 'This tutorial will show you how you can use two new Amazon Lambda and API Gateway to provide additional functionality on top of Contentful's Content Delivery API without running any of your own infrastructure.'
+slug: null
+tags:
+  - Workflow
+nextsteps:
+  - docsContentfulCda
 ---
 
 When using 3rd-party API's sometimes you want (or need) additional functionality on top of what the API provides. Previously your only options were to complicate your API client, or run your own API (often referred to as API orchestration) on your own servers. This tutorial will show you how you can use two new Amazon services, [Lambda][] and [API Gateway][], to provide additional functionality on top of Contentful's [Content Delivery API][cda-description] without running any of your own infrastructure.
