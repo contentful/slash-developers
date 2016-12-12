@@ -2,7 +2,7 @@
 page: :docsExtendingDeliveryApi
 name: Extending the Content Delivery API
 title: Extending the Content Delivery API with AWS Lambda & API Gateway
-metainformation: 'This tutorial will show you how you can use two new Amazon Lambda and API Gateway to provide additional functionality on top of Contentful's Content Delivery API without running any of your own infrastructure.'
+metainformation: 'This tutorial will show you how you can use Amazon Lambda and API Gateway with our Content Delivery API.'
 slug: null
 tags:
   - Workflow
