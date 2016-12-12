@@ -2,7 +2,7 @@
 page: :docsUiExtensions
 name: UI Extensions
 title: UI Extensions
-metainformation: 'The UI Extensions SDK allows you to customize and extend the functionality of the Contentful Web App's entry editor.'
+metainformation: 'The UI Extensions SDK allows you to customize and extend the functionality of the Contentful Web App entry editor.'
 slug: null
 tags:
   - Customization
