@@ -38,7 +38,8 @@ These guides will help you answer questions you might have when using our APIs:
 
 We provide libraries and SDKs for major programming languages and platforms so you don't have to write code for interacting with APIs from scratch.
 
-- [Android / Java](/developers/docs/android/)
+- [Android](/developers/docs/android/)
+- [Java](/developers/docs/java/)
 - [Objective-C / Swift](/developers/docs/ios/)
 - [JavaScript](/developers/docs/javascript/)
 - [PHP](/developers/docs/php/)
