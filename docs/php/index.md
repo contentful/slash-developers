@@ -23,8 +23,10 @@ Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and thei
 
 ### Content Delivery API SDK
 
-This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.<br>
-[View on GitHub](https://github.com/contentful/contentful.php)<br>
+This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.
+
+[View on GitHub](https://github.com/contentful/contentful.php)
+
 [API reference](https://contentful.github.io/contentful.php/api/)
 
 ## Tutorials
@@ -53,12 +55,14 @@ The Sync API allows you to keep a local copy of all the content in a space up-to
 
 ### Symfony bundle
 
-This bundle helps you integrate Symfony with the Content Delivery API<br>
+This bundle helps you integrate Symfony with the Content Delivery API
+
 [View on GitHub](https://github.com/contentful/ContentfulBundle)
 
 ### Laravel integration
 
-This bundle helps you integrate Laravel with the Content Delivery API<br>
+This bundle helps you integrate Laravel with the Content Delivery API
+
 [View on GitHub](https://github.com/contentful/contentful-laravel)
 
 ## Example apps
@@ -67,10 +71,12 @@ These example apps are the best way to start building with Contentful. They show
 
 ### Symfony
 
-A generic product catalogue / e-commerce app connected to an example space using Symfony.<br>
+A generic product catalogue / e-commerce app connected to an example space using Symfony.
+
 [View on GitHub](https://github.com/contentful/product-catalogue-app-symfony)
 
 ### Laravel
 
-A simple blog using Contentful and Laravel.<br>
+A simple blog using Contentful and Laravel.
+
 [View on GitHub](https://github.com/contentful/blog-app-laravel)
