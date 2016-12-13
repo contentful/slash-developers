@@ -716,6 +716,75 @@ This example will return only image assets.
 
   + Attributes (Empty Array)
 
+## Search on references [/spaces/{space_id}/assets?access_token={access_token}&content_type={content_type}&fields.{reference_field}.sys.contentType.sys.id={reference_content_type}&fields.{reference_field}.fields.{search_field}={search_value}]
+It's possible to search for entries based on the values of referenced entries. To understand this better lets firts consider the following scenario: entries of content type `Article` have a `writtenBy` field which is used to link to entries from content type `Author` (which among others have a `name` field). Using the search on references functionality we can, with just one API request, find those articles which have been writen by an author with a given name.
+
+### Structure of a query
+Following with the scenario described above lets see how such a query would look like:
+
+`content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name=john`
+
+- First we have the usual `content_type` parameter which we have to include any time we want to filter based on the values of the fields of entries of a certain content type.
+- Second we have `fields.writtenBy.sys.contentType.sys.id=post` which we have to include since we are going to filter on fields of entries from content type `Author`.
+- And third `fields.writtenBy.fields.name=john` which is the filter we want to apply to get only those entries written by John.
+
+Notice that all the filters on referenced entries are scoped with the path to the field where the reference is. On the previous example that path is `fields.writtenBy`.
+
+You can search on multiple references at once. You could combine the requirements below in one singe API query:
+
+- articles writen by authors with a given name: `fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name=XYZ`
+- and published in certain sites: `fields.publishedIn.sys.contentType.sys.id=publication&fields.publishedIn.fields.url[in]=XYZ,RST`
+- and which has been reviewed with a note higher than a threshold: `fields.review.sys.contentType.sys.id=review&fields.review.fields.rating[gt]=4`
+
+The resulting query would look like this:
+
+```
+// query formatted with breaklines to make it easier to read
+
+content_type=article&
+fields.writtenBy.sys.contentType.sys.id=author&
+fields.writtenBy.fields.name=XYZ&
+fields.publishedIn.sys.contentType.sys.id=publication&
+fields.publishedIn.fields.url[in]=XYZ,RST&
+fields.review.sys.contentType.sys.id=review&
+fields.review.fields.rating[gt]=4
+```
+
+
+### Available nested filters
+You can use almost all the existing filters on the referenced entry. For example, all the following queries are valid:
+
+- `content_type=article&fields.writtenBy.sys.contentType.sys.id=post&fields.writtenBy.fields.age[gt]=21`
+- `content_type=article&fields.writtenBy.sys.contentType.sys.id=post&fields.writtenBy.fields.name[in]=john,alex,klaus`
+- `content_type=article&fields.writtenBy.sys.contentType.sys.id=post&fields.writtenBy.fields.languages[all]=spanish,english`
+
+This a is comprehensive list of all the filters that can be used when searching on references: `all`, `in`, `nin`, `exists`, `match`, `gt`, `gte`,`lt`, `lte`, `ne`, `near` and `within`. The semantics of this filters is the same as when used on a non referenced entry.
+
+### Restrictions
+
+Searching on references has the following restrictions:
+
+- Searching on references can only be used on fields which link to a single entry. Fields which hold references to many entries or fields with references to assets are not supported by this functionality.
+- The maximum number of reference searches in one query is X. A bigger value will return an error.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + content_type (required, string, `cat`) ...
+    + reference_content_type (required, string, `cat`) ... The id of then content type of the referenced entry
+    + reference_field (required, string, `bestFriend`) ... The id of the field holding the reference
+    + search_field (required, string, `color`) ... The id of the field we want to search
+    + search_value (required, string, `rainbow`) ... The value we are looking for
+
+### Search on references [GET]
+
+This example will return only those cats who are friend with another cat of `rainbow` color.
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)
+
+
 # Group Localization
 
 ## Retrieve localized entries [/spaces/{space_id}/entries/{entry_id}?access_token={access_token}&locale={locale}]
