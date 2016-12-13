@@ -17,9 +17,9 @@ nextsteps: null
 
 Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and their features.
 
-### CDA - Content Delivery API
+### Content Delivery API SDK
 
-Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
+This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.
 
 [View on GitHub](https://github.com/contentful/contentful.py)
 
