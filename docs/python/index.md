@@ -1,5 +1,13 @@
 ---
 page: :docsPlatformsPython
+name: Python
+title: Using Contentful with Python
+metainformation: 'This guide shows you how to use the Python SDK to interact with the Contentful APIs.'
+slug: null
+tags:
+  - SDKs
+  - Python
+nextsteps: null
 ---
 
 - [SDKs](#sdks)

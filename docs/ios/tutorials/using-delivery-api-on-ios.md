@@ -1,5 +1,16 @@
 ---
 page: :docsCdaIos
+name: Using the Delivery API on iOS
+title: Using the Delivery API on iOS
+metainformation: 'This guide will show you what our iOS SDK does and how you can use it to build content-driven apps.'
+slug: null
+tags:
+  - CDA
+  - iOS
+  - Mobile
+nextsteps:
+  - docsCmaIos
+  - docsCdaSwift
 ---
 
 Read on to find out what our iOS SDK does and how you can use it to build content-driven apps more easily. The [coffee guide app][1] will provide an example and walk you through building a simple app from start to finish.

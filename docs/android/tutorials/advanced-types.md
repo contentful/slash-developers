@@ -1,5 +1,14 @@
 ---
 page: :docsAdvancedTypesAndRetrievalAndroid
+name: Advanced Type Retrieval
+title: Advanced Type Retrieval
+metainformation: 'The guide shows you how to retrieve entries from Contenful using our Java API.'
+slug: null
+tags:
+- SDKs
+- Java
+nextsteps:
+ - docsAdvancedFilteringAndSearchingAndroid
 ---
 
 This is a simple `how to` on different aspects of the Contentful JAVA API. All following samples assume a client setup like

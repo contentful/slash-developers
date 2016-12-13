@@ -1,45 +1,54 @@
 ---
 page: :docsGettingStartedAndroid
+name: Getting Started with Contentful and Android
+title: Getting Started with Contentful and Android
+metainformation: This guide will help you get started with your first basic hello world style Android app using Contentful with a demo space.
+slug: null
+tags:
+  - Basics
+  - SDKs
+  - Android
+nextsteps:
+  - docsOfflinePersistenceAndroid
+  - docsAdvancedTypesAndRetrievalAndroid
 ---
 
-This walkthrough will help you getting started with your first basic hello world style Android app
-of using Contentful with a demo space.
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-For a more in-depth tutorial containing steps on how to persist this data, please take a look at
-[offline persistence with Vault][4]
+We publish SDKs for various languages to make developing applications easier. This article details how to get content using the [JavaScript CDA SDK][1].
 
-To participate in this tutorial, we assume you do have Android Studio installed, and are familiar
-with it.
+## Pre-requisites
 
-## Creating a new Android project
+This tutorial assumes you have read and understood [the guide that covers the Contentful data model](/developers/docs/concepts/data-model/).
 
-Please create a new project, so we can start with a clean environment. We used the `Blank Activity`
-template, but you can choose whichever you prefer. After creating the usual project name and folder
-structure, summarized in the following image, we continue with creating the dependencies to
-Contentful in the project settings.
+We assume you have [Android Studio installed](https://developer.android.com/studio/index.html), and are familiar with it.
 
+## Authentication
 
-## Defining dependency to Contentful
+For every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit applications and content classes.
 
-To include `Contentful` please add the following lines to the just created gradle `build.gradle` in
-the app folder:
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
 
-~~~ gradle
+## Create a new Android project
 
+Create a new project in Android Studio using the 'Blank Activity' template, and name it whatever you wish.
+
+## Define Contentful as a dependency
+
+To include the CDA SDK in your app, add the following lines to the _build.gradle_ file:
+
+~~~gradle
 dependencies {
     // [...]
-    compile 'com.contentful.java:java-sdk:4.0.2'
+    compile 'com.contentful.java:java-sdk:7.2.0'
 }
 ~~~
 
-After a sync, this will download the current java-sdk, so we are able to use it and download our
-first data from the demo space, by the press of a button:
+## Fetching all data from a demo space
 
-## Fetching all data from our demo space
+Add the internet permission to the _AndroidManifest.xml_ file so your app can access the Contentful APIs:
 
-Please add the internet permission to the `AndroidManifest.xml`:
-
-~~~ xml
+~~~xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.demospaceexplorer" >
 
@@ -50,22 +59,20 @@ Please add the internet permission to the `AndroidManifest.xml`:
 </manifest>
 ~~~
 
-Next add this code on the `click handler` of the fab, or in `onCreate`:
+Add the following code to the click handler of the floating action button, or in the `onCreate` function:
 
-~~~ java
+~~~java
 CDAClient client = CDAClient.builder()
         .setSpace("cfexampleapi")
         .setToken("b4c0n73n7fu1")
         .build();
 ~~~
 
-This will create a `CDAClient` which will be used for the communication with Contentful. The `Space` is
-a named entity you want to access. Both, the `Space` and the `Token` can be obtained through
-the Contentful web app.
+This will create a `CDAClient` that communicates with the Contentful APIs using the space id and token you gained earlier.
 
-Next step is to actually do a request:
+To fetch all entries:
 
-~~~ java
+~~~java
 client.fetch(CDAEntry.class).all(new CDACallback<CDAArray>() {
     @Override
     protected void onSuccess(CDAArray result) {
@@ -74,23 +81,18 @@ client.fetch(CDAEntry.class).all(new CDACallback<CDAArray>() {
 });
 ~~~
 
-which will call the `onSuccess` handler, once the data got loaded, you can process the results.
-Also on production applications you might like to override
+The `onSuccess` handler is called once the data is loaded and you can process the results. In production applications you should override the failure handler to cope with any problems.
 
-~~~ java
+~~~java
 protected void onFailure(Throwable error) {
 }
 ~~~
 
-to handle any error occurring.
+## Fetching specific items
 
-## Fetching only specific items
+If you want to fetch the data of a specific entry, use the `id` of the entry:
 
-If you only want to get data of a specific entry, you would use the `id` of the entry you want to
-get like this:
-
-
-~~~ java
+~~~java
 client.fetch(CDAEntry.class).one("happycat", new CDACallback<CDAEntry>() {
     @Override
     protected void onSuccess(CDAEntry result) {
@@ -99,14 +101,11 @@ client.fetch(CDAEntry.class).one("happycat", new CDACallback<CDAEntry>() {
 });
 ~~~
 
+## Next steps
 
-## Conclusion
+- [Persistent offline data storage with Vault](/developers/docs/android/tutorials/offline-persistence-with-vault/).
+- [Advanced filtering and searching](/developers/docs/android/tutorials/advanced-filtering-and-searching/)
 
-With this short tutorial, you are able to start using your requests in your Android
-applications. For more information, please take a look at [contentful.java GitHub][1].
-
-You can also check out how to [use persistent data storage with Vault][4].
 
 [1]: https://github.com/contentful/contentful.java
-[2]: https://github.com/contentful-labs/contentful_middleman_examples
 [4]: /developers/docs/android/tutorials/getting-started-with-contentful-and-android/

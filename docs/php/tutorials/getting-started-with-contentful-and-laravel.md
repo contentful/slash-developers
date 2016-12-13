@@ -1,6 +1,15 @@
 ---
 page: :docsGettingStartedLaravel
+name: Getting Started with Contentful and Laravel
+title:  Getting Started with Contentful and Laravel
+metainformation: 'This tutorial will walk you through your first steps in using Contentful within your PHP application.'
+slug: null
+tags:
+  - SDKs
+  - PHP
+nextsteps: null
 ---
+
 This tutorial will show you how to setup the Content Delivery API in your Laravel application and how to access your content
 inside the framework.
 

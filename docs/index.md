@@ -1,5 +1,8 @@
 ---
 page: :docsOverview
+name: Developer center
+title: Developer center
+subtitle: Learn how to build with Contentful
 ---
 
 You're in the right place to find everything you need to deeper understand and use Contentful. This includes an overview of Contentful concepts, API references, tutorials, details of SDKs and libraries for major platforms, helpful tools and code samples.
@@ -50,7 +53,7 @@ We have content import/export tools, iOS and Android development plugins and mor
 - [Static site generators](/developers/docs/tools/staticsitegenerators/)
 - [Space management tools](/developers/docs/tools/spacemanagement/)
 - [Extensions](/developers/docs/tools/extensions/)
-- [Others and third party tools](/developers/docs/tools/aplications/)
+- [Others and third party tools](/developers/docs/tools/applications/)
 
 
 ## More

@@ -1,5 +1,15 @@
 ---
 page: :docsPlatformsAndroid
+name: Android
+title: Using Contentful with Android
+metainformation: 'Our SDKs give you access to our APIs and their features.'
+slug: null
+tags:
+- Basics
+- SDKs
+nextsteps:
+ - docsContentfulCma
+ - docsSync
 ---
 
 - [SDKs](#sdks)
@@ -49,7 +59,7 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 ### Filtering and searching
 
-[This tutorial](/developers/docs/android/tutorials/advanced-filtering-and-searching) shows how to filter, search and order entries fetched from Contentful.
+[This tutorial](/developers/docs/android/tutorials/advanced-filtering-and-searching/) shows how to filter, search and order entries fetched from Contentful.
 
 ## Tools and integrations
 

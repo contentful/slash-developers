@@ -1,5 +1,15 @@
 ---
 page: :docsSchedulingPosts
+name: Scheduling Posts
+title: Scheduling Posts
+metainformation: 'This guide will show you how to manage the publishing time of content.'
+slug: null
+tags:
+  - Customization
+  - Workflow
+nextsteps:
+  - docsWebhooks
+  - docsToolsExtensions
 ---
 
 ## Overview
@@ -155,4 +165,3 @@ In this article we have:
 [cf-mm-examples]: https://github.com/contentful/contentful_middleman_examples
 [filtering-reference]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [tools]: /developers/docs/tools/staticsitegenerators/
-

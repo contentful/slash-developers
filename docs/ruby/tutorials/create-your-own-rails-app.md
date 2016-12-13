@@ -1,5 +1,13 @@
 ---
 page: :docsRubyOwnRailsProject
+name: Using Contentful with a Ruby on Rails app
+title: Using Contentful with a Ruby on Rails app
+metainformation: 'This guide shows you how to use Contentful in Rails application created from scratch.'
+slug: null
+tags:
+  - SDKs
+  - Ruby
+nextsteps: null
 ---
 
 This guide is a follow up walkthrough to our [Rails getting started tutorial][9]. It will
