@@ -5,11 +5,11 @@ title: Offline persistence with Vault on Android
 metainformation: 'This tutorial shows you how to get offline access to your Contentful content.'
 slug: null
 tags:
-- Offline
-- Content model
+  - Offline
+  - Content model
 nextsteps:
- - docsContentfulCma
- - docsSync
+  - text: Advanced methods for retrieving entries
+    link: /developers/docs/android/tutorials/advanced-types/      
 ---
 
 In this tutorial we will walk through the essential steps of settings up Vault with your Android project. For that, we've open-sourced [DroidStory][droidstory], which is a simple app showcasing several best practices for integrating Vault in an Android project.

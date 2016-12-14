@@ -10,9 +10,9 @@ tags:
 nextsteps:
   - text: Explore the JavaScript CDA SDK GitHub repository
     link: https://github.com/contentful/contentful.js
-  - text: Using the Sync API with JavaScript
+  - text: Learn how to use the Sync API with JavaScript
     link: /developers/docs/javascript/tutorials/using-the-sync-api-with-js/
-  - text: Creating an Express JavaScript application with Contentful
+  - text: Create an Express.js application with Contentful
     link: /developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/
 ---
 
