@@ -4,7 +4,7 @@ page: :docsUsingNetCdaSdk
 
 The Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-To make development easier for our users, we publish SDKs for various languages which make the task easier. This article details how to us the [.Net CDA SDK](https://github.com/contentful/contentful.net).
+To make development easier for our users, we publish SDKs for various languages which make the task easier. This article details how to use the [.Net CDA SDK](https://github.com/contentful/contentful.net).
 
 ## Pre-requisites
 
