@@ -729,7 +729,7 @@ Here's how the example above would look as a query:
 content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name=john
 ```
 
-- First is the `content_type` parameter which you must include any time you want to filter based on the values of the fields of entries of a certain content type.
+- First is the `content_type` parameter which you must include when you want to filter based on the values of the fields of entries of a certain content type.
 - Second is `fields.writtenBy.sys.contentType.sys.id=post` which you use to to filter on fields of entries from content type `Author`.
 - Third is `fields.writtenBy.fields.name=john` which filters entries to those written by 'john'.
 
@@ -793,7 +793,7 @@ Searching on references has the following restrictions:
 
 ### Search on references [GET]
 
-This example will return cats who are friends with another cat of 'rainbow' color.
+This example will return the cats who are friends with another cat that is 'rainbow' colored.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
