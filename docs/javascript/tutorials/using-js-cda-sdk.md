@@ -8,8 +8,12 @@ tags:
   - SDKs
   - JavaScript
 nextsteps:
-  - docsSync
-  - docsSyncApiWithJS
+  - text: Explore the JavaScript CDA SDK GitHub repository
+    link: https://github.com/contentful/contentful.js
+  - text: Using the Sync API with JavaScript
+    link: /developers/docs/javascript/tutorials/using-the-sync-api-with-js/).
+  - text: Creating an Express JavaScript application with Contentful
+    link: /developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/.
 ---
 
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
@@ -245,9 +249,3 @@ If you're interested in knowing what other filters and operators you can use, re
 - [Geo location searches](/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
 
 Read the [search parameters API guide](/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
-
-## Next steps
-
-- [Explore the JavaScript CDA SDK GitHub repository](https://github.com/contentful/contentful.js).
-- [Using the Sync API with JavaScript](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/).
-- [Creating an Express JavaScript application with Contentful](/developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/).
