@@ -10,7 +10,7 @@ tags:
   - Android
 nextsteps:
   - text: Access data offline in your app with Vault
-    link: /developers/docs/android/tutorials/getting-started-with-contentful-and-android/
+    link: /developers/docs/android/tutorials/offline-persistence-with-vault/
 ---
 
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
@@ -100,11 +100,6 @@ client.fetch(CDAEntry.class).one("happycat", new CDACallback<CDAEntry>() {
     }
 });
 ~~~
-
-## Next steps
-
-- [Persistent offline data storage with Vault](/developers/docs/android/tutorials/offline-persistence-with-vault/).
-- [Advanced filtering and searching](/developers/docs/android/tutorials/advanced-filtering-and-searching/)
 
 
 [1]: https://github.com/contentful/contentful.java
