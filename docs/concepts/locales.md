@@ -8,7 +8,7 @@ tags:
   - Basics
   - Content model
 nextsteps:
-  - text: Content Modeling API reference
+  - text: Content Management API reference
     link: /developers/docs/references/content-management-api/
 ---
 
