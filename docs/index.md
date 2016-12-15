@@ -23,12 +23,12 @@ These concepts introduce the basics of Contentful. This is the best place to sta
 
 Our four APIs are the core of Contentful, with each one serving a specific purpose:
 
-- [Content Delivery API](/developers/docs/references/content-delivery-api/) for retrieving content
-- [Content Management API](/developers/docs/references/content-management-api/) for managing content (e.g. creating, updating and deleting content)
-- [Preview API](/developers/docs/references/content-preview-api/) for previewing the content before publishing it to production
-- [Images API](/developers/docs/references/images-api/) for requesting images in specific sizes and formats
+- [Content Delivery API](/developers/docs/references/content-delivery-api/) for retrieving content.
+- [Content Management API](/developers/docs/references/content-management-api/) for managing content (e.g. creating, updating and deleting content).
+- [Preview API](/developers/docs/references/content-preview-api/) for previewing the content before publishing it to production.
+- [Images API](/developers/docs/references/images-api/) for requesting images in specific sizes and formats.
 
-These guides will help you answer questions you might have when using our APIs:
+These guides will help you answer questions you have when using our APIs:
 
 - [Authentication](/developers/docs/references/authentication/)
 - [Errors](/developers/docs/references/errors/)
@@ -36,9 +36,10 @@ These guides will help you answer questions you might have when using our APIs:
 
 ## Platforms
 
-We provide libraries and SDKs for major programming languages and platforms so you don't have to write code for interacting with APIs from scratch.
+We provide libraries and SDKs for major programming languages and platforms so you don't have to write code for interacting with our APIs from scratch.
 
-- [Android / Java](/developers/docs/android/)
+- [Android](/developers/docs/android/)
+- [Java](/developers/docs/java/)
 - [Objective-C / Swift](/developers/docs/ios/)
 - [JavaScript](/developers/docs/javascript/)
 - [PHP](/developers/docs/php/)
@@ -54,7 +55,6 @@ We have content import/export tools, iOS and Android development plugins and mor
 - [Space management tools](/developers/docs/tools/spacemanagement/)
 - [Extensions](/developers/docs/tools/extensions/)
 - [Others and third party tools](/developers/docs/tools/applications/)
-
 
 ## More
 
