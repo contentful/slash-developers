@@ -8,8 +8,8 @@ tags:
   - Basics
   - Content model
 nextsteps:
- - docsLocales
- - docsSync
+  - text: Add images to your content
+    link: /developers/docs/concepts/links/
 ---
 
 Links are a powerful way to model relationships between content. You can use a URI query parameter with the Contentful search to retrieve an entire chain of related content to display in your application.

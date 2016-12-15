@@ -2,14 +2,16 @@
 page: :docsContentModel
 name: Data Model
 title: Contentful data model
-metainformation: 'Contentful organizes content into _spaces_, that allows you to group all the related resources for a project together, this includes content entries, media assets, and settings for localizing content into different languages.'
+metainformation: 'Contentful organizes content into spaces, that allows you to group all the related resources for a project together, this includes content entries, media assets, and settings for localizing content into different languages.'
 slug: null
 tags:
  - Basics
  - Content model
 nextsteps:
- - docsContentfulCma
- - docsLinks
+ - text: Model relationships between content with links
+   link: /developers/docs/concepts/links/
+ - text: Add images to your content
+   link: /developers/docs/concepts/links/
 ---
 
 Contentful organizes content into _spaces_, that allows you to group all the related resources for a project together, this includes content entries, media assets, and settings for localizing content into different languages.

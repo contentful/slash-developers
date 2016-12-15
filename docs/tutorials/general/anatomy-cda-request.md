@@ -8,9 +8,7 @@ tags:
   - API
   - Request
   - Advanced
-nextsteps:
-  - docsAnatomyCMARequest
-  - docsContentfulCda
+nextsteps: null
 ---
 
 ## Overview

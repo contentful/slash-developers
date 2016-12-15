@@ -8,7 +8,8 @@ tags:
   - Workflow
   - Ruby
 nextsteps:
-  - docsRubyFullStack
+  - text: Create and deploy a Ruby application with Contentful
+    link: /developers/docs/ruby/tutorials/full-stack-getting-started/
 ---
 
 This post will walk you through your first steps in using [Contentful Bootstrap][1] to get you jump-started in Contentful.

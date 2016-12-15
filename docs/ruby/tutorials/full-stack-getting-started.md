@@ -8,8 +8,10 @@ tags:
   - SDKs
   - Ruby
 nextsteps:
-  - docsGettingStartedRubyCMA
-  - docsRubyOwnRailsProject
+  - text: The Contentful Management API reference
+    link: /developers/docs/references/content-management-api/
+  - text: The Contentful Delivery API reference
+    link: /developers/docs/references/content-delivery-api/
 ---
 
 This guide will walk you through your first steps using Contentful within a Rails application. It will provide a step-by-step guide on how to get your first entries and start using the content you create on Contentful.

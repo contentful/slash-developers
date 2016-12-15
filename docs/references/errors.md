@@ -8,7 +8,8 @@ tags:
  - Reference
  - Errors
 nextsteps:
- - docsHttpDetails
+  - text: Details of our HTTP transport
+    link: /developers/docs/concepts/http-details/
 ---
 
 When something goes wrong with an API request, our server generates an error. The error message contains an appropriate HTTP status code in the header and a JSON response in the body. The `sys` part of the JSON describes the error details.

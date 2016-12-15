@@ -8,8 +8,8 @@ tags:
   - Offline
   - Content model
 nextsteps:
-  - text: Advanced methods for retrieving entries
-    link: /developers/docs/android/tutorials/advanced-types/      
+  - text: Further details on our Syncronization endpoint
+    link: /developers/docs/references/content-delivery-api/#/reference/synchronization/
 ---
 
 In this tutorial we will walk through the essential steps of settings up Vault with your Android project. For that, we've open-sourced [DroidStory][droidstory], which is a simple app showcasing several best practices for integrating Vault in an Android project.

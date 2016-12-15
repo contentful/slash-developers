@@ -6,9 +6,7 @@ metainformation: 'This tutorial shows you how to import and export content from 
 slug: null
 tags:
   - Workflow
-nextsteps:
-  - docsSchedulingPosts
-  - docsUsingContentfulSpaceSync
+nextsteps: null
 ---
 
 

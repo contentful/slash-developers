@@ -8,8 +8,8 @@ tags:
   - Basics
   - Content model
 nextsteps:
- - docsLinks
- - docsContentfulImagesApi
+  - text: Images API reference
+    link: /developers/docs/references/images-api/
 ---
 
 Images are a powerful way of explaining concepts, attracting a readers attention and creating an impact. Contentful has a separate [Images API](/developers/docs/references/images-api/) that helps you add and retrieve image files in spaces, but also offers manipulation features to make images look how you want.

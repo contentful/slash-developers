@@ -7,11 +7,7 @@ slug: null
 tags:
   - API
   - Basics
-nextsteps:
-  - docsContentfulCda
-  - docsContentfulCma
-  - docsContentPreviewApi
-  - docsContentfulImagesApi
+nextsteps: null
 ---
 
 Contentful is an API first content management system, offering four REST APIs for working with your content. Each of these APIs serve a different purpose, so which one to use depends on what you want to do:

@@ -7,9 +7,7 @@ slug: null
 tags:
  - PHP
  - SDKs
-nextsteps:
- - docsGettingStartedPhp
- - docsGettingStartedLaravel
+nextsteps: null
 ---
 
 This tutorial will show you how to setup the ContentfulBundle in your Symfony application and how to access you content
