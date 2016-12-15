@@ -9,8 +9,8 @@ tags:
   - iOS
   - Mobile
 nextsteps:
-  - docsCdaIos
-  - docsCmaIos
+ - text: Learn more about content modelling
+   link: /developers/docs/concepts/data-model/
 ---
 
 If you are using Contentful with Core Data in your iOS app, a painful manual step is recreating your content model inside Xcode. This is often both time consuming and prone to errors because mismatches between the two models can lead to bugs that are hard to spot. Today we are releasing a plugin for Xcode, which generates a Core Data model directly from your content model, making it easier than ever to use the Content Delivery API in your iOS and macOS projects.

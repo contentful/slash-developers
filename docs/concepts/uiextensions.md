@@ -7,8 +7,10 @@ slug: null
 tags:
   - Customization
 nextsteps:
-  - docsWebhooks
-  - docsToolsExtensions
+  - text: Integrate Contentful with other services via Webhooks
+    link: /developers/docs/concepts/webhooks/
+  - text: Tools and libraries to make your Contentful experience better
+    link: /developers/docs/tools/extensions/
 ---
 
 The [UI Extensions SDK](https://github.com/contentful/ui-extensions-sdk) allows you to customize and extend the functionality of the Contentful Web App's entry editor. The editor itself is a container for components that enable editors to manipulate the content stored in content fields. Extensions can be simple user interface controls, such as a dropdown, or more complex micro web applications such as our Markdown editor. Extensions are decoupled entities from field types, and you can reuse them, for example using a dropdown to edit number or text fields. Custom extensions that you create are rendered inside a secure iframe.

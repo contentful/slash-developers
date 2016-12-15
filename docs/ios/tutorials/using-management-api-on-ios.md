@@ -9,8 +9,8 @@ tags:
   - iOS
   - Mobile
 nextsteps:
-  - docsCdaIos
-  - docsCdaSwift
+  - text: The Contentful Management API reference
+    link: /developers/docs/references/content-management-api/
 ---
 
 This post will walk you through implementing a simple iOS app for uploading images from the device's Camera Roll to Contentful.

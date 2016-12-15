@@ -7,7 +7,11 @@ slug: null
 tags:
   - JavaScript
   - SDKs
-nextsteps: null
+nextsteps:
+  - text: Using the Contentful Delivery API in a JavaScript app
+    link: /developers/docs/javascript/tutorials/using-js-cda-sdk/
+  - text: Access data offline in your JavaScript app
+    link: /developers/docs/javascript/tutorials/using-the-sync-api-with-js/
 ---
 
 This guide will walk you through your first steps using Contentful with an Express Node.js application. It will provide a step-by-step guide on how to get your first entries and start using the content you create on Contentful.

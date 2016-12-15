@@ -8,8 +8,12 @@ tags:
   - Basics
   - Content model
 nextsteps:
-  - docsSyncApiWithPhp
-  - docsOfflinePersistenceIos
+  - text: How to use the Sync API with a PHP project
+    link: /developers/docs/php/tutorials/using-the-sync-api-with-php/
+  - text: Syncing offline content to an Android app
+    link: /developers/docs/android/tutorials/offline-persistence-with-vault/
+  - text: Syncing offline content to an iOS app
+    link: /developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/
 ---
 
 The Sync API allows you to keep a local copy of all content in a space up-to-date via [delta updates](https://en.wikipedia.org/wiki/Delta_update), or content that has changed.
