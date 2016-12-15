@@ -31,4 +31,4 @@ This SDK interacts with the Content Delivery API, a read-only API for retrieving
 
 ### Getting started with the Content Management API SDK and Python
 
-[The read me in the SDK repository](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/) will walk you through the first steps using the Contentful Management API with a Python application.
+[The read me in the SDK repository](https://github.com/contentful/contentful.py/blob/master/README.rst) will walk you through the first steps using the Contentful Management API with a Python application.
