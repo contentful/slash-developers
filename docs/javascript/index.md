@@ -7,9 +7,7 @@ slug: null
 tags:
   - Basics
   - SDKs
-nextsteps:
-  - docsUsingJsCdaSdk
-  - docsSyncApiWithJS
+nextsteps: null
 ---
 
 - [SDKs](#sdks)

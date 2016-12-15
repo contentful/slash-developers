@@ -9,7 +9,7 @@ tags:
  - Network
 nextsteps:
  - text: Details of our error messages
-   link: /developers/docs/concepts/errors/
+   link: /developers/docs/references/errors/
 ---
 
 ## Security
