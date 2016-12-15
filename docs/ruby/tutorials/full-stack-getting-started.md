@@ -97,7 +97,7 @@ You can continue to edit your content inside the [Contentful web app][13] and se
 
 To view the demo application live in your own production environment, follow these steps:
 
-- Install the [Heroku toolbelt](https://devcenter.heroku.com/articles/heroku-command-line#download-and-install) if you don't already have it.
+- Install the [Heroku toolbelt](https://devcenter.heroku.com/articles/heroku-cli#download-and-install) if you don't already have it.
 - Login to Heroku if you're not already:
 
 ~~~bash

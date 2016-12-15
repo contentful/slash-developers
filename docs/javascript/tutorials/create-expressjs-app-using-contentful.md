@@ -140,7 +140,7 @@ Do you like building static sites? Check how to build static sites using Content
 [10]: https://github.com/contentful/product-catalogue-js
 [11]: https://github.com/contentful-labs/contentful-metalsmith-example
 [12]: https://git-scm.com/downloads
-[14]: https://devcenter.heroku.com/articles/heroku-command-line#download-and-install
+[14]: https://devcenter.heroku.com/articles/heroku-cli#download-and-install
 [2]: https://nodejs.org
 [3]: https://github.com/contentful/contentful_express_tutorial
 [5]: /sign-up/#starter
