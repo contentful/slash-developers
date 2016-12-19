@@ -730,7 +730,7 @@ content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writt
 ```
 
 - First is the `content_type` parameter which you must include when you want to filter based on the values of the fields of entries of a certain content type.
-- Second is `fields.writtenBy.sys.contentType.sys.id=post` which you use to to filter on fields of entries from content type `Author`.
+- Second is `fields.writtenBy.sys.contentType.sys.id=author` which you use to to filter on fields of entries from content type `Author`.
 - Third is `fields.writtenBy.fields.name=john` which filters entries to those written by 'john'.
 
 **Note**: All the filters on referenced entries are scoped with the path to the field that contains the reference. In the previous example that path is `fields.writtenBy`.
@@ -762,15 +762,15 @@ You can use the `all`, `in`, `nin`, `exists`, `match`, `gt`, `gte`,`lt`, `lte`, 
 For example, all the following queries are valid:
 
 ```sql
-content_type=article&fields.writtenBy.sys.contentType.sys.id=post&fields.writtenBy.fields.age[gt]=21
+content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.age[gt]=21
 ```
 
 ```sql
-content_type=article&fields.writtenBy.sys.contentType.sys.id=post&fields.writtenBy.fields.name[in]=john,alex,klaus
+content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name[in]=john,alex,klaus
 ```
 
 ```sql
-content_type=article&fields.writtenBy.sys.contentType.sys.id=post&fields.writtenBy.fields.languages[all]=spanish,english
+content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.languages[all]=spanish,english
 ```
 
 The semantics of these filters are the same as when you use them on a non referenced entry.
