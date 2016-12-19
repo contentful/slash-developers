@@ -18,7 +18,7 @@ There are three types of changes to a Contentful space:
 - **Structural changes**: Updated content types and new content types.
 - **Configuration changes**: Editor interfaces, roles and permissions, webhooks and UI extensions.
 
-Depending on the type of change, there are two methods for deploying them between spaces.
+Each type of change has a method best suited to it and this guide will outline each one in detail.
 
 If you want to follow along with the examples in this guide, then create a space with the 'product catalogue' example content.
 
@@ -34,7 +34,7 @@ Invite your collaborators to the editorial space, assigning them an appropriate 
 
 ![Invite user to the space](https://images.contentful.com/tz3n7fnw4ujc/1kP0hQCIsIA8s822Uks24s/0bbddb6188b25fce1c83e227ce0fd679/invite-user.png)
 
-If that new user creates an item of content, it appears in a draft state for all users with the appropriate editorial role.
+If that new user creates or edits an item of content, these changes will stay in a draft state until a user with the appropriate editorial role publishes them.
 
 ![New entry in a draft state](https://images.contentful.com/tz3n7fnw4ujc/p30nNB86D6AuQaaowO0S/d9ea86c4e5d1768ff31a4fec3a3334c6/entry-status.png)
 
@@ -60,7 +60,7 @@ Will return the 9 total entries present in the default example space, plus the d
 
 ### Reverting changes to entries with snapshots
 
-Using Contenful's Snapshot feature editors can revert entries to previous states and undo changes made by other contributors.
+Using Contenful's Snapshot feature, editors can revert entries to previous states and undo changes made by other contributors.
 
 ![Restore previous versions of content](https://images.contentful.com/tz3n7fnw4ujc/6bmP4wkKiWG20Csi6wSUI2/6072e5cae095cbd923b9e680315fca14/restore-version.png)
 
@@ -89,7 +89,7 @@ There are limitations to the tools:
 
 ### Export content from a space
 
-The Contentful export tool is a command line tool that helps you export the contents of a space.
+[The Contentful export tool](https://github.com/contentful/contentful-export) is a command line tool that helps you export the contents of a space.
 
 Start by exporting the content of the current space:
 
@@ -107,7 +107,7 @@ As the space data is now a JSON text file, you can commit it to version control 
 
 ### Import exported content
 
-Create a new space with the Contentful web app or the API and note it's ID. Now use the Contentful import tool to import the JSON file into your new space.
+Create a new space with the Contentful web app or the API and note it's ID. Now use [the Contentful import tool](https://github.com/contentful/contentful-import) to import the JSON file into your new space.
 
 ```bash
 contentful-import \
