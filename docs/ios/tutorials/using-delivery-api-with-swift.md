@@ -9,8 +9,10 @@ tags:
   - iOS
   - Mobile
 nextsteps:
-  - docsCdaIos
-  - docsCmaIos
+  - text: Using our management API with Objective-C
+    link: /developers/docs/ios/tutorials/using-management-api-on-ios/
+  - text: Using the delivery API with Objective-C
+    link: /developers/docs/ios/tutorials/using-delivery-api-on-ios/
 ---
 
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.

@@ -7,9 +7,7 @@ slug: null
 tags:
   - Customization
   - Workflow
-nextsteps:
-  - docsWebhooks
-  - docsToolsExtensions
+nextsteps: null
 ---
 
 ## Overview

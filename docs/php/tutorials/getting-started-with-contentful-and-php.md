@@ -8,7 +8,8 @@ tags:
   - SDKs
   - PHP
 nextsteps:
-  - docsSyncApiWithPhp
+  - text: How to only update content that has changed
+    link: /developers/docs/php/tutorials/using-the-sync-api-with-php/
 ---
 
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.

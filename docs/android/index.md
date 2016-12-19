@@ -7,9 +7,7 @@ slug: null
 tags:
 - Basics
 - SDKs
-nextsteps:
- - docsContentfulCma
- - docsSync
+nextsteps: null
 ---
 
 - [SDKs](#sdks)

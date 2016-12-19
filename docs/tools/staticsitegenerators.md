@@ -7,9 +7,7 @@ slug: null
 tags:
  - Tools
  - Extending
-nextsteps:
- - docsToolsExtensions
- - docsToolsApplications
+nextsteps: null
 ---
 
 We love static sites and have plugins to support three of our favorites.

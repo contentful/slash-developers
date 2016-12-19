@@ -6,9 +6,7 @@ metainformation: 'This article details how to retrieve entries using the JavaScr
 slug: null
 tags:
   - Workflow
-nextsteps:
-  - docsSchedulingPosts
-  - docsImportExport
+nextsteps: null
 ---
 
 ## Overview

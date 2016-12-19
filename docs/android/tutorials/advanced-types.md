@@ -5,10 +5,11 @@ title: Advanced Type Retrieval
 metainformation: 'The guide shows you how to retrieve entries from Contenful using our Java API.'
 slug: null
 tags:
-- SDKs
-- Java
+  - SDKs
+  - Java
 nextsteps:
- - docsAdvancedFilteringAndSearchingAndroid
+  - text: Filtering, ordering, and sorting entries
+    link: /developers/docs/android/tutorials/advanced-filtering-and-searching/
 ---
 
 This is a simple `how to` on different aspects of the Contentful JAVA API. All following samples assume a client setup like

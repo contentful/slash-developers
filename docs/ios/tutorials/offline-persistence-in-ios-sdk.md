@@ -10,6 +10,9 @@ tags:
 nextsteps:
  - docsContentfulCma
  - docsSync
+nextsteps:
+ - text: Further details on our Syncronization endpoint
+   link: /developers/docs/references/content-delivery-api/#/reference/synchronization/
 ---
 
 There are basically two approaches for getting content for offline use (or for any use for that matter):

@@ -7,9 +7,7 @@ slug: null
 tags:
   - Basics
   - SDKs
-nextsteps:
-  - docsCdaIos
-  - docsCdaSwift
+nextsteps: null
 ---
 
 - [SDKs](#sdks)

@@ -7,9 +7,7 @@ slug: null
 tags:
   - SDKs
   - PHP
-nextsteps:
-  - docsGettingStartedPhp
-  - docsSyncApiWithPhp
+nextsteps: null
 ---
 
 - [SDKs](#sdks)

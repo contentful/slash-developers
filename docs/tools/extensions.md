@@ -7,9 +7,7 @@ slug: null
 tags:
  - Tools
  - Extending
-nextsteps:
- - docsUiExtensions
- - docsToolsApplications
+nextsteps: null
 ---
 
 These extensions add extra functionality to Contentful, you can find detailed instructions in each individual GitHub repository.

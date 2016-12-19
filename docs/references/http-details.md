@@ -8,7 +8,8 @@ tags:
  - Reference
  - Network
 nextsteps:
- - docsErrors
+ - text: Details of our error messages
+   link: /developers/docs/references/errors/
 ---
 
 ## Security

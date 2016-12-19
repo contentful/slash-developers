@@ -8,10 +8,10 @@ tags:
   - SDKs
   - Ruby
 nextsteps:
-  - docsGettingStartedRubyCMA
-  - docsRubyFullStack
-  - docsToolsStaticSiteGenerators
-  - docsContentfulBootstrap
+  - text: Using the Contentful Management API with Ruby
+    link: /developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/
+  - text: Create and deploy a Ruby application with Contentful
+    link: /developers/docs/ruby/tutorials/full-stack-getting-started/
 ---
 
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
@@ -133,12 +133,6 @@ To query all assets in a space:
 ~~~ruby
 assets = client.assets
 ~~~
-
-## Next steps
-
-- [Explore the Ruby CDA SDK GitHub repository](https://github.com/contentful/contentful.rb).
-- [A full stack guide for using Contentful with Ruby](/developers/docs/ruby/tutorials/full-stack-getting-started/).
-- [Getting Started with Ruby and the Content Management API](/developers/docs/ruby/tutorials/getting-started-with-contentful-cma-and-ruby/).
 
 [1]: https://github.com/contentful/contentful.rb
 [2]: https://github.com/contentful/contentful_middleman_examples

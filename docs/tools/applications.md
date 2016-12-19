@@ -7,9 +7,7 @@ slug: null
 tags:
  - Tools
  - Extending
-nextsteps:
- - docsToolsSpaceManagement
- - docsToolsExtensions
+nextsteps: null
 ---
 
 ## macOS media uploader

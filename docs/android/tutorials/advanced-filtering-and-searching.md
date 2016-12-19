@@ -5,10 +5,11 @@ title: Advanced Filtering and Searching
 metainformation: 'The guide shows you how to use the Android and Java API, to filter, sort and order entries.'
 slug: null
 tags:
-- SDKs
-- Java
+  - SDKs
+  - Java
 nextsteps:
- - docsAdvancedTypesAndRetrievalAndroid
+  - text: Advanced methods for retrieving entries
+    link: /developers/docs/android/tutorials/advanced-types/
 ---
 
 This section will describe advanced usage of the Android and Java API, in order to filter, sort and order responses. The

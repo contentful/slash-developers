@@ -7,9 +7,7 @@ slug: null
 tags:
   - SDKs
   - Ruby
-nextsteps:
-  - docsGettingStartedRuby
-  - docsRubyFullStack
+nextsteps: null
 ---
 
 - [SDKs](#sdks)
