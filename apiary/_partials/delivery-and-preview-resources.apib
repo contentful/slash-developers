@@ -716,6 +716,90 @@ This example will return only image assets.
 
   + Attributes (Empty Array)
 
+## Search on references [/spaces/{space_id}/assets?access_token={access_token}&content_type={content_type}&fields.{reference_field}.sys.contentType.sys.id={reference_content_type}&fields.{reference_field}.fields.{search_field}={search_value}]
+You can search for entries based on the values of referenced entries.
+
+For example, you have entries of content type 'Article' with a `writtenBy` field used to link to entries of content type 'Author'. Using the search on references functionality you can find the articles written by a particular author with one API request.
+
+### Structure of a query
+
+Here's how the example above would look as a query:
+
+```sql
+content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name=john
+```
+
+- First is the `content_type` parameter which you must include when you want to filter based on the values of the fields of entries of a certain content type.
+- Second is `fields.writtenBy.sys.contentType.sys.id=author` which you use to to filter on fields of entries from content type `Author`.
+- Third is `fields.writtenBy.fields.name=john` which filters entries to those written by 'john'.
+
+**Note**: All the filters on referenced entries are scoped with the path to the field that contains the reference. In the previous example that path is `fields.writtenBy`.
+
+You can search on multiple references at once and combine them into one singe API query. For example:
+
+- Articles written by authors with a given name: `fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name=XYZ`
+- And published on certain sites: `fields.publishedIn.sys.contentType.sys.id=publication&fields.publishedIn.fields.url[in]=XYZ,RST`
+- And reviewed with a review higher than a certain threshold: `fields.review.sys.contentType.sys.id=review&fields.review.fields.rating[gt]=4`
+
+The resulting query would look like this:
+
+```
+// Formatted with line breaks to make it easier to read
+
+content_type=article&
+fields.writtenBy.sys.contentType.sys.id=author&
+fields.writtenBy.fields.name=XYZ&
+fields.publishedIn.sys.contentType.sys.id=publication&
+fields.publishedIn.fields.url[in]=XYZ,RST&
+fields.review.sys.contentType.sys.id=review&
+fields.review.fields.rating[gt]=4
+```
+
+
+### Available nested filters
+You can use the `all`, `in`, `nin`, `exists`, `match`, `gt`, `gte`,`lt`, `lte`, `ne`, `near` and `within` filters when searching on references.
+
+For example, all the following queries are valid:
+
+```sql
+content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.age[gt]=21
+```
+
+```sql
+content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name[in]=john,alex,klaus
+```
+
+```sql
+content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.languages[all]=spanish,english
+```
+
+The semantics of these filters are the same as when you use them on a non referenced entry.
+
+### Restrictions
+
+Searching on references has the following restrictions:
+
+- You can only search on references on fields which link to a single entry. Fields which hold references to many entries or fields with references to assets are not supported.
+- The maximum number of reference searches in one query is 2. A larger value will return an error.
+
++ Parameters
+    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + content_type (required, string, `cat`) ...
+    + reference_content_type (required, string, `cat`) ... The id of then content type of the referenced entry
+    + reference_field (required, string, `bestFriend`) ... The id of the field holding the reference
+    + search_field (required, string, `color`) ... The id of the field you want to search
+    + search_value (required, string, `rainbow`) ... The value you are looking for
+
+### Search on references [GET]
+
+This example will return the cats who are friends with another cat that is 'rainbow' colored.
+
++ Response 200 (application/vnd.contentful.delivery.v1+json)
+
+  + Attributes (Empty Array)
+
+
 # Group Localization
 
 ## Retrieve localized entries [/spaces/{space_id}/entries/{entry_id}?access_token={access_token}&locale={locale}]
