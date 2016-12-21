@@ -1,0 +1,160 @@
+---
+page: :docsAuthentication
+name: Authentication
+title: Authentication
+metainformation: 'To retrieve or store content with Contentful, you first need to authenticate your app with an OAuth bearer token.'
+slug: null
+tags:
+  - Authentication
+  - Basics
+nextsteps: null
+---
+
+:markdown
+
+  To retrieve or store content with Contentful, you first need to authenticate your app with an OAuth bearer token. [Contentful offers four APIs](/developers/docs/concepts/apis/), and each requires separate authentication, except for the Images API, which delivers images without authentication.
+
+  A token provides read-only access to a single space, you need to obtain another token for every new space you want to access.
+
+  We recommend using different access tokens for different applications or delivery channels, for example, one for an iOS app and another for Android app. This allows you to revoke them individually in the future and manage your delivery channels independently.
+
+  There are two ways to send the authentication token to an API. You can include it as a query parameter, `access_token=$token`, or as an HTTP header `Authorization: Bearer $token`. The header method is preferred.
+
+  ~~~bash
+  # As a query parameter:
+  curl -v https://cdn.contentful.com/spaces/cfexampleapi/entries?access_token=b4c0n73n7fu1
+  ~~~
+
+  ~~~bash
+  # As a header:
+  curl -v https://cdn.contentful.com/spaces/cfexampleapi/entries -H 'Authorization: Bearer b4c0n73n7fu1'
+  ~~~
+
+  If you fail to include a valid access token, you will receive an error message:
+
+  ~~~bash
+  # Request
+  curl https://cdn.contentful.com/spaces/cfexampleapi/entries?access_token=wrong
+
+  # Response
+  {
+    "sys": {
+      "type": "Error",
+      "id": "AccessTokenInvalid"
+    },
+    "message": "The access token you sent could not be found or is invalid.",
+    "requestId": "bcc-1808911724"
+  }
+  ~~~
+
+  If you include a valid access token, but one that is not able to access a resource, you will receive a 404 error:
+
+  ~~~bash
+  # Request
+  curl https://cdn.contentful.com/spaces/some_other_space/entries?access_token=b4c0n73n7fu1
+
+  # Response
+  {
+    "sys": {
+      "type": "Error",
+      "id": "NotFound"
+    },
+    "message": "The resource could not be found.",
+    "details": {
+      "sys": {
+        "type": "Space"
+      }
+    },
+    "requestId": "9f3-2148374087"
+  }
+  ~~~
+
+  **Note**: If you use [one our language or platform SDKs](/developers/docs/#libraries), setting your token in a configuration file will handle the authentication process for you.
+
+  Each Contentful API requires you follow different steps to obtain an access token.
+
+  ## The delivery and preview API
+
+  These two APIs use an API key that you can create [using the Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
+
+  You can also create API keys using the [Contentful web app](https://app.contentful.com). Open the space that you want to access (the _top left corner_ lists all spaces), and navigate to the _APIs_ area. Open the _API keys_ section and create your first token.
+
+  ![API Keys in Web App](https://images.contentful.com/tz3n7fnw4ujc/1a1WEezqJQkYWGwU6uWm6o/a399b89f0e7d1b07b27bd6d8823c11e3/api-keys-webapp.png)
+
+  ## The Content Management API
+
+  To access the content management API and store content created in your apps, you need an OAuth 2.0 token that represents the desired account of your user. This token will have the same rights as the owner of the account.
+
+  ### Getting an OAuth token
+
+  Contentful doesn't have an API for acquiring an OAuth token directly for a user account, OAuth applications acquire them. If you need a token for use in a local script or experimenting with the API, you can use the OAuth application embedded below to get a token.
+
+  If you are creating an application intended for re-use by other Contentful users, you should follow the instructions in the next section to create your own OAuth application.
+
+%login-form
+  .ng-cloak
+    %div{'ng-hide' => 'auth'}
+      %p
+        %i
+          This page contains a JavaScript app which helps you get an authentication token from your account. Please log in, and a token will appear below.
+        %i
+      %p
+        .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'login()'}
+          Login to get a token
+
+    %div{'ng-show' => 'auth'}
+      %div{'ng-show' => 'auth.message'}
+        %p
+          Something went wrong during login, please refresh the page to try again.
+          If the problem persists, please [get in touch](#getting-help) and include the following error message:
+          {{auth.message}}
+        %p
+          .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'login()'}
+            Try login again
+
+      %div{'ng-show' => 'auth.user'}
+        %p
+          Logged in as {{auth.user.firstName}}. Here's your OAuth access token:
+          %code
+            {{auth.accessToken}}
+        %p
+          This access token should only be used for learning and testing purposes. Please create a separate OAuth application for production usage.
+        %p
+          .btn.btn--large.btn--expanded.btn--blue{'ng-click' => 'logout()'}
+            Logout
+
+:markdown
+
+  ## Creating an OAuth 2.0 application
+
+  If you are creating apps for changing content stored in Contentful, you will need to create a custom OAuth application.
+
+  An OAuth 2.0 application has a number of benefits:
+
+  - OAuth 2.0 access tokens are linked to your app.
+  - You can request the correct OAuth 2.0 scopes for your application (`content_management_read` or `content_management_manage`).
+  - You can specify a custom redirect URI that will receive the access token as part of the URI's hash fragment.
+  - You can specify a custom name and description.
+
+  [Create a new OAuth 2.0 application](https://app.contentful.com/account/profile/developers/applications/new)
+
+  ### Requesting an OAuth 2.0 access token
+
+  After creating an OAuth 2.0 application, you can use it to request OAuth 2.0 access tokens.
+
+  Redirect your users to Contentful's OAuth 2.0 endpoint URI. This will show a web page where logged in Contentful users can authorize your application to access their content.
+
+  ~~~plain
+  https://be.contentful.com/oauth/authorize?response_type=token&client_id=$YOUR_APPS_CLIENT_ID&redirect_uri=$YOUR_APPS_REDIRECT_URL&scope=content_management_manage
+  ~~~
+
+  After a user has logged in, handle the callback from Contentful to your app redirect URI. This will look similar to the example below, and you can extract the access token from the URI hash fragment.
+
+  ~~~plain
+  http://localhost:8080/my-app/#access_token=$CONTENT_MANAGEMENT_API_ACCESS_TOKEN
+  ~~~
+
+  Keep the extracted access token for future use. You are now be able to make Content Management API requests on behalf of the authenticated user.
+
+= javascript_include_tag 'lib/angular.min.js'
+= javascript_include_tag 'cma_docs/bundle.js'
