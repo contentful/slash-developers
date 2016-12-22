@@ -25,6 +25,8 @@ for filename in $(find docs -type f -name '*.md'); do
   sed -i -e 's/<product_content_type_id>/2PqfXUJwE8qSYKuM0U6w8M/g' $result_string
   # SKU value
   sed -i -e 's/<sku_value>/B00E82D7I8/g' $result_string
+  # Specific asset
+  sed -i -e 's/<asset_id>/wtrHxeu3zEoEce2MokCSi/g' $result_string
 done
 
 rm -dfr out/_partials
