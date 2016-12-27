@@ -1,5 +1,5 @@
 ---
-page: ':docsGettingStartedPhp'
+page: :docsGettingStartedPhp
 name: Getting Started with Contentful and PHP
 title: Getting Started with Contentful and PHP
 metainformation: This tutorial will walk you through your first steps in using Contentful within your PHP application.
@@ -12,9 +12,8 @@ nextsteps:
     link: /developers/docs/php/tutorials/using-the-sync-api-with-php/
 ---
 
-# t
-
-{: .note} The Contentful PHP SDK is in beta and the API may change before a stable release.
+{: .note}
+The Contentful PHP SDK is in beta and the API may change before a stable release.
 
 :[Getting started tutorial intro](../../_partials/getting-started-intro.md)
 
