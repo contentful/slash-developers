@@ -23,11 +23,11 @@ nextsteps:
 
 There are three different ways to integrate the SDK into your own apps, described in detail in the [README][2]. For this article, we will use [CocoaPods][8], the dependency manager for Cocoa projects, which makes it easiest to keep the SDK up-to-date:
 
-```ruby
+~~~ruby
 target "Guide" do
   pod 'ContentfulDeliveryAPI'
 end
-```
+~~~
 
 You are free to use Git submodules or [download a static framework][18] if that suits your workflow better.
 
@@ -37,7 +37,7 @@ The class [_CDAClient_][3] manages all requests to the API. For most apps, you w
 
 :[Create credentials](../../_partials/credentials.md)
 
-```objc
+~~~objc
 @implementation CDAClient (Guide)
 
   +(instancetype)sharedClient {
@@ -50,18 +50,18 @@ The class [_CDAClient_][3] manages all requests to the API. For most apps, you w
   }
 
 @end
-```
+~~~
 
 ## Accessing data
 
 Now that the client is available everywhere, you can fetch entries:
 
-```objc
+~~~objc
 [[CDAClient sharedClient] fetchEntriesMatching:@{ @"content_type": @"3hEsRfcKgMGSaiocGQaqCo" }
                                        success:^(CDAResponse *response, CDAArray *array) {
                                            self.places = array.items;
                                        } failure:nil];
-```
+~~~
 
 The CDA supports a variety of parameters to search, filter and sort your content. The SDK passes these parameters as a dictionary, which in this case will retrieve entries of a certain content type. You can learn more about search parameters [in this guide][20].
 
@@ -69,18 +69,17 @@ A [_CDAArray_][5] contains a list of [_CDAResource_][6] objects whose concrete t
 
 Each _CDAEntry_ has a _fields_ property, containing the values for fields defined in the content model. To decouple your app from Contentful, you can register custom subclasses for content types, like this:
 
-```objc
+~~~objc
 [sharedClient registerClass:[BBUPlace class] forContentTypeWithIdentifier:@"3hEsRfcKgMGSaiocGQaqCo"];
-```
+~~~
 
 The _BBUPlace_ class defines properties, so that you can deal with entries like with any other value object:
 
-```objc
+~~~objc
 -(NSString *)name {
   return self.fields[@"name"];
 }
-```
-
+~~~
 
 In the guide app, the class also implements the _MKAnnotation_ protocol, which enables directly showing Entries in a map view.
 
@@ -90,7 +89,7 @@ The initial view of the guide app is a list of all cafes it knows about. For com
 
 You create the basic setup in your subclasse's _init_ method:
 
-```objc
+~~~objc
 -(id)init {
   self = [super initWithCellMapping:@{ @"textLabel.text": @"fields.name",
                                        @"detailTextLabel.text": @"fields.type" }];
@@ -100,7 +99,7 @@ You create the basic setup in your subclasse's _init_ method:
   }
   return self;
 }
-```
+~~~
 
 The cell mapping is a dictionary for specifying which property of the `UITableViewCell` corresponds to properties in the content model. In addition to that, the shared client is specified as the client to use and the entries are limited to a certain content type. Setting the `query` property is optional, in that case all entries will be shown.
 
@@ -108,13 +107,13 @@ The cell mapping is a dictionary for specifying which property of the `UITableVi
 
 If you want to show resources in a `UICollectionView`, there is [`CDAResourcesCollectionViewController`][9], which works in a similar way to the Entries view controller:
 
-```objc
+~~~objc
 self = [super initWithCollectionViewLayout:layout cellMapping:@{ @"imageURL": @"URL" }];
 if (self) {
     self.client = [CDAClient sharedClient];
     self.resourceType = CDAResourceTypeAsset;
 }
-```
+~~~
 
 You need to specify a layout and cell mapping, as with a normal `UICollectionViewController`. For convenience, there is a ready made collection view cell class which fetches images from the URL in its `imageURL` property, which this example will use. The `resourceType` property defines which resource type is fetched, in this case 'Assets'. A [`CDAAsset`][10] has a direct accessor for the `URL`, used in the field mapping. Like the previous example, you need to specifiy the client.
 
@@ -124,12 +123,9 @@ You need to specify a layout and cell mapping, as with a normal `UICollectionVie
 
 It's possible and often necessary to write normal `UIViewController` subclasses and fetch content from Contentful. The [`BBULocationViewController`][11] class in the guide app does this, utilizing the `BBUPlace` class mentioned earlier in the tutorial. This way, it does not have specific knowledge about the Contentful SDK.
 
-Two things to consider here:
+[Links][12] might not be resolved, depending on your query. If this is the case, use the `resolveWithSuccess:failure:` method on any `CDAResource` inside your custom class. Look at the `fetchPictureAssetsWithCompletionBlock:` method from `BBUPlace` for an example. You can add the `include` parameter to your query to adjust how many levels of links are automatically included as part of the API response. This helps to keep the number of API requests your app has to make low and therefore improves performance. You learn more about includes [in this guide][21].
 
-- [Links][12] might not be resolved, depending on your query. If this is the case, use the `resolveWithSuccess:failure:` method on any `CDAResource`  inside your custom class. Look at the `fetchPictureAssetsWithCompletionBlock:` method from `BBUPlace` for an example. You can also add the `include` parameter to your query to adjust how many levels of links are automatically included as part of the API response. This helps to keep the number of API requests your app has to make low and therefore improves performance. You learn more about includes [here][21].
-- Fields can include [Markdown][14]. There is [another example app][15] which shows how to use the [Bypass][16] library for converting Markdown into _NSAttributedString_ which can be displayed in a _UITextView_ since iOS 7\. Depending on your use case and target platform, you might want to evaluate other options, for example converting to HTML. Also keep in mind that the library does not support the whole range of GitHub flavoured Markdown syntax available in the Contentful entry editor.
-
-With this, our walk through the [coffee guide app][1] is done. You should have everything you need to start building your own iOS apps with Contentful. Check out [the SDK][17] and start building.
+Fields can include [Markdown][14]. This [example app][15] which shows how to use the [Bypass][16] library to converting Markdown into a `NSAttributedString` which you can display in a `UITextView`. Depending on your use case and target platform, you might want to evaluate other options, for example converting to HTML. Keep in mind that the library does not support the whole range of GitHub flavoured Markdown syntax available in the Contentful entry editor.
 
 [1]: https://github.com/contentful/guide-app-ios
 [10]: http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.9.2/Classes/CDAAsset.html
