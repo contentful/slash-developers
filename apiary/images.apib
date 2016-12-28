@@ -21,7 +21,7 @@ The JSON for an asset on Contentful looks like this:
         },
         "size": 12273
       },
-      "url": "//images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png"
+      "url": "//images.contentful.com/<space_id>/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png"
     }
   }
 ```
@@ -35,7 +35,7 @@ This documentation covers the parameters you can add to the URL specified in the
 Retrieve an unmodified image. This is the same URL from an [asset's](/#reference/assets) `file.url` field, containing the token ids and image name you will require.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
     + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
     + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
@@ -51,7 +51,7 @@ Retrieve an unmodified image. This is the same URL from an [asset's](/#reference
 Images can be automatically converted to a different format, `jpg`, `png` or `webp` are supported. If no parameter is specified, you will receive your image in its original format.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
     + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
     + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
@@ -66,7 +66,7 @@ Images can be automatically converted to a different format, `jpg`, `png` or `we
 You can define the quality of JPEG images retrieved.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
     + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
     + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
@@ -83,7 +83,7 @@ JPEG images can be delivered as *progressive* JPEGs.
 The progressive JPEG format stores multiple passes of an image in progressively higher detail. When a progressive image is being loaded, the viewer will first see a lower quality pixelated version which will gradually improve in detail, until the image is fully downloaded. The idea is to display an image as early as possible to make the layout look as designed.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
     + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
     + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
@@ -99,7 +99,7 @@ The progressive JPEG format stores multiple passes of an image in progressively 
 Choose a custom width and height for the image.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
     + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
     + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
@@ -125,7 +125,7 @@ The possible values are:
 
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
     + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
     + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
@@ -146,7 +146,7 @@ Possible value:
 - `face` or `faces` to focus the resizing via face detection.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
     + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
     + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
@@ -165,7 +165,7 @@ Possible values:
 - A float value `r` defining the corner radius.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
     + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
     + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
@@ -182,7 +182,7 @@ Possible values:
 The background color when used with the `pad` fit type. It accepts RGB values like `rgb:9090ff` and the default color is transparent.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
+    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
     + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
     + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
