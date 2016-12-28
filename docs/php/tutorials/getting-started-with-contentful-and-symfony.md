@@ -117,7 +117,7 @@ should look like this:
 
 ## Using Contentful
 
-You know have the services `contentful.delivery` and `contentful.delivery.default_client` available. Both pointing to the
+You now have the services `contentful.delivery` and `contentful.delivery.default_client` available. Both pointing to the
 default client. If you have more than one client configured, or have specified a name, clients will be available in
 services following this naming scheme: `contentful.delivery.{name}_client`. A small controller displaying an entry based
 on an ID in the URL could look like this:
