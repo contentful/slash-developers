@@ -27,7 +27,7 @@ For more details [read the reference guide for the Content Delivery API][1].
 
 ## Content Management API
 
-The Content Management API (CMA), available at _https://api.contentful.com_, is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could us the CMA for several use cases, such as:
+The Content Management API (CMA), available at _https://api.contentful.com_, is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could use the CMA for several use cases, such as:
 
 - Automatic imports from different CMSes like WordPress or Drupal.
 - Integration with other backend systems, such as an e-commerce shop.

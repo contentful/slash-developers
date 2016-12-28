@@ -122,7 +122,7 @@ If you're an admin or an owner in multiple organizations you need to pass the ID
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
-    + Attributes (Empty Array)
+    + Attributes (Spaces)
 
 ### Create a space [POST]
 
@@ -1636,6 +1636,15 @@ We recommend using different access tokens for different applications or deliver
 - total: 0 (number) - Total number of resources matching
 - skip: 0 (number) - Number of resources skipped
 - limit: 100 (number) - Maximum number of resources in this response
+- items (array) - Resources contained in the array
+
+### Spaces
+
+- sys - System Attributes
+    - type: Array - Type of Resource
+- total: 0 (number) - Total number of resources matching
+- skip: 0 (number) - Number of resources skipped
+- limit: 100 (number) - Maximum number of resources in this response, defaults to 25
 - items (array) - Resources contained in the array
 
 ### Entry
