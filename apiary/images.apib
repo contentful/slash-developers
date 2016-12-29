@@ -10,18 +10,18 @@ The JSON for an asset on Contentful looks like this:
 
 ```
 "fields": {
-    "title": "Nyan Cat",
+    "title": "<asset_name>",
     "file": {
-      "fileName": "Nyan_cat_250px_frame.png",
-      "contentType": "image/png",
+      "fileName": "quwowooybuqbl6ntboz3.jpg",
+      "contentType": "image/jpg",
       "details": {
         "image": {
-          "width": 250,
-          "height": 250
+          "width": 600,
+          "height": 446
         },
-        "size": 12273
+        "size": 27187
       },
-      "url": "//images.contentful.com/<space_id>/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png"
+      "url": "//images.contentful.com/<space_id>/wtrHxeu3zEoEce2MokCSi/9da0cd1936871b8d72343e895a00d611/quwowooybuqbl6ntboz3.jpg"
     }
   }
 ```
@@ -36,13 +36,13 @@ Retrieve an unmodified image. This is the same URL from an [asset's](/#reference
 
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
 
 ### Retrieve an image [GET]
 
-+ Response 200 (image/png)
++ Response 200 (image/jpg)
 
 # Group Changing formats
 
@@ -52,9 +52,9 @@ Images can be automatically converted to a different format, `jpg`, `png` or `we
 
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
     + image_format (required, string, `jpg`) ... The desired image output format.
 
 ### Retrieve an image [GET]
@@ -67,9 +67,9 @@ You can define the quality of JPEG images retrieved.
 
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
     + quality (required, number, `50`) ... Quality as a percentage, between 0 and 100.
 
 ### Retrieve an image [GET]
@@ -84,9 +84,9 @@ The progressive JPEG format stores multiple passes of an image in progressively 
 
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
 
 ### Retrieve an image [GET]
 
@@ -100,15 +100,15 @@ Choose a custom width and height for the image.
 
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
     + width (required, number, `100`) ... The desired width of the image, the maximum allowed size is 4000.
     + height (required, number, `100`) ... The desired height of the image, the maximum allowed size is 4000.
 
 ### Retrieve an image [GET]
 
-+ Response 200 (image/png)
++ Response 200 (image/jpg)
 
 ## Modify the resizing behaviour [/{space_id}/{token1}/{token2}/{name}?fit={type}]
 
@@ -126,14 +126,14 @@ The possible values are:
 
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
     + type (required, string, `pad`) ... One of the types as described above.
 
 ### Retrieve an image [GET]
 
-+ Response 200 (image/png)
++ Response 200 (image/jpg)
 
 ## Specify focus area for resizing [/{space_id}/{token1}/{token2}/{name}?f={type}&fit=thumb]
 
@@ -147,14 +147,14 @@ Possible value:
 
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
     + type (required, string, `face`) ... One of the types described above.
 
 ### Retrieve an image [GET]
 
-+ Response 200 (image/png)
++ Response 200 (image/jpg)
 
 ## Crop rounded corners & circle/elipsis [/{space_id}/{token1}/{token2}/{name}?r={radius}]
 
@@ -166,14 +166,14 @@ Possible values:
 
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
     + radius (required, `20`) ... A value as described above.
 
 ### Retrieve an image [GET]
 
-+ Response 200 (image/png)
++ Response 200 (image/jpg)
 
 # Group Image manipulation
 
@@ -183,13 +183,13 @@ The background color when used with the `pad` fit type. It accepts RGB values li
 
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `4gp6taAwW4CmSgumq2ekUm`) ... Alphanumeric token identifying the image.
+    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
     + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `Nyan_cat_250px_frame.png`) ... The original file name of the image.
+    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
     + color (required, string `rgb:ffffff`) ... A color constant as described above.
     + width (required, number, `500`) ... The desired width of the image.
     + height (required, number, `250`) ... The desired height of the image.
 
 ### Retrieve an image [GET]
 
-+ Response 200 (image/png)
++ Response 200 (image/jpg)

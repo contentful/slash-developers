@@ -51,12 +51,16 @@ for filename in $(find docs apiary/out -type f \( -iname \*.md -o -iname \*.apib
 
   # Specific asset
   sed -i -e 's/<asset_id>/wtrHxeu3zEoEce2MokCSi/g' $result_string
+  sed -i -e 's/<asset_name>/Playsam Streamliner/g' $result_string
 
   # Link field
   sed -i -e 's/<link_field>/brand/g' $result_string
 
   # Link field, multiple
   sed -i -e 's/<link_field_multiple>/tags/g' $result_string
+
+  # Webhook
+  sed -i -e 's/<webhook_id>/newproduct/g' $result_string
 done
 
 rm -dfr out/_partials
