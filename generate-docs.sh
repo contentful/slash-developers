@@ -52,6 +52,7 @@ for filename in $(find docs apiary/out -type f \( -iname \*.md -o -iname \*.apib
   # Specific asset
   sed -i -e 's/<asset_id>/wtrHxeu3zEoEce2MokCSi/g' $result_string
   sed -i -e 's/<asset_name>/Playsam Streamliner/g' $result_string
+  sed -i -e 's/<asset_file>/Playsam Streamliner/g' $result_string
 
   # Link field
   sed -i -e 's/<link_field>/brand/g' $result_string
