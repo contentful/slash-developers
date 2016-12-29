@@ -6,7 +6,7 @@ mkdir out
 cd apiary/
 make clean    # remove generated files
 make install  # install the necessary tools
-make preview
+# make preview
 # TODO: sed happens after preview
 
 cd ../
@@ -17,7 +17,7 @@ for filename in $(find docs apiary/out -type f \( -iname \*.md -o -iname \*.apib
   echo "Processing $filename"
 
   original_string=$filename
-  result_string="out/${original_string/./''}"
+  result_string="out/${original_string}"
 
   echo "Creating $result_string"
 
