@@ -27,66 +27,96 @@
 
 - fields (array) - Fields
     - (object)
-        - id: name
-        - name: Name
+        - id: productName
+        - name: Product name
         - type: Text
         - required: true (boolean)
-        - localized: true (boolean)
-    - (object)
-        - id: likes
-        - name: Likes
-        - type: Array
-        - required: false (boolean)
         - localized: false (boolean)
-        - `items`
-            - type: Symbol
     - (object)
-        - id: color
-        - name: Color
+        - id: slug
+        - name: Slug
         - type: Symbol
         - required: false (boolean)
         - localized: false (boolean)
     - (object)
-        - id: bestFriend
-        - name: Best Friend
-        - type: Link
-        - required: false (boolean)
-        - localized: false (boolean)
-        - linkType: Entry
-    - (object)
-        - id: birthday
-        - name: Birthday
-        - type: Date
+        - id: productDescription
+        - name: Description
+        - type: Text
         - required: false (boolean)
         - localized: false (boolean)
     - (object)
-        - id: lifes
-        - name: Lifes left
-        - type: Integer
-        - required: false (boolean)
-        - localized: false (boolean)
-        - disabled: true (boolean)
-    - (object)
-        - id: lives
-        - name: Lives left
-        - type: Integer
+        - id: sizetypecolor
+        - name: Size/Type/Color
+        - type: Symbol
         - required: false (boolean)
         - localized: false (boolean)
     - (object)
         - id: image
         - name: Image
+        - type: Array
+        - required: false (boolean)
+        - localized: false (boolean)
+        - `items`
+          - type: Link
+          - linkType: Asset
+    - (object)
+        - id: tags
+        - name: Tags
+        - type: Array
+        - required: false (boolean)
+        - localized: false (boolean)
+        - `items`
+          - type: Symbol
+    - (object)
+        - id: categories
+        - name: Categories
+        - type: Array
+        - required: false (boolean)
+        - localized: false (boolean)
+        - `items`
+          - type: Link
+          - validations
+            - linkContentType: 6XwpTaSiiI2Ak2Ww0oi6qa
+          - linkType: Entry
+    - (object)
+        - id: price
+        - name: Price
+        - type: Number
+        - required: false (boolean)
+        - localized: false (boolean)
+        - disabled: true (boolean)
+    - (object)
+        - id: brand
+        - name: Brand
         - type: Link
         - required: false (boolean)
         - localized: false (boolean)
-        - linkType: Asset
+        - linkType: Entry
+    - (object)
+        - id: quantity
+        - name: Quantity
+        - type: Integer
+        - required: false (boolean)
+        - localized: false (boolean)
+    - (object)
+        - id: sku
+        - name: SKU
+        - type: Symbol
+        - required: false (boolean)
+        - localized: false (boolean)
+    - (object)
+        - id: website
+        - name: Available at
+        - type: Symbol
+        - required: false (boolean)
+        - localized: false (boolean)
 - sys
     - space (Space Link)
     - type: ContentType
-    - id: cat
+    - id: 2PqfXUJwE8qSYKuM0U6w8M
     - Include Resource Metadata
-- name: Cat
-- displayField: name
-- description: Meow.
+- name: Product
+- displayField: productName
 
 ### Content Type Link
 - sys
@@ -124,9 +154,8 @@
 
 ### Resource Metadata
 
-- createdAt: `2015-05-18T11:29:46.809Z` - Creation date
-- updatedAt: `2015-05-18T11:29:46.809Z` - Date/time of last update
-- locale: `en-US`
+- createdAt: `2016-12-20T10:43:35.772Z` - Creation date
+- updatedAt: `2016-12-20T10:43:35.772Z` - Date/time of last update
 - revision: 1 (number)
 
 ### Space Link
