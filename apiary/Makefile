@@ -39,18 +39,23 @@ install:
 
 $(CDA_BLUEPRINT): outdir cda.apib _partials/content-types-description.md
 	$(HERCULE) cda.apib -o $@
+	../placeholder-replacements.sh $@
 
 $(CMA_BLUEPRINT): outdir cma.apib _partials/content-types-description.md
 	$(HERCULE) cma.apib -o $@
+	../placeholder-replacements.sh $@
 
 $(IMAGES_BLUEPRINT): outdir images.apib
 	$(HERCULE) images.apib -o $@
+	../placeholder-replacements.sh $@
 
 # This task replaces the CDA token with a Preview token via `sed`
 $(CPA_BLUEPRINT): outdir cpa.apib
 	$(HERCULE) cpa.apib -o $@
-	sed 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@ >tmp
-	mv tmp $@
+	../placeholder-replacements.sh $@
+
+	# sed 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@ >tmp
+	# mv tmp $@
 
 # XXX: The Apiary editor should not be used, because we use partials for CDA/CPA
 #fetch:
