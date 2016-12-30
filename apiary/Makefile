@@ -88,7 +88,7 @@ test: check_cma_token prepare
 	    --reporter apiary -j apiaryApiName:contentfulcda -j apiaryApiKey:$(APIARY_API_KEY)
 	@$(DREDD) $(CMA_BLUEPRINT) $(CMA_HOST) \
 		--hookfiles=./test-hooks-cma.js \
-		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
+		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN_NEW)" \
 		--private-header Authorization \
 		--reporter apiary -j apiaryApiName:contentfulcma -j apiaryApiKey:$(APIARY_API_KEY) \
 		-m GET #-m PUT -m POST #-m DELETE
@@ -116,4 +116,4 @@ check_ci_var:
 check_apiary_token:
 	$(call check_env_variable,APIARY_API_KEY)
 check_cma_token:
-	$(call check_env_variable,CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)
+	$(call check_env_variable,CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN_NEW)
