@@ -5,7 +5,13 @@ result_string=$1
 sed -i -e 's/<space_id>/71rop70dkqaj/g' $result_string
 
 # Access token
-sed -i -e 's/<access_token>/297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971/g' $result_string
+if [[ $2 == "preview" ]]; then
+  # Preview API
+    sed -i -e 's/<access_token>/46cc338e0d4647e3b9f98c52615a2414d725b6ddffdbbb2f3bed26f73789dd53/g' $result_string
+else
+  # Delivery API
+  sed -i -e 's/<access_token>/297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971/g' $result_string
+fi
 
 # Specific entry ID
 sed -i -e 's/<entry_id>/5KsDBWseXY6QegucYAoacS/g' $result_string

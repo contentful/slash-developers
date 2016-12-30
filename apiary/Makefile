@@ -52,10 +52,8 @@ $(IMAGES_BLUEPRINT): outdir images.apib
 # This task replaces the CDA token with a Preview token via `sed`
 $(CPA_BLUEPRINT): outdir cpa.apib
 	$(HERCULE) cpa.apib -o $@
-	../placeholder-replacements.sh $@
+	../placeholder-replacements.sh $@ preview
 
-	# sed 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@ >tmp
-	# mv tmp $@
 
 # XXX: The Apiary editor should not be used, because we use partials for CDA/CPA
 #fetch:
