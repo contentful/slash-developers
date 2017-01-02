@@ -2,3 +2,4 @@
 .idea/
 /push-to-cf.sh
 *.md.map
+node_modules/
