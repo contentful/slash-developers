@@ -28,6 +28,9 @@ sed -i -e 's/<website_value>/B00E82D7I8/g' $result_string
 # Specific product content type
 sed -i -e 's/<product_content_type_id>/2PqfXUJwE8qSYKuM0U6w8M/g' $result_string
 
+# Specific city content type
+sed -i -e 's/<city_content_type_id>/city/g' $result_string
+
 # SKU value
 sed -i -e 's/<sku_value>/B00E82D7I8/g' $result_string
 
