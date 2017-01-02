@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+HERCULE=node_modules/.bin/hercule
+
 rm -dfr out
 mkdir out
 
@@ -15,7 +17,7 @@ for filename in $(find docs -type f \( -iname \*.md -o -iname \*.apib \) -not -p
 
   mkdir -p "$(dirname "$result_string")" && touch "$result_string"
 
-  hercule $filename -o $result_string
+  node_modules/.bin/hercule $filename -o $result_string
 
   ./placeholder-replacements.sh $result_string
 done
