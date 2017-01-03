@@ -1,5 +1,5 @@
 ---
-page: :docsDevEnvironments
+page: ':docsDevEnvironments'
 name: Developer environments
 title: Developer environments
 metainformation: tbc
@@ -48,7 +48,7 @@ Users with roles with appropriate permissions can now approve the changes, publi
 
 ### Using the Content Preview API
 
-The CPA works in a similar way to the CDA, but it returns the draft state of entries whenever available. So, this API call:
+The CPA works in a similar way to the CDA, but it returns the draft state of entries whenever available. So, assuming that another user did create a new post, then this API call:
 
 ```bash
 curl -X GET
@@ -56,7 +56,7 @@ curl -X GET
   "https://preview.contentful.com/spaces/<space-id>/entries?access_token=<content-delivery-api-key>"
 ```
 
-Will return the 9 total entries present in the default example space, plus the draft content.
+Will return the 9 total entries present in the default example space, plus the new entry in a draft state.
 
 ### Reverting changes to entries with snapshots
 
