@@ -49,73 +49,75 @@ Contentful separates content between entries, which contain your data and relati
 
 With the client created, you can start consuming data from the API.
 
-The code below retrieves all entries in your space from the API:
+The code below retrieves all entries in your space from the API, but don't print the output yet, as this will result in a lot of JSON, you will learn how to filter the output later:
 
 ```php
 $entries = $client->getEntries();
 ```
-
-**STUCK HERE, HOW TO CHECK METHOD?**
 
 Whereas this code retrieves a single entry specified by an ID.
 
 ```php
 $entryId = '<entry_id>';
 $entry = $client->getEntry($entryId);
-print($entry->getproductName());
+echo $entry->getproductName();
 ```
 
 :[Get entry output](../../_partials/get-entry-output.md)
 
-To specify more [complex queries][4] you can use the query builder:
+To specify more [complex queries][4] you can use the query builder. The example below filters results to a specific content type (the product) and sorts them by price:
 
 ```php
 $query = new \Contentful\Delivery\Query;
 $query->setContentType('<product_content_type_id>')
     ->orderBy('fields.price');
+
 $productEntriesByPrice = $client->getEntries($query);
 ```
 
+
+
 ### Using your entry
 
-Once you've got your entry, you can access the content it holds through getter methods:
+Once you've got the entry, you can access its content through getter methods:
 
 ```php
-<?php
-echo $cat->getName(); // "Nyan Cat"
-echo "I have $cat->getLives() lives"; // "I have 1337 lives"
+foreach ($productEntriesByPrice as $product) {
+    echo $product->getproductName(), PHP_EOL;
+}
 ```
 
-If an entry contains a [link][5] to an asset or another entry, it will automatically be loaded when accessing it:
+:[Get all entry output](../../_partials/get-all-entry-output.md)
+
+
+If an entry contains a [link][5] to an asset or another entry, the SDK will automatically load it. The example below shows the name of the brand linked to the product:
 
 ```php
-<?php
-echo $cat->getBestFriend()->getName(); // "Happy Cat"
+foreach ($productEntriesByPrice as $product) {
+    echo $product->getproductName(), ', Brand: ', $product->getBrand()->getcompanyName(), PHP_EOL;
+}
 ```
 
 ## Using assets
 
-Querying assets works like querying entries.
+Querying assets works similarly to querying entries.
 
-You can retrieve all assets of your space:
+You can retrieve all assets from a space with the following:
 
 ```php
-<?php
 $assets = $client->getAssets();
 ```
 
-Or you can get a single asset:
+Or to get a single asset:
 
 ```php
-<?php
-$assetId = 'nyancat';
+$assetId = '<assest_id>';
 $asset = $client->getAsset($assetId);
 ```
 
 As with entries you can also use more [complex queries][6]:
 
 ```php
-<?php
 $query = new \Contentful\Delivery\Query;
 $query->orderBy('sys.createdAt');
 $assets = $client->getAssets($query);
@@ -124,9 +126,7 @@ $assets = $client->getAssets($query);
 Once you have an asset, you can access its metadata and an URL for the actual file:
 
 ```php
-<?php
-echo $asset->getName(); // "Nyan Cat"
-echo $asset->getFile()->getUrl(); // "//images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png"
+
 ```
 
 Using the [Images API][7] you can control details how Contentful serves images. For example, to convert an image to a JPEG and resize it to a height of no more than 100 pixels:
