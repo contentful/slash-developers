@@ -36,3 +36,8 @@ The CMA integration allows you to create, edit, manage, and publish content, and
 ### Getting started with the Content Delivery API SDK and .Net
 
 [This tutorial](/developers/docs/net/tutorials/using-net-cda-sdk/) will walk you through the first steps using the Content Delivery API with a .Net application.
+
+### Getting started with the Content Management API and .Net
+
+[This tutorial](/developers/docs/net/tutorials/management-api/) will guide you through most of the methods available in the Content Management API with a .Net application.
+[This tutorial](/developers/docs/net/tutorials/webhook-roles-snapshots/) will go in depth into managing webhooks, roles and space memberships and versioning entries with snapshots.
