@@ -1,5 +1,5 @@
 ---
-page: ':docsDevEnvironments'
+page: :docsDevEnvironments
 name: Developer environments
 title: Developer environments
 metainformation: tbc
@@ -7,8 +7,6 @@ slug: null
 tags: null
 nextsteps: null
 ---
-
-# temp
 
 Deploying changes to content and configuration between spaces is a common task that developers need to undertake in the lifetime of a project.
 
@@ -50,11 +48,11 @@ Users with roles with appropriate permissions can now approve the changes, publi
 
 The CPA works in a similar way to the CDA, but it returns the draft state of entries whenever available. So, assuming that another user did create a new post, then this API call:
 
-```bash
+~~~bash
 curl -X GET
   -H "Content-Type: application/vnd.contentful.management.v1+json"
   "https://preview.contentful.com/spaces/<space-id>/entries?access_token=<content-delivery-api-key>"
-```
+~~~
 
 Will return the 9 total entries present in the default example space, plus the new entry in a draft state.
 
@@ -91,11 +89,11 @@ There are limitations to the tools:
 
 Start by exporting the content of the current space:
 
-```bash
+~~~bash
 contentful-export
   --space-id <space-id>
   --management-token <content-management-token>
-```
+~~~
 
 You can see the results of the export of the test space [here](https://assets.contentful.com/tz3n7fnw4ujc/1a7CT8ita6GS88cMQW8YgY/5f4a8df5f7ed0f702b4f040a788e2d7e/contentful-export-hlvk7oi1onur-1479732074757.json), it follows the typical return pattern of API calls.
 
@@ -107,12 +105,12 @@ As the space data is now a JSON text file, you can commit it to version control 
 
 Create a new space with the Contentful web app or the API and note it's ID. Now use [the Contentful import tool](https://github.com/contentful/contentful-import) to import the JSON file into your new space.
 
-```bash
+~~~bash
 contentful-import \
   --space-id spaceID \
   --management-token managementToken \
   --content-file exported-file.json \
-```
+~~~
 
 And now you should see the copied content in your new space.
 
