@@ -64,11 +64,9 @@ Using Contenful's Snapshot feature, editors can revert entries to previous state
 
 ![Restore previous versions of content](https://images.contentful.com/tz3n7fnw4ujc/6bmP4wkKiWG20Csi6wSUI2/6072e5cae095cbd923b9e680315fca14/restore-version.png)
 
-### Handling data inconsistencies and problems
+### Handling data inconsistencies and changes
 
-Any inconsistencies that emerge between content changes, such as broken references between content types should be handled before deploying them.
-
-**AN EXAMPLE?**
+At this stage you should handle any inconsistencies or intentional changes that emerge between content changes before deploying them. This includes changing content type IDs, fixing broken references between entries and other bulk updates needed to content or configuration.
 
 ### Webhooks to supplement workflow
 
