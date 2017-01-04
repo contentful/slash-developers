@@ -47,3 +47,6 @@ sed -i -e 's/<link_field_multiple>/tags/g' $result_string
 
 # Webhook
 sed -i -e 's/<webhook_id>/newproduct/g' $result_string
+
+# Webhook
+sed -i -e 's/<locale>/en-US/g' $result_string
