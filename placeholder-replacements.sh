@@ -48,5 +48,8 @@ sed -i -e 's/<link_field_multiple>/tags/g' $result_string
 # Webhook
 sed -i -e 's/<webhook_id>/newproduct/g' $result_string
 
-# Webhook
+# Locale
 sed -i -e 's/<locale>/en-US/g' $result_string
+
+# Sync token
+sed -i -e 's/<sync_token>/w7Ese3kdwpMbMhhgw7QAUsKiw6bCi09CwpFYwpwywqVYw6DDh8OawrTDpWvCgMOhw6jCuAhxWX_CocOPwowhcsOzeEJSbcOvwrfDlCjDr8O1YzLDvi9FOTXCmsOqT8OFcHPDuFDCqyMMTsKNw7rDmsOqKcOnw7FCwpIfNMOcFMOxFnHCoCzDpAjCucOdwpwfw4YTK8Kpw6zCtDrChVQlNsO2ZybDnw/g' $result_string

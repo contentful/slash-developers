@@ -46,7 +46,7 @@ For entries, you can also specify a `content_type` parameter. When specifying `c
 + Parameters
     + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the Space to retrieve.
     + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the Content Type to retrieve.
+    + content_type (required, string, `<product_content_type_id>`) ... Alphanumeric `id` of the Content Type to retrieve.
 
 ### Query entries [GET]
 
@@ -65,7 +65,7 @@ If a client loses the `nextSyncUrl`, the client should delete its local content 
 + Parameters
     + space_id : `<space_id>` (required, string) - Alphanumeric `id` of the Space to retrieve.
     + access_token : `<access_token>` (required, string) - :[token description](tokentype)
-    + sync_token : `w5ZGw6JFwqZmVcKUzDr8K-wo1lNx7DnHE` (required, string) - An opaque token which is used to identify your previous sync.
+    + sync_token : `<sync_token>` (required, string) - An opaque token which is used to identify your previous sync.
 
 ### Query entries [GET]
 
