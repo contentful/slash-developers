@@ -1,7 +1,7 @@
 ---
-page: :docsDevEnvironments
-name: Developer environments
-title: Developer environments
+page: :docsMultipleEnvironments
+name: Managing multiple environments
+title: Managing multiple environments
 metainformation: tbc
 slug: null
 tags: null
