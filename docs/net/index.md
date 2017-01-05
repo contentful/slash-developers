@@ -17,14 +17,9 @@ nextsteps: null
 
 Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and their features.
 
-### Content Delivery and Content Management APIs SDK
+### Content Delivery API SDK
 
-This SDK interacts with the Content Delivery (CDA) and Content Management (CMA) APIs.
-
-The CDA is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.
-
-The CMA integration allows you to create, edit, manage, and publish content, and offers tools for managing editorial teams and cooperation.
-
+This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.<br>
 [View on GitHub](https://github.com/contentful/contentful.net)
 
 ## Tutorials
