@@ -8,6 +8,7 @@ ruby: 2.2.3
 before_install:
   - mv Spelling-and-style-sheet/.spelling ./.spelling
   - sudo apt-get install jq
+  - sudo apt-get install hunspell
   - make -C apiary install
 
 script:
