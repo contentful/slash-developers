@@ -15,8 +15,8 @@ All content and assets in Contentful belongs to a space. You will generally have
 Each space has a name, a set of locales, and metadata.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
 
 + Model (application/vnd.contentful.delivery.v1+json)
 
@@ -50,7 +50,7 @@ Each space has a name, a set of locales, and metadata.
 
 + Parameters
     + space_id: <space_id> (required, string) - ID of the space in form of a string
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
 
 ### Get the content model of a space [GET]
 
@@ -62,7 +62,7 @@ Each space has a name, a set of locales, and metadata.
 
 + Parameters
     + space_id: <space_id> (required, string) - ID of the space in form of a string
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
     + content_type_id: <product_content_type_id> (required, string) - ID of the content type in form of a string
 
 ### Get a single content type [GET]
@@ -78,8 +78,8 @@ Entries are the content contained in a space and represent anything that you  de
 ## Entries collection [/spaces/{space_id}/entries?access_token={access_token}]
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
 
 ### Get all entries of a Space [GET]
 
@@ -90,9 +90,9 @@ Entries are the content contained in a space and represent anything that you  de
 ## Entry [/spaces/{space_id}/entries/{entry_id}?access_token={access_token}]
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + entry_id (required, string, `<entry_id>`) ... Alphanumeric `id` of the entry to retrieve
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + entry_id: `<entry_id>` (required, string) - Alphanumeric `id` of the entry to retrieve
 
 ### Get a single entry [GET]
 
@@ -130,7 +130,7 @@ With images you can use query parameters to define the image size, cropping para
 
 + Parameters
     + space_id: <space_id> (required, string) - ID of the space in form of a string
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
 
 + Model (application/vnd.contentful.delivery.v1+json)
 
@@ -519,7 +519,7 @@ With images you can use query parameters to define the image size, cropping para
 + Parameters
     + space_id: <space_id> (required, string) - ID of the space in form of a string
     + asset_id: <asset_id> (required, string) - ID of the asset in form of a string
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
 
 ### Get a single asset [GET]
 
@@ -544,9 +544,9 @@ If the standard `items` array has not already retrieved the linked entries, they
 **Note**: The `include` parameter only resolves links between entries and assets within a space. Links between content types within a space are not included in the response.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + include (required, number, `2`) ... Number of levels to include (defaults to 1)
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + include: `2` (required, number, `2`) - Number of levels to include (defaults to 1)
 
 ### Query entries [GET]
 
@@ -561,8 +561,8 @@ For example, to include 2 levels of linked entries.
 Even when not specified, the `include` parameter defaults to the value of `1`. When you want to omit linked items, specify `include` as `0`.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
 
 ### Query entries [GET]
 
@@ -575,12 +575,12 @@ Even when not specified, the `include` parameter defaults to the value of `1`. W
 If you need to retrieve all items linked to a target entry the query URL should filter entries on their specific `content_type`, `linking_field` (field to link items) and `entry_id` from the target entry.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + value (required, number, `2`) ... Number of levels to include.
-    + linking_field (required, string, `<link_field>`) ... Field used to link items
-    + target_entry_id (required,string, `<asset_id>`) ... ID of the target entry
-    + content_type (required,string, `<product_content_type_id>`) ... ID of the content type
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + value: `2` (required, number) - Number of levels to include.
+    + linking_field: `<link_field>` (required, string) - Field used to link items
+    + target_entry_id: `<asset_id>` (required,string) - ID of the target entry
+    + content_type: `<product_content_type_id>` (required,string) - ID of the content type
 
 ### Query entries [GET]
 
@@ -601,9 +601,9 @@ Search for entries with a specific content type by setting the `content_type` UR
 When querying entries and using search filters based on `fields` or ordering by `fields` you must specify this parameter.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<product_content_type_id>`) ... Alphanumeric `id` of the content type to retrieve.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
 
 ### Query entries [GET]
 
@@ -640,10 +640,10 @@ Select has some restrictions:
 If you provide an invalid property path, e.g `sys.doesNotExist`, Contentful returns a `400 Bad request` containing the property path that is invalid.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<product_content_type_id>`) ... Alphanumeric `id` of the content type to retrieve.
-    + value (required, string, `sys.id`) ... The path of the property to select.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + value: `sys.id` (required, string) - The path of the property to select.
 
 ### Query entries [GET]
 
@@ -662,10 +662,10 @@ Search for exact matches by using the equality operator. This includes querying 
 **Note**: Equality and inequality operators are not supported for text fields and you need to constrain search queries for fields with a `content_type` URI query parameter.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.id`) ... The attribute to match.
-    + value (required, `<entry_id>`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + attribute: `sys.id` (required, string) - The attribute to match.
+    + value : `<entry_id>` (required) - The value to match.
 
 ### Query entries [GET]
 
@@ -680,10 +680,10 @@ This example finds all entries with the ID '<entry_id>' (IDs are unique).
 Uses the `[ne]` parameter to exclude items matching a certain pattern.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.id`) ... The attribute to match.
-    + value (required, `<entry_id>`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + attribute: `sys.id` (required, string) - The attribute to match.
+    + value : `<entry_id>` (required) - The value to match.
 
 ### Query entries [GET]
 
@@ -703,11 +703,11 @@ The equality/inequality operators also work with array fields:
 **Note**: As the query filters by a field, you need to specify a content type.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<product_content_type_id>`) ... Alphanumeric `id` of the content type to retrieve.
-    + field_id (required, string, `<link_field_multiple>`) ... The attribute to match.
-    + value (required, `accessories`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + field_id: `<link_field_multiple>` (required, string) - The attribute to match.
+    + value: `accessories` (required) - The value to match.
 
 ### Query entries [GET]
 
@@ -726,11 +726,11 @@ It's possible to use the `[all]` operator to retrieve entries matching a specifi
 This example finds all products tagged as `flowers` and `accessories` by using the `all` operator with `fields.tags` (an array) and the two values.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<product_content_type_id>`) ... Alphanumeric `id` of the content type to retrieve.
-    + field_id (required, string, `tags`) ... The attribute to match.
-    + values (required, `flowers,accessories`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + field_id: `tags` (required, string) - The attribute to match.
+    + values: `flowers,accessories` (required) - The value to match.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -741,10 +741,10 @@ This example finds all products tagged as `flowers` and `accessories` by using t
 You can filter a field by multiple values with the `[in]` operator. When applied to an array value there must be at least one matching item. Similarly, when including a field value, you need to specify a Content Type.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.id`) ... The attribute to match.
-    + value (required, `<entry_id>,<entry_id_two>`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + attribute: `sys.id` (required, string) - The attribute to match.
+    + value: `<entry_id>,<entry_id_two>` (required) - The value to match.
 
 ### Query entries [GET]
 
@@ -759,11 +759,11 @@ This example gets entries that match '<entry_id>' and '<entry_id_two>'.
 You can filter a field by multiple values with the `[nin]` operator. When applied to an array value there must be at least one not matching item. Similarly, when including a field value, you need to specify a content type.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<product_content_type_id>`) ... Alphanumeric `id` of the content type to retrieve.
-    + attribute (required, string, `fields.tags`) ... The attribute to match.
-    + value (required, `flowers,accessories`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + attribute: `fields.tags` (required, string) - The attribute to match.
+    + value: `flowers,accessories` (required) - The value to match.
 
 ### Query entries [GET]
 
@@ -780,11 +780,11 @@ You can check for the presence of a field using the `[exists]` operator. It chec
 If the field is not assigned a value, it will not have a JSON payload and the operator will assume it to be 'non-existent'.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<product_content_type_id>`) ... Alphanumeric `id` of the content type to retrieve.
-    + attribute (required, string, `fields.tags`) ... The path to the property we're checking for existence
-    + value (required, boolean, `true`) ... True if the path from attribute should exist
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + attribute: `fields.tags` (required, string) - The path to the property we're checking for existence
+    + value: `true` (required, boolean) - True if the path from attribute should exist
 
 ### Query entries [GET]
 
@@ -808,10 +808,10 @@ You can apply these operators to date and number fields.
 When applied to field values, you must specify the content type in the query.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.updatedAt`) ... The attribute to match.
-    + value (required, `2013-01-01T00:00:00Z`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + attribute: `sys.updatedAt` (required, string) - The attribute to match.
+    + value: `2013-01-01T00:00:00Z` (required) - The value to match.
 
 ### Query entries [GET]
 
@@ -828,9 +828,9 @@ It's possible to perform a full-text search across all text and symbol fields wi
 **Note**: Full-text search is case insensitive and you might get more results than expected. Also the query will only take values with more than 1 character.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + value (required, string, `design`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + value: `design` (required, string) - The value to match.
 
 ### Query entries [GET]
 
@@ -845,11 +845,11 @@ This example finds all entries containing the word 'design'.
 After specifying a content type, you can perform a full-text search on a specific field with the `[match]` operator. The query will only take values with more than **1** character.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<brand_content_type_id>`) ... Alphanumeric `id` of the content type to retrieve.
-    + field_id (required, string, `website`) ... Alphanumeric `id` of field to retrieve.
-    + value (required, string, `.com`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<brand_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + field_id: `website` (required, string) - Alphanumeric `id` of field to retrieve.
+    + value: `.com` (required, string) - The value to match.
 
 ### Query entries [GET]
 
@@ -866,10 +866,10 @@ Using a proximity search on location-enabled content let's you find results in a
 Queries that include exact coordinates wont be able to take full advantage of our caching layer. With many use cases it might be enough to round the coordinates to 3 decimal places (an accuracy of about 300m), 2 decimal places (an accuracy of about 1km) or more to improve your cache hit rates.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<city_content_type_id>`) ... Alphanumeric `id` of the content type to retrieve.
-    + coordinate (required, string, `38,-122`) ... Latitude and longitude of a location.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<city_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + coordinate: `38,-122` (required, string) - Latitude and longitude of a location.
 
 ### Query entries [GET]
 
@@ -903,10 +903,10 @@ To search for locations within a rectangle area object, use the structure `field
 The structure `field.center[within]=latitute,longitude,radius` will return entries included in the circle with `fields.center` of the given latitude, longitude and radius. The unit of the radius parameter is kilometer.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<city_content_type_id>`) ... Alphanumeric `id` of the content type to retrieve.
-    + rectangle (required, string, `40,-124,36,-121`) ... Coordinate rectangle to search in.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<city_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + rectangle: `40,-124,36,-121` (required, string) - Coordinate rectangle to search in.
 
 ### Query entries [GET]
 
@@ -945,9 +945,9 @@ Object |Object        |Arbitrary object.
 
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.createdAt`) ... Attribute to order by.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the Space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + attribute: `sys.createdAt` (required, string) - Attribute to order by.
 
 ### Query entries [GET]
 
@@ -962,9 +962,9 @@ This example gets all entries ordered by their creation date.
 This example reverses the sort order by prefixing the field with a minus sign.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.updatedAt`) ... Attribute to order by.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + attribute: `sys.updatedAt` (required, string) - Attribute to order by.
 
 ### Query entries [GET]
 
@@ -979,10 +979,10 @@ This example orders results by the time of the last update starting with the new
 You can order items by specifying the `order` parameter along with attributes(`attribute`, `attribute2`). Prefix the field with a minus sign to reverse the sort order of the attribute.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + attribute (required,string,`sys.createdAt`) ... First attribute to order by
-    + attribute2 (required, string, `sys.id`) ... Second attribute to order by.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + attribute: `sys.createdAt` (required, string) - First attribute to order by
+    + attribute2: `sys.id` (required, string) - Second attribute to order by.
 
 ### Query entries [GET]
 
@@ -997,9 +997,9 @@ You can specify the maximum number of results as a `limit` search parameter.
 **Note**: The maximum number of entries returned by the API is **1000** and it will ignore limits higher than **1000**. The default number of entries returned by the API is **100**.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + value (required, number, `3`) ... Limit for number of results.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + value: `3` (required, number) - Limit for number of results.
 
 ### Query entries [GET]
 
@@ -1021,9 +1021,9 @@ By combining `skip` and `limit` you can paginate through results:
     etc.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + value (required, number, `3`) ... Offset for results.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + value: `3` (required, number) - Offset for results.
 
 ### Query entries [GET]
 
@@ -1039,9 +1039,9 @@ You can filter assets by their MIME type group by using the `mimetype_group` que
 `spreadsheet`, `pdfdocument`, `archive`, `code` and `markup`. By default, the API will return all assets.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + mimetype_group (required, string, `image`) ... MIME type group to include.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + mimetype_group: `image` (required, string) - MIME type group to include.
 
 ### Query assets [GET]
 
@@ -1085,13 +1085,13 @@ Searching on references has the following restrictions:
 - The maximum number of reference searches in one query is 2. A larger value will return an error.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + content_type (required, string, `<product_content_type_id>`) ...
-    + reference_content_type (required, string, `<brand_content_type_id>`) ... The id of then content type of the referenced entry
-    + reference_field (required, string, `brand`) ... The id of the field holding the reference
-    + search_field (required, string, `companyName`) ... The id of the field you want to search
-    + search_value (required, string, `Lemnos`) ... The value you are looking for
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) -
+    + reference_content_type: `<brand_content_type_id>` (required, string) - The id of then content type of the referenced entry
+    + reference_field: `brand` (required, string) - The id of the field holding the reference
+    + search_field: `companyName` (required, string) - The id of the field you want to search
+    + search_value: `Lemnos` (required, string) - The value you are looking for
 
 
 ### Search on references [GET]
@@ -1122,10 +1122,10 @@ If the result contains only a single locale, resources will include the property
 Learn more about locales in our [concepts document](/developers/docs/concepts/locales/).
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `<access_token>`) ... :[token description](tokentype)
-    + entry_id (optional, string, `<entry_id>`) ... Alphanumeric `id` of the entry to retrieve.
-    + locale (required, string, `<locale>`) ... The locale to use.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token`> (required, string) - :[token description](tokentype)
+    + entry_id: `<entry_id>` (optional, string) - Alphanumeric `id` of the entry to retrieve.
+    + locale: `<locale>` (required, string) - The locale to use.
 
 ### Query entries [GET]
 
