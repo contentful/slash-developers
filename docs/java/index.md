@@ -5,11 +5,7 @@ title: Using Contentful with Java
 metainformation: 'Our SDKs give you access to our APIs and their features.'
 slug: null
 tags:
-- Basics
-- SDKs
-nextsteps:
- - docsContentfulCma
- - docsSync
+nextsteps: null
 ---
 
 - [SDKs](#sdks)
