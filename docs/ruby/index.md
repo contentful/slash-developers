@@ -21,14 +21,14 @@ Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and thei
 
 ### Content Delivery API SDK
 
-This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.<br>
-[View on GitHub](https://github.com/contentful/contentful.rb)<br>
+This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.<br/>
+[View on GitHub](https://github.com/contentful/contentful.rb)<br/>
 [API reference](http://www.rubydoc.info/gems/contentful/)
 
 ### Content Management API SDK
 
-This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content. The API also offers tools for managing editorial teams and cooperation.<br>
-[View on GitHub](https://github.com/contentful/contentful-management.rb)<br>
+This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content. The API also offers tools for managing editorial teams and cooperation.<br/>
+[View on GitHub](https://github.com/contentful/contentful-management.rb)<br/>
 [API reference](http://www.rubydoc.info/gems/contentful-management/)
 
 ## Tutorials
@@ -61,23 +61,23 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 ### Contentful webhook listener
 
-A simple HTTP webserver for listening to API webhooks that you can override to suit your own behaviors.<br>
+A simple HTTP webserver for listening to API webhooks that you can override to suit your own behaviors.<br/>
 [View on GitHub](https://github.com/contentful/contentful-webhook-listener.rb)
 
 ### Rails integration
 
-A collection of useful gems that make it easier to integrate Contentful into a Rails app. [Read this blog post](/blog/2016/07/21/contentful-on-rails/) to find out how to use them in your applications.<br>
-[View Contentful Rails on GitHub](https://github.com/contentful/contentful_rails)<br>
+A collection of useful gems that make it easier to integrate Contentful into a Rails app. [Read this blog post](/blog/2016/07/21/contentful-on-rails/) to find out how to use them in your applications.<br/>
+[View Contentful Rails on GitHub](https://github.com/contentful/contentful_rails)<br/>
 [View Contentful Model on GitHub](https://github.com/contentful/contentful_model)
 
 ## Example apps
 
 ### Rails product demo
 
-A Rails application that connects to a Contentful product catalogue example space.<br>
+A Rails application that connects to a Contentful product catalogue example space.<br/>
 [View on GitHub](https://github.com/contentful/contentful_rails_tutorial)
 
 ### Sinatra product demo
 
-A Sinatra application that connects to a Contentful product catalogue example space.<br>
+A Sinatra application that connects to a Contentful product catalogue example space.<br/>
 [View on GitHub](https://github.com/contentful/contentful_sinatra_tutorial)
