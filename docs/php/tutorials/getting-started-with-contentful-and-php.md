@@ -75,9 +75,7 @@ $query->setContentType('<product_content_type_id>')
 $productEntriesByPrice = $client->getEntries($query);
 ```
 
-
-
-### Using your entry
+### Using your enry
 
 Once you've got the entry, you can access its content through getter methods:
 
@@ -88,7 +86,6 @@ foreach ($productEntriesByPrice as $product) {
 ```
 
 :[Get all entry output](../../_partials/get-all-entry-output.md)
-
 
 If an entry contains a [link][5] to an asset or another entry, the SDK will automatically load it. The example below shows the name of the brand linked to the product:
 
@@ -126,23 +123,22 @@ $assets = $client->getAssets($query);
 Once you have an asset, you can access its metadata and an URL for the actual file:
 
 ```php
-
+echo $asset->getTitle(), PHP_EOL;
+echo $asset->getFile()->getUrl();
 ```
+
+:[Get single asset](../../_partials/get-asset-output.md)
 
 Using the [Images API][7] you can control details how Contentful serves images. For example, to convert an image to a JPEG and resize it to a height of no more than 100 pixels:
 
 ```php
-<?php
 $options = new \Contentful\Delivery\ImageOptions;
 $options->setFormat('jpg')
-        ->setHeight(100);
-$url = $asset->getName()->getFile()->getUrl($options);
+    ->setHeight(100);
+echo $asset->getFile()->getUrl($options);
 ```
 
-## Next steps
-
-- [Explore the PHP CDA SDK GitHub repository][1].
-- [Getting started with the Sync API and PHP](/developers/docs/php/tutorials/using-the-sync-api-with-php)
+:[Get single asset](../../_partials/get-asset-processed-output.md)
 
 [1]: https://github.com/contentful/contentful.php
 [2]: https://getcomposer.org
