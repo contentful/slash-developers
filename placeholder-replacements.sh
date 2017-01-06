@@ -13,6 +13,8 @@ else
   sed -i -e 's/<access_token>/297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971/g' $result_string
 fi
 
+sed -i -e 's/<cma_token>/8b57f1a13508078dd67f18c8a9b785d9fc818f9bd5f8c8e24e5899b8ae16532d/g' $result_string
+
 # Specific entry ID
 sed -i -e 's/<entry_id>/5KsDBWseXY6QegucYAoacS/g' $result_string
 
