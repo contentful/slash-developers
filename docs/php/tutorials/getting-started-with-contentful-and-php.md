@@ -27,7 +27,7 @@ This tutorial assumes you have read and understood [the guide that covers the Co
 
 For every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit applications and content classes.
 
-You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key/).
 
 
 
@@ -161,7 +161,7 @@ $url = $asset->getName()->getFile()->getUrl($options);
 [1]: https://github.com/contentful/contentful.php
 [2]: https://getcomposer.org
 [3]: /developers/docs/concepts/data-model/
-[4]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
+[4]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/
 [5]: /developers/docs/concepts/links/
-[6]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type
+[6]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type/
 [7]: /developers/docs/references/images-api/

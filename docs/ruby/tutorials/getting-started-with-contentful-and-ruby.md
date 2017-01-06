@@ -140,6 +140,6 @@ assets = client.assets
 [4]: /developers/docs/concepts/links/
 [5]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
 [6]: /developers/docs/concepts/data-model/
-[7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type
+[7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type/
 [8]: /developers/docs/references/images-api/
 [9]: https://github.com/contentful/contentful_jekyll_examples
