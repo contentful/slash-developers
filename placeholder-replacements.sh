@@ -48,10 +48,20 @@ sed -i -e 's/<link_field>/brand/g' $result_string
 sed -i -e 's/<link_field_multiple>/tags/g' $result_string
 
 # Webhook
-sed -i -e 's/<webhook_id>/newproduct/g' $result_string
+sed -i -e 's/<webhook_id>/0KzM2HxYr5O1pZ4SaUzK8h/g' $result_string
+
+# Snapshot
+sed -i -e 's/<snapshot_id>/4lFryO7nDNioplKMFBpyMB/g' $result_string
+
+# Space membership ID
+sed -i -e 's/<space_membership_id>/0xWanD4AZI2AR35wW9q51n/g' $result_string
+
+# Role
+sed -i -e 's/<role_id>/0xvkNW6WdQ8JkWlWZ8BC4x/g' $result_string
 
 # Locale
 sed -i -e 's/<locale>/en-US/g' $result_string
+sed -i -e 's/<locale_id>/0xpIUSHPfJRzsAFFaub3hT/g' $result_string
 
 # Sync token
 sed -i -e 's/<sync_token>/w7Ese3kdwpMbMhhgw7QAUsKiw6bCi09CwpFYwpwywqVYw6DDh8OawrTDpWvCgMOhw6jCuAhxWX_CocOPwowhcsOzeEJSbcOvwrfDlCjDr8O1YzLDvi9FOTXCmsOqT8OFcHPDuFDCqyMMTsKNw7rDmsOqKcOnw7FCwpIfNMOcFMOxFnHCoCzDpAjCucOdwpwfw4YTK8Kpw6zCtDrChVQlNsO2ZybDnw/g' $result_string
