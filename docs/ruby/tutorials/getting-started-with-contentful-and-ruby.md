@@ -138,6 +138,3 @@ assets = client.assets
 [2]: https://github.com/contentful/contentful_middleman_examples
 [3]: https://github.com/contentful/contentful-bootstrap.rb
 [4]: /developers/docs/concepts/links/
-[5]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
-[6]: /developers/docs/concepts/data-model/
-[9]: https://github.com/contentful/contentful_jekyll_examples
