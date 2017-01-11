@@ -114,7 +114,7 @@ In this case you've added the `include: 2` parameter, which allows the API to re
 
 ## Using assets
 
-You query assets in a similar way to entries, but the CDA offers more specific features, [such as filtering by the type of file](7). You can also use our [Images API](8), that allows you to manipulate images as you retrieve them.
+You query assets in a similar way to entries, but the CDA offers more specific features, [such as filtering by the type of file](/developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type/). You can also use our [Images API](/developers/docs/references/images-api/), that allows you to manipulate images as you retrieve them.
 
 To query a single asset:
 
@@ -138,8 +138,3 @@ assets = client.assets
 [2]: https://github.com/contentful/contentful_middleman_examples
 [3]: https://github.com/contentful/contentful-bootstrap.rb
 [4]: /developers/docs/concepts/links/
-[5]: /developers/docs/references/content-delivery-api/#/reference/search-parameters
-[6]: /developers/docs/concepts/data-model/
-[7]: /developers/docs/references/content-delivery-api/#/reference/search-parameters/filtering-assets-by-mime-type/
-[8]: /developers/docs/references/images-api/
-[9]: https://github.com/contentful/contentful_jekyll_examples
