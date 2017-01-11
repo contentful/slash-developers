@@ -52,14 +52,14 @@ client.sync({
 })
 ~~~
 
-If you'd like to store the retrieved content, you can use the convenient `toPlainObject` method or `stringifySafe` to prevent issues with circular links:
+If you'd like to store the retrieved content, you can use the convenient `toPlainObject` method or `stringifySafe` to prevent issues with circular links, for example:
 
 ~~~javascript
 client.sync({initial: true})
 .then((response) => {
-   const responseObj = JSON.parse(response.stringifySafe()); 
+   const responseObj = JSON.parse(response.stringifySafe());
    const entries = responseObj.entries;
-   window.localStorage.setItem('contentfulEntries', JSON.stringify(entries)) 
+   window.localStorage.setItem('contentfulEntries', JSON.stringify(entries))
 })
 ~~~
 
