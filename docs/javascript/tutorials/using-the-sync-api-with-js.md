@@ -57,8 +57,9 @@ If you'd like to store the retrieved content, you can use the convenient `toPlai
 ~~~javascript
 client.sync({initial: true})
 .then((response) => {
-  const stringifiedResponse = response.stringifySafe()
-  window.localStorage.setItem('contentfulEntries', stringifiedResponse)
+   const responseObj = JSON.parse(response.stringifySafe()); 
+   const entries = responseObj.entries;
+   window.localStorage.setItem('contentfulEntries', JSON.stringify(entries)) 
 })
 ~~~
 
