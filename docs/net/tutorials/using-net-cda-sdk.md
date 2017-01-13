@@ -227,6 +227,25 @@ Console.WriteLine(entry.SystemProperties.Revision?.ToString()) // => 4
 
 This would only serialize the fields property of the JSON object.
 
+You can even add the metadata properties to your own class if you would like to have access to them directly.
+
+~~~csharp
+public class Product {
+    public SystemProperies Sys { get; set; }
+    public int Quantity { get; set; }
+    public string ProductName { get; set; }
+    public string Slug { get; set; }
+}
+
+var entry = await client.GetEntryAsync<Product>("<entry_id>");
+
+Console.WriteLine(entry.ProductName) // => SoSo Wall Clock
+Console.WriteLine(entry.Quantity.ToString()) // => 3
+Console.WriteLine(entry.Slug) // => soso-wall-clock
+Console.WriteLine(entry.Sys.Id) // => <entry_id>
+Console.WriteLine(entry.Sys.Revision?.ToString()) // => 4
+~~~
+
 ## Get multiple entries
 
 There are several methods to retrieve multiple entries available in the SDK.
@@ -283,28 +302,38 @@ Console.WriteLine(entries.First().Fields.ProductName) // => SoSo Wall Clock
 
 Frequently you're not interested in every entry in a space but would like to filter the entries returned. The CDA exposes powerful filtering options that you can read more about in our [api documentation][1].
 
-When using the `GetEntries` methods you can filter the query by using the `QueryBuilder` class.
+When using the `GetEntries` methods you can filter the query by using the `QueryBuilder<T>` class.
 
 ~~~csharp
-var builder = new QueryBuilder().ContentTypeIs("<content_type_id>").FieldEquals("fields.slug","soso-wall-clock")
+var builder = new QueryBuilder<Product>().ContentTypeIs("<content_type_id>").FieldEquals("fields.slug","soso-wall-clock");
 var entries = await client.GetEntriesAsync<Product>(builder);
 // entries would be an IEnumerable of Product
 ~~~
 
 This would filter the entries returned to be of content type `<content_type_id>` and the `fields.slug` property equal to 'soso-wall-clock'.
 
-As filtering by content type id is a common scenario, the `ContentfulClient` exposes a helpful method to help.
+However, passing a string like `fields.slug` can be hard to read, provides no intellisense and could easily be misspelled or faulty. The `QueryBuilder<T>` class therefor provides a way to pass the fields
+as a strongly typed parameter.
+
+~~~csharp
+var builder = new QueryBuilder<Product>().ContentTypeIs("<content_type_id>").FieldEquals(f => f.Slug, "soso-wall-clock");
+var entries = await client.GetEntriesAsync(builder);
+// entries would be an IEnumerable of Product
+// note that supplying a QueryBuilder infers the generic argument for the GentEntriesAsync method and we no longer need to supply the generic type
+~~~
+
+As filtering by content type id is a common scenario, the `ContentfulClient` exposes a helpful method.
 
 ~~~csharp
 var entries = await client.GetEntriesByTypeAsync<Product>("ContentTypeId");
 // entries would be an IEnumerable of Product
 ~~~
 
-This method can take an optional `QueryBuilder` for further filtering.
+This method can take an optional `QueryBuilder<T>` for further filtering.
 
 ~~~csharp
-var builder = new QueryBuilder().FieldGreaterThan("sys.updatedAt", DateTime.Now.AddDays(-7).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssK"))
-var entries = await client.GetEntriesByTypeAsync<Product>("<content_type_id>");
+var builder = new QueryBuilder<Product>().FieldGreaterThan(f => f.Sys.UpdatedAt, DateTime.Now.AddDays(-7).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssK"));
+var entries = await client.GetEntriesByTypeAsync("<content_type_id>");
 //entries would be an IEnumerable of Product
 ~~~
 
@@ -317,7 +346,7 @@ var entries = await client.GetEntriesAsync<Product>("?content_Type=ContentTypeId
 //entries would be an IEnumerable of Product
 ~~~
 
-While this is possible, the recommended approach is to use the `QueryBuilder` as it will make sure your query string is correctly formatted.
+While this is possible, the recommended approach is to use the `QueryBuilder<T>` as it will make sure your query string is correctly formatted.
 
 ## Get a single asset
 
@@ -420,10 +449,10 @@ Console.WriteLine(assets.First().Title) // => ihavenoidea
 
 ### Get and filter assets
 
-As with entries you can filter assets by using your own query string or a `QueryBuilder`.
+As with entries you can filter assets by using your own query string or a `QueryBuilder<T>`.
 
 ~~~csharp
-var builder = new QueryBuilder().MimeTypeIs(MimeTypeRestriction.Image).OrderBy("sys.createdAt");
+var builder = new QueryBuilder<Asset>().MimeTypeIs(MimeTypeRestriction.Image).OrderBy(a => a.SystemProperties.CreatedAt);
 var assets = await client.GetAssetsAsync(builder);
 // assets would be an IEnumerable of Asset
 ~~~
@@ -446,6 +475,7 @@ Consider the following classes has two different properties that contain referen
 ~~~csharp
 public class Product
 {
+    public SystemProperties Sys { get; set; }
     public string productName { get; set; }
     public string Slug { get; set; }
     public string productDescription { get; set; }
@@ -459,26 +489,26 @@ public class Category {
 
 ## Specifying the number of levels to include
 
-To specify the number of levels to include in a call add an `include` query string parameter, manually or by using the `QueryBuilder`.
+To specify the number of levels to include in a call add an `include` query string parameter, manually or by using the `QueryBuilder<T>`.
 
 ~~~csharp
-var builder = new QueryBuilder().ContentTypeIs("<content_type_id>").Include(3);
-var entries = await client.GetEntriesAsync<Product>(builder);
+var builder = new QueryBuilder<Product>().ContentTypeIs("<content_type_id>").Include(3);
+var entries = await client.GetEntriesAsync(builder);
 ~~~
 
 This queries for entries of a specific content type id and tells the CDA to resolve up to three levels of referenced entries and assets. The default setting for the include parameter is 1\. This means that omitting the query string parameter still resolves up to 1 level of referenced content. If you specifically do not want any referenced content included you need to set the include parameter to 0.
 
 ~~~csharp
-var builder = new QueryBuilder().ContentTypeIs("<content_type_id>").Include(0);
-var entries = await client.GetEntriesAsync<Product>(builder);
+var builder = new QueryBuilder<Product>().ContentTypeIs("<content_type_id>").Include(0);
+var entries = await client.GetEntriesAsync(builder);
 // No referenced content would be included.
 ~~~
 
 Including referenced content is only supported for the methods that return collections. Using `GetEntryAsync` will not resolve your references. Instead you could query for a single entry using `GetEntriesAsync`, but adding a restriction to get an entry by a specific id.
 
 ~~~csharp
-var builder = new QueryBuilder().FieldEquals("sys.id", "<entry_id>").Include(2);
-var entry = await client.GetEntriesAsync<Product>(builder).FirstOrDefault();
+var builder = new QueryBuilder<Product>().FieldEquals(f => f.Sys.Id, "<entry_id>").Include(2);
+var entry = (await client.GetEntriesAsync<Product>(builder)).FirstOrDefault();
 ~~~
 
 This fetches an entry with id "123" and includes up to two levels of referenced entries and assets.
@@ -488,15 +518,15 @@ This fetches an entry with id "123" and includes up to two levels of referenced 
 To resolve assets when querying for content, add a property of type `Asset` or `IEnumerable<Asset>` and the deserialization will automatically fill up any referenced assets.
 
 ~~~csharp
-var builder = new QueryBuilder().ContentTypeIs("<content_type_id>").Include(1);
-var entries = await client.GetEntriesAsync<Product>(builder);
+var builder = new QueryBuilder<Product>().ContentTypeIs("<content_type_id>").Include(1);
+var entries = await client.GetEntriesAsync(builder);
 Console.WriteLine(entries.First().FeaturedImage.Title); // => Alice in Wonderland
 Console.WriteLine(entries.First().Images.Count.ToString()); // => 2
 ~~~
 
 ## Resolving included entries
 
-Entries are simple to resolve if you use the generic `Entry<T>` class. For example, if you change the `Tags` property of the `Product` class.
+Entries are simple to resolve if you use the generic `Entry<T>` class. For example, if you change the `Categories` property of the `Product` class.
 
 ~~~csharp
 public List<Entry<Catgory>> Categories { get; set; }
@@ -505,8 +535,8 @@ public List<Entry<Catgory>> Categories { get; set; }
 You can now deserialize the referenced categories and included them in the `Product`.
 
 ~~~csharp
-var builder = new QueryBuilder().ContentTypeIs("<content_type_id>").Include(1);
-var entries = await client.GetEntriesAsync<Product>(builder);
+var builder = new QueryBuilder<Product>().ContentTypeIs("<content_type_id>").Include(1);
+var entries = await client.GetEntriesAsync(builder);
 Console.WriteLine(entries.First().Categories[0].Fields.Title); // => Lewis Carroll
 Console.WriteLine(entries.First().Categories[0].SystemProperties.Id); // => 1234
 ~~~
@@ -526,14 +556,14 @@ public class Category {
 }
 ~~~
 
-The `Category` class is now serialized directly from the `fields` property of the JSON response and you can now skip the use of `Entry<T>` in you `Product`.
+The `Category` class is now serialized directly from the `fields` property of the JSON response and you can now skip the use of `Entry<T>` in your `Product`.
 
 ~~~csharp
-var builder = new QueryBuilder().ContentTypeIs("<content_type_id>").Include(1);
-var entries = await client.GetEntriesAsync<Product>(builder);
+var builder = new QueryBuilder<Product>().ContentTypeIs("<content_type_id>").Include(1);
+var entries = await client.GetEntriesAsync(builder);
 Console.WriteLine(entries.First().Categories[0].Title); // => Lewis Carroll
 // Compare the above line with Console.WriteLine(entries.First().Categories[0].Fields.Title);
-Console.WriteLine(entries.First().Categories[0].SystemProperties.Id); // => This no longer compiles as Author does not contain SystemProperties
+Console.WriteLine(entries.First().Categories[0].SystemProperties.Id); // => This no longer compiles as Category does not contain SystemProperties
 ~~~
 
 ## Space and content types
