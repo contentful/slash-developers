@@ -7,7 +7,7 @@ metainformation: This article details how to retrieve and manage entries using t
 slug: null
 tags:
   - SDKs
-  - JavaScript
+  - .NET
 nextsteps:
   - text: Explore the .NET SDK GitHub repository
     link: https://github.com/contentful/contentful.net
@@ -49,7 +49,7 @@ To communicate with the CDA you use the `ContentfulClient` class that requires t
 
 ~~~csharp
 var httpClient = new HttpClient();
-var client = new ContentfulClient(httpClient, "<content_delivery_api_key>", "<space_id")
+var client = new ContentfulClient(httpClient, "<content_delivery_api_key>", "<space_id>")
 ~~~
 
 {: .note}
