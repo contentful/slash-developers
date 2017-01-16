@@ -1,5 +1,5 @@
 ---
-page: ':docsUsingNetCdmSdk'
+page: :docsUsingNetCdmSdk
 name: Using the management api with Contentful and .NET
 title: Using the management api with Contentful and .NET
 metainformation: This article details how to use the management api using the .NET SDK.
@@ -16,13 +16,13 @@ The Content Management API (CMA) is a restful API for managing content in your C
 
 To make development easier for our users, we publish SDKs for various languages which make the task easier. This article details how to use the [.Net SDK](https://github.com/contentful/contentful.net) to create, update and delete content.
 
-# Pre-requisites
+## Pre-requisites
 
 This tutorial assumes you understand the basic Contentful data model as described in the [developer center](/developers/docs/concepts/data-model/) and that you have already read and understand the [getting started tutorial for the .Net SDK](/developers/docs/net/tutorials/using-net-cda-sdk/).
 
 Contentful.net is built on .net core and targets .Net Standard 1.4. The SDK is cross platform and runs on Linux, macOS and Windows.
 
-# Your first request
+## Your first request
 
 To communicate with the CMA we use a very similar approach as when we call the CDA, but instead of a `ContentfulClient` we use a `ContentfulManagementClient` that, just like the CDA client, requires three parameters.
 
@@ -35,7 +35,8 @@ var httpClient = new HttpClient();
 var client = new ContentfulManagementClient(httpClient, "<content_management_api_key>", "<space_id>")
 ```
 
-{: .note} An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose it you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. This means that if you make a lot of requests in a short period of time you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and exposing the underlying `HttpClient` of the `ContentfulManagementClient` allows you to do this.
+{: .note}
+An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose it you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. This means that if you make a lot of requests in a short period of time you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and exposing the underlying `HttpClient` of the `ContentfulManagementClient` allows you to do this.
 
 Once you have an `ContentfulManagementClient` you can start managing content. For example, to create a brand new space:
 
@@ -72,7 +73,7 @@ var version = space.SystemProperties.Version; //Nullable int
 await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", version.Value);
 ```
 
-# Working with content types
+## Working with content types
 
 Once you've familiarized yourself with creating and deleting spaces the next step is to add some content types to your space. A content type in Contentful is a blue print for an Entry, it contains up to 50 fields that you can define.
 
@@ -237,196 +238,196 @@ contentType.DisplayField = "productName";
 await _client.CreateOrUpdateContentTypeAsync(contentType);
 ```
 
-The fields have a lot of properties and can look daunting at first, especially if you add validations, so let's break the components down. Every field consists of up to 10 properties.
+The fields have a lot of properties and can look daunting at first, especially if you add validations, so let's break the components down. Every field can consist of up to 10 properties.
 
 ```csharp
-    new Field()
-        {
-            Name = "The name of the field", // The human readable name of the field e.g. "Top image" or "Main heading"
-            Id = "field1", // The id for the field, must be between 2 and 60 characters long and only include alphanumerical characters, dashes, underscores or periods.
-            Type = "Link", // The field type. This determines how the data is stored. E.g. "Date", "Text" or "Integer".
-            Required = false, // Whether this field is mandatory for this content type.
-            Localized = false, // Whether this field should be localized.
-            Disabled = false, // Whether this field is disabled for editing.
-            Omitted = false, // Whether this field should be omitted from the API response entirely
-            LinkType = "Entry",  // Applicable if Type is "Link", whether this links to an Entry or an Asset   
-            Items = new Schema() {  // Applicable if the Type is "Array" and specifies allowed item types for the array
-                Type = "Link", // The type this array field should contain, e.g. "Symbol" or "Link"
-                LinkType = "Entry" // Applicable if the item type is Link, specifies whether the array contains Entry or Asset
-            },
-            Validations = new List<IFieldValidator>() // See validations section below                
+new Field()
+    {
+        Name = "The name of the field", // The human readable name of the field e.g. "Top image" or "Main heading"
+        Id = "field1", // The id for the field, must be between 2 and 60 characters long and only include alphanumerical characters, dashes, underscores or periods.
+        Type = "Link", // The field type. This determines how the data is stored. E.g. "Date", "Text" or "Integer".
+        Required = false, // Whether this field is mandatory for this content type.
+        Localized = false, // Whether this field should be localized.
+        Disabled = false, // Whether this field is disabled for editing.
+        Omitted = false, // Whether this field should be omitted from the API response entirely
+        LinkType = "Entry",  // Applicable if Type is "Link", whether this links to an Entry or an Asset   
+        Items = new Schema() {  // Applicable if the Type is "Array" and specifies allowed item types for the array
+            Type = "Link", // The type this array field should contain, e.g. "Symbol" or "Link"
+            LinkType = "Entry" // Applicable if the item type is Link, specifies whether the array contains Entry or Asset
+        },
+        Validations = new List<IFieldValidator>() // See validations section below                
+    }
+```
+
+But at minimum, you only need to specify the name, id and type.
+
+```csharp
+new Field()
+    {
+        Name = "Some field",
+        Id = "field1",
+        Type = "Text",
+    }
+```
+
+### Field validations
+
+The most complex part of fields is handling validations. You can use a number of different validators that all implement the `IFieldValidator` interface. Every validator has a `Message` property where you can specify a custom message to show if the validation fails.
+
+#### LinkContentTypeValidator
+
+The `LinkContentTypeValidator` validates that a given field contains entries of a certain content type. The constructor takes an optional message and any number of string ids or content types to validate against.
+
+```csharp
+new Field()
+{
+  Name = "Brand",
+  Id = "brand",
+  Type = "Link",
+  Validations = new List<IFieldValidator>() {
+      new LinkContentTypeValidator(message: "My custom validation message", "<content_type_id>", "<content_type_id>" ...)
+  }
+}
+```
+
+#### InValuesValidator
+
+The `InValuesValidator` validates that a given field value is within a predefined set of values. The constructor takes an optional message and any number of strings to validate against.
+
+```csharp
+new Field()
+{
+  Name = "Tags",
+  Id = "tags",
+  Type = "Text",
+  Validations = new List<IFieldValidator>() {
+      new InValuesValidator(message: "This is not a valid tag", "<value1>", "<value2>" ...)
+  }
+}
+```
+
+#### MimeTypeValidator
+
+The `MimeTypeValidator` validates that an asset is of a specific mime type group.
+
+```csharp
+new Field()
+    {
+        Name = "Image",
+        Id = "image",
+        Type = "Text",
+        Validations = new List<IFieldValidator>() {
+            new MimeTypeValidator(MimeTypeRestriction.Image, "Not a valid image")
         }
-    ```
+    }
+```
 
-    In the simplest of cases you only need to specify the name, id and type.
+Available restrictions are:
 
-    ```csharp
-    new Field()
-        {
-            Name = "Some field",
-            Id = "field1",
-            Type = "Text",
+- `MimeTypeRestriction.Attachment`
+- `MimeTypeRestriction.Plaintext`
+- `MimeTypeRestriction.Image`
+- `MimeTypeRestriction.Audio`
+- `MimeTypeRestriction.Video`
+- `MimeTypeRestriction.Richtext`
+- `MimeTypeRestriction.Presentation`
+- `MimeTypeRestriction.Spreadsheet`
+- `MimeTypeRestriction.PdfDocument`
+- `MimeTypeRestriction.Archive`
+- `MimeTypeRestriction.Code`
+- `MimeTypeRestriction.Markup`
+
+#### SizeValidator
+
+The `SizeValidator` validates that an array field contains a specific number of items.
+
+```csharp
+new Field()
+    {
+        Name = "Tags",
+        Id = "tags",
+        Type = "Array",
+        Validations = new List<IFieldValidator>() {
+            new SizeValidator(min: 2, max: 7, message: "Sorry, you must add between 2 and 7 tags.")
         }
-    ```
+    }
+```
 
-    ## Field validations
+Both the min and the max value are nullable. This means you can create size validators that validate that an array contains at least a set number of items, but without an upper bound. Or contains a maximum of a set number of items but may also be empty.
 
-    The trickiest part of fields is handling validations. There are a number of different validators that all implement the `IFieldValidator` interface.
+```csharp
+//This SizeValidator allows a maximum of 5 items, but as it has no minimum value it can contain 0 items.
+new SizeValidator(min: null, max: 5, message: "Sorry, you may add a maxium of 5 tags.")
 
-    Every validator has a `Message` property where you can specify a custom message to be shown if the validation fails.
+//This SizeValidator specifies that the field must contain at least 4 items, but there is no upper bound.
+new SizeValidator(min: 4, max: null, message: "Sorry, you must add at least 4 tags.")
+```
 
-    ### LinkContentTypeValidator
+#### RangeValidator
 
-    The `LinkContentTypeValidator` validates that a given field only contains entries of a certain content type. The constructor takes an optional message and any number of string ids or content types to validate against.
+The `RangeValidator` validates that a field is within a certain numeric range.
 
-    ```csharp
-    new Field()
-        {
-            Name = "Some field",
-            Id = "field1",
-            Type = "Link",
-            Validations = new List<IFieldValidator>() {
-                new LinkContentTypeValidator(message: "My custom validation message", "<content_type_id>", "<content_type_id>" ...)
-            }
-        }
-    ```
+```csharp
+new Field()
+{
+    Name = "Quantity",
+    Id = "quantity",
+    Type = "Number",
+    Validations = new List<IFieldValidator>() {
+        new RangeValidator(min: 10, max: 1000, message: "Quantities must be between 10 and 1000.")
+    }
+}
+```
 
-    ### InValuesValidator
+When used for text fields it validates that the entered value contains at least the minimum number of characters and at most the maximum number of characters. For numeric fields it validates that the value entered is within the specified range. Both the min and max value are nullable in the exact same way as for the `SizeValidator`.
 
-    The `InValuesValidator` validates that a given fields value is within a predefined set of values. The constructor takes an optional message and any number of strings to validate against.
+#### RegexValidator
 
-    ```csharp
-    new Field()
-        {
-            Name = "Some field",
-            Id = "field1",
-            Type = "Text",
-            Validations = new List<IFieldValidator>() {
-                new InValuesValidator(message: "My custom validation message", "<value1>", "<value2>" ...)
-            }
-        }
-    ```
+The `RegexValidator` validates that a field conforms to a specified regular expression.
 
-    ### MimeTypeValidator
+```csharp
+new Field()
+{
+    Name = "Availabe at",
+    Id = "website",
+    Type = "Symbol",
+    Validations = new List<IFieldValidator>() {
+        new RegexValidator(expression: "\\b((?:[a-z][\\w-]+:(?:\\/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}\\/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))", flags: "i", message: "The value isn't a valid web address.")
+    }
+}
+```
 
-    The `MimeTypeValidator` validates that an asset is of a specific mime type group.
+#### UniqueValidator
 
-    ```csharp
-    new Field()
-        {
-            Name = "Some field",
-            Id = "field1",
-            Type = "Text",
-            Validations = new List<IFieldValidator>() {
-                new MimeTypeValidator(MimeTypeRestriction.Image, "My custom validation message")
-            }
-        }
-    ```
+The `UniqueValidator` validates that the field values is unique among all entries.
 
-    Available restrictions are
+```csharp
+new Field()
+{
+  Name = "Name",
+  Id = "productName",
+  Type = "Text",
+  Validations = new List<IFieldValidator>() {
+      new UniqueValidator(message: "Sorry, product names must be unique.")
+  }
+}
+```
 
-    - MimeTypeRestriction.Attachment
-    - MimeTypeRestriction.Plaintext
-    - MimeTypeRestriction.Image
-    - MimeTypeRestriction.Audio
-    - MimeTypeRestriction.Video
-    - MimeTypeRestriction.Richtext
-    - MimeTypeRestriction.Presentation
-    - MimeTypeRestriction.Spreadsheet
-    - MimeTypeRestriction.PdfDocument
-    - MimeTypeRestriction.Archive
-    - MimeTypeRestriction.Code
-    - MimeTypeRestriction.Markup
+### Activate a content type
 
-    ### SizeValidator
+Once a content type has been created it needs to be activated before it is usable.
 
-    The `SizeValidator` validates that an array field contains a specific number of items.
+```csharp
+var contentType = await client.ActivateContentTypeAsync("<content_type_id>", version: 7);
+```
 
-    ```csharp
-    new Field()
-        {
-            Name = "Some field",
-            Id = "field1",
-            Type = "Array",
-            Validations = new List<IFieldValidator>() {
-                new SizeValidator(min: 2, max: 7, message: "My custom validation message")
-            }
-        }
-    ```
+It can also be deactivated again in a similar fashion, but no version is necessary as we do not risk any data loss.
 
-    Both the min and the max value are nullable. This means you can easily create size validators that validates that an array contains at least a set number of items, but without an upper bound. Or contains a maximum of a set number of items but may also be empty.
+```csharp
+var contentType = await client.DeactivateContentTypeAsync("<content_type_id>");
+```
 
-    ```csharp
-    //This SizeValidator allows a maximum of 5 items, but as it has no minimum value it can contain 0 items.
-    new SizeValidator(min: null, max: 5, message: "My custom validation message")
-
-    //This SizeValidator specifies that the field must contain at least 4 items, but there is no upper bound.
-    new SizeValidator(min: 4, max: null, message: "My custom validation message")
-    ```
-
-    ### RangeValidator
-
-    The `RangeValidator` validates that a field is within a certain numeric range.
-
-    ```csharp
-    new Field()
-        {
-            Name = "Some field",
-            Id = "field1",
-            Type = "Text",
-            Validations = new List<IFieldValidator>() {
-                new RangeValidator(min: 2, max: 7, message: "My custom validation message")
-            }
-        }
-    ```
-
-    When used for text fields it validates that the entered value contains at least the minimum number of characters and at most the maximum number of characters. For numeric fields it validates that the value entered is within the specified range. Both the min and max value are nullable in the exact same way as for the `SizeValidator`.
-
-    ### RegexValidator
-
-    The `RegexValidator` validates that a field conforms to a specified regular expression.
-
-    ```csharp
-    new Field()
-        {
-            Name = "Some field",
-            Id = "field1",
-            Type = "Text",
-            Validations = new List<IFieldValidator>() {
-                new RegexValidator(expression: "^such", flags: "im", message: "My custom validation message")
-            }
-        }
-    ```
-
-    ### UniqueValidator
-
-    The `UniqueValidator` validates that the field values is unique among all entries.
-
-    ```csharp
-    new Field()
-        {
-            Name = "Some field",
-            Id = "field1",
-            Type = "Text",
-            Validations = new List<IFieldValidator>() {
-                new UniqueValidator(message: "My custom validation message")
-            }
-        }
-    ```
-
-    Once a content type has been created it needs to be activated before it is usable.
-
-    ```csharp
-    var contentType = await client.ActivateContentTypeAsync("<content_type_id>", version: 7);
-    ```
-
-    It can also be deactivated again in a similar fashion, but no version is necessary as we do not risk any data loss.
-
-    ```csharp
-    var contentType = await client.DeactivateContentTypeAsync("<content_type_id>");
-    ```
-
-    Deleting a content type is similarily straightforward. A content type must be deactivated before it can be deleted.
+Deleting a content type is similarily straightforward. A content type must be deactivated before it can be deleted.
 
     ```csharp
     var contentType = await client.DeleteContentTypeAsync("<content_type_id>");
