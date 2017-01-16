@@ -13,94 +13,121 @@ nextsteps:
     link: /developers/docs/android/tutorials/offline-persistence-with-vault/
 ---
 
-Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
-
-We publish SDKs for various languages to make developing applications easier. This article details how to get content using the [JavaScript CDA SDK][1].
-
-## Pre-requisites
-
-This tutorial assumes you have read and understood [the guide that covers the Contentful data model](/developers/docs/concepts/data-model/).
-
-We assume you have [Android Studio installed](https://developer.android.com/studio/index.html), and are familiar with it.
-
-## Authentication
-
-For every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit applications and content classes.
-
-You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
+:[Getting started tutorial intro](../../_partials/getting-started-intro.md)
 
 ## Create a new Android project
 
 Create a new project in Android Studio using the 'Blank Activity' template, and name it whatever you wish.
 
-## Define Contentful as a dependency
+## Dependencies and permissions
 
-To include the CDA SDK in your app, add the following lines to the _build.gradle_ file:
+This guide uses [RXAndroid](https://github.com/ReactiveX/RxAndroid) in the examples, which adds more complexity, but allows you to fetch results without tying up the main Android thread.
+
+To include the CDA SDK, add the following lines to the _build.gradle_ file:
 
 ~~~gradle
 dependencies {
     // [...]
     compile 'com.contentful.java:java-sdk:7.3.0'
+    compile 'io.reactivex:rxandroid:0.23.0'
 }
 ~~~
-
-## Fetching all data from a demo space
 
 Add the internet permission to the _AndroidManifest.xml_ file so your app can access the Contentful APIs:
 
 ~~~xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.demospaceexplorer" >
+  package="com.example.demospaceexplorer" >
 
-    <uses-permission android:name="android.permission.INTERNET" />
-
-<!-- ... -->
-
+  <uses-permission android:name="android.permission.INTERNET" />
+  ...
 </manifest>
 ~~~
 
-Add the following code to the click handler of the floating action button, or in the `onCreate` function:
+## Creating a client
+
+Add the following code to the `onCreate` function to create a `CDAClient` that communicates with the Contentful APIs:
+
+:[Create credentials](../../_partials/credentials.md)
 
 ~~~java
 CDAClient client = CDAClient.builder()
-        .setSpace("cfexampleapi")
-        .setToken("b4c0n73n7fu1")
-        .build();
+  .setSpace("<space_id>")
+  .setToken("<access_token>")
+  .build();
 ~~~
 
-This will create a `CDAClient` that communicates with the Contentful APIs using the space id and token you gained earlier.
-
-To fetch all entries:
+Add the [Gson](https://github.com/google/gson) library to make JSON responses easier to read.
 
 ~~~java
-client.fetch(CDAEntry.class).all(new CDACallback<CDAArray>() {
-    @Override
-    protected void onSuccess(CDAArray result) {
-        // do something with the result.
-    }
-});
-~~~
-
-The `onSuccess` handler is called once the data is loaded and you can process the results. In production applications you should override the failure handler to cope with any problems.
-
-~~~java
-protected void onFailure(Throwable error) {
-}
+Gson gson = new GsonBuilder().setPrettyPrinting().create();
 ~~~
 
 ## Fetching specific items
 
-If you want to fetch the data of a specific entry, use the `id` of the entry:
+If you want to fetch a specific entry, use the `id` of the entry inside a `.one` method:
 
 ~~~java
-client.fetch(CDAEntry.class).one("happycat", new CDACallback<CDAEntry>() {
-    @Override
-    protected void onSuccess(CDAEntry result) {
-        textView.setText(result.toString());
-    }
-});
+client.observe(CDAEntry.class)
+    .one("<entry_id>")
+    .observeOn(AndroidSchedulers.mainThread())
+    .subscribeOn(Schedulers.io())
+    .subscribe(new Subscriber<CDAEntry>() {
+      CDAEntry result;
+
+      @Override public void onCompleted() {
+        Log.i("Contentful", gson.toJson(result));
+      }
+
+      @Override public void onError(Throwable error) {
+        Log.e("Contentful", "could not request entry", error);
+      }
+
+      @Override public void onNext(CDAEntry cdaEntry) {
+        result = cdaEntry;
+      }
+    });
 ~~~
 
+:[Get entry output](../../_partials/get-entry-output-android.md)
+
+## Fetching all data from a demo space
+
+To fetch all entries, create a new observable that watches for changes, in this case, fetching all entries from the specified space with the `all` method and content type with the `where` method:
+
+~~~java
+client.observe(CDAEntry.class)
+               .where("content_type", "<product_content_type_id>")
+               .all()
+               .observeOn(AndroidSchedulers.mainThread())
+               .subscribeOn(Schedulers.io())
+               .subscribe(new Subscriber<CDAArray>() {
+                   CDAArray result;
+
+                   @Override
+                   public void onCompleted() {
+                       for (CDAResource resource : result.items()) {
+                           CDAEntry entry = (CDAEntry) resource;
+                           Log.i("Contentful", entry.getField("productName").toString());
+                       }
+                   }
+
+                   @Override
+                   public void onError(Throwable error) {
+                       Log.e("Contentful", "could not request entry", error);
+                   }
+
+                   @Override
+                   public void onNext(CDAArray cdaArray) {
+                       result = cdaArray;
+                   }
+               });
+~~~
+
+:[Get all entry output](../../_partials/get-all-entry-output-android.md)
+
+The `onNext` method saves the array of entries and the `onCompleted` method is called once all entries are fetched from the API. The `onError` method allows you to handle any problems.
 
 [1]: https://github.com/contentful/contentful.java
+
 [4]: /developers/docs/android/tutorials/getting-started-with-contentful-and-android/
