@@ -12,7 +12,14 @@ nextsteps: null
 
 These tools will help you import and manage entries in your spaces.
 
-## Data import
+## Import and Export Tools
+
+The export tool allows you to export all content, including content types, assets and webhooks; the import tool enables all the content to be imported into a new space. This tools replaces the space sync tool.
+
+Import Tool - [View on GitHub](https://github.com/contentful/contentful-import)
+Export Tool - [View on GitHub](https://github.com/contentful/contentful-export)
+
+## Data import / Bootstrap
 
 You can import data from other systems into Contentful using our [contentful-importer.rb](https://github.com/contentful/contentful-importer.rb) gem.
 
@@ -23,12 +30,6 @@ The importer uses a flexible input format that you can write your own exporters 
 - [WordPress](https://github.com/contentful/wordpress-exporter.rb)
 
 [Read this tutorial](/developers/docs/tutorials/general/import-and-export/) to learn how to export content from the systems listed above and import it into your Contentful spaces.
-
-## Contentful space sync
-
-This tool allows you to synchronize entries from one Contentful space to another. You can use this tool to generate your development and staging spaces. [Read this tutorial](/developers/docs/tutorials/general/using-contentful-space-sync/) for more details on how to use the tool.
-
-[View on GitHub](https://github.com/contentful/contentful-space-sync)
 
 ## Contentful link cleaner
 
