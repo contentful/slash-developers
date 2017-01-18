@@ -1,4 +1,4 @@
-All data in Contentful has a field type, which is defined in the [creation of a content type](/developers/docs/references/content-management-api/#/reference/content-types/create-a-content-type), and the values of those fields must match the data type defined in the content type. There's a limit of **50** fields per content type.
+All data in Contentful has a field type, which is defined in the [creation of a content type](https://www.contentful.com/docs/references/content-management-api/#/reference/content-types/create-a-content-type), and the values of those fields must match the data type defined in the content type. There's a limit of **50** fields per content type.
 
 Content type properties:
 
@@ -31,7 +31,7 @@ JSON Object|Object|Arbitrary object.|Limited by entry size.|`{ "foo": "bar" }`
 
 ## Array fields
 
-Contentful supports fields that can contain multiple values with the `Array` type. An array can contain symbols (strings up to 256 characters), **or** [links](/developers/docs/concepts/links/) to other entries or assets. The `items` property defines the allowed values in the array.
+Contentful supports fields that can contain multiple values with the `Array` type. An array can contain symbols (strings up to 256 characters), **or** [links](https://www.contentful.com/docs/concepts/links/) to other entries or assets. The `items` property defines the allowed values in the array.
 
 You define a field that contains symbols like this:
 

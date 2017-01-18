@@ -267,9 +267,9 @@ It's possible to change the ID of a content type field in the Contentful Web App
 
 __Omitting Fields__
 
-If you have fields in your content type and entries which you don't want to distribute to end users (e.g. workflow states), you can omit fields from the [CDA](/developers/docs/references/content-delivery-api/) and [CPA](/developers/docs/references/content-preview-api/) responses. To do so, update the content type with the `omitted` property set to `true` in the chosen field and activate it.
+If you have fields in your content type and entries which you don't want to distribute to end users (e.g. workflow states), you can omit fields from the [CDA](https://www.contentful.com/docs/references/content-delivery-api/) and [CPA](https://www.contentful.com/docs/references/content-preview-api/) responses. To do so, update the content type with the `omitted` property set to `true` in the chosen field and activate it.
 
-The field will still be available as part of the CMA responses and the Web App but skipped in the [CDA](/developers/docs/references/content-delivery-api/) and [CPA](/developers/docs/references/content-preview-api/).
+The field will still be available as part of the CMA responses and the Web App but skipped in the [CDA](https://www.contentful.com/docs/references/content-delivery-api/) and [CPA](https://www.contentful.com/docs/references/content-preview-api/).
 To revert this, repeat this but with `omitted` set to `false`.
 
 __Deleting Fields__
@@ -427,7 +427,7 @@ Entries represent text-based content in a space. An entry's data structure adher
 
 ### Create an entry [POST]
 
-Before you can create an entry you need to create and activate a content type as [outlined above](/developers/docs/references/content-management-api/#/reference/content-types/content-type-collection).
+Before you can create an entry you need to create and activate a content type as [outlined above](https://www.contentful.com/docs/references/content-management-api/#/reference/content-types/content-type-collection).
 
 When creating a new entry you need to pass the ID of the desired content type as the `X-Contentful-Content-Type` header and pass the field data as a JSON payload.
 
@@ -718,7 +718,7 @@ Asset processing happens asynchronously, the call will not block until it has fi
 
 ## Asset publishing [/spaces/{space_id}/assets/{asset_id}/published]
 
-After publishing the asset it will be available via the [Content Delivery API](/developers/docs/references/content-delivery-api/).
+After publishing the asset it will be available via the [Content Delivery API](https://www.contentful.com/docs/references/content-delivery-api/).
 
 + Parameters
     + space_id: fp91oelsziea (required, string) - ID of the space in form of a string
