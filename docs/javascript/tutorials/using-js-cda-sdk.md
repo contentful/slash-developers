@@ -126,9 +126,7 @@ client.getEntries()
 
 It's similar to getting a single entry, except you get an array with all the retrieved entries, and parameters relevant to [pagination](/developers/docs/references/content-delivery-api/#/introduction/collection-resources-and-pagination).
 
-By default you get 100 entries. If you'd like to retrieve more, you can skip the first 100\. You can retrieve more than 100 entries per request, but up to 1000.
-
-**CHECK**
+By default you get 100 entries. If you'd like to retrieve more, you can skip the first 100. You can retrieve more than 100 entries per request, up to 1000.
 
 ```javascript
 client.getEntries({
@@ -145,34 +143,37 @@ You can specify an ordering parameter to get more predictable results. You can r
 
 ## Retrieving linked entries
 
-Some entries have links to other entries, so when you retrieve a list of entries, those links are automatically resolved so you don't have to retrieve the linked entry separately.
+Entries have links to other entries, so when you retrieve a list of entries, those links are automatically resolved so you don't have to retrieve the linked entry separately.
 
 By default, Contentful resolves one level of linked entries or assets.
 
-The following example demonstrates the usage of a linked asset on field `image`:
-
-**CHECK**
+The following example demonstrates the usage of a linked asset on field `logo` for the 'brand' content type you can find in our product catalog example space:
 
 ```javascript
 client.getEntries()
-.then(function (entries) {
-  // log the file url of any linked assets on field `image`
-  entries.items.forEach(function (entry) {
-    if(entry.fields.image) {
-      console.log(entry.fields.image.fields.file.url)
-    }
-  })
-})
+    .then(function (entries) {
+        entries.items.forEach(function (entry) {
+            if(entry.fields.companyName) {
+                console.log(entry.fields.logo.fields.file.url)
+            }
+        })
+    })
 ```
 
-If you'd like to resolve additional levels of links, or none at all, use the `include` parameter: **CHECK**
+:[Get all linked output](../../_partials/get-all-entry-linked-output.md)
+
+If you'd like to resolve additional levels of links, or none at all, use the `include` parameter. The example below resolves no links, and only contains metadata about the image, so will return an error:
 
 ```javascript
 client.getEntries({include: 0})
-.then(function (entries) {
-  // Link wasn't resolved, so it only contains the asset metadata
-  console.log(entries.items[0].fields.image.sys.id)
-})
+    .then(function (entries) {
+        // log the file url of any linked assets on field `image`
+        entries.items.forEach(function (entry) {
+            if(entry.fields.companyName) {
+                console.log(JSON.stringify(entry.fields.logo.fields.file.url))
+            }
+        })
+    })
 ```
 
 You can turn off link resolution when you [initialize the SDK](https://contentful.github.io/contentful.js/contentful/latest/contentful.html) or with a `resolveLinks` property on every request.
@@ -181,17 +182,21 @@ Read the [links reference guide](/developers/docs/concepts/links/) for more info
 
 ## Retrieving entries with search parameters
 
-The entries method can take additional parameters for filtering and querying. You can use these same parameters when getting assets or content types.
+The entries method can take parameters for filtering and querying. You can use these same parameters when getting assets or content types.
 
 :[Filter by content type](../../_partials/content-type-filter.md)
+
+The example below filters entries to the 'Brand' content type:
 
 ```javascript
 client.getEntries({
   'content_type': '<brand_content_type_id>'
 })
 .then(function (entries) {
-  // Only entries of the Brand content type
-  console.log(entries)
+    console.log(JSON.stringify(entries))
+            entries.items.forEach(function (entry) {
+            console.log(JSON.stringify(entry.fields.companyName))
+    })
 })
 ```
 
@@ -199,7 +204,8 @@ client.getEntries({
 
 You can filter by properties of your entries, for example, a product SKU:
 
-{: .note} When you filter by the value of a field, you need to include the content type you are filtering, as fields are not the same across all content types.
+{: .note}
+When you filter by the value of a field, you need to include the content type you are filtering, as fields are not the same across all content types.
 
 ```javascript
 client.getEntries({
@@ -207,8 +213,9 @@ client.getEntries({
   'content_type': '<product_content_type_id>'
 })
 .then(function (entries) {
-  // Only entries of the product content type with the specified SKU
-  console.log(entries)
+            entries.items.forEach(function (entry) {
+            console.log(JSON.stringify(entry.fields.sku))
+    })
 })
 ```
 
@@ -222,8 +229,9 @@ client.getEntries({
   'content_type': '<product_content_type_id>'
 })
 .then(function (entries) {
-  // All entries but the one specified
-  console.log(entries)
+            entries.items.forEach(function (entry) {
+            console.log(JSON.stringify(entry.fields.sku))
+    })
 })
 ```
 
@@ -231,10 +239,10 @@ client.getEntries({
 
 If you're interested in knowing what other filters and operators you can use, read the following guides:
 
-- [Equality/inequality](/developers/docs/references/content-delivery-api/#/reference/search-parameters/equality-operator) ([as well as in array fields](/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-equalityinequality))
-- [Inclusion/exclusion](/developers/docs/references/content-delivery-api/#/reference/search-parameters/inclusion)
-- [Ranges](/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
-- [Full text search](/developers/docs/references/content-delivery-api/#/reference/search-parameters/full-text-search)
-- [Geo location searches](/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
+-   [Equality/inequality](/developers/docs/references/content-delivery-api/#/reference/search-parameters/equality-operator) ([as well as in array fields](/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-equalityinequality))
+-   [Inclusion/exclusion](/developers/docs/references/content-delivery-api/#/reference/search-parameters/inclusion)
+-   [Ranges](/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
+-   [Full text search](/developers/docs/references/content-delivery-api/#/reference/search-parameters/full-text-search)
+-   [Geo location searches](/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
 
 Read the [search parameters API guide](/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
