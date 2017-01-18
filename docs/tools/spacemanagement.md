@@ -14,7 +14,7 @@ These tools will help you import and manage entries in your spaces.
 
 ## Import and Export Tools
 
-The export tool allows you to export all content, including content types, assets and webhooks; the import tool enables all the content to be imported into a new space. This tools replaces the space sync tool.
+The export tool allows you to export all content, including content types, assets and webhooks; the import tool enables all the content to be imported into a new space. These tools replace the space sync tool.
 
 Import Tool - [View on GitHub](https://github.com/contentful/contentful-import)
 Export Tool - [View on GitHub](https://github.com/contentful/contentful-export)
