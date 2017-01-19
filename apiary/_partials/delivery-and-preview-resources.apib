@@ -716,7 +716,7 @@ This example will return only image assets.
 
   + Attributes (Empty Array)
 
-## Search on references [/spaces/{space_id}/assets?access_token={access_token}&content_type={content_type}&fields.{reference_field}.sys.contentType.sys.id={reference_content_type}&fields.{reference_field}.fields.{search_field}={search_value}]
+## Search on references [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{reference_field}.sys.contentType.sys.id={reference_content_type}&fields.{reference_field}.fields.{search_field}={search_value}]
 You can search for entries based on the values of referenced entries.
 
 For example, you have entries of content type 'Article' with a `writtenBy` field used to link to entries of content type 'Author'. Using the search on references functionality you can find the articles written by a particular author with one API request.
