@@ -21,23 +21,23 @@ Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and thei
 
 ### Content Delivery API SDK
 
-This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.
-
-[View on GitHub](https://github.com/contentful/contentful.js)
-
-[API reference](https://contentful.github.io/contentful.js)
-
-[Try out the browser SDK with JSFiddle](https://jsfiddle.net/contentful/kefaj4s8/)
-
+This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.<br/>
+[View on GitHub](https://github.com/contentful/contentful.js)<br/>
+[SDK reference](https://contentful.github.io/contentful.js)<br/>
+[Try out the browser SDK with JSFiddle](https://jsfiddle.net/contentful/kefaj4s8/)<br/>
 [Try out the Node.js package with Tonic](https://runkit.com/npm/contentful)
 
 ### Content Management API SDK
 
-This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content. The API also offers tools for managing editorial teams and cooperation.
-
-[View on GitHub](https://github.com/contentful/contentful-management.js)
+This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content. The API also offers tools for managing editorial teams and cooperation.<br/>
+[View on GitHub](https://github.com/contentful/contentful-management.js)<br/>
+[SDK reference](https://contentful.github.io/contentful-management.js/contentful-management/1.3.0)
 
 ## Tutorials
+
+### Create and deploy a Node.js application using Contentful
+
+[This guide](/developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/) shows you how to create and deploy an Express.js app that uses Contentful.
 
 ### API demo
 
@@ -51,34 +51,24 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 The Sync API allows you to keep a local copy of all content from a space up to date via delta updates. [This tutorial](/developers/docs/javascript/tutorials/using-the-sync-api-with-js/) will show you how to use the Sync API with the Contentful JavaScript SDK.
 
-### Create and deploy your Express.js app using Contentful
-
-[This guide](/developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/) shows you how to create and deploy an Express.js app that uses Contentful.
-
 ## Example apps
 
 ### Product catalogue
 
-This demo project shows how to build a frontend JavaScript based application with Contentful for a product catalogue, based on the Contentful starter product catalogue example space.
-
-[Try it out](https://contentful.github.io/product-catalogue-js/)
-
+This demo project shows how to build a frontend JavaScript based application with Contentful for a product catalogue, based on the Contentful starter product catalogue example space.<br/>
+[Try it out](https://contentful.github.io/product-catalogue-js/)<br/>
 [View on GitHub](https://github.com/contentful/product-catalogue-js)
 
 ### Photo gallery
 
-This single page application shows how to build a photo gallery app with [React](https://facebook.github.io/react/) connected to a Contentful space.
-
-[Try it out](https://contentful.github.io/gallery-app-react/)
-
+This single page application shows how to build a photo gallery app with [React](https://facebook.github.io/react/) connected to a Contentful space.<br/>
+[Try it out](https://contentful.github.io/gallery-app-react/)<br/>
 [View on GitHub](https://github.com/contentful/gallery-app-react)
 
 ### Discovery app
 
-The Discovery App allows you to browse and preview your Contentful content.
-
-[Try it out](https://contentful.github.io/discovery-app-react)
-
+The Discovery App allows you to browse and preview your Contentful content.<br/>
+[Try it out](https://contentful.github.io/discovery-app-react)<br/>
 [View on GitHub](https://github.com/contentful/discovery-app-react)
 
 ## Tools and integrations
@@ -87,6 +77,5 @@ These third-party libraries are **not officially supported** by Contentful and m
 
 ### Angular-Contentful
 
-An **unsupported** AngularJS library to access the Content Delivery API.
-
+An **unsupported** AngularJS library to access the Content Delivery API.<br/>
 [View on GitHub](https://github.com/jvandemo/angular-contentful)

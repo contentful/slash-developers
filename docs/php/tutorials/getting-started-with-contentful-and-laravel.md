@@ -18,7 +18,7 @@ The ContentfulBundle and the PHP SDK are currently in beta and their APIs may ch
 
 ## Requirements
 
-The Contentful Laravel integrations requires at least PHP 5.5.9 and Laravel 5. PHP 7 is are supported.
+The Contentful Laravel integrations requires at least PHP 5.5.9 and Laravel 5. PHP 7 is supported.
 
 ## Installation
 
