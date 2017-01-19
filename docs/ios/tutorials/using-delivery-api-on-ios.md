@@ -15,9 +15,9 @@ nextsteps:
     link: /developers/docs/ios/tutorials/using-delivery-api-with-swift/
 ---
 
-# t
-
 :[Getting started tutorial intro](../../_partials/getting-started-intro.md)
+
+This article details how to get content using the [Objective-C CDA SDK](https://github.com/contentful/contentful.objc).
 
 ## Setup the client
 

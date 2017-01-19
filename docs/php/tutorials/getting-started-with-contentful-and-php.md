@@ -17,6 +17,8 @@ The Contentful PHP SDK is in beta and the API may change before a stable release
 
 :[Getting started tutorial intro](../../_partials/getting-started-intro.md)
 
+This article details how to get content using the [PHP CDA SDK](https://github.com/contentful/contentful.php).
+
 ## Installation
 
 The easiest way to install the Contentful PHP SDK is to use [Composer][2] and run the following command:

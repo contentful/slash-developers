@@ -16,6 +16,8 @@ nextsteps:
 
 :[Getting started tutorial intro](../../_partials/getting-started-intro.md)
 
+This article details how to get content using the [Ruby CDA SDK](https://github.com/contentful/contentful.rb).
+
 ## Installation
 
 First, install the 'contentful' gem, with the terminal:

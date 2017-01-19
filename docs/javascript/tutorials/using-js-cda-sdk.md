@@ -18,6 +18,8 @@ nextsteps:
 
 :[Getting started tutorial intro](../../_partials/getting-started-intro.md)
 
+This article details how to get content using the [JavaScript CDA SDK](https://github.com/contentful/contentful.js).
+
 ## Setting up the client
 
 First you need to get the SDK and include it in your project.

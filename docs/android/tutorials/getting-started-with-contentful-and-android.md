@@ -15,6 +15,8 @@ nextsteps:
 
 :[Getting started tutorial intro](../../_partials/getting-started-intro.md)
 
+This article details how to get content using the [Android CDA SDK](https://github.com/contentful/contentful.java).
+
 ## Create a new Android project
 
 Create a new project in Android Studio using the 'Blank Activity' template, and name it whatever you wish.

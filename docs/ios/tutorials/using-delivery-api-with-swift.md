@@ -17,6 +17,8 @@ nextsteps:
 
 :[Getting started tutorial intro](../../_partials/getting-started-intro.md)
 
+This article details how to get content using the [Swift CDA SDK](https://github.com/contentful/contentful.swift).
+
 ## Setup the client
 
 There are different ways to integrate the SDK into your own apps, described in detail in the [README for the SDK][2]. This guide will use [CocoaPods][3], the dependency manager for Cocoa projects, which helps you keep the SDK up-to-date:
