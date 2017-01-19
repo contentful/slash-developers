@@ -10,10 +10,10 @@ tags:
 nextsteps: null
 ---
 
-- [SDKs](#sdks)
-- [Tutorials](#tutorials)
-- [Tools](#tools-and-integrations)
-- [Example apps](#example-apps)
+-   [SDKs](#sdks)
+-   [Tutorials](#tutorials)
+-   [Tools](#tools-and-integrations)
+-   [Example apps](#example-apps)
 
 ## SDKs
 
@@ -27,7 +27,7 @@ This SDK interacts with the Content Delivery API, a read-only API for retrieving
 
 ### Content Management API SDK
 
-This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content. The API also offers tools for managing editorial teams and cooperation.<br/>
+This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content.<br/>
 [View on GitHub](https://github.com/contentful/contentful-management.java)<br/>
 [API reference](https://contentful.github.io/contentful-management.java/)
 
@@ -63,8 +63,13 @@ This plugin generates model classes automatically from your Contentful content m
 
 ### Vault
 
-A library to simplify persisting data retrieved from Contentful in SQLite.<br/>
+A library to simplify persisting data retrieved from Contentful and storing it offline in SQLite.<br/>
 [View on GitHub](https://github.com/contentful/vault)
+
+### Generator.java
+
+This tool helps you fetch content types from a Contentful space, and generate corresponding java source files.<br/>
+[View on GitHub](https://github.com/contentful/generator.java)
 
 ## Example apps
 
@@ -96,5 +101,5 @@ A generic product catalogue / e-commerce app connected to a Contentful example s
 
 ### Contentful Android Cardboard
 
-A example to show how to use Google Cardboard with Contentful.<br/>
+A example to show how to use Google VR with Contentful.<br/>
 [View on GitHub](https://github.com/contentful-labs/contentful-cardboard)
