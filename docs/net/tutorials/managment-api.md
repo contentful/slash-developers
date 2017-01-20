@@ -24,7 +24,7 @@ Contentful.net is built on .net core and targets .Net Standard 1.4. The SDK is c
 
 ## Your first request
 
-To communicate with the CMA we use a very similar approach as when we call the CDA, but instead of a `ContentfulClient` we use a `ContentfulManagementClient` that, just like the CDA client, requires three parameters.
+To communicate with the CMA we use a similar approach as when we call the CDA, but instead of a `ContentfulClient` we use a `ContentfulManagementClient` that, like the CDA client, requires three parameters.
 
 1.  An `HttpClient` that makes the HTTP requests to the CMA.
 2.  An access token. This has to be a valid management token created using OAuth. To learn more about creating a management token please refer to the [documentation](/developers/docs/references/authentication/#the-management-api).
@@ -45,9 +45,9 @@ var space = await client.CreateSpaceAsync("<space_name>", "<default_locale>", "<
 Console.WriteLine(space.Name); // => <space_name>
 ```
 
-If your user account only belongs to a single organization the organization_id parameter can be omitted.
+If your user account belongs to a single organization the organization_id parameter can be omitted.
 
-To delete a space, simply pass a space id to the `DeleteSpaceAsync` method:
+To delete a space, pass a space id to the `DeleteSpaceAsync` method:
 
 ```csharp
 var space = await client.DeleteSpaceAsync("<space_id>");
@@ -259,13 +259,13 @@ new Field()
     }
 ```
 
-But at minimum, you only need to specify the name, id and type.
+But at minimum, you need to specify the name, id and type.
 
 ```csharp
 new Field()
     {
-        Name = "Some field",
-        Id = "field1",
+        Name = "Product name",
+        Id = "productName",
         Type = "Text",
     }
 ```
@@ -324,18 +324,18 @@ new Field()
 
 Available restrictions are:
 
-- `MimeTypeRestriction.Attachment`
-- `MimeTypeRestriction.Plaintext`
-- `MimeTypeRestriction.Image`
-- `MimeTypeRestriction.Audio`
-- `MimeTypeRestriction.Video`
-- `MimeTypeRestriction.Richtext`
-- `MimeTypeRestriction.Presentation`
-- `MimeTypeRestriction.Spreadsheet`
-- `MimeTypeRestriction.PdfDocument`
-- `MimeTypeRestriction.Archive`
-- `MimeTypeRestriction.Code`
-- `MimeTypeRestriction.Markup`
+-   `MimeTypeRestriction.Attachment`
+-   `MimeTypeRestriction.Plaintext`
+-   `MimeTypeRestriction.Image`
+-   `MimeTypeRestriction.Audio`
+-   `MimeTypeRestriction.Video`
+-   `MimeTypeRestriction.Richtext`
+-   `MimeTypeRestriction.Presentation`
+-   `MimeTypeRestriction.Spreadsheet`
+-   `MimeTypeRestriction.PdfDocument`
+-   `MimeTypeRestriction.Archive`
+-   `MimeTypeRestriction.Code`
+-   `MimeTypeRestriction.Markup`
 
 #### SizeValidator
 
@@ -415,270 +415,302 @@ new Field()
 
 ### Activate a content type
 
-Once a content type has been created it needs to be activated before it is usable.
+Once you have created a content type you need to activate it before it's usable.
 
 ```csharp
 var contentType = await client.ActivateContentTypeAsync("<content_type_id>", version: 7);
 ```
 
-It can also be deactivated again in a similar fashion, but no version is necessary as we do not risk any data loss.
+You can deactivate it in a similar fashion, but you don't need to specify a version as there is no risk of data loss.
 
 ```csharp
 var contentType = await client.DeactivateContentTypeAsync("<content_type_id>");
 ```
 
-Deleting a content type is similarily straightforward. A content type must be deactivated before it can be deleted.
+Deleting a content type is similar, you must deactivate a content type before deleting it.
 
-    ```csharp
-    var contentType = await client.DeleteContentTypeAsync("<content_type_id>");
-    ```
+```csharp
+var contentType = await client.DeleteContentTypeAsync("<content_type_id>");
+```
 
-    There are three methods available to fetch content types.
+There are three methods available to fetch content types.
 
-    ```csharp
-    var contentTypes = await client.GetContentTypesAsync(); //Gets all content types of the space
-    var contentType = await client.GetContentTypeAsync("<content_type_id>"); //Gets a single content type
-    var activeContentTypes = await client.GetActivatedContentTypesAsync(); //Gets the latest activated version of all content types
-    ```
+```csharp
+var contentTypes = await client.GetContentTypesAsync(); // Gets all content types of the space
+var contentType = await client.GetContentTypeAsync("<content_type_id>"); // Gets a single content type
+var activeContentTypes = await client.GetActivatedContentTypesAsync(); // Gets the latest activated version of all content types
+```
 
-    ## Editor interface
+## Editor interface
 
-    An editor interface represents information about how the fields of a content type is displayed in the user interface.
+An editor interface represents information about how the user interface displays the fields of a content type.
 
-    Every content type has it's own Editor interface and it can not be excplicitly created. Instead it can be retrieved and updated as appropriate.
+Every content type has it's own Editor interface and you cannot explicitly create it. Instead, you retrieve and update it appropriately.
 
-    ```csharp
-    var editorInterface = await client.GetEditorInterfaceAsync("<content_type_id>");
-    ```
+```csharp
+var editorInterface = await client.GetEditorInterfaceAsync("<content_type_id>");
+```
 
-    Once you have the editor interface you can update it and change how certain fields should be displayed.
+Once you have the editor interface you can update it and change how certain fields are displayed.
 
-    ```csharp
-    var editorInterface = await client.GetEditorInterfaceAsync("<content_type_id>");
+```csharp
+var editorInterface = await client.GetEditorInterfaceAsync("<content_type_id>");
 
-    editorInterface.Controls.First(f => f.FieldId == "field1").WidgetId = SystemWidgetIds.SingleLine;
+editorInterface.Controls.First(f => f.FieldId == "productName").WidgetId = SystemWidgetIds.SingleLine;
 
-    var boolField = editorInterface.Controls.First(f => f.FieldId == "field2")
-    boolField.WidgetId = SystemWidgetIds.Boolean;
-    boolField.Settings = new BooleanEditorInterfaceControlSettings()
-                        {
-                            HelpText = "Help me here!",
-                            TrueLabel = "Truthy",
-                            FalseLabel = "Falsy"
-                        }
-    await client.UpdateEditorInterfaceAsync(editorInterface, "<content_type_id>", editorInterface.SystemProperties.Version.Value);
-    ```
-
-    As you can tell an Editor interface consists of a collection of Controls. These are of type `EditorInterfaceControl` and has three different properties.
-
-    ```csharp
-    var editorInterfaceControl =  new EditorInterfaceControl()
+var boolField = editorInterface.Controls.First(f => f.FieldId == "preorder")
+boolField.WidgetId = SystemWidgetIds.Boolean;
+boolField.Settings = new BooleanEditorInterfaceControlSettings()
                     {
-                        FieldId = "<field_id>",
-                        WidgetId = "<widget_id>",
-                        Settings = new EditorInterfaceControlSettings()
+                        HelpText = "Is the product available?",
+                        TrueLabel = "Yes",
+                        FalseLabel = "No"
                     }
-    ```
+await client.UpdateEditorInterfaceAsync(editorInterface, "<content_type_id>", editorInterface.SystemProperties.Version.Value);
+```
 
-    The `FieldId` is the id of the field that this `EditorInterfaceControl` controls the appearence of, the `WidgetId` is the type of widget you want the control to display as. There's a handy `SystemWidgetIds` class that contains all built in ids, for a full list refer to [the api documentation](/developers/docs/references/content-management-api/#/reference/editor-interface/get-the-editor-interface).
+An Editor interface consists of a collection of 'controls'. These are of type `EditorInterfaceControl` which has three different properties.
 
-    There's also a `Settings` property that contains additional settings for certain type of widgets. Normally it is just of type `EditorInterfaceControlSettings` and has only a `HelpText` property which represents the helptext you want to display in relation to your field control. There are three distinct subclasses of `EditorInterfaceControlSettings` for specific fields.
-
-    ```csharp
-    var boolEditorInterfaceControlSettings = new BooleanEditorInterfaceControlSettings()
-                    {
-                        HelpText = "Help me here!",
-                        TrueLabel = "Truthy", // The label to display next to the true option
-                        FalseLabel = "Falsy" // The label to display next to the false option
-                    };
-
-    var ratingEditorInterfaceControlSettings = new RatingEditorInterfaceControlSettings()
-                    {
-                        HelpText = "Help me here!",
-                        NumberOfStars = 7, // The number of stars to display in the rating widget, default is 5
-                    };
-
-    var datepickerEditorInterfaceControlSettings = new DatePickerEditorInterfaceControlSettings()
-                    {
-                        HelpText = "Help me here!",
-                        DateFormat = EditorInterfaceDateFormat.time, // The format of the date, can be time, timeZ or dateonly
-                        ClockFormat = "24" // The format of the clock, can be 12 or 24
-                    }
-    ```
-
-    # Working with entries
-
-    Fetching entries through the management API is very similar to using the delivery API, but with a few key differences.
-
-    - Every entry will always include all configured locales.
-    - You will get even unpublished entries through your calls.
-    - Calls will not be cached as rigirously as with the delivery API.
-
-    For this reason it's normally better to prefer the delivery API and `ContentfulClient` if you're only fetching content. However, at times it can be convenient to use the management API for this as well.
-
-    ```csharp
-    //Get all entries of a space, you can also pass a QueryBuilder to filter which entries to return.
-    var entries = await client.GetEntriesCollectionAsync<Entry<dynamic>>();
-
-    //Get a single entry
-    var entry = await _client.GetEntryAsync("<entry_id>");
-    //Note that this method is not generic but always returns an Entry<dynamic> as opposed to the GetEntry method of the ContentfulClient
-    ```
-
-    To create (or update) an entry use the `CreateOrUpdateEntryAsync` method. Since we need to provide all of the locales the simplest way to model our fields are trough dictionaries.
-
-    ```csharp
-    var entry = new Entry<dynamic>();
-                entry.SystemProperties = new SystemProperties();
-                entry.SystemProperties.Id = "new-thing";
-
-                entry.Fields = new
+```csharp
+var editorInterfaceControl =  new EditorInterfaceControl()
                 {
-                    Field1 = new Dictionary<string, string>()
-                    {
-                        { "en-US", "First field" }
-                    },
-                    Field2 = new Dictionary<string, string>()
-                    {
-                        { "en-US", "English" },
-                        { "sv-SE", "Svenska"}
-                    },
-                    Field3 = new Dictionary<string, int>()
-                    {
-                        { "en-US", 7 }
-                    },
-                    Field4 = new Dictionary<string, dynamic>()
-                    {
-                        { "en-US",
-                            new {
-                                Sys = new { Id = "<another_entry_id>", LinkType = "Entry", Type = "Entry" }
-                            }
-                        }
-                    }
-                };
+                    FieldId = "<field_id>",
+                    WidgetId = "<widget_id>",
+                    Settings = new EditorInterfaceControlSettings()
+                }
+```
 
-                var newEntry = await _client.CreateOrUpdateEntryAsync(entry, contentTypeId: "<content_type_id>");
-    ```
+The `FieldId` is the id of the field that this `EditorInterfaceControl` controls the appearance of, and the `WidgetId` is the type of widget you want the control to display as. There's a handy `SystemWidgetIds` class that contains all built in ids, for a full list refer to [the API documentation](/developers/docs/references/content-management-api/#/reference/editor-interface/get-the-editor-interface).
 
-    You can also publish/unpublish, archive/unarchive and delete entries.
+The `Settings` property contains settings for certain widget types. Normally it's of type `EditorInterfaceControlSettings` and has only a `HelpText` property which represents the help text you want to display in relation to your field control. There are three distinct subclasses of `EditorInterfaceControlSettings` for specific fields.
 
-    ```csharp
-    //This publishes the specified version of the entry and makes it publicly available through the delivery API
-    client.PublishEntryAsync("<entry_id>", version);
-    //Unpublishes a specified version again
-    client.UnpublishEntryAsync("<entry_id>", version);
+```csharp
+var boolEditorInterfaceControlSettings = new BooleanEditorInterfaceControlSettings()
+{
+    HelpText = "Is the product available?",
+    TrueLabel = "Yes",
+    FalseLabel = "No"
+};
 
-    //Archives an entry. An Entry can only be archived if it is not published
-    client.ArchiveEntryAsync("<entry_id>", version);
-    //Unarchives an entry again
-    client.UnarchiveEntryAsync("<entry_id>", version);
+var ratingEditorInterfaceControlSettings = new RatingEditorInterfaceControlSettings()
+{
+    HelpText = "Rate the product",
+    NumberOfStars = 7, // The number of stars to display in the rating widget, default is 5
+};
 
-    //Permanently deletes an entry
-    client.DeleteEntryAsync("<entry_id>", version);
-    ```
+var datepickerEditorInterfaceControlSettings = new DatePickerEditorInterfaceControlSettings()
+{
+    HelpText = "Set the date of release",
+    DateFormat = EditorInterfaceDateFormat.time, // The format of the date, can be time, timeZ or dateonly
+    ClockFormat = "24" // The format of the clock, can be 12 or 24
+}
+```
 
-    # Working with assets
+## Working with entries
 
-    Fetching assets is very similar to fetching entries. It also includes all the locales for an asset, you get even unpublished assets and the calls are not cached to the same degree. There's also another difference from fetching assets through the `ContentfulClient`, the `ContentfulManagementClient` returns `ManagementAsset` as opposed to `Asset`. The reason being that every property is a Dictionary containing the value for every locale.
+You fetch entries in a similar way to using the CDA (**DEF?**), but with three key differences:
 
-    ```csharp
-    var assets = await client.GetAssetsCollectionAsync();
+-   Every entry will always include all configured locales.
+-   Calls will include unpublished entries.
+-   The CMA dos not cache calls as rigorously as the CDA.
 
-    var publishedAssets = await client.GetPublishedAssetsCollectionAsync();
+For these reasons it's better to use the CDA and the `ContentfulClient` [provided by the .NET SDK](#) if you're only fetching content. At times it can be convenient to use the CMA as well.
 
-    var asset = await client.GetAssetAsync("<asset_id>");
-    var title = asset.Title["en-US"];
-    var swedishTitle = asset.Title["sv-SE"];
-    var englishAssetUrl = asset.Files["en-US"].Url;
-    ```
+For example, to get all entries for a space you can pass a `QueryBuilder` to filter which entries to return.
 
-    To create an asset simply create a `ManagementAsset` and pass it to the `CreateOrUpdateAssetAsync` method.
+```csharp
+var entries = await client.GetEntriesCollectionAsync<Entry<dynamic>>();
+```
 
-    ```csharp
-    var managementAsset = new ManagementAsset();
+Or to get a single entry.
 
-    managementAsset.SystemProperties = new SystemProperties();
-    managementAsset.SystemProperties.Id = "new-asset";
+```csharp
+var entry = await _client.GetEntryAsync("<entry_id>");
+```
 
-    managementAsset.Title = new Dictionary<string, string> {
-        { "en-US", "New asset" },
-        { "sv-SE", "Ny tillgång" }
-    };
+{: .note}
+**Note**: This method is not generic but always returns an `Entry<dynamic>`, as opposed to the `GetEntry` method of the `ContentfulClient`.
 
-    managementAsset.Files = new Dictionary<string, File>
-    {
-        { "en-US", new File() {
-                ContentType = "image/png",
-                FileName = "image.png",
-                UploadUrl = "https://example.com/image.png"
-            }
-        },
-        { "sv-SE", new File() {
-                ContentType = "image/png",
-                FileName = "image.png",
-                UploadUrl = "https://example.com/image-SE.png"
-            }
+To create (or update) an entry use the `CreateOrUpdateEntryAsync` method. Since you need to provide all the locales the simplest way to model fields is with dictionaries.
+
+```csharp
+var entry = new Entry<dynamic>();
+            entry.SystemProperties = new SystemProperties();
+            entry.SystemProperties.Id = "Accessories";
+
+            entry.Fields = new
+            {
+                Title = new Dictionary<string, string>()
+                {
+                    { "en-US", "Accessories" },
+                    { "sv-SE", "Tillbehör"}
+                },
+                Icon = new Dictionary<string, string>()
+                {
+                    { "en-US", "Icon" }
+                },
+                Description = new Dictionary<string, int>()
+                {
+                    { "en-US", "Small items to make you life or home complete." },
+                    { "sv-SE", "Små saker för att göra ditt liv eller hem komplett." }
+                }
+            };
+
+            var newEntry = await _client.CreateOrUpdateEntryAsync(entry, contentTypeId: "<category_content_type_id>");
+```
+
+You can publish/unpublish, archive/unarchive and delete entries.
+
+For example, to publish the specified version of an entry and make it publicly available through the CDA.
+
+```csharp
+client.PublishEntryAsync("<entry_id>", version);
+```
+
+Or to unpublish a specified version.
+
+```csharp
+client.UnpublishEntryAsync("<entry_id>", version);
+```
+
+To archive an entry. You can only archive an entry if it's not published.
+
+```csharp
+client.ArchiveEntryAsync("<entry_id>", version);
+```
+
+To unarchive an entry.
+
+```csharp
+client.UnarchiveEntryAsync("<entry_id>", version);
+```
+
+To permanently delete an entry.
+
+```csharp
+client.DeleteEntryAsync("<entry_id>", version);
+```
+
+## Working with assets
+
+You fetch assets in a similar way to fetching entries. It includes all the locales for an asset, unpublished assets, and calls are not cached to the same level.
+
+The `ContentfulManagementClient` returns `ManagementAsset`s as opposed to the `Asset`s returned from `ContentfulClient`. This is because every property is a `Dictionary` containing the value for each locale.
+
+```csharp
+var assets = await client.GetAssetsCollectionAsync();
+
+var publishedAssets = await client.GetPublishedAssetsCollectionAsync();
+
+var asset = await client.GetAssetAsync("<asset_id>");
+var title = asset.Title["en-US"];
+var swedishTitle = asset.Title["sv-SE"];
+var englishAssetUrl = asset.Files["en-US"].Url;
+```
+
+To create an asset, initialize a `ManagementAsset` and pass it to the `CreateOrUpdateAssetAsync` method.
+
+```csharp
+var managementAsset = new ManagementAsset();
+
+managementAsset.SystemProperties = new SystemProperties();
+managementAsset.SystemProperties.Id = "<new_asset_id>";
+
+managementAsset.Title = new Dictionary<string, string> {
+    { "en-US", "New asset" },
+    { "sv-SE", "Ny tillgång" }
+};
+
+managementAsset.Files = new Dictionary<string, File>
+{
+    { "en-US", new File() {
+            ContentType = "image/png",
+            FileName = "image.png",
+            UploadUrl = "https://example.com/image.png"
         }
-    };
+    },
+    { "sv-SE", new File() {
+            ContentType = "image/png",
+            FileName = "image.png",
+            UploadUrl = "https://example.com/image-SE.png"
+        }
+    }
+};
 
-    await client.CreateOrUpdateAssetAsync(managementAsset);
-    ```
+await client.CreateOrUpdateAssetAsync(managementAsset);
+```
 
-    After an asset has been created it also needs to be processed, which means it is moved to the contentful AWS buckets and CDN servers.
+After you have created an asset you need to process it, which moves it to the Contentful AWS buckets and CDN servers.
 
-    ```csharp
-    //Note that each locale needs to be processed separately.
-    await client.ProcessAssetAsync("<asset_id>", version, locale);
-    ```
+{: .note}
+**Note**: Each locale needs to be processed separately.
 
-    As with entries, you can publish/unpublish, archive/unarchive and delete assets.
+```csharp
+await client.ProcessAssetAsync("<new_asset_id>", version, locale);
+```
 
-    ```csharp
-    //This publishes the specified version of the asset and makes it publicly available through the delivery API
-    await client.PublishAssetAsync("<asset_id>", version);
-    //Unpublishes a specified version again
-    await client.UnpublishAssetAsync("<asset_id>", version);
+As with entries, you can publish/unpublish, archive/unarchive and delete assets.
 
-    //Archives an entry. An asset can only be archived if it is not published
-    await client.ArchiveAssetAsync("<asset_id>", version);
-    //Unarchives an asset again
-    await client.UnarchiveAssetAsync("<asset_id>", version);
+To publish a specified version of the asset and make it publicly available through the CDA.
 
-    //Permanently deletes an asset
-    cawait lient.DeleteAssetAsync("<asset_id>", version);
-    ```
+```csharp
+await client.PublishAssetAsync("<new_asset_id>", version);
+```
 
-    # Working with locales
+To unpublish a specified version.
 
-    Locales allow you to define translatable fields for entries and assets. To fetch all configured locales for a space use the `GetLocalesCollectionAsync` method.
+```csharp
+await client.UnpublishAssetAsync("<new_asset_id>", version);
+```
 
-    ```csharp
-    var locales = await client.GetLocalesCollectionAsync(); //Fetches all locales for a space.
+To archive an entry. You can only archive an asset if it's not published.
 
-    var locale = await client.GetLocaleAsync("<locale_id>"); //Note that this parameter is not the locale code or name, but the actual id.
-    locale.Code; // => "en-GB"
-    locale.Name; // => "British English"
-    ```
+```csharp
+await client.ArchiveAssetAsync("<new_asset_id>", version);
+```
 
-    To create a locale we need to define a number of properties.
+To unarchive an asset.
 
-    ```csharp
-    var newLocale = new Local()
-    {
-        Name = "Swenglish", //The name of the locale
-        Code = "en-SV", //The code of the locale, can be an arbitrary string
-        FallbackCode = "en-GB", //The code of the locale to fallback to if this locale is missing a translation for a given field
-        Optional = true, //Whether or not this locale allows for empty required fields, this is important to allow a locale to fallback to another locale if missing
-        ContentDeliveryApi = true, //Whether or not this locale should be enabled in the API response for the delivery api
-        ContentManagementApi = true //Whether or not this locale should be visible in the management api
-    };
+```csharp
+await client.UnarchiveAssetAsync("<new_asset_id>", version);
+```
 
-    await client.CreateLocaleAsync(locale);
-    ```
+To permanently delete an asset.
 
-    When deleting locales there are a few things to keep in mind. You can't delete a locale that is used as a fallback. You first need to delete or update any locale that has the locale you're trying to delete set as fallback. When you delete a locale you also delete **all** content associated with that locale. It is not possible to reverse this action and all content will be permanently deleted.
+```csharp
+cawait lient.DeleteAssetAsync("<new_asset_id>", version);
+```
 
-    ```csharp
-    await client.DeleteLocaleAsync("<locale_id>");
-    ```
-````
+## Working with locales
+
+Locales allow you to define translatable fields for entries and assets. To fetch all configured locales for a space use the `GetLocalesCollectionAsync` method.
+
+```csharp
+var locales = await client.GetLocalesCollectionAsync(); // Fetches all locales for a space.
+
+var locale = await client.GetLocaleAsync("<locale_id>"); // Note that this parameter is not the locale code or name, but the actual id.
+locale.Code; // => "en-GB"
+locale.Name; // => "British English"
+```
+
+To create a locale you need to define a number of properties.
+
+```csharp
+var newLocale = new Local()
+{
+    Name = "Swenglish", // The name of the locale
+    Code = "en-SV", // The code of the locale, can be an arbitrary string
+    FallbackCode = "en-GB", // The code of the locale to fallback to if this locale is missing a translation for a given field
+    Optional = true, // Whether this locale allows for empty required fields, this is important to allow a locale to fallback to another locale if missing
+    ContentDeliveryApi = true, // Whether this locale should be enabled in the API response for the delivery api
+    ContentManagementApi = true // Whether this locale should be visible in the management api
+};
+
+await client.CreateLocaleAsync(locale);
+```
+
+You can't delete a locale that is used as a fallback. You first need to delete or update any locale that has the locale you're trying to delete set as a fallback. When you delete a locale you delete **all** content associated with that locale. It is not possible to reverse this action and all content will be permanently deleted.
+
+```csharp
+await client.DeleteLocaleAsync("<locale_id>");
+```
