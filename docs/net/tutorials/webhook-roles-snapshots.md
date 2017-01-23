@@ -12,7 +12,7 @@ nextsteps:
     link: https://github.com/contentful/contentful.net
 ---
 
-The Content Management API (CMA) is a restful API for managing content in your Contentful spaces. This means you can create, update, delete and retrieve content using well known HTTP verbs.
+The Content Management API (CMA) is a restful API for managing content in your Contentful spaces. You can use it to create, update, delete and retrieve content using well-known HTTP verbs.
 
 To make development easier for our users, we publish SDKs for various languages which make the task easier. This article details how to use the [.Net SDK](https://github.com/contentful/contentful.net) to create, update and delete webhooks, snapshots and roles.
 
@@ -21,11 +21,11 @@ To make development easier for our users, we publish SDKs for various languages 
 This tutorial assumes you understand the basic Contentful data model as described in the [developer center](/developers/docs/concepts/data-model/) and that you have
 already read and understand the [getting started tutorial for the .Net SDK](/developers/docs/net/tutorials/using-net-cda-sdk/) and the [using the management API with Contentful and .Net SDK](/developers/docs/net/tutorials/management-api/) article.
 
-Contentful.net is built on .net core and targets .Net Standard 1.4. The SDK is cross platform and runs on Linux, macOS and Windows.
+Contentful.net is built on .net core and targets .Net Standard 1.4. The SDK is cross-platform and runs on Linux, macOS and Windows.
 
 ## Working with webhooks
 
-To learn more about what webhooks and what they're used for refer to [the webhooks concepts article](/developers/docs/concepts/webhooks/).
+To learn more about what webhooks refer to [the webhooks concepts article](/developers/docs/concepts/webhooks/).
 
 To create a webhook for a space use the `CreateWebHookAsync` method.
 
@@ -117,11 +117,11 @@ role.Policies.Add(new Policy() // Every policy consists of a number of actions a
 });
 ```
 
-This example above would give the role permissions to read entries, assets and content types, but not edit, create or delete them. It would also give permissions to manage settings for the space. The policies give this role specific access to read, create and update entries.
+This example above would give the role permissions to read entries, assets and content types, but not edit, create or delete them. It would also give permissions to manage settings for the space. The policies give this role-specific access to read, create and update entries.
 
 ### Policies explained
 
-The policies can look daunting at first and the framework behind them is complex. However they do make it possible to create granular and flexible authorization rules.
+The policies can look daunting and the framework behind them is complex. However they do make it possible to create granular and flexible authorization rules.
 
 The first property is the `Effect` which is how this policy is to be treated, will it `allow` or `deny` access.
 
@@ -131,7 +131,7 @@ The first property is the `Effect` which is how this policy is to be treated, wi
 
 ### Constraints explained
 
-Constraints represents which resources a specific policy applies for. There are five different kinds of constraints.
+Constraints represent which resources a specific policy applies to. There are five different kinds of constraints.
 
 `AndConstraint` and `OrConstraint` are lists of other `IConstraint`. The `OrConstraint` ensures that at least one of the contained constraints is true and the `AndConstraint` requires all contained constraints to be true.
 
@@ -139,14 +139,14 @@ The `NotConstraint` contains another `IConstraint` and inverts the value of that
 
 The `EqualsConstraint` contains a `Property` which is a field on the content type or asset and a `ValueToEqual` which contains the value that this field must equal for this constraint to evaluate to be fulfilled.
 
-The `PathConstraint` contains a `Fields` property that gives a path that must exist on the content type. An example is `"fields.heading"` which would only match content types that has the `heading` field present.
+The `PathConstraint` contains a `Fields` property that gives a path that must exist on the content type. An example is `"fields.heading"` which would only match content types that have the `heading` field present.
 
 Putting them all together looks something like the following.
 
 ```csharp
 var constraint = new AndConstraint() // AndConstraint is a list of other IConstraints, ensuring all other contained constraints are met
 {
-    new EqualsConstraint() //This equals constraint constraints this policy to only affect resources with a sys.type of Entry
+    new EqualsConstraint() // This equals constraint constraints this policy to only affect resources with a sys.type of Entry
     {
         Property = "sys.type",
         ValueToEqual = "Entry"
@@ -157,7 +157,7 @@ var constraint = new AndConstraint() // AndConstraint is a list of other IConstr
 }
 ```
 
-Once you've created a `Role` and added the appropriate permissions and policies you can call the `CreateRoleAsync` method.
+Once you've created a `Role` and added the appropriate permissions and policies, you can call the `CreateRoleAsync` method.
 
 ```csharp
 var createdRole = await client.CreateRoleAsync(role);

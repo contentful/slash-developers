@@ -12,7 +12,7 @@ nextsteps:
     link: 'https://github.com/contentful/contentful.net'
 ---
 
-The Content Management API (CMA) is a restful API for managing content in your Contentful spaces. This means you can create, update, delete and retrieve content using well known HTTP verbs.
+The Content Management API (CMA) is a restful API for managing content in your Contentful spaces. You can create, update, delete and retrieve content using well-known HTTP verbs.
 
 To make development easier for our users, we publish SDKs for various languages which make the task easier. This article details how to use the [.Net SDK](https://github.com/contentful/contentful.net) to create, update and delete content.
 
@@ -20,22 +20,23 @@ To make development easier for our users, we publish SDKs for various languages 
 
 This tutorial assumes you understand the basic Contentful data model as described in the [developer center](/developers/docs/concepts/data-model/) and that you have already read and understand the [getting started tutorial for the .Net SDK](/developers/docs/net/tutorials/using-net-cda-sdk/).
 
-Contentful.net is built on .net core and targets .Net Standard 1.4. The SDK is cross platform and runs on Linux, macOS and Windows.
+Contentful.net is built on .net core and targets .Net Standard 1.4. The SDK is cross-platform and runs on Linux, macOS and Windows.
 
 ## Your first request
 
-To communicate with the CMA we use a similar approach as when we call the CDA, but instead of a `ContentfulClient` we use a `ContentfulManagementClient` that, like the CDA client, requires three parameters.
+To communicate with the CMA we use a similar approach as when we call the CDA, but instead of a `ContentfulClient` youuse a `ContentfulManagementClient` that, like the CDA client, requires three parameters.
 
 1.  An `HttpClient` that makes the HTTP requests to the CMA.
-2.  An access token. This has to be a valid management token created using OAuth. To learn more about creating a management token please refer to the [documentation](/developers/docs/references/authentication/#the-management-api).
-3.  A space id. This is the unique identifier of your space that you can find in the Contentful web app. This will be the default space for all operations in the SDK, but you can also specify a different space for every operation.
+2.  An access token. The token has to be a valid management token created using OAuth. To learn more about creating a management token please refer to the [documentation](/developers/docs/references/authentication/#the-management-api).
+3.  A space id. The id is the unique identifier of your space that you can find in the Contentful web app. This will be the default space for all operations in the SDK, but you can also specify a different space for every operation.
 
 ```csharp
 var httpClient = new HttpClient();
 var client = new ContentfulManagementClient(httpClient, "<content_management_api_key>", "<space_id>")
 ```
 
-{: .note} An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose it you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. This means that if you make a lot of requests in a short period of time you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and exposing the underlying `HttpClient` of the `ContentfulManagementClient` allows you to do this.
+{: .note}
+An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed of for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose of it, you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. If you make a lot of requests in a short period you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and exposing the underlying `HttpClient` of the `ContentfulManagementClient` allows you to do this.
 
 Once you have an `ContentfulManagementClient` you can start managing content. For example, to create a brand new space:
 
@@ -60,7 +61,7 @@ var space = await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", 
 
 Unless your account has more than one organization, you can omit the organization id, but the version parameter is always needed.
 
-This is a common pattern to update operations in the Contentful management API. To update an entry you need to pass the last known version to make sure that you do not overwrite a resource that has since been updated. This is called 'optimistic locking' and prevents unwanted data loss. If the version passed does not match the latest version in Contentful the update will be rejected and a `ContentfulException` thrown.
+This is a common pattern to update operations in the Contentful management API. To update an entry, you need to pass the last known version to make sure that you do not overwrite a resource that has since been updated. This is called 'optimistic locking' and prevents unwanted data loss. If the version passed does not match the latest version in Contentful the update will be rejected and a `ContentfulException` thrown.
 
 To retrieve the version of a resource, inspect the `SystemProperties.Version` property.
 
@@ -74,7 +75,7 @@ await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", version.Valu
 
 ## Working with content types
 
-Once you've familiarized yourself with creating and deleting spaces the next step is to add content types to your space. A content type in Contentful is a blue print for an entry, and contains up to 50 fields that you can define.
+Once you've familiarized yourself with creating and deleting spaces, the next step is to add content types to your space. A content type in Contentful is a blueprint for an entry, and contains up to 50 fields that you can define.
 
 First create a new `ContentType` object, initialize it's system properties, give it an ID, name, and description:
 
@@ -229,7 +230,7 @@ contentType.Fields = new List<Field>()
 };
 ```
 
-Define which field is the main display field, and send the new content type declaration to the client.
+Define which field is the display field, and send the new content type declaration to the client.
 
 ```csharp
 contentType.DisplayField = "productName";
@@ -258,7 +259,7 @@ new Field()
 }
 ```
 
-But at minimum, you need to specify the name, id and type.
+But at a minimum, you need to specify the name, id and type.
 
 ```csharp
 new Field()
@@ -275,7 +276,7 @@ The most complex part of fields is handling validations. You can use different v
 
 #### LinkContentTypeValidator
 
-The `LinkContentTypeValidator` validates that a given field contains entries of a certain content type. The constructor takes an optional message and any number of string ids or content types to validate against.
+The `LinkContentTypeValidator` validates that a given field contains entries of a particular content type. The constructor takes an optional message and any number of string ids or content types to validate against.
 
 ```csharp
 new Field()
@@ -307,7 +308,7 @@ new Field()
 
 #### MimeTypeValidator
 
-The `MimeTypeValidator` validates that an asset is of a specific mime type group.
+The `MimeTypeValidator` validates that an asset is of a particular mime type group.
 
 ```csharp
 new Field()
@@ -352,7 +353,7 @@ new Field()
 }
 ```
 
-Both the min and the max value are nullable. This means you can create size validators that validate that an array contains at least a set number of items, but without an upper bound. Or contains a maximum of a set number of items but may also be empty.
+Both the min and the max value are nullable. You can create size validators that validate that an array contains at least a set number of items, but without an upper bound. Or contains a maximum of a set number of items but may also be empty.
 
 ```csharp
 // This SizeValidator allows a maximum of 5 items, but as it has no minimum value it can contain 0 items.
@@ -364,7 +365,7 @@ new SizeValidator(min: 4, max: null, message: "Sorry, you must add at least 4 ta
 
 #### RangeValidator
 
-The `RangeValidator` validates that a field is within a certain numeric range.
+The `RangeValidator` validates that a field is within a particular numeric range.
 
 ```csharp
 new Field()
@@ -378,7 +379,7 @@ new Field()
 }
 ```
 
-When used for text fields it validates that the entered value contains at least the minimum number of characters and at most the maximum number of characters. For numeric fields it validates that the value entered is within the specified range. Both the min and max value are nullable in the exact same way as for the `SizeValidator`.
+When used for text fields it validates that the entered value contains at least the minimum number of characters and at most the maximum number of characters. For numeric fields it validates that the value entered is within the specified range. Both the min and max value are nullable in the same way as for the `SizeValidator`.
 
 #### RegexValidator
 
@@ -444,13 +445,13 @@ var activeContentTypes = await client.GetActivatedContentTypesAsync(); // Gets t
 
 An editor interface represents information about how the user interface displays the fields of a content type.
 
-Every content type has it's own Editor interface and you cannot explicitly create it. Instead, you retrieve and update it appropriately.
+Every content type has its own Editor interface, and you cannot explicitly create it. Instead, you retrieve and update it appropriately.
 
 ```csharp
 var editorInterface = await client.GetEditorInterfaceAsync("<content_type_id>");
 ```
 
-Once you have the editor interface you can update it and change how certain fields are displayed.
+Once you have the editor interface, you can update it and change how certain fields are displayed.
 
 ```csharp
 var editorInterface = await client.GetEditorInterfaceAsync("<content_type_id>");
@@ -511,9 +512,9 @@ You fetch entries in a similar way to using the Content Delivery API (CDA), but 
 
 -   Every entry will always include all configured locales.
 -   Calls will include unpublished entries.
--   The CMA dos not cache calls as rigorously as the CDA.
+-   The CMA does not cache calls as rigorously as the CDA.
 
-For these reasons it's better to use the CDA and the `ContentfulClient` [provided by the .NET SDK](#) if you're only fetching content. At times it can be convenient to use the CMA as well.
+For these reasons, it's better to use the CDA and the `ContentfulClient` [provided by the .NET SDK](#) if you're only fetching content. At times it can be convenient to use the CMA as well.
 
 For example, to get all entries for a space you can pass a `QueryBuilder` to filter which entries to return.
 
@@ -638,7 +639,7 @@ managementAsset.Files = new Dictionary<string, File>
 await client.CreateOrUpdateAssetAsync(managementAsset);
 ```
 
-After you have created an asset you need to process it, which moves it to the Contentful AWS buckets and CDN servers.
+After you have created an asset, you need to process it, which moves it to the Contentful AWS buckets and CDN servers.
 
 {: .note} **Note**: You need to process each locale separately.
 
@@ -648,7 +649,7 @@ await client.ProcessAssetAsync("<new_asset_id>", version, locale);
 
 As with entries, you can publish/unpublish, archive/unarchive and delete assets.
 
-To publish a specified version of the asset and make it publicly available through the CDA.
+To publish a particular version of the asset and make it publicly available through the CDA.
 
 ```csharp
 await client.PublishAssetAsync("<new_asset_id>", version);
@@ -680,7 +681,7 @@ cawait lient.DeleteAssetAsync("<new_asset_id>", version);
 
 ## Working with locales
 
-Locales allow you to define translatable fields for entries and assets. To fetch all configured locales for a space use the `GetLocalesCollectionAsync` method.
+Locales allow you to define translatable fields for entries and assets. To fetch all configured locales for a space, use the `GetLocalesCollectionAsync` method.
 
 ```csharp
 var locales = await client.GetLocalesCollectionAsync(); // Fetches all locales for a space.
@@ -690,7 +691,7 @@ locale.Code; // => "en-GB"
 locale.Name; // => "British English"
 ```
 
-To create a locale you need to define a number of properties.
+To create a locale you need to define some properties.
 
 ```csharp
 var newLocale = new Local()
@@ -706,7 +707,7 @@ var newLocale = new Local()
 await client.CreateLocaleAsync(locale);
 ```
 
-You can't delete a locale that is used as a fallback. You first need to delete or update any locale that has the locale you're trying to delete set as a fallback. When you delete a locale you delete **all** content associated with that locale. It's not possible to reverse this action and all content will be permanently deleted.
+You can't delete a locale used as a fallback. You first need to delete or update any locale that has the locale you're trying to delete set as a fallback. When you delete a locale you delete **all** content associated with that locale. It's not possible to reverse this action and all content will be permanently deleted.
 
 ```csharp
 await client.DeleteLocaleAsync("<locale_id>");
