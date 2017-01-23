@@ -30,34 +30,34 @@ To communicate with the CMA we use a similar approach as when we call the CDA, b
 2.  An access token. The token has to be a valid management token created using OAuth. To learn more about creating a management token please refer to the [documentation](/developers/docs/references/authentication/#the-management-api).
 3.  A space id. The id is the unique identifier of your space that you can find in the Contentful web app. This will be the default space for all operations in the SDK, but you can also specify a different space for every operation.
 
-```csharp
+~~~csharp
 var httpClient = new HttpClient();
 var client = new ContentfulManagementClient(httpClient, "<content_management_api_key>", "<space_id>")
-```
+~~~
 
 {: .note}
 An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed of for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose of it, you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. If you make a lot of requests in a short period you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and expose the underlying `HttpClient` of the `ContentfulManagementClient` allows you to do this.
 
 Once you have an `ContentfulManagementClient` you can start managing content. For example, to create a brand new space:
 
-```csharp
+~~~csharp
 var space = await client.CreateSpaceAsync("<space_name>", "<default_locale>", "<organization_id>");
 Console.WriteLine(space.Name); // => <space_name>
-```
+~~~
 
 If your user account belongs to a single organization, you can omit the `organization_id` parameter.
 
 To delete a space, pass a space id to the `DeleteSpaceAsync` method:
 
-```csharp
+~~~csharp
 var space = await client.DeleteSpaceAsync("<space_id>");
-```
+~~~
 
 To change the name of an existing space, use the `UpdateSpaceNameAsync` method.
 
-```csharp
+~~~csharp
 var space = await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", "<space_version>", "<organization_id>");
-```
+~~~
 
 Unless your account has more than one organization, you can omit the organization id, but the version parameter is always needed.
 
@@ -67,11 +67,11 @@ To retrieve the version of a resource, inspect the `SystemProperties.Version` pr
 
 The following is an example of creating a space:
 
-```csharp
+~~~csharp
 var space = await client.GetSpaceAsync("<space_id>")
 var version = space.SystemProperties.Version; // Nullable int
 await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", version.Value);
-```
+~~~
 
 ## Working with content types
 
@@ -79,17 +79,17 @@ Once you've familiarized yourself with creating and deleting spaces, the next st
 
 First create a new `ContentType` object, initialize it's system properties, give it an ID, name, and description:
 
-```csharp
+~~~csharp
 var contentType = new ContentType();
 contentType.SystemProperties = new SystemProperties();
 contentType.SystemProperties.Id = "<content_type_id>";
 contentType.Name = "Product";
 contentType.Description = "";
-```
+~~~
 
 Create a `List` of field types, and add all the fields for your content model to it. The example below shows you how to recreate the 'Product' content type you find in our examples spaces, further explanation of the fields follows:
 
-```csharp
+~~~csharp
 contentType.Fields = new List<Field>()
 {
     new Field()
@@ -228,19 +228,19 @@ contentType.Fields = new List<Field>()
         }
     },
 };
-```
+~~~
 
 Define which field is the display field, and send the new content type declaration to the client.
 
-```csharp
+~~~csharp
 contentType.DisplayField = "productName";
 
 await _client.CreateOrUpdateContentTypeAsync(contentType);
-```
+~~~
 
 The fields have a lot of properties and can look daunting at first, especially if you add validations, so let's break the components down. Every field can consist of up to 10 properties.
 
-```csharp
+~~~csharp
 new Field()
 {
     Name = "The name of the field", // The human readable name of the field e.g. "Top image" or "Main heading"
@@ -257,18 +257,18 @@ new Field()
     },
     Validations = new List<IFieldValidator>() // See validations section below                
 }
-```
+~~~
 
 But at a minimum, you need to specify the name, id, and type.
 
-```csharp
+~~~csharp
 new Field()
 {
     Name = "Product name",
     Id = "productName",
     Type = "Text",
 }
-```
+~~~
 
 ### Field validations
 
@@ -278,7 +278,7 @@ The most complex part of fields is handling validations. You can use different v
 
 The `LinkContentTypeValidator` validates that a given field contains entries of a particular content type. The constructor takes an optional message and any number of string ids or content types to validate against.
 
-```csharp
+~~~csharp
 new Field()
 {
   Name = "Brand",
@@ -288,13 +288,13 @@ new Field()
       new LinkContentTypeValidator(message: "My custom validation message", "<content_type_id>", "<content_type_id>" ...)
   }
 }
-```
+~~~
 
 #### InValuesValidator
 
 The `InValuesValidator` validates that a given field value is within a predefined set of values. The constructor takes an optional message and any number of strings to validate against.
 
-```csharp
+~~~csharp
 new Field()
 {
   Name = "Tags",
@@ -304,13 +304,13 @@ new Field()
       new InValuesValidator(message: "This is not a valid tag", "<value1>", "<value2>" ...)
   }
 }
-```
+~~~
 
 #### MimeTypeValidator
 
 The `MimeTypeValidator` validates that an asset is of a particular mime type group.
 
-```csharp
+~~~csharp
 new Field()
 {
     Name = "Image",
@@ -320,7 +320,7 @@ new Field()
         new MimeTypeValidator(MimeTypeRestriction.Image, "Not a valid image")
     }
 }
-```
+~~~
 
 Available restrictions are:
 
@@ -341,7 +341,7 @@ Available restrictions are:
 
 The `SizeValidator` validates that an array field contains a specific number of items.
 
-```csharp
+~~~csharp
 new Field()
 {
     Name = "Tags",
@@ -351,23 +351,23 @@ new Field()
         new SizeValidator(min: 2, max: 7, message: "Sorry, you must add between 2 and 7 tags.")
     }
 }
-```
+~~~
 
 Both the min and the max value are nullable. You can create size validators that validate that an array contains at least a set number of items, but without an upper bound. Or contains a maximum of a set number of items but may also be empty.
 
-```csharp
+~~~csharp
 // This SizeValidator allows a maximum of 5 items, but as it has no minimum value it can contain 0 items.
 new SizeValidator(min: null, max: 5, message: "Sorry, you may add a maximum of 5 tags.")
 
 // This SizeValidator specifies that the field must contain at least 4 items, but there is no upper bound.
 new SizeValidator(min: 4, max: null, message: "Sorry, you must add at least 4 tags.")
-```
+~~~
 
 #### RangeValidator
 
 The `RangeValidator` validates that a field is within a particular numeric range.
 
-```csharp
+~~~csharp
 new Field()
 {
   Name = "Quantity",
@@ -377,7 +377,7 @@ new Field()
       new RangeValidator(min: 10, max: 1000, message: "Quantities must be between 10 and 1000.")
   }
 }
-```
+~~~
 
 When used for text fields it validates that the entered value contains at least the minimum number of characters and at most the maximum number of characters. For numeric fields, it validates that the value entered is within the specified range. Both the min and max value are nullable in the same way as for the `SizeValidator`.
 
@@ -385,7 +385,7 @@ When used for text fields it validates that the entered value contains at least 
 
 The `RegexValidator` validates that a field conforms to a specified regular expression.
 
-```csharp
+~~~csharp
 new Field()
   {
   Name = "Availabe at",
@@ -395,13 +395,13 @@ new Field()
       new RegexValidator(expression: "\\b((?:[a-z][\\w-]+:(?:\\/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}\\/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))", flags: "i", message: "The value isn't a valid web address.")
   }
 }
-```
+~~~
 
 #### UniqueValidator
 
 The `UniqueValidator` validates that the field values is unique among all entries.
 
-```csharp
+~~~csharp
 new Field()
 {
   Name = "Name",
@@ -411,35 +411,35 @@ new Field()
       new UniqueValidator(message: "Sorry, product names must be unique.")
   }
 }
-```
+~~~
 
 ### Activate a content type
 
 Once you have created a content type you need to activate it before it's usable.
 
-```csharp
+~~~csharp
 var contentType = await client.ActivateContentTypeAsync("<content_type_id>", version: 7);
-```
+~~~
 
 You can deactivate the content type in a similar fashion, but you don't need to specify a version as there is no risk of data loss.
 
-```csharp
+~~~csharp
 var contentType = await client.DeactivateContentTypeAsync("<content_type_id>");
-```
+~~~
 
 Deleting a content type is similar, you must deactivate a content type before deleting it.
 
-```csharp
+~~~csharp
 var contentType = await client.DeleteContentTypeAsync("<content_type_id>");
-```
+~~~
 
 There are three methods available to fetch content types.
 
-```csharp
+~~~csharp
 var contentTypes = await client.GetContentTypesAsync(); // Gets all content types of the space
 var contentType = await client.GetContentTypeAsync("<content_type_id>"); // Gets a single content type
 var activeContentTypes = await client.GetActivatedContentTypesAsync(); // Gets the latest activated version of all content types
-```
+~~~
 
 ## Editor interface
 
@@ -447,13 +447,13 @@ An editor interface represents information about how the user interface displays
 
 Every content type has its own Editor interface, and you cannot explicitly create it. Instead, you retrieve and update it appropriately.
 
-```csharp
+~~~csharp
 var editorInterface = await client.GetEditorInterfaceAsync("<content_type_id>");
-```
+~~~
 
 Once you have the editor interface, you can update it and change how certain fields are displayed.
 
-```csharp
+~~~csharp
 var editorInterface = await client.GetEditorInterfaceAsync("<content_type_id>");
 
 editorInterface.Controls.First(f => f.FieldId == "productName").WidgetId = SystemWidgetIds.SingleLine;
@@ -467,24 +467,24 @@ boolField.Settings = new BooleanEditorInterfaceControlSettings()
   FalseLabel = "No"
 }
 await client.UpdateEditorInterfaceAsync(editorInterface, "<content_type_id>", editorInterface.SystemProperties.Version.Value);
-```
+~~~
 
 An Editor interface consists of a collection of 'controls'. These are of type `EditorInterfaceControl` which has three different properties.
 
-```csharp
+~~~csharp
 var editorInterfaceControl =  new EditorInterfaceControl()
 {
   FieldId = "<field_id>",
   WidgetId = "<widget_id>",
   Settings = new EditorInterfaceControlSettings()
 }
-```
+~~~
 
 The `FieldId` is the id of the field that this `EditorInterfaceControl` controls the appearance of, and the `WidgetId` is the widget type you want the control to display as. There's a handy `SystemWidgetIds` class that contains all built in ids, for a full list refer to [the API documentation](/developers/docs/references/content-management-api/#/reference/editor-interface/get-the-editor-interface).
 
 The `Settings` property contains settings for certain widget types. Normally it's of type `EditorInterfaceControlSettings` and has only a `HelpText` property which represents the help text you want to display in relation to your field control. There are three distinct subclasses of `EditorInterfaceControlSettings` for specific fields.
 
-```csharp
+~~~csharp
 var boolEditorInterfaceControlSettings = new BooleanEditorInterfaceControlSettings()
 {
   HelpText = "Is the product available?",
@@ -504,7 +504,7 @@ var datepickerEditorInterfaceControlSettings = new DatePickerEditorInterfaceCont
   DateFormat = EditorInterfaceDateFormat.time, // The format of the date, can be time, timeZ or dateonly
   ClockFormat = "24" // The format of the clock, can be 12 or 24
 }
-```
+~~~
 
 ## Working with entries
 
@@ -518,21 +518,21 @@ For these reasons, it's better to use the CDA and the `ContentfulClient` [provid
 
 For example, to get all entries for a space you can pass a `QueryBuilder` to filter which entries to return.
 
-```csharp
+~~~csharp
 var entries = await client.GetEntriesCollectionAsync<Entry<dynamic>>();
-```
+~~~
 
 Or to get a single entry.
 
-```csharp
+~~~csharp
 var entry = await _client.GetEntryAsync("<entry_id>");
-```
+~~~
 
 {: .note} **Note**: This method is not generic but always returns an `Entry<dynamic>`, as opposed to the `GetEntry` method of the `ContentfulClient`.
 
 To create (or update) an entry use the `CreateOrUpdateEntryAsync` method. Since you need to provide all the locales the simplest way to model fields is with dictionaries.
 
-```csharp
+~~~csharp
 var entry = new Entry<dynamic>();
 entry.SystemProperties = new SystemProperties();
 entry.SystemProperties.Id = "Accessories";
@@ -556,39 +556,39 @@ entry.Fields = new
 };
 
 var newEntry = await _client.CreateOrUpdateEntryAsync(entry, contentTypeId: "<category_content_type_id>");
-```
+~~~
 
 You can publish/unpublish, archive/unarchive and delete entries.
 
 For example, to publish the specified version of an entry and make it publicly available through the CDA.
 
-```csharp
+~~~csharp
 client.PublishEntryAsync("<entry_id>", version);
-```
+~~~
 
 Or to unpublish a specified version.
 
-```csharp
+~~~csharp
 client.UnpublishEntryAsync("<entry_id>", version);
-```
+~~~
 
 To archive an entry. You can only archive an entry if it's not published.
 
-```csharp
+~~~csharp
 client.ArchiveEntryAsync("<entry_id>", version);
-```
+~~~
 
 To unarchive an entry.
 
-```csharp
+~~~csharp
 client.UnarchiveEntryAsync("<entry_id>", version);
-```
+~~~
 
 To permanently delete an entry.
 
-```csharp
+~~~csharp
 client.DeleteEntryAsync("<entry_id>", version);
-```
+~~~
 
 ## Working with assets
 
@@ -596,7 +596,7 @@ You fetch assets in a similar way to fetching entries. It includes all the local
 
 The `ContentfulManagementClient` returns `ManagementAsset`s as opposed to the `Asset`s returned from `ContentfulClient`. This is because every property is a `Dictionary` containing the value for each locale.
 
-```csharp
+~~~csharp
 var assets = await client.GetAssetsCollectionAsync();
 
 var publishedAssets = await client.GetPublishedAssetsCollectionAsync();
@@ -605,11 +605,11 @@ var asset = await client.GetAssetAsync("<asset_id>");
 var title = asset.Title["en-US"];
 var swedishTitle = asset.Title["sv-SE"];
 var englishAssetUrl = asset.Files["en-US"].Url;
-```
+~~~
 
 To create an asset, initialize a `ManagementAsset` and pass it to the `CreateOrUpdateAssetAsync` method.
 
-```csharp
+~~~csharp
 var managementAsset = new ManagementAsset();
 
 managementAsset.SystemProperties = new SystemProperties();
@@ -637,64 +637,64 @@ managementAsset.Files = new Dictionary<string, File>
 };
 
 await client.CreateOrUpdateAssetAsync(managementAsset);
-```
+~~~
 
 After you have created an asset, you need to process it, which moves it to the Contentful AWS buckets and CDN servers.
 
 {: .note}
 **Note**: You need to process each locale separately.
 
-```csharp
+~~~csharp
 await client.ProcessAssetAsync("<new_asset_id>", version, locale);
-```
+~~~
 
 As with entries, you can publish/unpublish, archive/unarchive and delete assets.
 
 To publish a particular version of the asset and make it publicly available through the CDA.
 
-```csharp
+~~~csharp
 await client.PublishAssetAsync("<new_asset_id>", version);
-```
+~~~
 
 To unpublish a specified version.
 
-```csharp
+~~~csharp
 await client.UnpublishAssetAsync("<new_asset_id>", version);
-```
+~~~
 
 To archive an entry. You can only archive an asset if it's not published.
 
-```csharp
+~~~csharp
 await client.ArchiveAssetAsync("<new_asset_id>", version);
-```
+~~~
 
 To unarchive an asset.
 
-```csharp
+~~~csharp
 await client.UnarchiveAssetAsync("<new_asset_id>", version);
-```
+~~~
 
 To permanently delete an asset.
 
-```csharp
+~~~csharp
 cawait lient.DeleteAssetAsync("<new_asset_id>", version);
-```
+~~~
 
 ## Working with locales
 
 Locales allow you to define translatable fields for entries and assets. To fetch all configured locales for a space, use the `GetLocalesCollectionAsync` method.
 
-```csharp
+~~~csharp
 var locales = await client.GetLocalesCollectionAsync(); // Fetches all locales for a space.
 
 var locale = await client.GetLocaleAsync("<locale_id>"); // Note that this parameter is not the locale code or name, but the actual id.
 locale.Code; // => "en-GB"
 locale.Name; // => "British English"
-```
+~~~
 
 To create a locale you need to define some properties.
 
-```csharp
+~~~csharp
 var newLocale = new Local()
 {
     Name = "Swenglish", // The name of the locale
@@ -706,10 +706,10 @@ var newLocale = new Local()
 };
 
 await client.CreateLocaleAsync(locale);
-```
+~~~
 
 You can't delete a locale used as a fallback. You first need to delete or update any locale that has the locale you're trying to delete set as a fallback. When you delete a locale you delete **all** content associated with that locale. It's not possible to reverse this action and all content will be permanently deleted.
 
-```csharp
+~~~csharp
 await client.DeleteLocaleAsync("<locale_id>");
-```
+~~~

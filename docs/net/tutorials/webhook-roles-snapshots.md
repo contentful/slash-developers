@@ -29,7 +29,7 @@ To learn more about what webhooks refer to [the webhooks concepts article](/deve
 
 To create a webhook for a space use the `CreateWebHookAsync` method.
 
-```csharp
+~~~csharp
 var webHook = new WebHook();
 webHook.Name = "New product"; // The name of the webhook
 webHook.Url = "https://www.example.com/"; // The url to call when the specified event occurrs
@@ -43,41 +43,41 @@ webHook.Topics = new List<string>() // Topics are the events that trigger this w
 };
 
 await client.CreateWebHookAsync(webHook);
-```
+~~~
 
 The topics available are described in more detail in [the webhooks concepts article](/developers/docs/concepts/webhooks/), but the summary is that you specify a `Type` and an `Action`. `Type` can be any of `Entry`, `Asset` or `ContentType` and `Action` can be any of `create`, `save`, `auto_save`, `archive`, `unarchive`, `publish`, `unpublish` or `delete`. `_` is a wildcard and `_.\*` is valid
 and would mean to call this webhook for all actions across all types.
 
 Once you have created a webhook you can fetch them from the SDK using the `GetWebHooksCollectionAsync` and `GetWebHookAsync` methods.
 
-```csharp
+~~~csharp
 var allWebhooks = await client.GetWebHooksCollectionAsync();
 
 var webhook = await client.GetWebHookAsync("<webhook_id>");
-```
+~~~
 
 To retrieve more information about a specific webhook call use the `GetWebHookCallDetailsCollectionAsync` to retrieve a list of calls made to the webhook or the `GetWebHookCallDetailsAsync` to get details of a specific call.
 
-```csharp
+~~~csharp
 var calldetails = await client.GetWebHookCallDetailsCollectionAsync("<webhook_id>");
 
 var calldetail = await client.GetWebHookCallDetailsAsync("<call_details_id>", "webhook_id");
-```
+~~~
 
 A method is available that gives a more general overview of the total number of webhook calls for a specific webhook and whether they returned a success code.
 
-```csharp
+~~~csharp
 var webhookHealth = await client.GetWebHookHealthAsync("<webhook_id>");
 
 var total = webhookHealth.TotalCalls; // 27
 var healthy = webhookHealth.TotalHealthy; // 23
-```
+~~~
 
 To delete a webhook you are no longer using.
 
-```csharp
+~~~csharp
 await client.DeleteWebHookAsync("<webhook_id>");
-```
+~~~
 
 ## Roles and memberships
 
@@ -87,7 +87,7 @@ The .NET SDK allows for the creation of custom roles. It's complex to understand
 
 Start by creating a new `Role` and adding the permissions and policies you need.
 
-```csharp
+~~~csharp
 var role = new Role();
 role.Name = "Name of the role";
 role.Description = "Describe the role";
@@ -115,7 +115,7 @@ role.Policies.Add(new Policy() // Every policy consists of a number of actions a
         }
     }
 });
-```
+~~~
 
 This example above would give the role permissions to read entries, assets, and content types, but not edit, create or delete them. It would also give permissions to manage settings for the space. The policies give this role-specific access to read, create and update entries.
 
@@ -143,7 +143,7 @@ The `PathConstraint` contains a `Fields` property that gives a path that must ex
 
 Putting them all together looks something like the following.
 
-```csharp
+~~~csharp
 var constraint = new AndConstraint() // AndConstraint is a list of other IConstraints, ensuring all other contained constraints are met
 {
     new EqualsConstraint() // This equals constraint constraints this policy to only affect resources with a sys.type of Entry
@@ -155,17 +155,17 @@ var constraint = new AndConstraint() // AndConstraint is a list of other IConstr
         Fields = "fields.name.%"
     }
 }
-```
+~~~
 
 Once you've created a `Role` and added the appropriate permissions and policies, you can call the `CreateRoleAsync` method.
 
-```csharp
+~~~csharp
 var createdRole = await client.CreateRoleAsync(role);
-```
+~~~
 
 You can update, delete and fetch roles with the appropriate methods.
 
-```csharp
+~~~csharp
 var role = await client.GetRoleAsync("<role_id>");
 
 var allRoles = await client.GetAllRolesAsync();
@@ -173,7 +173,7 @@ var allRoles = await client.GetAllRolesAsync();
 var updatedRole = await client.UpdateRoleAsync(role);
 
 await client.DeleteRoleAsync("<role_id>");
-```
+~~~
 
 ## Working with snapshots
 
@@ -181,11 +181,11 @@ A snapshot of an entry is automatically created each time an entry is published 
 
 To get all snapshots for an entry use the `GetAllSnapshotsForEntryAsync`. To get a specific snapshot use the `SingleSnapshot` method.
 
-```csharp
+~~~csharp
 var singleSnapshot = await client.SingleSnapshot("<snapshot_id>", "<entry_id>");
 
 var allSnapshots = await client.GetAllSnapshotsForEntryAsync("<entry_id>");
-```
+~~~
 
 ## Working with space memberships
 
@@ -193,7 +193,7 @@ A space membership represents the membership type a user has in a space and you 
 
 To get all memberships of a space call the `GetSpaceMembershipsAsync` method. To get a single membership call `GetSpaceMembershipAsync` method.
 
-```csharp
+~~~csharp
 var singleMembership = await client.GetSpaceMembershipAsync("<membership_id>");
 
 var roles = singleMembership.Roles; // A List<string> of all role ids this membership has
@@ -201,20 +201,20 @@ var userId = singleMembership.User.SystemProperties.Id; // The id of the user ti
 var isAdmin = singleMembership.Admin; // Whether this membership is the administrator of the space
 
 var allMemberships = await client.GetSpaceMembershipsAsync();
-```
+~~~
 
 To update an existing membership use the `UpdateSpaceMembershipAsync` method.
 
-```csharp
+~~~csharp
 var singleMembership = await client.GetSpaceMembershipAsync("<membership_id>");
 singleMembership.Admin = false; // This membership will no longer be administrator of the space
 
 await client.UpdateSpaceMembershipAsync(singleMembership);
-```
+~~~
 
 To create a new membership use the `CreateSpaceMembershipAsync` method.
 
-```csharp
+~~~csharp
 var newMembership = new SpaceMembership();
 
 newMembership.Roles = new List<string>() {
@@ -232,7 +232,7 @@ newMembership.User = new User() { // The user must already exist. It cannot be a
 };
 
 await client.CreateSpaceMembershipAsync(newMembership);
-```
+~~~
 
 To delete a membership use the `DeleteSpaceMembershipAsync` method.
 
@@ -240,15 +240,15 @@ To delete a membership use the `DeleteSpaceMembershipAsync` method.
 **Note**: It's possible to delete every single membership of a space, leaving no administrator available. You
 can fix this by inviting a new user through the Contentful web app organization settings.
 
-```csharp
+~~~csharp
 await client.DeleteSpaceMembershipAsync("<membership_id>");
-```
+~~~
 
 ## Working with API keys
 
 The Contentful .NET SDK allows you to get all API keys for the Content Delivery API ((not the management API) for a space. It also allows you to create new API keys.
 
-```csharp
+~~~csharp
 var allApiKeys = await client.GetAllApiKeysAsync();
 
 var accessToken = allApiKeys.First().AccessToken;
@@ -256,4 +256,4 @@ var accessToken = allApiKeys.First().AccessToken;
 var newKey = await client.CreateApiKeyAsync("Name of key", "Description of key");
 
 var newAccessToken = newKey.AccessToken;
-```
+~~~
