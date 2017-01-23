@@ -21,7 +21,7 @@ To make development easier for our users, we publish SDKs for various languages 
 This tutorial assumes you understand the basic Contentful data model as described in the [developer center](/developers/docs/concepts/data-model/) and that you have
 already read and understand the [getting started tutorial for the .Net SDK](/developers/docs/net/tutorials/using-net-cda-sdk/) and the [using the management API with Contentful and .Net SDK](/developers/docs/net/tutorials/management-api/) article.
 
-Contentful.net is built on .net core and targets .Net Standard 1.4. The SDK is cross-platform and runs on Linux, macOS and Windows.
+Contentful.net is built on .net core and targets .Net Standard 1.4. The SDK is cross-platform and runs on Linux, macOS, and Windows.
 
 ## Working with webhooks
 
@@ -117,17 +117,17 @@ role.Policies.Add(new Policy() // Every policy consists of a number of actions a
 });
 ```
 
-This example above would give the role permissions to read entries, assets and content types, but not edit, create or delete them. It would also give permissions to manage settings for the space. The policies give this role-specific access to read, create and update entries.
+This example above would give the role permissions to read entries, assets, and content types, but not edit, create or delete them. It would also give permissions to manage settings for the space. The policies give this role-specific access to read, create and update entries.
 
 ### Policies explained
 
-The policies can look daunting and the framework behind them is complex. However they do make it possible to create granular and flexible authorization rules.
+The policies can look daunting and the framework behind them is complex. However, they do make it possible to create granular and flexible authorization rules.
 
 The first property is the `Effect` which is how this policy is to be treated, will it `allow` or `deny` access.
 
 `Actions` represents what actions this policy allows or denies. This is a list of strings but only a certain set of values are acceptable. These are `read`, `create`, `update`, `delete`, `publish`, `unpublish`, `archive`, `unarchive` or `all`.
 
-`Constraint` is a `IConstraint`, which is explained in more detail below.
+`Constraint` is an `IConstraint`, which is explained in more detail below.
 
 ### Constraints explained
 

@@ -24,7 +24,7 @@ Contentful.net is built on .net core and targets .Net Standard 1.4. The SDK is c
 
 ## Your first request
 
-To communicate with the CMA we use a similar approach as when we call the CDA, but instead of a `ContentfulClient` youuse a `ContentfulManagementClient` that, like the CDA client, requires three parameters.
+To communicate with the CMA we use a similar approach as when we call the CDA, but instead of a `ContentfulClient` you use a `ContentfulManagementClient` that, like the CDA client, requires three parameters.
 
 1.  An `HttpClient` that makes the HTTP requests to the CMA.
 2.  An access token. The token has to be a valid management token created using OAuth. To learn more about creating a management token please refer to the [documentation](/developers/docs/references/authentication/#the-management-api).
@@ -36,7 +36,7 @@ var client = new ContentfulManagementClient(httpClient, "<content_management_api
 ```
 
 {: .note}
-An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed of for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose of it, you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. If you make a lot of requests in a short period you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and exposing the underlying `HttpClient` of the `ContentfulManagementClient` allows you to do this.
+An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed of for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose of it, you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. If you make a lot of requests in a short period you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and expose the underlying `HttpClient` of the `ContentfulManagementClient` allows you to do this.
 
 Once you have an `ContentfulManagementClient` you can start managing content. For example, to create a brand new space:
 
@@ -75,7 +75,7 @@ await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", version.Valu
 
 ## Working with content types
 
-Once you've familiarized yourself with creating and deleting spaces, the next step is to add content types to your space. A content type in Contentful is a blueprint for an entry, and contains up to 50 fields that you can define.
+Once you've familiarized yourself with creating and deleting spaces, the next step is to add content types to your space. A content type in Contentful is a blueprint for an entry and contains up to 50 fields that you can define.
 
 First create a new `ContentType` object, initialize it's system properties, give it an ID, name, and description:
 
@@ -259,7 +259,7 @@ new Field()
 }
 ```
 
-But at a minimum, you need to specify the name, id and type.
+But at a minimum, you need to specify the name, id, and type.
 
 ```csharp
 new Field()
@@ -357,7 +357,7 @@ Both the min and the max value are nullable. You can create size validators that
 
 ```csharp
 // This SizeValidator allows a maximum of 5 items, but as it has no minimum value it can contain 0 items.
-new SizeValidator(min: null, max: 5, message: "Sorry, you may add a maxium of 5 tags.")
+new SizeValidator(min: null, max: 5, message: "Sorry, you may add a maximum of 5 tags.")
 
 // This SizeValidator specifies that the field must contain at least 4 items, but there is no upper bound.
 new SizeValidator(min: 4, max: null, message: "Sorry, you must add at least 4 tags.")
@@ -379,7 +379,7 @@ new Field()
 }
 ```
 
-When used for text fields it validates that the entered value contains at least the minimum number of characters and at most the maximum number of characters. For numeric fields it validates that the value entered is within the specified range. Both the min and max value are nullable in the same way as for the `SizeValidator`.
+When used for text fields it validates that the entered value contains at least the minimum number of characters and at most the maximum number of characters. For numeric fields, it validates that the value entered is within the specified range. Both the min and max value are nullable in the same way as for the `SizeValidator`.
 
 #### RegexValidator
 
@@ -641,7 +641,8 @@ await client.CreateOrUpdateAssetAsync(managementAsset);
 
 After you have created an asset, you need to process it, which moves it to the Contentful AWS buckets and CDN servers.
 
-{: .note} **Note**: You need to process each locale separately.
+{: .note}
+**Note**: You need to process each locale separately.
 
 ```csharp
 await client.ProcessAssetAsync("<new_asset_id>", version, locale);
