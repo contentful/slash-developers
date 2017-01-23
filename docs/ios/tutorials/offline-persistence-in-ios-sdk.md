@@ -2,7 +2,7 @@
 page: :docsOfflinePersistenceIos
 name: Offline Persistence in the iOS SDK
 title: Offline Persistence in the iOS SDK
-metainformation: 'This tutorial shows you how to get offline access to your Contentful content.'
+metainformation: 'This tutorial shows you how to get offline access to your Contentful content in iOS apps.'
 slug: null
 tags:
 - Offline

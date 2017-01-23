@@ -1,6 +1,5 @@
 ---
 page: :docsUsingNetCdaSdk
-
 name: Getting Started with Contentful and .NET
 title: Getting Started with Contentful and .NET
 metainformation: This article details how to retrieve and manage entries using the .NET SDK.

@@ -2,7 +2,7 @@
 page: :docsPlatformsIos
 name: iOS
 title: Using Contentful with iOS
-metainformation: 'Our SDKs give you access to our APIs and their features.'
+metainformation: 'Our iOS SDKs gives you access to the Contentful APIs and their features.'
 slug: null
 tags:
   - Basics

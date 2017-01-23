@@ -2,7 +2,7 @@
 page: :docsImages
 name: Images
 title: Images
-metainformation: 'Images are a powerful way of explaining concepts, attracting a readers attention and creating an impact. Contentful has a separate Images API that helps you add and retrieve image files in spaces, but also offers manipulation features to make images look how you want.'
+metainformation: 'Contentful has a separate Images API that helps you add and retrieve image files in spaces, but also offers manipulation features.'
 slug: null
 tags:
   - Basics

@@ -2,7 +2,7 @@
 page: :docsPlatformsPython
 name: Python
 title: Using Contentful with Python
-metainformation: This guide shows you how to use the Python SDK to interact with the Contentful APIs.
+metainformation: 'Our Python SDK gives you access to the Contentful APIs and their features.'
 slug: null
 tags:
   - SDKs
