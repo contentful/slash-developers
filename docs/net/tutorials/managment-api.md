@@ -35,8 +35,7 @@ var httpClient = new HttpClient();
 var client = new ContentfulManagementClient(httpClient, "<content_management_api_key>", "<space_id>")
 ```
 
-{: .note}
-An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose it you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. This means that if you make a lot of requests in a short period of time you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and exposing the underlying `HttpClient` of the `ContentfulManagementClient` allows you to do this.
+{: .note} An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose it you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. This means that if you make a lot of requests in a short period of time you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and exposing the underlying `HttpClient` of the `ContentfulManagementClient` allows you to do this.
 
 Once you have an `ContentfulManagementClient` you can start managing content. For example, to create a brand new space:
 
@@ -45,7 +44,7 @@ var space = await client.CreateSpaceAsync("<space_name>", "<default_locale>", "<
 Console.WriteLine(space.Name); // => <space_name>
 ```
 
-If your user account belongs to a single organization the organization_id parameter can be omitted.
+If your user account belongs to a single organization, you can omit the `organization_id` parameter.
 
 To delete a space, pass a space id to the `DeleteSpaceAsync` method:
 
@@ -53,184 +52,184 @@ To delete a space, pass a space id to the `DeleteSpaceAsync` method:
 var space = await client.DeleteSpaceAsync("<space_id>");
 ```
 
-To change the name of an existing space use the `UpdateSpaceNameAsync` method.
+To change the name of an existing space, use the `UpdateSpaceNameAsync` method.
 
 ```csharp
 var space = await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", "<space_version>", "<organization_id>");
 ```
 
-The organisation id can, again, normally be omitted unless your account has several different organizations. The version parameter however, can not.
+Unless your account has more than one organization, you can omit the organization id, but the version parameter is always needed.
 
-This is a common pattern to update operations in the Contentful management API. To update an entry you need to pass the last known version to make sure that you do not overwrite a resource that has since been updated. This is known as optimistic locking and is to prevent unwanted data loss. If the version passed does not match the latest version in Contentful the update will be rejected and a `ContentfulException` will be thrown.
+This is a common pattern to update operations in the Contentful management API. To update an entry you need to pass the last known version to make sure that you do not overwrite a resource that has since been updated. This is called 'optimistic locking' and prevents unwanted data loss. If the version passed does not match the latest version in Contentful the update will be rejected and a `ContentfulException` thrown.
 
-To retrieve the version of a resource we inspect the `SystemProperties.Version` property.
+To retrieve the version of a resource, inspect the `SystemProperties.Version` property.
 
-A simple example for a space could be:
+The following is an example of creating a space:
 
 ```csharp
 var space = await client.GetSpaceAsync("<space_id>")
-var version = space.SystemProperties.Version; //Nullable int
+var version = space.SystemProperties.Version; // Nullable int
 await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", version.Value);
 ```
 
 ## Working with content types
 
-Once you've familiarized yourself with creating and deleting spaces the next step is to add some content types to your space. A content type in Contentful is a blue print for an Entry, it contains up to 50 fields that you can define.
+Once you've familiarized yourself with creating and deleting spaces the next step is to add content types to your space. A content type in Contentful is a blue print for an entry, and contains up to 50 fields that you can define.
 
-First create a new `ContentType` object, initialize it's system properties, give it an ID, name, an description:
+First create a new `ContentType` object, initialize it's system properties, give it an ID, name, and description:
 
 ```csharp
 var contentType = new ContentType();
-            contentType.SystemProperties = new SystemProperties();
-            contentType.SystemProperties.Id = "<content_type_id>";
-            contentType.Name = "Product";
-            contentType.Description = "";
+contentType.SystemProperties = new SystemProperties();
+contentType.SystemProperties.Id = "<content_type_id>";
+contentType.Name = "Product";
+contentType.Description = "";
 ```
 
 Create a `List` of field types, and add all the fields for your content model to it. The example below shows you how to recreate the 'Product' content type you find in our examples spaces, further explanation of the fields follows:
 
 ```csharp
-        contentType.Fields = new List<Field>()
-        {
-            new Field()
-            {
-                Name = "Product name",
-                Id = "productName",
-                Type = "Text",
-                Required = true,
-                Localized = false,
-                Disabled = false,
-                Omitted = false,
-            },
-            new Field()
-            {
-                Name = "Slug",
-                Id = "slug",
-                Type = "Symbol",
-                Required = false,
-                Localized = true,
-                Disabled = false,
-                Omitted = false
-            },
-            new Field()
-            {
-                Name = "Description",
-                Id = "productDescription",
-                Type = "Text",
-                Required = false,
-                Localized = false,
-                Disabled = true,
-                Omitted = false
-            },
-            new Field()
-            {
-                Name = "Size/Type/Color",
-                Id = "sizetypecolor",
-                Type = "Symbol",
-                Required = false,
-                Localized = false,
-                Disabled = false,
-                Omitted = false
-            },
-            new Field()
-            {
-                Name = "Image",
-                Id = "image",
-                Type = "Asset",
-                Required = false,
-                Localized = false,
-                Disabled = false,
-                Omitted = false,
-                LinkType = "Asset",  
-                Validations = new List<IFieldValidator>() {
-                    new MimeTypeValidator(MimeTypeRestriction.Image, "My custom validation message")
-                }                                    
-            },
-            new Field()
-            {
-                Name = "Tags",
-                Id = "tags",
-                Type = "Array",
-                Required = false,
-                Localized = false,
-                Disabled = false,
-                Omitted = false,
-                Items = new Schema() {
-                    Type = "Symbol"
-                },
-            },
-            new Field()
-            {
-                Name = "Categories",
-                Id = "categories",
-                Type = "Array",
-                Required = false,
-                Localized = false,
-                Disabled = false,
-                Omitted = false,
-                Items = new Schema() {
-                  Type = "Link",
-                  LinkType = "Entry"           
-                },
-            },
-            new Field()
-            {
-                Name = "Price",
-                Id = "price",
-                Type = "Number",
-                Required = false,
-                Localized = false,
-                Disabled = false,
-                Omitted = false
-            },
-            new Field()
-            {
-                Name = "Brand",
-                Id = "brand",
-                Type = "Link",
-                Required = false,
-                Localized = false,
-                Disabled = false,
-                Omitted = false,
-                LinkType = "Entry"
-            },
-            new Field()
-            {
-                Name = "Quantity",
-                Id = "quantity",
-                Type = "Integer",
-                Required = false,
-                Localized = false,
-                Disabled = false,
-                Omitted = false
-            },
-            new Field()
-            {
-                Name = "SKU",
-                Id = "sku",
-                Type = "Symbol",
-                Required = false,
-                Localized = false,
-                Disabled = false,
-                Omitted = false
-            },
-            new Field()
-            {
-                Name = "Available at",
-                Id = "website",
-                Type = "Symbol",
-                Required = false,
-                Localized = false,
-                Disabled = false,
-                Omitted = false,
-                Validations = new List<IFieldValidator>() {
-                  // REGEX
-                }
-            },
-        };
+contentType.Fields = new List<Field>()
+{
+    new Field()
+    {
+        Name = "Product name",
+        Id = "productName",
+        Type = "Text",
+        Required = true,
+        Localized = false,
+        Disabled = false,
+        Omitted = false,
+    },
+    new Field()
+    {
+        Name = "Slug",
+        Id = "slug",
+        Type = "Symbol",
+        Required = false,
+        Localized = true,
+        Disabled = false,
+        Omitted = false
+    },
+    new Field()
+    {
+        Name = "Description",
+        Id = "productDescription",
+        Type = "Text",
+        Required = false,
+        Localized = false,
+        Disabled = true,
+        Omitted = false
+    },
+    new Field()
+    {
+        Name = "Size/Type/Color",
+        Id = "sizetypecolor",
+        Type = "Symbol",
+        Required = false,
+        Localized = false,
+        Disabled = false,
+        Omitted = false
+    },
+    new Field()
+    {
+        Name = "Image",
+        Id = "image",
+        Type = "Asset",
+        Required = false,
+        Localized = false,
+        Disabled = false,
+        Omitted = false,
+        LinkType = "Asset",  
+        Validations = new List<IFieldValidator>() {
+            new MimeTypeValidator(MimeTypeRestriction.Image, "My custom validation message")
+        }                                    
+    },
+    new Field()
+    {
+        Name = "Tags",
+        Id = "tags",
+        Type = "Array",
+        Required = false,
+        Localized = false,
+        Disabled = false,
+        Omitted = false,
+        Items = new Schema() {
+            Type = "Symbol"
+        },
+    },
+    new Field()
+    {
+        Name = "Categories",
+        Id = "categories",
+        Type = "Array",
+        Required = false,
+        Localized = false,
+        Disabled = false,
+        Omitted = false,
+        Items = new Schema() {
+          Type = "Link",
+          LinkType = "Entry"           
+        },
+    },
+    new Field()
+    {
+        Name = "Price",
+        Id = "price",
+        Type = "Number",
+        Required = false,
+        Localized = false,
+        Disabled = false,
+        Omitted = false
+    },
+    new Field()
+    {
+        Name = "Brand",
+        Id = "brand",
+        Type = "Link",
+        Required = false,
+        Localized = false,
+        Disabled = false,
+        Omitted = false,
+        LinkType = "Entry"
+    },
+    new Field()
+    {
+        Name = "Quantity",
+        Id = "quantity",
+        Type = "Integer",
+        Required = false,
+        Localized = false,
+        Disabled = false,
+        Omitted = false
+    },
+    new Field()
+    {
+        Name = "SKU",
+        Id = "sku",
+        Type = "Symbol",
+        Required = false,
+        Localized = false,
+        Disabled = false,
+        Omitted = false
+    },
+    new Field()
+    {
+        Name = "Available at",
+        Id = "website",
+        Type = "Symbol",
+        Required = false,
+        Localized = false,
+        Disabled = false,
+        Omitted = false,
+        Validations = new List<IFieldValidator>() {
+          // REGEX
+        }
+    },
+};
 ```
 
-Finaly define which field is the main display field, and send the new content type declaration to the client.
+Define which field is the main display field, and send the new content type declaration to the client.
 
 ```csharp
 contentType.DisplayField = "productName";
@@ -242,37 +241,37 @@ The fields have a lot of properties and can look daunting at first, especially i
 
 ```csharp
 new Field()
-    {
-        Name = "The name of the field", // The human readable name of the field e.g. "Top image" or "Main heading"
-        Id = "field1", // The id for the field, must be between 2 and 60 characters long and only include alphanumerical characters, dashes, underscores or periods.
-        Type = "Link", // The field type. This determines how the data is stored. E.g. "Date", "Text" or "Integer".
-        Required = false, // Whether this field is mandatory for this content type.
-        Localized = false, // Whether this field should be localized.
-        Disabled = false, // Whether this field is disabled for editing.
-        Omitted = false, // Whether this field should be omitted from the API response entirely
-        LinkType = "Entry",  // Applicable if Type is "Link", whether this links to an Entry or an Asset   
-        Items = new Schema() {  // Applicable if the Type is "Array" and specifies allowed item types for the array
-            Type = "Link", // The type this array field should contain, e.g. "Symbol" or "Link"
-            LinkType = "Entry" // Applicable if the item type is Link, specifies whether the array contains Entry or Asset
-        },
-        Validations = new List<IFieldValidator>() // See validations section below                
-    }
+{
+    Name = "The name of the field", // The human readable name of the field e.g. "Top image" or "Main heading"
+    Id = "field1", // The id for the field, must be between 2 and 60 characters long and only include alphanumerical characters, dashes, underscores or periods.
+    Type = "Link", // The field type. This determines how the data is stored. E.g. "Date", "Text" or "Integer".
+    Required = false, // Whether this field is mandatory for this content type.
+    Localized = false, // Whether this field should be localized.
+    Disabled = false, // Whether this field is disabled for editing.
+    Omitted = false, // Whether this field should be omitted from the API response entirely
+    LinkType = "Entry",  // Applicable if Type is "Link", whether this links to an Entry or an Asset   
+    Items = new Schema() {  // Applicable if the Type is "Array" and specifies allowed item types for the array
+        Type = "Link", // The type this array field should contain, e.g. "Symbol" or "Link"
+        LinkType = "Entry" // Applicable if the item type is Link, specifies whether the array contains Entry or Asset
+    },
+    Validations = new List<IFieldValidator>() // See validations section below                
+}
 ```
 
 But at minimum, you need to specify the name, id and type.
 
 ```csharp
 new Field()
-    {
-        Name = "Product name",
-        Id = "productName",
-        Type = "Text",
-    }
+{
+    Name = "Product name",
+    Id = "productName",
+    Type = "Text",
+}
 ```
 
 ### Field validations
 
-The most complex part of fields is handling validations. You can use a number of different validators that all implement the `IFieldValidator` interface. Every validator has a `Message` property where you can specify a custom message to show if the validation fails.
+The most complex part of fields is handling validations. You can use different validators that all implement the `IFieldValidator` interface. Every validator has a `Message` property where you can specify a custom message to show if the validation fails.
 
 #### LinkContentTypeValidator
 
@@ -312,14 +311,14 @@ The `MimeTypeValidator` validates that an asset is of a specific mime type group
 
 ```csharp
 new Field()
-    {
-        Name = "Image",
-        Id = "image",
-        Type = "Text",
-        Validations = new List<IFieldValidator>() {
-            new MimeTypeValidator(MimeTypeRestriction.Image, "Not a valid image")
-        }
+{
+    Name = "Image",
+    Id = "image",
+    Type = "Text",
+    Validations = new List<IFieldValidator>() {
+        new MimeTypeValidator(MimeTypeRestriction.Image, "Not a valid image")
     }
+}
 ```
 
 Available restrictions are:
@@ -343,23 +342,23 @@ The `SizeValidator` validates that an array field contains a specific number of 
 
 ```csharp
 new Field()
-    {
-        Name = "Tags",
-        Id = "tags",
-        Type = "Array",
-        Validations = new List<IFieldValidator>() {
-            new SizeValidator(min: 2, max: 7, message: "Sorry, you must add between 2 and 7 tags.")
-        }
+{
+    Name = "Tags",
+    Id = "tags",
+    Type = "Array",
+    Validations = new List<IFieldValidator>() {
+        new SizeValidator(min: 2, max: 7, message: "Sorry, you must add between 2 and 7 tags.")
     }
+}
 ```
 
 Both the min and the max value are nullable. This means you can create size validators that validate that an array contains at least a set number of items, but without an upper bound. Or contains a maximum of a set number of items but may also be empty.
 
 ```csharp
-//This SizeValidator allows a maximum of 5 items, but as it has no minimum value it can contain 0 items.
+// This SizeValidator allows a maximum of 5 items, but as it has no minimum value it can contain 0 items.
 new SizeValidator(min: null, max: 5, message: "Sorry, you may add a maxium of 5 tags.")
 
-//This SizeValidator specifies that the field must contain at least 4 items, but there is no upper bound.
+// This SizeValidator specifies that the field must contain at least 4 items, but there is no upper bound.
 new SizeValidator(min: 4, max: null, message: "Sorry, you must add at least 4 tags.")
 ```
 
@@ -370,12 +369,12 @@ The `RangeValidator` validates that a field is within a certain numeric range.
 ```csharp
 new Field()
 {
-    Name = "Quantity",
-    Id = "quantity",
-    Type = "Number",
-    Validations = new List<IFieldValidator>() {
-        new RangeValidator(min: 10, max: 1000, message: "Quantities must be between 10 and 1000.")
-    }
+  Name = "Quantity",
+  Id = "quantity",
+  Type = "Number",
+  Validations = new List<IFieldValidator>() {
+      new RangeValidator(min: 10, max: 1000, message: "Quantities must be between 10 and 1000.")
+  }
 }
 ```
 
@@ -387,13 +386,13 @@ The `RegexValidator` validates that a field conforms to a specified regular expr
 
 ```csharp
 new Field()
-{
-    Name = "Availabe at",
-    Id = "website",
-    Type = "Symbol",
-    Validations = new List<IFieldValidator>() {
-        new RegexValidator(expression: "\\b((?:[a-z][\\w-]+:(?:\\/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}\\/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))", flags: "i", message: "The value isn't a valid web address.")
-    }
+  {
+  Name = "Availabe at",
+  Id = "website",
+  Type = "Symbol",
+  Validations = new List<IFieldValidator>() {
+      new RegexValidator(expression: "\\b((?:[a-z][\\w-]+:(?:\\/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}\\/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))", flags: "i", message: "The value isn't a valid web address.")
+  }
 }
 ```
 
@@ -421,7 +420,7 @@ Once you have created a content type you need to activate it before it's usable.
 var contentType = await client.ActivateContentTypeAsync("<content_type_id>", version: 7);
 ```
 
-You can deactivate it in a similar fashion, but you don't need to specify a version as there is no risk of data loss.
+You can deactivate the content type in a similar fashion, but you don't need to specify a version as there is no risk of data loss.
 
 ```csharp
 var contentType = await client.DeactivateContentTypeAsync("<content_type_id>");
@@ -461,11 +460,11 @@ editorInterface.Controls.First(f => f.FieldId == "productName").WidgetId = Syste
 var boolField = editorInterface.Controls.First(f => f.FieldId == "preorder")
 boolField.WidgetId = SystemWidgetIds.Boolean;
 boolField.Settings = new BooleanEditorInterfaceControlSettings()
-                    {
-                        HelpText = "Is the product available?",
-                        TrueLabel = "Yes",
-                        FalseLabel = "No"
-                    }
+{
+  HelpText = "Is the product available?",
+  TrueLabel = "Yes",
+  FalseLabel = "No"
+}
 await client.UpdateEditorInterfaceAsync(editorInterface, "<content_type_id>", editorInterface.SystemProperties.Version.Value);
 ```
 
@@ -473,42 +472,42 @@ An Editor interface consists of a collection of 'controls'. These are of type `E
 
 ```csharp
 var editorInterfaceControl =  new EditorInterfaceControl()
-                {
-                    FieldId = "<field_id>",
-                    WidgetId = "<widget_id>",
-                    Settings = new EditorInterfaceControlSettings()
-                }
+{
+  FieldId = "<field_id>",
+  WidgetId = "<widget_id>",
+  Settings = new EditorInterfaceControlSettings()
+}
 ```
 
-The `FieldId` is the id of the field that this `EditorInterfaceControl` controls the appearance of, and the `WidgetId` is the type of widget you want the control to display as. There's a handy `SystemWidgetIds` class that contains all built in ids, for a full list refer to [the API documentation](/developers/docs/references/content-management-api/#/reference/editor-interface/get-the-editor-interface).
+The `FieldId` is the id of the field that this `EditorInterfaceControl` controls the appearance of, and the `WidgetId` is the widget type you want the control to display as. There's a handy `SystemWidgetIds` class that contains all built in ids, for a full list refer to [the API documentation](/developers/docs/references/content-management-api/#/reference/editor-interface/get-the-editor-interface).
 
 The `Settings` property contains settings for certain widget types. Normally it's of type `EditorInterfaceControlSettings` and has only a `HelpText` property which represents the help text you want to display in relation to your field control. There are three distinct subclasses of `EditorInterfaceControlSettings` for specific fields.
 
 ```csharp
 var boolEditorInterfaceControlSettings = new BooleanEditorInterfaceControlSettings()
 {
-    HelpText = "Is the product available?",
-    TrueLabel = "Yes",
-    FalseLabel = "No"
+  HelpText = "Is the product available?",
+  TrueLabel = "Yes",
+  FalseLabel = "No"
 };
 
 var ratingEditorInterfaceControlSettings = new RatingEditorInterfaceControlSettings()
 {
-    HelpText = "Rate the product",
-    NumberOfStars = 7, // The number of stars to display in the rating widget, default is 5
+  HelpText = "Rate the product",
+  NumberOfStars = 7, // The number of stars to display in the rating widget, default is 5
 };
 
 var datepickerEditorInterfaceControlSettings = new DatePickerEditorInterfaceControlSettings()
 {
-    HelpText = "Set the date of release",
-    DateFormat = EditorInterfaceDateFormat.time, // The format of the date, can be time, timeZ or dateonly
-    ClockFormat = "24" // The format of the clock, can be 12 or 24
+  HelpText = "Set the date of release",
+  DateFormat = EditorInterfaceDateFormat.time, // The format of the date, can be time, timeZ or dateonly
+  ClockFormat = "24" // The format of the clock, can be 12 or 24
 }
 ```
 
 ## Working with entries
 
-You fetch entries in a similar way to using the CDA (**DEF?**), but with three key differences:
+You fetch entries in a similar way to using the Content Delivery API (CDA), but with three key differences:
 
 -   Every entry will always include all configured locales.
 -   Calls will include unpublished entries.
@@ -528,35 +527,34 @@ Or to get a single entry.
 var entry = await _client.GetEntryAsync("<entry_id>");
 ```
 
-{: .note}
-**Note**: This method is not generic but always returns an `Entry<dynamic>`, as opposed to the `GetEntry` method of the `ContentfulClient`.
+{: .note} **Note**: This method is not generic but always returns an `Entry<dynamic>`, as opposed to the `GetEntry` method of the `ContentfulClient`.
 
 To create (or update) an entry use the `CreateOrUpdateEntryAsync` method. Since you need to provide all the locales the simplest way to model fields is with dictionaries.
 
 ```csharp
 var entry = new Entry<dynamic>();
-            entry.SystemProperties = new SystemProperties();
-            entry.SystemProperties.Id = "Accessories";
+entry.SystemProperties = new SystemProperties();
+entry.SystemProperties.Id = "Accessories";
 
-            entry.Fields = new
-            {
-                Title = new Dictionary<string, string>()
-                {
-                    { "en-US", "Accessories" },
-                    { "sv-SE", "Tillbehör"}
-                },
-                Icon = new Dictionary<string, string>()
-                {
-                    { "en-US", "Icon" }
-                },
-                Description = new Dictionary<string, int>()
-                {
-                    { "en-US", "Small items to make you life or home complete." },
-                    { "sv-SE", "Små saker för att göra ditt liv eller hem komplett." }
-                }
-            };
+entry.Fields = new
+{
+    Title = new Dictionary<string, string>()
+    {
+        { "en-US", "Accessories" },
+        { "sv-SE", "Tillbehör"}
+    },
+    Icon = new Dictionary<string, string>()
+    {
+        { "en-US", "Icon" }
+    },
+    Description = new Dictionary<string, int>()
+    {
+        { "en-US", "Small items to make you life or home complete." },
+        { "sv-SE", "Små saker för att göra ditt liv eller hem komplett." }
+    }
+};
 
-            var newEntry = await _client.CreateOrUpdateEntryAsync(entry, contentTypeId: "<category_content_type_id>");
+var newEntry = await _client.CreateOrUpdateEntryAsync(entry, contentTypeId: "<category_content_type_id>");
 ```
 
 You can publish/unpublish, archive/unarchive and delete entries.
@@ -642,8 +640,7 @@ await client.CreateOrUpdateAssetAsync(managementAsset);
 
 After you have created an asset you need to process it, which moves it to the Contentful AWS buckets and CDN servers.
 
-{: .note}
-**Note**: Each locale needs to be processed separately.
+{: .note} **Note**: You need to process each locale separately.
 
 ```csharp
 await client.ProcessAssetAsync("<new_asset_id>", version, locale);
@@ -709,7 +706,7 @@ var newLocale = new Local()
 await client.CreateLocaleAsync(locale);
 ```
 
-You can't delete a locale that is used as a fallback. You first need to delete or update any locale that has the locale you're trying to delete set as a fallback. When you delete a locale you delete **all** content associated with that locale. It is not possible to reverse this action and all content will be permanently deleted.
+You can't delete a locale that is used as a fallback. You first need to delete or update any locale that has the locale you're trying to delete set as a fallback. When you delete a locale you delete **all** content associated with that locale. It's not possible to reverse this action and all content will be permanently deleted.
 
 ```csharp
 await client.DeleteLocaleAsync("<locale_id>");
