@@ -2,7 +2,7 @@
 page: :docsPlatformsJava
 name: Java
 title: Using Contentful with Java
-metainformation: 'Our SDKs give you access to our APIs and their features.'
+metainformation: 'Our Java SDK gives you access to the Contentful APIs and their features.'
 slug: null
 tags: null
 nextsteps: null

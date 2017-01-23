@@ -2,7 +2,7 @@
 page: :docsWebhooks
 name: Webhooks
 title: Webhooks
-metainformation: 'Webhooks extend the integration possibilities by notifying you, another person or system when content (assets, entries or content types) have changed by calling a pre-configured HTTP endpoint.'
+metainformation: 'Webhooks extend integration possibilities by notifying you when assets, entries or content types have changed.'
 slug: null
 tags:
   - Customization

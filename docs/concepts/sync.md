@@ -2,7 +2,7 @@
 page: :docsSync
 name: Synchronization
 title: Synchronization
-metainformation: 'The Sync API allows you to keep a local copy of all content in a space up-to-date via delta updates, or content that has changed.'
+metainformation: 'The Sync API allows you to keep a local copy of all content in a space up-to-date via delta updates or content that has changed.'
 slug: null
 tags:
   - Basics

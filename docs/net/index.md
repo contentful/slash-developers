@@ -2,7 +2,7 @@
 page: :docsPlatformsNet
 name: .NET
 title: Using Contentful with .NET
-metainformation: 'This guide shows you how to use the .Net SDK to interact with the Contentful APIs.'
+metainformation: 'Our .NET SDK gives you access to the Contentful APIs and their features.'
 slug: null
 tags:
   - SDKs

@@ -2,7 +2,7 @@
 page: :docsLocales
 name: Locales
 title: Locales
-metainformation: 'If you are working with content that needs to be available in multiple languages, locales let you define localizations of content and select a specific locale when querying the Content Delivery API.'
+metainformation: 'Locales let you define content that needs to be available in multiple languages.'
 slug: null
 tags:
   - Basics
