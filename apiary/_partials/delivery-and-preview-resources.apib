@@ -1061,7 +1061,7 @@ For example, if you want to find the products that are of a particular brand, yo
 Here's how the example above would look as a query:
 
 ```sql
-content_type=<product_content_type_id>&fields.brand.sys.contentType.sys.id=<brand_content_type_id>&fields.brand.fields.companyName[match]=Lemnos
+content_type=<product_content_type_id>&fields.brand.sys.contentType.sys.id=<brand_content_type_id>&fields.brand.fields.companyName%5Bmatch%5D=Lemnos
 ```
 
 - First is the `content_type` parameter which you must include when you want to filter based on the values of the fields of entries of a certain content type.
