@@ -10,11 +10,28 @@ nextsteps: null
 
 ## What you can do with Contentful and what problems it solves for you
 
-
-
 ## An introduction to Contentful concepts
 
-Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location using our global delivery network.
+### The content model
+
+Contentful organizes content into _spaces_, that allows you to group all the related resources for a project together, this includes content entries, media assets, and settings for localizing content into different languages.
+
+Each space has a _content model_ that represents the _content types_ you create.
+
+Each _content type_ consists of a set of up to **50** fields that you define, these fields can be one of the following.
+
+![Contentful content model](https://images.contentful.com/tz3n7fnw4ujc/4qEZ2g13fycuysMyaW4A2I/112a48fabadefe1b4674bf56e3d7f7c6/Resource_Model.png)
+
+### Four APIs
+
+Contentful offers four REST APIs for working with your content. Each of these APIs serve a different purpose, so which one to use depends on what you want to do:
+
+-   If you're retrieving content to display to users in an app or website, use the [Content Delivery API][cda-section].
+-   If you want to programmatically create or update content items, use the [Content Management API][cma-section].
+-   If you want to retrieve unpublished content to show in-context previews to content creators and editors, use the [Preview API][cpa-section]. This API behaves like the Content Delivery API, but includes content that has not yet been published.
+-   If you want to retrieve and apply transformations to images stored in Contentful, use the [Images API][images-section].
+
+This tutorial will focus on the Content Delivery API (CDA). All content, both JSON and binary, is fetched from the server closest to an user's location using our global delivery network.
 
 ## How to get the SDK
 
@@ -46,7 +63,6 @@ You also need a valid API key for accessing that space, which you can find under
 ![Space ID in the web app](https://images.contentful.com/tz3n7fnw4ujc/1a1WEezqJQkYWGwU6uWm6o/b05e831c9e75ef67875355a0477f8c77/api-keys.png)
 
 Creating a client will connect to the space, and make the content model available to your application.
-
 
 ## How to get all entries from the space
 
