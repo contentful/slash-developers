@@ -26,7 +26,7 @@ To include the CDA SDK in your app, add the following lines to the _build.gradle
 ~~~gradle
 dependencies {
     // [...]
-    compile 'com.contentful.java:java-sdk:7.2.0'
+    compile 'com.contentful.java:java-sdk:7.3.0'
 }
 ~~~
 
