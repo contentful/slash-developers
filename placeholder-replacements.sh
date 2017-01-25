@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 result_string=$1
 
 # Space ID
