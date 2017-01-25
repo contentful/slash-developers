@@ -15,35 +15,23 @@ All content and assets in Contentful belongs to a space. You will generally have
 Each space has a name, a set of locales, and metadata.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
 
 + Model (application/vnd.contentful.delivery.v1+json)
 
         {
           "sys": {
             "type": "Space",
-            "id": "cfexampleapi"
+            "id": "71rop70dkqaj"
           },
-          "name": "Contentful Example API",
+          "name": "Documentation examples",
           "locales": [
             {
               "code": "en-US",
               "default": true,
-              "name": "English",
+              "name": "U.S. English",
               "fallbackCode": null
-            },
-            {
-              "code": "tlh",
-              "default": false,
-              "name": "Klingon",
-              "fallbackCode": "en-US"
-            },
-            {
-              "code": "bc-BC",
-              "default": false,
-              "name": "Baconglish",
-              "fallbackCode": "tlh"
             }
           ]
         }
@@ -61,8 +49,8 @@ Each space has a name, a set of locales, and metadata.
 ## Content model [/spaces/{space_id}/content_types?access_token={access_token}]
 
 + Parameters
-    + space_id: cfexampleapi (required, string) - ID of the space in form of a string
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + space_id: <space_id> (required, string) - ID of the space in form of a string
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
 
 ### Get the content model of a space [GET]
 
@@ -73,9 +61,9 @@ Each space has a name, a set of locales, and metadata.
 ## Content type [/spaces/{space_id}/content_types/{content_type_id}?access_token={access_token}]
 
 + Parameters
-    + space_id: cfexampleapi (required, string) - ID of the space in form of a string
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type_id: cat (required, string) - ID of the content type in form of a string
+    + space_id: <space_id> (required, string) - ID of the space in form of a string
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type_id: <product_content_type_id> (required, string) - ID of the content type in form of a string
 
 ### Get a single content type [GET]
 
@@ -90,8 +78,8 @@ Entries are the content contained in a space and represent anything that you  de
 ## Entries collection [/spaces/{space_id}/entries?access_token={access_token}]
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
 
 ### Get all entries of a Space [GET]
 
@@ -102,9 +90,9 @@ Entries are the content contained in a space and represent anything that you  de
 ## Entry [/spaces/{space_id}/entries/{entry_id}?access_token={access_token}]
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + entry_id (required, string, `nyancat`) ... Alphanumeric `id` of the entry to retrieve
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + entry_id: `<entry_id>` (required, string) - Alphanumeric `id` of the entry to retrieve
 
 ### Get a single entry [GET]
 
@@ -141,36 +129,383 @@ With images you can use query parameters to define the image size, cropping para
 ## Assets collection [/spaces/{space_id}/assets?access_token={access_token}]
 
 + Parameters
-    + space_id: cfexampleapi (required, string) - ID of the space in form of a string
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + space_id: <space_id> (required, string) - ID of the space in form of a string
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
 
 + Model (application/vnd.contentful.delivery.v1+json)
 
         {
-          "sys": {
-            "type": "Asset",
-            "id": "nyancat",
-            "space": {"sys": {"type": "Link", "linkType": "Space", "id": "example"}},
-            "createdAt": "2013-03-26T00:13:37.123Z",
-            "updatedAt": "2013-03-26T00:13:37.123Z",
-            "revision": 1
-          },
-          "fields": {
-             "title": "Nyan cat",
-             "description": "A typical picture of Nyancat including the famous rainbow trail.",
-             "file": {
-                "fileName": "nyancat.png",
-                "contentType": "image/png",
-                "details": {
-                   "image": {
-                      "width": 250,
-                      "height": 250
+            "sys": {
+                "type": "Array"
+            },
+            "total": 11,
+            "skip": 0,
+            "limit": 100,
+            "items": [
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "1MgbdJNTsMWKI0W68oYqkU",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:41.472Z",
+                        "updatedAt": "2016-12-20T10:43:41.472Z",
+                        "revision": 1,
+                        "locale": "en-US"
                     },
-                    "size": 12273
-                 },
-                "url": "//images.contentful.com/cfexampleapi/4gp6taAwW4CmSgumq2ekUm/9da0cd1936871b8d72343e895a00d611/Nyan_cat_250px_frame.png"
-               }
-            }
+                    "fields": {
+                        "title": "Chive logo",
+                        "description": "Brand logo",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/1MgbdJNTsMWKI0W68oYqkU/4c2d960aa37fe571d261ffaf63f53163/9ef190c59f0d375c0dea58b58a4bc1f0.jpeg",
+                            "details": {
+                                "size": 44089,
+                                "image": {
+                                    "width": 500,
+                                    "height": 500
+                                }
+                            },
+                            "fileName": "9ef190c59f0d375c0dea58b58a4bc1f0.jpeg",
+                            "contentType": "image/jpeg"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "4zj1ZOfHgQ8oqgaSKm4Qo2",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:41.469Z",
+                        "updatedAt": "2016-12-20T10:43:41.469Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "title": "Playsam",
+                        "description": "Brand logo",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/4zj1ZOfHgQ8oqgaSKm4Qo2/8c30486ae79d029aa9f0ed5e7c9ac100/playsam.jpg",
+                            "details": {
+                                "size": 7003,
+                                "image": {
+                                    "width": 100,
+                                    "height": 100
+                                }
+                            },
+                            "fileName": "playsam.jpg",
+                            "contentType": "image/jpeg"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "3wtvPBbBjiMKqKKga8I2Cu",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:42.502Z",
+                        "updatedAt": "2016-12-20T10:43:42.502Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "title": "Normann Copenhagen",
+                        "description": "Brand logo",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/3wtvPBbBjiMKqKKga8I2Cu/90b69e82b8b735383d09706bdd2d9dc5/zJYzDlGk.jpeg",
+                            "details": {
+                                "size": 12302,
+                                "image": {
+                                    "width": 353,
+                                    "height": 353
+                                }
+                            },
+                            "fileName": "zJYzDlGk.jpeg",
+                            "contentType": "image/jpeg"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "wtrHxeu3zEoEce2MokCSi",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:41.397Z",
+                        "updatedAt": "2016-12-20T10:43:41.397Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "title": "Playsam Streamliner",
+                        "description": "Merchandise photo",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg",
+                            "details": {
+                                "size": 27187,
+                                "image": {
+                                    "width": 600,
+                                    "height": 446
+                                }
+                            },
+                            "fileName": "quwowooybuqbl6ntboz3.jpg",
+                            "contentType": "image/jpeg"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "6t4HKjytPi0mYgs240wkG",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:41.840Z",
+                        "updatedAt": "2016-12-20T10:43:41.840Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "title": "Toys",
+                        "description": "Category icon set",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/6t4HKjytPi0mYgs240wkG/b7ba3984167c53d728e7533e54ab179d/toys_512pxGREY.png",
+                            "details": {
+                                "size": 6744,
+                                "image": {
+                                    "width": 128,
+                                    "height": 128
+                                }
+                            },
+                            "fileName": "toys_512pxGREY.png",
+                            "contentType": "image/png"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "10TkaLheGeQG6qQGqWYqUI",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:41.401Z",
+                        "updatedAt": "2016-12-20T10:43:41.401Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "title": "Whisk beaters",
+                        "description": "Merchandise photo",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/10TkaLheGeQG6qQGqWYqUI/13c64b63807d1fd1c4b42089d2fafdd6/ryugj83mqwa1asojwtwb.jpg",
+                            "details": {
+                                "size": 28435,
+                                "image": {
+                                    "width": 450,
+                                    "height": 600
+                                }
+                            },
+                            "fileName": "ryugj83mqwa1asojwtwb.jpg",
+                            "contentType": "image/jpeg"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "Xc0ny7GWsMEMCeASWO2um",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:42.413Z",
+                        "updatedAt": "2016-12-20T10:43:42.413Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "title": "Hudson Wall Cup ",
+                        "description": "Merchandise image",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/Xc0ny7GWsMEMCeASWO2um/190cc760e991d27fba6e8914b87a736d/jqvtazcyfwseah9fmysz.jpg",
+                            "details": {
+                                "size": 48751,
+                                "image": {
+                                    "width": 600,
+                                    "height": 600
+                                }
+                            },
+                            "fileName": "jqvtazcyfwseah9fmysz.jpg",
+                            "contentType": "image/jpeg"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "2Y8LhXLnYAYqKCGEWG4EKI",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:42.413Z",
+                        "updatedAt": "2016-12-20T10:43:42.413Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "t%5Btle":%5D"Lemnos",
+                        "description": "company logo",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/2Y8LhXLnYAYqKCGEWG4EKI/44105a3206c591d5a64a3ea7575169e0/lemnos-logo.jpg",
+                            "details": {
+                                "size": 7149,
+                                "image": {
+                                    "width": 175,
+                                    "height": 32
+                                }
+                            },
+                            "fileName": "lemnos-logo.jpg",
+                            "contentType": "image/jpeg"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "6m5AJ9vMPKc8OUoQeoCS4o",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:41.493Z",
+                        "updatedAt": "2016-12-20T10:43:41.493Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "title": "Home and Kitchen",
+                        "description": "category icon",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/6m5AJ9vMPKc8OUoQeoCS4o/07b56832506b9494678d1acc08d01f51/1418244847_Streamline-18-256.png",
+                            "details": {
+                                "size": 2977,
+                                "image": {
+                                    "width": 256,
+                                    "height": 256
+                                }
+                            },
+                            "fileName": "1418244847_Streamline-18-256.png",
+                            "contentType": "image/png"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "6s3iG2OVmoUcosmA8ocqsG",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:41.392Z",
+                        "updatedAt": "2016-12-20T10:43:41.392Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "title": "House icon",
+                        "description": "Category icon set",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/6s3iG2OVmoUcosmA8ocqsG/b55b213eeca80de2ecad2b92aaa0065d/1418244847_Streamline-18-256__1_.png",
+                            "details": {
+                                "size": 4244,
+                                "image": {
+                                    "width": 250,
+                                    "height": 250
+                                }
+                            },
+                            "fileName": "1418244847_Streamline-18-256 (1).png",
+                            "contentType": "image/png"
+                        }
+                    }
+                },
+                {
+                    "sys": {
+                        "space": {
+                            "sys": {
+                                "type": "Link",
+                                "linkType": "Space",
+                                "id": "71rop70dkqaj"
+                            }
+                        },
+                        "id": "KTRF62Q4gg60q6WCsWKw8",
+                        "type": "Asset",
+                        "createdAt": "2016-12-20T10:43:42.396Z",
+                        "updatedAt": "2016-12-20T10:43:42.396Z",
+                        "revision": 1,
+                        "locale": "en-US"
+                    },
+                    "fields": {
+                        "title": "SoSo Wall Clock",
+                        "descriptio%5B": "b%5D Lemnos",
+                        "file": {
+                            "url": "//images.contentful.com/71rop70dkqaj/KTRF62Q4gg60q6WCsWKw8/ae855aa3810a0f6f8fee25c0cabb4e8f/soso.clock.jpg",
+                            "details": {
+                                "size": 66927,
+                                "image": {
+                                    "width": 1000,
+                                    "height": 1000
+                                }
+                            },
+                            "fileName": "soso.clock.jpg",
+                            "contentType": "image/jpeg"
+                        }
+                    }
+                }
+            ]
         }
 
 ### Get all assets of a space [GET]
@@ -182,9 +517,9 @@ With images you can use query parameters to define the image size, cropping para
 ## Asset [/spaces/{space_id}/assets/{asset_id}?access_token={access_token}]
 
 + Parameters
-    + space_id: cfexampleapi (required, string) - ID of the space in form of a string
-    + asset_id: nyancat (required, string) - ID of the asset in form of a string
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + space_id: <space_id> (required, string) - ID of the space in form of a string
+    + asset_id: <asset_id> (required, string) - ID of the asset in form of a string
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
 
 ### Get a single asset [GET]
 
@@ -194,7 +529,7 @@ With images you can use query parameters to define the image size, cropping para
 
 # Group Links
 
-Links are a powerful way to model relationships between content entries and assets. Learn more about links in our [concept guide](https://www.contentful.com/developers/docs/concepts/links/).
+Links are a powerful way to model relationships between content entries and assets. Learn more about links in our [concept guide](/developers/docs/concepts/links/).
 
 ## Retrieval of linked items [/spaces/{space_id}/entries?access_token={access_token}&include={include}]
 
@@ -209,9 +544,9 @@ If the standard `items` array has not already retrieved the linked entries, they
 **Note**: The `include` parameter only resolves links between entries and assets within a space. Links between content types within a space are not included in the response.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + include (required, number, `2`) ... Number of levels to include (defaults to 1)
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + include: `2` (required, number, `2`) - Number of levels to include (defaults to 1)
 
 ### Query entries [GET]
 
@@ -226,8 +561,8 @@ For example, to include 2 levels of linked entries.
 Even when not specified, the `include` parameter defaults to the value of `1`. When you want to omit linked items, specify `include` as `0`.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
 
 ### Query entries [GET]
 
@@ -240,12 +575,12 @@ Even when not specified, the `include` parameter defaults to the value of `1`. W
 If you need to retrieve all items linked to a target entry the query URL should filter entries on their specific `content_type`, `linking_field` (field to link items) and `entry_id` from the target entry.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + value (required, number, `2`) ... Number of levels to include.
-    + linking_field (required, string, `bestFriend`) ... Field used to link items
-    + target_entry_id (required,string, `nyancat`) ... ID of the target entry
-    + content_type (required,string, `cat`) ... ID of the content type
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + value: `2` (required, number) - Number of levels to include.
+    + linking_field: `<link_field>` (required, string) - Field used to link items
+    + target_entry_id: `<asset_id>` (required,string) - ID of the target entry
+    + content_type: `<product_content_type_id>` (required,string) - ID of the content type
 
 ### Query entries [GET]
 
@@ -266,13 +601,13 @@ Search for entries with a specific content type by setting the `content_type` UR
 When querying entries and using search filters based on `fields` or ordering by `fields` you must specify this parameter.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
 
 ### Query entries [GET]
 
-This example finds all entries of content type 'cat'.
+This example finds all entries of content type 'Product'.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -285,30 +620,30 @@ The select operator allows you to choose what to return from an entity. You prov
 For example, if you want to return the `sys.id` and `fields.name` of an Entry:
 
 ```bash
-/spaces/<space-id>/entries/?select=sys.id,fields.name&content_type=<content_type_id>
+/spaces/<space-id>/entries/?select=sys.id,fields.name&content_type=<product_content_type_id>
 ```
 
 You can fetch the entire `sys` or `fields` object and it's sub-fields by passing it to the `select` operator. For example to omit the `sys` object:
 
 ```bash
-/spaces/<space-id>/entries/?select=fields&content_type=<content_type_id>
+/spaces/<space-id>/entries/?select=fields&content_type=<product_content_type_id>
 ```
 
 Select has some restrictions:
 
 - The select operator is only applicable for collections of Entries and Assets, and with an Entry you must provide the `content_type` query parameter.
-- The select operator can only select properties to a depth of 2. For example, `select=fields.name.en-US` is not valid.
-- If you want to select a property for a specific locale you need to combine the `select` and `locale` operators, e.g `/assets/?select=fields.name&locale=en-US`.
+- The select operator can only select properties to a depth of 2. For example, `select=fields.productName.en-US` is not valid.
+- If you want to select a property for a specific locale you need to combine the `select` and `locale` operators, e.g `/assets/?select=fields.productName&locale=en-US`.
 - You can select up to 100 properties.
 - If you use the select operator on an Entry with linked fields, only the content linked to a field you select will be returned.
 
 If you provide an invalid property path, e.g `sys.doesNotExist`, Contentful returns a `400 Bad request` containing the property path that is invalid.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
-    + value (required, string, `sys.id`) ... The path of the property to select.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + value: `sys.id` (required, string) - The path of the property to select.
 
 ### Query entries [GET]
 
@@ -327,14 +662,14 @@ Search for exact matches by using the equality operator. This includes querying 
 **Note**: Equality and inequality operators are not supported for text fields and you need to constrain search queries for fields with a `content_type` URI query parameter.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.id`) ... The attribute to match.
-    + value (required, `nyancat`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + attribute: `sys.id` (required, string) - The attribute to match.
+    + value : `<entry_id>` (required) - The value to match.
 
 ### Query entries [GET]
 
-This example finds all entries with the ID 'nyancat' (IDs are unique).
+This example finds all entries with the ID '<entry_id>' (IDs are unique).
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -345,14 +680,14 @@ This example finds all entries with the ID 'nyancat' (IDs are unique).
 Uses the `[ne]` parameter to exclude items matching a certain pattern.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.id`) ... The attribute to match.
-    + value (required, `nyancat`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + attribute: `sys.id` (required, string) - The attribute to match.
+    + value : `<entry_id>` (required) - The value to match.
 
 ### Query entries [GET]
 
-This example returns all entries except those with the ID `nyancat`.
+This example returns all entries except those with the ID `<entry_id>`.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -368,15 +703,15 @@ The equality/inequality operators also work with array fields:
 **Note**: As the query filters by a field, you need to specify a content type.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
-    + field_id (required, string, `likes`) ... The attribute to match.
-    + value (required, `lasagna`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + field_id: `<link_field_multiple>` (required, string) - The attribute to match.
+    + value: `accessories` (required) - The value to match.
 
 ### Query entries [GET]
 
-This example finds all cats who like `lasagna` by matching `fields.likes` (an array) against a single value.
+This example finds all products tagged as `accessories` by matching `fields.tags` (an array) against a single value.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -384,18 +719,18 @@ This example finds all cats who like `lasagna` by matching `fields.likes` (an ar
 
 ## Array with multiple values [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{field_id}%5Ball%5D={values}]
 
-It's possible to use the `[all]` operator to retrieve entries matching a specific set of values (e.g. `fields.likes[all]=rainbows,fish`)
+It's possible to use the `[all]` operator to retrieve entries matching a specific set of values (e.g. `fields.likes[all]=flowers,accessories`)
 
 ### Query entries [GET]
 
-This example finds all cats who like both `rainbows` and `fish` by using the `all` operator with `fields.likes` (an array) and the two values.
+This example finds all products tagged as `flowers` and `accessories` by using the `all` operator with `fields.tags` (an array) and the two values.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
-    + field_id (required, string, `likes`) ... The attribute to match.
-    + values (required, `rainbows,fish`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + field_id: `tags` (required, string) - The attribute to match.
+    + values: `flowers,accessories` (required) - The value to match.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -406,14 +741,14 @@ This example finds all cats who like both `rainbows` and `fish` by using the `al
 You can filter a field by multiple values with the `[in]` operator. When applied to an array value there must be at least one matching item. Similarly, when including a field value, you need to specify a Content Type.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.id`) ... The attribute to match.
-    + value (required, `finn,jake`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + attribute: `sys.id` (required, string) - The attribute to match.
+    + value: `<entry_id>,<entry_id_two>` (required) - The value to match.
 
 ### Query entries [GET]
 
-This example gets entries that match 'finn' and 'jake'.
+This example gets entries that match '<entry_id>' and '<entry_id_two>'.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -424,15 +759,15 @@ This example gets entries that match 'finn' and 'jake'.
 You can filter a field by multiple values with the `[nin]` operator. When applied to an array value there must be at least one not matching item. Similarly, when including a field value, you need to specify a content type.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
-    + attribute (required, string, `fields.likes`) ... The attribute to match.
-    + value (required, `rainbows,lasagna`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + attribute: `fields.tags` (required, string) - The attribute to match.
+    + value: `flowers,accessories` (required) - The value to match.
 
 ### Query entries [GET]
 
-This example get all cats that like neither 'rainbows' nor 'lasagna'.
+This example get all products tagged as neither 'flowers' nor 'accessories'.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -445,11 +780,11 @@ You can check for the presence of a field using the `[exists]` operator. It chec
 If the field is not assigned a value, it will not have a JSON payload and the operator will assume it to be 'non-existent'.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ... Alphanumeric `id` of the content type to retrieve.
-    + attribute (required, string, `fields.likes`) ... The path to the property we're checking for existence
-    + value (required, boolean, `true`) ... True if the path from attribute should exist
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + attribute: `fields.tags` (required, string) - The path to the property we're checking for existence
+    + value: `true` (required, boolean) - True if the path from attribute should exist
 
 ### Query entries [GET]
 
@@ -473,10 +808,10 @@ You can apply these operators to date and number fields.
 When applied to field values, you must specify the content type in the query.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.updatedAt`) ... The attribute to match.
-    + value (required, `2013-01-01T00:00:00Z`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + attribute: `sys.updatedAt` (required, string) - The attribute to match.
+    + value: `2013-01-01T00:00:00Z` (required) - The value to match.
 
 ### Query entries [GET]
 
@@ -493,13 +828,13 @@ It's possible to perform a full-text search across all text and symbol fields wi
 **Note**: Full-text search is case insensitive and you might get more results than expected. Also the query will only take values with more than 1 character.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + value (required, string, `bacon`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + value: `design` (required, string) - The value to match.
 
 ### Query entries [GET]
 
-This example finds all entries matching 'bacon'.
+This example finds all entries containing the word 'design'.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -510,15 +845,15 @@ This example finds all entries matching 'bacon'.
 After specifying a content type, you can perform a full-text search on a specific field with the `[match]` operator. The query will only take values with more than **1** character.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `dog`) ... Alphanumeric `id` of the content type to retrieve.
-    + field_id (required, string, `description`) ... Alphanumeric `id` of field to retrieve.
-    + value (required, string, `bacon pancakes`) ... The value to match.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<brand_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + field_id: `website` (required, string) - Alphanumeric `id` of field to retrieve.
+    + value: `.com` (required, string) - The value to match.
 
 ### Query entries [GET]
 
-This example finds all entries with 'bacon pancakes' in the description field.
+This example finds all entries with '.com' in the website field.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -531,10 +866,10 @@ Using a proximity search on location-enabled content let's you find results in a
 Queries that include exact coordinates wont be able to take full advantage of our caching layer. With many use cases it might be enough to round the coordinates to 3 decimal places (an accuracy of about 300m), 2 decimal places (an accuracy of about 1km) or more to improve your cache hit rates.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the content type to retrieve.
-    + coordinate (required, string, `38,-122`) ... Latitude and longitude of a location.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<city_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + coordinate: `38,-122` (required, string) - Latitude and longitude of a location.
 
 ### Query entries [GET]
 
@@ -568,10 +903,10 @@ To search for locations within a rectangle area object, use the structure `field
 The structure `field.center[within]=latitute,longitude,radius` will return entries included in the circle with `fields.center` of the given latitude, longitude and radius. The unit of the radius parameter is kilometer.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `1t9IbcfdCk6m04uISSsaIK`) ... Alphanumeric `id` of the content type to retrieve.
-    + rectangle (required, string, `40,-124,36,-121`) ... Coordinate rectangle to search in.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<city_content_type_id>` (required, string) - Alphanumeric `id` of the content type to retrieve.
+    + rectangle: `40,-124,36,-121` (required, string) - Coordinate rectangle to search in.
 
 ### Query entries [GET]
 
@@ -610,9 +945,9 @@ Object |Object        |Arbitrary object.
 
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the Space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.createdAt`) ... Attribute to order by.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the Space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + attribute: `sys.createdAt` (required, string) - Attribute to order by.
 
 ### Query entries [GET]
 
@@ -627,9 +962,9 @@ This example gets all entries ordered by their creation date.
 This example reverses the sort order by prefixing the field with a minus sign.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + attribute (required, string, `sys.updatedAt`) ... Attribute to order by.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + attribute: `sys.updatedAt` (required, string) - Attribute to order by.
 
 ### Query entries [GET]
 
@@ -644,10 +979,10 @@ This example orders results by the time of the last update starting with the new
 You can order items by specifying the `order` parameter along with attributes(`attribute`, `attribute2`). Prefix the field with a minus sign to reverse the sort order of the attribute.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + attribute (required,string,`sys.createdAt`) ... First attribute to order by
-    + attribute2 (required, string, `sys.id`) ... Second attribute to order by.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + attribute: `sys.createdAt` (required, string) - First attribute to order by
+    + attribute2: `sys.id` (required, string) - Second attribute to order by.
 
 ### Query entries [GET]
 
@@ -662,9 +997,9 @@ You can specify the maximum number of results as a `limit` search parameter.
 **Note**: The maximum number of entries returned by the API is **1000**. The API will throw a `BadRequestError` for values higher than **1000** and values other than an integer. The default number of entries returned by the API is **100**.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + value (required, number, `3`) ... Limit for number of results.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + value: `3` (required, number) - Limit for number of results.
 
 ### Query entries [GET]
 
@@ -686,9 +1021,9 @@ By combining `skip` and `limit` you can paginate through results:
     etc.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + value (required, number, `3`) ... Offset for results.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + value: `3` (required, number) - Offset for results.
 
 ### Query entries [GET]
 
@@ -704,9 +1039,9 @@ You can filter assets by their MIME type group by using the `mimetype_group` que
 `spreadsheet`, `pdfdocument`, `archive`, `code` and `markup`. By default, the API will return all assets.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + mimetype_group (required, string, `image`) ... MIME type group to include.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + mimetype_group: `image` (required, string) - MIME type group to include.
 
 ### Query assets [GET]
 
@@ -716,62 +1051,29 @@ This example will return only image assets.
 
   + Attributes (Empty Array)
 
-## Search on references [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{reference_field}.sys.contentType.sys.id={reference_content_type}&fields.{reference_field}.fields.{search_field}={search_value}]
+## Search on references [/spaces/{space_id}/entries?access_token={access_token}&content_type={content_type}&fields.{reference_field}.sys.contentType.sys.id={reference_content_type}&fields.{reference_field}.fields.{search_field}%5Bmatch%5D={search_value}]
 You can search for entries based on the values of referenced entries.
 
-For example, you have entries of content type 'Article' with a `writtenBy` field used to link to entries of content type 'Author'. Using the search on references functionality you can find the articles written by a particular author with one API request.
+For example, if you want to find the products that are of a particular brand, you can use the search on references functionality to find the products with one API request.
 
 ### Structure of a query
 
 Here's how the example above would look as a query:
 
 ```sql
-content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name=john
+content_type=<product_content_type_id>&fields.brand.sys.contentType.sys.id=<brand_content_type_id>&fields.brand.fields.companyName[match]=Lemnos
 ```
 
 - First is the `content_type` parameter which you must include when you want to filter based on the values of the fields of entries of a certain content type.
-- Second is `fields.writtenBy.sys.contentType.sys.id=author` which you use to to filter on fields of entries from content type `Author`.
-- Third is `fields.writtenBy.fields.name=john` which filters entries to those written by 'john'.
+- Second is `fields.brand.sys.contentType.sys.id=<brand_content_type_id>` which you use to to filter on fields of entries from content type `<product_content_type_id>`.
+- Third is `fields.brand.fields.companyName[match]=Lemnos` which filters entries to those branded as 'Lemnos'.
 
-**Note**: All the filters on referenced entries are scoped with the path to the field that contains the reference. In the previous example that path is `fields.writtenBy`.
+**Note**: All the filters on referenced entries are scoped with the path to the field that contains the reference. In the previous example that path is `fields.brand`.
 
-You can search on multiple references at once and combine them into one singe API query. For example:
-
-- Articles written by authors with a given name: `fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name=XYZ`
-- And published on certain sites: `fields.publishedIn.sys.contentType.sys.id=publication&fields.publishedIn.fields.url[in]=XYZ,RST`
-- And reviewed with a review higher than a certain threshold: `fields.review.sys.contentType.sys.id=review&fields.review.fields.rating[gt]=4`
-
-The resulting query would look like this:
-
-```
-// Formatted with line breaks to make it easier to read
-
-content_type=article&
-fields.writtenBy.sys.contentType.sys.id=author&
-fields.writtenBy.fields.name=XYZ&
-fields.publishedIn.sys.contentType.sys.id=publication&
-fields.publishedIn.fields.url[in]=XYZ,RST&
-fields.review.sys.contentType.sys.id=review&
-fields.review.fields.rating[gt]=4
-```
-
+You can search on multiple references at once and combine them into one singe API query with a series of field and value pairs.
 
 ### Available nested filters
 You can use the `all`, `in`, `nin`, `exists`, `match`, `gt`, `gte`,`lt`, `lte`, `ne`, `near` and `within` filters when searching on references.
-
-For example, all the following queries are valid:
-
-```sql
-content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.age[gt]=21
-```
-
-```sql
-content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.name[in]=john,alex,klaus
-```
-
-```sql
-content_type=article&fields.writtenBy.sys.contentType.sys.id=author&fields.writtenBy.fields.languages[all]=spanish,english
-```
 
 The semantics of these filters are the same as when you use them on a non referenced entry.
 
@@ -783,17 +1085,18 @@ Searching on references has the following restrictions:
 - The maximum number of reference searches in one query is 2. A larger value will return an error.
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + content_type (required, string, `cat`) ...
-    + reference_content_type (required, string, `cat`) ... The id of then content type of the referenced entry
-    + reference_field (required, string, `bestFriend`) ... The id of the field holding the reference
-    + search_field (required, string, `color`) ... The id of the field you want to search
-    + search_value (required, string, `rainbow`) ... The value you are looking for
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + content_type: `<product_content_type_id>` (required, string) -
+    + reference_content_type: `<brand_content_type_id>` (required, string) - The id of then content type of the referenced entry
+    + reference_field: `brand` (required, string) - The id of the field holding the reference
+    + search_field: `companyName` (required, string) - The id of the field you want to search
+    + search_value: `Lemnos` (required, string) - The value you are looking for
+
 
 ### Search on references [GET]
 
-This example will return the cats who are friends with another cat that is 'rainbow' colored.
+This example will return the Lemnos branded products.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
@@ -810,23 +1113,23 @@ The locale parameter must be the code of a locale in the space you're querying, 
 
 If there's no content available for the requested locale the API will try the fallback locale of the requested locale.
 
-For example you have the `de-CH` (Swiss German) locale and configure it to fallback to `de-DE` (German). When you request content for `de-CH` any missing field in that locale will be replace with its fallback value in `de-DE` (if they exist). For more information about locale fallbacks read [the locale section of the CMA docs](www.contentful.com/developers/docs/references/content-management-api/#/reference/locales).
+For example you have the `de-CH` (Swiss German) locale and configure it to fallback to `de-DE` (German). When you request content for `de-CH` any missing field in that locale will be replace with its fallback value in `de-DE` (if they exist). For more information about locale fallbacks read [the locale section of the CMA docs](/developers/docs/references/content-management-api/#/reference/locales).
 
-When you specify `locale=*`, field values are nested in an object with keys corresponding to each locale with a defined value. Instead of writing `fields.name` when accessing the response data from your code, use `fields.name[localeCode]`.
+When you specify `locale=*`, field values are nested in an object with keys corresponding to each locale with a defined value. Instead of writing `fields.productName` when accessing the response data from your code, use `fields.productName[localeCode]`.
 
 If the result contains only a single locale, resources will include the property `sys.locale` indicating the locale of that object.
 
-Learn more about locales in our [concepts document](https://www.contentful.com/developers/docs/concepts/locales/).
+Learn more about locales in our [concepts document](/developers/docs/concepts/locales/).
 
 + Parameters
-    + space_id (required, string, `cfexampleapi`) ... Alphanumeric `id` of the space to retrieve.
-    + access_token (required, string, `b4c0n73n7fu1`) ... :[token description](tokentype)
-    + entry_id (optional, string, `nyancat`) ... Alphanumeric `id` of the entry to retrieve.
-    + locale (required, string, `tlh`) ... The locale to use.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + access_token: `<access_token>` (required, string) - :[token description](tokentype)
+    + entry_id: `<entry_id>` (optional, string) - Alphanumeric `id` of the entry to retrieve.
+    + locale: `<locale>` (required, string) - The locale to use.
 
 ### Query entries [GET]
 
-`fields.name` is the only localized field in the `cat` content type, so returns all other fields in the default locale.
+`fields.productName` is the only localized field in the `product` content type, so returns all other fields in the default locale.
 
 + Response 200 (application/vnd.contentful.delivery.v1+json)
 
