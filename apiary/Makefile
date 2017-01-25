@@ -36,6 +36,7 @@ install:
 	if [ $$? != 0 ]; then \
 		bundle install; \
 	fi
+	chmod a+x ../placeholder-replacements.sh
 
 $(CDA_BLUEPRINT): outdir cda.apib _partials/content-types-description.md
 	$(HERCULE) cda.apib -o $@
