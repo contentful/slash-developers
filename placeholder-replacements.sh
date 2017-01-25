@@ -13,6 +13,8 @@ else
   sed -i -e 's/<access_token>/297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971/g' $result_string
 fi
 
+sed -i -e 's/<cma_token>/8b57f1a13508078dd67f18c8a9b785d9fc818f9bd5f8c8e24e5899b8ae16532d/g' $result_string
+
 # Specific entry ID
 sed -i -e 's/<entry_id>/5KsDBWseXY6QegucYAoacS/g' $result_string
 
@@ -46,10 +48,20 @@ sed -i -e 's/<link_field>/brand/g' $result_string
 sed -i -e 's/<link_field_multiple>/tags/g' $result_string
 
 # Webhook
-sed -i -e 's/<webhook_id>/newproduct/g' $result_string
+sed -i -e 's/<webhook_id>/0KzM2HxYr5O1pZ4SaUzK8h/g' $result_string
+
+# Snapshot
+sed -i -e 's/<snapshot_id>/4lFryO7nDNioplKMFBpyMB/g' $result_string
+
+# Space membership ID
+sed -i -e 's/<space_membership_id>/0xWanD4AZI2AR35wW9q51n/g' $result_string
+
+# Role
+sed -i -e 's/<role_id>/0xvkNW6WdQ8JkWlWZ8BC4x/g' $result_string
 
 # Locale
 sed -i -e 's/<locale>/en-US/g' $result_string
+sed -i -e 's/<locale_id>/0xpIUSHPfJRzsAFFaub3hT/g' $result_string
 
 # Sync token
 sed -i -e 's/<sync_token>/w7Ese3kdwpMbMhhgw7QAUsKiw6bCi09CwpFYwpwywqVYw6DDh8OawrTDpWvCgMOhw6jCuAhxWX_CocOPwowhcsOzeEJSbcOvwrfDlCjDr8O1YzLDvi9FOTXCmsOqT8OFcHPDuFDCqyMMTsKNw7rDmsOqKcOnw7FCwpIfNMOcFMOxFnHCoCzDpAjCucOdwpwfw4YTK8Kpw6zCtDrChVQlNsO2ZybDnw/g' $result_string

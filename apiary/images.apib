@@ -35,10 +35,10 @@ This documentation covers the parameters you can add to the URL specified in the
 Retrieve an unmodified image. This is the same URL from an [asset's](/#reference/assets) `file.url` field, containing the token ids and image name you will require.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
-    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + token1: `wtrHxeu3zEoEce2MokCSi` (required, string) - Alphanumeric token identifying the image.
+    + token2: `9da0cd1936871b8d72343e895a00d611` (required, string) - Alphanumeric token identifying the image.
+    + name: `quwowooybuqbl6ntboz3.jpg` (required, string) - The original file name of the image.
 
 ### Retrieve an image [GET]
 
@@ -51,11 +51,11 @@ Retrieve an unmodified image. This is the same URL from an [asset's](/#reference
 Images can be automatically converted to a different format, `jpg`, `png` or `webp` are supported. If no parameter is specified, you will receive your image in its original format.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
-    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
-    + image_format (required, string, `jpg`) ... The desired image output format.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + token1: `wtrHxeu3zEoEce2MokCSi` (required, string) - Alphanumeric token identifying the image.
+    + token2: `9da0cd1936871b8d72343e895a00d611` (required, string) - Alphanumeric token identifying the image.
+    + name: `quwowooybuqbl6ntboz3.jpg` (required, string) - The original file name of the image.
+    + image_format: `jpg` (required, string) - The desired image output format.
 
 ### Retrieve an image [GET]
 
@@ -66,11 +66,11 @@ Images can be automatically converted to a different format, `jpg`, `png` or `we
 You can define the quality of JPEG images retrieved.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
-    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
-    + quality (required, number, `50`) ... Quality as a percentage, between 0 and 100.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + token1: `wtrHxeu3zEoEce2MokCSi` (required, string) - Alphanumeric token identifying the image.
+    + token2: `9da0cd1936871b8d72343e895a00d611` (required, string) - Alphanumeric token identifying the image.
+    + name: `quwowooybuqbl6ntboz3.jpg` (required, string) - The original file name of the image.
+    + quality: `50` (required, number) - Quality as a percentage, between 0 and 100.
 
 ### Retrieve an image [GET]
 
@@ -83,10 +83,10 @@ JPEG images can be delivered as *progressive* JPEGs.
 The progressive JPEG format stores multiple passes of an image in progressively higher detail. When a progressive image is being loaded, the viewer will first see a lower quality pixelated version which will gradually improve in detail, until the image is fully downloaded. The idea is to display an image as early as possible to make the layout look as designed.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
-    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + token1: `wtrHxeu3zEoEce2MokCSi` (required, string) - Alphanumeric token identifying the image.
+    + token2: `9da0cd1936871b8d72343e895a00d611` (required, string) - Alphanumeric token identifying the image.
+    + name: `quwowooybuqbl6ntboz3.jpg` (required, string) - The original file name of the image.
 
 ### Retrieve an image [GET]
 
@@ -99,12 +99,12 @@ The progressive JPEG format stores multiple passes of an image in progressively 
 Choose a custom width and height for the image.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
-    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
-    + width (required, number, `100`) ... The desired width of the image, the maximum allowed size is 4000.
-    + height (required, number, `100`) ... The desired height of the image, the maximum allowed size is 4000.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + token1: `wtrHxeu3zEoEce2MokCSi` (required, string) - Alphanumeric token identifying the image.
+    + token2: `9da0cd1936871b8d72343e895a00d611` (required, string) - Alphanumeric token identifying the image.
+    + name: `quwowooybuqbl6ntboz3.jpg` (required, string) - The original file name of the image.
+    + width: `100` (required, number) - The desired width of the image, the maximum allowed size is 4000.
+    + height: `100` (required, number) - The desired height of the image, the maximum allowed size is 4000.
 
 ### Retrieve an image [GET]
 
@@ -125,11 +125,11 @@ The possible values are:
 
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
-    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
-    + type (required, string, `pad`) ... One of the types as described above.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + token1: `wtrHxeu3zEoEce2MokCSi` (required, string) - Alphanumeric token identifying the image.
+    + token2: `9da0cd1936871b8d72343e895a00d611` (required, string) - Alphanumeric token identifying the image.
+    + name: `quwowooybuqbl6ntboz3.jpg` (required, string) - The original file name of the image.
+    + type: `pad` (required, string) - One of the types as described above.
 
 ### Retrieve an image [GET]
 
@@ -146,11 +146,11 @@ Possible value:
 - `face` or `faces` to focus the resizing via face detection.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
-    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
-    + type (required, string, `face`) ... One of the types described above.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + token1: `wtrHxeu3zEoEce2MokCSi` (required, string) - Alphanumeric token identifying the image.
+    + token2: `9da0cd1936871b8d72343e895a00d611` (required, string) - Alphanumeric token identifying the image.
+    + name: `quwowooybuqbl6ntboz3.jpg` (required, string) - The original file name of the image.
+    + type: `face` (required, string) - One of the types described above.
 
 ### Retrieve an image [GET]
 
@@ -165,11 +165,11 @@ Possible values:
 - A float value `r` defining the corner radius.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
-    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
-    + radius (required, `20`) ... A value as described above.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + token1: `wtrHxeu3zEoEce2MokCSi` (required, string) - Alphanumeric token identifying the image.
+    + token2: `9da0cd1936871b8d72343e895a00d611` (required, string) - Alphanumeric token identifying the image.
+    + name: `quwowooybuqbl6ntboz3.jpg` (required, string) - The original file name of the image.
+    + radius: `20` (required) - A value as described above.
 
 ### Retrieve an image [GET]
 
@@ -182,13 +182,13 @@ Possible values:
 The background color when used with the `pad` fit type. It accepts RGB values like `rgb:9090ff` and the default color is transparent.
 
 + Parameters
-    + space_id (required, string, `<space_id>`) ... Alphanumeric `id` of the space to retrieve.
-    + token1 (required, string, `wtrHxeu3zEoEce2MokCSi`) ... Alphanumeric token identifying the image.
-    + token2 (required, string, `9da0cd1936871b8d72343e895a00d611`) ... Alphanumeric token identifying the image.
-    + name (required, string, `quwowooybuqbl6ntboz3.jpg`) ... The original file name of the image.
-    + color (required, string `rgb:ffffff`) ... A color constant as described above.
-    + width (required, number, `500`) ... The desired width of the image.
-    + height (required, number, `250`) ... The desired height of the image.
+    + space_id: `<space_id>` (required, string) - Alphanumeric `id` of the space to retrieve.
+    + token1: `wtrHxeu3zEoEce2MokCSi` (required, string) - Alphanumeric token identifying the image.
+    + token2: `9da0cd1936871b8d72343e895a00d611` (required, string) - Alphanumeric token identifying the image.
+    + name: `quwowooybuqbl6ntboz3.jpg` (required, string) - The original file name of the image.
+    + color: `rgb:ffffff` (required, string) - A color constant as described above.
+    + width: `500` (required, number) - The desired width of the image.
+    + height: `250` (required, number) - The desired height of the image.
 
 ### Retrieve an image [GET]
 

@@ -138,14 +138,14 @@ should fix both scenarios.
 
 + Parameters
     + space_id: <space_id> (required, string) - ID of the space in form of a string
-    + content_type_id: hfM9RCJIk0wIm06WkEOQY (required, string) - ID of the content type in form of a string
+    + content_type_id: <product_content_type_id> (required, string) - ID of the content type in form of a string
 
 ### Get the editor interface [GET]
 
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -158,7 +158,7 @@ You can use this endpoint to update an existing editor interface. you will need 
 + Request Update the editor interface
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Editor Interface)

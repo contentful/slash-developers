@@ -118,7 +118,7 @@ If you're an admin or an owner in multiple organizations you need to pass the ID
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -131,7 +131,7 @@ The `X-Contentful-Organization` header is optional if an account belongs to one 
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Organization: 1PLOOEmTI2S1NYald2TemO
 
@@ -153,7 +153,7 @@ The `X-Contentful-Organization` header is optional if an account belongs to one 
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -166,7 +166,7 @@ The `X-Contentful-Organization` header is optional if an account belongs to one 
 + Request Update existing
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Version: 1
 
@@ -184,7 +184,7 @@ You delete an existing space by issuing a `DELETE` request to `/spaces/ID`. Dele
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
@@ -202,7 +202,7 @@ You delete an existing space by issuing a `DELETE` request to `/spaces/ID`. Dele
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -221,7 +221,7 @@ In these responses, you can also specify validations and determine whether a fie
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Content Type Creation)
@@ -285,7 +285,7 @@ After these steps, you will no longer receive this field as part of any API resp
 + Request Create new Content Type with a predefined identifier
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Content Type Creation)
@@ -297,7 +297,7 @@ After these steps, you will no longer receive this field as part of any API resp
 + Request Update existing Content Type
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Version: 14
 
@@ -310,7 +310,7 @@ After these steps, you will no longer receive this field as part of any API resp
 + Request Update existing Content Type with validations
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Version: 15
 
@@ -323,7 +323,7 @@ After these steps, you will no longer receive this field as part of any API resp
 + Request Update an existing Field's identifier
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Version: 16
 
@@ -338,7 +338,7 @@ After these steps, you will no longer receive this field as part of any API resp
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -351,7 +351,7 @@ _Before you can delete a content type you need to deactivate it_.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
@@ -366,7 +366,7 @@ _Before you can delete a content type you need to deactivate it_.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 11
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -378,7 +378,7 @@ _Before you can delete a content type you need to deactivate it_.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -396,7 +396,7 @@ Retrieves the activated versions of content types, ignoring any changes made sin
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -419,7 +419,7 @@ Entries represent text-based content in a space. An entry's data structure adher
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -436,7 +436,7 @@ When using this endpoint, an ID will be automatically generated for the created 
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Content-Type: <product_content_type_id>
 
@@ -467,7 +467,7 @@ For updating an entry, passing the ID of the entry's content type is not require
 + Request Create new entry with a predefined identifier
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Content-Type: hfM9RCJIk0wIm06WkEOQY
 
@@ -480,7 +480,7 @@ For updating an entry, passing the ID of the entry's content type is not require
 + Request Update existing entry
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Content-Type: hfM9RCJIk0wIm06WkEOQY
             X-Contentful-Version: 4
@@ -496,7 +496,7 @@ For updating an entry, passing the ID of the entry's content type is not require
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -507,7 +507,7 @@ For updating an entry, passing the ID of the entry's content type is not require
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 4
 
 + Response 204 (application/vnd.contentful.management.v1+json)
@@ -525,7 +525,7 @@ After publishing the entry it will be available via the Content Delivery API.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 6
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -537,7 +537,7 @@ After publishing the entry it will be available via the Content Delivery API.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 7
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -557,7 +557,7 @@ An entry can only be archived when it's not published.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 8
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -569,7 +569,7 @@ An entry can only be archived when it's not published.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 9
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -598,7 +598,7 @@ Creating an asset requires three steps and API calls:
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -611,7 +611,7 @@ When using this endpoint, an ID will be automatically generated for the created 
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Asset Update)
@@ -633,7 +633,7 @@ Retrieves the published versions of all assets in a space.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -654,7 +654,7 @@ This endpoint can be used to create a new asset with an ID specified by the user
 + Request Create a new asset with a predefined identifier
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Asset Update)
@@ -666,7 +666,7 @@ This endpoint can be used to create a new asset with an ID specified by the user
 + Request Update existing asset
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Version: 1
 
@@ -681,7 +681,7 @@ This endpoint can be used to create a new asset with an ID specified by the user
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -692,7 +692,7 @@ This endpoint can be used to create a new asset with an ID specified by the user
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 1
 
 + Response 204 (application/vnd.contentful.management.v1+json)
@@ -711,7 +711,7 @@ Asset processing happens asynchronously, the call will not block until it has fi
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 1
 
 + Response 204 (application/vnd.contentful.management.v1+json)
@@ -729,7 +729,7 @@ After publishing the asset it will be available via the [Content Delivery API](h
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 13
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -741,7 +741,7 @@ After publishing the asset it will be available via the [Content Delivery API](h
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 14
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -761,7 +761,7 @@ You can only archive an asset when it's not published.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 15
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -773,7 +773,7 @@ You can only archive an asset when it's not published.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             X-Contentful-Version: 16
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -813,7 +813,7 @@ The locale endpoint returns a list of all locales created. One will have the fla
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -826,7 +826,7 @@ Use this endpoint to create a new locale for the specified space. You cannot cre
 + Request
   + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
   + Attributes (Locale)
 + Response 201 (application/vnd.contentful.management.v1+json)
@@ -845,7 +845,7 @@ Use this endpoint to create locales for specific fields. You need to send data f
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -855,7 +855,7 @@ Use this endpoint to create locales for specific fields. You need to send data f
 
 + Parameters
   + space_key: <space_id> (required, string) - ID of the Space in form of a string
-  + locale_id: 1WFZQhacJ9SJvkd7e0d8ys (required, string) - ID of the Locale in form of a string
+  + locale_id: <locale_id> (required, string) - ID of the Locale in form of a string
 
 ### Get a locale [GET]
 
@@ -864,7 +864,7 @@ This endpoint returns a single locale with its metadata.
 + Request
   + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 + Response 200 (application/vnd.contentful.management.v1+json)
   + Attribute (Locale Complete)
@@ -880,7 +880,7 @@ It's not possible to change the default locale of a space, as these are permanen
 + Request
   + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
   + Attributes (Locale)
 + Response 201 (application/vnd.contentful.management.v1+json)
@@ -896,7 +896,7 @@ Deleting a locale used as a fallback is not allowed. You first have to ensure th
 + Request
   + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 + Response 204
 
@@ -1048,7 +1048,7 @@ increasing delays up to a maximum of 3 attempts.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1059,7 +1059,7 @@ increasing delays up to a maximum of 3 attempts.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Webhook attributes)
@@ -1073,7 +1073,7 @@ increasing delays up to a maximum of 3 attempts.
 
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Webhook attributes)
@@ -1100,7 +1100,7 @@ increasing delays up to a maximum of 3 attempts.
 + Request Create with a predefined identifier
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Webhook attributes)
@@ -1118,7 +1118,7 @@ increasing delays up to a maximum of 3 attempts.
 + Request Update existing
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
             X-Contentful-Version: 1
 
@@ -1134,7 +1134,7 @@ increasing delays up to a maximum of 3 attempts.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1145,7 +1145,7 @@ increasing delays up to a maximum of 3 attempts.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 204 (application/vnd.contentful.management.v1+json)
 
@@ -1166,7 +1166,7 @@ This call returns a list of the most recent webhook calls made, their status, po
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1187,7 +1187,7 @@ The call details provide detailed information about the outgoing request and the
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
 
@@ -1208,7 +1208,7 @@ The health endpoint provides an overview of recently successful webhook calls:
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
 + Response 200 (application/vnd.contentful.management.v1+json)
@@ -1275,7 +1275,7 @@ This endpoint returns a paginated list of roles for a given space. Each role con
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1288,7 +1288,7 @@ This endpoint can be used to create a custom role. The role name must be unique 
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Role)
@@ -1301,7 +1301,7 @@ This endpoint can be used to create a custom role. The role name must be unique 
 
 + Parameters
     + space_id: <space_id> (required, string) - ID of the space in form of a string
-    + role_id: 1ElgCn1mi1UHSBLTP2v4TD (required, string) - ID of the role in a form of a string
+    + role_id: <role_id> (required, string) - ID of the role in a form of a string
 
 ### Get a single role [GET]
 
@@ -1310,7 +1310,7 @@ Use this endpoint to read an existing single role.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
     + Attributes (Complete Role)
 
@@ -1325,7 +1325,7 @@ Use this endpoint to update an existing role. This endpoint cannot be used to cr
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Role)
@@ -1341,7 +1341,7 @@ Use this endpoint to delete an existing role. It's only possible to delete roles
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 204
 
@@ -1370,7 +1370,7 @@ snapshotType |String  | The type of snapshot. For now the only valid value is `p
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1381,14 +1381,14 @@ snapshotType |String  | The type of snapshot. For now the only valid value is `p
 + Parameters
     + space_id: <space_id> (required, string) - ID of the Space in form of a string
     + entry_id: <entry_id> (required, string) - ID of the entry in form of a string
-    + snapshot_id: 5dD4PfXLnYPyaDmDorG3pj (required, string) - ID of the snapshot in form of a string
+    + snapshot_id: <snapshot_id> (required, string) - ID of the snapshot in form of a string
 
 ### Get a snapshot [GET]
 
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1408,7 +1408,7 @@ This endpoint returns a paginated list of all space memberships.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1421,7 +1421,7 @@ Use this endpoint to create a space membership (or the invitation of a user to a
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Space Membership)
@@ -1434,7 +1434,7 @@ Use this endpoint to create a space membership (or the invitation of a user to a
 
 + Parameters
     + space_id: <space_id> (required, string) - ID of the space in a form of a string
-    + space_membership_id: 13ju26yx8X4xd6cNgrA5YA (required, string) - ID of the space membership in a form of a string
+    + space_membership_id: <space_membership_id> (required, string) - ID of the space membership in a form of a string
 
 ### Get a single space membership [GET]
 
@@ -1443,7 +1443,7 @@ This endpoint returns details about an existing space membership.
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1456,7 +1456,7 @@ This endpoints allows you to change a space membership. Use this to assign addit
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes (Space Membership)
@@ -1472,7 +1472,7 @@ This endpoint allows you to delete a space membership. It only affects if a user
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 204
 
@@ -1492,7 +1492,7 @@ We recommend using different access tokens for different applications or deliver
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
 
 + Response 200 (application/vnd.contentful.management.v1+json)
 
@@ -1504,7 +1504,7 @@ We recommend using different access tokens for different applications or deliver
 + Request
     + Headers
 
-            Authorization: Bearer <access_token>
+            Authorization: Bearer <cma_token>
             Content-Type: application/vnd.contentful.management.v1+json
 
     + Attributes
@@ -1737,7 +1737,7 @@ We recommend using different access tokens for different applications or deliver
 
 - sys - System Attributes
     - type: WebhookDefinition
-    - id: foobar
+    - id: <webhook_id>
     - version: 0 (number)
     - space (Space Link)
     - Include Resource Metadata
@@ -1867,7 +1867,7 @@ We recommend using different access tokens for different applications or deliver
 
 - sys - System Attributes
     - type: Role (string)
-    - id: 34SHqvY4zjISqXNawkyTwq - Identifier of Resource
+    - id: <role_id> - Identifier of Resource
     - version: 0 (number) - Version of Resource
     - Include Resource Metadata
 - Include Role
@@ -1898,7 +1898,7 @@ We recommend using different access tokens for different applications or deliver
 
 - sys - System Attributes
     - type: SpaceMembership (string)
-    - id: 13ju26yx8X4xd6cNgrA5YA - Identifier of Resource
+    - id: <space_membership_id> - Identifier of Resource
     - version: 0 (number) - Version of Resource
     - Include Resource Metadata
 - Include Space Membership
