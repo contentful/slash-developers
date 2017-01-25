@@ -2,7 +2,7 @@
 page: :docsPlatformsJavascript
 name: JavaScript
 title: Using Contentful with JavaScript
-metainformation: 'Our SDKs give you access to our APIs and their features.'
+metainformation: 'Our JavaScript SDK gives you access to the Contentful APIs and their features.'
 slug: null
 tags:
   - Basics

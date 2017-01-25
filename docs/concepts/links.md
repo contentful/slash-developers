@@ -2,7 +2,7 @@
 page: :docsLinks
 name: Links
 title: Links
-metainformation: 'Links are a powerful way to model relationships between content. You can use a URI query parameter with the Contentful search to retrieve an entire chain of related content to display in your application.'
+metainformation: 'Links are a powerful way to model relationships between content and retrieve an entire chain of related content to display in your application.'
 slug: null
 tags:
   - Basics

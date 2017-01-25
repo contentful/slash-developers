@@ -2,7 +2,7 @@
 page: :docsCdaSwift
 name: Getting Started with Contentful and Swift
 title: Getting Started with Contentful and Swift
-metainformation: This tutorial will walk you through building a simple app from start to finish.
+metainformation: This tutorial will walk you through building a simple app from start to finish wiht our Swift SDK.
 slug: null
 tags:
   - CDA
@@ -15,11 +15,23 @@ nextsteps:
     link: /developers/docs/ios/tutorials/using-delivery-api-on-ios/
 ---
 
-:[Getting started tutorial intro](../../_partials/getting-started-intro.md)
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-## Setup the client
+We publish SDKs for various languages to make developing applications easier. This article details how to get content using the [Swift CDA SDK][22].
 
-There are different ways to integrate the SDK into your own apps, described in detail in the [README for the SDK][2]. This guide will use [CocoaPods][3], the dependency manager for Cocoa projects, which helps you keep the SDK up-to-date:
+## Pre-requisites
+
+This tutorial assumes you have read and understood [the guide that covers the Contentful data model](/developers/docs/concepts/data-model/).
+
+## Authentication
+
+For every request, clients [need to provide an API key][7], which is created per space and used to delimit applications and content classes.
+
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
+
+## Setup
+
+There are different ways for integrating the SDK into your own apps, described in detail in the [README for the SDK][2]. For this guide, we will use [CocoaPods][3], the dependency manager for Cocoa projects, which helps you keep the SDK up-to-date:
 
 Create the following _Podfile_ for your project:
 
@@ -32,17 +44,15 @@ target 'Product Catalogue' do
 end
 ~~~
 
-As you are developing a mobile app, you should provide offline data persistence for users and the app integrates the [Contentful persistence library][4]. If you prefer to not use a dependency manager, we also provide dynamic frameworks as part of our GitHub releases, but these might not be compatible depending on the Swift version you use, because there is [no stable Swift ABI yet][5].
+As you are developing a mobile app, you should provide offline persistence to users and the app integrates the [Contentful persistence library][4]. If you prefer to not use a dependency manager, we also provide dynamic frameworks as part of our GitHub releases, but these might not be compatible depending on the Swift version you use, because there is [no stable Swift ABI yet][5].
 
 ## Configuring the API client
 
-The [`Client`][6] class manages all requests to the API.
-
-:[Create credentials](../../_partials/credentials.md)
+The [Client][6] class manages all requests to the API. To create a client object, you will need the authentication token and Space ID from earlier.
 
 ~~~swift
-let spaceId = "<space_id>"
-let token = "<access_token>"
+let spaceId = "phq7bbxq15g4"
+let token = "885ea645d74c1ba6d3ee5ac4020104bc0e14afdb2552632d67e14b0c02fc06e6"
 
 let client = Client(spaceIdentifier: spaceId, accessToken: token)
 ~~~
@@ -52,18 +62,18 @@ let client = Client(spaceIdentifier: spaceId, accessToken: token)
 Now that you have initialized a client, you can fetch entries:
 
 ~~~swift
-client.fetchEntries(["content_type": "<product_content_type_id>"]).1.next {
+client.fetchEntries(["content_type": "product"]).1.next {
     print($0)
 }
 ~~~
 
-Each content type has its own unique ID, and you can find it by looking at the last part of the URL in the web app:
+Each content type in Contentful has its own unique ID, and you can find it by looking at the last part of the URL when you have opened it in the web app:
 
 ![Finding the Content type ID](content-type-id.png)
 
-The [`fetchEntries(_:)`][8] method returns a tuple of `NSURLSessionDataTask`, for cancellation purposes, and a [signal][10], called on completion of the request. The error is available via `.error` and if you prefer, there is [a variant][9], which takes a completion closure instead.
+The [`fetchEntries(_:)`][8] method returns a tuple of `NSURLSessionDataTask`, for cancellation purposes, and a [signal][10], which will be called on completion of the request. The error is also available via `.error` and if you prefer, there is [a variant][9], which takes a completion closure instead.
 
-The CDA supports a variety of parameters to search, filter and sort your content. The SDK passes these parameters as a dictionary, which in this case will retrieve entries of a certain content type. You can learn more about search parameters [in this guide][20], and explore more of the API using [this Playground][12].
+Our API supports a variety of parameters to search, filter and sort your content. These parameters are passed as a dictionary when using the SDK, in this case will retrieve entries of a certain content type. You can learn more about search parameters [in this guide][20]. You can also explore more of our API using [this Playground][12].
 
 ## Offline persistence
 
@@ -89,7 +99,7 @@ synchronizer.map(contentTypeId: "category", to: ProductCategory.self)
 synchronizer.map(contentTypeId: "product", to: Product.self)
 ~~~
 
-By default, Contentful fields are automatically mapped to properties of the same name, but you can optionally specify a custom mapping, if needed. Keep in mind that for assets, the URL will be stored, but no caching of the actual documents is performed, for caching images look into [FastImageCache][19].
+By default, Contentful fields are automatically mapped to properties of the same name, but you can optionally specify a custom mapping, if needed. Keep in mind that for assets, the URL will be stored, but no caching of the actual documents is performed, for caching images look into [FastImageCache][19], for example.
 
 ## Displaying the data
 
@@ -103,7 +113,7 @@ func fetchedResultsController(forContentType type: Any.Type, predicate: NSPredic
 }
 ~~~
 
-Using the fetched results controller as a table view data source happens through glue code in a `CoreDataFetchDataSource` class, which is out of scope to discuss here, but you can read more in [the example on GitHub][20].
+Using the fetched results controller as a table view data source is done through glue code in a `CoreDataFetchDataSource` class, which is out of scope to discuss here, but you can check it out in [the example on GitHub][20].
 
 All the Contentful synchronization specific code is in a single class, `ContentfulDataManager` ([read more on GitHub][21]):
 
@@ -131,6 +141,12 @@ lazy var dataSource: CoreDataFetchDataSource<ProductCell> = {
     }
 }
 ~~~
+
+## Next steps
+
+- [Explore the Swift SDK GitHub repository](https://github.com/contentful/contentful.swift).
+- [Using the Contentful Management API with Swift](/developers/docs/ios/tutorials/using-management-api-on-ios/).
+- [Offline Persistence with the iOS SDK](/developers/docs/ios/tutorials/offline-persistence-in-ios-sdk/).
 
 [1]: https://github.com/contentful/product-catalogue-swift
 [10]: http://cocoadocs.org/docsets/Interstellar/1.4.0/Classes/Signal.html

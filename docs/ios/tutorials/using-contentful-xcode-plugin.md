@@ -2,7 +2,7 @@
 page: :docsContentfulXcode
 name: Using the Contentful Xcode Plugin
 title: Using the Contentful Xcode Plugin
-metainformation: 'Our plugin for Xcode generates a Core Data model directly from your content model, making it easier than ever to use the Content Delivery API in your iOS and macOS projects.'
+metainformation: 'Our plugin for Xcode generates a Core Data model directly from your content model.'
 slug: null
 tags:
   - Tools
