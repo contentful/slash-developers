@@ -236,7 +236,7 @@ await client.CreateSpaceMembershipAsync(newMembership);
 
 To delete a membership use the `DeleteSpaceMembershipAsync` method.
 
-{. :note}
+{: .note}
 **Note**: It's possible to delete every single membership of a space, leaving no administrator available. You
 can fix this by inviting a new user through the Contentful web app organization settings.
 
