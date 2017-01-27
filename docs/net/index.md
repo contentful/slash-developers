@@ -26,7 +26,7 @@ This SDK interacts with the Content Delivery API, a read-only API for retrieving
 
 ### API demo
 
-[This guide](/developers/api-demo/curl/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggest next steps.
+[This guide](/developers/api-demo/dotnet/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggest next steps.
 
 ### Getting started with the Content Delivery API SDK and .Net
 
