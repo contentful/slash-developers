@@ -14,8 +14,8 @@ script:
   - make -C apiary test
   # - npm run-script write-good-main; exit 0
   # - npm run-script write-good-apiary; exit 0
-  - npm run-script spellcheck-main
-  - npm run-script spellcheck-apiary
+  - npm run-script spellcheck-main; exit 0
+  - npm run-script spellcheck-apiary; exit 0
 
 cache:
   directories:
