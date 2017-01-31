@@ -2,7 +2,7 @@
 page: :docsCdaSwift
 name: Getting Started with Contentful and Swift
 title: Getting Started with Contentful and Swift
-metainformation: This tutorial will walk you through building a simple app from start to finish.
+metainformation: This tutorial will walk you through building a simple app from start to finish wiht our Swift SDK.
 slug: null
 tags:
   - CDA

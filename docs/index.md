@@ -3,6 +3,7 @@ page: :docsOverview
 name: Developer center
 title: Developer center
 subtitle: Learn how to build with Contentful
+metainformation: Everything you need to understand and use Contentful. Includes an overview of concepts, API reference, tutorials, SDKs and code samples.
 ---
 
 You're in the right place to find everything you need to deeper understand and use Contentful. This includes an overview of Contentful concepts, API references, tutorials, details of SDKs and libraries for major platforms, helpful tools and code samples.

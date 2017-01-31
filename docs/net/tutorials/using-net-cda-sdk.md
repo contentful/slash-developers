@@ -46,20 +46,20 @@ To communicate with the CDA you use the `ContentfulClient` class that requires t
 2.  An access token. You can create access tokens in the _APIs_ tab of each space in the Contentful web app.
 3.  A space id. This is the unique identifier of your space that you can find in the Contentful web app.
 
-~~~`csharp
-    var httpClient = new HttpClient();
-    var client = new ContentfulClient(httpClient, "<content_delivery_api_key>", "<space_id>")
-    ~~~
+~~~csharp
+var httpClient = new HttpClient();
+var client = new ContentfulClient(httpClient, "<content_delivery_api_key>", "<space_id>")
+~~~
 
-    {: .note}
-    An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose it you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. This means that if you make a lot of requests in a short period of time you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and exposing the underlying `HttpClient` of the `ContentfulClient` allows you to do this.
+{: .note}
+An `HttpClient` in .Net is special. It implements `IDisposable` but is generally not supposed to be disposed for the lifetime of your application. This is because whenever you make a request with the `HttpClient` and immediately dispose it you leave the connection open in a `TIME_WAIT` state. It will remain in this state for **240** seconds by default. This means that if you make a lot of requests in a short period of time you might end up exhausting the connection pool, which would result in a `SocketException`. To avoid this you should share a single instance of `HttpClient` for the entire application, and exposing the underlying `HttpClient` of the `ContentfulClient` allows you to do this.
 
-    Once you have an `ContentfulClient` you can start querying content. For example, to get a single entry:
+Once you have an `ContentfulClient` you can start querying content. For example, to get a single entry:
 
-    ~~~csharp
-    var entry = await client.GetEntryAsync<Entry<dynamic>>("<entry_id>");
-    Console.WriteLine(entry.Fields.productName.ToString());
-~~~`
+~~~csharp
+var entry = await client.GetEntryAsync<Entry<dynamic>>("<entry_id>");
+Console.WriteLine(entry.Fields.productName.ToString());
+~~~
 
 The `GetEntry` method is generic and you can pass it any [POCO](https://pocoproject.org/) class. It will then deserialize the JSON response from the API into that class. The example above passed it an `Entry` class as a generic type parameter. This has the extra benefit of allowing you to also retrieve the system metadata of the entry. If you're not interested in the metadata you can pass any other class of you choice.
 

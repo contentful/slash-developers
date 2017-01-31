@@ -528,7 +528,8 @@ Or to get a single entry.
 var entry = await _client.GetEntryAsync("<entry_id>");
 ~~~
 
-{: .note} **Note**: This method is not generic but always returns an `Entry<dynamic>`, as opposed to the `GetEntry` method of the `ContentfulClient`.
+{: .note}
+**Note**: This method is not generic but always returns an `Entry<dynamic>`, as opposed to the `GetEntry` method of the `ContentfulClient`.
 
 To create (or update) an entry use the `CreateOrUpdateEntryAsync` method. Since you need to provide all the locales the simplest way to model fields is with dictionaries.
 

@@ -2,7 +2,7 @@
 page: :docsPlatformsAndroid
 name: Android
 title: Using Contentful with Android
-metainformation: 'Our SDKs give you access to our APIs and their features.'
+metainformation: 'Our Android SDK gives you access to the Contentful APIs and their features.'
 slug: null
 tags:
 - Basics

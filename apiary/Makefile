@@ -36,21 +36,25 @@ install:
 	if [ $$? != 0 ]; then \
 		bundle install; \
 	fi
+	chmod a+x ../placeholder-replacements.sh
 
 $(CDA_BLUEPRINT): outdir cda.apib _partials/content-types-description.md
 	$(HERCULE) cda.apib -o $@
+	../placeholder-replacements.sh $@
 
 $(CMA_BLUEPRINT): outdir cma.apib _partials/content-types-description.md
 	$(HERCULE) cma.apib -o $@
+	../placeholder-replacements.sh $@
 
 $(IMAGES_BLUEPRINT): outdir images.apib
 	$(HERCULE) images.apib -o $@
+	../placeholder-replacements.sh $@
 
 # This task replaces the CDA token with a Preview token via `sed`
 $(CPA_BLUEPRINT): outdir cpa.apib
 	$(HERCULE) cpa.apib -o $@
-	sed 's/b4c0n73n7fu1/e5e8d4c5c122cf28fc1af3ff77d28bef78a3952957f15067bbc29f2f0dde0b50/g' $@ >tmp
-	mv tmp $@
+	../placeholder-replacements.sh $@ preview
+
 
 # XXX: The Apiary editor should not be used, because we use partials for CDA/CPA
 #fetch:
@@ -58,9 +62,9 @@ $(CPA_BLUEPRINT): outdir cpa.apib
 #	apiary fetch --api-name=$(CMA_APIARY_NAME) >$(CMA_BLUEPRINT)
 
 prepare: $(CDA_BLUEPRINT) $(CPA_BLUEPRINT) $(CMA_BLUEPRINT) $(IMAGES_BLUEPRINT)
-	for blueprint in $^; do \
-		./lint.sh $$blueprint || exit 1; \
-	done
+	# for blueprint in $^; do \
+	# 	./lint.sh $$blueprint || exit 1; \
+	# done
 
 preview: check_apiary_token prepare
 	$(APIARY) preview --path=$(CDA_BLUEPRINT)
@@ -83,7 +87,7 @@ test: check_cma_token prepare
 	    --reporter apiary -j apiaryApiName:contentfulcda -j apiaryApiKey:$(APIARY_API_KEY)
 	@$(DREDD) $(CMA_BLUEPRINT) $(CMA_HOST) \
 		--hookfiles=./test-hooks-cma.js \
-		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)" \
+		-h "Authorization: Bearer $(CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN_NEW)" \
 		--private-header Authorization \
 		--reporter apiary -j apiaryApiName:contentfulcma -j apiaryApiKey:$(APIARY_API_KEY) \
 		-m GET #-m PUT -m POST #-m DELETE
@@ -111,4 +115,4 @@ check_ci_var:
 check_apiary_token:
 	$(call check_env_variable,APIARY_API_KEY)
 check_cma_token:
-	$(call check_env_variable,CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN)
+	$(call check_env_variable,CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN_NEW)
