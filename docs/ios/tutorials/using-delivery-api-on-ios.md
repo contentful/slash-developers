@@ -1,8 +1,8 @@
 ---
-page: ':docsCdaIos'
+page: :docsCdaIos
 name: Using the Delivery API on iOS
 title: Using the Delivery API on iOS
-metainformation: This guide will show you what our iOS SDK does and how you can use it to build content-driven apps.
+metainformation: 'This guide will show you how you can use our iOS SDK to build content-driven apps.'
 slug: null
 tags:
   - CDA
