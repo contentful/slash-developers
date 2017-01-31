@@ -8,14 +8,12 @@ CDAArray array = client.fetch(CDAContentType.class)
 ```
 
 ```swift
-self.client.fetchContentType(identifier: "<content_type_id>") { (result: Result<ContentType>) in
-    // Handle result
-}
+self.client.fetchContentType(identifier: "<content_type_id>") { (result: Result<ContentType>) in }
 ```
 
 ```javascript
 client.getContentType('<content_type_id>')
-  .then(contentType => console.log(contentType))
+  .then(function (contentType) {})
 ```
 
 ```php
