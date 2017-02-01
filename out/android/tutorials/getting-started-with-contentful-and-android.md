@@ -13,9 +13,11 @@ nextsteps:
     link: /developers/docs/android/tutorials/offline-persistence-with-vault/
 ---
 
+This guide will show you how to get started using our [Android SDK](https://github.com/contentful/contentful.java) to consume content.
+
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-We publish SDKs for various languages to make developing applications easier. This article details how to get content using the [JavaScript CDA SDK](https://github.com/contentful/contentful.js).
+We publish SDKs for various languages to make developing applications easier.
 
 ## Pre-requisites
 
@@ -33,32 +35,32 @@ Create a new project in Android Studio using the 'Blank Activity' template, and 
 
 ## Dependencies and permissions
 
-This guide uses [RXAndroid](https://github.com/ReactiveX/RxAndroid) in the examples, which adds more complexity, but allows you to fetch results without tying up the main Android thread.
+This guide uses [RXAndroid](https://github.com/ReactiveX/RxAndroid) in the examples, which allows you to fetch results without tying up the main Android thread.
 
 To include the CDA SDK, add the following lines to the _build.gradle_ file:
 
-~~~gradle
+```gradle
 dependencies {
     // [...]
     compile 'com.contentful.java:java-sdk:7.3.0'
     compile 'io.reactivex:rxandroid:0.23.0'
 }
-~~~
+```
 
 Add the internet permission to the _AndroidManifest.xml_ file so your app can access the Contentful APIs:
 
-~~~xml
+```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.example.demospaceexplorer" >
 
   <uses-permission android:name="android.permission.INTERNET" />
   ...
 </manifest>
-~~~
+```
 
 ## Creating a client
 
-Add the following code to the `onCreate` function to create a `CDAClient` that communicates with the Contentful APIs:
+Add the following code to the `onCreate` method to create a `CDAClient` that communicates with the Contentful APIs:
 
 ## Initializing the client
 
@@ -66,24 +68,24 @@ You need an API key and a space ID to initialize a client:
 
 _You can use the API key and space ID pre-filled below for our example space or replace them with your own values created earlier_.
 
-~~~java
+```java
 CDAClient client = CDAClient.builder()
   .setSpace("71rop70dkqaj")
   .setToken("297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971")
   .build();
-~~~
+```
 
-Add the [Gson](https://github.com/google/gson) library to make JSON responses easier to read.
+Use the [Gson](https://github.com/google/gson) library to make JSON responses easier to read.
 
-~~~java
+```java
 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-~~~
+```
 
 ## Fetching specific items
 
 If you want to fetch a specific entry, use the `id` of the entry inside a `.one` method:
 
-~~~java
+```java
 client.observe(CDAEntry.class)
     .one("5KsDBWseXY6QegucYAoacS")
     .observeOn(AndroidSchedulers.mainThread())
@@ -103,7 +105,7 @@ client.observe(CDAEntry.class)
         result = cdaEntry;
       }
     });
-~~~
+```
 
 ```
 I/Contentful: CDAEntry{id='5KsDBWseXY6QegucYAoacS'}
@@ -113,7 +115,7 @@ I/Contentful: CDAEntry{id='5KsDBWseXY6QegucYAoacS'}
 
 To fetch all entries, create a new observable that watches for changes, in this case, fetching all entries from the specified space with the `all` method and content type with the `where` method:
 
-~~~java
+```java
 client.observe(CDAEntry.class)
                .where("content_type", "2PqfXUJwE8qSYKuM0U6w8M")
                .all()
@@ -140,7 +142,7 @@ client.observe(CDAEntry.class)
                        result = cdaArray;
                    }
                });
-~~~
+```
 
 ```
 I/Contentful: Hudson Wall Cup

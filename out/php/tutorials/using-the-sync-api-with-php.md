@@ -2,7 +2,7 @@
 page: :docsSyncApiWithPhp
 name: Using the Sync API with PHP
 title: Using the Sync API with PHP
-metainformation: 'The sync API allows you to keep a local copy of all content of a space up-to-date via delta updates. This tutorial will walk you how to use the Sync API with the Contentful PHP SDK.'
+metainformation: 'This tutorial will walk you how to use the Sync API with the Contentful PHP SDK to keep a local copy of content up-to-date via delta updates.'
 slug: null
 tags:
   - SDKs

@@ -13,9 +13,9 @@ nextsteps:
     link: /developers/docs/android/tutorials/offline-persistence-with-vault/
 ---
 
-:[Getting started tutorial intro](../../_partials/getting-started-intro.md)
+This guide will show you how to get started using our [Android SDK](https://github.com/contentful/contentful.java) to consume content.
 
-This article details how to get content using the [Android CDA SDK](https://github.com/contentful/contentful.java).
+:[Getting started tutorial intro](../../_partials/getting-started-intro.md)
 
 ## Create a new Android project
 
@@ -93,7 +93,7 @@ client.observe(CDAEntry.class)
 
 :[Get entry output](../../_partials/get-entry-output-android.md)
 
-## Fetching all data from a demo space
+## Fetching all data from a space
 
 To fetch all entries, create a new observable that watches for changes, in this case, fetching all entries from the specified space with the `all` method and content type with the `where` method:
 

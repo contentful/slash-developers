@@ -2,7 +2,7 @@
 page: :docsMultipleEnvironments
 name: Managing multiple environments
 title: Managing multiple environments
-metainformation: tbc
+metainformation: 'This guide shows you how manage changes to content and structure between spaces.'
 slug: null
 tags: null
 nextsteps: null
@@ -18,7 +18,7 @@ There are three types of changes to a Contentful space:
 
 Each type of change has a method best suited to it and this guide will outline each one in detail.
 
-If you want to follow along with the examples in this guide, then create a space with the 'product catalogue' example content.
+If you want to follow along with the examples in this guide, then create a space with the 'product catalog' example content.
 
 ## Deploying changes to content
 
@@ -58,7 +58,7 @@ Will return the 9 total entries present in the default example space, plus the n
 
 ### Reverting changes to entries with snapshots
 
-Using Contenful's Snapshot feature, editors can revert entries to previous states and undo changes made by other contributors.
+Using Contentful's Snapshot feature, editors can revert entries to previous states and undo changes made by other contributors.
 
 ![Restore previous versions of content](https://images.contentful.com/tz3n7fnw4ujc/6bmP4wkKiWG20Csi6wSUI2/6072e5cae095cbd923b9e680315fca14/restore-version.png)
 

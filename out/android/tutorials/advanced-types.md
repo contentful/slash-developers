@@ -2,7 +2,7 @@
 page: :docsAdvancedTypesAndRetrievalAndroid
 name: Advanced Type Retrieval
 title: Advanced Type Retrieval
-metainformation: 'The guide shows you how to retrieve entries from Contenful using our Java API.'
+metainformation: 'The guide shows you advanced methods to retrieve entries from Contenful using our Java API.'
 slug: null
 tags:
   - SDKs

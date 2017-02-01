@@ -14,9 +14,9 @@ nextsteps:
     link: /developers/docs/ruby/tutorials/full-stack-getting-started/
 ---
 
-:[Getting started tutorial intro](../../_partials/getting-started-intro.md)
+This guide will show you how to get started using our [Ruby SDK](https://github.com/contentful/contentful.rb) to consume content.
 
-This article details how to get content using the [Ruby CDA SDK](https://github.com/contentful/contentful.rb).
+:[Getting started tutorial intro](../../_partials/getting-started-intro.md)
 
 ## Installation
 
@@ -55,7 +55,7 @@ client = Contentful::Client.new(
 
 ## Getting your content
 
-Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide][6].
+Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide][/developers/docs/concepts/data-model/].
 
 ### Entries
 
@@ -86,7 +86,7 @@ puts classic_car.fields[:productName]
 
 :[Get entry output](../../_partials/get-entry-output.md)
 
-You can specify any of the [query parameters accepted by the API][5], for example:
+You can specify any of the [query parameters accepted by the API][/developers/docs/references/content-delivery-api/#/reference/search-parameters], for example:
 
 ```ruby
 products_by_price = client.entries(content_type: '<product_content_type_id>', order: 'fields.price')
@@ -152,6 +152,9 @@ end
 :[Get single asset](../../_partials/get-all-asset-output.md)
 
 [1]: https://github.com/contentful/contentful.rb
+
 [2]: https://github.com/contentful/contentful_middleman_examples
+
 [3]: https://github.com/contentful/contentful-bootstrap.rb
+
 [4]: /developers/docs/concepts/links/

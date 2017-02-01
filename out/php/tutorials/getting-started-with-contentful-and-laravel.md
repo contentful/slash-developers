@@ -2,7 +2,7 @@
 page: :docsGettingStartedLaravel
 name: Getting Started with Contentful and Laravel
 title:  Getting Started with Contentful and Laravel
-metainformation: 'This tutorial will walk you through your first steps in using Contentful within your PHP application.'
+metainformation: 'This tutorial will walk you through your first steps in using Contentful with a PHP application.'
 slug: null
 tags:
   - SDKs

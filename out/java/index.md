@@ -2,16 +2,16 @@
 page: :docsPlatformsJava
 name: Java
 title: Using Contentful with Java
-metainformation: 'Our SDKs give you access to our APIs and their features.'
+metainformation: 'Our Java SDK gives you access to the Contentful APIs and their features.'
 slug: null
 tags: null
 nextsteps: null
 ---
 
-- [SDKs](#sdks)
-- [Tutorials](#tutorials)
-- [Tools](#tools-and-integrations)
-- [Example apps](#example-apps)
+-   [SDKs](#sdks)
+-   [Tutorials](#tutorials)
+-   [Tools](#tools-and-integrations)
+-   [Example apps](#example-apps)
 
 ## SDKs
 
@@ -25,7 +25,7 @@ This SDK interacts with the Content Delivery API, a read-only API for retrieving
 
 ### Content Management API SDK
 
-This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content. The API also offers tools for managing editorial teams and cooperation.<br/>
+This SDK interacts with the Content Management API, and allows you to create, edit, manage, and publish content.<br/>
 [View on GitHub](https://github.com/contentful/contentful-management.java)<br/>
 [API reference](https://contentful.github.io/contentful-management.java/)
 
@@ -33,18 +33,13 @@ This SDK interacts with the Content Management API, and allows you to create, ed
 
 ### Create and deploy a Java application using Contentful
 
-[This guide](https://github.com/contentful/product-catalogue-java) shows you how to create and deploy a Java + Spark app that uses Contentful.
+[This guide](https://github.com/contentful/product-catalogue-java) shows you how to create and deploy a web application with Java and Spring Boot that uses Contentful.
 
 ### API demo
 
 [This guide](/developers/api-demo/java/) is the perfect starting point to learn how to make calls to Contentful APIs, explains what responses look like, and suggest next steps.
 
 ## Tools and integrations
-
-### Vault
-
-A library to simplify persisting data retrieved from Contentful in SQLite.<br/>
-[View on GitHub](https://github.com/contentful/vault)
 
 ## Example apps
 

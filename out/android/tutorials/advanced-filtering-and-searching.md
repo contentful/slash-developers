@@ -2,7 +2,7 @@
 page: :docsAdvancedFilteringAndSearchingAndroid
 name: Advanced Filtering and Searching
 title: Advanced Filtering and Searching
-metainformation: 'The guide shows you how to use the Android and Java API, to filter, sort and order entries.'
+metainformation: 'The guide shows you how to use the Android and Java API to filter, sort and order entries.'
 slug: null
 tags:
   - SDKs

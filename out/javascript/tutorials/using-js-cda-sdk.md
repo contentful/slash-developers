@@ -16,9 +16,11 @@ nextsteps:
     link: /developers/docs/javascript/tutorials/create-expressjs-app-using-contentful/
 ---
 
+This guide will show you how to get started using our [JavaScript SDK](https://github.com/contentful/contentful.js) to consume content.
+
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-We publish SDKs for various languages to make developing applications easier. This article details how to get content using the [JavaScript CDA SDK](https://github.com/contentful/contentful.js).
+We publish SDKs for various languages to make developing applications easier.
 
 ## Pre-requisites
 
@@ -74,15 +76,15 @@ var contentful = require('contentful')
 
 And build and use your file:
 
-```bash
-webpack main.js bundle.js
-# or
-browserify main.js -o bundle.js
-```
+````bash
+    webpack main.js bundle.js
+    # or
+    browserify main.js -o bundle.js
+    ```powe
 
-```html
-<script src="bundle.js"></script>
-```
+    ```html
+    <script src="bundle.js"></script>
+````
 
 ## Initializing the client
 
@@ -114,31 +116,6 @@ client.getEntry('5KsDBWseXY6QegucYAoacS')
   // logs the field with ID title
   console.log(entry.fields.productName)
 })
-```
-
-```json
-{
-    space: {
-        sys: {
-            type: 'Link',
-            linkType: 'Space',
-            id: '71rop70dkqaj'
-        }
-    },
-    id: '5KsDBWseXY6QegucYAoacS',
-    type: 'Entry',
-    createdAt: '2016-12-20T10:43:49.427Z',
-    updatedAt: '2016-12-20T10:43:49.427Z',
-    revision: 1,
-    contentType: {
-        sys: {
-            type: 'Link',
-            linkType: 'ContentType',
-            id: '2PqfXUJwE8qSYKuM0U6w8M'
-        }
-    },
-    locale: 'en-US'
-}
 ```
 
 ```
@@ -175,9 +152,7 @@ SoSo Wall Clock
 
 It's similar to getting a single entry, except you get an array with all the retrieved entries, and parameters relevant to [pagination](/developers/docs/references/content-delivery-api/#/introduction/collection-resources-and-pagination).
 
-By default you get 100 entries. If you'd like to retrieve more, you can skip the first 100\. You can retrieve more than 100 entries per request, but up to 1000.
-
-**CHECK**
+By default you get 100 entries. If you'd like to retrieve more, you can skip the first 100. You can retrieve more than 100 entries per request, up to 1000.
 
 ```javascript
 client.getEntries({
@@ -194,34 +169,41 @@ You can specify an ordering parameter to get more predictable results. You can r
 
 ## Retrieving linked entries
 
-Some entries have links to other entries, so when you retrieve a list of entries, those links are automatically resolved so you don't have to retrieve the linked entry separately.
+Entries have links to other entries, so when you retrieve a list of entries, those links are automatically resolved so you don't have to retrieve the linked entry separately.
 
 By default, Contentful resolves one level of linked entries or assets.
 
-The following example demonstrates the usage of a linked asset on field `image`:
-
-**CHECK**
+The following example demonstrates the usage of a linked asset on field `logo` for the 'brand' content type you can find in our product catalog example space:
 
 ```javascript
 client.getEntries()
-.then(function (entries) {
-  // log the file url of any linked assets on field `image`
-  entries.items.forEach(function (entry) {
-    if(entry.fields.image) {
-      console.log(entry.fields.image.fields.file.url)
-    }
-  })
-})
+    .then(function (entries) {
+        entries.items.forEach(function (entry) {
+            if(entry.fields.companyName) {
+                console.log(entry.fields.logo.fields.file.url)
+            }
+        })
+    })
 ```
 
-If you'd like to resolve additional levels of links, or none at all, use the `include` parameter: **CHECK**
+```
+{"url":"//images.contentful.com/71rop70dkqaj/2Y8LhXLnYAYqKCGEWG4EKI/44105a3206c591d5a64a3ea7575169e0/lemnos-logo.jpg","details":{"size":7149,"image":{"width":175,"height":32}},"fileName":"lemnos-logo.jpg","contentType":"image/jpeg"}
+{"url":"//images.contentful.com/71rop70dkqaj/3wtvPBbBjiMKqKKga8I2Cu/90b69e82b8b735383d09706bdd2d9dc5/zJYzDlGk.jpeg","details":{"size":12302,"image":{"width":353,"height":353}},"fileName":"zJYzDlGk.jpeg","contentType":"image/jpeg"}
+{"url":"//images.contentful.com/71rop70dkqaj/4zj1ZOfHgQ8oqgaSKm4Qo2/8c30486ae79d029aa9f0ed5e7c9ac100/playsam.jpg","details":{"size":7003,"image":{"width":100,"height":100}},"fileName":"playsam.jpg","contentType":"image/jpeg"}
+```
+
+If you'd like to resolve additional levels of links, or none at all, use the `include` parameter. The example below resolves no links, and only contains metadata about the image, so will return an error:
 
 ```javascript
 client.getEntries({include: 0})
-.then(function (entries) {
-  // Link wasn't resolved, so it only contains the asset metadata
-  console.log(entries.items[0].fields.image.sys.id)
-})
+    .then(function (entries) {
+        // log the file url of any linked assets on field `image`
+        entries.items.forEach(function (entry) {
+            if(entry.fields.companyName) {
+                console.log(JSON.stringify(entry.fields.logo.fields.file.url))
+            }
+        })
+    })
 ```
 
 You can turn off link resolution when you [initialize the SDK](https://contentful.github.io/contentful.js/contentful/latest/contentful.html) or with a `resolveLinks` property on every request.
@@ -230,40 +212,36 @@ Read the [links reference guide](/developers/docs/concepts/links/) for more info
 
 ## Retrieving entries with search parameters
 
-The entries method can take additional parameters for filtering and querying. You can use these same parameters when getting assets or content types.
+The entries method can take parameters for filtering and querying. You can use these same parameters when getting assets or content types.
 
-The following request filters all entries by a specific content type, using that content type's ID, which is `<content_type_id>`:
+The following request filters all entries by a specific content type, using that content type's ID.
 
 _You can use the content type pre-filled below for our example space or replace it with your own value_.
+
+The example below filters entries to the 'Brand' content type:
 
 ```javascript
 client.getEntries({
   'content_type': 'sFzTZbSuM8coEwygeUYes'
 })
 .then(function (entries) {
-  // Only entries of the Brand content type
-  console.log(entries)
+    console.log(JSON.stringify(entries))
+            entries.items.forEach(function (entry) {
+            console.log(JSON.stringify(entry.fields.companyName))
+    })
 })
 ```
 
 ```json
-{ sys: { type: 'Array' },
-  total: 3,
-  skip: 0,
-  limit: 100,
-  items:
-   [ { sys: [Object], fields: [Object] },
-     { sys: [Object], fields: [Object] },
-     { sys: [Object], fields: [Object] } ],
-  includes:
-   { Asset: [ [Object], [Object], [Object] ],
-     Entry: [ [Object], [Object], [Object] ] } }
-
+"Normann Copenhagen"
+"Lemnos"
+"Playsam"
 ```
 
 You can filter by properties of your entries, for example, a product SKU:
 
-{: .note} When you filter by the value of a field, you need to include the content type you are filtering, as fields are not the same across all content types.
+{: .note}
+When you filter by the value of a field, you need to include the content type you are filtering, as fields are not the same across all content types.
 
 ```javascript
 client.getEntries({
@@ -271,20 +249,14 @@ client.getEntries({
   'content_type': '2PqfXUJwE8qSYKuM0U6w8M'
 })
 .then(function (entries) {
-  // Only entries of the product content type with the specified SKU
-  console.log(entries)
+            entries.items.forEach(function (entry) {
+            console.log(JSON.stringify(entry.fields.sku))
+    })
 })
 ```
 
 ```json
-{ sys: { type: 'Array' },
-  total: 1,
-  skip: 0,
-  limit: 100,
-  items: [ { sys: [Object], fields: [Object] } ],
-  includes:
-   { Entry: [ [Object], [Object], [Object] ],
-     Asset: [ [Object], [Object], [Object] ] } }
+"B00E82D7I8"
 ```
 
 Apart from equality filters, you can use operators. The example below is the reverse of the previous example, giving you any entries where `fields.sku` is not equal (`[ne]`) to the specified value.
@@ -295,47 +267,24 @@ client.getEntries({
   'content_type': '2PqfXUJwE8qSYKuM0U6w8M'
 })
 .then(function (entries) {
-  // All entries but the one specified
-  console.log(entries)
+            entries.items.forEach(function (entry) {
+            console.log(JSON.stringify(entry.fields.sku))
+    })
 })
 ```
 
 ```json
-{ sys: { type: 'Array' },
-  total: 3,
-  skip: 0,
-  limit: 100,
-  items:
-   [ { sys: [Object], fields: [Object] },
-     { sys: [Object], fields: [Object] },
-     { sys: [Object], fields: [Object] } ],
-  includes:
-   { Entry:
-      [ [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object] ],
-     Asset:
-      [ [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object],
-        [Object] ] } }
+"B00MG4ULK2"
+"B0081F2CCK"
+"B001R6JUZ2"
 ```
 
 If you're interested in knowing what other filters and operators you can use, read the following guides:
 
-- [Equality/inequality](/developers/docs/references/content-delivery-api/#/reference/search-parameters/equality-operator) ([as well as in array fields](/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-equalityinequality))
-- [Inclusion/exclusion](/developers/docs/references/content-delivery-api/#/reference/search-parameters/inclusion)
-- [Ranges](/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
-- [Full text search](/developers/docs/references/content-delivery-api/#/reference/search-parameters/full-text-search)
-- [Geo location searches](/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
+-   [Equality/inequality](/developers/docs/references/content-delivery-api/#/reference/search-parameters/equality-operator) ([as well as in array fields](/developers/docs/references/content-delivery-api/#/reference/search-parameters/array-equalityinequality))
+-   [Inclusion/exclusion](/developers/docs/references/content-delivery-api/#/reference/search-parameters/inclusion)
+-   [Ranges](/developers/docs/references/content-delivery-api/#/reference/search-parameters/ranges)
+-   [Full text search](/developers/docs/references/content-delivery-api/#/reference/search-parameters/full-text-search)
+-   [Geo location searches](/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
 
 Read the [search parameters API guide](/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.

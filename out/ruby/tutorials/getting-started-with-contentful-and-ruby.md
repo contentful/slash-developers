@@ -14,9 +14,11 @@ nextsteps:
     link: /developers/docs/ruby/tutorials/full-stack-getting-started/
 ---
 
+This guide will show you how to get started using our [Ruby SDK](https://github.com/contentful/contentful.rb) to consume content.
+
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-We publish SDKs for various languages to make developing applications easier. This article details how to get content using the [JavaScript CDA SDK](https://github.com/contentful/contentful.js).
+We publish SDKs for various languages to make developing applications easier.
 
 ## Pre-requisites
 
@@ -104,31 +106,6 @@ classic_car = client.entry(entry_id)
 puts classic_car.fields[:productName]
 ```
 
-```json
-{
-    space: {
-        sys: {
-            type: 'Link',
-            linkType: 'Space',
-            id: '71rop70dkqaj'
-        }
-    },
-    id: '5KsDBWseXY6QegucYAoacS',
-    type: 'Entry',
-    createdAt: '2016-12-20T10:43:49.427Z',
-    updatedAt: '2016-12-20T10:43:49.427Z',
-    revision: 1,
-    contentType: {
-        sys: {
-            type: 'Link',
-            linkType: 'ContentType',
-            id: '2PqfXUJwE8qSYKuM0U6w8M'
-        }
-    },
-    locale: 'en-US'
-}
-```
-
 ```
 Playsam Streamliner Classic Car, Espresso
 ```
@@ -204,7 +181,6 @@ puts asset_file
 ```
 
 ```
-Playsam Streamliner
 //images.contentful.com/71rop70dkqaj/wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg
 ```
 
@@ -233,6 +209,9 @@ end
 ```
 
 [1]: https://github.com/contentful/contentful.rb
+
 [2]: https://github.com/contentful/contentful_middleman_examples
+
 [3]: https://github.com/contentful/contentful-bootstrap.rb
+
 [4]: /developers/docs/concepts/links/
