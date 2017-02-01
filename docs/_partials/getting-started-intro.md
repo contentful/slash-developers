@@ -1,6 +1,6 @@
 Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
 
-We publish SDKs for various languages to make developing applications easier. This article details how to get content using the [JavaScript CDA SDK](https://github.com/contentful/contentful.js).
+We publish SDKs for various languages to make developing applications easier.
 
 ## Pre-requisites
 
