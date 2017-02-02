@@ -182,9 +182,9 @@ A snapshot of an entry is automatically created each time an entry is published 
 To get all snapshots for an entry use the `GetAllSnapshotsForEntryAsync`. To get a specific snapshot use the `SingleSnapshot` method.
 
 ~~~csharp
-var singleSnapshot = await client.SingleSnapshot("<snapshot_id>", "<entry_id>");
+var singleSnapshot = await client.SingleSnapshot("<snapshot_id>", "5KsDBWseXY6QegucYAoacS");
 
-var allSnapshots = await client.GetAllSnapshotsForEntryAsync("<entry_id>");
+var allSnapshots = await client.GetAllSnapshotsForEntryAsync("5KsDBWseXY6QegucYAoacS");
 ~~~
 
 ## Working with space memberships
