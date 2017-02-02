@@ -32,7 +32,7 @@ To communicate with the CMA we use a similar approach as when we call the CDA, b
 
 ~~~csharp
 var httpClient = new HttpClient();
-var client = new ContentfulManagementClient(httpClient, "<content_management_api_key>", "<space_id>")
+var client = new ContentfulManagementClient(httpClient, "<content_management_api_key>", "71rop70dkqaj")
 ~~~
 
 {: .note}
@@ -50,13 +50,13 @@ If your user account belongs to a single organization, you can omit the `organiz
 To delete a space, pass a space id to the `DeleteSpaceAsync` method:
 
 ~~~csharp
-var space = await client.DeleteSpaceAsync("<space_id>");
+var space = await client.DeleteSpaceAsync("71rop70dkqaj");
 ~~~
 
 To change the name of an existing space, use the `UpdateSpaceNameAsync` method.
 
 ~~~csharp
-var space = await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", "<space_version>", "<organization_id>");
+var space = await client.UpdateSpaceNameAsync("71rop70dkqaj", "<new_space_name>", "<space_version>", "<organization_id>");
 ~~~
 
 Unless your account has more than one organization, you can omit the organization id, but the version parameter is always needed.
@@ -68,9 +68,9 @@ To retrieve the version of a resource, inspect the `SystemProperties.Version` pr
 The following is an example of creating a space:
 
 ~~~csharp
-var space = await client.GetSpaceAsync("<space_id>")
+var space = await client.GetSpaceAsync("71rop70dkqaj")
 var version = space.SystemProperties.Version; // Nullable int
-await client.UpdateSpaceNameAsync("<space_id>", "<new_space_name>", version.Value);
+await client.UpdateSpaceNameAsync("71rop70dkqaj", "<new_space_name>", version.Value);
 ~~~
 
 ## Working with content types
@@ -525,7 +525,7 @@ var entries = await client.GetEntriesCollectionAsync<Entry<dynamic>>();
 Or to get a single entry.
 
 ~~~csharp
-var entry = await _client.GetEntryAsync("<entry_id>");
+var entry = await _client.GetEntryAsync("5KsDBWseXY6QegucYAoacS");
 ~~~
 
 {: .note}
@@ -564,31 +564,31 @@ You can publish/unpublish, archive/unarchive and delete entries.
 For example, to publish the specified version of an entry and make it publicly available through the CDA.
 
 ~~~csharp
-client.PublishEntryAsync("<entry_id>", version);
+client.PublishEntryAsync("5KsDBWseXY6QegucYAoacS", version);
 ~~~
 
 Or to unpublish a specified version.
 
 ~~~csharp
-client.UnpublishEntryAsync("<entry_id>", version);
+client.UnpublishEntryAsync("5KsDBWseXY6QegucYAoacS", version);
 ~~~
 
 To archive an entry. You can only archive an entry if it's not published.
 
 ~~~csharp
-client.ArchiveEntryAsync("<entry_id>", version);
+client.ArchiveEntryAsync("5KsDBWseXY6QegucYAoacS", version);
 ~~~
 
 To unarchive an entry.
 
 ~~~csharp
-client.UnarchiveEntryAsync("<entry_id>", version);
+client.UnarchiveEntryAsync("5KsDBWseXY6QegucYAoacS", version);
 ~~~
 
 To permanently delete an entry.
 
 ~~~csharp
-client.DeleteEntryAsync("<entry_id>", version);
+client.DeleteEntryAsync("5KsDBWseXY6QegucYAoacS", version);
 ~~~
 
 ## Working with assets
@@ -602,7 +602,7 @@ var assets = await client.GetAssetsCollectionAsync();
 
 var publishedAssets = await client.GetPublishedAssetsCollectionAsync();
 
-var asset = await client.GetAssetAsync("<asset_id>");
+var asset = await client.GetAssetAsync("wtrHxeu3zEoEce2MokCSi");
 var title = asset.Title["en-US"];
 var swedishTitle = asset.Title["sv-SE"];
 var englishAssetUrl = asset.Files["en-US"].Url;

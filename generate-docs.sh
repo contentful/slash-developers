@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
-rm -dfr out
+rm -dfr docs
 
 echo "Processing Markdown"
-for filename in $(find docs -type f -name '*.md'); do
+for filename in $(find raw_docs -type f -name '*.md'); do
 
   echo $filename
   original_string=$filename
-  string_to_replace_with=out
-  result_string="${original_string/docs/$string_to_replace_with}"
+  string_to_replace_with=docs
+  result_string="${original_string/raw_docs/$string_to_replace_with}"
   echo $result_string
 
   mkdir -p "$(dirname "$result_string")" && touch "$result_string"
@@ -29,4 +29,4 @@ for filename in $(find docs -type f -name '*.md'); do
   sed -i -e 's/<asset_id>/wtrHxeu3zEoEce2MokCSi/g' $result_string
 done
 
-rm -dfr out/_partials
+rm -dfr docs/_partials

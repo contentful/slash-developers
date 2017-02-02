@@ -17,7 +17,19 @@ nextsteps:
 
 This guide will show you how to get started using our [Objective-C SDK](https://github.com/contentful/contentful.objc) to consume content.
 
-:[Getting started tutorial intro](../../_partials/getting-started-intro.md)
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
+
+We publish SDKs for various languages to make developing applications easier.
+
+## Pre-requisites
+
+This tutorial assumes you have read and understood [the guide that covers the Contentful data model](/developers/docs/concepts/data-model/).
+
+## Authentication
+
+For every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit applications and content classes.
+
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
 
 ## Setup the client
 
@@ -35,7 +47,11 @@ You are free to use Git submodules or [download a static framework][18] if that 
 
 The class [_CDAClient_][3] manages all requests to the API. For most apps, you will have a single Space which contains all your data. In this case, we recommend you create a singleton category on top of _CDAClient_ to make it simple to dispatch requests from any part of your app.
 
-:[Create credentials](../../_partials/credentials.md)
+## Initializing the client
+
+You need an API key and a space ID to initialize a client
+
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
 ```objc
 @implementation CDAClient (Guide)
@@ -44,7 +60,7 @@ The class [_CDAClient_][3] manages all requests to the API. For most apps, you w
     static dispatch_once_t once;
     static CDAClient *sharedClient;
     dispatch_once(&once, ^ {
-      sharedClient = [[self alloc] initWithSpaceKey:@"<space_id>" accessToken:@"<access_token>"];
+      sharedClient = [[self alloc] initWithSpaceKey:@"71rop70dkqaj" accessToken:@"297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971"];
     });
     return sharedClient;
   }

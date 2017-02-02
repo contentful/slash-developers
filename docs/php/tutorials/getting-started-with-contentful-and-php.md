@@ -17,7 +17,19 @@ This guide will show you how to get started using our [PHP SDK](https://github.c
 {: .note}
 The Contentful PHP SDK is in beta and the API may change before a stable release.
 
-:[Getting started tutorial intro](../../_partials/getting-started-intro.md)
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
+
+We publish SDKs for various languages to make developing applications easier.
+
+## Pre-requisites
+
+This tutorial assumes you have read and understood [the guide that covers the Contentful data model](/developers/docs/concepts/data-model/).
+
+## Authentication
+
+For every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit applications and content classes.
+
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
 
 ## Installation
 
@@ -37,10 +49,14 @@ require_once 'vendor/autoload.php';
 
 Once you have installed the SDK you need to create a `Client`.
 
-:[Create credentials](../../_partials/credentials.md)
+## Initializing the client
+
+You need an API key and a space ID to initialize a client
+
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
 ```php
-$client = new \Contentful\Delivery\Client('<access_token>', '<space_id>');
+$client = new \Contentful\Delivery\Client('297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971', '71rop70dkqaj');
 ```
 
 ## Getting your content
@@ -60,18 +76,20 @@ $entries = $client->getEntries();
 Whereas this code retrieves a single entry specified by an ID.
 
 ```php
-$entryId = '<entry_id>';
+$entryId = '5KsDBWseXY6QegucYAoacS';
 $entry = $client->getEntry($entryId);
 echo $entry->getproductName();
 ```
 
-:[Get entry output](../../_partials/get-entry-output.md)
+```
+Playsam Streamliner Classic Car, Espresso
+```
 
 To specify more [complex queries][4] you can use the query builder. The example below filters results to a specific content type (the product) and sorts them by price:
 
 ```php
 $query = new \Contentful\Delivery\Query;
-$query->setContentType('<product_content_type_id>')
+$query->setContentType('2PqfXUJwE8qSYKuM0U6w8M')
     ->orderBy('fields.price');
 
 $productEntriesByPrice = $client->getEntries($query);
@@ -87,7 +105,12 @@ foreach ($productEntriesByPrice as $product) {
 }
 ```
 
-:[Get all entry output](../../_partials/get-all-entry-output.md)
+```
+Whisk Beater
+Playsam Streamliner Classic Car, Espresso
+Hudson Wall Cup
+SoSo Wall Clock
+```
 
 If an entry contains a [link][5] to an asset or another entry, the SDK will automatically load it. The example below shows the name of the brand linked to the product:
 
@@ -127,7 +150,9 @@ echo $asset->getTitle(), PHP_EOL;
 echo $asset->getFile()->getUrl();
 ```
 
-:[Get single asset](../../_partials/get-asset-output.md)
+```
+//images.contentful.com/71rop70dkqaj/wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg
+```
 
 Using the [Images API][7] you can control how Contentful serves images. For example, to convert an image to a JPEG and resize it to a height of no more than 100 pixels:
 
@@ -138,7 +163,9 @@ $options->setFormat('jpg')
 echo $asset->getFile()->getUrl($options);
 ```
 
-:[Get single asset](../../_partials/get-asset-processed-output.md)
+```
+//images.contentful.com/71rop70dkqaj/wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg//images.contentful.com/71rop70dkqaj/wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg?h=100&fm=jpg
+```
 
 [1]: https://github.com/contentful/contentful.php
 
