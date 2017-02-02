@@ -27,24 +27,24 @@ This guide uses [RXAndroid](https://github.com/ReactiveX/RxAndroid) in the examp
 
 To include the CDA SDK, add the following lines to the _build.gradle_ file:
 
-```gradle
+~~~gradle
 dependencies {
     // [...]
     compile 'com.contentful.java:java-sdk:7.3.0'
     compile 'io.reactivex:rxandroid:0.23.0'
 }
-```
+~~~
 
 Add the internet permission to the _AndroidManifest.xml_ file so your app can access the Contentful APIs:
 
-```xml
+~~~xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.example.demospaceexplorer" >
 
   <uses-permission android:name="android.permission.INTERNET" />
   ...
 </manifest>
-```
+~~~
 
 ## Creating a client
 
@@ -52,24 +52,24 @@ Add the following code to the `onCreate` method to create a `CDAClient` that com
 
 :[Create credentials](../../_partials/credentials.md)
 
-```java
+~~~java
 CDAClient client = CDAClient.builder()
   .setSpace("<space_id>")
   .setToken("<access_token>")
   .build();
-```
+~~~
 
 Use the [Gson](https://github.com/google/gson) library to make JSON responses easier to read.
 
-```java
+~~~java
 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-```
+~~~
 
 ## Fetching specific items
 
 If you want to fetch a specific entry, use the `id` of the entry inside a `.one` method:
 
-```java
+~~~java
 client.observe(CDAEntry.class)
     .one("<entry_id>")
     .observeOn(AndroidSchedulers.mainThread())
@@ -89,7 +89,7 @@ client.observe(CDAEntry.class)
         result = cdaEntry;
       }
     });
-```
+~~~
 
 :[Get entry output](../../_partials/get-entry-output-android.md)
 
@@ -97,7 +97,7 @@ client.observe(CDAEntry.class)
 
 To fetch all entries, create a new observable that watches for changes, in this case, fetching all entries from the specified space with the `all` method and content type with the `where` method:
 
-```java
+~~~java
 client.observe(CDAEntry.class)
                .where("content_type", "<product_content_type_id>")
                .all()
@@ -124,7 +124,7 @@ client.observe(CDAEntry.class)
                        result = cdaArray;
                    }
                });
-```
+~~~
 
 :[Get all entry output](../../_partials/get-all-entry-output-android.md)
 

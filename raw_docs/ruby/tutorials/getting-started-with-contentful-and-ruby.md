@@ -22,15 +22,15 @@ This guide will show you how to get started using our [Ruby SDK](https://github.
 
 First, install the 'contentful' gem, with the terminal:
 
-```bash
+~~~bash
 gem install contentful
-```
+~~~
 
 Or you can add it to your _Gemfile_:
 
-```ruby
+~~~ruby
 gem 'contentful'
-```
+~~~
 
 And run `bundle install` to install the gem and all its dependencies.
 
@@ -40,7 +40,7 @@ Once you have installed the gem, you can start using it inside your application.
 
 :[Create credentials](../../_partials/credentials.md)
 
-```ruby
+~~~ruby
 require 'contentful'
 
 client = Contentful::Client.new(
@@ -48,7 +48,7 @@ client = Contentful::Client.new(
   access_token: '<access_token>',
   dynamic_entries: :auto
 )
-```
+~~~
 
 {: .note}
 **Note**: The `dynamic_entries: :auto` attribute will automatically map the fields in your entries to methods, so that you can use them directly as objects.
@@ -63,7 +63,7 @@ With the client created, you can now start consuming data from the API.
 
 For example, to request all entries in a space from the API:
 
-```ruby
+~~~ruby
 entries = client.entries
 
 entries.each do |entry|
@@ -71,24 +71,24 @@ entries.each do |entry|
     puts entry.fields[:productName]
   end
 end
-```
+~~~
 
 :[Get all entry output](../../_partials/get-all-entry-output.md)
 
 Or to request a single entry:
 
-```ruby
+~~~ruby
 entry_id = '<entry_id>'
 classic_car = client.entry(entry_id)
 
 puts classic_car.fields[:productName]
-```
+~~~
 
 :[Get entry output](../../_partials/get-entry-output.md)
 
 You can specify any of the [query parameters accepted by the API][/developers/docs/references/content-delivery-api/#/reference/search-parameters], for example:
 
-```ruby
+~~~ruby
 products_by_price = client.entries(content_type: '<product_content_type_id>', order: 'fields.price')
 
 products_by_price.each do |entry|
@@ -96,7 +96,7 @@ products_by_price.each do |entry|
     puts entry.fields[:productName]
   end
 end
-```
+~~~
 
 :[Sorted entry output](../../_partials/sorted-entries-out.md)
 
@@ -104,23 +104,23 @@ end
 
 Once you have your entry, you can use it as a Ruby object that follows standard Ruby conventions:
 
-```ruby
+~~~ruby
 puts product.product_name
 puts "it costs #{product.price}"
 puts "I am tagged with #{product.tags.join(' and ')}"
-```
+~~~
 
 :[Ruby object output](../../_partials/ruby-object-output.md)
 
 You can form complicated queries and interactions with your entries:
 
-```ruby
+~~~ruby
 products_with_many_tags = client.entries(content_type: '<content_type>', include: 2).select { |product| product.tags.size > 2 }
 products_with_many_tags.each do |product|
   puts "I am tagged with #{product.tags.join(' and ')}"
   puts "My brand is #{product.brand.company_name}"
 end
-```
+~~~
 
 :[Ruby object complex output](../../_partials/ruby-object-complex-output.md)
 
@@ -132,22 +132,22 @@ You query assets in a similar way to entries, but the CDA offers more specific f
 
 To query for a single asset:
 
-```ruby
+~~~ruby
 asset_file = client.asset('<asset_id>').image_url
 puts asset_file
-```
+~~~
 
 :[Get single asset](../../_partials/get-asset-output.md)
 
 To query all assets in a space:
 
-```ruby
+~~~ruby
 assets = client.assets
 
 assets.each do |abeausset|
   puts asset.image_url
 end
-```
+~~~
 
 :[Get single asset](../../_partials/get-all-asset-output.md)
 

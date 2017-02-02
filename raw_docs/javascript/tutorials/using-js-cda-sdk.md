@@ -28,14 +28,14 @@ First you need to get the SDK and include it in your project.
 
 If you are running your code in node.js, install the npm package and require it in your code:
 
-```bash
+~~~bash
 npm install contentful
-```
+~~~
 
-```javascript
+~~~javascript
 // main.js
 var contentful = require('contentful')
-```
+~~~
 
 ### In a browser
 
@@ -43,45 +43,45 @@ If you are running your code in a web page, there are multiple ways you can get 
 
 The quickest is to use the pre-built and minified JavaScript file from a CDN:
 
-```html
+~~~html
 <script src="https://unpkg.com/contentful@latest/browser-dist/contentful.min.js"></script>
-```
+~~~
 
 The recommended, but longer way is to manage your browser JavaScript code and dependencies with npm and use a build tool such as [browserify](http://browserify.org/) or [webpack](https://webpack.github.io/).
 
 In this case, you'd need to first install the package:
 
-```bash
+~~~bash
 npm install contentful
-```
+~~~
 
 Then you can use it in your code:
 
-```javascript
+~~~javascript
 // main.js
 var contentful = require('contentful')
-```
+~~~
 
 And build and use your file:
 
-```bash
+~~~bash
 webpack main.js bundle.js
 # or
 browserify main.js -o bundle.js
-```
+~~~
 
-```html
+~~~html
 <script src="bundle.js"></script>
-```
+~~~
 
 :[Create credentials](../../_partials/credentials.md)
 
-```javascript
+~~~javascript
 var client = contentful.createClient({
   space: '<space_id>',
   accessToken: '<access_token>'
 })
-```
+~~~
 
 Read the [reference documentation](https://contentful.github.io/contentful.js/contentful/latest/contentful.html) for more options on initializing the client.
 
@@ -91,7 +91,7 @@ Once you have a client you can start getting content.
 
 To retrieve a specific entry, you need the ID for that entry. If you're looking at an entry you created in the Contentful web app, it should be the string in the URL after _/entries/_. In this example the entry has an id of `<entry_id>`.
 
-```javascript
+~~~javascript
 client.getEntry('<entry_id>')
 .then(function (entry) {
   // logs the entry metadata
@@ -100,7 +100,7 @@ client.getEntry('<entry_id>')
   // logs the field with ID title
   console.log(entry.fields.productName)
 })
-```
+~~~
 
 :[Get entry output](../../_partials/get-entry-output.md)
 
@@ -112,7 +112,7 @@ For more details on the information contained on `sys` read the [common resource
 
 Now you're going to retrieve all the entries in a space.
 
-```javascript
+~~~javascript
 client.getEntries()
 .then(function (entries) {
   // log the title for all the entries that have it
@@ -122,7 +122,7 @@ client.getEntries()
     }
   })
 })
-```
+~~~
 
 :[Get all entry output](../../_partials/get-all-entry-output.md)
 
@@ -130,7 +130,7 @@ It's similar to getting a single entry, except you get an array with all the ret
 
 By default you get 100 entries. If you'd like to retrieve more, you can skip the first 100. You can retrieve more than 100 entries per request, up to 1000.
 
-```javascript
+~~~javascript
 client.getEntries({
   skip: 100,
   limit: 200,
@@ -139,7 +139,7 @@ client.getEntries({
 .then(function (entries) {
   console.log(entries.items.length) // 200
 })
-```
+~~~
 
 You can specify an ordering parameter to get more predictable results. You can read more about ordering parameters in the [search parameters](/developers/docs/references/content-delivery-api/#/reference/search-parameters/order) reference guide.
 
@@ -151,7 +151,7 @@ By default, Contentful resolves one level of linked entries or assets.
 
 The following example demonstrates the usage of a linked asset on field `logo` for the 'brand' content type you can find in our product catalog example space:
 
-```javascript
+~~~javascript
 client.getEntries()
     .then(function (entries) {
         entries.items.forEach(function (entry) {
@@ -160,13 +160,13 @@ client.getEntries()
             }
         })
     })
-```
+~~~
 
 :[Get all linked output](../../_partials/get-all-entry-linked-output.md)
 
 If you'd like to resolve additional levels of links, or none at all, use the `include` parameter. The example below resolves no links, and only contains metadata about the image, so will return an error:
 
-```javascript
+~~~javascript
 client.getEntries({include: 0})
     .then(function (entries) {
         // log the file url of any linked assets on field `image`
@@ -176,7 +176,7 @@ client.getEntries({include: 0})
             }
         })
     })
-```
+~~~
 
 You can turn off link resolution when you [initialize the SDK](https://contentful.github.io/contentful.js/contentful/latest/contentful.html) or with a `resolveLinks` property on every request.
 
@@ -190,7 +190,7 @@ The entries method can take parameters for filtering and querying. You can use t
 
 The example below filters entries to the 'Brand' content type:
 
-```javascript
+~~~javascript
 client.getEntries({
   'content_type': '<brand_content_type_id>'
 })
@@ -200,13 +200,13 @@ client.getEntries({
             console.log(JSON.stringify(entry.fields.companyName))
     })
 })
-```
+~~~
 
 :[Filter by content type output](../../_partials/content-type-filter-output.md)
 
 You can filter by properties of your entries, for example, a product SKU:
 
-```javascript
+~~~javascript
 client.getEntries({
   'fields.sku': '<sku_value>',
   'content_type': '<product_content_type_id>'
@@ -216,7 +216,7 @@ client.getEntries({
             console.log(JSON.stringify(entry.fields.sku))
     })
 })
-```
+~~~
 
 :[Filter by field output](../../_partials/field-filter-output.md)
 
@@ -225,7 +225,7 @@ When you filter by the value of a field, you need to include the content type yo
 
 Apart from equality filters, you can use operators. The example below is the reverse of the previous example, giving you any entries where `fields.sku` is not equal (`[ne]`) to the specified value.
 
-```javascript
+~~~javascript
 client.getEntries({
   'fields.sku[ne]': '<sku_value>',
   'content_type': '<product_content_type_id>'
@@ -235,7 +235,7 @@ client.getEntries({
             console.log(JSON.stringify(entry.fields.sku))
     })
 })
-```
+~~~
 
 :[Filter by field output](../../_partials/field-filter-ne-output.md)
 
