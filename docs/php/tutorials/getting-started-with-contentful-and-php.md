@@ -53,7 +53,7 @@ Once you have installed the SDK you need to create a `Client`.
 
 You need an API key and a space ID to initialize a client
 
-_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values_.
 
 ~~~php
 $client = new \Contentful\Delivery\Client('297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971', '71rop70dkqaj');

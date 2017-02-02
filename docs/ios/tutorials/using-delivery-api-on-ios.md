@@ -51,7 +51,7 @@ The class [_CDAClient_][3] manages all requests to the API. For most apps, you w
 
 You need an API key and a space ID to initialize a client
 
-_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values_.
 
 ~~~objc
 @implementation CDAClient (Guide)
