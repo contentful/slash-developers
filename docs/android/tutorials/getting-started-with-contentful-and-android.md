@@ -39,24 +39,24 @@ This guide uses [RXAndroid](https://github.com/ReactiveX/RxAndroid) in the examp
 
 To include the CDA SDK, add the following lines to the _build.gradle_ file:
 
-```gradle
+~~~gradle
 dependencies {
     // [...]
     compile 'com.contentful.java:java-sdk:7.3.0'
     compile 'io.reactivex:rxandroid:0.23.0'
 }
-```
+~~~
 
 Add the internet permission to the _AndroidManifest.xml_ file so your app can access the Contentful APIs:
 
-```xml
+~~~xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
   package="com.example.demospaceexplorer" >
 
   <uses-permission android:name="android.permission.INTERNET" />
   ...
 </manifest>
-```
+~~~
 
 ## Creating a client
 
@@ -68,24 +68,24 @@ You need an API key and a space ID to initialize a client
 
 _You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
-```java
+~~~java
 CDAClient client = CDAClient.builder()
   .setSpace("71rop70dkqaj")
   .setToken("297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971")
   .build();
-```
+~~~
 
 Use the [Gson](https://github.com/google/gson) library to make JSON responses easier to read.
 
-```java
+~~~java
 Gson gson = new GsonBuilder().setPrettyPrinting().create();
-```
+~~~
 
 ## Fetching specific items
 
 If you want to fetch a specific entry, use the `id` of the entry inside a `.one` method:
 
-```java
+~~~java
 client.observe(CDAEntry.class)
     .one("5KsDBWseXY6QegucYAoacS")
     .observeOn(AndroidSchedulers.mainThread())
@@ -105,17 +105,17 @@ client.observe(CDAEntry.class)
         result = cdaEntry;
       }
     });
-```
+~~~
 
-```
+~~~
 I/Contentful: CDAEntry{id='5KsDBWseXY6QegucYAoacS'}
-```
+~~~
 
 ## Fetching all data from a space
 
 To fetch all entries, create a new observable that watches for changes, in this case, fetching all entries from the specified space with the `all` method and content type with the `where` method:
 
-```java
+~~~java
 client.observe(CDAEntry.class)
                .where("content_type", "2PqfXUJwE8qSYKuM0U6w8M")
                .all()
@@ -142,14 +142,14 @@ client.observe(CDAEntry.class)
                        result = cdaArray;
                    }
                });
-```
+~~~
 
-```
+~~~
 I/Contentful: Hudson Wall Cup
 I/Contentful: SoSo Wall Clock
 I/Contentful: Whisk Beater
 I/Contentful: Playsam Streamliner Classic Car, Espresso
-```
+~~~
 
 The `onNext` method saves the array of entries and the `onCompleted` method is called once all entries are fetched from the API. The `onError` method allows you to handle any problems.
 

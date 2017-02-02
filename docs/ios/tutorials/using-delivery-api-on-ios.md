@@ -35,11 +35,11 @@ You can create an access token using the [Contentful web app](https://be.content
 
 There are three different ways to integrate the SDK into your own apps, described in detail in the [README][2]. This guide will use [CocoaPods][8], the dependency manager for Cocoa projects, which makes it easier to keep the SDK up-to-date:
 
-```ruby
+~~~ruby
 target "Guide" do
   pod 'ContentfulDeliveryAPI'
 end
-```
+~~~
 
 You are free to use Git submodules or [download a static framework][18] if that suits your workflow better.
 
@@ -53,7 +53,7 @@ You need an API key and a space ID to initialize a client
 
 _You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
-```objc
+~~~objc
 @implementation CDAClient (Guide)
 
   +(instancetype)sharedClient {
@@ -66,18 +66,18 @@ _You can use the API key and space ID pre-filled below from our example space or
   }
 
 @end
-```
+~~~
 
 ## Accessing data
 
 Now that the client is available everywhere, you can fetch entries:
 
-```objc
+~~~objc
 [[CDAClient sharedClient] fetchEntriesMatching:@{ @"content_type": @"3hEsRfcKgMGSaiocGQaqCo" }
   success:^(CDAResponse *response, CDAArray *array) {
      self.places = array.items;
   } failure:nil];
-```
+~~~
 
 The CDA supports a variety of parameters to search, filter and sort your content. The SDK passes these parameters as a dictionary, which in this case will retrieve entries of a certain content type. You can learn more about search parameters [in this guide][20].
 
@@ -85,17 +85,17 @@ A [_CDAArray_][5] contains a list of [_CDAResource_][6] objects whose concrete t
 
 Each `CDAEntry` has a `fields` property, containing the values for fields defined in the content model. To decouple your app from Contentful, you can register custom subclasses for content types, like this:
 
-```objc
+~~~objc
 [sharedClient registerClass:[BBUPlace class] forContentTypeWithIdentifier:@"3hEsRfcKgMGSaiocGQaqCo"];
-```
+~~~
 
 The `BBUPlace` class defines properties, so that you can deal with entries like with any other value object:
 
-```objc
+~~~objc
 -(NSString *)name {
   return self.fields[@"name"];
 }
-```
+~~~
 
 In the guide app, the class also implements the `MKAnnotation` protocol, which enables directly showing Entries in a map view.
 
@@ -105,7 +105,7 @@ The initial view of the guide app is a list of all cafes it knows about. For com
 
 You create the basic setup in your subclass's `init` method:
 
-```objc
+~~~objc
 -(id)init {
   self = [super initWithCellMapping:@{ @"textLabel.text": @"fields.name",
                                        @"detailTextLabel.text": @"fields.type" }];
@@ -115,7 +115,7 @@ You create the basic setup in your subclass's `init` method:
   }
   return self;
 }
-```
+~~~
 
 The cell mapping is a dictionary for specifying which property of the `UITableViewCell` corresponds to properties in the content model. In addition to that, the shared client is specified as the client to use and the entries are limited to a certain content type. Setting the `query` property is optional, in that case all entries will be shown.
 
@@ -123,13 +123,13 @@ The cell mapping is a dictionary for specifying which property of the `UITableVi
 
 If you want to show resources in a `UICollectionView`, there is [`CDAResourcesCollectionViewController`][9], which works in a similar way to the Entries view controller:
 
-```objc
+~~~objc
 self = [super initWithCollectionViewLayout:layout cellMapping:@{ @"imageURL": @"URL" }];
 if (self) {
     self.client = [CDAClient sharedClient];
     self.resourceType = CDAResourceTypeAsset;
 }
-```
+~~~
 
 You need to specify a layout and cell mapping, as with a normal `UICollectionViewController`. For convenience, there is a ready made collection view cell class which fetches images from the URL in its `imageURL` property, which this example will use. The `resourceType` property defines which resource type is fetched, in this case 'Assets'. A [`CDAAsset`][10] has a direct accessor for the `URL`, used in the field mapping. Like the previous example, you need to specifiy the client.
 
