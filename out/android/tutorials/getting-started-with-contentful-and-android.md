@@ -64,9 +64,9 @@ Add the following code to the `onCreate` method to create a `CDAClient` that com
 
 ## Initializing the client
 
-You need an API key and a space ID to initialize a client:
+You need an API key and a space ID to initialize a client
 
-_You can use the API key and space ID pre-filled below for our example space or replace them with your own values created earlier_.
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
 ```java
 CDAClient client = CDAClient.builder()
@@ -111,7 +111,7 @@ client.observe(CDAEntry.class)
 I/Contentful: CDAEntry{id='5KsDBWseXY6QegucYAoacS'}
 ```
 
-## Fetching all data from a demo space
+## Fetching all data from a space
 
 To fetch all entries, create a new observable that watches for changes, in this case, fetching all entries from the specified space with the `all` method and content type with the `where` method:
 

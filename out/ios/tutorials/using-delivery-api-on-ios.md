@@ -33,7 +33,7 @@ You can create an access token using the [Contentful web app](https://be.content
 
 ## Setup the client
 
-There are three different ways to integrate the SDK into your own apps, described in detail in the [README][2]. For this article, we will use [CocoaPods][8], the dependency manager for Cocoa projects, which makes it easiest to keep the SDK up-to-date:
+There are three different ways to integrate the SDK into your own apps, described in detail in the [README][2]. This guide will use [CocoaPods][8], the dependency manager for Cocoa projects, which makes it easier to keep the SDK up-to-date:
 
 ```ruby
 target "Guide" do
@@ -45,13 +45,13 @@ You are free to use Git submodules or [download a static framework][18] if that 
 
 ## Configuring the API client
 
-The class [_CDAClient_][3] manages all requests to the API. For most apps, you will have a single Space which contains all your data. In this case, we recommend you create a singleton category on top of _CDAClient_ to make it simple to dispatch requests from any part of your app:
+The class [_CDAClient_][3] manages all requests to the API. For most apps, you will have a single Space which contains all your data. In this case, we recommend you create a singleton category on top of _CDAClient_ to make it simple to dispatch requests from any part of your app.
 
 ## Initializing the client
 
-You need an API key and a space ID to initialize a client:
+You need an API key and a space ID to initialize a client
 
-_You can use the API key and space ID pre-filled below for our example space or replace them with your own values created earlier_.
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
 ```objc
 @implementation CDAClient (Guide)
@@ -74,22 +74,22 @@ Now that the client is available everywhere, you can fetch entries:
 
 ```objc
 [[CDAClient sharedClient] fetchEntriesMatching:@{ @"content_type": @"3hEsRfcKgMGSaiocGQaqCo" }
-                                       success:^(CDAResponse *response, CDAArray *array) {
-                                           self.places = array.items;
-                                       } failure:nil];
+  success:^(CDAResponse *response, CDAArray *array) {
+     self.places = array.items;
+  } failure:nil];
 ```
 
 The CDA supports a variety of parameters to search, filter and sort your content. The SDK passes these parameters as a dictionary, which in this case will retrieve entries of a certain content type. You can learn more about search parameters [in this guide][20].
 
-A [_CDAArray_][5] contains a list of [_CDAResource_][6] objects whose concrete type depends on the query. In this case, the _items_ property will contain a list of [_CDAEntry_][7] objects.
+A [_CDAArray_][5] contains a list of [_CDAResource_][6] objects whose concrete type depends on the query. In this case, the `items` property will contain a list of [_CDAEntry_][7] objects.
 
-Each _CDAEntry_ has a _fields_ property, containing the values for fields defined in the content model. To decouple your app from Contentful, you can register custom subclasses for content types, like this:
+Each `CDAEntry` has a `fields` property, containing the values for fields defined in the content model. To decouple your app from Contentful, you can register custom subclasses for content types, like this:
 
 ```objc
 [sharedClient registerClass:[BBUPlace class] forContentTypeWithIdentifier:@"3hEsRfcKgMGSaiocGQaqCo"];
 ```
 
-The _BBUPlace_ class defines properties, so that you can deal with entries like with any other value object:
+The `BBUPlace` class defines properties, so that you can deal with entries like with any other value object:
 
 ```objc
 -(NSString *)name {
@@ -97,13 +97,13 @@ The _BBUPlace_ class defines properties, so that you can deal with entries like 
 }
 ```
 
-In the guide app, the class also implements the _MKAnnotation_ protocol, which enables directly showing Entries in a map view.
+In the guide app, the class also implements the `MKAnnotation` protocol, which enables directly showing Entries in a map view.
 
 ## Simple views for your data
 
-The initial view of the guide app is a list of all cafes it knows about. For common tasks like this, the SDK adds UI components which you can customize to your needs. In this case, you will create a subclass of [_CDAEntriesViewController_][4], a _UITableViewController_ optimized for showing a list of Entries matching a certain query.
+The initial view of the guide app is a list of all cafes it knows about. For common tasks like this, the SDK adds UI components which you can customize to your needs. In this case, you will create a subclass of [_CDAEntriesViewController_][4], a `UITableViewController` optimized for showing a list of Entries matching a certain query.
 
-You create the basic setup in your subclasse's _init_ method:
+You create the basic setup in your subclass's `init` method:
 
 ```objc
 -(id)init {

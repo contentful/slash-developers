@@ -51,9 +51,9 @@ Once you have installed the SDK you need to create a `Client`.
 
 ## Initializing the client
 
-You need an API key and a space ID to initialize a client:
+You need an API key and a space ID to initialize a client
 
-_You can use the API key and space ID pre-filled below for our example space or replace them with your own values created earlier_.
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
 ```php
 $client = new \Contentful\Delivery\Client('297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971', '71rop70dkqaj');
@@ -95,7 +95,7 @@ $query->setContentType('2PqfXUJwE8qSYKuM0U6w8M')
 $productEntriesByPrice = $client->getEntries($query);
 ```
 
-### Using your enry
+### Using the entry
 
 Once you've got the entry, you can access its content through getter methods:
 
@@ -106,7 +106,6 @@ foreach ($productEntriesByPrice as $product) {
 ```
 
 ```
-Playsam Streamliner Classic Car, Espresso
 Whisk Beater
 Playsam Streamliner Classic Car, Espresso
 Hudson Wall Cup
@@ -123,9 +122,7 @@ foreach ($productEntriesByPrice as $product) {
 
 ## Using assets
 
-Querying assets works similarly to querying entries.
-
-You can retrieve all assets from a space with the following:
+Querying assets works similarly to querying entries. You can retrieve all assets from a space with the following:
 
 ```php
 $assets = $client->getAssets();
@@ -157,7 +154,7 @@ echo $asset->getFile()->getUrl();
 //images.contentful.com/71rop70dkqaj/wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg
 ```
 
-Using the [Images API][7] you can control details how Contentful serves images. For example, to convert an image to a JPEG and resize it to a height of no more than 100 pixels:
+Using the [Images API][7] you can control how Contentful serves images. For example, to convert an image to a JPEG and resize it to a height of no more than 100 pixels:
 
 ```php
 $options = new \Contentful\Delivery\ImageOptions;

@@ -52,9 +52,9 @@ Once you have installed the gem, you can start using it inside your application.
 
 ## Initializing the client
 
-You need an API key and a space ID to initialize a client:
+You need an API key and a space ID to initialize a client
 
-_You can use the API key and space ID pre-filled below for our example space or replace them with your own values created earlier_.
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
 ```ruby
 require 'contentful'
@@ -71,7 +71,7 @@ client = Contentful::Client.new(
 
 ## Getting your content
 
-Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide][6].
+Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide][/developers/docs/concepts/data-model/].
 
 ### Entries
 
@@ -90,7 +90,6 @@ end
 ```
 
 ```
-Playsam Streamliner Classic Car, Espresso
 Whisk Beater
 Playsam Streamliner Classic Car, Espresso
 Hudson Wall Cup
@@ -110,7 +109,7 @@ puts classic_car.fields[:productName]
 Playsam Streamliner Classic Car, Espresso
 ```
 
-You can specify any of the [query parameters accepted by the API][5], for example:
+You can specify any of the [query parameters accepted by the API][/developers/docs/references/content-delivery-api/#/reference/search-parameters], for example:
 
 ```ruby
 products_by_price = client.entries(content_type: '2PqfXUJwE8qSYKuM0U6w8M', order: 'fields.price')

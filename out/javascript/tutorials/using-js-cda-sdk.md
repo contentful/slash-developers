@@ -76,21 +76,21 @@ var contentful = require('contentful')
 
 And build and use your file:
 
-````bash
-    webpack main.js bundle.js
-    # or
-    browserify main.js -o bundle.js
-    ```powe
+```bash
+webpack main.js bundle.js
+# or
+browserify main.js -o bundle.js
+```
 
-    ```html
-    <script src="bundle.js"></script>
-````
+```html
+<script src="bundle.js"></script>
+```
 
 ## Initializing the client
 
-You need an API key and a space ID to initialize a client:
+You need an API key and a space ID to initialize a client
 
-_You can use the API key and space ID pre-filled below for our example space or replace them with your own values created earlier_.
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
 ```javascript
 var client = contentful.createClient({
@@ -124,7 +124,7 @@ Playsam Streamliner Classic Car, Espresso
 
 The object received by the Promise callback represents the Entry `5KsDBWseXY6QegucYAoacS` and contains two objects: `sys`, describing system properties of the entry, and `fields`, assigning specific values to the fields of its content type ('Product').
 
-For more details on the information contained on `sys` read the [common resource attributes](/developers/docs/references/content-delivery-api/#/introduction/common-resource-attributes) guide in the CDA API reference or the entities definitions in the [SDK reference](https://contentful.github.io/contentful.js/contentful/latest/Entities.html)
+For more details on the information contained on `sys` read the [common resource attributes](/developers/docs/references/content-delivery-api/#/introduction/common-resource-attributes) guide in the CDA reference or the entities definitions in the [SDK reference](https://contentful.github.io/contentful.js/contentful/latest/Entities.html)
 
 ## Retrieving all entries of a space
 
@@ -143,7 +143,6 @@ client.getEntries()
 ```
 
 ```
-Playsam Streamliner Classic Car, Espresso
 Whisk Beater
 Playsam Streamliner Classic Car, Espresso
 Hudson Wall Cup
@@ -165,7 +164,7 @@ client.getEntries({
 })
 ```
 
-You can specify an ordering parameter to get more predictable results. You can read more about ordering parameters in the [search parameters API](/developers/docs/references/content-delivery-api/#/reference/search-parameters/order) reference guide.
+You can specify an ordering parameter to get more predictable results. You can read more about ordering parameters in the [search parameters](/developers/docs/references/content-delivery-api/#/reference/search-parameters/order) reference guide.
 
 ## Retrieving linked entries
 
@@ -240,9 +239,6 @@ client.getEntries({
 
 You can filter by properties of your entries, for example, a product SKU:
 
-{: .note}
-When you filter by the value of a field, you need to include the content type you are filtering, as fields are not the same across all content types.
-
 ```javascript
 client.getEntries({
   'fields.sku': 'B00E82D7I8',
@@ -258,6 +254,9 @@ client.getEntries({
 ```json
 "B00E82D7I8"
 ```
+
+{: .note}
+When you filter by the value of a field, you need to include the content type you are filtering, as fields are not the same across all content types.
 
 Apart from equality filters, you can use operators. The example below is the reverse of the previous example, giving you any entries where `fields.sku` is not equal (`[ne]`) to the specified value.
 
@@ -287,4 +286,4 @@ If you're interested in knowing what other filters and operators you can use, re
 -   [Full text search](/developers/docs/references/content-delivery-api/#/reference/search-parameters/full-text-search)
 -   [Geo location searches](/developers/docs/references/content-delivery-api/#/reference/search-parameters/location-proximity-search)
 
-Read the [search parameters API guide](/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.
+Read the [search parameters guide](/developers/docs/references/content-delivery-api/#/reference/search-parameters) for more information.

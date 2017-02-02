@@ -33,7 +33,7 @@ You can create an access token using the [Contentful web app](https://be.content
 
 ## Setup the client
 
-There are different ways to integrate the SDK into your own apps, described in detail in the [README for the SDK][2]. This guide will use [CocoaPods][3], the dependency manager for Cocoa projects, which helps keep the SDK up-to-date:
+There are different ways to integrate the SDK into your own apps, described in detail in the [README for the SDK][2]. This guide will use [CocoaPods][3], the dependency manager for Cocoa projects, which helps you keep the SDK up-to-date:
 
 Create the following _Podfile_ for your project:
 
@@ -54,9 +54,9 @@ The [`Client`][6] class manages all requests to the API.
 
 ## Initializing the client
 
-You need an API key and a space ID to initialize a client:
+You need an API key and a space ID to initialize a client
 
-_You can use the API key and space ID pre-filled below for our example space or replace them with your own values created earlier_.
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values.
 
 ```swift
 let spaceId = "71rop70dkqaj"
