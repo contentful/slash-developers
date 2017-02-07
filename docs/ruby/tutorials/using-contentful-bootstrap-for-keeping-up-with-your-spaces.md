@@ -223,7 +223,7 @@ For those cases, you can use our `generate_json` command:
 
 ~~~ bash
 $ contentful_bootstrap generate_json -h
-Usage: generate_json <space_id> <access_token> [--output-file OUTPUT_PATH]
+Usage: generate_json 71rop70dkqaj 297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971 [--output-file OUTPUT_PATH]
     -o, --output-file OUTPUT_PATH    Specify Output File
     -h, --help                       Print this message
 ~~~
@@ -240,7 +240,7 @@ With `contentful_bootstrap` you can create additional tokens by running the foll
 
 ~~~ bash
 $ contentful_bootstrap generate_token -h
-Usage: generate_token <space_id> [--name TOKEN_NAME] [--config CONFIG_PATH]
+Usage: generate_token 71rop70dkqaj [--name TOKEN_NAME] [--config CONFIG_PATH]
     -n, --name TOKEN_NAME            Specify token name
     -c, --config CONFIG_PATH         Specify configuration path
     -h, --help                       Print this message
