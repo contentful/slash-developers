@@ -55,7 +55,7 @@ client = Contentful::Client.new(
 
 ## Getting your content
 
-Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide][/developers/docs/concepts/data-model/].
+Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide](/developers/docs/concepts/data-model/).
 
 ### Entries
 
@@ -86,7 +86,7 @@ puts classic_car.fields[:productName]
 
 :[Get entry output](../../_partials/get-entry-output.md)
 
-You can specify any of the [query parameters accepted by the API][/developers/docs/references/content-delivery-api/#/reference/search-parameters], for example:
+You can specify any of the [query parameters accepted by the API](/developers/docs/references/content-delivery-api/#/reference/search-parameters), for example:
 
 ~~~ruby
 products_by_price = client.entries(content_type: '<product_content_type_id>', order: 'fields.price')
@@ -124,7 +124,7 @@ end
 
 :[Ruby object complex output](../../_partials/ruby-python-object-complex-output.md)
 
-In this example you added the `include: 2` parameter, which allows the API to resolve [links][4] to other related entries.
+In this example you added the `include: 2` parameter, which allows the API to resolve [links](/developers/docs/concepts/links/) to other related entries.
 
 ## Using assets
 
@@ -150,11 +150,3 @@ end
 ~~~
 
 :[Get all assets](../../_partials/get-all-asset-output.md)
-
-[1]: https://github.com/contentful/contentful.rb
-
-[2]: https://github.com/contentful/contentful_middleman_examples
-
-[3]: https://github.com/contentful/contentful-bootstrap.rb
-
-[4]: /developers/docs/concepts/links/

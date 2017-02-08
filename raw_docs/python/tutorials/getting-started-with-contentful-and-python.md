@@ -58,7 +58,7 @@ For example, to request all entries in a space:
 entries = client.entries()
 for entry in entries:
     if hasattr(entry, 'product_name'):
-        print (entry.product_name)
+        print(entry.product_name)
 ~~~
 
 :[Get all entry output](../../_partials/get-all-entry-output.md)
@@ -78,8 +78,7 @@ You can specify any of the [query parameters accepted by the API](/developers/do
 products_by_price = client.entries({'content_type': '<product_content_type_id>', 'order': 'fields.price'})
 
 for entry in products_by_price:
-    if hasattr(entry, 'product_name'):
-        print (entry.product_name)
+  print (entry.product_name)
 ~~~
 
 :[Sorted entry output](../../_partials/sorted-entries-out.md)
@@ -102,7 +101,7 @@ You can form complicated queries and interaction with your entries:
 products_with_many_tags = [ product for product in client.entries({'content_type': '<product_content_type_id>', 'include': 2}) if product.tags.size > 2 ]
 for product in products_with_many_tags:
    print("I am tagged with {0}".format(' and '.join(product.tags)))
-   print("My barnd is: {0}".format(cat.brand.company_name))
+   print("My brand is: {0}".format(product.brand.company_name))
 ~~~
 
 :[Python object complex output](../../_partials/ruby-python-object-complex-output.md)
@@ -116,7 +115,7 @@ You query assets in a similar way to entries, but the CDA offers more specific f
 To query a single asset:
 
 ~~~python
-client.asset('<asset_id>').image_url
+client.asset('<asset_id>').url
 ~~~
 
 :[Get single asset](../../_partials/get-asset-output.md)
@@ -127,7 +126,7 @@ To query all assets in a space:
 assets = client.assets()
 
 for asset in assets:
-  print(asset.image_url)
+  print(asset.url)
 ~~~
 
 :[Get all assets](../../_partials/get-all-asset-output.md)
