@@ -110,7 +110,7 @@ puts "it costs #{product.price}"
 puts "I am tagged with #{product.tags.join(' and ')}"
 ~~~
 
-:[Ruby object output](../../_partials/ruby-object-output.md)
+:[Ruby object output](../../_partials/ruby-python-object-output.md)
 
 You can form complicated queries and interactions with your entries:
 
