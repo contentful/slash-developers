@@ -1,6 +1,13 @@
 ```java
-CDAArray array = client.fetch(CDAContentType.class)
-  .one('<content_type_id>');
+client.observe(CDAContentType.class)
+  .one("<content_type_id>")
+  .observeOn(AndroidSchedulers.mainThread())
+  .subscribeOn(Schedulers.io())
+  .subscribe(new Action1<CDAContentType>() {
+    @Override public void call(CDAContentType contentType) {
+      // ContentType available
+    }
+  });
 ```
 
 ```objc
