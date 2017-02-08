@@ -72,16 +72,25 @@ For example, to request all entries in a space:
 
 ~~~python
 entries = client.entries()
+
 for entry in entries:
-    if hasattr(entry, 'product_name'):
-        print(entry.product_name)
+    print(getattr(entry, 'product_name', 'Not a product'))
 ~~~
 
 ~~~
+Not a product
+Not a product
 Whisk Beater
-Playsam Streamliner Classic Car, Espresso
 Hudson Wall Cup
+Not a product
+Not a product
+Not a product
+Not a product
 SoSo Wall Clock
+Not a product
+Not a product
+Not a product
+Playsam Streamliner Classic Car, Espresso
 ~~~
 
 Or to request a single entry:
@@ -156,7 +165,7 @@ You query assets in a similar way to entries, but the CDA offers more specific f
 To query a single asset:
 
 ~~~python
-client.asset('wtrHxeu3zEoEce2MokCSi').url
+client.asset('wtrHxeu3zEoEce2MokCSi').url()
 ~~~
 
 ~~~
@@ -169,7 +178,7 @@ To query all assets in a space:
 assets = client.assets()
 
 for asset in assets:
-  print(asset.url)
+  print(asset.url())
 ~~~
 
 ~~~

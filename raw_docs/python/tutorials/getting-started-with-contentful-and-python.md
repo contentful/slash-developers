@@ -56,12 +56,12 @@ For example, to request all entries in a space:
 
 ~~~python
 entries = client.entries()
+
 for entry in entries:
-    if hasattr(entry, 'product_name'):
-        print(entry.product_name)
+    print(getattr(entry, 'product_name', 'Not a product'))
 ~~~
 
-:[Get all entry output](../../_partials/get-all-entry-output.md)
+:[Get all entry output](../../_partials/get-all-entry-output-python.md)
 
 Or to request a single entry:
 
@@ -115,7 +115,7 @@ You query assets in a similar way to entries, but the CDA offers more specific f
 To query a single asset:
 
 ~~~python
-client.asset('<asset_id>').url
+client.asset('<asset_id>').url()
 ~~~
 
 :[Get single asset](../../_partials/get-asset-output.md)
@@ -126,7 +126,7 @@ To query all assets in a space:
 assets = client.assets()
 
 for asset in assets:
-  print(asset.url)
+  print(asset.url())
 ~~~
 
 :[Get all assets](../../_partials/get-all-asset-output.md)
