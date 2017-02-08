@@ -7,27 +7,13 @@ ruby: 2.2.3
 
 before_install:
   - mv Spelling-and-style-sheet/.spelling ./.spelling
-  - sudo apt-get install jq
-  - make -C apiary install
-
-script:
-  - make -C apiary test
 
 after_success:
   - npm run-script spellcheck-main
-  - npm run-script spellcheck-apiary
 
 cache:
   directories:
-    - apiary/node_modules
     - node_modules
-
-deploy:
-  provider: script
-  script: make -C apiary publish
-  skip_cleanup: true
-  on:
-    branch: master
 
 notifications:
   slack: contentful:o4vrtCfCCvlN0ebhJ3ypu2je
