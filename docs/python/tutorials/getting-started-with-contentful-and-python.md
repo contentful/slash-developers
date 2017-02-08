@@ -62,7 +62,7 @@ client = contentful.Client('71rop70dkqaj', '297e67b247c1a77c1a23bb33bf4c32b81500
 
 ## Getting your content
 
-Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide][/developers/docs/concepts/data-model/].
+Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide](/developers/docs/concepts/data-model/).
 
 ## Entries
 
@@ -95,7 +95,7 @@ classic_car = client.entry(entry_id)
 Playsam Streamliner Classic Car, Espresso
 ~~~
 
-You can specify any of the [query parameters accepted by the API][/developers/docs/references/content-delivery-api/#/reference/search-parameters], for example:
+You can specify any of the [query parameters accepted by the API](/developers/docs/references/content-delivery-api/#/reference/search-parameters), for example:
 
 ~~~python
 products_by_price = client.entries({'content_type': '2PqfXUJwE8qSYKuM0U6w8M', 'order': 'fields.price'})
@@ -148,7 +148,7 @@ I am tagged with home décor and clocks and interior design and yellow and gifts
 My brand is: Lemnos
 ~~~
 
-In this example you added the `include: 2` parameter, which allows the API to resolve [links][/developers/docs/concepts/links/] to other related entries.
+In this example you added the `include: 2` parameter, which allows the API to resolve [links](/developers/docs/concepts/links/) to other related entries.
 
 ## Using assets
 
