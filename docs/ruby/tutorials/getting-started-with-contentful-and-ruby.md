@@ -71,7 +71,7 @@ client = Contentful::Client.new(
 
 ## Getting your content
 
-Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide][/developers/docs/concepts/data-model/].
+Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide](/developers/docs/concepts/data-model/).
 
 ### Entries
 
@@ -109,7 +109,7 @@ puts classic_car.fields[:productName]
 Playsam Streamliner Classic Car, Espresso
 ~~~
 
-You can specify any of the [query parameters accepted by the API][/developers/docs/references/content-delivery-api/#/reference/search-parameters], for example:
+You can specify any of the [query parameters accepted by the API](/developers/docs/references/content-delivery-api/#/reference/search-parameters), for example:
 
 ~~~ruby
 products_by_price = client.entries(content_type: '2PqfXUJwE8qSYKuM0U6w8M', order: 'fields.price')
@@ -165,7 +165,7 @@ I am tagged with home décor and clocks and interior design and yellow and gifts
 My brand is: Lemnos
 ~~~
 
-In this example you added the `include: 2` parameter, which allows the API to resolve [links][4] to other related entries.
+In this example you added the `include: 2` parameter, which allows the API to resolve [links](/developers/docs/concepts/links/) to other related entries.
 
 ## Using assets
 
@@ -205,11 +205,3 @@ end
 //images.contentful.com/71rop70dkqaj/6s3iG2OVmoUcosmA8ocqsG/b55b213eeca80de2ecad2b92aaa0065d/1418244847_Streamline-18-256__1_.png
 //images.contentful.com/71rop70dkqaj/KTRF62Q4gg60q6WCsWKw8/ae855aa3810a0f6f8fee25c0cabb4e8f/soso.clock.jpg
 ~~~
-
-[1]: https://github.com/contentful/contentful.rb
-
-[2]: https://github.com/contentful/contentful_middleman_examples
-
-[3]: https://github.com/contentful/contentful-bootstrap.rb
-
-[4]: /developers/docs/concepts/links/

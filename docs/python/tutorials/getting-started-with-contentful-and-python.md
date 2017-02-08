@@ -74,7 +74,7 @@ For example, to request all entries in a space:
 entries = client.entries()
 for entry in entries:
     if hasattr(entry, 'product_name'):
-        print (entry.product_name)
+        print(entry.product_name)
 ~~~
 
 ~~~
@@ -101,8 +101,7 @@ You can specify any of the [query parameters accepted by the API](/developers/do
 products_by_price = client.entries({'content_type': '2PqfXUJwE8qSYKuM0U6w8M', 'order': 'fields.price'})
 
 for entry in products_by_price:
-    if hasattr(entry, 'product_name'):
-        print (entry.product_name)
+  print (entry.product_name)
 ~~~
 
 ~~~
@@ -134,7 +133,7 @@ You can form complicated queries and interaction with your entries:
 products_with_many_tags = [ product for product in client.entries({'content_type': '2PqfXUJwE8qSYKuM0U6w8M', 'include': 2}) if product.tags.size > 2 ]
 for product in products_with_many_tags:
    print("I am tagged with {0}".format(' and '.join(product.tags)))
-   print("My barnd is: {0}".format(cat.brand.company_name))
+   print("My brand is: {0}".format(product.brand.company_name))
 ~~~
 
 ~~~
@@ -157,7 +156,7 @@ You query assets in a similar way to entries, but the CDA offers more specific f
 To query a single asset:
 
 ~~~python
-client.asset('wtrHxeu3zEoEce2MokCSi').image_url
+client.asset('wtrHxeu3zEoEce2MokCSi').url
 ~~~
 
 ~~~
@@ -170,7 +169,7 @@ To query all assets in a space:
 assets = client.assets()
 
 for asset in assets:
-  print(asset.image_url)
+  print(asset.url)
 ~~~
 
 ~~~
