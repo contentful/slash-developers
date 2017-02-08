@@ -46,7 +46,7 @@ client = contentful.Client('<space_id>', '<access_token>')
 
 ## Getting your content
 
-Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide][/developers/docs/concepts/data-model/].
+Contentful separates content between entries, which contain your data and relationships with other content or images, and assets, which represent static content, like images, and are served as files. Read more in our [content model guide](/developers/docs/concepts/data-model/).
 
 ## Entries
 
@@ -72,7 +72,7 @@ classic_car = client.entry(entry_id)
 
 :[Get entry output](../../_partials/get-entry-output.md)
 
-You can specify any of the [query parameters accepted by the API][/developers/docs/references/content-delivery-api/#/reference/search-parameters], for example:
+You can specify any of the [query parameters accepted by the API](/developers/docs/references/content-delivery-api/#/reference/search-parameters), for example:
 
 ~~~python
 products_by_price = client.entries({'content_type': '<product_content_type_id>', 'order': 'fields.price'})
@@ -107,7 +107,7 @@ for product in products_with_many_tags:
 
 :[Python object complex output](../../_partials/ruby-python-object-complex-output.md)
 
-In this example you added the `include: 2` parameter, which allows the API to resolve [links][/developers/docs/concepts/links/] to other related entries.
+In this example you added the `include: 2` parameter, which allows the API to resolve [links](/developers/docs/concepts/links/) to other related entries.
 
 ## Using assets
 
