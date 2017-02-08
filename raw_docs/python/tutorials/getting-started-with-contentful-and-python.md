@@ -17,18 +17,18 @@ This guide will show you how to get started using our [Python SDK](https://githu
 
 Install the 'contentful' client with [pip](https://pypi.python.org/pypi/pip):
 
-~~~bash
+```bash
 pip install contentful
-~~~
+```
 
 {: .note}
 On some systems, particularly if you're not using `virtualenv` you may have to use `sudo` to install the SDK.
 
 Or add the SDK to your _requirements.txt_ file:
 
-~~~python
+```python
 contentful
-~~~
+```
 
 And run `pip install -r requirements.txt` to install the client and all dependencies.
 
@@ -38,11 +38,11 @@ Once you have installed the package, you can use it inside your application.
 
 :[Create credentials](../../_partials/credentials.md)
 
-~~~python
+```python
 import contentful
 
 client = contentful.Client('<space_id>', '<access_token>')
-~~~
+```
 
 ## Getting your content
 
@@ -54,32 +54,32 @@ With the client created, you can now start consuming data from the CDA.
 
 For example, to request all entries in a space:
 
-~~~python
+```python
 entries = client.entries()
-for entry in entries:
-    if hasattr(entry, 'product_name'):
-        print(entry.product_name)
-~~~
 
-:[Get all entry output](../../_partials/get-all-entry-output.md)
+for entry in entries:
+    print(getattr(entry, 'product_name', 'Not a product'))
+```
+
+:[Get all entry output](../../_partials/get-all-entry-output-python.md)
 
 Or to request a single entry:
 
-~~~python
+```python
 entry_id = '<entry_id>'
 classic_car = client.entry(entry_id)
-~~~
+```
 
 :[Get entry output](../../_partials/get-entry-output.md)
 
 You can specify any of the [query parameters accepted by the API](/developers/docs/references/content-delivery-api/#/reference/search-parameters), for example:
 
-~~~python
+```python
 products_by_price = client.entries({'content_type': '<product_content_type_id>', 'order': 'fields.price'})
 
 for entry in products_by_price:
   print (entry.product_name)
-~~~
+```
 
 :[Sorted entry output](../../_partials/sorted-entries-out.md)
 
@@ -87,22 +87,22 @@ for entry in products_by_price:
 
 Once you have your entry, you can use it as a Ruby object that follows standard Python conventions:
 
-~~~python
+```python
 print(product.product_name)
 print("it costs {0}".format(product.price))
 print("I am tagged with {0}".format(' and '.join(product.tags)))
-~~~
+```
 
 :[Python object output](../../_partials/ruby-python-object-output.md)
 
 You can form complicated queries and interaction with your entries:
 
-~~~python
+```python
 products_with_many_tags = [ product for product in client.entries({'content_type': '<product_content_type_id>', 'include': 2}) if product.tags.size > 2 ]
 for product in products_with_many_tags:
    print("I am tagged with {0}".format(' and '.join(product.tags)))
    print("My brand is: {0}".format(product.brand.company_name))
-~~~
+```
 
 :[Python object complex output](../../_partials/ruby-python-object-complex-output.md)
 
@@ -114,19 +114,19 @@ You query assets in a similar way to entries, but the CDA offers more specific f
 
 To query a single asset:
 
-~~~python
-client.asset('<asset_id>').url
-~~~
+```python
+client.asset('<asset_id>').url()
+```
 
 :[Get single asset](../../_partials/get-asset-output.md)
 
 To query all assets in a space:
 
-~~~python
+```python
 assets = client.assets()
 
 for asset in assets:
-  print(asset.url)
-~~~
+  print(asset.url())
+```
 
 :[Get all assets](../../_partials/get-all-asset-output.md)
