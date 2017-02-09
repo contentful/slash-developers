@@ -105,8 +105,17 @@ After this step, entries will have different field values for each locale:
 
 ![A field in the web app with a value for a particular translation](https://images.contentful.com/tz3n7fnw4ujc/3z7lNJMvRmQmqgiWAs8q8a/7452a6c11dc3ce03b648679e0dbc4f4f/5C9A28E3-2E53-4FA3-B79C-60F740170454.png_dl_1){:.img}
 
-## Retrieving entries without a specific locale
+## Retrieving entries without a specific locale / Fallback locales
 
+When you request content via the CDA there can be situations where there is no content for the requested locale. In these cases the API will, by default, return content for the default locale in the space (provided there's content for it). You can override this behaviour by setting a custom `fallbackCode` in your locale. If there's no content for a locale but it exists for the fallback locale, then the CDA will return its content.
+
+Considerations on fallback locales:
+
+- If you don't want a locale to fallback to anything, set its `fallbackCode` property to `null`.
+- You can create fallback chains. For example `de-CH` (Swiss German) fallbacks to `de-AT` (Austrian German) and `de-AT` fallbacks to `de-DE` (German German) is a valid setup. If a locale in the chain doesn't have content, the API will try the next one.
+- Your fallback chain can't contain cycles, for example a fallback chain where `de-CH` fallbacks to `de-AT` and `de-AT` fallbacks to `de-CH`.
+- Contentful will only use the content of the fallback locale when the requested one is not present in the entry or asset (i.e. you request 'en-US' but the entry has only content for 'de-DE'). This means that values like `null` or an empty string (`""`) will not cause the system to use the value of the fallback locale. This can only be set via the API, and not with the Web app or SDKs.
+-
 If you don't specify a locale in your request, you will receive the entry from the default locale (`en-US` in this example):
 
 ~~~bash
