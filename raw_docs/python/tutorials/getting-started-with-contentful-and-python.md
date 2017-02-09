@@ -78,7 +78,7 @@ You can specify any of the [query parameters accepted by the API](/developers/do
 products_by_price = client.entries({'content_type': '<product_content_type_id>', 'order': 'fields.price'})
 
 for entry in products_by_price:
-  print (entry.product_name)
+  print(entry.product_name)
 ~~~
 
 :[Sorted entry output](../../_partials/sorted-entries-out.md)
