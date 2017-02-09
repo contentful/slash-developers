@@ -85,7 +85,7 @@ for entry in products_by_price:
 
 ### Using your entry as a Python object
 
-Once you have your entry, you can use it as a Ruby object that follows standard Python conventions:
+Once you have your entry, you can use it as a Python object that follows standard Python conventions:
 
 ~~~python
 print(product.product_name)
