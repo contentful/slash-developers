@@ -110,7 +110,7 @@ You can specify any of the [query parameters accepted by the API](/developers/do
 products_by_price = client.entries({'content_type': '2PqfXUJwE8qSYKuM0U6w8M', 'order': 'fields.price'})
 
 for entry in products_by_price:
-  print (entry.product_name)
+  print(entry.product_name)
 ~~~
 
 ~~~

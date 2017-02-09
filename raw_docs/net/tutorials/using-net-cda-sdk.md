@@ -324,7 +324,7 @@ var entries = await client.GetEntriesAsync(builder);
 As filtering by content type id is a common scenario, the `ContentfulClient` exposes a helpful method.
 
 ~~~csharp
-var entries = await client.GetEntriesByTypeAsync<Product>("ContentTypeId");
+var entries = await client.GetEntriesByTypeAsync<Product>("<content_type_id>");
 // entries would be an IEnumerable of Product
 ~~~
 
@@ -341,7 +341,7 @@ This would filter the entries returned to be of content type `<content_type_id>`
 You can pass the query string directly to the `GetEntries` methods.
 
 ~~~csharp
-var entries = await client.GetEntriesAsync<Product>("?content_Type=ContentTypeId&fields.productName[match]=Clock");
+var entries = await client.GetEntriesAsync<Product>("?content_Type=<content_type_id>&fields.productName[match]=Clock");
 //entries would be an IEnumerable of Product
 ~~~
 

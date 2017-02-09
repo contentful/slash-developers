@@ -77,8 +77,6 @@ client.fetchEntries(["content_type": "2PqfXUJwE8qSYKuM0U6w8M"]).1.next {
 
 Each content type has its own unique ID, and you can find it by looking at the last part of the URL in the web app:
 
-![Finding the Content type ID](content-type-id.png)
-
 The [`fetchEntries(_:)`][8] method returns a tuple of `NSURLSessionDataTask`, for cancellation purposes, and a [signal][10], called on completion of the request. The error is available via `.error` and if you prefer, there is [a variant][9], which takes a completion closure instead.
 
 The CDA supports a variety of parameters to search, filter and sort your content. The SDK passes these parameters as a dictionary, which in this case will retrieve entries of a certain content type. You can learn more about search parameters [in this guide][20], and explore more of the API using [this Playground][12].

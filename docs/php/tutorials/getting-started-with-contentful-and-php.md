@@ -131,7 +131,7 @@ $assets = $client->getAssets();
 Or to get a single asset:
 
 ~~~php
-$assetId = '<assest_id>';
+$assetId = 'wtrHxeu3zEoEce2MokCSi';
 $asset = $client->getAsset($assetId);
 ~~~
 
