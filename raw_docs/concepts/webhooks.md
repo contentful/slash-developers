@@ -16,9 +16,20 @@ nextsteps:
     link: /developers/docs/tools/extensions/
 ---
 
-Webhooks extend the integration possibilities by notifying you, another person or system when content (assets, entries or content types) have changed by calling a pre-configured HTTP endpoint.
+Webhooks extend integration possibilities by notifying you, another person or system when resources have changed by calling a pre-configured HTTP endpoint.
 
-Whenever a matching event occurs, a webhook calls a specified URI to react. For example, every time a user edits an entry, sending a push notification or message to a Slack channel.
+
+### When webhooks are called
+
+Webhooks are called as the result of an action against assets, entries or content types. Whenever a matching event occurs, a webhook calls a specified URI to react. For example, every time a user edits an entry, send a push notification or message to a Slack channel.
+
+The following table summarizes the actions that Contentful offers for every resource type:
+
+type/action| Create | Save | Auto save | Archive | Unarchive | Publish | Unpublish | Delete
+-----------|--------|------|-----------|---------|-----------|---------|-----------|---------
+Content type | Yes   | Yes  | No        | No      | No        | Yes     | Yes       | Yes
+Entry      | Yes    | Yes  | Yes       | Yes     | Yes       | Yes     | Yes       | Yes
+Asset      | Yes    | Yes  | Yes       | Yes     | Yes       | Yes     | Yes       | Yes
 
 ## Create and configure a webhook
 
@@ -40,8 +51,7 @@ You can configure the events that trigger a webhook at the bottom of the screen.
 {: .img-caption}
 Select what events trigger the webhook
 
-{: .note}
-**Note**: The "Save" webhook is triggered when the entry (or an asset) has been saved with an API call, and "Autosave" is triggered when it's autosaved in the UI.
+
 
 ### With the API
 
@@ -56,8 +66,21 @@ curl -X POST "https://api.contentful.com/spaces/<SPACE_ID>/webhook_definitions"
 
 Will create a new webhook in the specified space with a `url`, `name`, and `topics` which match the configuration options mentioned above.
 
-`topics` takes the form of comma separated `Type` and `Action` pairs, with `*` covering all actions, including any future actions Contentful introduces. For example, `ContentType.create` would trigger when someone creates a new content type, and `ContentType.*` would trigger for any of the five current actions.
+### Topics
 
+When creating a webhook you have to explicitly specify for which changes on your content (topics) you want your webhook called.
+
+For example, your webhook could be called when:
+
+- Any content (of any type) is published.
+- Assets are deleted.
+
+These filters have to be translated into a list of `[Type].[Action]` pairs, `[*.publish, Asset.delete, Entry.*]`, and included in the payload that defines the webhook.
+
+`*` is a wildcard character that can be used in place of any action or type. The combination `*.*` is also valid and means that your webhook is subscribed to all actions across all types.
+
+{: .note}
+**Note**: Using `*` allows your webhook to be called for future actions or types that didn't exist when the webhook was created or updated.
 [Find more details on creating a webhook with the API in our reference docs](/developers/docs/references/content-management-api/#/reference/search-parameters/create-a-webhook).
 
 ## List webhooks in a space
@@ -104,6 +127,12 @@ curl -X GET "https://api.contentful.com/spaces/<SPACE_ID>/webhooks/<WEBHOOK_ID>/
 ~~~
 
 [Find more details on getting the activity log of a webhook with the API in our reference docs](/developers/docs/references/content-management-api/#/reference/webhook-calls).
+
+## Auto save
+
+The Contentful web app automatically saves documents you are working on after every change you make. Contentful keeps track of documents active in the web app and uses that information to call webhooks you have configured. Contentful considers documents edited in the last 20 seconds as active.
+
+This means that, if you are editing an entry in the web app for one minute, and you have a webhook configured to be called for `auto_save` actions, that webhook will be called 3 times.
 
 ## Next steps
 
