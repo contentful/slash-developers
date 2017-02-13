@@ -18,11 +18,7 @@ An editor interface represents the look and feel of content type fields in the w
 
 For example, the following content type describes a typical blog post data structure. It has a title, a body, and a category that can be either "General", "iOS" or "Android".
 
-<<<<<<< HEAD
 ~~~json
-=======
-```json
->>>>>>> master
 {
   "fields": [
     { "id": "title", "name": "Title", "type": "Symbol" },
@@ -33,21 +29,13 @@ For example, the following content type describes a typical blog post data struc
     }
   ]
 }
-<<<<<<< HEAD
 ~~~
-=======
-```
->>>>>>> master
 
 An editor interface could, for example, define that the `title` field should be rendered as an input field (the widget id is `singleLine`). It could then define that the `body` should be a normal text area (the widget id is `multipleLine`), and that the `category` should be rendered as a dropdown field (the widget id is `dropdown`).
 
 The editor interface would look like this:
 
-<<<<<<< HEAD
 ~~~json
-=======
-```json
->>>>>>> master
 {
   "controls": [
     { "fieldId": "title", "widgetId": "singleLine" },
@@ -55,11 +43,7 @@ The editor interface would look like this:
     { "fieldId": "category", "widgetId": "dropdown" }
   ]
 }
-<<<<<<< HEAD
 ~~~
-=======
-```
->>>>>>> master
 
 There are sets of applicable widgets per content type field type:
 
@@ -104,11 +88,7 @@ You can pass custom settings to a control that change the behavior or presentati
 
 The entry for a field of type `Boolean`, for example, would look like this.
 
-<<<<<<< HEAD
 ~~~json
-=======
-```json
->>>>>>> master
 {
   "fieldId": "isFeatured",
   "widgetId": "boolean",
@@ -118,11 +98,7 @@ The entry for a field of type `Boolean`, for example, would look like this.
     "falseLabel": "no",
   }
 }
-<<<<<<< HEAD
 ~~~
-=======
-```
->>>>>>> master
 
 If present, the `settings` object of a control must be an object. All widgets accept the `helpText` setting and use it to render extra information with the widget. Other settings are widget specific.
 
