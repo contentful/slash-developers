@@ -60,17 +60,17 @@ Fields can contain multiple values with the `Array` type. An array can contain s
 
 You define a field that contains symbols like this:
 
-```json
+~~~json
 {
   "id": "tags",
   "type": "Array",
   "items": { "type": "Symbol" }
 }
-```
+~~~
 
 You define a field that contains links to assets like this:
 
-```json
+~~~json
 {
   "id": "relatedImages",
   "type": "Array",
@@ -79,11 +79,11 @@ You define a field that contains links to assets like this:
     "linkType": "Asset"
   }
 }
-```
+~~~
 
 You define a field that contains links to items like this:
 
-```json
+~~~json
 "reference_field": {
   "en-US": [
     {
@@ -101,7 +101,7 @@ You define a field that contains links to items like this:
     ...
   ]
 }
-```
+~~~
 
 Individual fields also contain metadata, such as validations and widget appearance.
 
