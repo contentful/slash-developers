@@ -29,4 +29,6 @@ for filename in $(find raw_docs -type f -name '*.md'); do
   sed -i -e 's/<asset_id>/wtrHxeu3zEoEce2MokCSi/g' $result_string
 done
 
+cp raw_docs/references/authentication.html.haml docs/references/authentication.html.haml
+
 rm -dfr docs/_partials

@@ -48,7 +48,7 @@ To communicate with the CDA you use the `ContentfulClient` class that requires t
 
 ~~~csharp
 var httpClient = new HttpClient();
-var client = new ContentfulClient(httpClient, "<content_delivery_api_key>", "<space_id>")
+var client = new ContentfulClient(httpClient, "<content_delivery_api_key>", "71rop70dkqaj")
 ~~~
 
 {: .note}
@@ -57,7 +57,7 @@ An `HttpClient` in .Net is special. It implements `IDisposable` but is generally
 Once you have an `ContentfulClient` you can start querying content. For example, to get a single entry:
 
 ~~~csharp
-var entry = await client.GetEntryAsync<Entry<dynamic>>("<entry_id>");
+var entry = await client.GetEntryAsync<Entry<dynamic>>("5KsDBWseXY6QegucYAoacS");
 Console.WriteLine(entry.Fields.productName.ToString());
 ~~~
 
@@ -84,10 +84,10 @@ Console.WriteLine(book.Description); // => Make an API request, get JSON in retu
 The `Entry` class is generic, which means you can combine the two approaches if you want the system metadata properties and strong typing.
 
 ~~~csharp
-var productEntry = await client.GetEntryAsync<Entry<Product>>("<entry_id>");
+var productEntry = await client.GetEntryAsync<Entry<Product>>("5KsDBWseXY6QegucYAoacS");
 
 Console.WriteLine(entry.Fields.ProductName); // => Contentful
-Console.WriteLine(entry.SystemProperties.Id); // => <entry_id>
+Console.WriteLine(entry.SystemProperties.Id); // => 5KsDBWseXY6QegucYAoacS
 ~~~
 
 ## Querying for content
@@ -99,7 +99,7 @@ There are a couple of methods on `ContentfulClient` that allow you to query for 
 To get a single entry use the `GetEntryAsync<T>` method.
 
 ~~~csharp
-var entry = await client.GetEntryAsync<Entry<dynamic>>("<entry_id>");
+var entry = await client.GetEntryAsync<Entry<dynamic>>("5KsDBWseXY6QegucYAoacS");
 ~~~
 
 This calls the CDA and returns JSON in the following format:
@@ -111,10 +111,10 @@ This calls the CDA and returns JSON in the following format:
       "sys": {
         "type": "Link",
         "linkType": "Space",
-        "id": "<space_id>"
+        "id": "71rop70dkqaj"
       }
     },
-    "id": "<entry_id>",
+    "id": "5KsDBWseXY6QegucYAoacS",
     "type": "Entry",
     "createdAt": "2016-11-03T10:50:05.033Z",
     "updatedAt": "2016-11-08T14:30:23.857Z",
@@ -138,7 +138,7 @@ This calls the CDA and returns JSON in the following format:
         "sys": {
           "type": "Link",
           "linkType": "Asset",
-          "id": "<asset_id>"
+          "id": "wtrHxeu3zEoEce2MokCSi"
         }
       }
     ],
@@ -154,7 +154,7 @@ This calls the CDA and returns JSON in the following format:
         "sys": {
           "type": "Link",
           "linkType": "Entry",
-          "id": "<entry_id>"
+          "id": "5KsDBWseXY6QegucYAoacS"
         }
       }
     ],
@@ -163,7 +163,7 @@ This calls the CDA and returns JSON in the following format:
       "sys": {
         "type": "Link",
         "linkType": "Entry",
-        "id": "<entry_id>"
+        "id": "5KsDBWseXY6QegucYAoacS"
       }
     },
     "quantity": 3,
@@ -179,10 +179,10 @@ You can fetch any property of an entry like this:
 
 ~~~csharp
 Console.WriteLine(entry.Fields.productName.ToString()) // => SoSo Wall Clock
-Console.WriteLine(entry.Fields.brand.sys.id.ToString()) // => <entry_id>
+Console.WriteLine(entry.Fields.brand.sys.id.ToString()) // => 5KsDBWseXY6QegucYAoacS
 Console.WriteLine(entry.Fields.sku.ToString()) // => B00MG4ULK2
 // Meta data properties can be found in the SystemProperties property
-Console.WriteLine(entry.SystemProperties.Id) // => <entry_id>
+Console.WriteLine(entry.SystemProperties.Id) // => 5KsDBWseXY6QegucYAoacS
 Console.WriteLine(entry.SystemProperties.Revision?.ToString()) // => 4
 ~~~
 
@@ -214,13 +214,13 @@ public class Product {
     public string Slug { get; set; }
 }
 
-var entry = await client.GetEntryAsync<Product>("<entry_id>");
+var entry = await client.GetEntryAsync<Product>("5KsDBWseXY6QegucYAoacS");
 
 Console.WriteLine(entry.ProductName) // => SoSo Wall Clock
 Console.WriteLine(entry.Quantity.ToString()) // => 3
 Console.WriteLine(entry.Slug) // => soso-wall-clock
 // This does not compile, Product does not contain a definition for SystemProperties
-Console.WriteLine(entry.SystemProperties.Id) // => <entry_id>
+Console.WriteLine(entry.SystemProperties.Id) // => 5KsDBWseXY6QegucYAoacS
 Console.WriteLine(entry.SystemProperties.Revision?.ToString()) // => 4
 ~~~
 
@@ -236,12 +236,12 @@ public class Product {
     public string Slug { get; set; }
 }
 
-var entry = await client.GetEntryAsync<Product>("<entry_id>");
+var entry = await client.GetEntryAsync<Product>("5KsDBWseXY6QegucYAoacS");
 Console.WriteLine(entry.ProductName) // => SoSo Wall Clock
 
 Console.WriteLine(entry.Quantity.ToString()) // => 3
 Console.WriteLine(entry.Slug) // => soso-wall-clock
-Console.WriteLine(entry.Sys.Id) // => <entry_id>
+Console.WriteLine(entry.Sys.Id) // => 5KsDBWseXY6QegucYAoacS
 Console.WriteLine(entry.Sys.Revision?.ToString()) // => 4
 ~~~
 
@@ -352,7 +352,7 @@ While this is possible, the recommended approach is to use the `QueryBuilder<T>`
 To get a single asset use the `GetAssetAsync` method.
 
 ~~~csharp
-var asset = await client.GetAssetAsync("<asset_id>");
+var asset = await client.GetAssetAsync("wtrHxeu3zEoEce2MokCSi");
 ~~~
 
 This would return an asset as JSON:
@@ -364,10 +364,10 @@ This would return an asset as JSON:
       "sys": {
         "type": "Link",
         "linkType": "Space",
-        "id": "<space_id>"
+        "id": "71rop70dkqaj"
       }
     },
-    "id": "<asset_id>",
+    "id": "wtrHxeu3zEoEce2MokCSi",
     "type": "Asset",
     "createdAt": "2016-11-03T15:06:48.621Z",
     "updatedAt": "2016-11-03T15:06:48.621Z",
@@ -395,7 +395,7 @@ This would return an asset as JSON:
 That is then serialized into a strongly typed `Asset`.
 
 ~~~csharp
-var asset = await client.GetAssetAsync("<asset_id>");
+var asset = await client.GetAssetAsync("wtrHxeu3zEoEce2MokCSi");
 Console.WriteLine(asset.SystemProperties.CreatedAt.ToShortDateString()); // => 2016-11-03
 Console.WriteLine(asset.Title); // => ihavenoidea
 Console.WriteLine(asset.File.Url); // => // images.contentful.com/SpaceId/321/123/ihavenoidea.jpg
@@ -506,7 +506,7 @@ var entries = await client.GetEntriesAsync(builder);
 Including referenced content is only supported for the methods that return collections. Using `GetEntryAsync` will not resolve your references. Instead, you could query for a single entry using `GetEntriesAsync`, but add a restriction to get an entry by a specific id.
 
 ~~~csharp
-var builder = new QueryBuilder<Product>().FieldEquals(f => f.Sys.Id, "<entry_id>").Include(2);
+var builder = new QueryBuilder<Product>().FieldEquals(f => f.Sys.Id, "5KsDBWseXY6QegucYAoacS").Include(2);
 var entry = (await client.GetEntriesAsync<Product>(builder)).FirstOrDefault();
 ~~~
 

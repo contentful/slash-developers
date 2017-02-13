@@ -17,7 +17,19 @@ nextsteps:
 
 This guide will show you how to get started using our [Swift SDK](https://github.com/contentful/contentful.swift) to consume content.
 
-:[Getting started tutorial intro](../../_partials/getting-started-intro.md)
+Contentful's Content Delivery API (CDA) is a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to an user's location by using our global CDN.
+
+We publish SDKs for various languages to make developing applications easier.
+
+## Pre-requisites
+
+This tutorial assumes you have read and understood [the guide that covers the Contentful data model](/developers/docs/concepts/data-model/).
+
+## Authentication
+
+For every request, clients [need to provide an API key](/developers/docs/references/authentication/), which is created per space and used to delimit applications and content classes.
+
+You can create an access token using the [Contentful web app](https://be.contentful.com/login) or the [Content Management API](/developers/docs/references/content-management-api/#/reference/api-keys/create-an-api-key).
 
 ## Setup the client
 
@@ -40,11 +52,15 @@ As you are developing a mobile app, you should provide offline data persistence 
 
 The [`Client`][6] class manages all requests to the API.
 
-:[Create credentials](../../_partials/credentials.md)
+## Initializing the client
+
+You need an API key and a space ID to initialize a client
+
+_You can use the API key and space ID pre-filled below from our example space or replace them with your own values_.
 
 ~~~swift
-let spaceId = "<space_id>"
-let token = "<access_token>"
+let spaceId = "71rop70dkqaj"
+let token = "297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971"
 
 let client = Client(spaceIdentifier: spaceId, accessToken: token)
 ~~~
@@ -54,7 +70,7 @@ let client = Client(spaceIdentifier: spaceId, accessToken: token)
 Now that you have initialized a client, you can fetch entries:
 
 ~~~swift
-client.fetchEntries(["content_type": "<product_content_type_id>"]).1.next {
+client.fetchEntries(["content_type": "2PqfXUJwE8qSYKuM0U6w8M"]).1.next {
     print($0)
 }
 ~~~
