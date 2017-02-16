@@ -10,10 +10,10 @@ tags:
 nextsteps:
   - docsToolsExtensions
 nextsteps:
-  - text: Integrate Contentful with other services via Webhooks
-    link: /developers/docs/concepts/webhooks/
   - text: Tools and libraries to make your Contentful experience better
     link: /developers/docs/tools/extensions/
+  - text: Webhooks API guide
+    link: /developers/docs/references/content-management-api/#/reference/webhooks  
 ---
 
 Webhooks extend integration possibilities by notifying you, another person or system when resources have changed by calling a pre-configured HTTP endpoint.
@@ -133,7 +133,3 @@ curl -X GET "https://api.contentful.com/spaces/<SPACE_ID>/webhooks/<WEBHOOK_ID>/
 The Contentful web app automatically saves documents you are working on after every change you make. Contentful keeps track of documents active in the web app and uses that information to call webhooks you have configured. Contentful considers documents edited in the last 20 seconds as active.
 
 This means that, if you are editing an entry in the web app for one minute, and you have a webhook configured to be called for `auto_save` actions, that webhook will be called 3 times.
-
-## Next steps
-
-For more details on using webhooks with our API including deleting and updating, [read our API guide](/developers/docs/references/content-management-api/#/reference/webhooks).
