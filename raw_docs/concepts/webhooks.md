@@ -25,7 +25,8 @@ Webhooks are called as the result of an action against assets, entries or conten
 
 The following table summarizes the actions that Contentful offers for every resource type:
 
-type/action| Create | Save | Auto save | Archive | Unarchive | Publish | Unpublish | Delete
+{: .table}
+Type/action| Create | Save | Auto save | Archive | Unarchive | Publish | Unpublish | Delete
 -----------|--------|------|-----------|---------|-----------|---------|-----------|---------
 Content type | Yes   | Yes  | No        | No      | No        | Yes     | Yes       | Yes
 Entry      | Yes    | Yes  | Yes       | Yes     | Yes       | Yes     | Yes       | Yes
