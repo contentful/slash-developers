@@ -47,6 +47,7 @@ The editor interface would look like this:
 
 There are sets of applicable widgets per content type field type:
 
+{: .table}
 | Widget ID               | Applicable field types        | Description                                                                                                         |
 | ----------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | assetLinkEditor         | Asset                         | Search, attach, and preview an asset.                                                                               |
@@ -102,7 +103,7 @@ The entry for a field of type `Boolean`, for example, would look like this.
 
 If present, the `settings` object of a control must be an object. All widgets accept the `helpText` setting and use it to render extra information with the widget. Other settings are widget specific.
 
-<table>
+<table class="table">
 <thead>
   <tr>
     <th>Widget ID</th>

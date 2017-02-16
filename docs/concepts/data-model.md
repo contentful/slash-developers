@@ -22,6 +22,7 @@ Each space has a _content model_ that represents the _content types_ you create.
 
 All content types have four standard fields that contain basic information about the content type, its fields and meta data.
 
+{: .table}
 | Field        | Type     | Description                        |
 | ------------ | -------- | ---------------------------------- |
 | sys          | Sys      | Common system properties.          |
@@ -34,6 +35,7 @@ All content types have four standard fields that contain basic information about
 
 Each _content type_ consists of a set of up to **50** fields that you define, these fields can be one of the following, and correspond to a JSON type. There are differences between the fields you can create in the web app and the API.
 
+{: .table}
 | Name                       | JSON type | Description                                                                                                                                                                                          | Limits                                           | Example                    |
 | -------------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ | -------------------------- |
 | Text (Short)               | String    | A short text field for tiles and names.                                                                                                                                                              | Maximum length is 256.                           | `"The title"`              |
