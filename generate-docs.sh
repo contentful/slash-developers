@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+npm install
+HERCULE=node_modules/.bin/hercule
+
 rm -dfr docs
 
 echo "Processing Markdown"
