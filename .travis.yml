@@ -14,8 +14,7 @@ script:
   - make -C apiary test
 
 after_success:
-  - npm run-script spellcheck-main
-  - npm run-script spellcheck-apiary
+  - ./spelling.sh
 
 cache:
   directories:
