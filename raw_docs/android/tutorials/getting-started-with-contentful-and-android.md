@@ -30,7 +30,7 @@ To include the CDA SDK, add the following lines to the _build.gradle_ file:
 ~~~gradle
 dependencies {
     // [...]
-    compile 'com.contentful.java:java-sdk:7.3.0'
+    compile 'com.contentful.java:java-sdk:7.4.0'
     compile 'io.reactivex:rxandroid:0.23.0'
 }
 ~~~
