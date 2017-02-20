@@ -12,16 +12,6 @@ nextsteps: null
 
 ## An introduction to Contentful concepts
 
-### The content model
-
-Contentful organizes content into _spaces_, that allows you to group all the related resources for a project together, this includes content entries, media assets, and settings for localizing content into different languages.
-
-Each space has a _content model_ that represents the _content types_ you create.
-
-Each _content type_ consists of a set of up to **50** fields that you define, these fields can be one of the following.
-
-![Contentful content model](https://images.contentful.com/tz3n7fnw4ujc/4qEZ2g13fycuysMyaW4A2I/112a48fabadefe1b4674bf56e3d7f7c6/Resource_Model.png)
-
 ### Four APIs
 
 Contentful offers four REST APIs for working with your content. Each of these APIs serve a different purpose, so which one to use depends on what you want to do:
@@ -31,7 +21,22 @@ Contentful offers four REST APIs for working with your content. Each of these AP
 -   If you want to retrieve unpublished content to show in-context previews to content creators and editors, use the [Preview API][cpa-section]. This API behaves like the Content Delivery API, but includes content that has not yet been published.
 -   If you want to retrieve and apply transformations to images stored in Contentful, use the [Images API][images-section].
 
-This tutorial will focus on the Content Delivery API (CDA). All content, both JSON and binary, is fetched from the server closest to an user's location using our global delivery network.
+{: .note}
+**Learn more** about our four APIs [in this guide](/developers/docs/concepts/apis/).
+
+### Organizing your content
+
+Contentful organizes content into _spaces_, that allows you to group all the related resources for a project together, this includes content entries, media assets, and settings for localizing content into different languages.
+
+Each space has a _content model_ that represents the _content types_ you create.
+
+Each _content type_ consists of a set of up to **50** fields that you define, these fields can be one of the following.
+
+![Contentful content model](https://images.contentful.com/tz3n7fnw4ujc/4qEZ2g13fycuysMyaW4A2I/112a48fabadefe1b4674bf56e3d7f7c6/Resource_Model.png)
+
+
+{: .note}
+**Learn more** about content modeling [in this guide](/developers/docs/concepts/data-model/).
 
 ## How to get the SDK
 
