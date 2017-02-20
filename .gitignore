@@ -1,6 +1,5 @@
 .DS_Store
 .idea/
-/push-to-cf.sh
 *.md.map
 *.md-e
 node_modules
