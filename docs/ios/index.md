@@ -24,7 +24,7 @@ Our SDKs give you access to our [APIs](/developers/docs/concepts/apis/) and thei
 This SDK interacts with the Content Delivery API, a read-only API for retrieving content from Contentful. All content, both JSON and binary, is fetched from the server closest to a user's location using our global CDN.<br/>
 [View on GitHub - Swift](https://github.com/contentful/contentful.swift)<br/>
 [View on GitHub - ObjC](https://github.com/contentful/contentful.objc)<br/>
-[API reference - ObjC](http://cocoadocs.org/docsets/ContentfulDeliveryAPI/1.10.4/)<br/>
+[API reference - ObjC](http://cocoadocs.org/docsets/ContentfulDeliveryAPI/)<br/>
 [API Playground - Swift](https://github.com/contentful/ContentfulPlayground)
 
 ### Content Management API SDK
