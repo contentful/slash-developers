@@ -7,9 +7,15 @@ ruby: 2.2.3
 
 before_install:
   - mv Spelling-and-style-sheet/.spelling ./.spelling
+  - sudo apt-get install jq
+  - make -C apiary install
+  - ./generate-docs.sh
+
+script:
+  - make -C apiary test
 
 after_success:
-  - npm run-script spellcheck-main
+  - ./spelling.sh
 
 cache:
   directories:
