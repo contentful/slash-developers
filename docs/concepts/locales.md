@@ -115,8 +115,7 @@ Considerations on fallback locales:
 - You can create fallback chains. For example `de-CH` (Swiss German) fallbacks to `de-AT` (Austrian German) and `de-AT` fallbacks to `de-DE` (German German) is a valid setup. If a locale in the chain doesn't have content, the API will try the next one.
 - Your fallback chain can't contain cycles, for example a fallback chain where `de-CH` fallbacks to `de-AT` and `de-AT` fallbacks to `de-CH`.
 - Contentful will only use the content of the fallback locale when the requested one is not present in the entry or asset (i.e. you request 'en-US' but the entry has only content for 'de-DE'). This means that values like `null` or an empty string (`""`) will not cause the system to use the value of the fallback locale. This can only be set via the API, and not with the Web app or SDKs.
--
-If you don't specify a locale in your request, you will receive the entry from the default locale (`en-US` in this example):
+- If you don't specify a locale in your request, you will receive the entry from the default locale (`en-US` in this example):
 
 ~~~bash
 curl -X GET "https://cdn.contentful.com/spaces/<SPACE_ID>/entries/<ENTRY_ID>?access_token=<CONTENT_DELIVERY_KEY>"
