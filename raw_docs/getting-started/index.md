@@ -16,13 +16,10 @@ nextsteps: null
 
 Contentful offers four REST APIs for working with your content. Each of these APIs serve a different purpose, so which one to use depends on what you want to do:
 
--   If you're retrieving content to display to users in an app or website, use the [Content Delivery API][cda-section].
--   If you want to programmatically create or update content items, use the [Content Management API][cma-section].
--   If you want to retrieve unpublished content to show in-context previews to content creators and editors, use the [Preview API][cpa-section]. This API behaves like the Content Delivery API, but includes content that has not yet been published.
--   If you want to retrieve and apply transformations to images stored in Contentful, use the [Images API][images-section].
-
-{: .note}
-**Learn more** about our four APIs [in this guide](/developers/docs/concepts/apis/).
+-   If you're retrieving content to display to users in an app or website, use the [Content Delivery API](/developers/docs/concepts/apis/#content-delivery-api) (CDA).
+-   If you want to programmatically create or update content items, use the [Content Management API](/developers/docs/concepts/apis/#content-management-api) (CMA).
+-   If you want to retrieve unpublished content to show in-context previews to content creators and editors, use the [Preview API](/developers/docs/concepts/apis/#preview-api) (CPA). This API behaves like the Content Delivery API, but includes content that has not yet been published.
+-   If you want to retrieve and apply transformations to images stored in Contentful, use the [Images API](/developers/docs/concepts/apis/#images-api).
 
 ### Organizing your content
 
@@ -34,28 +31,16 @@ Each _content type_ consists of a set of up to **50** fields that you define, th
 
 ![Contentful content model](https://images.contentful.com/tz3n7fnw4ujc/4qEZ2g13fycuysMyaW4A2I/112a48fabadefe1b4674bf56e3d7f7c6/Resource_Model.png)
 
-
 {: .note}
 **Learn more** about content modeling [in this guide](/developers/docs/concepts/data-model/).
 
-## How to get the SDK
+## Get an SDK
 
-Contentful has SDKs for various languages that exposes API endpoints to you appropriate to your language and make developing applications easier.
+Contentful maintains SDKs that expose API endpoints to make developing in your language easier.
 
-Contentful maintains SDKs for the following languages, click the appropriate tab to learn how to get hold of it:
+:[Get SDK](../_partials/get-sdks.md)
 
--   Curl (default selected)
--   PHP
--   Ruby
--   Objective-C
--   Swift
--   Android
--   Java
--   JavaScript
--   .Net
--   Python
-
-## How to create a client to get the space and inferred content model
+## Create a client to get the space and inferred content model
 
 Creating a client to communicate with the CDA requires two parameters.
 
@@ -69,9 +54,13 @@ You also need a valid API key for accessing that space, which you can find under
 
 Creating a client will connect to the space, and make the content model available to your application.
 
-## How to get all entries from the space
+:[Create client](../_partials/create-client.md)
+
+## Get all entries from the space
 
 Now you have a connection to the space you can fetch content from it. Start by fetching all the entries.
+
+
 
 ## How to filter entries
 
