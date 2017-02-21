@@ -60,7 +60,7 @@ Creating a client will connect to the space, and make the content model availabl
 
 Now you have a connection to the space you can fetch content from it. Start by fetching all the entries.
 
-
+:[Get all entries](../_partials/get-all-entries.md)
 
 ## How to filter entries
 

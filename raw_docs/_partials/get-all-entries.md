@@ -1,16 +1,10 @@
 ## NodeJS
 
 ```javascript
-var contentful = require('contentful')
-var client = contentful.createClient({
-  space: '<space_id>',
-  accessToken: '<access_token>'
-})
+var entries = client.getEntries();
 ```
 
 ## JavaScript
-
-Run the following command in your terminal:
 
 ```javascript
 
@@ -19,10 +13,7 @@ Run the following command in your terminal:
 ## Ruby
 
 ```ruby
-client = Contentful::Client.new(
-  access_token: '<access_token>',
-  space: '<space_id>'
-)
+entries = client.entries()
 ```
 
 ## Python
@@ -34,31 +25,25 @@ entries = client.entries()
 ## .Net
 
 ```csharp
-var httpClient = new HttpClient();
-var options = new ContentfulOptions()
-{
-    DeliveryApiKey = "<access_token>",
-    SpaceId = "<space_id>"
-}
-var client = new ContentfulClient(httpClient, options);
+var entries = await client.GetEntriesAsync<Entry<dynamic>>();
 ```
 
 ## PHP
 
 ```php
-$client = new \Contentful\Delivery\Client('<access_token>', '<space_id>');
+$entries = $client->getEntries($query);
 ```
 
 ## Objective-C
 
 ```objective-c
-CDAClient* client = [[CDAClient alloc] initWithSpaceKey:@"<space_id>" accessToken:@"<access_token>"];
+
 ```
 
 ## Swift
 
 ```swift
-let client = Client(spaceIdentifier: "<space_id>", accessToken: "<access_token>")
+let entries = client.fetchEntries()
 ```
 
 ## Java
@@ -70,8 +55,26 @@ CDAArray array = client.fetch(CDAEntry.class).all();
 ## Android
 
 ```java
-CDAClient client = CDAClient.builder()
-    .setSpace("<space_id>")
-    .setToken("<access_token>")
-    .build();
+client.observe(CDAEntry.class)
+  .one("<entry_id>")
+  .observeOn(AndroidSchedulers.mainThread())
+  .subscribeOn(Schedulers.io())
+  .subscribe(new Subscriber<CDAEntry>() {
+    CDAEntry result;
+
+    @Override public void onCompleted() {
+      Log.i("Contentful", gson.toJson(result));
+    }
+
+    @Override public void onError(Throwable error) {
+      Log.e("Contentful", "could not request entry", error);
+    }
+
+    @Override public void onNext(CDAEntry cdaEntry) {
+      result = cdaEntry;
+    }
+  });
 ```
+
+{: .note}
+All Android examples require the usage of RxAndroid, the reactive extension for Android. Find instructions on how to include it in your project [here](https://www.contentful.com/developers/docs/android/tutorials/getting-started-with-contentful-and-android/#dependencies-and-permissions).
