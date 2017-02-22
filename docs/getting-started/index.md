@@ -42,9 +42,9 @@ Contentful maintains SDKs that expose API endpoints to make developing in your l
 
 Run the following command in your terminal:
 
-```bash
+~~~bash
 npm install contentful
-```
+~~~
 
 ## JavaScript
 
@@ -52,33 +52,33 @@ Run the following command in your terminal:
 
 ## Ruby
 
-```bash
+~~~bash
 gem install 'contentful'
-```
+~~~
 
 Run the following command in your terminal:
 
 ## Python
 
-```bash
+~~~bash
 pip install contentful
-```
+~~~
 
 ## .Net
 
 Create a new Console application and run the following in your NuGet package manager console:
 
-```csharp
+~~~csharp
 Install-Package contentful.csharp -prerelease
-```
+~~~
 
 ## PHP
 
 Install [Composer](https://getcomposer.org/doc/00-intro.md) and run the following command in your terminal:
 
-```bash
+~~~bash
 php composer.phar contentful/contentful:@beta
-```
+~~~
 
 ## Objective-C
 
@@ -86,17 +86,17 @@ php composer.phar contentful/contentful:@beta
 
 Get the Swift SDK and use it in your project by adding the following to your Podfile:
 
-```ruby
+~~~ruby
 platform :ios, '9.0'
 use_frameworks!
 pod 'Contentful'
-```
+~~~
 
 Or your Cartfile:
 
-```bash
+~~~bash
 github "contentful/contentful.swift"
-```
+~~~
 
 You can find more details about SDK versions to suit Swift versions [here](https://github.com/contentful/contentful.swift#swift-versioning).
 
@@ -104,26 +104,26 @@ You can find more details about SDK versions to suit Swift versions [here](https
 
 Add the following lines to your pom.xml file:
 
-```xml
+~~~xml
 <dependency>
   <groupId>com.contentful.java</groupId>
   <artifactId>java-sdk</artifactId>
   <version>7.2.0</version>
 </dependency>
-```
+~~~
 
 ## Android
 
 Add the following lines to your _build.gradle_ file:
 
-```groovy
+~~~groovy
 dependencies {
     // [...]
     compile 'com.contentful.java:java-sdk:7.4.0'
     // compile 'io.reactivex:rxandroid:0.23.0'
     // MAYBE ABOVE NOT NEEDED IF .observeOn(AndroidSchedulers.mainThread())` if they need this import, most of them should need it.
 }
-```
+~~~
 
 ## Create a client to get the space and inferred content model
 
@@ -141,42 +141,42 @@ Creating a client will connect to the space, and make the content model availabl
 
 ## NodeJS
 
-```javascript
+~~~javascript
 var contentful = require('contentful')
 var client = contentful.createClient({
   space: '71rop70dkqaj',
   accessToken: '297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971'
 })
-```
+~~~
 
 ## JavaScript
 
 Run the following command in your terminal:
 
-```javascript
+~~~javascript
 
-```
+~~~
 
 ## Ruby
 
-```ruby
+~~~ruby
 client = Contentful::Client.new(
   access_token: '297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971',
   space: '71rop70dkqaj'
 )
-```
+~~~
 
 ## Python
 
-```python
+~~~python
 import contentful
 
 client = contentful.Client('71rop70dkqaj', '297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971')
-```
+~~~
 
 ## .Net
 
-```csharp
+~~~csharp
 var httpClient = new HttpClient();
 var options = new ContentfulOptions()
 {
@@ -184,43 +184,43 @@ var options = new ContentfulOptions()
     SpaceId = "71rop70dkqaj"
 }
 var client = new ContentfulClient(httpClient, options);
-```
+~~~
 
 ## PHP
 
-```php
+~~~php
 $client = new \Contentful\Delivery\Client('297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971', '71rop70dkqaj');
-```
+~~~
 
 ## Objective-C
 
-```objective-c
+~~~objective-c
 CDAClient* client = [[CDAClient alloc] initWithSpaceKey:@"71rop70dkqaj" accessToken:@"297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971"];
-```
+~~~
 
 ## Swift
 
-```swift
+~~~swift
 let client = Client(spaceIdentifier: "71rop70dkqaj", accessToken: "297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971")
-```
+~~~
 
 ## Java
 
-```java
+~~~java
 CDAClient client = CDAClient.builder()
     .setSpace("71rop70dkqaj")
     .setToken("297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971")
     .build();
-```
+~~~
 
 ## Android
 
-```java
+~~~java
 CDAClient client = CDAClient.builder()
     .setSpace("71rop70dkqaj")
     .setToken("297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971")
     .build();
-```
+~~~
 
 ## Get all entries from the space
 
@@ -228,61 +228,61 @@ Now you have a connection to the space you can fetch content from it. Start by f
 
 ## NodeJS
 
-```javascript
+~~~javascript
 var entries = client.getEntries();
-```
+~~~
 
 ## JavaScript
 
-```javascript
+~~~javascript
 
-```
+~~~
 
 ## Ruby
 
-```ruby
+~~~ruby
 entries = client.entries()
-```
+~~~
 
 ## Python
 
-```python
+~~~python
 entries = client.entries()
-```
+~~~
 
 ## .Net
 
-```csharp
+~~~csharp
 var entries = await client.GetEntriesAsync<Entry<dynamic>>();
-```
+~~~
 
 ## PHP
 
-```php
+~~~php
 $entries = $client->getEntries($query);
-```
+~~~
 
 ## Objective-C
 
-```objective-c
+~~~objective-c
 
-```
+~~~
 
 ## Swift
 
-```swift
+~~~swift
 let entries = client.fetchEntries()
-```
+~~~
 
 ## Java
 
-```java
+~~~java
 CDAArray array = client.fetch(CDAEntry.class).all();
-```
+~~~
 
 ## Android
 
-```java
+~~~java
 client.observe(CDAEntry.class)
   .one("5KsDBWseXY6QegucYAoacS")
   .observeOn(AndroidSchedulers.mainThread())
@@ -302,7 +302,7 @@ client.observe(CDAEntry.class)
       result = cdaEntry;
     }
   });
-```
+~~~
 
 {: .note}
 All Android examples require the usage of RxAndroid, the reactive extension for Android. Find instructions on how to include it in your project [here](https://www.contentful.com/developers/docs/android/tutorials/getting-started-with-contentful-and-android/#dependencies-and-permissions).

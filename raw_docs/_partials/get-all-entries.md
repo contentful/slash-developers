@@ -1,60 +1,60 @@
 ## NodeJS
 
-```javascript
+~~~javascript
 var entries = client.getEntries();
-```
+~~~
 
 ## JavaScript
 
-```javascript
+~~~javascript
 
-```
+~~~
 
 ## Ruby
 
-```ruby
+~~~ruby
 entries = client.entries()
-```
+~~~
 
 ## Python
 
-```python
+~~~python
 entries = client.entries()
-```
+~~~
 
 ## .Net
 
-```csharp
+~~~csharp
 var entries = await client.GetEntriesAsync<Entry<dynamic>>();
-```
+~~~
 
 ## PHP
 
-```php
+~~~php
 $entries = $client->getEntries($query);
-```
+~~~
 
 ## Objective-C
 
-```objective-c
+~~~objective-c
 
-```
+~~~
 
 ## Swift
 
-```swift
+~~~swift
 let entries = client.fetchEntries()
-```
+~~~
 
 ## Java
 
-```java
+~~~java
 CDAArray array = client.fetch(CDAEntry.class).all();
-```
+~~~
 
 ## Android
 
-```java
+~~~java
 client.observe(CDAEntry.class)
   .one("<entry_id>")
   .observeOn(AndroidSchedulers.mainThread())
@@ -74,7 +74,7 @@ client.observe(CDAEntry.class)
       result = cdaEntry;
     }
   });
-```
+~~~
 
 {: .note}
 All Android examples require the usage of RxAndroid, the reactive extension for Android. Find instructions on how to include it in your project [here](https://www.contentful.com/developers/docs/android/tutorials/getting-started-with-contentful-and-android/#dependencies-and-permissions).
