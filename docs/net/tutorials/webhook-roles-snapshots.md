@@ -53,13 +53,13 @@ Once you have created a webhook you can fetch them from the SDK using the `GetWe
 ~~~csharp
 var allWebhooks = await client.GetWebHooksCollectionAsync();
 
-var webhook = await client.GetWebHookAsync("<webhook_id>");
+var webhook = await client.GetWebHookAsync("0KzM2HxYr5O1pZ4SaUzK8h");
 ~~~
 
 To retrieve more information about a specific webhook call use the `GetWebHookCallDetailsCollectionAsync` to retrieve a list of calls made to the webhook or the `GetWebHookCallDetailsAsync` to get details of a specific call.
 
 ~~~csharp
-var calldetails = await client.GetWebHookCallDetailsCollectionAsync("<webhook_id>");
+var calldetails = await client.GetWebHookCallDetailsCollectionAsync("0KzM2HxYr5O1pZ4SaUzK8h");
 
 var calldetail = await client.GetWebHookCallDetailsAsync("<call_details_id>", "webhook_id");
 ~~~
@@ -67,7 +67,7 @@ var calldetail = await client.GetWebHookCallDetailsAsync("<call_details_id>", "w
 A method is available that gives a more general overview of the total number of webhook calls for a specific webhook and whether they returned a success code.
 
 ~~~csharp
-var webhookHealth = await client.GetWebHookHealthAsync("<webhook_id>");
+var webhookHealth = await client.GetWebHookHealthAsync("0KzM2HxYr5O1pZ4SaUzK8h");
 
 var total = webhookHealth.TotalCalls; // 27
 var healthy = webhookHealth.TotalHealthy; // 23
@@ -76,7 +76,7 @@ var healthy = webhookHealth.TotalHealthy; // 23
 To delete a webhook you are no longer using.
 
 ~~~csharp
-await client.DeleteWebHookAsync("<webhook_id>");
+await client.DeleteWebHookAsync("0KzM2HxYr5O1pZ4SaUzK8h");
 ~~~
 
 ## Roles and memberships
@@ -166,13 +166,13 @@ var createdRole = await client.CreateRoleAsync(role);
 You can update, delete and fetch roles with the appropriate methods.
 
 ~~~csharp
-var role = await client.GetRoleAsync("<role_id>");
+var role = await client.GetRoleAsync("0xvkNW6WdQ8JkWlWZ8BC4x");
 
 var allRoles = await client.GetAllRolesAsync();
 
 var updatedRole = await client.UpdateRoleAsync(role);
 
-await client.DeleteRoleAsync("<role_id>");
+await client.DeleteRoleAsync("0xvkNW6WdQ8JkWlWZ8BC4x");
 ~~~
 
 ## Working with snapshots
@@ -182,7 +182,7 @@ A snapshot of an entry is automatically created each time an entry is published 
 To get all snapshots for an entry use the `GetAllSnapshotsForEntryAsync`. To get a specific snapshot use the `SingleSnapshot` method.
 
 ~~~csharp
-var singleSnapshot = await client.SingleSnapshot("<snapshot_id>", "5KsDBWseXY6QegucYAoacS");
+var singleSnapshot = await client.SingleSnapshot("4lFryO7nDNioplKMFBpyMB", "5KsDBWseXY6QegucYAoacS");
 
 var allSnapshots = await client.GetAllSnapshotsForEntryAsync("5KsDBWseXY6QegucYAoacS");
 ~~~
@@ -218,7 +218,7 @@ To create a new membership use the `CreateSpaceMembershipAsync` method.
 var newMembership = new SpaceMembership();
 
 newMembership.Roles = new List<string>() {
-    "<role_id>"
+    "0xvkNW6WdQ8JkWlWZ8BC4x"
 };
 
 newMembership.Admin = true;
