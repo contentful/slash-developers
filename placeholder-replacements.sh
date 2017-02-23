@@ -38,7 +38,7 @@ sed -i -e 's/<sku_value>/B00E82D7I8/g' $result_string
 sed -i -e 's/<asset_id>/wtrHxeu3zEoEce2MokCSi/g' $result_string
 sed -i -e 's/<asset_token>/e86a375b7ad18c25e4ff55de1eac42fe/g' $result_string
 sed -i -e 's/<asset_file_path>/quwowooybuqbl6ntboz3.jpg/g' $result_string
-sed -i -e "s+<full_asset_file_path>+wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg+g" $result_string
+sed -i -e "s+<full_asset_file_path>+//wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg+g" $result_string
 sed -i -e 's/<asset_name>/Playsam Streamliner/g' $result_string
 sed -i -e 's/<asset_file>/Playsam Streamliner/g' $result_string
 

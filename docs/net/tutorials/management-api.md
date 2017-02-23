@@ -688,7 +688,7 @@ Locales allow you to define translatable fields for entries and assets. To fetch
 ~~~csharp
 var locales = await client.GetLocalesCollectionAsync(); // Fetches all locales for a space.
 
-var locale = await client.GetLocaleAsync("<locale_id>"); // Note that this parameter is not the locale code or name, but the actual id.
+var locale = await client.GetLocaleAsync("0xpIUSHPfJRzsAFFaub3hT"); // Note that this parameter is not the locale code or name, but the actual id.
 locale.Code; // => "en-GB"
 locale.Name; // => "British English"
 ~~~
@@ -712,5 +712,5 @@ await client.CreateLocaleAsync(locale);
 You can't delete a locale used as a fallback. You first need to delete or update any locale that has the locale you're trying to delete set as a fallback. When you delete a locale you delete **all** content associated with that locale. It's not possible to reverse this action and all content will be permanently deleted.
 
 ~~~csharp
-await client.DeleteLocaleAsync("<locale_id>");
+await client.DeleteLocaleAsync("0xpIUSHPfJRzsAFFaub3hT");
 ~~~

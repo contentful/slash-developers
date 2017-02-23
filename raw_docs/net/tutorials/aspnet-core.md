@@ -125,7 +125,7 @@ If you have the URL to the image available you can save a request by using the U
 There are other attributes you can set that will use the [Contentful Image API](/developers/docs/concepts/images/) in the background.
 
 ```html
-<contentful-image url="//<full_asset_file_path>" width="50" height="50" format="Png" resize-behaviour="Pad" background-color="#cc0000" image-focus-area="Face" corner-radius="10" />
+<contentful-image url="<full_asset_file_path>" width="50" height="50" format="Png" resize-behaviour="Pad" background-color="#cc0000" image-focus-area="Face" corner-radius="10" />
 ```
 
 These all correspond to similar values in our image API and will set the `src` attribute of the `img` correctly.
@@ -142,7 +142,7 @@ These all correspond to similar values in our image API and will set the `src` a
 There are two attributes specifically for jpeg images.
 
 ```html
-<contentful-image url="//<full_asset_file_path>" jpg-quality="50" progressive-jpg="True" />
+<contentful-image url="<full_asset_file_path>" jpg-quality="50" progressive-jpg="True" />
 ```
 
 -   The `jpg-quality` attribute lets you specify a number between 0 and 100 that corresponds to the quality of the outputted JPEG image.
@@ -151,7 +151,7 @@ There are two attributes specifically for jpeg images.
 The output from a `contentful-image` will be a regular `img` tag and every attribute added to it that is not part of the taghelper will be retained. This means that you can, for example, specify an alt text or class directly on the taghelper and the outputted image will keep it.
 
 ```html
-<contentful-image url="//<full_asset_file_path>" width="50" height="50" alt="<asset_name>" class="custom-class" />
+<contentful-image url="<full_asset_file_path>" width="50" height="50" alt="<asset_name>" class="custom-class" />
 ```
 
 ## Working with webhooks and middleware
