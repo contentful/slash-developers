@@ -12,17 +12,17 @@ To allow for the reuse of content and a centralized way to update placeholders i
 
 You can use [hercule](https://github.com/jamesramsay/hercule) to include (transclude) other partial markdown files and reduce repetition. Hercule is included in the _package.json_ file or you can install it manually. You can find the current partial files in the _raw_docs/\_partials_ folder and you include them with the following syntax:
 
-```markdown
+~~~markdown
 :[Getting started tutorial intro](../../_partials/getting-started-intro.md)
-```
+~~~
 
 ### Placeholders
 
 Placeholders for variables in code examples are enclosed in angled brackets, for example:
 
-```markdown
+~~~markdown
 <space_id>
-```
+~~~
 
 When you build the documentation these are replaced with the real values you can find in _placeholder-replacements.sh_ via the `sed` command. Feel free to add new variables you need.
 
