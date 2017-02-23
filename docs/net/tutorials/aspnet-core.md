@@ -38,8 +38,8 @@ The Contentful.AspNetCore package implements [the options pattern](https://docs.
 
 ```json
 "ContentfulOptions": {
-    "DeliveryApiKey": "<content_delivery_api_key>",
-    "ManagementApiKey": "<content_management_api_key>",
+    "DeliveryApiKey": "297e67b247c1a77c1a23bb33bf4c32b81500519edd767a8384a4b8f8803fb971",
+    "ManagementApiKey": "<cma_access_token>",
     "SpaceId": "71rop70dkqaj",
     "UsePreviewApi": false,
     "MaxNumberOfRateLimitRetries": 0
@@ -98,16 +98,16 @@ For more information on how to retrieve content using the `IContentfulClient` an
 
 A new feature of ASP.NET core is [taghelpers](https://docs.microsoft.com/en-us/aspnet/core/mvc/views/tag-helpers/intro). In the ASP.NET core SDK, there are two taghelpers that you can use when working with assets.
 
-If you have an asset stored in Contentful and wish to output an anchor tag to that asset you can use the `ContentfulAssetTagHelper`. On your anchor tag add an `asset-id` attribute and the taghelper will automatically retrieve it from Contentful and add it to the `href` attribute.
+If you have an asset stored in Contentful and wish to output an anchor tag to that asset you can use the `ContentfulAssetTagHelper`. On the anchor tag add an `asset_id` attribute and the taghelper will automatically retrieve it from Contentful and add it to the `href` attribute.
 
 ```html
-<a asset-id="<asset_id">link to asset</a>
+<a asset-id="wtrHxeu3zEoEce2MokCSi">link to asset</a>
 ```
 
 If you want to retrieve the asset from a specific locale you can add the `locale` attribute.
 
 ```html
-<a asset-id="<asset_id" locale="sv-SE">link to Swedish asset</a>
+<a asset-id="wtrHxeu3zEoEce2MokCSi" locale="sv-SE">link to Swedish asset</a>
 ```
 
 If the asset is an image you probably want to output an `img` tag instead of an anchor and can use the `ContentfulImageTageHelper`.
@@ -119,13 +119,13 @@ If the asset is an image you probably want to output an `img` tag instead of an 
 If you have the URL to the image available you can save a request by using the URL property instead.
 
 ```html
-<contentful-image url="<image_asset_url>" />
+<contentful-image url="<full_asset_file_path>" />
 ```
 
 There are other attributes you can set that will use the [Contentful Image API](/developers/docs/concepts/images/) in the background.
 
 ```html
-<contentful-image url="<image_asset_url>" width="50" height="50" format="Png" resize-behaviour="Pad" background-color="#cc0000" image-focus-area="Face" corner-radius="10" />
+<contentful-image url="//<full_asset_file_path>" width="50" height="50" format="Png" resize-behaviour="Pad" background-color="#cc0000" image-focus-area="Face" corner-radius="10" />
 ```
 
 These all correspond to similar values in our image API and will set the `src` attribute of the `img` correctly.
@@ -142,7 +142,7 @@ These all correspond to similar values in our image API and will set the `src` a
 There are two attributes specifically for jpeg images.
 
 ```html
-<contentful-image url="<image_asset_url>" jpg-quality="50" progressive-jpg="True" />
+<contentful-image url="//<full_asset_file_path>" jpg-quality="50" progressive-jpg="True" />
 ```
 
 -   The `jpg-quality` attribute lets you specify a number between 0 and 100 that corresponds to the quality of the outputted JPEG image.
@@ -151,7 +151,7 @@ There are two attributes specifically for jpeg images.
 The output from a `contentful-image` will be a regular `img` tag and every attribute added to it that is not part of the taghelper will be retained. This means that you can, for example, specify an alt text or class directly on the taghelper and the outputted image will keep it.
 
 ```html
-<contentful-image url="<image_asset_url>" width="50" height="50" alt="Some alt text" class="custom-class" />
+<contentful-image url="//<full_asset_file_path>" width="50" height="50" alt="<asset_name>" class="custom-class" />
 ```
 
 ## Working with webhooks and middleware
