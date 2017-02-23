@@ -19,8 +19,9 @@ These concepts introduce the basics of Contentful. This is the best place to sta
 -   [Locales](/developers/docs/concepts/locales/)
 -   [Synchronization](/developers/docs/concepts/sync/)
 -   [Multiple environments](/developers/docs/concepts/multiple-environments/)
--   [UI extensions](/developers/docs/concepts/uiextensions/)
 -   [Webhooks](/developers/docs/concepts/webhooks/)
+-   [Editor interfaces](/developers/docs/concepts/editor-interfaces/)
+-   [UI extensions](/developers/docs/concepts/uiextensions/)
 
 ## Reference
 
