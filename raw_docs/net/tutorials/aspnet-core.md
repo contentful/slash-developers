@@ -247,7 +247,7 @@ app.UseContentfulWebhooks(consumers => {
             }
         );
 
-        consumers.WebhookAuthorization = (s) => false;   
+        consumers.WebhookAuthorization = (httpcontext) => false;   
 });
 ```
 
