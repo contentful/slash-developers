@@ -40,4 +40,4 @@ This SDK interacts with the Content Delivery API, a read-only API for retrieving
 
 ### Gettings started with Contentful and ASP.NET core
 
-[This tutorial](/developers/docs/net/tutorials/aspnet-core/) will walk you through the first steps using the .Net SDKI with an ASP.NET core application.
+[This tutorial](/developers/docs/net/tutorials/aspnet-core/) will walk you through the first steps using the .Net SDK with an ASP.NET core application.

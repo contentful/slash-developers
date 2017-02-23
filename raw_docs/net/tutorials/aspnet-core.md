@@ -40,7 +40,7 @@ The Contentful.AspNetCore package implements [the options pattern](https://docs.
 "ContentfulOptions": {
     "DeliveryApiKey": "<content_delivery_api_key>",
     "ManagementApiKey": "<content_management_api_key>",
-    "SpaceId": "71rop70dkqaj",
+    "SpaceId": "<space_id>",
     "UsePreviewApi": false,
     "MaxNumberOfRateLimitRetries": 0
   }
@@ -113,7 +113,7 @@ If you want to retrieve the asset from a specific locale you can add the `locale
 If the asset is an image you probably want to output an `img` tag instead of an anchor and can use the `ContentfulImageTageHelper`.
 
 ```html
-<contentful-image asset-id="wtrHxeu3zEoEce2MokCSi" />
+<contentful-image asset-id="<asset_id>" />
 ```
 
 If you have the URL to the image available you can save a request by using the URL property instead.
