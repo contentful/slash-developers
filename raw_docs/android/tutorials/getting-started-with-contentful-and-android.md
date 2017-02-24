@@ -99,31 +99,31 @@ To fetch all entries, create a new observable that watches for changes, in this 
 
 ~~~java
 client.observe(CDAEntry.class)
-               .where("content_type", "<product_content_type_id>")
-               .all()
-               .observeOn(AndroidSchedulers.mainThread())
-               .subscribeOn(Schedulers.io())
-               .subscribe(new Subscriber<CDAArray>() {
-                   CDAArray result;
+  .where("content_type", "<product_content_type_id>")
+  .all()
+  .observeOn(AndroidSchedulers.mainThread())
+  .subscribeOn(Schedulers.io())
+  .subscribe(new Subscriber<CDAArray>() {
+     CDAArray result;
 
-                   @Override
-                   public void onCompleted() {
-                       for (CDAResource resource : result.items()) {
-                           CDAEntry entry = (CDAEntry) resource;
-                           Log.i("Contentful", entry.getField("productName").toString());
-                       }
-                   }
+     @Override
+     public void onCompleted() {
+         for (CDAResource resource : result.items()) {
+             CDAEntry entry = (CDAEntry) resource;
+             Log.i("Contentful", entry.getField("productName").toString());
+         }
+     }
 
-                   @Override
-                   public void onError(Throwable error) {
-                       Log.e("Contentful", "could not request entry", error);
-                   }
+     @Override
+     public void onError(Throwable error) {
+         Log.e("Contentful", "could not request entry", error);
+     }
 
-                   @Override
-                   public void onNext(CDAArray cdaArray) {
-                       result = cdaArray;
-                   }
-               });
+     @Override
+     public void onNext(CDAArray cdaArray) {
+         result = cdaArray;
+     }
+  });
 ~~~
 
 :[Get all entry output](../../_partials/get-all-entry-output-android.md)

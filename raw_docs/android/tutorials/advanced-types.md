@@ -12,184 +12,66 @@ nextsteps:
     link: /developers/docs/android/tutorials/advanced-filtering-and-searching/
 ---
 
-This is a simple `how to` on different aspects of the Contentful JAVA API. All following samples assume a client setup like
-
-~~~ java
-CDAClient client = CDAClient.builder()
-    .setSpace("developer_bookshelf")
-    .setToken("0b7f6x59a0")
-    .build();
-~~~
-
-as described in our [getting started guide](/developers/docs/android/tutorials/getting-started-with-contentful-and-android/).
+The guide will show you advanced methods to retrieve entries from Contenful using our Java SDK. We recommend you read the [Android getting started guide](/developers/docs/android/tutorials/getting-started-with-contentful-and-android/) before reading this guide.
 
 ## All entries
 
-To fetch all entries of the given space, you could use:
+To fetch all entries of a given space, use:
 
-~~~ java
+~~~java
 CDAArray array = client.fetch(CDAEntry.class).all();
 ~~~
 
-This will result in
+:[Get all entry output](../../_partials/get-all-entry-output-android.md)
 
-~~~ json
-{
-  "total": 2,
-  "skip": 0,
-  "limit": 100,
-  "items": [
-    {
-      "fields": {
-        "author": {
-          "en-US": "Larry Wall"
-        },
-        "name": {
-          "en-US": "An introduction to regular expressions. Volume VI"
-        },
-        "description": {
-          "en-US": "Now you have two problems."
-        }
-      },
-      …
-    },
-    … another item
-  ],
-  "sys": {
-    "type": "Array"
-  }
-}
+## A specific entry
+
+To retreieve and individual entry, use the `.one(<entry_id>)` method:
+
+~~~java
+CDAEntry entry = client.fetch(CDAEntry.class).one("<entry_id>");
 ~~~
 
-## One specific entry
-
-Using the `.one(`_`YOUR_ITEM_ID`_`)` method of the client, like follows
-
-~~~ java
-CDAEntry entry = client.fetch(CDAEntry.class).one("5PeGS2SoZGSa4GuiQsigQu");
-~~~
-
-you'll get a response like
-
-~~~ json
-{
-  "fields": {
-    "author": {
-      "en-US": "Larry Wall"
-    },
-    "name": {
-      "en-US": "An introduction to regular expressions. Volume VI"
-    },
-    "description": {
-      "en-US": "Now you have two problems."
-    }
-  },
-  …
-}
-~~~
+:[Get entry output](../../_partials/get-entry-output-android.md)
 
 ## All assets
 
-Retrieving all assets of a space, this snippet could help:
+To retrieve all assets of a space, use this method:
 
-~~~ java
+~~~java
 CDAArray array = client.fetch(CDAAsset.class).all();
-~~~
-
-And this will be the result for a _different_ (`space = cfexampleapi`, `token = b4c0n73n7fu1`) sample space…
-
-~~~ json
-{
-  "total": 4,
-  "skip": 0,
-  "limit": 100,
-  "items": [
-    {
-      "fields": {
-        "file": {
-          "en-US": {
-            "fileName": "jake.png",
-            "contentType": "image/png",
-            "details": {
-              "image": {
-                "width": 100.0,
-                "height": 161.0
-              },
-              "size": 20480.0
-            },
-            "url": "//images.contentful.com/cfexampleapi/4hlteQAXS8iS0YCMU6QMWg/2a4d826144f014109364ccf5c891d2dd/jake.png"
-          }
-        },
-        "title": {
-          "en-US": "Jake"
-        }
-      },
-      "sys": {
-        "type": "Asset",
-        "id": "jake",
-        …
-      }
-      …
-    },
-    …
-  ],
-  …
+for (CDAArray array : result.items()) {
+    CDAEntry entry = (CDAEntry) resource;
+    Log.i("Contentful", entry.getField(FIELD).toString());
 }
 ~~~
 
-## Only one asset
+:[Get all assets](../../_partials/get-all-asset-output-android.md)
 
-Retrieving one specific asset, take a look at this example:
+## One asset
 
-~~~ java
-CDAAsset asset = client.fetch(CDAAsset.class).one("jake");
+To retrieve one specific asset, use this method:
+
+~~~java
+CDAAsset asset = client.fetch(CDAAsset.class).one("<asset_id>");
 ~~~
 
-And this will be the result in only one asset (again using the `cfexampleapi` space):
+:[Get all assets](../../_partials/get-all-asset-output-android.md)
 
-~~~ json
-{
-  "fields": {
-    "file": {
-      "en-US": {
-        "fileName": "jake.png",
-        "contentType": "image/png",
-        "details": {
-          "image": {
-            "width": 100.0,
-            "height": 161.0
-          },
-          "size": 20480.0
-        },
-        "url": "//images.contentful.com/cfexampleapi/4hlteQAXS8iS0YCMU6QMWg/2a4d826144f014109364ccf5c891d2dd/jake.png"
-      }
-    },
-    "title": {
-      "en-US": "Jake"
-    }
-  },
-  "sys": {
-    "type": "Asset",
-    "id": "jake",
-    …
-  }
-  …
-}
-~~~
+**UP_TO_HERE**
 
 ## Content types
 
-In order to request all [content types](https://contentful.github.io/contentful.java/index.html?com/contentful/java/cda/CDAContentType.html),
-you could use a call like this:
+To request all [content types](https://contentful.github.io/contentful.java/index.html?com/contentful/java/cda/CDAContentType.html), use this method:
 
-~~~ java
+~~~java
 CDAArray array = client.fetch(CDAContentType.class).all();
 ~~~
 
 Taking the resulting object, it'll be printed as (This example will only contain one content type, since the space only
 contains one type).
 
-~~~ json
+~~~json
 {
   "total": 1,
   "skip": 0,
@@ -240,13 +122,13 @@ contains one type).
 
 To fetch the current space meta information, you could use
 
-~~~ java
+~~~java
 CDASpace space = client.fetchSpace();
 ~~~
 
 yielding
 
-~~~ json
+~~~json
 {
   "name": "Developer Bookshelf",
   "locales": [
@@ -273,7 +155,7 @@ yielding
 For this example, you will need to [get a CMA API token](/developers/docs/references/authentication/#the-management-api)
 and create a [CMAClient](https://contentful.github.io/contentful-management.java/index.html?com/contentful/java/cma/CMAClient.html) using it:
 
-~~~ java
+~~~java
 CMAClient cmaClient = new CMAClient.Builder()
     .setAccessToken(CMA_TOKEN)
     .build();
@@ -285,7 +167,7 @@ System.out.println(text);
 
 And the result will be:
 
-~~~ json
+~~~json
 {
   "items": [
     {
