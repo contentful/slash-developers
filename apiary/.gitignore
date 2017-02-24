@@ -1,8 +1,0 @@
-cda.html
-cma.html
-*.out.apib
-
-node_modules
-.bundle
-vendor
-out

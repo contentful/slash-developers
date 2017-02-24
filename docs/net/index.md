@@ -37,3 +37,7 @@ This SDK interacts with the Content Delivery API, a read-only API for retrieving
 [This tutorial](/developers/docs/net/tutorials/management-api/) will guide you through most of the methods available in the Content Management API with a .Net application.
 
 [This tutorial](/developers/docs/net/tutorials/webhook-roles-snapshots/) will go in depth into managing webhooks, roles and space memberships and versioning entries with snapshots.
+
+### Gettings started with Contentful and ASP.NET core
+
+[This tutorial](/developers/docs/net/tutorials/aspnet-core/) will walk you through the first steps using the .Net SDK with an ASP.NET core application.
