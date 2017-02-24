@@ -12,184 +12,97 @@ nextsteps:
     link: /developers/docs/android/tutorials/advanced-filtering-and-searching/
 ---
 
-This is a simple `how to` on different aspects of the Contentful JAVA API. All following samples assume a client setup like
-
-~~~ java
-CDAClient client = CDAClient.builder()
-    .setSpace("developer_bookshelf")
-    .setToken("0b7f6x59a0")
-    .build();
-~~~
-
-as described in our [getting started guide](/developers/docs/android/tutorials/getting-started-with-contentful-and-android/).
+The guide will show you advanced methods to retrieve entries from Contenful using our Java SDK. We recommend you read the [Android getting started guide](/developers/docs/android/tutorials/getting-started-with-contentful-and-android/) before reading this guide.
 
 ## All entries
 
-To fetch all entries of the given space, you could use:
+To fetch all entries of a given space, use:
 
-~~~ java
+~~~java
 CDAArray array = client.fetch(CDAEntry.class).all();
 ~~~
 
-This will result in
-
-~~~ json
-{
-  "total": 2,
-  "skip": 0,
-  "limit": 100,
-  "items": [
-    {
-      "fields": {
-        "author": {
-          "en-US": "Larry Wall"
-        },
-        "name": {
-          "en-US": "An introduction to regular expressions. Volume VI"
-        },
-        "description": {
-          "en-US": "Now you have two problems."
-        }
-      },
-      …
-    },
-    … another item
-  ],
-  "sys": {
-    "type": "Array"
-  }
-}
+~~~
+I/Contentful: Hudson Wall Cup
+I/Contentful: SoSo Wall Clock
+I/Contentful: Whisk Beater
+I/Contentful: Playsam Streamliner Classic Car, Espresso
 ~~~
 
-## One specific entry
+## A specific entry
 
-Using the `.one(`_`YOUR_ITEM_ID`_`)` method of the client, like follows
+To retreieve and individual entry, use the `.one(5KsDBWseXY6QegucYAoacS)` method:
 
-~~~ java
-CDAEntry entry = client.fetch(CDAEntry.class).one("5PeGS2SoZGSa4GuiQsigQu");
+~~~java
+CDAEntry entry = client.fetch(CDAEntry.class).one("5KsDBWseXY6QegucYAoacS");
 ~~~
 
-you'll get a response like
-
-~~~ json
-{
-  "fields": {
-    "author": {
-      "en-US": "Larry Wall"
-    },
-    "name": {
-      "en-US": "An introduction to regular expressions. Volume VI"
-    },
-    "description": {
-      "en-US": "Now you have two problems."
-    }
-  },
-  …
-}
+~~~
+I/Contentful: CDAEntry{id='5KsDBWseXY6QegucYAoacS'}
 ~~~
 
 ## All assets
 
-Retrieving all assets of a space, this snippet could help:
+To retrieve all assets of a space, use this method:
 
-~~~ java
+~~~java
 CDAArray array = client.fetch(CDAAsset.class).all();
-~~~
-
-And this will be the result for a _different_ (`space = cfexampleapi`, `token = b4c0n73n7fu1`) sample space…
-
-~~~ json
-{
-  "total": 4,
-  "skip": 0,
-  "limit": 100,
-  "items": [
-    {
-      "fields": {
-        "file": {
-          "en-US": {
-            "fileName": "jake.png",
-            "contentType": "image/png",
-            "details": {
-              "image": {
-                "width": 100.0,
-                "height": 161.0
-              },
-              "size": 20480.0
-            },
-            "url": "//images.contentful.com/cfexampleapi/4hlteQAXS8iS0YCMU6QMWg/2a4d826144f014109364ccf5c891d2dd/jake.png"
-          }
-        },
-        "title": {
-          "en-US": "Jake"
-        }
-      },
-      "sys": {
-        "type": "Asset",
-        "id": "jake",
-        …
-      }
-      …
-    },
-    …
-  ],
-  …
+for (CDAArray array : result.items()) {
+    CDAEntry entry = (CDAEntry) resource;
+    Log.i("Contentful", entry.getField(FIELD).toString());
 }
 ~~~
 
-## Only one asset
-
-Retrieving one specific asset, take a look at this example:
-
-~~~ java
-CDAAsset asset = client.fetch(CDAAsset.class).one("jake");
+~~~
+//images.contentful.com/71rop70dkqaj/1MgbdJNTsMWKI0W68oYqkU/4c2d960aa37fe571d261ffaf63f53163/9ef190c59f0d375c0dea58b58a4bc1f0.jpeg
+//images.contentful.com/71rop70dkqaj/4zj1ZOfHgQ8oqgaSKm4Qo2/8c30486ae79d029aa9f0ed5e7c9ac100/playsam.jpg
+//images.contentful.com/71rop70dkqaj/3wtvPBbBjiMKqKKga8I2Cu/90b69e82b8b735383d09706bdd2d9dc5/zJYzDlGk.jpeg
+//images.contentful.com/71rop70dkqaj/wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg
+//images.contentful.com/71rop70dkqaj/6t4HKjytPi0mYgs240wkG/b7ba3984167c53d728e7533e54ab179d/toys_512pxGREY.png
+//images.contentful.com/71rop70dkqaj/10TkaLheGeQG6qQGqWYqUI/13c64b63807d1fd1c4b42089d2fafdd6/ryugj83mqwa1asojwtwb.jpg
+//images.contentful.com/71rop70dkqaj/Xc0ny7GWsMEMCeASWO2um/190cc760e991d27fba6e8914b87a736d/jqvtazcyfwseah9fmysz.jpg
+//images.contentful.com/71rop70dkqaj/2Y8LhXLnYAYqKCGEWG4EKI/44105a3206c591d5a64a3ea7575169e0/lemnos-logo.jpg
+//images.contentful.com/71rop70dkqaj/6m5AJ9vMPKc8OUoQeoCS4o/07b56832506b9494678d1acc08d01f51/1418244847_Streamline-18-256.png
+//images.contentful.com/71rop70dkqaj/6s3iG2OVmoUcosmA8ocqsG/b55b213eeca80de2ecad2b92aaa0065d/1418244847_Streamline-18-256__1_.png
+//images.contentful.com/71rop70dkqaj/KTRF62Q4gg60q6WCsWKw8/ae855aa3810a0f6f8fee25c0cabb4e8f/soso.clock.jpg
 ~~~
 
-And this will be the result in only one asset (again using the `cfexampleapi` space):
+## One asset
 
-~~~ json
-{
-  "fields": {
-    "file": {
-      "en-US": {
-        "fileName": "jake.png",
-        "contentType": "image/png",
-        "details": {
-          "image": {
-            "width": 100.0,
-            "height": 161.0
-          },
-          "size": 20480.0
-        },
-        "url": "//images.contentful.com/cfexampleapi/4hlteQAXS8iS0YCMU6QMWg/2a4d826144f014109364ccf5c891d2dd/jake.png"
-      }
-    },
-    "title": {
-      "en-US": "Jake"
-    }
-  },
-  "sys": {
-    "type": "Asset",
-    "id": "jake",
-    …
-  }
-  …
-}
+To retrieve one specific asset, use this method:
+
+~~~java
+CDAAsset asset = client.fetch(CDAAsset.class).one("wtrHxeu3zEoEce2MokCSi");
 ~~~
+
+~~~
+//images.contentful.com/71rop70dkqaj/1MgbdJNTsMWKI0W68oYqkU/4c2d960aa37fe571d261ffaf63f53163/9ef190c59f0d375c0dea58b58a4bc1f0.jpeg
+//images.contentful.com/71rop70dkqaj/4zj1ZOfHgQ8oqgaSKm4Qo2/8c30486ae79d029aa9f0ed5e7c9ac100/playsam.jpg
+//images.contentful.com/71rop70dkqaj/3wtvPBbBjiMKqKKga8I2Cu/90b69e82b8b735383d09706bdd2d9dc5/zJYzDlGk.jpeg
+//images.contentful.com/71rop70dkqaj/wtrHxeu3zEoEce2MokCSi/e86a375b7ad18c25e4ff55de1eac42fe/quwowooybuqbl6ntboz3.jpg
+//images.contentful.com/71rop70dkqaj/6t4HKjytPi0mYgs240wkG/b7ba3984167c53d728e7533e54ab179d/toys_512pxGREY.png
+//images.contentful.com/71rop70dkqaj/10TkaLheGeQG6qQGqWYqUI/13c64b63807d1fd1c4b42089d2fafdd6/ryugj83mqwa1asojwtwb.jpg
+//images.contentful.com/71rop70dkqaj/Xc0ny7GWsMEMCeASWO2um/190cc760e991d27fba6e8914b87a736d/jqvtazcyfwseah9fmysz.jpg
+//images.contentful.com/71rop70dkqaj/2Y8LhXLnYAYqKCGEWG4EKI/44105a3206c591d5a64a3ea7575169e0/lemnos-logo.jpg
+//images.contentful.com/71rop70dkqaj/6m5AJ9vMPKc8OUoQeoCS4o/07b56832506b9494678d1acc08d01f51/1418244847_Streamline-18-256.png
+//images.contentful.com/71rop70dkqaj/6s3iG2OVmoUcosmA8ocqsG/b55b213eeca80de2ecad2b92aaa0065d/1418244847_Streamline-18-256__1_.png
+//images.contentful.com/71rop70dkqaj/KTRF62Q4gg60q6WCsWKw8/ae855aa3810a0f6f8fee25c0cabb4e8f/soso.clock.jpg
+~~~
+
+**UP_TO_HERE**
 
 ## Content types
 
-In order to request all [content types](https://contentful.github.io/contentful.java/index.html?com/contentful/java/cda/CDAContentType.html),
-you could use a call like this:
+To request all [content types](https://contentful.github.io/contentful.java/index.html?com/contentful/java/cda/CDAContentType.html), use this method:
 
-~~~ java
+~~~java
 CDAArray array = client.fetch(CDAContentType.class).all();
 ~~~
 
 Taking the resulting object, it'll be printed as (This example will only contain one content type, since the space only
 contains one type).
 
-~~~ json
+~~~json
 {
   "total": 1,
   "skip": 0,
@@ -240,13 +153,13 @@ contains one type).
 
 To fetch the current space meta information, you could use
 
-~~~ java
+~~~java
 CDASpace space = client.fetchSpace();
 ~~~
 
 yielding
 
-~~~ json
+~~~json
 {
   "name": "Developer Bookshelf",
   "locales": [
@@ -273,7 +186,7 @@ yielding
 For this example, you will need to [get a CMA API token](/developers/docs/references/authentication/#the-management-api)
 and create a [CMAClient](https://contentful.github.io/contentful-management.java/index.html?com/contentful/java/cma/CMAClient.html) using it:
 
-~~~ java
+~~~java
 CMAClient cmaClient = new CMAClient.Builder()
     .setAccessToken(CMA_TOKEN)
     .build();
@@ -285,7 +198,7 @@ System.out.println(text);
 
 And the result will be:
 
-~~~ json
+~~~json
 {
   "items": [
     {
