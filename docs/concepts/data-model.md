@@ -58,7 +58,7 @@ Each _content type_ consists of a set of up to **50** fields that you define, th
 
 ### Array fields
 
-Fields can contain multiple values with the `Array` type. An array can contain symbols (strings up to 256 characters), **or** [links](https://www.contentful.com/docs/concepts/links/) to other entries or assets. The `items` property defines the allowed values in the array.
+Fields can contain multiple values with the `Array` type. An array can contain symbols (strings up to 256 characters), **or** [links](https://www.contentful.com/developers/docs/concepts/links/) to other entries or assets. The `items` property defines the allowed values in the array.
 
 You define a field that contains symbols like this:
 
