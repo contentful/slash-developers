@@ -678,7 +678,89 @@ await client.UnarchiveAssetAsync("<new_asset_id>", version);
 To permanently delete an asset.
 
 ~~~csharp
-cawait lient.DeleteAssetAsync("<new_asset_id>", version);
+await client.DeleteAssetAsync("<new_asset_id>", version);
+~~~
+
+## Uploading files directly
+
+When creating assets in the example above your file needs to already be reachable on a url. That is what you put in the `UploadUrl` property. At times you want to upload a file directly from disk or 
+some other source. You then use the `UploadReference` property instead. To create an `UploadReference` use the `UploadFileAsync` method.
+
+First upload your binary file.
+
+~~~csharp
+var binaryFileByteArray = File.ReadAllBytes("c:\example\yourfile.txt");
+var uploadReference = await client.UploadFileAsync("<new_asset_id>", version);
+~~~
+
+This returns an `UploadReference` that can then be used when creating an asset. You need to scrub a few properties from the `SystemProperties` of the reference. This is because these properties are
+not allowed when creating assets.
+
+~~~csharp
+
+//Scrub the properties that are not allowed.
+uploadReference.SystemProperties.CreatedAt = null;
+uploadReference.SystemProperties.CreatedBy = null;
+uploadReference.SystemProperties.Space = null;
+
+var managementAsset = new ManagementAsset();
+
+managementAsset.SystemProperties = new SystemProperties();
+managementAsset.SystemProperties.Id = "<new_asset_id>";
+
+managementAsset.Title = new Dictionary<string, string> {
+    { "en-US", "New asset" }
+};
+
+managementAsset.Files = new Dictionary<string, File>
+{
+    { "en-US", new File() {
+            ContentType = "text/plain",
+            FileName = "your-file.txt",
+            UploadReference = uploadReference;
+        }
+    }
+};
+
+await client.CreateOrUpdateAssetAsync(managementAsset);
+~~~
+
+The asset then needs to be processed as in the previous example.
+
+This way of creating asssets through an upload is quite arduous. The .NET SDK therefor provides a way to create, upload and process a file in one call by using the `UploadFileAndCreateAsset` method.
+
+~~~csharp
+var bytes = File.ReadAllBytes("c:\example\yourfile.txt");
+
+var managementAsset = new ManagementAsset();
+
+managementAsset.SystemProperties = new SystemProperties();
+managementAsset.SystemProperties.Id = "<new_asset_id>";
+
+managementAsset.Title = new Dictionary<string, string> {
+    { "en-US", "New asset" }
+};
+
+managementAsset.Files = new Dictionary<string, File>
+{
+    { "en-US", new File() {
+            ContentType = "text/plain",
+            FileName = "your-file.txt"
+        }
+    }
+};
+
+await client.UploadFileAndCreateAsset(managementAsset, bytes);
+~~~
+
+This will upload the file, create the asset, associate the upload with the asset and finally process the asset. It is then ready to be published.
+
+You can also get and delete a previously uploaded `UploadReference`.
+
+~~~csharp
+await client.GetUploadAsync("<upload_reference_id>");
+
+await client.DeleteUploadAsync("<upload_reference_id>");
 ~~~
 
 ## Working with locales
