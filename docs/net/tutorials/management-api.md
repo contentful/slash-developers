@@ -727,7 +727,7 @@ await client.CreateOrUpdateAssetAsync(managementAsset);
 
 The asset then needs to be processed as in the previous example.
 
-This way of creating asssets through an upload is quite arduous. The .NET SDK therefor provides a way to create, upload and process a file in one call by using the `UploadFileAndCreateAsset` method.
+This way of creating asssets through an upload is quite arduous. The .NET SDK therefore provides a way to create, upload and process a file in one call by using the `UploadFileAndCreateAsset` method.
 
 ~~~csharp
 var bytes = File.ReadAllBytes("c:\example\yourfile.txt");
