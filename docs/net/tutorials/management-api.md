@@ -683,8 +683,8 @@ await client.DeleteAssetAsync("<new_asset_id>", version);
 
 ## Uploading files directly
 
-When creating assets in the example above your file needs to already be reachable on a url. That is what you put in the `UploadUrl` property. At times you want to upload a file directly from disk or 
-some other source. You then use the `UploadReference` property instead. To create an `UploadReference` use the `UploadFileAsync` method.
+At times you want to upload a file directly from disk or 
+some other source. You then use the `UploadReference` property of your `ManagementAsset`. To create an `UploadReference` use the `UploadFileAsync` method.
 
 First upload your binary file.
 
@@ -693,12 +693,10 @@ var binaryFileByteArray = File.ReadAllBytes("c:\example\yourfile.txt");
 var uploadReference = await client.UploadFileAsync("<new_asset_id>", version);
 ~~~
 
-This returns an `UploadReference` that can then be used when creating an asset. You need to scrub a few properties from the `SystemProperties` of the reference. This is because these properties are
-not allowed when creating assets.
+This returns an `UploadReference` that can then be used when creating an asset. You need to remove a few properties from the `SystemProperties` of the reference. This is because these properties are not allowed when creating assets.
 
 ~~~csharp
-
-//Scrub the properties that are not allowed.
+//Set the properties that are not allowed to null to make sure they're not serialized with the request.
 uploadReference.SystemProperties.CreatedAt = null;
 uploadReference.SystemProperties.CreatedBy = null;
 uploadReference.SystemProperties.Space = null;
