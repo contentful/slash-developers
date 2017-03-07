@@ -18,6 +18,9 @@ for filename in $(find raw_docs -type f -name '*.md'); do
   ./placeholder-replacements.sh $result_string
 done
 
-cp raw_docs/references/authentication.html.haml docs/references/authentication.html.haml
+cp -v raw_docs/references/authentication.html.haml docs/references/authentication.html.haml
+cp -v raw_docs/android/tutorials/*.png docs/android/tutorials/
+cp -v raw_docs/ios/tutorials/*.png docs/ios/tutorials/
+cp -v raw_docs/javascript/tutorials/*.png docs/javascript/tutorials/
 
 rm -dfr docs/_partials
