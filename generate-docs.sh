@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 npm install
-HERCULE=node_modules/.bin/hercule
 
 rm -dfr docs
 
@@ -15,7 +14,7 @@ for filename in $(find raw_docs -type f -name '*.md'); do
   echo $result_string
 
   mkdir -p "$(dirname "$result_string")" && touch "$result_string"
-  hercule $filename -o $result_string
+  ./node_modules/.bin/hercule $filename -o $result_string
   ./placeholder-replacements.sh $result_string
 done
 
