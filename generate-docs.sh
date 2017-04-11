@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-rm -dfr docs
+rm -rf docs
 
 echo "Processing Markdown"
 for filename in $(find raw_docs -type f -name '*.md'); do
-
   echo $filename
   original_string=$filename
   string_to_replace_with=docs
@@ -21,4 +20,4 @@ cp -v raw_docs/android/tutorials/*.png docs/android/tutorials/
 cp -v raw_docs/ios/tutorials/*.png docs/ios/tutorials/
 cp -v raw_docs/javascript/tutorials/*.png docs/javascript/tutorials/
 
-rm -dfr docs/_partials
+rm -rf docs/_partials
