@@ -1,8 +1,8 @@
-# Contentful developer documentation
+ # THIS REPOSITORY IS DEPRECATED
 
-[![Build Status](https://travis-ci.org/contentful/slash-developers.svg?branch=master)](https://travis-ci.org/contentful/slash-developers)
+Please do not open new PRs or issues.
 
-This repository contains the raw content for <https://www.contentful.com/developers/>, but not API documentation.
+# Legacy README
 
 ## Contributing
 
