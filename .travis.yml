@@ -1,22 +1,6 @@
 language: node_js
-dist: trusty
-sudo: required
+node_js:
+  - 6
 
-node_js: 5.1
-ruby: 2.2.3
-
-before_install:
-  - mv Spelling-and-style-sheet/.spelling ./.spelling
+script:
   - ./generate-docs.sh
-
-after_success:
-  - ./spelling.sh
-
-cache:
-  directories:
-    - node_modules
-
-notifications:
-  slack: contentful:o4vrtCfCCvlN0ebhJ3ypu2je
-  on_success: always
-  on_failure: always

@@ -2,8 +2,6 @@
   "name": "slash-developers",
   "private": true,
   "devDependencies": {
-    "markdown-spellcheck": "^0.10.0",
-    "write-good": "^0.9.0",
     "hercule": "^1.2.5"
   }
 }
