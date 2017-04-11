@@ -347,6 +347,57 @@ var entries = await client.GetEntriesAsync<Product>("?content_Type=<content_type
 
 While this is possible, the recommended approach is to use the `QueryBuilder<T>` as it will make sure your query string is correctly formatted.
 
+### Get localized entries
+
+To get entries in a specific locale use the `LocaleIs` method on the `QueryBuilder<T>`.
+
+~~~csharp
+var builder = QueryBuilder<Product>.New.ContentTypeIs("<content_type_id>").LocaleIs("sv-SE");
+var entries = await client.GetEntriesAsync(builder);
+//entries would be an IEnumerable of Product
+~~~
+
+This will fetch the entry as normal, but all the fields will be in the defined locale.
+
+If you wish to get every locale of an entry you can use the wildcard `*` locale.
+
+~~~csharp
+var builder = QueryBuilder<Entry<dynamic>>.New.ContentTypeIs("<content_type_id>").LocaleIs("*");
+var entries = await client.GetEntriesAsync(builder);
+//entries would be an IEnumerable of Entry<dynamic>
+~~~
+
+Keep in mind that this returns the fields of the entry in a slightly different JSON structure. Field values are nested in an object with keys corresponding to each locale with a defined value.
+
+~~~json
+{
+  "fields": {
+    "title": {
+      "en-US": "The title",
+      "sv-SE": "Titeln"
+    }
+  }
+}
+~~~
+
+This means that if you're using a custom object you need to make sure to have it appropriately structured. Wrapping every property in a dictionary is one possible way.
+
+~~~csharp
+public class MultiLocaleProduct {
+  public Dictionary<string> Title { get; set; }
+}
+~~~
+
+That would result in having one entity with the values for all locales in each separate property.
+
+~~~csharp
+var builder = QueryBuilder<MultiLocaleProduct>.New.ContentTypeIs("<content_type_id>").LocaleIs("*");
+var products = await client.GetEntriesAsync(builder);
+
+var englishTitle = products.First().Title["en-US"]; //=> The title
+var swedishTitle = products.First().Title["sv-SE"]; //=> Titeln
+~~~
+
 ## Get a single asset
 
 To get a single asset use the `GetAssetAsync` method.
