@@ -2,7 +2,7 @@
 page: :docsApis
 name: API basics
 title: Four content APIs
-metainformation: 'Contentful is an API first content management system, offering four REST APIs for working with your content.'
+metainformation: 'Contentful is an API-first content infrastructure, offering four REST APIs for working with your content.'
 slug: null
 tags:
   - API
@@ -10,7 +10,7 @@ tags:
 nextsteps: null
 ---
 
-Contentful is an API first content management system, offering four REST APIs for working with your content. Each of these APIs serve a different purpose, so which one to use depends on what you want to do:
+Contentful is an API-first content infrastructure, offering four REST APIs for working with your content. Each of these APIs serve a different purpose, so which one to use depends on what you want to do:
 
 - If you're retrieving content to display to users in an app or website, use the [Content Delivery API][cda-section].
 - If you want to programmatically create or update content items, use the [Content Management API][cma-section].
@@ -29,7 +29,7 @@ For more details [read the reference guide for the Content Delivery API][1].
 
 The Content Management API (CMA), available at <i>api.contentful.com</i>, is a read-write API for managing content. Unlike the Content Delivery API, the management API requires you to authenticate as a Contentful user. You could use the CMA for several use cases, such as:
 
-- Automatic imports from different CMSes like WordPress or Drupal.
+- Automatic imports from WordPress, Drupal, and more.
 - Integration with other backend systems, such as an e-commerce shop.
 - Building custom editing experiences. We built the [Contentful web app](https://app.contentful.com) on top of this API.
 
